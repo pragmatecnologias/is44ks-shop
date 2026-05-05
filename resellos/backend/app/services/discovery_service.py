@@ -11,73 +11,16 @@ from sqlalchemy.orm import Session
 from app.models.product import Product
 from app.models.supplier import AgentReport, CompetitorListing, DiscoveryTask, MarketplaceEvidence, ProfitAnalysis, ProductIdea, ProductSource
 from app.agents.quick_scan_agent import QuickScanAgent
+from app.services.category_templates import CATEGORY_TEMPLATES
 from app.schemas.product_schema import (
     OpportunityBoardRow,
     ProductCreate,
     ProductIdeaCreate,
     ProductIdeaQuickScanRequest,
     ProductIdeaUpdate,
+    DiscoveryTaskUpdate,
 )
 from app.services.product_service import ProductService
-
-
-CATEGORY_TEMPLATES: dict[str, dict[str, Any]] = {
-    "car accessories": {
-        "required_evidence": [
-            "5 sold listings",
-            "10 active listings",
-            "dimensions",
-            "fitment notes",
-            "shipping weight",
-        ],
-        "risk_checks": ["not mechanical", "not safety-critical", "not electrical unless reviewed"],
-        "listing_angles": ["keeps car organized", "prevents items falling", "easy installation", "universal fit"],
-        "marketplaces": ["eBay", "Mercari"],
-        "suggested_keywords": ["car organizer", "car accessory", "seat gap organizer", "car storage"],
-    },
-    "desk accessories": {
-        "required_evidence": ["5 sold listings", "10 active listings", "shipping weight", "bundle angles"],
-        "risk_checks": ["not electrical", "not fragile", "not branded"],
-        "listing_angles": ["cleans up desk clutter", "boosts productivity", "small space solution"],
-        "marketplaces": ["eBay", "Mercari"],
-        "suggested_keywords": ["desk organizer", "cable clip", "monitor stand", "desk accessory"],
-    },
-    "home organization": {
-        "required_evidence": ["5 sold listings", "10 active listings", "dimensions", "material", "shipping weight"],
-        "risk_checks": ["not food contact", "not child safety", "not electrical"],
-        "listing_angles": ["saves space", "neat home", "simple storage"],
-        "marketplaces": ["eBay", "Facebook Marketplace"],
-        "suggested_keywords": ["home organizer", "storage solution", "drawer organizer"],
-    },
-    "pet accessories": {
-        "required_evidence": ["5 sold listings", "10 active listings", "material notes", "shipping weight"],
-        "risk_checks": ["not ingestible", "not medicine", "not prescription", "not claims-heavy"],
-        "listing_angles": ["makes pet care easier", "safe generic accessory", "simple cleanup"],
-        "marketplaces": ["eBay", "Mercari"],
-        "suggested_keywords": ["pet accessory", "pet grooming", "pet hair remover", "pet organizer"],
-    },
-    "travel accessories": {
-        "required_evidence": ["5 sold listings", "10 active listings", "dimensions", "bundle potential"],
-        "risk_checks": ["not battery", "not electrical", "not high-return fragile"],
-        "listing_angles": ["travel convenience", "compact storage", "easy packing"],
-        "marketplaces": ["eBay", "Mercari"],
-        "suggested_keywords": ["travel accessory", "travel organizer", "packing cube"],
-    },
-    "creator tools": {
-        "required_evidence": ["5 sold listings", "10 active listings", "photo quality", "feature clarity"],
-        "risk_checks": ["not electronics unless verified", "not trademarked"],
-        "listing_angles": ["content creator utility", "desk-friendly setup", "simple workflow"],
-        "marketplaces": ["eBay", "Mercari"],
-        "suggested_keywords": ["creator tool", "content creator accessory", "desk mount"],
-    },
-    "small tools": {
-        "required_evidence": ["5 sold listings", "10 active listings", "dimensions", "material", "tool use case"],
-        "risk_checks": ["not powered", "not safety-critical"],
-        "listing_angles": ["easy job completion", "small workshop helper"],
-        "marketplaces": ["eBay", "Facebook Marketplace"],
-        "suggested_keywords": ["small tool", "hand tool", "utility tool"],
-    },
-}
 
 
 def _norm_category(category: str | None) -> str:
@@ -201,7 +144,7 @@ class DiscoveryService:
             estimated_landed_cost=data.estimated_landed_cost,
             why_interesting=data.why_interesting,
             notes=notes or None,
-            status=data.status or "QUICK_SCAN_NEEDED",
+            status=data.status or "NEW_IDEA",
         )
         self.db.add(idea)
         self.db.commit()
@@ -246,13 +189,21 @@ class DiscoveryService:
             template.get(
                 "required_evidence",
                 [
-                    "5 sold listings",
-                    "10 active listings",
-                    "supplier cost",
+                    "Add 5 sold eBay listings",
+                    "Add 5 active eBay listings",
+                    "Add 2 supplier sources",
                 ],
             )
         )
-        suggested_keywords = list(template.get("suggested_keywords", []))
+        suggested_keywords = template.get(
+            "suggested_keywords",
+            {
+                "ebay_sold": [],
+                "ebay_active": [],
+                "mercari": [],
+                "supplier": [],
+            },
+        )
         scan_output = scan.get("output_json", {})
         verdict = scan_output.get("quick_scan_verdict", "NEEDS_MARKET_CHECK")
         research_priority = scan_output.get("research_priority", "MEDIUM")
@@ -273,7 +224,7 @@ class DiscoveryService:
                 why_interesting=data.why_interesting,
                 notes=data.notes,
                 marketplace_observation=data.marketplace_observation,
-                status="QUICK_SCAN_COMPLETE",
+                status="QUICK_SCAN_COMPLETE" if verdict != "REJECT" else "REJECTED",
             )
         )
 
@@ -285,8 +236,8 @@ class DiscoveryService:
             risk_flags=risk_flags,
             required_evidence=required_evidence,
             suggested_keywords=suggested_keywords,
-            quick_market_signal="Need sold and active checks" if verdict != "REJECT" else "Skip for now",
-            quick_profit_signal="Unknown" if data.estimated_landed_cost is None else "Potentially viable" if score >= 55 else "Weak",
+            quick_market_signal="Sold evidence is missing; keep checking the market." if verdict != "REJECT" else "Skip for now",
+            quick_profit_signal="Unknown until sold evidence exists" if data.estimated_landed_cost is None else "Potentially viable only after market evidence",
             research_completeness_score=min(100, max(0, score)),
             opportunity_score=min(100, max(0, score)),
         )
@@ -294,9 +245,9 @@ class DiscoveryService:
         tasks = self._replace_tasks(
             idea.id,
             [
-                ("market_research", "Search eBay sold listings", 1),
-                ("market_research", "Search eBay active listings", 2),
-                ("supplier_research", "Add supplier options", 3),
+                ("market_research", "Add 5 sold eBay listings", 1),
+                ("market_research", "Add 5 active eBay listings", 2),
+                ("supplier_research", "Add 2 supplier sources", 3),
                 ("competition_research", "Capture competitor photos and listing notes", 4),
             ],
         )
@@ -307,7 +258,7 @@ class DiscoveryService:
             "research_priority": idea.research_priority,
             "research_completeness_score": min(100, max(0, score)),
             "opportunity_score": min(100, max(0, score)),
-            "buy_readiness_status": "ALMOST_READY" if verdict == "PROMISING" else "NOT_READY",
+            "buy_readiness_status": "NOT_READY",
             "required_next_evidence": _json_load(idea.required_next_evidence, []),
             "suggested_keywords": _json_load(idea.suggested_keywords, []),
             "risk_flags": _json_load(idea.risk_flags, []),
@@ -327,8 +278,41 @@ class DiscoveryService:
                 name=idea.idea_name,
                 category=idea.category,
                 subcategory=None,
-                description=idea.why_interesting or idea.notes,
+                description="\n".join(
+                    part
+                    for part in [
+                        idea.why_interesting,
+                        idea.notes,
+                        f"Quick scan verdict: {idea.quick_scan_verdict or 'UNKNOWN'}",
+                        f"Quick scan reason: {idea.quick_scan_reason or 'No quick scan reason recorded.'}",
+                        f"Required evidence: {', '.join(_json_load(idea.required_next_evidence, [])) if _json_load(idea.required_next_evidence, []) else 'None'}",
+                    ]
+                    if part
+                ),
                 supplier_url=idea.source_url,
+            )
+        )
+        discovery_context = {
+            "idea_id": str(idea.id),
+            "idea_name": idea.idea_name,
+            "category": idea.category,
+            "quick_scan_verdict": idea.quick_scan_verdict,
+            "quick_scan_reason": idea.quick_scan_reason,
+            "research_priority": idea.research_priority,
+            "research_completeness_score": self._research_completeness_for_idea(idea),
+            "opportunity_score": self._research_completeness_for_idea(idea),
+            "required_next_evidence": _json_load(idea.required_next_evidence, []),
+            "suggested_keywords": _json_load(idea.suggested_keywords, {}),
+            "risk_flags": _json_load(idea.risk_flags, []),
+        }
+        self.db.add(
+            AgentReport(
+                product_id=product.id,
+                agent_name="discovery_context",
+                report_type="discovery_context",
+                output_json=_json_dump(discovery_context),
+                summary=idea.quick_scan_reason or "Promoted from discovery.",
+                confidence="MEDIUM",
             )
         )
         idea.promoted_product_id = product.id
@@ -336,6 +320,20 @@ class DiscoveryService:
         self.db.commit()
         self.db.refresh(idea)
         return product
+
+    def update_task(self, task_id: uuid.UUID, data: DiscoveryTaskUpdate) -> DiscoveryTask | None:
+        task = self.db.query(DiscoveryTask).filter(DiscoveryTask.id == task_id).first()
+        if not task:
+            return None
+        update_data = data.model_dump(exclude_unset=True)
+        for field, value in update_data.items():
+            setattr(task, field, value)
+        idea = self.get_idea(task.idea_id)
+        if idea:
+            idea.updated_at = datetime.utcnow()
+        self.db.commit()
+        self.db.refresh(task)
+        return task
 
     def generate_tasks(self, idea_id: uuid.UUID) -> list[DiscoveryTask]:
         idea = self.get_idea(idea_id)
@@ -359,7 +357,7 @@ class DiscoveryService:
         priority: str,
         risk_flags: list[str],
         required_evidence: list[str],
-        suggested_keywords: list[str],
+        suggested_keywords: Any,
         quick_market_signal: str,
         quick_profit_signal: str,
         research_completeness_score: int,
@@ -367,7 +365,7 @@ class DiscoveryService:
     ) -> None:
         if verdict == "REJECT":
             idea.status = "REJECTED"
-        elif verdict == "PROMISING":
+        elif verdict == "PROMISING_FOR_RESEARCH":
             idea.status = "PROMISING"
         else:
             idea.status = "QUICK_SCAN_COMPLETE"
@@ -439,7 +437,7 @@ class DiscoveryService:
             "quick_scan_reason": idea.quick_scan_reason,
             "research_completeness_score": min(100, research_completeness_score),
             "opportunity_score": min(100, research_completeness_score),
-            "buy_readiness_status": "ALMOST_READY" if idea.status == "PROMISING" else "NOT_READY",
+            "buy_readiness_status": "NOT_READY",
             "suggested_keywords": _json_load(idea.suggested_keywords, []),
             "required_next_evidence": _json_load(idea.required_next_evidence, []),
             "promoted_product_id": str(idea.promoted_product_id) if idea.promoted_product_id else None,
@@ -459,6 +457,20 @@ class DiscoveryService:
             "sort_order": task.sort_order,
             "created_at": task.created_at,
         }
+
+    def _research_completeness_for_idea(self, idea: ProductIdea) -> int:
+        tasks = self.db.query(DiscoveryTask).filter(DiscoveryTask.idea_id == idea.id).all()
+        done_tasks = sum(1 for task in tasks if task.status == "DONE")
+        research_completeness_score = 0
+        if tasks:
+            research_completeness_score += min(60, int((done_tasks / len(tasks)) * 60))
+        if idea.status == "PROMISING":
+            research_completeness_score += 25
+        elif idea.status == "QUICK_SCAN_COMPLETE":
+            research_completeness_score += 15
+        elif idea.status == "REJECTED":
+            research_completeness_score += 5
+        return min(100, research_completeness_score)
 
     def opportunity_board(self) -> list[dict[str, Any]]:
         from app.models.product import Product
@@ -483,7 +495,7 @@ class DiscoveryService:
                     "title": idea.idea_name,
                     "category": idea.category,
                     "research_completeness_score": max(0, min(100, completeness)),
-                    "research_verdict": idea.quick_scan_verdict or ("PROMISING" if idea.status == "PROMISING" else "NEEDS_MORE_RESEARCH"),
+                    "research_verdict": idea.quick_scan_verdict or ("PROMISING_FOR_RESEARCH" if idea.status == "PROMISING" else "NEEDS_MORE_RESEARCH"),
                     "buy_readiness_status": "NOT_READY",
                     "risk_level": "BLOCKED" if idea.status == "REJECTED" else "LOW",
                     "sold_evidence_count": 0,

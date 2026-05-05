@@ -327,6 +327,19 @@ export interface ResearchCockpit {
   next_action?: string | null;
   confidence?: string | null;
   current_status?: string | null;
+  discovery_context?: {
+    idea_id?: string;
+    idea_name?: string;
+    category?: string;
+    quick_scan_verdict?: string;
+    quick_scan_reason?: string;
+    research_priority?: string;
+    research_completeness_score?: number;
+    opportunity_score?: number;
+    required_next_evidence?: string[] | string | null;
+    suggested_keywords?: Record<string, string[]> | string[] | string | null;
+    risk_flags?: string[] | string | null;
+  } | null;
 }
 
 export interface DiscoveryTask {
@@ -360,7 +373,7 @@ export interface ProductIdea {
   research_completeness_score?: number;
   opportunity_score?: number;
   buy_readiness_status?: 'NOT_READY' | 'ALMOST_READY' | 'READY' | string;
-  suggested_keywords?: string[] | string | null;
+  suggested_keywords?: Record<string, string[]> | string[] | string | null;
   required_next_evidence?: string[] | string | null;
   promoted_product_id?: string | null;
   tasks?: DiscoveryTask[];
@@ -393,7 +406,7 @@ export interface ProductIdeaQuickScanResponse {
   opportunity_score?: number;
   buy_readiness_status?: string;
   required_next_evidence: string[];
-  suggested_keywords: string[];
+  suggested_keywords: Record<string, string[]> | string[];
   risk_flags: string[];
   tasks: DiscoveryTask[];
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import {
   ArrowRight,
   Brain,
@@ -21,6 +20,7 @@ import {
   listDiscoveryIdeas,
   promoteDiscoveryIdea,
   quickScanDiscoveryIdea,
+  updateDiscoveryTask,
 } from '@/lib/api';
 import type { DiscoveryIdea, DiscoveryQuickScanInput, OpportunityBoardRow } from '@/lib/types';
 
@@ -136,8 +136,9 @@ export default function DiscoveryPage() {
     }
   }
 
-  const readyCount = ideas.filter((idea) => idea.quick_scan_verdict === 'PROMISING').length;
+  const readyCount = ideas.filter((idea) => idea.quick_scan_verdict === 'PROMISING_FOR_RESEARCH').length;
   const marketCheckCount = ideas.filter((idea) => idea.quick_scan_verdict === 'NEEDS_MARKET_CHECK').length;
+  const supplierCheckCount = ideas.filter((idea) => idea.quick_scan_verdict === 'NEEDS_SUPPLIER_CHECK').length;
   const promotedCount = ideas.filter((idea) => idea.status === 'PROMOTED_TO_PRODUCT').length;
 
   if (loading) {
@@ -161,8 +162,9 @@ export default function DiscoveryPage() {
             </div>
             <div className="flex gap-3 text-xs text-zinc-300">
               <Pill label={`Ideas: ${ideas.length}`} />
-              <Pill label={`Promising: ${readyCount}`} />
+              <Pill label={`Promising for research: ${readyCount}`} />
               <Pill label={`Need market check: ${marketCheckCount}`} />
+              <Pill label={`Need supplier check: ${supplierCheckCount}`} />
               <Pill label={`Promoted: ${promotedCount}`} />
             </div>
           </div>
@@ -261,6 +263,15 @@ export default function DiscoveryPage() {
                   onDelete={() => handleDeleteIdea(idea.id)}
                   onGenerateTasks={() => handleGenerateTasks(idea.id)}
                   onArchive={() => handleArchiveIdea(idea.id)}
+                  onUpdateTask={async (taskId, status, notes) => {
+                    setError(null);
+                    try {
+                      await updateDiscoveryTask(taskId, { status, notes });
+                      await loadIdeas();
+                    } catch (err) {
+                      setError(err instanceof Error ? err.message : 'Could not update task');
+                    }
+                  }}
                 />
               ))
             )}
@@ -325,13 +336,16 @@ function IdeaCard({
   onDelete,
   onGenerateTasks,
   onArchive,
+  onUpdateTask,
 }: {
   idea: DiscoveryIdea;
   onPromote: () => void;
   onDelete: () => void;
   onGenerateTasks: () => void;
   onArchive: () => void;
+  onUpdateTask: (taskId: string, status?: string, notes?: string) => void;
 }) {
+  const [draftNotes, setDraftNotes] = useState<Record<string, string>>({});
   return (
     <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
       <div className="flex items-start justify-between gap-4">
@@ -373,6 +387,13 @@ function IdeaCard({
         <StatRow label="Landed cost" value={money(idea.estimated_landed_cost)} />
       </div>
 
+      {idea.quick_scan_reason ? (
+        <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-950/70 p-3">
+          <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Quick scan reason</div>
+          <div className="mt-1 text-sm text-zinc-200">{idea.quick_scan_reason}</div>
+        </div>
+      ) : null}
+
       <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-950/70 p-3">
         <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Why interesting</div>
         <div className="mt-1 text-sm text-zinc-200">{idea.why_interesting || 'No note yet.'}</div>
@@ -394,14 +415,114 @@ function IdeaCard({
         </div>
       </div>
 
-      <div className="mt-3 text-xs text-zinc-500">
-        Keywords: {(idea.suggested_keywords as string[] | undefined)?.join(', ') || '—'}
+      <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-950/70 p-3">
+        <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Suggested keywords</div>
+        <div className="mt-2 space-y-2 text-xs text-zinc-300">
+          {renderKeywordGroup('eBay sold', idea.suggested_keywords, 'ebay_sold')}
+          {renderKeywordGroup('eBay active', idea.suggested_keywords, 'ebay_active')}
+          {renderKeywordGroup('Mercari', idea.suggested_keywords, 'mercari')}
+          {renderKeywordGroup('Supplier', idea.suggested_keywords, 'supplier')}
+        </div>
       </div>
       <div className="mt-1 text-xs text-zinc-500">
         Risk: {(idea.risk_flags as string[] | undefined)?.join(', ') || 'None'}
       </div>
+
+      <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-950/70 p-3">
+        <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Research Tasks</div>
+        <div className="mt-3 space-y-3">
+          {(idea.tasks || []).length ? (
+            idea.tasks!.map((task) => (
+              <div key={task.id} className="rounded-xl border border-zinc-800 bg-zinc-950/80 p-3">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <div className="text-sm font-medium text-white">{task.title}</div>
+                    <div className="text-[11px] uppercase tracking-[0.14em] text-zinc-500">{task.task_type}</div>
+                  </div>
+                  <span className="rounded-full border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-[10px] uppercase tracking-[0.16em] text-zinc-300">
+                    {task.status}
+                  </span>
+                </div>
+                <textarea
+                  value={draftNotes[task.id] ?? task.notes ?? ''}
+                  onChange={(event) => setDraftNotes((current) => ({ ...current, [task.id]: event.target.value }))}
+                  placeholder="Add a note..."
+                  rows={2}
+                  className="mt-3 w-full rounded-xl border border-zinc-800 bg-zinc-950/80 px-3 py-2 text-sm text-white outline-none transition focus:border-indigo-500/50"
+                />
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => onUpdateTask(task.id, task.status, draftNotes[task.id] ?? task.notes ?? '')}
+                    className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
+                  >
+                    Save note
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onUpdateTask(task.id, 'DONE', draftNotes[task.id] ?? task.notes ?? '')}
+                    className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-500/20"
+                  >
+                    Mark done
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onUpdateTask(task.id, 'SKIPPED', draftNotes[task.id] ?? task.notes ?? '')}
+                    className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
+                  >
+                    Skip
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onUpdateTask(task.id, 'BLOCKED', draftNotes[task.id] ?? task.notes ?? '')}
+                    className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs text-red-300 hover:bg-red-500/20"
+                  >
+                    Block
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="text-sm text-zinc-500">No tasks yet. Generate tasks to start collecting evidence.</div>
+          )}
+        </div>
+      </div>
     </div>
   );
+}
+
+function renderKeywordGroup(
+  label: string,
+  keywords: DiscoveryIdea['suggested_keywords'],
+  group: string,
+) {
+  const keywordMap = isKeywordGroupMap(keywords) ? keywords : null;
+  const flatList = Array.isArray(keywords) ? keywords : [];
+  const values = keywordMap?.[group] ?? (group === 'ebay_sold' ? flatList : []);
+  if (!values.length && !keywordMap) {
+    return <div key={label}><span className="text-zinc-500">{label}: —</span></div>;
+  }
+  if (!values.length) {
+    return <div key={label}><span className="text-zinc-500">{label}: —</span></div>;
+  }
+  return (
+    <div key={label}>
+      <div className="text-zinc-500">{label}:</div>
+      <div className="mt-1 flex flex-wrap gap-2">
+        {values.map((keyword) => (
+          <span key={keyword} className="rounded-full border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-200">
+            {keyword}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function isKeywordGroupMap(
+  value: DiscoveryIdea['suggested_keywords'],
+): value is Record<string, string[]> {
+  return !!value && !Array.isArray(value) && typeof value === 'object';
 }
 
 function Step({ title, detail }: { title: string; detail: string }) {

@@ -88,6 +88,8 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
         import json
 
         decision_output = json.loads(decision.output_json)
+    discovery_context = next((row for row in agent_rows if row.agent_name == "discovery_context"), None)
+    discovery_context_output = json.loads(discovery_context.output_json) if discovery_context and discovery_context.output_json else None
     competition = next((row for row in agent_rows if row.agent_name == "competition_agent"), None)
     competition_output = json.loads(competition.output_json) if competition and competition.output_json else None
     reorder = next((row for row in agent_rows if row.agent_name == "reorder_agent"), None)
@@ -138,6 +140,7 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
         next_action=(decision_output or {}).get("next_action") if decision_output else None,
         confidence=(decision_output or {}).get("confidence") if decision_output else None,
         current_status=product.status,
+        discovery_context=discovery_context_output,
     )
 
 

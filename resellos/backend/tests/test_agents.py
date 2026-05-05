@@ -11,15 +11,17 @@ from app.agents.decision_agent import DecisionAgent
 from app.agents.competition_agent import CompetitionAgent
 from app.agents.market_agent import MarketAgent
 from app.agents.profit_agent import ProfitAgent
+from app.agents.quick_scan_agent import QuickScanAgent
 from app.agents.reorder_agent import ReorderAgent
 from app.agents.risk_agent import RiskAgent
 from app.db import Base
 from app.llm.base import LLMProvider, Message
 from app.models.product import Product
-from app.models.supplier import AgentReport, CompetitorListing, MarketplaceEvidence, ProfitAnalysis, ProductSource
+from app.models.supplier import AgentReport, CompetitorListing, DiscoveryTask, MarketplaceEvidence, ProfitAnalysis, ProductIdea, ProductSource
 from app.services.agent_utils import agent_data
 from app.services.discovery_service import DiscoveryService
 from app.services.risk_rules import evaluate_risk_rules
+from app.schemas.product_schema import ResearchTaskUpdate
 
 
 class FakeLLMProvider(LLMProvider):
@@ -58,6 +60,25 @@ class AgentContractTests(unittest.TestCase):
         self.assertEqual(result["risk_level"], "LOW")
         self.assertFalse(result["blocked"])
         self.assertTrue(any(flag["rule_id"] == "pet_accessory" for flag in result["risk_flags"]))
+
+    def test_quick_scan_agent_is_conservative(self) -> None:
+        agent = QuickScanAgent()
+        result = agent.run(
+            {
+                "idea_name": "Car seat gap organizer",
+                "category": "Car accessories",
+                "source_platform": "Alibaba",
+                "rough_supplier_cost": 2.5,
+                "estimated_landed_cost": 5.0,
+                "notes": "Small generic accessory.",
+            }
+        )
+
+        output = result["output_json"]
+        self.assertIn(output["quick_scan_verdict"], {"REJECT", "NEEDS_MARKET_CHECK", "NEEDS_SUPPLIER_CHECK", "PROMISING_FOR_RESEARCH"})
+        self.assertEqual(output["buy_readiness_status"], "NOT_READY")
+        self.assertIsInstance(output["suggested_keywords"], dict)
+        self.assertIn("required_next_evidence", output)
 
     def test_decision_agent_uses_nested_reports(self) -> None:
         agent = DecisionAgent(self.llm)
@@ -336,6 +357,37 @@ class AgentContractTests(unittest.TestCase):
             self.assertEqual(product_row["competition_gap_score"], 84)
             self.assertEqual(product_row["best_profit_scenario"], "eBay buyer-paid shipping")
             self.assertEqual(product_row["next_action"], "Add 5 sold listings")
+        finally:
+            session.close()
+
+    def test_discovery_task_update_persists_status_and_notes(self) -> None:
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            idea = ProductIdea(idea_name="Desk cable clips", status="QUICK_SCAN_COMPLETE")
+            session.add(idea)
+            session.flush()
+
+            task = DiscoveryTask(
+                idea_id=idea.id,
+                task_type="market_research",
+                title="Add 5 sold eBay listings",
+                status="TODO",
+                sort_order=1,
+            )
+            session.add(task)
+            session.commit()
+
+            updated = DiscoveryService(session).update_task(task.id, ResearchTaskUpdate(status="DONE", notes="Captured 5 sold listings"))
+            self.assertIsNotNone(updated)
+            self.assertEqual(updated.status, "DONE")
+            self.assertEqual(updated.notes, "Captured 5 sold listings")
         finally:
             session.close()
 

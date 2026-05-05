@@ -232,6 +232,7 @@ class ResearchCockpitResponse(BaseModel):
     next_action: Optional[str] = None
     confidence: Optional[str] = None
     current_status: Optional[str] = None
+    discovery_context: Optional[dict] = None
 
 
 class ListingGenerateRequest(BaseModel):
@@ -289,6 +290,11 @@ class ResearchTaskResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class ResearchTaskUpdate(BaseModel):
+    status: Optional[str] = None
+    notes: Optional[str] = None
 
 
 class ProductIdeaResponse(BaseModel):
@@ -377,6 +383,7 @@ class OpportunityBoardRow(BaseModel):
 DiscoveryIdeaCreate = ProductIdeaCreate
 DiscoveryIdeaUpdate = ProductIdeaUpdate
 DiscoveryTaskResponse = ResearchTaskResponse
+DiscoveryTaskUpdate = ResearchTaskUpdate
 DiscoveryIdeaResponse = ProductIdeaResponse
 DiscoveryQuickScanRequest = ProductIdeaQuickScanRequest
 DiscoveryQuickScanResponse = ProductIdeaQuickScanResponse

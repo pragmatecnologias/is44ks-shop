@@ -9,6 +9,7 @@ import type {
   MarketplaceEvidenceInput,
   Product,
   ProductIdea,
+  DiscoveryTask,
   ProductIdeaQuickScanInput,
   ProductIdeaQuickScanResponse,
   ProductSource,
@@ -278,6 +279,33 @@ function demoCockpit(productId: string): ResearchCockpit {
         evidence_refs: ['evidence-demo-1'],
         created_at: new Date().toISOString(),
       },
+      {
+        id: 'report-demo-discovery-1',
+        product_id: productId,
+        agent_name: 'discovery_context',
+        report_type: 'discovery_context',
+        output_json: JSON.stringify({
+          idea_id: 'idea-demo-1',
+          idea_name: 'Car trash bag holder',
+          category: 'Car accessories',
+          quick_scan_verdict: 'PROMISING_FOR_RESEARCH',
+          quick_scan_reason: 'Small, low-risk category with no sold evidence yet.',
+          research_priority: 'HIGH',
+          research_completeness_score: 40,
+          opportunity_score: 58,
+          required_next_evidence: ['Add 5 sold listings', 'Add 5 active listings', 'Add 2 supplier sources'],
+          suggested_keywords: {
+            ebay_sold: ['car trash bag holder', 'car organizer'],
+            ebay_active: ['car trash bag holder', 'car storage accessory'],
+            mercari: ['car organizer', 'car trash bag'],
+            supplier: ['car trash bag holder', 'car organizer'],
+          },
+          risk_flags: [],
+        }),
+        summary: 'Promoted from discovery.',
+        confidence: 'MEDIUM',
+        created_at: new Date().toISOString(),
+      },
     ],
     decision: {
       recommendation: 'BUY_SAMPLE',
@@ -339,6 +367,24 @@ function demoCockpit(productId: string): ResearchCockpit {
     next_action: 'Add 10 sold examples before ordering.',
     confidence: 'MEDIUM',
     current_status: 'BUY_SAMPLE',
+    discovery_context: {
+      idea_id: 'idea-demo-1',
+      idea_name: 'Car trash bag holder',
+      category: 'Car accessories',
+      quick_scan_verdict: 'PROMISING_FOR_RESEARCH',
+      quick_scan_reason: 'Small, low-risk category with no sold evidence yet.',
+      research_priority: 'HIGH',
+      research_completeness_score: 40,
+      opportunity_score: 58,
+      required_next_evidence: ['Add 5 sold listings', 'Add 5 active listings', 'Add 2 supplier sources'],
+      suggested_keywords: {
+        ebay_sold: ['car trash bag holder', 'car organizer'],
+        ebay_active: ['car trash bag holder', 'car storage accessory'],
+        mercari: ['car organizer', 'car trash bag'],
+        supplier: ['car trash bag holder', 'car organizer'],
+      },
+      risk_flags: [],
+    },
   };
 }
 
@@ -401,6 +447,16 @@ export async function quickScanDiscoveryIdea(data: DiscoveryQuickScanInput): Pro
 export async function generateDiscoveryTasks(ideaId: string): Promise<Array<Record<string, unknown>>> {
   return requestJson<Array<Record<string, unknown>>>(`/api/discovery/${ideaId}/tasks/generate`, {
     method: 'POST',
+  });
+}
+
+export async function updateDiscoveryTask(
+  taskId: string,
+  data: { status?: string; notes?: string },
+): Promise<DiscoveryTask> {
+  return requestJson<DiscoveryTask>(`/api/discovery/tasks/${taskId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
   });
 }
 

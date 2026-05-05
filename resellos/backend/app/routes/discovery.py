@@ -14,6 +14,7 @@ from app.schemas.product_schema import (
     ProductIdeaQuickScanRequest,
     ProductIdeaQuickScanResponse,
     ResearchTaskResponse,
+    ResearchTaskUpdate,
 )
 from app.services.discovery_service import DiscoveryService
 
@@ -52,6 +53,15 @@ def generate_tasks(idea_id: uuid.UUID, db: Session = Depends(get_db)):
     if not tasks:
         raise HTTPException(status_code=404, detail="Discovery idea not found")
     return [service._serialize_task(task) for task in tasks]
+
+
+@router.patch("/tasks/{task_id}", response_model=ResearchTaskResponse)
+def update_task(task_id: uuid.UUID, data: ResearchTaskUpdate, db: Session = Depends(get_db)):
+    service = DiscoveryService(db)
+    task = service.update_task(task_id, data)
+    if not task:
+        raise HTTPException(status_code=404, detail="Discovery task not found")
+    return service._serialize_task(task)
 
 
 @router.post("/{idea_id}/archive", response_model=ProductIdeaResponse)

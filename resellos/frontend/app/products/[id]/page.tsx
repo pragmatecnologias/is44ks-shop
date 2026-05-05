@@ -94,6 +94,7 @@ export default function ProductDetailPage() {
   const evidenceRows = cockpit?.marketplace_evidence ?? [];
   const profitRows = cockpit?.profit_analyses ?? [];
   const reports = cockpit?.agent_reports ?? [];
+  const discoveryContext = getDiscoveryContext(cockpit?.discovery_context ?? reports.find((report) => report.agent_name === 'discovery_context')?.output_json);
   const competition = cockpit?.competition ?? null;
   const reorder = cockpit?.reorder ?? null;
   const researchVerdict = decision.research_verdict || 'NEEDS_MORE_RESEARCH';
@@ -157,6 +158,13 @@ export default function ProductDetailPage() {
       { label: 'Reorder', value: reorderRecommendation.replace(/_/g, ' ') },
     ];
   }, [product, cockpit?.current_status, finalDecision, researchVerdict, buyReadinessStatus, score, researchCompleteness, readinessScore, confidence, maxQuantityToBuy, maxLandedCost, targetSalePrice, targetPricePresent, canCompete, reorderRecommendation]);
+
+  const discoveryReason = discoveryContext?.quick_scan_reason || 'The discovery context was not carried over with this product.';
+  const discoveryVerdict = discoveryContext?.quick_scan_verdict || 'UNKNOWN';
+  const discoveryPriority = discoveryContext?.research_priority || '—';
+  const discoveryKeywords = discoveryContext?.suggested_keywords ?? {};
+  const discoveryRequired = normalizeStringList(discoveryContext?.required_next_evidence);
+  const discoveryRiskFlags = normalizeStringList(discoveryContext?.risk_flags);
 
   async function handleRunResearch() {
     if (!product) return;
@@ -297,6 +305,38 @@ export default function ProductDetailPage() {
         </header>
 
         <div className="grid gap-6 xl:grid-cols-4">
+          <Panel title="Discovery Context" icon={Sparkles}>
+            <div className="space-y-3">
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Quick scan verdict</div>
+                <div className="mt-2 text-lg font-semibold text-white">{discoveryVerdict.replace(/_/g, ' ')}</div>
+                <div className="mt-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Priority</div>
+                <div className="mt-1 text-sm text-zinc-200">{discoveryPriority}</div>
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Quick scan reason</div>
+                <div className="mt-2 text-sm text-zinc-200">{discoveryReason}</div>
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Required before buying</div>
+                <Checklist items={discoveryRequired.length ? discoveryRequired : ['No discovery checklist recorded.']} />
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Keyword buckets</div>
+                <div className="mt-3 space-y-3 text-sm text-zinc-300">
+                  {renderKeywordGroup('eBay sold', discoveryKeywords, 'ebay_sold')}
+                  {renderKeywordGroup('eBay active', discoveryKeywords, 'ebay_active')}
+                  {renderKeywordGroup('Mercari', discoveryKeywords, 'mercari')}
+                  {renderKeywordGroup('Supplier', discoveryKeywords, 'supplier')}
+                </div>
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Discovery risk flags</div>
+                <Checklist items={discoveryRiskFlags.length ? discoveryRiskFlags : ['No discovery risk flags recorded.']} />
+              </div>
+            </div>
+          </Panel>
+
           <Panel title="Missing Evidence" icon={BadgeAlert}>
             <Checklist items={missingEvidence} />
           </Panel>
@@ -752,6 +792,56 @@ function Pill({ label }: { label: string }) {
 function money(value?: number | null) {
   if (value == null) return '—';
   return `$${Number(value).toFixed(2)}`;
+}
+
+function getDiscoveryContext(value: unknown) {
+  if (!value) return null;
+  if (typeof value === 'object') return value as Record<string, unknown>;
+  if (typeof value === 'string') return safeJson(value);
+  return null;
+}
+
+function normalizeStringList(value: unknown): string[] {
+  if (!value) return [];
+  if (Array.isArray(value)) {
+    return value.map((item) => String(item)).filter(Boolean);
+  }
+  if (typeof value === 'string') {
+    return value
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+  return [];
+}
+
+function renderKeywordGroup(
+  label: string,
+  keywords: unknown,
+  group: string,
+) {
+  const keywordMap = keywords && typeof keywords === 'object' && !Array.isArray(keywords) ? (keywords as Record<string, unknown>) : null;
+  const flatList = normalizeStringList(keywords);
+  const values = normalizeStringList(keywordMap?.[group] ?? (group === 'ebay_sold' ? flatList : []));
+  if (!values.length) {
+    return (
+      <div>
+        <span className="text-zinc-500">{label}: —</span>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <div className="text-zinc-500">{label}:</div>
+      <div className="mt-1 flex flex-wrap gap-2">
+        {values.map((keyword) => (
+          <span key={keyword} className="rounded-full border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-200">
+            {keyword}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function safeJson(value?: string | null): any {
