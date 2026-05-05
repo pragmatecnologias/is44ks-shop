@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 import uuid
 from typing import Optional
 
-from app.models.inventory import InventoryItem
+from app.models.supplier import InventoryItem
 from app.schemas.product_schema import InventoryItemCreate, InventoryItemUpdate
 
 

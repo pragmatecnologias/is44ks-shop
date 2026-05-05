@@ -182,6 +182,21 @@ class InventoryCreate(BaseModel):
     reorder_point: Optional[int] = None
 
 
+class InventoryUpdate(BaseModel):
+    quantity_on_hand: Optional[int] = None
+    quantity_ordered: Optional[int] = None
+    quantity_sold: Optional[int] = None
+    quantity_returned: Optional[int] = None
+    average_landed_cost: Optional[float] = None
+    location_code: Optional[str] = None
+    reorder_point: Optional[int] = None
+
+
+# Aliases used by inventory_service
+InventoryItemCreate = InventoryCreate
+InventoryItemUpdate = InventoryUpdate
+
+
 class SaleCreate(BaseModel):
     marketplace: Optional[str] = None
     sale_date: Optional[datetime] = None

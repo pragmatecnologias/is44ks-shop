@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 import uuid
 from typing import Optional
 
-from app.models.marketplace import MarketplaceResearch, CompetitorListing, MarketplaceEvidence
+from app.models.supplier import MarketplaceResearch, CompetitorListing, MarketplaceEvidence
 from app.schemas.product_schema import MarketplaceResearchCreate, MarketplaceEvidenceCreate, MarketplaceEvidenceUpdate
 
 
