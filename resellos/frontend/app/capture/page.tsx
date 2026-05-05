@@ -2,33 +2,46 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Camera, FileText, Upload, Send, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Camera, Upload, Send, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { captureManualEvidence } from '@/lib/api';
+import type { CaptureType } from '@/lib/types';
 
-type CaptureType = 'marketplace_listing' | 'marketplace_screenshot' | 'competitor_listing' | 'supplier_screenshot' | 'manual_text';
+const CAPTURE_TYPES: { value: CaptureType; label: string }[] = [
+  { value: 'MARKETPLACE_SCREENSHOT', label: 'Marketplace screenshot' },
+  { value: 'SUPPLIER_SCREENSHOT', label: 'Supplier screenshot' },
+  { value: 'COMPETITOR_SCREENSHOT', label: 'Competitor screenshot' },
+  { value: 'VISUAL_RISK', label: 'Visual risk' },
+];
 
 export default function CapturePage() {
-  const [captureType, setCaptureType] = useState<CaptureType>('marketplace_listing');
-  const [marketplace, setMarketplace] = useState('ebay');
+  const [captureType, setCaptureType] = useState<CaptureType>('MARKETPLACE_SCREENSHOT');
   const [url, setUrl] = useState('');
   const [pastedText, setPastedText] = useState('');
   const [notes, setNotes] = useState('');
+  const [screenshot, setScreenshot] = useState<File | null>(null);
+  const [ideaId, setIdeaId] = useState('');
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<{ candidate: { id: string; title: string; review_status: string } } | null>(null);
   const [error, setError] = useState('');
 
   const handleCapture = async () => {
     setLoading(true);
     setError('');
+    setResult(null);
     try {
       const res = await captureManualEvidence({
+        idea_id: ideaId || undefined,
         capture_type: captureType,
-        marketplace,
         url: url || undefined,
         pasted_text: pastedText || undefined,
         notes: notes || undefined,
+        screenshot: screenshot || undefined,
       });
-      setResult(res);
+      setResult(res as { candidate: { id: string; title: string; review_status: string } });
+      setUrl('');
+      setPastedText('');
+      setNotes('');
+      setScreenshot(null);
     } catch (e: any) {
       setError(e.message || 'Capture failed');
     } finally {
@@ -49,7 +62,6 @@ export default function CapturePage() {
       </div>
 
       <div className="space-y-5">
-        {/* Error */}
         {error && (
           <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-center gap-2">
             <AlertCircle className="w-4 h-4 shrink-0" />
@@ -57,15 +69,27 @@ export default function CapturePage() {
           </div>
         )}
 
-        {/* Result */}
         {result && (
           <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20">
-            <p className="text-green-400 text-sm font-medium mb-2">Evidence captured successfully</p>
+            <p className="text-green-400 text-sm font-medium mb-1 flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4" />
+              Evidence captured successfully
+            </p>
             <p className="text-[#71717a] text-xs">Candidate created. Review and approve in the Discovery page.</p>
           </div>
         )}
 
-        {/* Capture Type */}
+        <div>
+          <label className="block text-sm font-medium text-white mb-1.5">Idea ID (optional)</label>
+          <input
+            type="text"
+            value={ideaId}
+            onChange={(e) => setIdeaId(e.target.value)}
+            placeholder="Paste a discovery idea ID to link this capture..."
+            className="w-full px-3 py-2.5 bg-[#1a1a1a] border border-[#27272a] rounded-lg text-sm text-white placeholder:text-[#71717a] focus:outline-none focus:border-indigo-500/50"
+          />
+        </div>
+
         <div>
           <label className="block text-sm font-medium text-white mb-1.5">Capture Type</label>
           <select
@@ -73,31 +97,12 @@ export default function CapturePage() {
             onChange={(e) => setCaptureType(e.target.value as CaptureType)}
             className="w-full px-3 py-2.5 bg-[#1a1a1a] border border-[#27272a] rounded-lg text-sm text-white focus:outline-none focus:border-indigo-500/50"
           >
-            <option value="marketplace_listing">Marketplace Listing</option>
-            <option value="marketplace_screenshot">Marketplace Screenshot</option>
-            <option value="competitor_listing">Competitor Listing</option>
-            <option value="supplier_screenshot">Supplier Screenshot</option>
-            <option value="manual_text">Manual Text</option>
+            {CAPTURE_TYPES.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
           </select>
         </div>
 
-        {/* Marketplace */}
-        <div>
-          <label className="block text-sm font-medium text-white mb-1.5">Marketplace</label>
-          <select
-            value={marketplace}
-            onChange={(e) => setMarketplace(e.target.value)}
-            className="w-full px-3 py-2.5 bg-[#1a1a1a] border border-[#27272a] rounded-lg text-sm text-white focus:outline-none focus:border-indigo-500/50"
-          >
-            <option value="ebay">eBay</option>
-            <option value="mercari">Mercari</option>
-            <option value="facebook">Facebook Marketplace</option>
-            <option value="amazon">Amazon</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-
-        {/* URL */}
         <div>
           <label className="block text-sm font-medium text-white mb-1.5">Source URL (optional)</label>
           <input
@@ -109,7 +114,16 @@ export default function CapturePage() {
           />
         </div>
 
-        {/* Pasted Text */}
+        <div>
+          <label className="block text-sm font-medium text-white mb-1.5">Screenshot (optional)</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setScreenshot(e.target.files?.[0] ?? null)}
+            className="w-full px-3 py-2.5 bg-[#1a1a1a] border border-[#27272a] rounded-lg text-sm text-zinc-300 focus:outline-none focus:border-indigo-500/50 file:mr-3 file:rounded-lg file:border-0 file:bg-indigo-600/20 file:px-3 file:py-1.5 file:text-xs file:text-indigo-300"
+          />
+        </div>
+
         <div>
           <label className="block text-sm font-medium text-white mb-1.5">Pasted Text / Raw Data</label>
           <textarea
@@ -121,7 +135,6 @@ export default function CapturePage() {
           />
         </div>
 
-        {/* Notes */}
         <div>
           <label className="block text-sm font-medium text-white mb-1.5">Notes</label>
           <input
@@ -133,10 +146,9 @@ export default function CapturePage() {
           />
         </div>
 
-        {/* Submit */}
         <button
           onClick={handleCapture}
-          disabled={loading || (!url && !pastedText)}
+          disabled={loading || (!url && !pastedText && !screenshot)}
           className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-600/50 text-white text-sm font-medium rounded-lg transition-colors"
         >
           {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Camera className="w-4 h-4" />}
