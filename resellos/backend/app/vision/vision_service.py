@@ -48,10 +48,10 @@ class VisionAnalysisService:
         if analysis_type == "MARKETPLACE_SCREENSHOT":
             return (
                 "Extract marketplace listing evidence from this screenshot. "
-                "Do not save anything automatically. Return a review-ready JSON candidate with marketplace, evidence_type, title, price, shipping_price, condition, seller, sold_date, confidence, warnings.",
+                "Do not save anything automatically. Infer whether the listing is active or sold. Return a review-ready JSON candidate with marketplace, evidence_type, title, price, shipping_price, condition, seller, sold_date, confidence, warnings.",
                 {
                     "marketplace": "eBay",
-                    "evidence_type": "SOLD_LISTING",
+                    "evidence_type": "ACTIVE_LISTING|SOLD_LISTING",
                     "title": "string",
                     "price": 0.0,
                     "shipping_price": 0.0,

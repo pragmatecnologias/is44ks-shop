@@ -13,6 +13,9 @@ from app.routes import (
     discovery_router,
     research_router,
     vision_router,
+    external_research_router,
+    evidence_candidates_router,
+    capture_router,
     listings_router,
     inventory_router,
     sales_router,
@@ -37,6 +40,9 @@ app.include_router(agents_router)
 app.include_router(discovery_router)
 app.include_router(research_router)
 app.include_router(vision_router)
+app.include_router(external_research_router)
+app.include_router(evidence_candidates_router)
+app.include_router(capture_router)
 app.include_router(listings_router)
 app.include_router(inventory_router)
 app.include_router(sales_router)

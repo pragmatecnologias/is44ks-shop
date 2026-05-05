@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -11,8 +11,12 @@ import {
   RefreshCw,
   Sparkles,
   Target,
+  Upload,
+  Search,
 } from 'lucide-react';
 import {
+  approveEvidenceCandidate,
+  captureManualEvidence,
   archiveDiscoveryIdea,
   createDiscoveryIdea,
   deleteDiscoveryIdea,
@@ -20,11 +24,25 @@ import {
   getProductCockpit,
   generateDiscoveryTasks,
   listDiscoveryIdeas,
+  listEvidenceCandidates,
+  listExternalResearchJobs,
   promoteDiscoveryIdea,
+  pollExternalResearchJob,
   quickScanDiscoveryIdea,
+  rejectEvidenceCandidate,
+  runExternalResearchGoogleShopping,
   updateDiscoveryTask,
 } from '@/lib/api';
-import type { DiscoveryIdea, DiscoveryQuickScanInput, OpportunityBoardRow, ResearchCockpit } from '@/lib/types';
+import type {
+  CaptureType,
+  DiscoveryIdea,
+  DiscoveryQuickScanInput,
+  EvidenceCandidate,
+  ExternalResearchJob,
+  ManualCaptureInput,
+  OpportunityBoardRow,
+  ResearchCockpit,
+} from '@/lib/types';
 
 const emptyQuickScan: DiscoveryQuickScanInput = {
   idea_name: '',
@@ -46,18 +64,39 @@ const CATEGORY_HINTS = [
 export default function DiscoveryPage() {
   const [ideas, setIdeas] = useState<DiscoveryIdea[]>([]);
   const [board, setBoard] = useState<OpportunityBoardRow[]>([]);
+  const [externalJobs, setExternalJobs] = useState<ExternalResearchJob[]>([]);
+  const [evidenceCandidates, setEvidenceCandidates] = useState<EvidenceCandidate[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState<DiscoveryQuickScanInput>(emptyQuickScan);
+  const [externalResearchIdea, setExternalResearchIdea] = useState<DiscoveryIdea | null>(null);
+  const [externalQueryText, setExternalQueryText] = useState('');
+  const [externalSubmitting, setExternalSubmitting] = useState(false);
+  const [captureIdea, setCaptureIdea] = useState<DiscoveryIdea | null>(null);
+  const [captureType, setCaptureType] = useState<CaptureType>('MARKETPLACE_SCREENSHOT');
+  const [captureUrl, setCaptureUrl] = useState('');
+  const [captureText, setCaptureText] = useState('');
+  const [captureNotes, setCaptureNotes] = useState('');
+  const [captureFile, setCaptureFile] = useState<File | null>(null);
+  const [captureSubmitting, setCaptureSubmitting] = useState(false);
+  const [candidateTaskLinks, setCandidateTaskLinks] = useState<Record<string, string>>({});
 
   async function loadIdeas() {
     setLoading(true);
     setError(null);
     try {
-      setIdeas(await listDiscoveryIdeas());
-      setBoard(await getOpportunityBoard());
+      const [ideaList, boardRows, jobs, candidates] = await Promise.all([
+        listDiscoveryIdeas(),
+        getOpportunityBoard(),
+        listExternalResearchJobs(),
+        listEvidenceCandidates(),
+      ]);
+      setIdeas(ideaList);
+      setBoard(boardRows);
+      setExternalJobs(jobs);
+      setEvidenceCandidates(candidates);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load discovery ideas');
     } finally {
@@ -138,6 +177,93 @@ export default function DiscoveryPage() {
     }
   }
 
+  async function handleRunExternalResearch() {
+    if (!externalResearchIdea) return;
+    setExternalSubmitting(true);
+    setError(null);
+    try {
+      const queries = externalQueryText
+        .split('\n')
+        .map((value) => value.trim())
+        .filter(Boolean);
+      await runExternalResearchGoogleShopping({
+        idea_id: externalResearchIdea.id,
+        queries,
+        max_results: 20,
+        queue: 'standard',
+      });
+      setExternalResearchIdea(null);
+      setExternalQueryText('');
+      await loadIdeas();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'External research failed');
+    } finally {
+      setExternalSubmitting(false);
+    }
+  }
+
+  async function handlePollJob(jobId: string) {
+    setError(null);
+    try {
+      await pollExternalResearchJob(jobId);
+      await loadIdeas();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not poll external research job');
+    }
+  }
+
+  async function handleApproveCandidate(candidateId: string, approveAs: 'MARKETPLACE_EVIDENCE' | 'COMPETITOR_LISTING' | 'SUPPLIER_SOURCE') {
+    setError(null);
+    try {
+      await approveEvidenceCandidate(candidateId, {
+        approve_as: approveAs,
+        task_id: candidateTaskLinks[candidateId] || undefined,
+      });
+      await loadIdeas();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not approve candidate');
+    }
+  }
+
+  async function handleRejectCandidate(candidateId: string) {
+    setError(null);
+    try {
+      await rejectEvidenceCandidate(candidateId, {});
+      await loadIdeas();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not reject candidate');
+    }
+  }
+
+  async function handleCaptureManual() {
+    if (!captureIdea) return;
+    setCaptureSubmitting(true);
+    setError(null);
+    try {
+      const payload: ManualCaptureInput = {
+        idea_id: captureIdea.id,
+        product_id: captureIdea.promoted_product_id || undefined,
+        capture_type: captureType,
+        url: captureUrl || undefined,
+        pasted_text: captureText || undefined,
+        notes: captureNotes || undefined,
+        screenshot: captureFile,
+      };
+      await captureManualEvidence(payload);
+      setCaptureIdea(null);
+      setCaptureType('MARKETPLACE_SCREENSHOT');
+      setCaptureUrl('');
+      setCaptureText('');
+      setCaptureNotes('');
+      setCaptureFile(null);
+      await loadIdeas();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Manual capture failed');
+    } finally {
+      setCaptureSubmitting(false);
+    }
+  }
+
   const readyCount = ideas.filter((idea) => idea.quick_scan_verdict === 'PROMISING_FOR_RESEARCH').length;
   const marketCheckCount = ideas.filter((idea) => idea.quick_scan_verdict === 'NEEDS_MARKET_CHECK').length;
   const supplierCheckCount = ideas.filter((idea) => idea.quick_scan_verdict === 'NEEDS_SUPPLIER_CHECK').length;
@@ -168,6 +294,8 @@ export default function DiscoveryPage() {
               <Pill label={`Need market check: ${marketCheckCount}`} />
               <Pill label={`Need supplier check: ${supplierCheckCount}`} />
               <Pill label={`Promoted: ${promotedCount}`} />
+              <Pill label={`Jobs: ${externalJobs.length}`} />
+              <Pill label={`Candidates: ${evidenceCandidates.length}`} />
             </div>
           </div>
         </header>
@@ -265,6 +393,18 @@ export default function DiscoveryPage() {
                   onDelete={() => handleDeleteIdea(idea.id)}
                   onGenerateTasks={() => handleGenerateTasks(idea.id)}
                   onArchive={() => handleArchiveIdea(idea.id)}
+                  onRunExternalResearch={() => {
+                    setExternalResearchIdea(idea);
+                    setExternalQueryText(buildExternalResearchQueries(idea).join('\n'));
+                  }}
+                  onCaptureManual={() => {
+                    setCaptureIdea(idea);
+                    setCaptureType('MARKETPLACE_SCREENSHOT');
+                    setCaptureUrl(idea.source_url || '');
+                    setCaptureText('');
+                    setCaptureNotes(idea.notes || '');
+                    setCaptureFile(null);
+                  }}
                   onUpdateTask={async (taskId, status, notes, linkData) => {
                     setError(null);
                     try {
@@ -277,6 +417,88 @@ export default function DiscoveryPage() {
                 />
               ))
             )}
+          </div>
+        </section>
+
+        <section className="rounded-[24px] border border-zinc-800 bg-zinc-950/80 p-5 shadow-xl shadow-black/10">
+          <div className="mb-4 flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-300">
+              <Search className="h-4 w-4" />
+            </div>
+            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-200">External Research</h2>
+          </div>
+          <div className="grid gap-4 xl:grid-cols-2">
+            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <div className="font-medium text-white">DataForSEO jobs</div>
+                  <div className="text-xs text-zinc-500">Google Shopping active listings only. Standard queue. Human review required.</div>
+                </div>
+                <span className="rounded-full border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-[10px] uppercase tracking-[0.16em] text-zinc-300">
+                  {externalJobs.length} jobs
+                </span>
+              </div>
+              <div className="mt-4 space-y-3">
+                {externalJobs.length ? (
+                  externalJobs.map((job) => (
+                    <div key={job.id} className="rounded-xl border border-zinc-800 bg-zinc-950/80 p-3">
+                      <div className="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                          <div className="text-sm font-medium text-white">{job.query}</div>
+                          <div className="text-[11px] uppercase tracking-[0.14em] text-zinc-500">
+                            {job.status} · {job.queue} · {job.provider}
+                          </div>
+                        </div>
+                        <div className="text-right text-xs text-zinc-400">
+                          <div>{money(job.cost_estimate)}</div>
+                          <div>{job.result_count ?? 0} results</div>
+                        </div>
+                      </div>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handlePollJob(job.id)}
+                          className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
+                        >
+                          Poll
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <EmptyState title="No jobs yet" description="Run external research from an idea card to create DataForSEO jobs." />
+                )}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <div className="font-medium text-white">Evidence candidates</div>
+                  <div className="text-xs text-zinc-500">Review and approve candidate rows before they become evidence.</div>
+                </div>
+                <span className="rounded-full border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-[10px] uppercase tracking-[0.16em] text-zinc-300">
+                  {evidenceCandidates.length} candidates
+                </span>
+              </div>
+              <div className="mt-4 space-y-3">
+                {evidenceCandidates.length ? (
+                  evidenceCandidates.map((candidate) => (
+                    <EvidenceCandidateCard
+                      key={candidate.id}
+                      candidate={candidate}
+                      idea={ideas.find((idea) => idea.id === candidate.idea_id) || null}
+                      taskLink={candidateTaskLinks[candidate.id] || ''}
+                      onTaskLinkChange={(value) => setCandidateTaskLinks((current) => ({ ...current, [candidate.id]: value }))}
+                      onApprove={handleApproveCandidate}
+                      onReject={handleRejectCandidate}
+                    />
+                  ))
+                ) : (
+                  <EmptyState title="No candidates yet" description="Poll a job or use manual capture to generate review items." />
+                )}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -336,6 +558,122 @@ export default function DiscoveryPage() {
             </table>
           </div>
         </section>
+
+        {externalResearchIdea ? (
+          <Modal title="Run External Research" onClose={() => setExternalResearchIdea(null)}>
+            <div className="space-y-4 text-sm text-zinc-300">
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4">
+                <div className="font-medium text-white">{externalResearchIdea.idea_name}</div>
+                <div className="mt-1 text-xs text-zinc-500">
+                  DataForSEO Merchant / Google Shopping · Standard queue · Active listings only
+                </div>
+              </div>
+
+              <label className="block space-y-1">
+                <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Queries</div>
+                <textarea
+                  value={externalQueryText}
+                  onChange={(event) => setExternalQueryText(event.target.value)}
+                  rows={5}
+                  className="w-full rounded-xl border border-zinc-800 bg-zinc-950/80 px-3 py-2 text-sm text-white outline-none transition focus:border-indigo-500/50"
+                />
+              </label>
+
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 text-sm text-zinc-300">
+                <div className="flex items-center justify-between gap-4">
+                  <span>Estimated cost</span>
+                  <span className="text-white">{money((externalQueryText.split('\n').map((value) => value.trim()).filter(Boolean).length || 0) * 20 * 0.001)}</span>
+                </div>
+                <div className="mt-1 text-xs text-zinc-500">Standard queue only. Manual review required before any candidate becomes evidence.</div>
+              </div>
+
+              <div className="flex justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setExternalResearchIdea(null)}
+                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-zinc-300 hover:border-zinc-600"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleRunExternalResearch}
+                  disabled={
+                    externalSubmitting ||
+                    externalQueryText
+                      .split('\n')
+                      .map((value) => value.trim())
+                      .filter(Boolean).length === 0
+                  }
+                  className="rounded-lg border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300 hover:bg-cyan-500/20 disabled:opacity-60"
+                >
+                  {externalSubmitting ? 'Submitting...' : 'Run Research'}
+                </button>
+              </div>
+            </div>
+          </Modal>
+        ) : null}
+
+        {captureIdea ? (
+          <Modal title="Manual Capture" onClose={() => setCaptureIdea(null)}>
+            <div className="space-y-4 text-sm text-zinc-300">
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4">
+                <div className="font-medium text-white">{captureIdea.idea_name}</div>
+                <div className="mt-1 text-xs text-zinc-500">
+                  Screenshot or pasted text becomes a review-only candidate. Nothing is saved as evidence until you approve it.
+                </div>
+              </div>
+
+              <label className="block space-y-1">
+                <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Capture type</div>
+                <select
+                  value={captureType}
+                  onChange={(event) => setCaptureType(event.target.value as CaptureType)}
+                  className="w-full rounded-xl border border-zinc-800 bg-zinc-950/80 px-3 py-2 text-sm text-white outline-none transition focus:border-indigo-500/50"
+                >
+                  <option value="MARKETPLACE_SCREENSHOT">Marketplace screenshot</option>
+                  <option value="SUPPLIER_SCREENSHOT">Supplier screenshot</option>
+                  <option value="COMPETITOR_SCREENSHOT">Competitor screenshot</option>
+                  <option value="VISUAL_RISK">Visual risk</option>
+                </select>
+              </label>
+
+              <div className="grid gap-3 md:grid-cols-2">
+                <Input label="URL" value={captureUrl} onChange={setCaptureUrl} />
+                <label className="space-y-1">
+                  <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Screenshot</div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(event) => setCaptureFile(event.target.files?.[0] ?? null)}
+                    className="w-full rounded-xl border border-zinc-800 bg-zinc-950/80 px-3 py-2 text-sm text-zinc-300 outline-none transition file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-900 file:px-3 file:py-1.5 file:text-xs file:text-zinc-300"
+                  />
+                </label>
+              </div>
+
+              <Textarea label="Pasted text" value={captureText} onChange={setCaptureText} />
+              <Textarea label="Notes" value={captureNotes} onChange={setCaptureNotes} />
+
+              <div className="flex justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setCaptureIdea(null)}
+                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-zinc-300 hover:border-zinc-600"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleCaptureManual}
+                  disabled={captureSubmitting || (!captureFile && !captureText.trim())}
+                  className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-300 hover:bg-emerald-500/20 disabled:opacity-60"
+                >
+                  {captureSubmitting ? 'Saving...' : 'Capture Candidate'}
+                </button>
+              </div>
+            </div>
+          </Modal>
+        ) : null}
       </div>
     </div>
   );
@@ -347,6 +685,8 @@ function IdeaCard({
   onDelete,
   onGenerateTasks,
   onArchive,
+  onRunExternalResearch,
+  onCaptureManual,
   onUpdateTask,
 }: {
   idea: DiscoveryIdea;
@@ -354,6 +694,8 @@ function IdeaCard({
   onDelete: () => void;
   onGenerateTasks: () => void;
   onArchive: () => void;
+  onRunExternalResearch: () => void;
+  onCaptureManual: () => void;
   onUpdateTask: (
     taskId: string,
     status?: string,
@@ -414,6 +756,13 @@ function IdeaCard({
           </button>
           <button onClick={onArchive} className="text-xs text-zinc-500 hover:text-yellow-400">
             Archive
+          </button>
+          <button onClick={onRunExternalResearch} className="text-xs text-zinc-500 hover:text-cyan-400">
+            External Research
+          </button>
+          <button onClick={onCaptureManual} className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-green-400">
+            <Upload className="h-3 w-3" />
+            Capture
           </button>
           <button onClick={onDelete} className="text-xs text-zinc-500 hover:text-red-400">
             Delete
@@ -705,6 +1054,157 @@ function IdeaCard({
   );
 }
 
+function EvidenceCandidateCard({
+  candidate,
+  idea,
+  taskLink,
+  onTaskLinkChange,
+  onApprove,
+  onReject,
+}: {
+  candidate: EvidenceCandidate;
+  idea: DiscoveryIdea | null;
+  taskLink: string;
+  onTaskLinkChange: (value: string) => void;
+  onApprove: (candidateId: string, approveAs: 'MARKETPLACE_EVIDENCE' | 'COMPETITOR_LISTING' | 'SUPPLIER_SOURCE') => void;
+  onReject: (candidateId: string) => void;
+}) {
+  const canApprove = Boolean(idea?.promoted_product_id || candidate.product_id);
+  const canReview = candidate.review_status === 'PENDING';
+  const tasks = idea?.tasks || [];
+  const reviewTypeLabel =
+    candidate.candidate_type === 'SUPPLIER_SOURCE'
+      ? 'Supplier source'
+      : candidate.candidate_type === 'COMPETITOR_LISTING'
+        ? 'Competitor listing'
+        : candidate.candidate_type === 'RISK_FLAG'
+          ? 'Risk flag'
+          : 'Marketplace evidence';
+
+  return (
+    <div className="rounded-xl border border-zinc-800 bg-zinc-950/80 p-3">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <div className="text-sm font-medium text-white">{candidate.title || candidate.marketplace || 'Untitled candidate'}</div>
+          <div className="text-[11px] uppercase tracking-[0.14em] text-zinc-500">
+            {candidate.source} · {reviewTypeLabel} · {candidate.review_status}
+          </div>
+        </div>
+        <div className="text-right text-xs text-zinc-400">
+          <div>{money(candidate.price)}</div>
+          <div>{candidate.seller || candidate.marketplace || 'Unknown seller'}</div>
+        </div>
+      </div>
+
+      <div className="mt-2 text-xs text-zinc-500">
+        {candidate.evidence_type ? `${candidate.evidence_type} · ` : ''}
+        {candidate.rating != null ? `${candidate.rating}★` : 'No rating'}
+        {candidate.review_count != null ? ` · ${candidate.review_count} reviews` : ''}
+      </div>
+
+      <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-950/80 p-3 text-xs text-zinc-300">
+        <div className="text-[11px] uppercase tracking-[0.14em] text-zinc-500">Proof state</div>
+        <div className="mt-1 text-sm text-white">
+          {candidate.review_status === 'APPROVED' ? 'Approved candidate' : 'Pending review'}
+        </div>
+        <div className="mt-1 text-zinc-500">
+          {canApprove ? 'Linked to a promoted product' : 'Promote the idea first before approving proof into product records.'}
+        </div>
+      </div>
+
+      {tasks.length ? (
+        <label className="mt-3 block space-y-1">
+          <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Optional task link</div>
+          <select
+            value={taskLink}
+            onChange={(event) => onTaskLinkChange(event.target.value)}
+            className="w-full rounded-xl border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-white outline-none transition focus:border-indigo-500/50"
+          >
+            <option value="">No task link</option>
+            {tasks.map((task) => (
+              <option key={task.id} value={task.id}>
+                {task.title}
+              </option>
+            ))}
+          </select>
+        </label>
+      ) : null}
+
+      <div className="mt-3 flex flex-wrap gap-2">
+        {candidate.candidate_type === 'RISK_FLAG' ? (
+          <div className="text-xs text-zinc-500">Risk candidates stay review-only for now.</div>
+        ) : candidate.candidate_type === 'SUPPLIER_SOURCE' ? (
+          <button
+            type="button"
+            onClick={() => onApprove(candidate.id, 'SUPPLIER_SOURCE')}
+            disabled={!canApprove || !canReview}
+            className="rounded-lg border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-xs text-cyan-300 hover:bg-cyan-500/20 disabled:opacity-60"
+          >
+            Approve as supplier
+          </button>
+        ) : (
+          <>
+            <button
+              type="button"
+              onClick={() => onApprove(candidate.id, 'MARKETPLACE_EVIDENCE')}
+              disabled={!canApprove || !canReview}
+              className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-500/20 disabled:opacity-60"
+            >
+              Approve as evidence
+            </button>
+            <button
+              type="button"
+              onClick={() => onApprove(candidate.id, 'COMPETITOR_LISTING')}
+              disabled={!canApprove || !canReview}
+              className="rounded-lg border border-violet-500/20 bg-violet-500/10 px-3 py-1.5 text-xs text-violet-300 hover:bg-violet-500/20 disabled:opacity-60"
+            >
+              Approve as competitor
+            </button>
+          </>
+        )}
+        <button
+          type="button"
+          onClick={() => onReject(candidate.id)}
+          className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
+        >
+          Reject
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function Modal({
+  title,
+  onClose,
+  children,
+}: {
+  title: string;
+  onClose: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-8">
+      <div className="max-h-[88vh] w-full max-w-2xl overflow-auto rounded-[24px] border border-zinc-800 bg-zinc-950 p-5 shadow-2xl shadow-black/40">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Workflow</div>
+            <h3 className="mt-1 text-xl font-semibold text-white">{title}</h3>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
+          >
+            Close
+          </button>
+        </div>
+        <div className="mt-4">{children}</div>
+      </div>
+    </div>
+  );
+}
+
 function buildLinkOptions(
   cockpit: ResearchCockpit | null,
   promotedProductId?: string | null,
@@ -834,6 +1334,27 @@ function isKeywordGroupMap(
   value: DiscoveryIdea['suggested_keywords'],
 ): value is Record<string, string[]> {
   return !!value && !Array.isArray(value) && typeof value === 'object';
+}
+
+function buildExternalResearchQueries(idea: DiscoveryIdea) {
+  const keywords = isKeywordGroupMap(idea.suggested_keywords) ? idea.suggested_keywords : null;
+  const flatKeywords = Array.isArray(idea.suggested_keywords) ? idea.suggested_keywords : [];
+  const queries: string[] = [];
+  const preferredGroups = ['ebay_active', 'ebay_sold', 'supplier', 'mercari'];
+  for (const group of preferredGroups) {
+    const values = keywords?.[group] ?? (group === 'ebay_sold' ? flatKeywords : []);
+    for (const value of values || []) {
+      const normalized = String(value).trim();
+      if (normalized && !queries.includes(normalized)) {
+        queries.push(normalized);
+      }
+      if (queries.length >= 3) return queries;
+    }
+  }
+  if (queries.length < 3 && idea.idea_name && !queries.includes(idea.idea_name)) {
+    queries.unshift(idea.idea_name);
+  }
+  return queries.slice(0, 3);
 }
 
 function Step({ title, detail }: { title: string; detail: string }) {

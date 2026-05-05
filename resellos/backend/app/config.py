@@ -20,6 +20,17 @@ class Settings(BaseSettings):
     VISION_LLM_MODEL: str = "Qwen/Qwen3-VL-8B-Instruct"
     VISION_LLM_TIMEOUT_SECONDS: int = 120
     VISION_LLM_API_KEY: str = ""
+    VISION_MAX_IMAGE_MB: int = 8
+    DATAFORSEO_ENABLED: bool = False
+    DATAFORSEO_LOGIN: str = ""
+    DATAFORSEO_PASSWORD: str = ""
+    DATAFORSEO_QUEUE: Literal["standard", "priority"] = "standard"
+    DATAFORSEO_LOCATION_CODE: int = 2840
+    DATAFORSEO_LANGUAGE_CODE: str = "en"
+    DATAFORSEO_MAX_RESULTS_PER_QUERY: int = 20
+    DATAFORSEO_MAX_QUERIES_PER_IDEA: int = 3
+    DATAFORSEO_CACHE_DAYS: int = 14
+    DATAFORSEO_MONTHLY_BUDGET_USD: float = 25.0
     DEFAULT_MARKETPLACE_FEE_PERCENT: float = 13.0
     DEFAULT_PACKAGING_COST: float = 0.50
     DEFAULT_OUTBOUND_SHIPPING: float = 4.50

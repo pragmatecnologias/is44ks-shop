@@ -12,6 +12,17 @@ from app.schemas.product_schema import (
     ResearchPipelineResponse,
     ListingGenerateRequest,
 )
+from app.schemas.external_research_schema import (
+    ExternalResearchRunRequest,
+    ExternalResearchJobResponse,
+    EvidenceCandidateResponse,
+    EvidenceCandidateReviewRequest,
+    EvidenceCandidateRejectRequest,
+    EvidenceCandidateReviewResponse,
+    ManualCaptureResponse,
+    ExternalResearchRunResponse,
+    ExternalResearchJobDetailResponse,
+)
 
 __all__ = [
     "ProductCreate",
@@ -26,4 +37,13 @@ __all__ = [
     "SaleCreate",
     "ResearchPipelineResponse",
     "ListingGenerateRequest",
+    "ExternalResearchRunRequest",
+    "ExternalResearchJobResponse",
+    "EvidenceCandidateResponse",
+    "EvidenceCandidateReviewRequest",
+    "EvidenceCandidateRejectRequest",
+    "EvidenceCandidateReviewResponse",
+    "ManualCaptureResponse",
+    "ExternalResearchRunResponse",
+    "ExternalResearchJobDetailResponse",
 ]

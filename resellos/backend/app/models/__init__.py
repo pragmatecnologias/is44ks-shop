@@ -14,6 +14,7 @@ from app.models.supplier import (
     DiscoveryTask,
     ProductDiscoveryIdea,
 )
+from app.models.external_research import ExternalResearchJob, EvidenceCandidate
 from app.models.vision import VisionAnalysisReport
 
 # Aliases for backwards compatibility - avoid duplicate class definitions
@@ -34,5 +35,7 @@ __all__ = [
     "ProductIdea",
     "ProductDiscoveryIdea",
     "DiscoveryTask",
+    "ExternalResearchJob",
+    "EvidenceCandidate",
     "VisionAnalysisReport",
 ]

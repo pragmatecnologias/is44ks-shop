@@ -6,6 +6,14 @@ import type {
   DiscoveryQuickScanInput,
   DiscoveryQuickScanResponse,
   DiscoveryTaskUpdate,
+  ExternalResearchJob,
+  ExternalResearchJobDetailResponse,
+  ExternalResearchRunInput,
+  EvidenceCandidate,
+  EvidenceCandidateReviewInput,
+  EvidenceCandidateReviewResponse,
+  ManualCaptureInput,
+  ManualCaptureResponse,
   OpportunityBoardRow,
   MarketplaceEvidenceInput,
   Product,
@@ -29,6 +37,25 @@ async function requestJson<T>(path: string, init?: RequestInit): Promise<T> {
       'Content-Type': 'application/json',
       ...(init?.headers || {}),
     },
+    cache: 'no-store',
+  });
+
+  if (!response.ok) {
+    const text = await response.text().catch(() => '');
+    throw new Error(`API ${response.status}: ${text || response.statusText}`);
+  }
+
+  if (response.status === 204) {
+    return undefined as T;
+  }
+
+  return response.json() as Promise<T>;
+}
+
+async function requestFormData<T>(path: string, formData: FormData): Promise<T> {
+  const response = await fetch(`${API_BASE}${path}`, {
+    method: 'POST',
+    body: formData,
     cache: 'no-store',
   });
 
@@ -471,6 +498,88 @@ export async function promoteDiscoveryIdea(ideaId: string): Promise<{ product_id
   return requestJson<{ product_id: string }>(`/api/discovery/${ideaId}/promote`, {
     method: 'POST',
   });
+}
+
+export async function runExternalResearchGoogleShopping(
+  payload: ExternalResearchRunInput,
+): Promise<{ jobs: ExternalResearchJob[]; estimated_cost: number; budget_warning?: string | null }> {
+  return requestJson<{ jobs: ExternalResearchJob[]; estimated_cost: number; budget_warning?: string | null }>(
+    '/api/external-research/google-shopping',
+    {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    },
+  );
+}
+
+export async function listExternalResearchJobs(filters?: {
+  idea_id?: string;
+  product_id?: string;
+  status?: string;
+}): Promise<ExternalResearchJob[]> {
+  const query = asQuery({
+    idea_id: filters?.idea_id,
+    product_id: filters?.product_id,
+    status: filters?.status,
+  });
+  return getMaybe(`/api/external-research/jobs${query ? `?${query}` : ''}`, []);
+}
+
+export async function getExternalResearchJob(jobId: string): Promise<ExternalResearchJobDetailResponse | null> {
+  return getMaybe(`/api/external-research/jobs/${jobId}`, null);
+}
+
+export async function pollExternalResearchJob(jobId: string): Promise<ExternalResearchJobDetailResponse> {
+  return requestJson<ExternalResearchJobDetailResponse>(`/api/external-research/jobs/${jobId}/poll`, {
+    method: 'POST',
+  });
+}
+
+export async function listEvidenceCandidates(filters?: {
+  idea_id?: string;
+  product_id?: string;
+  job_id?: string;
+  review_status?: string;
+}): Promise<EvidenceCandidate[]> {
+  const query = asQuery({
+    idea_id: filters?.idea_id,
+    product_id: filters?.product_id,
+    job_id: filters?.job_id,
+    review_status: filters?.review_status,
+  });
+  return getMaybe(`/api/evidence-candidates${query ? `?${query}` : ''}`, []);
+}
+
+export async function approveEvidenceCandidate(
+  candidateId: string,
+  payload: EvidenceCandidateReviewInput,
+): Promise<EvidenceCandidateReviewResponse> {
+  return requestJson<EvidenceCandidateReviewResponse>(`/api/evidence-candidates/${candidateId}/approve`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function rejectEvidenceCandidate(
+  candidateId: string,
+  payload: { notes?: string | null } = {},
+): Promise<EvidenceCandidate> {
+  return requestJson<EvidenceCandidate>(`/api/evidence-candidates/${candidateId}/reject`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function captureManualEvidence(payload: ManualCaptureInput): Promise<ManualCaptureResponse> {
+  const formData = new FormData();
+  if (payload.idea_id) formData.append('idea_id', payload.idea_id);
+  if (payload.product_id) formData.append('product_id', payload.product_id);
+  formData.append('capture_type', payload.capture_type);
+  if (payload.url) formData.append('url', payload.url);
+  if (payload.pasted_text) formData.append('pasted_text', payload.pasted_text);
+  if (payload.notes) formData.append('notes', payload.notes);
+  if (payload.screenshot) formData.append('screenshot', payload.screenshot);
+  return requestFormData<ManualCaptureResponse>('/api/capture/manual', formData);
 }
 
 export async function deleteDiscoveryIdea(ideaId: string): Promise<void> {

@@ -411,6 +411,100 @@ export interface ProductIdeaQuickScanInput {
 
 export type DiscoveryQuickScanInput = ProductIdeaQuickScanInput;
 
+export type ExternalResearchQueue = 'standard' | 'priority';
+export type ExternalResearchStatus = 'QUEUED' | 'SUBMITTED' | 'READY' | 'FAILED' | 'IMPORTED';
+export type EvidenceCandidateSource = 'DATAFORSEO' | 'MANUAL_CAPTURE' | 'VISION';
+export type EvidenceCandidateType = 'MARKETPLACE_EVIDENCE' | 'COMPETITOR_LISTING' | 'SUPPLIER_SOURCE' | 'RISK_FLAG';
+export type EvidenceReviewStatus = 'PENDING' | 'APPROVED' | 'REJECTED' | 'IGNORED';
+export type EvidenceApproveAs = 'MARKETPLACE_EVIDENCE' | 'COMPETITOR_LISTING' | 'SUPPLIER_SOURCE';
+export type CaptureType = 'MARKETPLACE_SCREENSHOT' | 'SUPPLIER_SCREENSHOT' | 'COMPETITOR_SCREENSHOT' | 'VISUAL_RISK';
+
+export interface ExternalResearchRunInput {
+  idea_id?: string | null;
+  product_id?: string | null;
+  queries: string[];
+  max_results?: number;
+  queue?: ExternalResearchQueue;
+  budget_override?: boolean;
+}
+
+export interface ExternalResearchJob {
+  id: string;
+  idea_id?: string | null;
+  product_id?: string | null;
+  provider: string;
+  api_area: string;
+  query: string;
+  queue: ExternalResearchQueue;
+  status: ExternalResearchStatus;
+  provider_task_id?: string | null;
+  cost_estimate?: number | null;
+  result_count?: number;
+  raw_request?: Record<string, unknown>;
+  raw_response?: Record<string, unknown>;
+  last_error?: string | null;
+  candidate_count?: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ExternalResearchJobDetailResponse {
+  job: ExternalResearchJob;
+  candidates: EvidenceCandidate[];
+}
+
+export interface EvidenceCandidate {
+  id: string;
+  job_id?: string | null;
+  idea_id?: string | null;
+  product_id?: string | null;
+  source: EvidenceCandidateSource;
+  candidate_type: EvidenceCandidateType;
+  marketplace?: string | null;
+  evidence_type?: string | null;
+  title?: string | null;
+  url?: string | null;
+  price?: number | null;
+  shipping_price?: number | null;
+  seller?: string | null;
+  rating?: number | null;
+  review_count?: number | null;
+  image_url?: string | null;
+  confidence?: string;
+  review_status: EvidenceReviewStatus;
+  raw_json?: Record<string, unknown>;
+  created_at: string;
+}
+
+export interface EvidenceCandidateReviewInput {
+  approve_as?: EvidenceApproveAs;
+  task_id?: string | null;
+  product_id?: string | null;
+  notes?: string | null;
+}
+
+export interface EvidenceCandidateReviewResponse {
+  candidate: EvidenceCandidate;
+  created_object_type?: string | null;
+  created_object_id?: string | null;
+  linked_task_id?: string | null;
+}
+
+export interface ManualCaptureResponse {
+  candidate: EvidenceCandidate;
+  vision_report_id?: string | null;
+}
+
+export interface ManualCaptureInput {
+  idea_id?: string | null;
+  product_id?: string | null;
+  capture_type: CaptureType;
+  url?: string | null;
+  pasted_text?: string | null;
+  notes?: string | null;
+  screenshot?: File | null;
+}
+
 export interface ProductIdeaQuickScanResponse {
   idea: ProductIdea;
   quick_scan_verdict: string;
