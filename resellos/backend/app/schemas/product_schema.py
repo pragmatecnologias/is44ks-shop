@@ -222,6 +222,12 @@ class ResearchCockpitResponse(BaseModel):
     profit_analyses: list[dict] = Field(default_factory=list)
     agent_reports: list[dict] = Field(default_factory=list)
     decision: Optional[dict] = None
+    competition: Optional[dict] = None
+    reorder: Optional[dict] = None
+    buy_readiness: dict = Field(default_factory=dict)
+    hard_blockers: list[str] = Field(default_factory=list)
+    inventory: list[dict] = Field(default_factory=list)
+    sales: list[dict] = Field(default_factory=list)
     missing_evidence: list[str] = Field(default_factory=list)
     next_action: Optional[str] = None
     confidence: Optional[str] = None

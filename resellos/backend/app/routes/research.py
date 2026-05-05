@@ -2,12 +2,13 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 import uuid
 
+from app.config import settings
 from app.db import get_db
 from app.schemas.product_schema import ResearchRunResponse, ResearchCockpitResponse
 from app.services.research_pipeline_service import ProductResearchService
 from app.llm import get_llm_provider
-from app.agents import RiskAgent, MarketAgent, ProfitAgent, ListingAgent, DecisionAgent
-from app.models.supplier import MarketplaceResearch, CompetitorListing, MarketplaceEvidence, ProductSource, ProfitAnalysis, AgentReport
+from app.agents import RiskAgent, MarketAgent, CompetitionAgent, ProfitAgent, ReorderAgent, ListingAgent, DecisionAgent
+from app.models.supplier import MarketplaceResearch, CompetitorListing, MarketplaceEvidence, ProductSource, ProfitAnalysis, AgentReport, InventoryItem, Sale
 
 
 router = APIRouter(prefix="/api/products", tags=["research"])
@@ -19,7 +20,9 @@ def _get_agents() -> dict:
     return {
         "risk": RiskAgent(llm),
         "market": MarketAgent(llm),
+        "competition": CompetitionAgent(llm),
         "profit": ProfitAgent(llm),
+        "reorder": ReorderAgent(llm),
         "listing": ListingAgent(llm),
         "decision": DecisionAgent(llm),
     }
@@ -74,8 +77,10 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
     research_rows = db.query(MarketplaceResearch).filter(MarketplaceResearch.product_id == product_id).all()
     evidence_rows = db.query(MarketplaceEvidence).filter(MarketplaceEvidence.product_id == product_id).all()
     competitor_rows = db.query(CompetitorListing).filter(CompetitorListing.product_id == product_id).all()
-    profit_rows = db.query(ProfitAnalysis).filter(ProfitAnalysis.product_id == product_id).all()
-    agent_rows = db.query(AgentReport).filter(AgentReport.product_id == product_id).all()
+    profit_rows = db.query(ProfitAnalysis).filter(ProfitAnalysis.product_id == product_id).order_by(ProfitAnalysis.created_at.desc()).all()
+    agent_rows = db.query(AgentReport).filter(AgentReport.product_id == product_id).order_by(AgentReport.created_at.desc()).all()
+    inventory_rows = db.query(InventoryItem).filter(InventoryItem.product_id == product_id).all()
+    sales_rows = db.query(Sale).filter(Sale.product_id == product_id).all()
 
     decision = next((row for row in agent_rows if row.agent_name == "decision_agent"), None)
     decision_output = None
@@ -83,6 +88,10 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
         import json
 
         decision_output = json.loads(decision.output_json)
+    competition = next((row for row in agent_rows if row.agent_name == "competition_agent"), None)
+    competition_output = json.loads(competition.output_json) if competition and competition.output_json else None
+    reorder = next((row for row in agent_rows if row.agent_name == "reorder_agent"), None)
+    reorder_output = json.loads(reorder.output_json) if reorder and reorder.output_json else None
 
     missing_evidence = []
     if not any(row.evidence_type == "SOLD_LISTING" for row in evidence_rows):
@@ -94,6 +103,22 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
     if not profit_rows:
         missing_evidence.append("Profit scenarios missing")
 
+    buy_readiness = {
+        "sold_evidence_count": sum(1 for row in evidence_rows if row.evidence_type == "SOLD_LISTING"),
+        "active_evidence_count": sum(1 for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING"),
+        "supplier_cost_present": any(
+            source.unit_cost is not None or source.estimated_landed_cost is not None for source in sources
+        ),
+        "international_shipping_present": any(
+            source.international_shipping_estimate is not None for source in sources
+        ),
+        "outbound_shipping_present": float(settings.DEFAULT_OUTBOUND_SHIPPING) > 0,
+        "profit_scenarios_present": bool(profit_rows),
+        "risk_passed": (decision_output or {}).get("blocked") is False if decision_output else product.status != "BLOCKED",
+        "target_price_present": product.target_sale_price is not None and float(product.target_sale_price or 0) > 0,
+    }
+    hard_blockers = list(dict.fromkeys((decision_output or {}).get("hard_blockers", []))) if decision_output else []
+
     return ResearchCockpitResponse(
         product=product,
         sources=sources,
@@ -103,6 +128,12 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
         profit_analyses=[_serialize_model(row) for row in profit_rows],
         agent_reports=[_serialize_model(row) for row in agent_rows],
         decision=decision_output,
+        competition=competition_output,
+        reorder=reorder_output,
+        buy_readiness=buy_readiness,
+        hard_blockers=hard_blockers,
+        inventory=[_serialize_model(row) for row in inventory_rows],
+        sales=[_serialize_model(row) for row in sales_rows],
         missing_evidence=missing_evidence,
         next_action=(decision_output or {}).get("next_action") if decision_output else None,
         confidence=(decision_output or {}).get("confidence") if decision_output else None,

@@ -7,6 +7,8 @@ import {
   ArrowLeft,
   BadgeAlert,
   CheckCircle2,
+  ClipboardCheck,
+  AlertTriangle,
   ExternalLink,
   FileText,
   Loader2,
@@ -18,6 +20,7 @@ import {
   Truck,
   Users,
   Wallet,
+  Target,
   XCircle,
 } from 'lucide-react';
 import { StatusBadge } from '@/components/shared/StatusBadge';
@@ -34,6 +37,7 @@ import type {
   MarketplaceEvidenceInput,
   ProductSource,
   ResearchCockpit,
+  DecisionSummary,
   SupplierInput,
 } from '@/lib/types';
 
@@ -79,16 +83,45 @@ export default function ProductDetailPage() {
   }, [productId]);
 
   const product = cockpit?.product ?? null;
-  const decision = cockpit?.decision ?? {};
-  const finalDecision = (decision?.recommendation as string) || product?.final_decision || 'NEEDS_RESEARCH';
-  const confidence = (decision?.confidence as string) || cockpit?.confidence || product?.confidence || 'LOW';
-  const score = (decision?.total_score as number) ?? product?.final_score ?? 0;
-  const nextAction = (decision?.next_action as string) || cockpit?.next_action || product?.next_action || 'Add evidence and run research.';
+  const decision = (cockpit?.decision ?? {}) as DecisionSummary;
+  const finalDecision = decision.recommendation || product?.final_decision || 'NEEDS_RESEARCH';
+  const confidence = decision.confidence || cockpit?.confidence || product?.confidence || 'LOW';
+  const score = decision.total_score ?? product?.final_score ?? 0;
+  const nextAction = decision.next_action || cockpit?.next_action || product?.next_action || 'Add evidence and run research.';
   const missingEvidence = cockpit?.missing_evidence?.length ? cockpit.missing_evidence : product?.missing_evidence ?? [];
   const supplierSources = cockpit?.sources ?? [];
   const evidenceRows = cockpit?.marketplace_evidence ?? [];
   const profitRows = cockpit?.profit_analyses ?? [];
   const reports = cockpit?.agent_reports ?? [];
+  const competition = cockpit?.competition ?? null;
+  const reorder = cockpit?.reorder ?? null;
+  const hardBlockers = cockpit?.hard_blockers?.length ? cockpit.hard_blockers : decision.hard_blockers ?? [];
+  const requiredBeforeBuying = decision.required_before_buying ?? [];
+  const maxQuantityToBuy = decision.max_quantity_to_buy ?? 0;
+  const maxLandedCost = decision.max_landed_cost ?? 0;
+  const targetSalePrice = decision.target_sale_price ?? product?.target_sale_price ?? 0;
+  const soldEvidenceCount = evidenceRows.filter((row) => row.evidence_type === 'SOLD_LISTING').length;
+  const activeEvidenceCount = evidenceRows.filter((row) => row.evidence_type === 'ACTIVE_LISTING').length;
+  const supplierCostPresent = supplierSources.some((source) => source.unit_cost != null || source.estimated_landed_cost != null);
+  const internationalShippingPresent = supplierSources.some((source) => source.international_shipping_estimate != null);
+  const profitScenariosPresent = profitRows.length > 0;
+  const riskPassed = product?.risk_level !== 'BLOCKED' && decision.blocked !== true;
+  const targetPricePresent = Boolean(targetSalePrice && targetSalePrice > 0);
+  const canCompete = competition?.can_compete ?? false;
+  const competitionLevel = competition?.competition_level ?? 'UNKNOWN';
+  const reorderRecommendation = reorder?.reorder_recommendation ?? 'DO_NOT_REORDER';
+  const inventoryRows = cockpit?.inventory ?? [];
+  const salesRows = cockpit?.sales ?? [];
+
+  const readinessChecks = [
+    { label: 'Sold evidence', ok: soldEvidenceCount >= 5, detail: `${soldEvidenceCount}/5+ sold listings` },
+    { label: 'Active evidence', ok: activeEvidenceCount >= 5, detail: `${activeEvidenceCount}/5+ active listings` },
+    { label: 'Supplier cost', ok: supplierCostPresent, detail: supplierCostPresent ? 'Entered' : 'Missing' },
+    { label: 'International shipping', ok: internationalShippingPresent, detail: internationalShippingPresent ? 'Entered' : 'Missing' },
+    { label: 'Profit scenarios', ok: profitScenariosPresent, detail: profitScenariosPresent ? `${profitRows.length} generated` : 'Missing' },
+    { label: 'Risk review', ok: riskPassed, detail: riskPassed ? 'Passed' : 'Blocked' },
+    { label: 'Target price', ok: targetPricePresent, detail: targetPricePresent ? money(targetSalePrice) : 'Missing' },
+  ];
 
   const decisionAccent =
     finalDecision === 'BLOCKED'
@@ -106,8 +139,13 @@ export default function ProductDetailPage() {
       { label: 'Decision', value: finalDecision.replace(/_/g, ' ') },
       { label: 'Score', value: `${score}/100` },
       { label: 'Confidence', value: confidence },
+      { label: 'Max qty', value: maxQuantityToBuy ? String(maxQuantityToBuy) : '—' },
+      { label: 'Max landed', value: maxLandedCost ? money(maxLandedCost) : '—' },
+      { label: 'Target price', value: targetPricePresent ? money(targetSalePrice) : '—' },
+      { label: 'Can compete', value: canCompete ? 'Yes' : 'No' },
+      { label: 'Reorder', value: reorderRecommendation.replace(/_/g, ' ') },
     ];
-  }, [product, cockpit?.current_status, finalDecision, score, confidence]);
+  }, [product, cockpit?.current_status, finalDecision, score, confidence, maxQuantityToBuy, maxLandedCost, targetSalePrice, targetPricePresent, canCompete, reorderRecommendation]);
 
   async function handleRunResearch() {
     if (!product) return;
@@ -268,6 +306,45 @@ export default function ProductDetailPage() {
               <StatRow label="Decision" value={finalDecision.replace(/_/g, ' ')} />
               <StatRow label="Score" value={`${score}/100`} />
               <StatRow label="Confidence" value={confidence} />
+              <StatRow label="Max quantity" value={maxQuantityToBuy ? String(maxQuantityToBuy) : '—'} />
+              <StatRow label="Target price" value={targetPricePresent ? money(targetSalePrice) : '—'} />
+            </div>
+          </Panel>
+        </div>
+
+        <div className="grid gap-6 xl:grid-cols-2">
+          <Panel title="Buy Readiness" icon={ClipboardCheck}>
+            <div className="space-y-3">
+              {readinessChecks.map((check) => (
+                <div key={check.label} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-sm font-medium text-white">{check.label}</div>
+                    <div className={`text-xs font-semibold ${check.ok ? 'text-emerald-400' : 'text-red-400'}`}>{check.ok ? 'PASS' : 'FAIL'}</div>
+                  </div>
+                  <div className="mt-2 text-xs text-zinc-400">{check.detail}</div>
+                </div>
+              ))}
+            </div>
+          </Panel>
+
+          <Panel title="Why This Decision?" icon={Target}>
+            <div className="space-y-3">
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Reason</div>
+                <div className="mt-2 text-sm text-zinc-200">{decision.reason || 'Run research to generate a decision reason.'}</div>
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Next action</div>
+                <div className="mt-2 text-sm text-zinc-200">{nextAction}</div>
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Required before buying</div>
+                {requiredBeforeBuying.length ? (
+                  <Checklist items={requiredBeforeBuying} />
+                ) : (
+                  <EmptyState title="No extra requirements" description="The latest decision report does not list any additional prerequisites." />
+                )}
+              </div>
             </div>
           </Panel>
         </div>
@@ -329,6 +406,49 @@ export default function ProductDetailPage() {
                     </div>
                   ))
                 )}
+              </div>
+            </div>
+          </Panel>
+
+          <Panel title="Competition Intelligence" icon={Target}>
+            <div className="space-y-4">
+              <div className="grid gap-3 md:grid-cols-2">
+                <StatRow label="Competition" value={competitionLevel} />
+                <StatRow label="Gap score" value={competition?.listing_gap_score != null ? `${competition.listing_gap_score}/100` : '—'} />
+                <StatRow label="Can compete" value={canCompete ? 'Yes' : 'No'} />
+                <StatRow label="Competitors" value={competition?.competitor_count != null ? String(competition.competitor_count) : '—'} />
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Recommended angle</div>
+                <div className="mt-2 text-sm text-zinc-200">{competition?.recommended_angle || 'Add competitor listings to generate an angle.'}</div>
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Weaknesses</div>
+                <Checklist items={competition?.weaknesses?.length ? competition.weaknesses : ['No competition weaknesses captured yet.']} />
+              </div>
+            </div>
+          </Panel>
+
+          <Panel title="Reorder Intelligence" icon={RefreshCw}>
+            <div className="space-y-4">
+              <div className="grid gap-3 md:grid-cols-2">
+                <StatRow label="Recommendation" value={reorderRecommendation.replace(/_/g, ' ')} />
+                <StatRow label="On hand" value={reorder?.current_inventory != null ? String(reorder.current_inventory) : '—'} />
+                <StatRow label="Sold" value={reorder?.quantity_sold != null ? String(reorder.quantity_sold) : '—'} />
+                <StatRow label="Days cover" value={reorder?.days_of_cover != null ? String(reorder.days_of_cover) : '—'} />
+                <StatRow label="Stockout risk" value={reorder?.stockout_risk ?? '—'} />
+                <StatRow label="Max reorder" value={reorder?.max_reorder_qty != null ? String(reorder.max_reorder_qty) : '—'} />
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Reason</div>
+                <div className="mt-2 text-sm text-zinc-200">{reorder?.reorder_reason || 'Add inventory and sales history to evaluate reorder risk.'}</div>
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Inventory / Sales</div>
+                <div className="mt-2 grid gap-2 text-sm text-zinc-300 md:grid-cols-2">
+                  <StatRow label="Inventory rows" value={String(inventoryRows.length)} />
+                  <StatRow label="Sales rows" value={String(salesRows.length)} />
+                </div>
               </div>
             </div>
           </Panel>
@@ -395,6 +515,20 @@ export default function ProductDetailPage() {
         </div>
 
         <div className="grid gap-6 xl:grid-cols-3">
+          <Panel title="Hard Blockers" icon={AlertTriangle}>
+            <div className="space-y-3">
+              {hardBlockers.length === 0 ? (
+                <EmptyState title="No hard blockers" description="The current decision flow does not report any blocking issues." />
+              ) : (
+                hardBlockers.map((item) => (
+                  <div key={item} className="rounded-2xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-100">
+                    {item}
+                  </div>
+                ))
+              )}
+            </div>
+          </Panel>
+
           <Panel title="Profit Scenarios" icon={Wallet}>
             <div className="space-y-3">
               {profitRows.length === 0 ? (
@@ -572,4 +706,3 @@ function money(value?: number | null) {
   if (value == null) return '—';
   return `$${Number(value).toFixed(2)}`;
 }
-

@@ -51,8 +51,9 @@ class ProfitAgent(BaseAgent):
             name: str,
             scenario_sale_price: float,
             shipping_cost: float,
+            shipping_revenue_value: float = 0.0,
             bundle_multiplier: int = 1,
-            includes_shipping_revenue: bool = False,
+            assumptions: list[str] | None = None,
         ) -> dict[str, float | str]:
             unit_product_cost = product_cost * bundle_multiplier
             unit_china_domestic = china_domestic_shipping * bundle_multiplier
@@ -60,10 +61,10 @@ class ProfitAgent(BaseAgent):
             unit_duties = duties * bundle_multiplier
             unit_inspection = inspection_cost * bundle_multiplier
             landed_cost = unit_product_cost + unit_china_domestic + unit_international + unit_duties + unit_inspection + damaged_unit_allowance
-            fee_base = scenario_sale_price + (shipping_revenue if includes_shipping_revenue else 0)
+            fee_base = scenario_sale_price + shipping_revenue_value
             platform_fee = fee_base * platform_fee_percent + marketplace_fee_fixed
             selling_cost = platform_fee + payment_fee + shipping_cost + packaging + return_allowance + ad_cost
-            net_profit = scenario_sale_price + (shipping_revenue if includes_shipping_revenue else 0) - landed_cost - selling_cost
+            net_profit = scenario_sale_price + shipping_revenue_value - landed_cost - selling_cost
             margin = (net_profit / scenario_sale_price * 100) if scenario_sale_price > 0 else 0
             decision = "GOOD" if net_profit >= 8 and margin >= 20 else "WEAK" if net_profit > 0 else "LOSS"
             return {
@@ -74,35 +75,52 @@ class ProfitAgent(BaseAgent):
                 "net_profit": round(net_profit, 2),
                 "margin_percent": round(margin, 2),
                 "decision": decision,
-                "assumption": "Bundle ships in one package" if bundle_multiplier > 1 else "Standard parcel shipping",
+                "assumptions": assumptions or ([ "Bundle ships in one package" ] if bundle_multiplier > 1 else [ "Standard parcel shipping" ]),
+                "shipping_revenue": round(shipping_revenue_value, 2),
+                "shipping_cost": round(shipping_cost, 2),
             }
 
         buyer_paid = scenario(
             "eBay buyer-paid shipping",
             sale_price,
-            outbound_shipping if not buyer_paid_shipping else 0,
+            outbound_shipping,
+            shipping_revenue_value=outbound_shipping,
             bundle_multiplier=1,
-            includes_shipping_revenue=buyer_paid_shipping,
+            assumptions=[
+                "Marketplace fee calculated on item price plus buyer-paid shipping",
+                "Shipping charge is shown to the buyer separately",
+            ],
         )
         free_ship = scenario(
             "eBay free shipping",
             sale_price,
             outbound_shipping,
+            shipping_revenue_value=0,
             bundle_multiplier=1,
-            includes_shipping_revenue=False,
+            assumptions=[
+                "Buyer sees a single all-in price",
+                "Outbound shipping is paid by the seller",
+            ],
         )
         bundle = scenario(
             f"{bundle_quantity}-pack bundle",
             sale_price * bundle_quantity,
             outbound_shipping,
+            shipping_revenue_value=outbound_shipping,
             bundle_multiplier=bundle_quantity,
-            includes_shipping_revenue=buyer_paid_shipping,
+            assumptions=[
+                "Bundle ships in one package",
+                "Marketplace fee estimated on the combined item value",
+                "Outbound shipping does not scale linearly with quantity",
+            ],
         )
 
         scenarios = [buyer_paid, free_ship, bundle]
         best = max(scenarios, key=lambda item: float(item["net_profit"]))
         break_even = float(best["landed_cost"]) + float(best["selling_cost"])
         minimum_recommended_price = round(break_even * 1.1, 2)
+        market_reference_price = sale_price if sale_price > 0 else 0
+        target_sale_price = sale_price if sale_price > 0 else 0
 
         output = ProfitAgentOutput.model_validate(
             {
@@ -110,7 +128,9 @@ class ProfitAgent(BaseAgent):
                 "estimated_net_profit": float(best["net_profit"]),
                 "break_even_price": round(break_even, 2),
                 "minimum_recommended_price": minimum_recommended_price,
-                "target_sale_price": round(sale_price, 2),
+                "target_sale_price": round(target_sale_price, 2),
+                "market_reference_price": round(market_reference_price, 2),
+                "best_scenario": str(best["name"]),
                 "summary": result.get(
                     "summary",
                     f"Best scenario: {best['name']} with net profit ${best['net_profit']:.2f}.",

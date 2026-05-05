@@ -228,6 +228,7 @@ function AgentActivityCard({ agent }: { agent: AgentResult }) {
     decision: { icon: Brain, color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     supplier: { icon: Package, color: 'text-cyan-400', bgColor: 'bg-cyan-500/10' },
     competition: { icon: Eye, color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
+    reorder: { icon: TrendingUp, color: 'text-cyan-400', bgColor: 'bg-cyan-500/10' },
     listing: { icon: Tag, color: 'text-indigo-400', bgColor: 'bg-indigo-500/10' },
     overall: { icon: CheckCircle2, color: 'text-green-400', bgColor: 'bg-green-500/10' },
   };

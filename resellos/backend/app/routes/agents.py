@@ -30,7 +30,7 @@ def get_report(report_id: uuid.UUID, db: Session = Depends(get_db)):
 async def run_agent(product_id: uuid.UUID, agent_type: str, db: Session = Depends(get_db)):
     """Run a specific agent for a product and return results."""
     from app.llm import get_llm_provider
-    from app.agents import RiskAgent, MarketAgent, ProfitAgent, ListingAgent, DecisionAgent
+    from app.agents import RiskAgent, MarketAgent, CompetitionAgent, ProfitAgent, ReorderAgent, ListingAgent, DecisionAgent
 
     product = db.query(Product).filter(Product.id == product_id).first()
     if not product:
@@ -41,7 +41,9 @@ async def run_agent(product_id: uuid.UUID, agent_type: str, db: Session = Depend
     agent_map = {
         "risk": RiskAgent,
         "market": MarketAgent,
+        "competition": CompetitionAgent,
         "profit": ProfitAgent,
+        "reorder": ReorderAgent,
         "listing": ListingAgent,
         "decision": DecisionAgent,
     }
@@ -56,8 +58,12 @@ async def run_agent(product_id: uuid.UUID, agent_type: str, db: Session = Depend
         context = {"product": {"name": product.name, "category": product.category, "description": product.description}}
     elif agent_type == "market":
         context = {"product": {"name": product.name, "category": product.category}}
+    elif agent_type == "competition":
+        context = {"product": {"name": product.name, "category": product.category}, "competitor_listings": []}
     elif agent_type == "profit":
         context = {"profit_input": {"expected_sale_price": 50, "product_cost": 10}}
+    elif agent_type == "reorder":
+        context = {"product": {"name": product.name}, "inventory": [], "sales": []}
     elif agent_type == "listing":
         context = {"listing_input": {"product_name": product.name, "marketplace": "ebay"}}
     else:

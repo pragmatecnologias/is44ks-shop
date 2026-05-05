@@ -218,6 +218,61 @@ export interface ProfitAnalysis {
   verdict?: string;
 }
 
+export interface DecisionSummary {
+  recommendation?: FinalDecision;
+  total_score?: number;
+  confidence?: 'LOW' | 'MEDIUM' | 'HIGH';
+  reason?: string;
+  next_action?: string;
+  missing_evidence?: string[];
+  assumptions?: string[];
+  hard_blockers?: string[];
+  max_quantity_to_buy?: number;
+  max_landed_cost?: number;
+  target_sale_price?: number;
+  required_before_buying?: string[];
+  blocked?: boolean;
+}
+
+export interface CompetitionInsight {
+  competition_level?: 'LOW' | 'MEDIUM' | 'HIGH' | 'UNKNOWN';
+  listing_gap_score?: number;
+  can_compete?: boolean;
+  competitor_count?: number;
+  active_competitor_count?: number;
+  sold_competitor_count?: number;
+  median_competitor_price?: number | null;
+  avg_photo_score?: number | null;
+  avg_title_score?: number | null;
+  avg_description_score?: number | null;
+  weaknesses?: string[];
+  recommended_angle?: string;
+  summary?: string;
+  confidence?: 'LOW' | 'MEDIUM' | 'HIGH';
+  warnings?: string[];
+  evidence_refs?: string[];
+}
+
+export interface ReorderInsight {
+  reorder_recommendation?: 'DO_NOT_REORDER' | 'REORDER_SMALL' | 'REORDER_MEDIUM' | 'SCALE' | 'KILL_PRODUCT';
+  current_inventory?: number;
+  quantity_sold?: number;
+  quantity_ordered?: number;
+  quantity_returned?: number;
+  average_daily_sales?: number;
+  days_of_cover?: number | null;
+  reorder_point?: number;
+  max_reorder_qty?: number;
+  stockout_risk?: 'LOW' | 'MEDIUM' | 'HIGH';
+  return_rate_percent?: number;
+  average_landed_cost?: number | null;
+  reorder_reason?: string;
+  summary?: string;
+  confidence?: 'LOW' | 'MEDIUM' | 'HIGH';
+  warnings?: string[];
+  evidence_refs?: string[];
+}
+
 export interface AgentReport {
   id: string;
   product_id: string;
@@ -255,7 +310,13 @@ export interface ResearchCockpit {
   competitor_listings: CompetitorListing[];
   profit_analyses: ProfitAnalysis[];
   agent_reports: AgentReport[];
-  decision?: Record<string, unknown> | null;
+  decision?: DecisionSummary | null;
+  competition?: CompetitionInsight | null;
+  reorder?: ReorderInsight | null;
+  buy_readiness?: Record<string, unknown>;
+  hard_blockers?: string[];
+  inventory?: Array<Record<string, unknown>>;
+  sales?: Array<Record<string, unknown>>;
   missing_evidence: string[];
   next_action?: string | null;
   confidence?: string | null;
