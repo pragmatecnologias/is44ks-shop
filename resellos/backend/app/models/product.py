@@ -33,3 +33,4 @@ class Product(Base):
     inventory = relationship("InventoryItem", back_populates="product", cascade="all, delete-orphan")
     sales = relationship("Sale", back_populates="product", cascade="all, delete-orphan")
     files = relationship("ProductFile", back_populates="product", cascade="all, delete-orphan")
+    vision_reports = relationship("VisionAnalysisReport", back_populates="product", cascade="all, delete-orphan")

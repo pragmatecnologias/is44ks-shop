@@ -369,6 +369,7 @@ function IdeaCard({
   const [draftNotes, setDraftNotes] = useState<Record<string, string>>({});
   const [draftLinks, setDraftLinks] = useState<Record<string, string>>({});
   const [linkedContext, setLinkedContext] = useState<ResearchCockpit | null>(null);
+  const [attachTaskId, setAttachTaskId] = useState<string | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -391,6 +392,8 @@ function IdeaCard({
   }, [idea.promoted_product_id]);
 
   const linkOptions = buildLinkOptions(linkedContext, idea.promoted_product_id);
+  const attachTask = idea.tasks?.find((task) => task.id === attachTaskId) ?? null;
+  const attachValue = attachTask ? draftLinks[attachTask.id] ?? taskLinkValue(attachTask) : '';
   return (
     <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
       <div className="flex items-start justify-between gap-4">
@@ -490,7 +493,7 @@ function IdeaCard({
                 </div>
                 <div className="mt-2 text-xs text-zinc-400">
                   {renderTaskLinkStatus(task) === 'No evidence linked' ? (
-                    renderTaskLinkStatus(task)
+                    <span>{renderTaskLinkStatus(task)}</span>
                   ) : (
                     <Link href={taskLinkHref(task, idea.promoted_product_id)} className="text-indigo-300 hover:text-indigo-200">
                       {renderTaskLinkStatus(task)}
@@ -508,13 +511,114 @@ function IdeaCard({
                   className="mt-3 w-full rounded-xl border border-zinc-800 bg-zinc-950/80 px-3 py-2 text-sm text-white outline-none transition focus:border-indigo-500/50"
                 />
                 <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-950/80 p-3">
-                  <div className="text-[11px] uppercase tracking-[0.14em] text-zinc-500">Link evidence</div>
-                  {idea.promoted_product_id ? (
-                    <div className="mt-2 space-y-2">
+                  <div className="text-[11px] uppercase tracking-[0.14em] text-zinc-500">Proof</div>
+                  <div className="mt-2 text-sm text-zinc-300">{renderTaskLinkStatus(task)}</div>
+                  <div className="mt-1 text-[11px] text-zinc-500">
+                    {hasTaskLink(task) ? 'Strong proof attached.' : 'Proof is optional, but linking real evidence makes the task auditable.'}
+                  </div>
+                </div>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => onUpdateTask(task.id, task.status, draftNotes[task.id] ?? task.notes ?? '')}
+                    className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
+                  >
+                    Save note
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setAttachTaskId(task.id);
+                      if (!draftLinks[task.id] && task.status !== 'TODO') {
+                        setDraftLinks((current) => ({ ...current, [task.id]: taskLinkValue(task) }));
+                      }
+                    }}
+                    className="rounded-lg border border-indigo-500/20 bg-indigo-500/10 px-3 py-1.5 text-xs text-indigo-300 hover:bg-indigo-500/20"
+                  >
+                    Attach proof
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onUpdateTask(
+                        task.id,
+                          'DONE',
+                          draftNotes[task.id] ?? task.notes ?? '',
+                          taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)),
+                        )
+                      }
+                      className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-500/20"
+                    >
+                      Mark done
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onUpdateTask(
+                          task.id,
+                          'SKIPPED',
+                          draftNotes[task.id] ?? task.notes ?? '',
+                          taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)),
+                        )
+                      }
+                      className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
+                    >
+                      Skip
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onUpdateTask(
+                          task.id,
+                          'BLOCKED',
+                          draftNotes[task.id] ?? task.notes ?? '',
+                          taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)),
+                      )
+                    }
+                    className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs text-red-300 hover:bg-red-500/20"
+                  >
+                    Block
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="text-sm text-zinc-500">No tasks yet. Generate tasks to start collecting evidence.</div>
+          )}
+        </div>
+      </div>
+
+      {attachTask ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-8">
+          <div className="max-h-[88vh] w-full max-w-2xl overflow-auto rounded-[24px] border border-zinc-800 bg-zinc-950 p-5 shadow-2xl shadow-black/40">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Attach proof</div>
+                <h3 className="mt-1 text-xl font-semibold text-white">{attachTask.title}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setAttachTaskId(null)}
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 text-sm text-zinc-300">
+              {idea.promoted_product_id ? (
+                <>
+                  <div className="font-medium text-white">Choose one proof target</div>
+                  <div className="mt-1 text-xs text-zinc-500">
+                    Pick one marketplace evidence row, supplier source, competitor listing, or the promoted product itself.
+                  </div>
+                  <div className="mt-4 space-y-4">
+                    <label className="block space-y-1">
+                      <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Proof target</div>
                       <select
-                        value={draftLinks[task.id] ?? taskLinkValue(task)}
-                        onChange={(event) => setDraftLinks((current) => ({ ...current, [task.id]: event.target.value }))}
-                        className="w-full rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-white outline-none transition focus:border-indigo-500/50"
+                        value={attachValue}
+                        onChange={(event) => setDraftLinks((current) => ({ ...current, [attachTask.id]: event.target.value }))}
+                        className="w-full rounded-xl border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-white outline-none transition focus:border-indigo-500/50"
                       >
                         <option value="">No link selected</option>
                         {linkOptions.marketplaceEvidence.length ? (
@@ -548,83 +652,55 @@ function IdeaCard({
                           <option value={linkOptions.product.value}>{linkOptions.product.label}</option>
                         </optgroup>
                       </select>
-                      <div className="text-[11px] text-zinc-500">
-                        Choose a single evidence target. Saving a link is optional.
-                      </div>
+                    </label>
+
+                    <div className="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-4">
+                      <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Linked summary</div>
+                      <div className="mt-2 text-sm text-zinc-200">{renderTaskLinkStatus(attachTask)}</div>
                     </div>
-                  ) : (
-                    <div className="mt-2 text-sm text-zinc-500">Promote the idea to attach evidence from the product cockpit.</div>
-                  )}
+                  </div>
+                </>
+              ) : (
+                <div className="space-y-3">
+                  <div className="font-medium text-white">
+                    Promote this idea to a product before linking marketplace evidence, suppliers, or competitors.
+                  </div>
+                  <div className="text-zinc-400">
+                    You can still save notes and status on the task card for now. Evidence linking becomes available after promotion.
+                  </div>
                 </div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    onClick={() => onUpdateTask(task.id, task.status, draftNotes[task.id] ?? task.notes ?? '')}
-                    className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
-                  >
-                    Save note
-                  </button>
-                  {idea.promoted_product_id ? (
-                    <button
-                      type="button"
-                      onClick={() =>
-                        onUpdateTask(task.id, task.status, draftNotes[task.id] ?? task.notes ?? '', taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)))
-                      }
-                      className="rounded-lg border border-indigo-500/20 bg-indigo-500/10 px-3 py-1.5 text-xs text-indigo-300 hover:bg-indigo-500/20"
-                    >
-                      Save link
-                    </button>
-                  ) : null}
-                    <button
-                      type="button"
-                      onClick={() =>
-                        onUpdateTask(
-                          task.id,
-                          'DONE',
-                          draftNotes[task.id] ?? task.notes ?? '',
-                          taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)),
-                        )
-                      }
-                      className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-500/20"
-                    >
-                      Mark done
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        onUpdateTask(
-                          task.id,
-                          'SKIPPED',
-                          draftNotes[task.id] ?? task.notes ?? '',
-                          taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)),
-                        )
-                      }
-                      className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
-                    >
-                      Skip
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        onUpdateTask(
-                          task.id,
-                          'BLOCKED',
-                          draftNotes[task.id] ?? task.notes ?? '',
-                          taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)),
-                        )
-                      }
-                      className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs text-red-300 hover:bg-red-500/20"
-                    >
-                      Block
-                    </button>
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="text-sm text-zinc-500">No tasks yet. Generate tasks to start collecting evidence.</div>
-          )}
+              )}
+            </div>
+
+            <div className="mt-4 flex flex-wrap justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => setAttachTaskId(null)}
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-zinc-300 hover:border-zinc-600"
+              >
+                Cancel
+              </button>
+              {idea.promoted_product_id ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onUpdateTask(
+                      attachTask.id,
+                      attachTask.status,
+                      draftNotes[attachTask.id] ?? attachTask.notes ?? '',
+                      taskLinkPayload(attachValue),
+                    );
+                    setAttachTaskId(null);
+                  }}
+                  className="rounded-lg border border-indigo-500/20 bg-indigo-500/10 px-4 py-2 text-sm text-indigo-300 hover:bg-indigo-500/20"
+                >
+                  Attach
+                </button>
+              ) : null}
+            </div>
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }

@@ -221,6 +221,7 @@ class ProductIdea(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     promoted_product = relationship("Product", foreign_keys=[promoted_product_id])
+    vision_reports = relationship("VisionAnalysisReport", back_populates="idea", cascade="all, delete-orphan")
 
 
 class DiscoveryTask(Base):
