@@ -62,13 +62,8 @@ class OpenAIVisionProvider(VisionProvider):
             "model": self.model,
             "messages": messages,
             "temperature": 0.1,
-            "response_format": {"type": "json_object"},
         }
-        try:
-            response = self.client.post("/chat/completions", json=payload)
-        except Exception:
-            payload.pop("response_format", None)
-            response = self.client.post("/chat/completions", json=payload)
+        response = self.client.post("/chat/completions", json=payload)
 
         response.raise_for_status()
         data = response.json()

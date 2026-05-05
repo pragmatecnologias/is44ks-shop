@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 import uuid
 from typing import Any
@@ -46,34 +47,55 @@ class CaptureService:
                 "pasted_text": pasted_text,
                 "content_type": screenshot.content_type,
             }
-            report = await self.vision_service.analyze_image(
-                image_bytes=image_bytes,
-                analysis_type=analysis_type,
-                idea_id=idea_id,
-                product_id=product_id,
-                file_url=stored_file_url,
-                metadata=metadata,
-            )
-            output = report.output_json if isinstance(report.output_json, dict) else {}
-            candidate = self._build_candidate_from_vision(
-                idea_id=idea_id,
-                product_id=product_id,
-                capture_type=capture_type,
-                url=url,
-                notes=notes,
-                output=output,
-                screenshot_url=stored_file_url,
-            )
-            candidate.raw_json = {
-                "capture_type": capture_type,
-                "url": url,
-                "notes": notes,
-                "vision_output": output,
-            }
+            report = None
+            output: dict[str, Any] = {}
+            try:
+                report = await self.vision_service.analyze_image(
+                    image_bytes=image_bytes,
+                    analysis_type=analysis_type,
+                    idea_id=idea_id,
+                    product_id=product_id,
+                    file_url=stored_file_url,
+                    metadata=metadata,
+                )
+                output = self._coerce_vision_output(report.output_json)
+                candidate = self._build_candidate_from_vision(
+                    idea_id=idea_id,
+                    product_id=product_id,
+                    capture_type=capture_type,
+                    url=url,
+                    notes=notes,
+                    output=output,
+                    screenshot_url=stored_file_url,
+                )
+                candidate.raw_json = {
+                    "capture_type": capture_type,
+                    "url": url,
+                    "notes": notes,
+                    "vision_output": output,
+                }
+            except Exception as exc:
+                fallback_text = "\n".join(part for part in [notes, pasted_text, url] if part)
+                candidate = self._build_candidate_from_text(
+                    idea_id=idea_id,
+                    product_id=product_id,
+                    capture_type=capture_type,
+                    url=url,
+                    notes=notes or "Vision capture unavailable; review-only fallback candidate created.",
+                    pasted_text=fallback_text,
+                    screenshot_url=stored_file_url,
+                )
+                candidate.raw_json = {
+                    "capture_type": capture_type,
+                    "url": url,
+                    "notes": notes,
+                    "vision_error": str(exc),
+                    "fallback": True,
+                }
             self.db.add(candidate)
             self.db.commit()
             self.db.refresh(candidate)
-            return candidate, report.id
+            return candidate, report.id if report is not None else None
 
         candidate = self._build_candidate_from_text(
             idea_id=idea_id,
@@ -107,6 +129,7 @@ class CaptureService:
         url: str | None,
         notes: str | None,
         pasted_text: str,
+        screenshot_url: str | None = None,
     ) -> EvidenceCandidate:
         capture_type = capture_type.upper().strip()
         evidence_type = "ACTIVE_LISTING"
@@ -140,6 +163,7 @@ class CaptureService:
             price=price,
             shipping_price=shipping_price,
             seller=None,
+            image_url=screenshot_url,
             confidence="MEDIUM",
             review_status="PENDING",
             raw_json=raw_json,
@@ -188,6 +212,17 @@ class CaptureService:
         if capture_type == "VISUAL_RISK":
             return "RISK_FLAG"
         return "MARKETPLACE_EVIDENCE"
+
+    def _coerce_vision_output(self, output_json: Any) -> dict[str, Any]:
+        if isinstance(output_json, dict):
+            return output_json
+        if isinstance(output_json, str):
+            try:
+                parsed = json.loads(output_json)
+            except Exception:
+                return {}
+            return parsed if isinstance(parsed, dict) else {}
+        return {}
 
     def _first_meaningful_line(self, text: str) -> str | None:
         for line in text.splitlines():

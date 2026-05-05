@@ -1,3 +1,5 @@
+import json
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 import uuid
@@ -85,8 +87,6 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
     decision = next((row for row in agent_rows if row.agent_name == "decision_agent"), None)
     decision_output = None
     if decision and decision.output_json:
-        import json
-
         decision_output = json.loads(decision.output_json)
     discovery_context = next((row for row in agent_rows if row.agent_name == "discovery_context"), None)
     discovery_context_output = json.loads(discovery_context.output_json) if discovery_context and discovery_context.output_json else None

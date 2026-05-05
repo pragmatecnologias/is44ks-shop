@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from app.services.category_templates import CATEGORY_TEMPLATES
@@ -8,6 +9,31 @@ from app.services.category_templates import CATEGORY_TEMPLATES
 class QuickScanAgent:
     def __init__(self) -> None:
         self.agent_name = "quick_scan_agent"
+
+    def _contains_unmitigated_term(self, text: str, term: str) -> bool:
+        if term not in text:
+            return False
+        for match in re.finditer(re.escape(term), text):
+            prefix = text[max(0, match.start() - 80):match.start()]
+            if any(
+                marker in prefix
+                for marker in (
+                    "avoid ",
+                    "avoiding ",
+                    "no ",
+                    "not ",
+                    "without ",
+                    "reject ",
+                    "reject or flag",
+                    "flag ",
+                    "do not ",
+                    "don't ",
+                    "never ",
+                )
+            ):
+                continue
+            return True
+        return False
 
     def run(self, context: dict[str, Any]) -> dict[str, Any]:
         category = (context.get("category") or "").strip().lower()
@@ -20,23 +46,23 @@ class QuickScanAgent:
         source_platform = (context.get("source_platform") or "").strip().lower()
         source_url = (context.get("source_url") or "").strip().lower()
         text_blob = " ".join([idea_name, category, notes, observations, source_platform, source_url]).lower()
+        risk_blob = " ".join([idea_name, category, observations, source_platform, source_url]).lower()
         listing_angles = [str(value).lower() for value in template.get("listing_angles", []) if value]
         category_warnings = [str(value).lower() for value in template.get("category_warnings", []) if value]
         evidence_thresholds = template.get("evidence_thresholds", {})
 
         risk_flags: list[str] = []
         counterfeit_terms = ["fake", "replica", "counterfeit", "1:1", "same as original", "mirror quality", "designer", "authentic"]
-        if any(term in text_blob for term in counterfeit_terms):
+        if any(self._contains_unmitigated_term(risk_blob, term) for term in counterfeit_terms):
             risk_flags.append("Potential trademark/counterfeit risk.")
         brand_terms = ["nike", "apple", "gucci", "rolex", "chanel", "sony", "lego", "disney"]
-        if "logo" in text_blob and any(term in text_blob for term in brand_terms):
+        if "logo" in risk_blob and any(self._contains_unmitigated_term(risk_blob, term) for term in brand_terms):
             risk_flags.append("Potential logo or brand infringement risk.")
-        if any(term in text_blob for term in ["battery", "electrical", "medicine", "supplement", "prescription", "ingestible"]):
+        if any(self._contains_unmitigated_term(risk_blob, term) for term in ["battery", "electrical", "medicine", "supplement", "prescription", "ingestible"]):
             risk_flags.append("Potential compliance risk.")
-        for warning in category_warnings:
-            warning_terms = [part.strip() for part in warning.replace(".", "").split() if len(part.strip()) > 3]
-            if warning_terms and any(term in text_blob for term in warning_terms):
-                risk_flags.append(warning)
+        # Category warnings are surfaced in the playbook, but they should not
+        # automatically become risk flags just because the user mentioned a
+        # cautionary term while describing what to avoid.
 
         score = 0
         if category and template:

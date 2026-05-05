@@ -41,7 +41,7 @@ RISK_RULES: tuple[RiskRule, ...] = (
         id="replica_language",
         severity="BLOCKED",
         match_fields=("name", "description", "supplier_title", "supplier_notes", "marketplace_notes", "competitor_text"),
-        patterns=("replica", "1:1", "ua", "same as original", "mirror quality", "unbranded replica"),
+        patterns=("replica", "1:1", "same as original", "mirror quality", "unbranded replica"),
         reason="Replica/counterfeit language detected.",
     ),
     RiskRule(

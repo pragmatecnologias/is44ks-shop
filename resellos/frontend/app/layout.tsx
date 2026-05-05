@@ -37,9 +37,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen bg-[#0a0a0a]">
-      {/* Sidebar */}
-      <aside className="w-64 shrink-0 flex flex-col border-r border-[#1a1a1a] bg-[#0d0d0d]">
+    <html lang="en">
+      <body>
+        <div className="flex min-h-screen bg-[#0a0a0a]">
+          {/* Sidebar */}
+          <aside className="w-64 shrink-0 flex flex-col border-r border-[#1a1a1a] bg-[#0d0d0d]">
         {/* Logo */}
         <div className="flex items-center gap-2 px-5 py-5 border-b border-[#1a1a1a]">
           <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center">
@@ -68,7 +70,9 @@ export default function RootLayout({
 
       {/* Main Content */}
       <main className="flex-1 min-w-0 overflow-auto">{children}</main>
-    </div>
+        </div>
+      </body>
+    </html>
   );
 }
 

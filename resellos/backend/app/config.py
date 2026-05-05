@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     OLLAMA_BASE_URL: str = "http://localhost:11434"
     OLLAMA_MODEL: str = "llama3"
     VISION_LLM_PROVIDER: Literal["qwen_vl", "openai"] = "qwen_vl"
-    VISION_LLM_BASE_URL: str = "http://localhost:8001/v1"
+    VISION_LLM_BASE_URL: str = "http://localhost:1234/v1"
     VISION_LLM_MODEL: str = "Qwen/Qwen3-VL-8B-Instruct"
     VISION_LLM_TIMEOUT_SECONDS: int = 120
     VISION_LLM_API_KEY: str = ""

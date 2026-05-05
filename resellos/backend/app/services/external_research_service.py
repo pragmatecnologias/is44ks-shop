@@ -189,16 +189,24 @@ class ExternalResearchService:
             keyword=query,
             location_code=settings.DATAFORSEO_LOCATION_CODE,
             language_code=settings.DATAFORSEO_LANGUAGE_CODE,
+            depth=max_results,
             priority=1,
             tag=str(job.id),
         )
         job.raw_response = response
-        job.status = "SUBMITTED"
-
         tasks = response.get("tasks") or []
         if tasks:
             task = tasks[0]
             job.provider_task_id = str(task.get("id") or task.get("task_id") or task.get("result", [{}])[0].get("id") or job.id)
+            task_error = int(task.get("status_code") or 0) >= 40000
+            tasks_error = int(response.get("tasks_error") or 0) > 0
+            if task_error or tasks_error or not job.provider_task_id:
+                job.status = "FAILED"
+                job.last_error = task.get("status_message") or response.get("status_message") or "DataForSEO task submission failed."
+                self.db.commit()
+                self.db.refresh(job)
+                raise HTTPException(status_code=502, detail=f"DataForSEO task submission failed: {job.last_error}")
+        job.status = "SUBMITTED"
 
         self.db.commit()
         self.db.refresh(job)
@@ -312,6 +320,22 @@ class ExternalResearchService:
             query = query.filter(ExternalResearchJob.status == status)
         return query.order_by(ExternalResearchJob.created_at.desc()).all()
 
+    def list_candidates(
+        self,
+        *,
+        idea_id: uuid.UUID | None = None,
+        product_id: uuid.UUID | None = None,
+        job_id: uuid.UUID | None = None,
+    ) -> list[EvidenceCandidate]:
+        query = self.db.query(EvidenceCandidate)
+        if idea_id is not None:
+            query = query.filter(EvidenceCandidate.idea_id == idea_id)
+        if product_id is not None:
+            query = query.filter(EvidenceCandidate.product_id == product_id)
+        if job_id is not None:
+            query = query.filter(EvidenceCandidate.job_id == job_id)
+        return query.order_by(EvidenceCandidate.created_at.desc()).all()
+
     def get_job(self, job_id: uuid.UUID) -> ExternalResearchJob | None:
         return self.db.query(ExternalResearchJob).filter(ExternalResearchJob.id == job_id).first()
 
@@ -327,7 +351,20 @@ class ExternalResearchService:
 
         response = self.client.get_google_shopping_products_result(job.provider_task_id)
         job.raw_response = response
-        job.status = "READY"
+        tasks = response.get("tasks") or []
+        if not tasks:
+            job.status = "READY"
+            job.last_error = response.get("status_message") or "No tasks returned from DataForSEO."
+            self.db.commit()
+            self.db.refresh(job)
+            return job
+        task = tasks[0]
+        status_code = int(task.get("status_code") or 0)
+        if status_code < 20000:
+            job.status = "READY"
+            self.db.commit()
+            self.db.refresh(job)
+            return job
         candidates = self.create_candidates_from_job(job, response)
         job.result_count = len(candidates)
         job.status = "IMPORTED"
