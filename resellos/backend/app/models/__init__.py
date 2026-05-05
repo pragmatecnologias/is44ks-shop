@@ -10,8 +10,9 @@ from app.models.supplier import (
     InventoryItem,
     Sale,
     ProductFile,
-    ProductDiscoveryIdea,
+    ProductIdea,
     DiscoveryTask,
+    ProductDiscoveryIdea,
 )
 
 # Aliases for backwards compatibility - avoid duplicate class definitions
@@ -29,6 +30,7 @@ __all__ = [
     "InventoryItem",
     "Sale",
     "ProductFile",
+    "ProductIdea",
     "ProductDiscoveryIdea",
     "DiscoveryTask",
 ]

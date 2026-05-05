@@ -7,31 +7,32 @@ from sqlalchemy.orm import Session
 
 from app.db import get_db
 from app.schemas.product_schema import (
-    DiscoveryIdeaCreate,
-    DiscoveryIdeaResponse,
-    DiscoveryIdeaUpdate,
-    DiscoveryQuickScanRequest,
-    DiscoveryQuickScanResponse,
+    OpportunityBoardRow,
+    ProductIdeaCreate,
+    ProductIdeaResponse,
+    ProductIdeaUpdate,
+    ProductIdeaQuickScanRequest,
+    ProductIdeaQuickScanResponse,
 )
 from app.services.discovery_service import DiscoveryService
 
 router = APIRouter(prefix="/api/discovery", tags=["discovery"])
 
 
-@router.get("", response_model=list[DiscoveryIdeaResponse])
+@router.get("", response_model=list[ProductIdeaResponse])
 def list_ideas(db: Session = Depends(get_db)):
     service = DiscoveryService(db)
     return [service._serialize_idea(idea) for idea in service.list_ideas()]
 
 
-@router.post("", response_model=DiscoveryIdeaResponse, status_code=201)
-def create_idea(data: DiscoveryIdeaCreate, db: Session = Depends(get_db)):
+@router.post("", response_model=ProductIdeaResponse, status_code=201)
+def create_idea(data: ProductIdeaCreate, db: Session = Depends(get_db)):
     service = DiscoveryService(db)
     idea = service.create_idea(data)
     return service._serialize_idea(idea)
 
 
-@router.get("/{idea_id}", response_model=DiscoveryIdeaResponse)
+@router.get("/{idea_id}", response_model=ProductIdeaResponse)
 def get_idea(idea_id: uuid.UUID, db: Session = Depends(get_db)):
     service = DiscoveryService(db)
     idea = service.get_idea(idea_id)
@@ -40,8 +41,8 @@ def get_idea(idea_id: uuid.UUID, db: Session = Depends(get_db)):
     return service._serialize_idea(idea)
 
 
-@router.patch("/{idea_id}", response_model=DiscoveryIdeaResponse)
-def update_idea(idea_id: uuid.UUID, data: DiscoveryIdeaUpdate, db: Session = Depends(get_db)):
+@router.patch("/{idea_id}", response_model=ProductIdeaResponse)
+def update_idea(idea_id: uuid.UUID, data: ProductIdeaUpdate, db: Session = Depends(get_db)):
     service = DiscoveryService(db)
     idea = service.update_idea(idea_id, data)
     if not idea:
@@ -56,10 +57,16 @@ def delete_idea(idea_id: uuid.UUID, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Discovery idea not found")
 
 
-@router.post("/quick-scan", response_model=DiscoveryQuickScanResponse)
-def quick_scan(data: DiscoveryQuickScanRequest, db: Session = Depends(get_db)):
+@router.post("/quick-scan", response_model=ProductIdeaQuickScanResponse)
+def quick_scan(data: ProductIdeaQuickScanRequest, db: Session = Depends(get_db)):
     service = DiscoveryService(db)
     return service.quick_scan(data)
+
+
+@router.get("/opportunity-board", response_model=list[OpportunityBoardRow])
+def opportunity_board(db: Session = Depends(get_db)):
+    service = DiscoveryService(db)
+    return service.opportunity_board()
 
 
 @router.post("/{idea_id}/promote")

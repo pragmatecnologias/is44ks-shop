@@ -222,6 +222,9 @@ export interface DecisionSummary {
   recommendation?: FinalDecision;
   research_verdict?: 'REJECT' | 'WEAK_IDEA' | 'NEEDS_MORE_RESEARCH' | 'PROMISING_RESEARCH' | 'READY_FOR_SAMPLE';
   buy_readiness?: 'NOT_READY' | 'READY';
+  buy_readiness_status?: 'NOT_READY' | 'ALMOST_READY' | 'READY';
+  research_completeness_score?: number;
+  opportunity_score?: number;
   total_score?: number;
   confidence?: 'LOW' | 'MEDIUM' | 'HIGH';
   reason?: string;
@@ -330,13 +333,13 @@ export interface DiscoveryTask {
   idea_id: string;
   task_type: string;
   title: string;
-  status: 'TODO' | 'DONE' | 'SKIPPED' | string;
+  status: 'TODO' | 'DONE' | 'SKIPPED' | 'BLOCKED' | string;
   notes?: string;
   sort_order: number;
   created_at: string;
 }
 
-export interface DiscoveryIdea {
+export interface ProductIdea {
   id: string;
   idea_name: string;
   category?: string;
@@ -350,9 +353,12 @@ export interface DiscoveryIdea {
   quick_profit_signal?: string;
   research_priority?: string;
   notes?: string;
-  status: string;
+  status: 'NEW_IDEA' | 'QUICK_SCAN_NEEDED' | 'QUICK_SCAN_COMPLETE' | 'REJECTED' | 'PROMISING' | 'PROMOTED_TO_PRODUCT' | 'ARCHIVED' | string;
   quick_scan_verdict?: string;
   quick_scan_reason?: string;
+  research_completeness_score?: number;
+  opportunity_score?: number;
+  buy_readiness_status?: 'NOT_READY' | 'ALMOST_READY' | 'READY' | string;
   suggested_keywords?: string[] | string | null;
   required_next_evidence?: string[] | string | null;
   promoted_product_id?: string | null;
@@ -361,7 +367,9 @@ export interface DiscoveryIdea {
   updated_at: string;
 }
 
-export interface DiscoveryQuickScanInput {
+export type DiscoveryIdea = ProductIdea;
+
+export interface ProductIdeaQuickScanInput {
   idea_name: string;
   category?: string;
   source_platform?: string;
@@ -370,17 +378,47 @@ export interface DiscoveryQuickScanInput {
   estimated_landed_cost?: number;
   why_interesting?: string;
   notes?: string;
+  marketplace_observation?: string;
 }
 
-export interface DiscoveryQuickScanResponse {
-  idea: DiscoveryIdea;
+export type DiscoveryQuickScanInput = ProductIdeaQuickScanInput;
+
+export interface ProductIdeaQuickScanResponse {
+  idea: ProductIdea;
   quick_scan_verdict: string;
   quick_scan_reason: string;
   research_priority: string;
+  research_completeness_score?: number;
+  opportunity_score?: number;
+  buy_readiness_status?: string;
   required_next_evidence: string[];
   suggested_keywords: string[];
   risk_flags: string[];
   tasks: DiscoveryTask[];
+}
+
+export type DiscoveryQuickScanResponse = ProductIdeaQuickScanResponse;
+
+export interface OpportunityBoardRow {
+  id: string;
+  entity_type: 'idea' | 'product' | string;
+  title: string;
+  category?: string;
+  research_completeness_score: number;
+  research_verdict?: string;
+  buy_readiness_status?: string;
+  risk_level?: string;
+  sold_evidence_count: number;
+  active_evidence_count: number;
+  median_sold_price?: number | null;
+  median_active_price?: number | null;
+  best_landed_cost?: number | null;
+  best_profit_scenario?: string | null;
+  competition_gap_score?: number | null;
+  supplier_confidence?: string | null;
+  next_action?: string | null;
+  source_platform?: string | null;
+  status?: string | null;
 }
 
 export interface ResearchRunResponse {

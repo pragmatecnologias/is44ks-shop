@@ -78,6 +78,8 @@ class MarketAgent(BaseAgent):
         median_sold_price = _median(sold_prices)
         median_active_shipping = _median(active_shipping_prices)
         median_sold_shipping = _median(sold_shipping_prices)
+        shipping_values = [value for value in [median_active_shipping, median_sold_shipping] if value is not None]
+        median_shipping = _median([float(value) for value in shipping_values]) if shipping_values else None
         marketplace_coverage = sorted(
             {
                 str(row.get("marketplace")).strip()
@@ -88,14 +90,14 @@ class MarketAgent(BaseAgent):
 
         market_price_missing = median_sold_price is None and median_active_price is None
         supporting_evidence_count = len(supporting_rows)
-        insufficient_data = sold_listing_count == 0 or market_price_missing
+        insufficient_data = sold_listing_count < 5 or market_price_missing
 
         if sold_listing_count >= 10 and active_listing_count >= 10 and median_sold_price is not None:
             evidence_quality = "HIGH"
-        elif sold_listing_count > 0 and median_sold_price is not None:
+        elif sold_listing_count >= 5 and median_sold_price is not None:
             evidence_quality = "MEDIUM"
-        elif active_listing_count > 0 or marketplace_coverage:
-            evidence_quality = "MEDIUM"
+        elif active_listing_count >= 5 or marketplace_coverage:
+            evidence_quality = "LOW"
         else:
             evidence_quality = "LOW"
 
@@ -118,6 +120,18 @@ class MarketAgent(BaseAgent):
         if supporting_evidence_count == 0:
             required_next_evidence.append("Add screenshots or manual notes for support.")
 
+        demand_evidence_quality = "HIGH" if sold_listing_count >= 10 else "MEDIUM" if sold_listing_count >= 5 else "LOW"
+        market_presence_quality = "HIGH" if active_listing_count >= 10 else "MEDIUM" if active_listing_count >= 5 else "LOW"
+        research_completeness_score = 0
+        research_completeness_score += min(30, sold_listing_count * 4)
+        research_completeness_score += min(20, active_listing_count * 2)
+        research_completeness_score += 15 if median_sold_price is not None else 0
+        research_completeness_score += 10 if median_active_price is not None else 0
+        research_completeness_score += 10 if median_shipping is not None else 0
+        research_completeness_score += min(15, supporting_evidence_count * 5)
+        research_completeness_score += 10 if marketplace_coverage else 0
+        research_completeness_score = max(0, min(100, research_completeness_score))
+
         if evidence_quality == "HIGH":
             recommended_research_action = "Proceed to profit and competition analysis."
         elif sold_listing_count < 5:
@@ -135,12 +149,16 @@ class MarketAgent(BaseAgent):
                 "supporting_evidence_count": supporting_evidence_count,
                 "active_listing_count": active_listing_count,
                 "sold_listing_count": sold_listing_count,
+                "research_completeness_score": research_completeness_score,
                 "demand_signal": "HIGH" if sold_listing_count >= 10 else "MEDIUM" if sold_listing_count > 0 else "UNKNOWN",
+                "demand_evidence_quality": demand_evidence_quality,
+                "market_presence_quality": market_presence_quality,
                 "competition_level": "HIGH" if active_listing_count >= 10 else "MEDIUM" if active_listing_count > 0 else "UNKNOWN",
                 "median_active_price": median_active_price,
                 "median_sold_price": median_sold_price,
                 "median_active_shipping": median_active_shipping,
                 "median_sold_shipping": median_sold_shipping,
+                "median_shipping": median_shipping,
                 "active_price_range": active_price_range,
                 "sold_price_range": sold_price_range,
                 "marketplace_coverage": marketplace_coverage,

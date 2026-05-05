@@ -5,8 +5,12 @@ import type {
   DiscoveryIdea,
   DiscoveryQuickScanInput,
   DiscoveryQuickScanResponse,
+  OpportunityBoardRow,
   MarketplaceEvidenceInput,
   Product,
+  ProductIdea,
+  ProductIdeaQuickScanInput,
+  ProductIdeaQuickScanResponse,
   ProductSource,
   ProductStatus,
   ResearchCockpit,
@@ -93,8 +97,11 @@ const DEMO_DISCOVERY_IDEAS: DiscoveryIdea[] = [
     research_priority: 'MEDIUM',
     notes: 'Demo discovery idea.',
     status: 'QUICK_SCAN_COMPLETE',
-    quick_scan_verdict: 'CONTINUE_RESEARCH',
+    quick_scan_verdict: 'NEEDS_MARKET_CHECK',
     quick_scan_reason: 'Promising but needs evidence.',
+    research_completeness_score: 40,
+    opportunity_score: 58,
+    buy_readiness_status: 'NOT_READY',
     suggested_keywords: ['car trash bag holder', 'car organizer'],
     required_next_evidence: ['Add 5 sold listings', 'Add 10 active listings'],
     tasks: [
@@ -129,6 +136,46 @@ function demoDashboard(): DashboardStats {
 
 function demoDiscovery(): DiscoveryIdea[] {
   return DEMO_DISCOVERY_IDEAS;
+}
+
+function demoOpportunityBoard(): OpportunityBoardRow[] {
+  const idea = DEMO_DISCOVERY_IDEAS[0];
+  const product = DEMO_PRODUCTS[0];
+  return [
+    {
+      id: idea.id,
+      entity_type: 'idea',
+      title: idea.idea_name,
+      category: idea.category,
+      research_completeness_score: idea.research_completeness_score ?? 40,
+      research_verdict: idea.quick_scan_verdict,
+      buy_readiness_status: idea.buy_readiness_status,
+      sold_evidence_count: 0,
+      active_evidence_count: 0,
+      best_landed_cost: idea.estimated_landed_cost ?? null,
+      source_platform: idea.source_platform,
+      status: idea.status,
+    },
+    {
+      id: product.id,
+      entity_type: 'product',
+      title: product.name,
+      category: product.category,
+      research_completeness_score: 78,
+      research_verdict: product.final_decision,
+      buy_readiness_status: 'READY',
+      risk_level: product.risk_level,
+      sold_evidence_count: 1,
+      active_evidence_count: 0,
+      median_sold_price: 18.99,
+      best_landed_cost: 5.7,
+      best_profit_scenario: 'eBay buyer-paid shipping',
+      competition_gap_score: 68,
+      supplier_confidence: 'A',
+      next_action: product.next_action,
+      status: product.status,
+    },
+  ];
 }
 
 function demoCockpit(productId: string): ResearchCockpit {
@@ -326,6 +373,10 @@ export async function getProductCockpit(id: string): Promise<ResearchCockpit | n
 
 export async function listDiscoveryIdeas(): Promise<DiscoveryIdea[]> {
   return getMaybe('/api/discovery', demoDiscovery());
+}
+
+export async function getOpportunityBoard(): Promise<OpportunityBoardRow[]> {
+  return getMaybe('/api/discovery/opportunity-board', demoOpportunityBoard());
 }
 
 export async function createDiscoveryIdea(data: DiscoveryQuickScanInput): Promise<DiscoveryIdea> {

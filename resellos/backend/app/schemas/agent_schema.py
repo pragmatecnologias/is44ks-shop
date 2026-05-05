@@ -44,12 +44,16 @@ class MarketAgentOutput(BaseModel):
     supporting_evidence_count: int = 0
     active_listing_count: int = 0
     sold_listing_count: int = 0
+    research_completeness_score: int = 0
     demand_signal: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"
+    demand_evidence_quality: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"
+    market_presence_quality: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"
     competition_level: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"
     median_active_price: float | None = None
     median_sold_price: float | None = None
     median_active_shipping: float | None = None
     median_sold_shipping: float | None = None
+    median_shipping: float | None = None
     active_price_range: list[float] = Field(default_factory=list)
     sold_price_range: list[float] = Field(default_factory=list)
     marketplace_coverage: list[str] = Field(default_factory=list)
@@ -132,6 +136,9 @@ class DecisionAgentOutput(BaseModel):
     recommendation: DecisionLevel = "SKIP"
     research_verdict: Literal["REJECT", "WEAK_IDEA", "NEEDS_MORE_RESEARCH", "PROMISING_RESEARCH", "READY_FOR_SAMPLE"] = "NEEDS_MORE_RESEARCH"
     buy_readiness: Literal["NOT_READY", "READY"] = "NOT_READY"
+    buy_readiness_status: Literal["NOT_READY", "ALMOST_READY", "READY"] = "NOT_READY"
+    research_completeness_score: int = 0
+    opportunity_score: int = 0
     total_score: int = 0
     confidence: ConfidenceLevel = "LOW"
     reason: str = ""

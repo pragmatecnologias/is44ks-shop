@@ -77,6 +77,7 @@ class AgentContractTests(unittest.TestCase):
 
         self.assertEqual(result["output_json"]["recommendation"], "WATCHLIST")
         self.assertEqual(result["output_json"]["research_verdict"], "PROMISING_RESEARCH")
+        self.assertIn(result["output_json"]["buy_readiness_status"], {"NOT_READY", "ALMOST_READY", "READY"})
         self.assertGreater(result["output_json"]["total_score"], 0)
 
     def test_decision_agent_caps_buy_when_market_data_is_thin(self) -> None:
@@ -159,6 +160,7 @@ class AgentContractTests(unittest.TestCase):
         self.assertEqual(output["sold_listing_count"], 5)
         self.assertEqual(output["active_listing_count"], 2)
         self.assertEqual(output["median_sold_price"], 14.0)
+        self.assertIn("research_completeness_score", output)
         self.assertFalse(output["insufficient_data"])
 
     def test_competition_agent_reads_competitor_listings(self) -> None:

@@ -15,16 +15,18 @@ import {
 import {
   createDiscoveryIdea,
   deleteDiscoveryIdea,
+  getOpportunityBoard,
   listDiscoveryIdeas,
   promoteDiscoveryIdea,
   quickScanDiscoveryIdea,
 } from '@/lib/api';
-import type { DiscoveryIdea, DiscoveryQuickScanInput } from '@/lib/types';
+import type { DiscoveryIdea, DiscoveryQuickScanInput, OpportunityBoardRow } from '@/lib/types';
 
 const emptyQuickScan: DiscoveryQuickScanInput = {
   idea_name: '',
   category: 'Car accessories',
   source_platform: 'Alibaba',
+  marketplace_observation: '',
 };
 
 const CATEGORY_HINTS = [
@@ -39,6 +41,7 @@ const CATEGORY_HINTS = [
 
 export default function DiscoveryPage() {
   const [ideas, setIdeas] = useState<DiscoveryIdea[]>([]);
+  const [board, setBoard] = useState<OpportunityBoardRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [scanning, setScanning] = useState(false);
@@ -50,6 +53,7 @@ export default function DiscoveryPage() {
     setError(null);
     try {
       setIdeas(await listDiscoveryIdeas());
+      setBoard(await getOpportunityBoard());
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load discovery ideas');
     } finally {
@@ -111,7 +115,8 @@ export default function DiscoveryPage() {
   }
 
   const readyCount = ideas.filter((idea) => idea.quick_scan_verdict === 'PROMISING').length;
-  const promotedCount = ideas.filter((idea) => idea.status === 'PROMOTED_TO_PRODUCT_RESEARCH').length;
+  const marketCheckCount = ideas.filter((idea) => idea.quick_scan_verdict === 'NEEDS_MARKET_CHECK').length;
+  const promotedCount = ideas.filter((idea) => idea.status === 'PROMOTED_TO_PRODUCT').length;
 
   if (loading) {
     return (
@@ -127,14 +132,15 @@ export default function DiscoveryPage() {
         <header className="rounded-[28px] border border-zinc-800 bg-[radial-gradient(circle_at_top_left,_rgba(79,70,229,0.22),_transparent_28%),linear-gradient(180deg,rgba(9,9,11,0.96),rgba(17,17,17,0.96))] p-6 shadow-2xl shadow-black/20">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-semibold tracking-tight text-white">Idea Lab</h1>
+              <h1 className="text-3xl font-semibold tracking-tight text-white">Product Discovery</h1>
               <p className="mt-2 text-sm text-zinc-400">
-                Quick-scan product ideas before they become full research cases.
+                Product discovery starts here. Quick-scan rough ideas, then promote only the strongest ones into full research.
               </p>
             </div>
             <div className="flex gap-3 text-xs text-zinc-300">
               <Pill label={`Ideas: ${ideas.length}`} />
               <Pill label={`Promising: ${readyCount}`} />
+              <Pill label={`Need market check: ${marketCheckCount}`} />
               <Pill label={`Promoted: ${promotedCount}`} />
             </div>
           </div>
@@ -164,8 +170,9 @@ export default function DiscoveryPage() {
               <Input label="Estimated landed cost" type="number" step="0.01" value={form.estimated_landed_cost?.toString() ?? ''} onChange={(value) => setForm((s) => ({ ...s, estimated_landed_cost: value ? Number(value) : undefined }))} />
             </div>
 
-            <Textarea label="Why interesting" value={form.why_interesting || ''} onChange={(value) => setForm((s) => ({ ...s, why_interesting: value }))} />
-            <Textarea label="Notes" value={form.notes || ''} onChange={(value) => setForm((s) => ({ ...s, notes: value }))} />
+              <Textarea label="Why interesting" value={form.why_interesting || ''} onChange={(value) => setForm((s) => ({ ...s, why_interesting: value }))} />
+              <Textarea label="Marketplace observation" value={(form as DiscoveryQuickScanInput & { marketplace_observation?: string }).marketplace_observation || ''} onChange={(value) => setForm((s) => ({ ...s, marketplace_observation: value }))} />
+              <Textarea label="Notes" value={form.notes || ''} onChange={(value) => setForm((s) => ({ ...s, notes: value }))} />
 
             <datalist id="category-hints">
               {CATEGORY_HINTS.map((hint) => (
@@ -204,10 +211,10 @@ export default function DiscoveryPage() {
             </div>
 
             <div className="space-y-3 text-sm text-zinc-300">
-              <Step title="1. Enter an idea" detail="Use a name, category, and rough costs." />
+              <Step title="1. Enter an idea" detail="Use a name, category, rough costs, and one marketplace observation." />
               <Step title="2. Quick scan" detail="Get a first-pass verdict, risk flags, and research priority." />
-              <Step title="3. Collect evidence" detail="Add sold listings, active listings, and supplier options." />
-              <Step title="4. Promote" detail="Move promising ideas into full product research." />
+              <Step title="3. Collect evidence" detail="Add sold listings, active listings, suppliers, and competitors." />
+              <Step title="4. Promote" detail="Move promising ideas into full product research when the gates are clear." />
             </div>
           </section>
         </div>
@@ -233,6 +240,54 @@ export default function DiscoveryPage() {
                 />
               ))
             )}
+          </div>
+        </section>
+
+        <section className="rounded-[24px] border border-zinc-800 bg-zinc-950/80 p-5 shadow-xl shadow-black/10">
+          <div className="mb-4 flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-300">
+              <Sparkles className="h-4 w-4" />
+            </div>
+            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-200">Opportunity Board</h2>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-zinc-800">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-zinc-950/90 text-xs uppercase tracking-[0.14em] text-zinc-500">
+                <tr>
+                  <th className="px-4 py-3">Idea / Product</th>
+                  <th className="px-4 py-3">Type</th>
+                  <th className="px-4 py-3">Readiness</th>
+                  <th className="px-4 py-3">Evidence</th>
+                  <th className="px-4 py-3">Market</th>
+                  <th className="px-4 py-3">Best Cost</th>
+                  <th className="px-4 py-3">Verdict</th>
+                  <th className="px-4 py-3">Next Action</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-800">
+                {board.map((row) => (
+                  <tr key={row.id} className="bg-zinc-950/40">
+                    <td className="px-4 py-3 text-white">
+                      <div className="font-medium">{row.title}</div>
+                      <div className="text-xs text-zinc-500">{row.category || 'Uncategorized'}</div>
+                    </td>
+                    <td className="px-4 py-3 text-zinc-300">{row.entity_type}</td>
+                    <td className="px-4 py-3 text-zinc-300">{row.research_completeness_score}%</td>
+                    <td className="px-4 py-3 text-zinc-300">
+                      {row.sold_evidence_count} sold / {row.active_evidence_count} active
+                    </td>
+                    <td className="px-4 py-3 text-zinc-300">
+                      {row.median_sold_price != null ? money(row.median_sold_price) : '—'}
+                    </td>
+                    <td className="px-4 py-3 text-zinc-300">
+                      {money(row.best_landed_cost)}
+                    </td>
+                    <td className="px-4 py-3 text-zinc-300">{row.research_verdict || row.status || '—'}</td>
+                    <td className="px-4 py-3 text-zinc-400">{row.next_action || '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
       </div>
@@ -267,7 +322,7 @@ function IdeaCard({
           <button onClick={onDelete} className="text-xs text-zinc-500 hover:text-red-400">
             Delete
           </button>
-          {idea.status !== 'PROMOTED_TO_PRODUCT_RESEARCH' ? (
+          {idea.status !== 'PROMOTED_TO_PRODUCT' ? (
             <button onClick={onPromote} className="inline-flex items-center gap-1 rounded-lg border border-indigo-500/20 bg-indigo-500/10 px-2 py-1 text-xs text-indigo-300 hover:bg-indigo-500/20">
               Promote <ArrowRight className="h-3 w-3" />
             </button>
@@ -278,6 +333,8 @@ function IdeaCard({
       <div className="mt-3 grid gap-2 text-sm text-zinc-300 md:grid-cols-2">
         <StatRow label="Verdict" value={idea.quick_scan_verdict || 'IDEA'} />
         <StatRow label="Priority" value={idea.research_priority || '—'} />
+        <StatRow label="Readiness" value={idea.buy_readiness_status || 'NOT_READY'} />
+        <StatRow label="Research" value={`${idea.research_completeness_score ?? 0}%`} />
         <StatRow label="Supplier cost" value={money(idea.rough_supplier_cost)} />
         <StatRow label="Landed cost" value={money(idea.estimated_landed_cost)} />
       </div>

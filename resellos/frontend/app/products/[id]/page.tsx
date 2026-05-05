@@ -87,6 +87,7 @@ export default function ProductDetailPage() {
   const finalDecision = decision.recommendation || product?.final_decision || 'NEEDS_RESEARCH';
   const confidence = decision.confidence || cockpit?.confidence || product?.confidence || 'LOW';
   const score = decision.total_score ?? product?.final_score ?? 0;
+  const researchCompleteness = decision.research_completeness_score ?? 0;
   const nextAction = decision.next_action || cockpit?.next_action || product?.next_action || 'Add evidence and run research.';
   const missingEvidence = cockpit?.missing_evidence?.length ? cockpit.missing_evidence : product?.missing_evidence ?? [];
   const supplierSources = cockpit?.sources ?? [];
@@ -96,7 +97,7 @@ export default function ProductDetailPage() {
   const competition = cockpit?.competition ?? null;
   const reorder = cockpit?.reorder ?? null;
   const researchVerdict = decision.research_verdict || 'NEEDS_MORE_RESEARCH';
-  const buyReadiness = decision.buy_readiness || 'NOT_READY';
+  const buyReadinessStatus = decision.buy_readiness_status || 'NOT_READY';
   const marketReport = reports.find((report) => report.agent_name === 'market_agent');
   const marketData = safeJson(marketReport?.output_json);
   const hardBlockers = cockpit?.hard_blockers?.length ? cockpit.hard_blockers : decision.hard_blockers ?? [];
@@ -144,9 +145,10 @@ export default function ProductDetailPage() {
       { label: 'Status', value: cockpit?.current_status || product.status },
       { label: 'Decision', value: finalDecision.replace(/_/g, ' ') },
       { label: 'Research', value: researchVerdict.replace(/_/g, ' ') },
-      { label: 'Ready', value: buyReadiness },
+      { label: 'Readiness', value: buyReadinessStatus.replace(/_/g, ' ') },
       { label: 'Score', value: `${score}/100` },
-      { label: 'Readiness', value: `${readinessScore}%` },
+      { label: 'Research %', value: `${researchCompleteness}%` },
+      { label: 'Checklist', value: `${readinessScore}%` },
       { label: 'Confidence', value: confidence },
       { label: 'Max qty', value: maxQuantityToBuy ? String(maxQuantityToBuy) : '—' },
       { label: 'Max landed', value: maxLandedCost ? money(maxLandedCost) : '—' },
@@ -154,7 +156,7 @@ export default function ProductDetailPage() {
       { label: 'Can compete', value: canCompete ? 'Yes' : 'No' },
       { label: 'Reorder', value: reorderRecommendation.replace(/_/g, ' ') },
     ];
-  }, [product, cockpit?.current_status, finalDecision, researchVerdict, buyReadiness, score, readinessScore, confidence, maxQuantityToBuy, maxLandedCost, targetSalePrice, targetPricePresent, canCompete, reorderRecommendation]);
+  }, [product, cockpit?.current_status, finalDecision, researchVerdict, buyReadinessStatus, score, researchCompleteness, readinessScore, confidence, maxQuantityToBuy, maxLandedCost, targetSalePrice, targetPricePresent, canCompete, reorderRecommendation]);
 
   async function handleRunResearch() {
     if (!product) return;
@@ -256,7 +258,7 @@ export default function ProductDetailPage() {
                 <ArrowLeft className="h-5 w-5" />
               </Link>
               <div>
-                <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                   <h1 className="text-3xl font-semibold tracking-tight text-white">{product.name}</h1>
                   <StatusBadge status={product.status} />
                   {product.risk_level && <RiskBadge risk={product.risk_level} />}
@@ -282,6 +284,7 @@ export default function ProductDetailPage() {
                 Run Research
               </button>
               <div className={`text-right text-lg font-semibold ${decisionAccent}`}>{finalDecision.replace(/_/g, ' ')}</div>
+              <div className="text-right text-xs text-zinc-400">Research: {researchVerdict.replace(/_/g, ' ')} · {buyReadinessStatus.replace(/_/g, ' ')}</div>
               <div className="text-xs text-zinc-400">Next: {nextAction}</div>
             </div>
           </div>
@@ -327,7 +330,10 @@ export default function ProductDetailPage() {
           <Panel title="Decision Summary" icon={CheckCircle2}>
             <div className="space-y-3">
               <StatRow label="Decision" value={finalDecision.replace(/_/g, ' ')} />
+              <StatRow label="Research verdict" value={researchVerdict.replace(/_/g, ' ')} />
+              <StatRow label="Buy readiness" value={buyReadinessStatus.replace(/_/g, ' ')} />
               <StatRow label="Score" value={`${score}/100`} />
+              <StatRow label="Research %" value={`${researchCompleteness}%`} />
               <StatRow label="Confidence" value={confidence} />
               <StatRow label="Max quantity" value={maxQuantityToBuy ? String(maxQuantityToBuy) : '—'} />
               <StatRow label="Target price" value={targetPricePresent ? money(targetSalePrice) : '—'} />
@@ -344,7 +350,7 @@ export default function ProductDetailPage() {
                     <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Readiness score</div>
                     <div className="mt-1 text-2xl font-semibold text-white">{readinessScore}%</div>
                   </div>
-                  <div className={`text-xs font-semibold ${buyReadiness === 'READY' ? 'text-emerald-400' : 'text-yellow-400'}`}>{buyReadiness.replace(/_/g, ' ')}</div>
+                  <div className={`text-xs font-semibold ${buyReadinessStatus === 'READY' ? 'text-emerald-400' : 'text-yellow-400'}`}>{buyReadinessStatus.replace(/_/g, ' ')}</div>
                 </div>
                 <div className="mt-2 text-xs text-zinc-400">Main blocker: {mainBlocker}</div>
               </div>

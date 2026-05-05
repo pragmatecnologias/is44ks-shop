@@ -8,8 +8,14 @@ from typing import Any
 from sqlalchemy.orm import Session
 
 from app.models.product import Product
-from app.models.supplier import DiscoveryTask, ProductDiscoveryIdea
-from app.schemas.product_schema import DiscoveryIdeaCreate, DiscoveryQuickScanRequest, DiscoveryIdeaUpdate, ProductCreate
+from app.models.supplier import DiscoveryTask, ProductIdea
+from app.schemas.product_schema import (
+    OpportunityBoardRow,
+    ProductCreate,
+    ProductIdeaCreate,
+    ProductIdeaQuickScanRequest,
+    ProductIdeaUpdate,
+)
 from app.services.product_service import ProductService
 
 
@@ -95,14 +101,17 @@ class DiscoveryService:
     def __init__(self, db: Session):
         self.db = db
 
-    def list_ideas(self) -> list[ProductDiscoveryIdea]:
-        return self.db.query(ProductDiscoveryIdea).order_by(ProductDiscoveryIdea.updated_at.desc()).all()
+    def list_ideas(self) -> list[ProductIdea]:
+        return self.db.query(ProductIdea).order_by(ProductIdea.updated_at.desc()).all()
 
-    def get_idea(self, idea_id: uuid.UUID) -> ProductDiscoveryIdea | None:
-        return self.db.query(ProductDiscoveryIdea).filter(ProductDiscoveryIdea.id == idea_id).first()
+    def get_idea(self, idea_id: uuid.UUID) -> ProductIdea | None:
+        return self.db.query(ProductIdea).filter(ProductIdea.id == idea_id).first()
 
-    def create_idea(self, data: DiscoveryIdeaCreate) -> ProductDiscoveryIdea:
-        idea = ProductDiscoveryIdea(
+    def create_idea(self, data: ProductIdeaCreate) -> ProductIdea:
+        notes = data.notes or ""
+        if getattr(data, "marketplace_observation", None):
+            notes = "\n".join(part for part in [notes, f"Marketplace observation: {data.marketplace_observation}"] if part)
+        idea = ProductIdea(
             idea_name=data.idea_name,
             category=data.category,
             source_platform=data.source_platform,
@@ -110,15 +119,15 @@ class DiscoveryService:
             rough_supplier_cost=data.rough_supplier_cost,
             estimated_landed_cost=data.estimated_landed_cost,
             why_interesting=data.why_interesting,
-            notes=data.notes,
-            status="IDEA",
+            notes=notes or None,
+            status=data.status or "QUICK_SCAN_NEEDED",
         )
         self.db.add(idea)
         self.db.commit()
         self.db.refresh(idea)
         return idea
 
-    def update_idea(self, idea_id: uuid.UUID, data: DiscoveryIdeaUpdate) -> ProductDiscoveryIdea | None:
+    def update_idea(self, idea_id: uuid.UUID, data: ProductIdeaUpdate) -> ProductIdea | None:
         idea = self.get_idea(idea_id)
         if not idea:
             return None
@@ -138,13 +147,18 @@ class DiscoveryService:
         self.db.commit()
         return True
 
-    def quick_scan(self, data: DiscoveryQuickScanRequest) -> dict[str, Any]:
+    def quick_scan(self, data: ProductIdeaQuickScanRequest) -> dict[str, Any]:
         template = CATEGORY_TEMPLATES.get(_norm_category(data.category), {})
-        required_evidence = list(template.get("required_evidence", [
-            "5 sold listings",
-            "10 active listings",
-            "supplier cost",
-        ]))
+        required_evidence = list(
+            template.get(
+                "required_evidence",
+                [
+                    "5 sold listings",
+                    "10 active listings",
+                    "supplier cost",
+                ],
+            )
+        )
         suggested_keywords = list(template.get("suggested_keywords", []))
 
         risk_flags: list[str] = []
@@ -154,6 +168,7 @@ class DiscoveryService:
                 data.category or "",
                 data.why_interesting or "",
                 data.notes or "",
+                data.marketplace_observation or "",
             ]
             if part
         ).lower()
@@ -178,14 +193,14 @@ class DiscoveryService:
 
         score = max(0, min(100, score))
 
-        if risk_flags and score < 45:
+        if risk_flags and score < 40:
             verdict = "REJECT"
         elif score >= 75:
             verdict = "PROMISING"
         elif score >= 55:
-            verdict = "CONTINUE_RESEARCH"
+            verdict = "NEEDS_MARKET_CHECK"
         else:
-            verdict = "WEAK"
+            verdict = "NEEDS_MARKET_CHECK"
 
         if data.rough_supplier_cost is None:
             required_evidence.append("rough supplier cost")
@@ -202,17 +217,17 @@ class DiscoveryService:
 
         suggested_keywords = list(dict.fromkeys([kw for kw in suggested_keywords if kw]))
 
-        research_priority = "HIGH" if verdict == "PROMISING" else "MEDIUM" if verdict == "CONTINUE_RESEARCH" else "LOW"
+        research_priority = "HIGH" if verdict == "PROMISING" else "MEDIUM" if verdict == "NEEDS_MARKET_CHECK" else "LOW"
         reason = "Quick scan completed."
         if verdict == "REJECT":
             reason = "Risk terms or weak economics suggest skipping this idea."
         elif verdict == "PROMISING":
             reason = "The idea looks small, cheap, and likely worth deeper research."
-        elif verdict == "WEAK":
-            reason = "The idea needs stronger evidence or better economics."
+        elif verdict == "NEEDS_MARKET_CHECK":
+            reason = "The idea needs market evidence before it can be promoted."
 
         idea = self.create_idea(
-            DiscoveryIdeaCreate(
+            ProductIdeaCreate(
                 idea_name=data.idea_name,
                 category=data.category,
                 source_platform=data.source_platform,
@@ -221,6 +236,8 @@ class DiscoveryService:
                 estimated_landed_cost=data.estimated_landed_cost,
                 why_interesting=data.why_interesting,
                 notes=data.notes,
+                marketplace_observation=data.marketplace_observation,
+                status="QUICK_SCAN_COMPLETE",
             )
         )
 
@@ -234,6 +251,8 @@ class DiscoveryService:
             suggested_keywords=suggested_keywords,
             quick_market_signal="Need sold and active checks" if verdict != "REJECT" else "Skip for now",
             quick_profit_signal="Unknown" if data.estimated_landed_cost is None else "Potentially viable" if score >= 55 else "Weak",
+            research_completeness_score=min(100, max(0, score)),
+            opportunity_score=min(100, max(0, score)),
         )
 
         tasks = self._replace_tasks(
@@ -250,6 +269,9 @@ class DiscoveryService:
             "quick_scan_verdict": idea.quick_scan_verdict,
             "quick_scan_reason": idea.quick_scan_reason,
             "research_priority": idea.research_priority,
+            "research_completeness_score": min(100, max(0, score)),
+            "opportunity_score": min(100, max(0, score)),
+            "buy_readiness_status": "ALMOST_READY" if verdict == "PROMISING" else "NOT_READY",
             "required_next_evidence": _json_load(idea.required_next_evidence, []),
             "suggested_keywords": _json_load(idea.suggested_keywords, []),
             "risk_flags": _json_load(idea.risk_flags, []),
@@ -274,14 +296,14 @@ class DiscoveryService:
             )
         )
         idea.promoted_product_id = product.id
-        idea.status = "PROMOTED_TO_PRODUCT_RESEARCH"
+        idea.status = "PROMOTED_TO_PRODUCT"
         self.db.commit()
         self.db.refresh(idea)
         return product
 
     def _apply_scan_result(
         self,
-        idea: ProductDiscoveryIdea,
+        idea: ProductIdea,
         *,
         verdict: str,
         reason: str,
@@ -291,8 +313,15 @@ class DiscoveryService:
         suggested_keywords: list[str],
         quick_market_signal: str,
         quick_profit_signal: str,
+        research_completeness_score: int,
+        opportunity_score: int,
     ) -> None:
-        idea.status = "QUICK_SCAN_COMPLETE"
+        if verdict == "REJECT":
+            idea.status = "REJECTED"
+        elif verdict == "PROMISING":
+            idea.status = "PROMISING"
+        else:
+            idea.status = "QUICK_SCAN_COMPLETE"
         idea.quick_scan_verdict = verdict
         idea.quick_scan_reason = reason
         idea.research_priority = priority
@@ -301,6 +330,7 @@ class DiscoveryService:
         idea.suggested_keywords = _json_dump(suggested_keywords)
         idea.quick_market_signal = quick_market_signal
         idea.quick_profit_signal = quick_profit_signal
+        idea.quick_scan_reason = reason
         idea.updated_at = datetime.utcnow()
         self.db.commit()
         self.db.refresh(idea)
@@ -324,13 +354,23 @@ class DiscoveryService:
             self.db.refresh(task)
         return created
 
-    def _serialize_idea(self, idea: ProductDiscoveryIdea) -> dict[str, Any]:
+    def _serialize_idea(self, idea: ProductIdea) -> dict[str, Any]:
         tasks = (
             self.db.query(DiscoveryTask)
             .filter(DiscoveryTask.idea_id == idea.id)
             .order_by(DiscoveryTask.sort_order.asc(), DiscoveryTask.created_at.asc())
             .all()
         )
+        done_tasks = sum(1 for task in tasks if task.status == "DONE")
+        research_completeness_score = 0
+        if tasks:
+            research_completeness_score += min(60, int((done_tasks / len(tasks)) * 60))
+        if idea.status == "PROMISING":
+            research_completeness_score += 25
+        elif idea.status == "QUICK_SCAN_COMPLETE":
+            research_completeness_score += 15
+        elif idea.status == "REJECTED":
+            research_completeness_score += 5
         return {
             "id": str(idea.id),
             "idea_name": idea.idea_name,
@@ -348,6 +388,9 @@ class DiscoveryService:
             "status": idea.status,
             "quick_scan_verdict": idea.quick_scan_verdict,
             "quick_scan_reason": idea.quick_scan_reason,
+            "research_completeness_score": min(100, research_completeness_score),
+            "opportunity_score": min(100, research_completeness_score),
+            "buy_readiness_status": "ALMOST_READY" if idea.status == "PROMISING" else "NOT_READY",
             "suggested_keywords": _json_load(idea.suggested_keywords, []),
             "required_next_evidence": _json_load(idea.required_next_evidence, []),
             "promoted_product_id": str(idea.promoted_product_id) if idea.promoted_product_id else None,
@@ -367,3 +410,92 @@ class DiscoveryService:
             "sort_order": task.sort_order,
             "created_at": task.created_at,
         }
+
+    def opportunity_board(self) -> list[dict[str, Any]]:
+        from app.models.product import Product
+        from app.models.supplier import CompetitorListing, MarketplaceEvidence, ProfitAnalysis, ProductSource
+
+        board: list[dict[str, Any]] = []
+
+        for idea in self.list_ideas():
+            tasks = self.db.query(DiscoveryTask).filter(DiscoveryTask.idea_id == idea.id).all()
+            total_tasks = len(tasks)
+            done_tasks = sum(1 for task in tasks if task.status == "DONE")
+            completeness = 20 if idea.quick_scan_verdict else 10
+            if total_tasks:
+                completeness += min(50, int((done_tasks / total_tasks) * 50))
+            if idea.status == "PROMISING":
+                completeness += 20
+            elif idea.status == "REJECTED":
+                completeness = min(completeness, 20)
+            board.append(
+                {
+                    "id": str(idea.id),
+                    "entity_type": "idea",
+                    "title": idea.idea_name,
+                    "category": idea.category,
+                    "research_completeness_score": max(0, min(100, completeness)),
+                    "research_verdict": idea.quick_scan_verdict or ("PROMISING" if idea.status == "PROMISING" else "NEEDS_MORE_RESEARCH"),
+                    "buy_readiness_status": "NOT_READY",
+                    "risk_level": "BLOCKED" if idea.status == "REJECTED" else "LOW",
+                    "sold_evidence_count": 0,
+                    "active_evidence_count": 0,
+                    "median_sold_price": None,
+                    "median_active_price": None,
+                    "best_landed_cost": float(idea.estimated_landed_cost) if idea.estimated_landed_cost is not None else None,
+                    "best_profit_scenario": None,
+                    "competition_gap_score": None,
+                    "supplier_confidence": None,
+                    "next_action": (idea.required_next_evidence and _json_load(idea.required_next_evidence, [])[:1] or ["Run quick scan"])[0],
+                    "source_platform": idea.source_platform,
+                    "status": idea.status,
+                }
+            )
+
+        products = self.db.query(Product).order_by(Product.updated_at.desc()).all()
+        for product in products:
+            evidence_rows = self.db.query(MarketplaceEvidence).filter(MarketplaceEvidence.product_id == product.id).all()
+            sources = self.db.query(ProductSource).filter(ProductSource.product_id == product.id).all()
+            profit_rows = self.db.query(ProfitAnalysis).filter(ProfitAnalysis.product_id == product.id).all()
+            competitor_rows = self.db.query(CompetitorListing).filter(CompetitorListing.product_id == product.id).all()
+
+            sold_count = sum(1 for row in evidence_rows if row.evidence_type == "SOLD_LISTING")
+            active_count = sum(1 for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING")
+            best_profit = max((float(row.estimated_net_profit or 0) for row in profit_rows), default=0)
+            best_scenario = None
+            if profit_rows:
+                top_profit = max(profit_rows, key=lambda row: float(row.estimated_net_profit or 0))
+                best_scenario = top_profit.scenario_name
+            completeness = 0
+            completeness += min(30, sold_count * 6)
+            completeness += min(20, active_count * 4)
+            completeness += min(20, len(sources) * 10)
+            completeness += min(15, len(profit_rows) * 5)
+            completeness += min(15, len(competitor_rows) * 3)
+
+            board.append(
+                {
+                    "id": str(product.id),
+                    "entity_type": "product",
+                    "title": product.name,
+                    "category": product.category,
+                    "research_completeness_score": max(0, min(100, completeness)),
+                    "research_verdict": getattr(product, "final_decision", None) or product.status,
+                    "buy_readiness_status": "READY" if product.status in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "APPROVED_TO_LIST"} else "NOT_READY",
+                    "risk_level": product.risk_level,
+                    "sold_evidence_count": sold_count,
+                    "active_evidence_count": active_count,
+                    "median_sold_price": None,
+                    "median_active_price": None,
+                    "best_landed_cost": float(sources[0].estimated_landed_cost) if sources and sources[0].estimated_landed_cost is not None else None,
+                    "best_profit_scenario": best_scenario,
+                    "competition_gap_score": None,
+                    "supplier_confidence": sources[0].supplier_rating if sources else None,
+                    "next_action": getattr(product, "next_action", None) or getattr(product, "decision_reason", None),
+                    "source_platform": sources[0].supplier_platform if sources else None,
+                    "status": product.status,
+                }
+            )
+
+        board.sort(key=lambda row: (row["research_completeness_score"], row["title"]), reverse=True)
+        return board

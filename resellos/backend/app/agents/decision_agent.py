@@ -59,6 +59,16 @@ class DecisionAgent(BaseAgent):
         international_shipping = float(supplier_summary.get("international_shipping_estimate") or 0)
         max_landed_cost = float(supplier_summary.get("estimated_landed_cost") or (product_cost + domestic_shipping + international_shipping))
         target_sale_price = float(profit.get("target_sale_price") or 0)
+        research_completeness_score = 0
+        research_completeness_score += min(25, sold_listing_count * 5)
+        research_completeness_score += min(20, active_listing_count * 2)
+        research_completeness_score += 15 if has_supplier_cost else 0
+        research_completeness_score += 10 if not market_price_missing else 0
+        research_completeness_score += 10 if profit.get("scenarios") else 0
+        research_completeness_score += 10 if competition.get("competitor_count", 0) > 0 else 0
+        research_completeness_score += 10 if target_sale_price > 0 else 0
+        research_completeness_score = max(research_completeness_score, int(market.get("research_completeness_score", 0) or 0))
+        research_completeness_score = max(0, min(100, research_completeness_score))
         best_margin = max(
             [float(s.get("margin_percent") or 0) for s in (profit.get("scenarios") or []) if isinstance(s, dict)],
             default=0.0,
@@ -208,6 +218,8 @@ class DecisionAgent(BaseAgent):
         else:
             buy_readiness = "NOT_READY"
 
+        buy_readiness_status = "READY" if ready_for_sample else "ALMOST_READY" if score >= 60 and not blocked and not market_price_missing else "NOT_READY"
+
         max_quantity_to_buy = 0
         if recommendation == "BUY_SAMPLE":
             max_quantity_to_buy = 5
@@ -223,6 +235,9 @@ class DecisionAgent(BaseAgent):
                 "recommendation": recommendation,
                 "research_verdict": research_verdict,
                 "buy_readiness": buy_readiness,
+                "buy_readiness_status": buy_readiness_status,
+                "research_completeness_score": research_completeness_score,
+                "opportunity_score": score,
                 "total_score": score,
                 "confidence": "HIGH" if score >= 75 else "MEDIUM" if score >= 55 else "LOW",
                 "reason": llm_result.get("reason") or reason,

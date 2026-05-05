@@ -243,7 +243,7 @@ class ListingGenerateRequest(BaseModel):
     bundle_option: bool = False
 
 
-class DiscoveryIdeaCreate(BaseModel):
+class ProductIdeaCreate(BaseModel):
     idea_name: str = Field(..., min_length=1, max_length=300)
     category: Optional[str] = None
     source_platform: Optional[str] = None
@@ -252,9 +252,11 @@ class DiscoveryIdeaCreate(BaseModel):
     estimated_landed_cost: Optional[float] = None
     why_interesting: Optional[str] = None
     notes: Optional[str] = None
+    status: Optional[str] = None
+    marketplace_observation: Optional[str] = None
 
 
-class DiscoveryIdeaUpdate(BaseModel):
+class ProductIdeaUpdate(BaseModel):
     idea_name: Optional[str] = None
     category: Optional[str] = None
     source_platform: Optional[str] = None
@@ -275,7 +277,7 @@ class DiscoveryIdeaUpdate(BaseModel):
     promoted_product_id: Optional[uuid.UUID] = None
 
 
-class DiscoveryTaskResponse(BaseModel):
+class ResearchTaskResponse(BaseModel):
     id: uuid.UUID
     idea_id: uuid.UUID
     task_type: str
@@ -289,7 +291,7 @@ class DiscoveryTaskResponse(BaseModel):
         from_attributes = True
 
 
-class DiscoveryIdeaResponse(BaseModel):
+class ProductIdeaResponse(BaseModel):
     id: uuid.UUID
     idea_name: str
     category: Optional[str] = None
@@ -306,10 +308,13 @@ class DiscoveryIdeaResponse(BaseModel):
     status: str
     quick_scan_verdict: Optional[str] = None
     quick_scan_reason: Optional[str] = None
+    research_completeness_score: int = 0
+    opportunity_score: int = 0
+    buy_readiness_status: str = "NOT_READY"
     suggested_keywords: Optional[str] = None
     required_next_evidence: Optional[str] = None
     promoted_product_id: Optional[uuid.UUID] = None
-    tasks: list[DiscoveryTaskResponse] = Field(default_factory=list)
+    tasks: list[ResearchTaskResponse] = Field(default_factory=list)
     created_at: datetime
     updated_at: datetime
 
@@ -317,7 +322,7 @@ class DiscoveryIdeaResponse(BaseModel):
         from_attributes = True
 
 
-class DiscoveryQuickScanRequest(BaseModel):
+class ProductIdeaQuickScanRequest(BaseModel):
     idea_name: str = Field(..., min_length=1, max_length=300)
     category: Optional[str] = None
     source_platform: Optional[str] = None
@@ -326,14 +331,49 @@ class DiscoveryQuickScanRequest(BaseModel):
     estimated_landed_cost: Optional[float] = None
     why_interesting: Optional[str] = None
     notes: Optional[str] = None
+    marketplace_observation: Optional[str] = None
 
 
-class DiscoveryQuickScanResponse(BaseModel):
-    idea: DiscoveryIdeaResponse
+class ProductIdeaQuickScanResponse(BaseModel):
+    idea: ProductIdeaResponse
     quick_scan_verdict: str
     quick_scan_reason: str
     research_priority: str
+    research_completeness_score: int = 0
+    opportunity_score: int = 0
+    buy_readiness_status: str = "NOT_READY"
     required_next_evidence: list[str] = Field(default_factory=list)
     suggested_keywords: list[str] = Field(default_factory=list)
     risk_flags: list[str] = Field(default_factory=list)
-    tasks: list[DiscoveryTaskResponse] = Field(default_factory=list)
+    tasks: list[ResearchTaskResponse] = Field(default_factory=list)
+
+
+class OpportunityBoardRow(BaseModel):
+    id: str
+    entity_type: str
+    title: str
+    category: Optional[str] = None
+    research_completeness_score: int = 0
+    research_verdict: Optional[str] = None
+    buy_readiness_status: Optional[str] = None
+    risk_level: Optional[str] = None
+    sold_evidence_count: int = 0
+    active_evidence_count: int = 0
+    median_sold_price: Optional[float] = None
+    median_active_price: Optional[float] = None
+    best_landed_cost: Optional[float] = None
+    best_profit_scenario: Optional[str] = None
+    competition_gap_score: Optional[int] = None
+    supplier_confidence: Optional[str] = None
+    next_action: Optional[str] = None
+    source_platform: Optional[str] = None
+    status: Optional[str] = None
+
+
+# Backwards-compatible aliases for older discovery naming.
+DiscoveryIdeaCreate = ProductIdeaCreate
+DiscoveryIdeaUpdate = ProductIdeaUpdate
+DiscoveryTaskResponse = ResearchTaskResponse
+DiscoveryIdeaResponse = ProductIdeaResponse
+DiscoveryQuickScanRequest = ProductIdeaQuickScanRequest
+DiscoveryQuickScanResponse = ProductIdeaQuickScanResponse

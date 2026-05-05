@@ -195,7 +195,7 @@ class ProductFile(Base):
     product = relationship("Product", back_populates="files")
 
 
-class ProductDiscoveryIdea(Base):
+class ProductIdea(Base):
     __tablename__ = "product_discovery_ideas"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -235,11 +235,15 @@ class DiscoveryTask(Base):
     sort_order = Column(Integer, default=0)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-    idea = relationship("ProductDiscoveryIdea", back_populates="tasks")
+    idea = relationship("ProductIdea", back_populates="tasks")
 
 
-ProductDiscoveryIdea.tasks = relationship(
+ProductIdea.tasks = relationship(
     "DiscoveryTask",
     back_populates="idea",
     cascade="all, delete-orphan",
 )
+
+
+# Backwards-compatible aliases for the older discovery naming.
+ProductDiscoveryIdea = ProductIdea
