@@ -398,6 +398,18 @@ export async function quickScanDiscoveryIdea(data: DiscoveryQuickScanInput): Pro
   });
 }
 
+export async function generateDiscoveryTasks(ideaId: string): Promise<Array<Record<string, unknown>>> {
+  return requestJson<Array<Record<string, unknown>>>(`/api/discovery/${ideaId}/tasks/generate`, {
+    method: 'POST',
+  });
+}
+
+export async function archiveDiscoveryIdea(ideaId: string): Promise<DiscoveryIdea> {
+  return requestJson<DiscoveryIdea>(`/api/discovery/${ideaId}/archive`, {
+    method: 'POST',
+  });
+}
+
 export async function promoteDiscoveryIdea(ideaId: string): Promise<{ product_id: string }> {
   return requestJson<{ product_id: string }>(`/api/discovery/${ideaId}/promote`, {
     method: 'POST',

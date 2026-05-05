@@ -9,6 +9,7 @@ import {
   TrendingUp,
   Settings,
   Lightbulb,
+  ListChecks,
   ChevronRight,
   Zap,
 } from 'lucide-react';
@@ -22,6 +23,8 @@ const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/products', label: 'Products', icon: Package },
   { href: '/discovery', label: 'Product Discovery', icon: Lightbulb },
+  { href: '/ideas', label: 'Ideas', icon: ListChecks },
+  { href: '/opportunities', label: 'Opportunities', icon: TrendingUp },
   { href: '/listings', label: 'Listings', icon: ListOrdered },
   { href: '/inventory', label: 'Inventory', icon: Warehouse },
   { href: '/sales', label: 'Sales', icon: TrendingUp },

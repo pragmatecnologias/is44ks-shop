@@ -13,9 +13,11 @@ import {
   Target,
 } from 'lucide-react';
 import {
+  archiveDiscoveryIdea,
   createDiscoveryIdea,
   deleteDiscoveryIdea,
   getOpportunityBoard,
+  generateDiscoveryTasks,
   listDiscoveryIdeas,
   promoteDiscoveryIdea,
   quickScanDiscoveryIdea,
@@ -111,6 +113,26 @@ export default function DiscoveryPage() {
       await loadIdeas();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not delete idea');
+    }
+  }
+
+  async function handleGenerateTasks(ideaId: string) {
+    setError(null);
+    try {
+      await generateDiscoveryTasks(ideaId);
+      await loadIdeas();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not generate tasks');
+    }
+  }
+
+  async function handleArchiveIdea(ideaId: string) {
+    setError(null);
+    try {
+      await archiveDiscoveryIdea(ideaId);
+      await loadIdeas();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not archive idea');
     }
   }
 
@@ -237,6 +259,8 @@ export default function DiscoveryPage() {
                   idea={idea}
                   onPromote={() => handlePromoteIdea(idea.id)}
                   onDelete={() => handleDeleteIdea(idea.id)}
+                  onGenerateTasks={() => handleGenerateTasks(idea.id)}
+                  onArchive={() => handleArchiveIdea(idea.id)}
                 />
               ))
             )}
@@ -299,10 +323,14 @@ function IdeaCard({
   idea,
   onPromote,
   onDelete,
+  onGenerateTasks,
+  onArchive,
 }: {
   idea: DiscoveryIdea;
   onPromote: () => void;
   onDelete: () => void;
+  onGenerateTasks: () => void;
+  onArchive: () => void;
 }) {
   return (
     <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
@@ -319,6 +347,12 @@ function IdeaCard({
           </div>
         </div>
         <div className="flex items-center gap-2">
+          <button onClick={onGenerateTasks} className="text-xs text-zinc-500 hover:text-indigo-400">
+            Tasks
+          </button>
+          <button onClick={onArchive} className="text-xs text-zinc-500 hover:text-yellow-400">
+            Archive
+          </button>
           <button onClick={onDelete} className="text-xs text-zinc-500 hover:text-red-400">
             Delete
           </button>

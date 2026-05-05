@@ -1,5 +1,1 @@
-import { redirect } from 'next/navigation';
-
-export default function IdeasPage() {
-  redirect('/discovery');
-}
+export { default } from '../discovery/page';

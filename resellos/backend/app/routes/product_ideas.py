@@ -13,6 +13,7 @@ from app.schemas.product_schema import (
     ProductIdeaUpdate,
     ProductIdeaQuickScanRequest,
     ProductIdeaQuickScanResponse,
+    ResearchTaskResponse,
 )
 from app.services.discovery_service import DiscoveryService
 
@@ -57,6 +58,15 @@ def delete_idea(idea_id: uuid.UUID, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Product idea not found")
 
 
+@router.post("/{idea_id}/archive", response_model=ProductIdeaResponse)
+def archive_idea(idea_id: uuid.UUID, db: Session = Depends(get_db)):
+    service = DiscoveryService(db)
+    idea = service.archive_idea(idea_id)
+    if not idea:
+        raise HTTPException(status_code=404, detail="Product idea not found")
+    return service._serialize_idea(idea)
+
+
 @router.post("/quick-scan", response_model=ProductIdeaQuickScanResponse)
 def quick_scan(data: ProductIdeaQuickScanRequest, db: Session = Depends(get_db)):
     service = DiscoveryService(db)
@@ -67,6 +77,15 @@ def quick_scan(data: ProductIdeaQuickScanRequest, db: Session = Depends(get_db))
 def opportunity_board(db: Session = Depends(get_db)):
     service = DiscoveryService(db)
     return service.opportunity_board()
+
+
+@router.post("/{idea_id}/tasks/generate", response_model=list[ResearchTaskResponse])
+def generate_tasks(idea_id: uuid.UUID, db: Session = Depends(get_db)):
+    service = DiscoveryService(db)
+    tasks = service.generate_tasks(idea_id)
+    if not tasks:
+        raise HTTPException(status_code=404, detail="Product idea not found")
+    return [service._serialize_task(task) for task in tasks]
 
 
 @router.post("/{idea_id}/promote")

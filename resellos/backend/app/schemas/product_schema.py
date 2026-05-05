@@ -300,7 +300,7 @@ class ProductIdeaResponse(BaseModel):
     rough_supplier_cost: Optional[float] = None
     estimated_landed_cost: Optional[float] = None
     why_interesting: Optional[str] = None
-    risk_flags: Optional[str] = None
+    risk_flags: Optional[object] = None
     quick_market_signal: Optional[str] = None
     quick_profit_signal: Optional[str] = None
     research_priority: Optional[str] = None
@@ -311,8 +311,8 @@ class ProductIdeaResponse(BaseModel):
     research_completeness_score: int = 0
     opportunity_score: int = 0
     buy_readiness_status: str = "NOT_READY"
-    suggested_keywords: Optional[str] = None
-    required_next_evidence: Optional[str] = None
+    suggested_keywords: Optional[object] = None
+    required_next_evidence: Optional[object] = None
     promoted_product_id: Optional[uuid.UUID] = None
     tasks: list[ResearchTaskResponse] = Field(default_factory=list)
     created_at: datetime
@@ -342,8 +342,8 @@ class ProductIdeaQuickScanResponse(BaseModel):
     research_completeness_score: int = 0
     opportunity_score: int = 0
     buy_readiness_status: str = "NOT_READY"
-    required_next_evidence: list[str] = Field(default_factory=list)
-    suggested_keywords: list[str] = Field(default_factory=list)
+    required_next_evidence: object = Field(default_factory=list)
+    suggested_keywords: object = Field(default_factory=list)
     risk_flags: list[str] = Field(default_factory=list)
     tasks: list[ResearchTaskResponse] = Field(default_factory=list)
 

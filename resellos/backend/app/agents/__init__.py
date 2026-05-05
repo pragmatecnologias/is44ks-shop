@@ -5,6 +5,7 @@ from app.agents.profit_agent import ProfitAgent
 from app.agents.reorder_agent import ReorderAgent
 from app.agents.listing_agent import ListingAgent
 from app.agents.decision_agent import DecisionAgent
+from app.agents.quick_scan_agent import QuickScanAgent
 
 __all__ = [
     "RiskAgent",
@@ -14,4 +15,5 @@ __all__ = [
     "ReorderAgent",
     "ListingAgent",
     "DecisionAgent",
+    "QuickScanAgent",
 ]

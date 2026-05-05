@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 
 from app.models.product import Product
 from app.models.supplier import DiscoveryTask, ProductIdea
+from app.agents.quick_scan_agent import QuickScanAgent
 from app.schemas.product_schema import (
     OpportunityBoardRow,
     ProductCreate,
@@ -147,7 +148,19 @@ class DiscoveryService:
         self.db.commit()
         return True
 
+    def archive_idea(self, idea_id: uuid.UUID) -> ProductIdea | None:
+        idea = self.get_idea(idea_id)
+        if not idea:
+            return None
+        idea.status = "ARCHIVED"
+        idea.updated_at = datetime.utcnow()
+        self.db.commit()
+        self.db.refresh(idea)
+        return idea
+
     def quick_scan(self, data: ProductIdeaQuickScanRequest) -> dict[str, Any]:
+        agent = QuickScanAgent()
+        scan = agent.run(data.model_dump())
         template = CATEGORY_TEMPLATES.get(_norm_category(data.category), {})
         required_evidence = list(
             template.get(
@@ -160,71 +173,14 @@ class DiscoveryService:
             )
         )
         suggested_keywords = list(template.get("suggested_keywords", []))
-
-        risk_flags: list[str] = []
-        text_blob = " ".join(
-            part for part in [
-                data.idea_name,
-                data.category or "",
-                data.why_interesting or "",
-                data.notes or "",
-                data.marketplace_observation or "",
-            ]
-            if part
-        ).lower()
-        blocked_terms = ["fake", "replica", "counterfeit", "brand", "logo", "medicine", "supplement", "battery"]
-        for term in blocked_terms:
-            if term in text_blob:
-                risk_flags.append(f"Matched risk term: {term}")
-
-        score = 50
-        if data.rough_supplier_cost is not None:
-            score += 10
-        if data.estimated_landed_cost is not None:
-            score += 10
-        if data.rough_supplier_cost is not None and data.rough_supplier_cost <= 5:
-            score += 10
-        if data.estimated_landed_cost is not None and data.estimated_landed_cost <= 8:
-            score += 10
-        if any(term in text_blob for term in ["small", "simple", "solves", "organizer", "accessory"]):
-            score += 5
-        if risk_flags:
-            score -= min(20, len(risk_flags) * 4)
-
-        score = max(0, min(100, score))
-
-        if risk_flags and score < 40:
-            verdict = "REJECT"
-        elif score >= 75:
-            verdict = "PROMISING"
-        elif score >= 55:
-            verdict = "NEEDS_MARKET_CHECK"
-        else:
-            verdict = "NEEDS_MARKET_CHECK"
-
-        if data.rough_supplier_cost is None:
-            required_evidence.append("rough supplier cost")
-        if data.estimated_landed_cost is None:
-            required_evidence.append("estimated landed cost")
-        required_evidence = list(dict.fromkeys(required_evidence))
-
-        if "car" in _norm_category(data.category):
-            suggested_keywords.extend(["car seat gap organizer", "car organizer", "car storage"])
-        elif "pet" in _norm_category(data.category):
-            suggested_keywords.extend(["pet grooming", "pet accessory", "pet hair remover"])
-        elif "home" in _norm_category(data.category):
-            suggested_keywords.extend(["home organizer", "storage solution", "drawer organizer"])
-
-        suggested_keywords = list(dict.fromkeys([kw for kw in suggested_keywords if kw]))
-
-        research_priority = "HIGH" if verdict == "PROMISING" else "MEDIUM" if verdict == "NEEDS_MARKET_CHECK" else "LOW"
-        reason = "Quick scan completed."
-        if verdict == "REJECT":
-            reason = "Risk terms or weak economics suggest skipping this idea."
-        elif verdict == "PROMISING":
-            reason = "The idea looks small, cheap, and likely worth deeper research."
-        elif verdict == "NEEDS_MARKET_CHECK":
-            reason = "The idea needs market evidence before it can be promoted."
+        scan_output = scan.get("output_json", {})
+        verdict = scan_output.get("quick_scan_verdict", "NEEDS_MARKET_CHECK")
+        research_priority = scan_output.get("research_priority", "MEDIUM")
+        reason = scan_output.get("quick_scan_reason", "Quick scan completed.")
+        risk_flags = scan_output.get("initial_risk_flags", [])
+        score = int(scan_output.get("research_completeness_score", 0) or 0)
+        suggested_keywords = scan_output.get("suggested_keywords", suggested_keywords)
+        required_evidence = scan_output.get("required_next_evidence", required_evidence)
 
         idea = self.create_idea(
             ProductIdeaCreate(
@@ -300,6 +256,19 @@ class DiscoveryService:
         self.db.commit()
         self.db.refresh(idea)
         return product
+
+    def generate_tasks(self, idea_id: uuid.UUID) -> list[DiscoveryTask]:
+        idea = self.get_idea(idea_id)
+        if not idea:
+            return []
+        tasks = [
+            ("market_research", "Add 5 sold eBay listings", 1),
+            ("market_research", "Add 5 active eBay listings", 2),
+            ("supplier_research", "Add 2 supplier sources", 3),
+            ("competition_research", "Add 3 competitor listings", 4),
+            ("research", "Confirm product weight and shipping", 5),
+        ]
+        return self._replace_tasks(idea.id, tasks)
 
     def _apply_scan_result(
         self,
