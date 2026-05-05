@@ -17,7 +17,7 @@ class ProfitService:
             expected_sale_price=data.expected_sale_price,
             product_cost=data.product_cost,
             import_shipping_per_unit=data.import_shipping_per_unit,
-            landed_cost=data.landed_cost or (data.product_cost + data.import_shipping_per_unit),
+            landed_cost=data.landed_cost if data.landed_cost is not None else (data.product_cost + data.import_shipping_per_unit),
             marketplace_fee=data.marketplace_fee,
             us_shipping=data.us_shipping,
             packaging_cost=data.packaging_cost,

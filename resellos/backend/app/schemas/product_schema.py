@@ -142,8 +142,9 @@ class ProfitAnalysisCreate(BaseModel):
     us_shipping: float = 0
     marketplace_fee: float = 0
     packaging_cost: float = 0.50
-    return_allowance: float = 0.50
-    ad_cost: float = 0
+    landed_cost: Optional[float] = None
+    return_allowance: Optional[float] = 0.50
+    ad_cost: Optional[float] = 0
 
 
 class ProfitAnalysisUpdate(BaseModel):
