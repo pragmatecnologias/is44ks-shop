@@ -4,7 +4,7 @@ from typing import List
 import uuid
 
 from app.db import get_db
-from app.schemas.product_schema import MarketplaceResearchCreate, CompetitorListingCreate, MarketplaceEvidenceCreate
+from app.schemas.product_schema import MarketplaceResearchCreate, CompetitorListingCreate, MarketplaceEvidenceCreate, MarketplaceEvidenceUpdate
 from app.services.marketplace_service import MarketplaceService
 
 router = APIRouter(prefix="/api/marketplace", tags=["marketplace"])
@@ -60,3 +60,19 @@ def create_evidence(product_id: uuid.UUID, data: MarketplaceEvidenceCreate, db: 
 def get_evidence(product_id: uuid.UUID, db: Session = Depends(get_db)):
     service = MarketplaceService(db)
     return service.get_evidence(product_id)
+
+
+@router.patch("/evidence/detail/{evidence_id}")
+def update_evidence(evidence_id: uuid.UUID, data: MarketplaceEvidenceUpdate, db: Session = Depends(get_db)):
+    service = MarketplaceService(db)
+    result = service.update_evidence(evidence_id, data)
+    if not result:
+        raise HTTPException(status_code=404, detail="Evidence not found")
+    return result
+
+
+@router.delete("/evidence/detail/{evidence_id}", status_code=204)
+def delete_evidence(evidence_id: uuid.UUID, db: Session = Depends(get_db)):
+    service = MarketplaceService(db)
+    if not service.delete_evidence(evidence_id):
+        raise HTTPException(status_code=404, detail="Evidence not found")

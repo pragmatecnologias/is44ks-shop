@@ -117,6 +117,23 @@ class MarketplaceEvidenceCreate(BaseModel):
     notes: Optional[str] = None
 
 
+class MarketplaceEvidenceUpdate(BaseModel):
+    marketplace: Optional[str] = None
+    evidence_type: Optional[str] = None
+    title: Optional[str] = None
+    url: Optional[str] = None
+    price: Optional[float] = None
+    shipping_price: Optional[float] = None
+    sold_date: Optional[datetime] = None
+    condition: Optional[str] = None
+    seller_name: Optional[str] = None
+    source_method: Optional[str] = None
+    raw_text: Optional[str] = None
+    screenshot_url: Optional[str] = None
+    confidence: Optional[str] = None
+    notes: Optional[str] = None
+
+
 class ProfitAnalysisCreate(BaseModel):
     scenario_name: Optional[str] = "default"
     expected_sale_price: float
@@ -192,7 +209,23 @@ class ResearchRunResponse(BaseModel):
     status: str
     final_decision: Optional[str] = None
     final_score: Optional[float] = None
+    decision: Optional[dict] = None
     reports: list[dict] = Field(default_factory=list)
+
+
+class ResearchCockpitResponse(BaseModel):
+    product: ProductResponse
+    sources: list[SupplierResponse] = Field(default_factory=list)
+    marketplace_research: list[dict] = Field(default_factory=list)
+    marketplace_evidence: list[dict] = Field(default_factory=list)
+    competitor_listings: list[dict] = Field(default_factory=list)
+    profit_analyses: list[dict] = Field(default_factory=list)
+    agent_reports: list[dict] = Field(default_factory=list)
+    decision: Optional[dict] = None
+    missing_evidence: list[str] = Field(default_factory=list)
+    next_action: Optional[str] = None
+    confidence: Optional[str] = None
+    current_status: Optional[str] = None
 
 
 class ListingGenerateRequest(BaseModel):

@@ -107,8 +107,6 @@ class ResearchPipelineService:
             primary_source = self._primary_source(sources)
             market_data = agent_data(results, "market_agent")
             sale_price = float(market_data.get("median_sold_price") or market_data.get("median_active_price") or 0)
-            if sale_price <= 0:
-                sale_price = 29.99
 
             profit_input = {
                 "expected_sale_price": sale_price,
@@ -120,7 +118,7 @@ class ResearchPipelineService:
                 "platform_fee_percent": settings.DEFAULT_MARKETPLACE_FEE_PERCENT / 100,
                 "platform_fee_fixed": 0,
                 "payment_fee": 0,
-                "outbound_shipping": float(settings.DEFAULT_PACKAGING_COST),
+                "outbound_shipping": float(settings.DEFAULT_OUTBOUND_SHIPPING),
                 "packaging": float(settings.DEFAULT_PACKAGING_COST),
                 "return_allowance": float(settings.DEFAULT_RETURN_ALLOWANCE),
                 "ad_cost": 0,
@@ -150,12 +148,14 @@ class ResearchPipelineService:
             profit_data = agent_data(results, "profit_agent")
             product.final_score = decision_data.get("total_score", 0)
             product.final_decision = decision_data.get("recommendation", "SKIP")
-            product.target_sale_price = profit_data.get("break_even_price")
+            product.target_sale_price = profit_data.get("target_sale_price") or profit_data.get("minimum_recommended_price")
             product.expected_profit = profit_data.get("estimated_net_profit")
             product.risk_level = agent_data(results, "risk_agent").get("risk_level", product.risk_level)
 
-            if product.final_decision in {"BUY_SAMPLE", "BUY_SMALL_BATCH"}:
+            if product.final_decision == "BUY_SAMPLE":
                 product.status = "BUY_SAMPLE"
+            elif product.final_decision == "BUY_SMALL_BATCH":
+                product.status = "BUY_SMALL_BATCH"
             elif product.final_decision == "WATCHLIST":
                 product.status = "WATCHLIST"
             elif product.final_decision == "BLOCKED":

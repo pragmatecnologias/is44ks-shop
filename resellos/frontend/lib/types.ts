@@ -5,6 +5,7 @@ export type ProductStatus =
   | 'BLOCKED'
   | 'WATCHLIST'
   | 'BUY_SAMPLE'
+  | 'BUY_SMALL_BATCH'
   | 'SAMPLE_ORDERED'
   | 'SAMPLE_RECEIVED'
   | 'APPROVED_TO_LIST'
@@ -23,6 +24,7 @@ export const STATUS_LABELS: Record<ProductStatus, string> = {
   BLOCKED: 'Blocked',
   WATCHLIST: 'Watchlist',
   BUY_SAMPLE: 'Buy Sample',
+  BUY_SMALL_BATCH: 'Buy Small Batch',
   SAMPLE_ORDERED: 'Sample Ordered',
   SAMPLE_RECEIVED: 'Sample Received',
   APPROVED_TO_LIST: 'Approved to List',
@@ -42,6 +44,7 @@ export const STATUS_COLORS: Record<ProductStatus, string> = {
   BLOCKED: 'bg-red-500/20 text-red-400 border-red-500/30',
   WATCHLIST: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
   BUY_SAMPLE: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+  BUY_SMALL_BATCH: 'bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/30',
   SAMPLE_ORDERED: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
   SAMPLE_RECEIVED: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
   APPROVED_TO_LIST: 'bg-green-500/20 text-green-400 border-green-500/30',
@@ -150,6 +153,37 @@ export interface MarketplaceEvidence {
   notes?: string;
 }
 
+export interface MarketplaceEvidenceInput {
+  marketplace: string;
+  evidence_type: 'ACTIVE_LISTING' | 'SOLD_LISTING' | 'SCREENSHOT' | 'MANUAL_NOTE' | string;
+  title?: string;
+  url?: string;
+  price?: number;
+  shipping_price?: number;
+  sold_date?: string;
+  condition?: string;
+  seller_name?: string;
+  source_method?: string;
+  raw_text?: string;
+  screenshot_url?: string;
+  confidence?: string;
+  notes?: string;
+}
+
+export interface SupplierInput {
+  supplier_name?: string;
+  supplier_platform?: string;
+  supplier_url?: string;
+  unit_cost?: number;
+  domestic_shipping?: number;
+  international_shipping_estimate?: number;
+  estimated_landed_cost?: number;
+  moq?: number;
+  supplier_rating?: string;
+  notes?: string;
+  is_primary?: boolean;
+}
+
 export interface CompetitorListing {
   id: string;
   product_id: string;
@@ -178,6 +212,9 @@ export interface ProfitAnalysis {
   estimated_net_profit?: number;
   margin_percent?: number;
   roi_percent?: number;
+  break_even_price?: number;
+  minimum_recommended_price?: number;
+  target_sale_price?: number;
   verdict?: string;
 }
 
@@ -208,6 +245,30 @@ export interface AgentResult {
   started_at?: string;
   completed_at?: string;
   duration_seconds?: number;
+}
+
+export interface ResearchCockpit {
+  product: Product;
+  sources: ProductSource[];
+  marketplace_research: Array<Record<string, unknown>>;
+  marketplace_evidence: MarketplaceEvidence[];
+  competitor_listings: CompetitorListing[];
+  profit_analyses: ProfitAnalysis[];
+  agent_reports: AgentReport[];
+  decision?: Record<string, unknown> | null;
+  missing_evidence: string[];
+  next_action?: string | null;
+  confidence?: string | null;
+  current_status?: string | null;
+}
+
+export interface ResearchRunResponse {
+  product_id: string;
+  status: string;
+  final_decision?: string | null;
+  final_score?: number | null;
+  decision?: Record<string, unknown> | null;
+  reports: Array<Record<string, unknown>>;
 }
 
 export interface InventoryItem {

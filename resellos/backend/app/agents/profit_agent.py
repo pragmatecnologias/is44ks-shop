@@ -42,7 +42,6 @@ class ProfitAgent(BaseAgent):
         return_allowance = float(input_data.get("return_allowance", 0) or 0)
         ad_cost = float(input_data.get("ad_cost", 0) or 0)
         buyer_paid_shipping = bool(input_data.get("buyer_paid_shipping", False))
-        free_shipping = bool(input_data.get("free_shipping", not buyer_paid_shipping))
         bundle_quantity = max(int(input_data.get("bundle_quantity", 1) or 1), 1)
         quantity_ordered = max(int(input_data.get("quantity_ordered", 1) or 1), 1)
         damaged_unit_allowance = float(input_data.get("damaged_unit_allowance", 0) or 0)
@@ -61,7 +60,8 @@ class ProfitAgent(BaseAgent):
             unit_duties = duties * bundle_multiplier
             unit_inspection = inspection_cost * bundle_multiplier
             landed_cost = unit_product_cost + unit_china_domestic + unit_international + unit_duties + unit_inspection + damaged_unit_allowance
-            platform_fee = scenario_sale_price * platform_fee_percent + marketplace_fee_fixed
+            fee_base = scenario_sale_price + (shipping_revenue if includes_shipping_revenue else 0)
+            platform_fee = fee_base * platform_fee_percent + marketplace_fee_fixed
             selling_cost = platform_fee + payment_fee + shipping_cost + packaging + return_allowance + ad_cost
             net_profit = scenario_sale_price + (shipping_revenue if includes_shipping_revenue else 0) - landed_cost - selling_cost
             margin = (net_profit / scenario_sale_price * 100) if scenario_sale_price > 0 else 0
@@ -74,6 +74,7 @@ class ProfitAgent(BaseAgent):
                 "net_profit": round(net_profit, 2),
                 "margin_percent": round(margin, 2),
                 "decision": decision,
+                "assumption": "Bundle ships in one package" if bundle_multiplier > 1 else "Standard parcel shipping",
             }
 
         buyer_paid = scenario(
@@ -109,6 +110,7 @@ class ProfitAgent(BaseAgent):
                 "estimated_net_profit": float(best["net_profit"]),
                 "break_even_price": round(break_even, 2),
                 "minimum_recommended_price": minimum_recommended_price,
+                "target_sale_price": round(sale_price, 2),
                 "summary": result.get(
                     "summary",
                     f"Best scenario: {best['name']} with net profit ${best['net_profit']:.2f}.",

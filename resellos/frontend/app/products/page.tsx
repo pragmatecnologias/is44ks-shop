@@ -38,6 +38,7 @@ const STATUS_OPTIONS: Array<{ value: string; label: string }> = [
   { value: 'BLOCKED', label: 'Blocked' },
   { value: 'WATCHLIST', label: 'Watchlist' },
   { value: 'BUY_SAMPLE', label: 'Buy Sample' },
+  { value: 'BUY_SMALL_BATCH', label: 'Buy Small Batch' },
   { value: 'APPROVED_TO_LIST', label: 'Approved to List' },
   { value: 'LISTED', label: 'Listed' },
   { value: 'SELLING', label: 'Selling' },

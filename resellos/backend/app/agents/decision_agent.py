@@ -40,6 +40,7 @@ class DecisionAgent(BaseAgent):
         insufficient_data = bool(market.get("insufficient_data", True))
         sold_listing_count = int(market.get("sold_listing_count", 0) or 0)
         active_listing_count = int(market.get("active_listing_count", 0) or 0)
+        market_price_missing = float(market.get("median_sold_price") or market.get("median_active_price") or 0) <= 0
 
         score = 50
         if risk_level == "LOW":
@@ -76,6 +77,8 @@ class DecisionAgent(BaseAgent):
             missing_evidence.append("Active listings missing")
         if insufficient_data:
             missing_evidence.append("Marketplace evidence quality is low")
+        if market_price_missing:
+            missing_evidence.append("Sold or active market price missing")
         if not profit.get("scenarios"):
             missing_evidence.append("Profit scenarios missing")
 
@@ -103,6 +106,12 @@ class DecisionAgent(BaseAgent):
             recommendation = "SKIP"
             next_action = "Skip for now and move on to stronger candidates."
             reason = "Insufficient confidence or weak economics."
+
+        if insufficient_data or market_price_missing:
+            if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH"}:
+                recommendation = "WATCHLIST"
+                next_action = "Add sold listings and a real market price before ordering."
+                reason = "Market evidence is too thin for a sample order."
 
         output = DecisionAgentOutput.model_validate(
             {

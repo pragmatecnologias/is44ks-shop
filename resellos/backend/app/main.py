@@ -6,6 +6,7 @@ import app.models  # noqa: F401 - ensure SQLAlchemy models register
 from app.routes import (
     products_router,
     supplier_router,
+    dashboard_router,
     marketplace_router,
     profit_router,
     agents_router,
@@ -27,6 +28,7 @@ app.add_middleware(
 
 app.include_router(products_router)
 app.include_router(supplier_router)
+app.include_router(dashboard_router)
 app.include_router(marketplace_router)
 app.include_router(profit_router)
 app.include_router(agents_router)
@@ -44,3 +46,11 @@ def root():
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+
+@app.on_event("startup")
+def _bootstrap_sqlite_schema():
+    if settings.DATABASE_URL.startswith("sqlite"):
+        from app.db import engine, Base
+
+        Base.metadata.create_all(bind=engine)

@@ -61,6 +61,8 @@ class AgentContractTests(unittest.TestCase):
                                 "sold_listing_count": 4,
                                 "active_listing_count": 12,
                                 "insufficient_data": False,
+                                "median_sold_price": 18.99,
+                                "median_active_price": 21.99,
                             }
                         },
                         "profit_agent": {"output_json": {"estimated_net_profit": 7.42, "scenarios": [{}]}},

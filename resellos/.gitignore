@@ -24,3 +24,6 @@ next-env.d.ts
 # IDE
 .vscode/
 .idea/
+
+# Local Codex workspace notes
+CLAUDE.local.md

@@ -42,19 +42,47 @@ class MarketAgent(BaseAgent):
         sold_listing_count = 0
         median_active_price = None
         median_sold_price = None
+        active_shipping_prices = []
+        sold_shipping_prices = []
         evidence_quality = "LOW"
         insufficient_data = True
 
         if isinstance(context.get("marketplace_research"), list):
             research_rows = context["marketplace_research"]
-            active_listing_count = sum(int(row.get("active_listing_count") or 0) for row in research_rows)
-            sold_listing_count = sum(int(row.get("sold_listing_count") or 0) for row in research_rows)
+            active_listing_count += sum(int(row.get("active_listing_count") or 0) for row in research_rows)
+            sold_listing_count += sum(int(row.get("sold_listing_count") or 0) for row in research_rows)
             active_prices = [float(row.get("median_active_price")) for row in research_rows if row.get("median_active_price") is not None]
             sold_prices = [float(row.get("median_sold_price")) for row in research_rows if row.get("median_sold_price") is not None]
+            active_shipping_prices.extend(
+                float(row.get("shipping_median")) for row in research_rows if row.get("shipping_median") is not None
+            )
+            sold_shipping_prices.extend(
+                float(row.get("shipping_median")) for row in research_rows if row.get("shipping_median") is not None
+            )
             if active_prices:
                 median_active_price = round(sorted(active_prices)[len(active_prices) // 2], 2)
             if sold_prices:
                 median_sold_price = round(sorted(sold_prices)[len(sold_prices) // 2], 2)
+
+        if isinstance(evidence, list) and evidence:
+            active_rows = [row for row in evidence if str(row.get("evidence_type", "")).upper() == "ACTIVE_LISTING"]
+            sold_rows = [row for row in evidence if str(row.get("evidence_type", "")).upper() == "SOLD_LISTING"]
+            if active_rows:
+                active_listing_count += len(active_rows)
+                active_prices = [float(row.get("price")) for row in active_rows if row.get("price") is not None]
+                active_shipping_prices.extend(
+                    float(row.get("shipping_price")) for row in active_rows if row.get("shipping_price") is not None
+                )
+                if active_prices:
+                    median_active_price = round(sorted(active_prices)[len(active_prices) // 2], 2)
+            if sold_rows:
+                sold_listing_count += len(sold_rows)
+                sold_prices = [float(row.get("price")) for row in sold_rows if row.get("price") is not None]
+                sold_shipping_prices.extend(
+                    float(row.get("shipping_price")) for row in sold_rows if row.get("shipping_price") is not None
+                )
+                if sold_prices:
+                    median_sold_price = round(sorted(sold_prices)[len(sold_prices) // 2], 2)
 
         if sold_listing_count >= 10 and active_listing_count >= 10 and median_sold_price is not None:
             evidence_quality = "HIGH"
@@ -63,14 +91,17 @@ class MarketAgent(BaseAgent):
             evidence_quality = "MEDIUM"
             insufficient_data = sold_listing_count == 0
 
+        if evidence_quality == "LOW" and evidence_count > 0:
+            insufficient_data = True
+
         output = MarketAgentOutput.model_validate(
             {
                 "evidence_quality": evidence_quality,
                 "insufficient_data": insufficient_data,
                 "active_listing_count": active_listing_count,
                 "sold_listing_count": sold_listing_count,
-                "demand_signal": result.get("demand_signal", "UNKNOWN"),
-                "competition_level": result.get("competition_level", "UNKNOWN"),
+                "demand_signal": "HIGH" if sold_listing_count >= 10 else "MEDIUM" if sold_listing_count > 0 else "UNKNOWN",
+                "competition_level": "HIGH" if active_listing_count >= 10 else "MEDIUM" if active_listing_count > 0 else "UNKNOWN",
                 "median_active_price": median_active_price,
                 "median_sold_price": median_sold_price,
                 "summary": result.get("summary", "Marketplace evidence analyzed."),

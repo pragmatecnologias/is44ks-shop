@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     OLLAMA_MODEL: str = "llama3"
     DEFAULT_MARKETPLACE_FEE_PERCENT: float = 13.0
     DEFAULT_PACKAGING_COST: float = 0.50
+    DEFAULT_OUTBOUND_SHIPPING: float = 4.50
     DEFAULT_RETURN_ALLOWANCE: float = 0.50
     MIN_ACCEPTABLE_PROFIT: float = 3.0
     MIN_ACCEPTABLE_MARGIN: float = 20.0

@@ -3,7 +3,7 @@ import uuid
 from typing import Optional
 
 from app.models.marketplace import MarketplaceResearch, CompetitorListing, MarketplaceEvidence
-from app.schemas.product_schema import MarketplaceResearchCreate, MarketplaceEvidenceCreate
+from app.schemas.product_schema import MarketplaceResearchCreate, MarketplaceEvidenceCreate, MarketplaceEvidenceUpdate
 
 
 class MarketplaceService:
@@ -108,3 +108,25 @@ class MarketplaceService:
 
     def get_evidence(self, product_id: uuid.UUID) -> list[MarketplaceEvidence]:
         return self.db.query(MarketplaceEvidence).filter(MarketplaceEvidence.product_id == product_id).all()
+
+    def get_evidence_item(self, evidence_id: uuid.UUID) -> Optional[MarketplaceEvidence]:
+        return self.db.query(MarketplaceEvidence).filter(MarketplaceEvidence.id == evidence_id).first()
+
+    def update_evidence(self, evidence_id: uuid.UUID, data: MarketplaceEvidenceUpdate) -> Optional[MarketplaceEvidence]:
+        evidence = self.get_evidence_item(evidence_id)
+        if not evidence:
+            return None
+        update = data.model_dump(exclude_unset=True)
+        for key, value in update.items():
+            setattr(evidence, key, value)
+        self.db.commit()
+        self.db.refresh(evidence)
+        return evidence
+
+    def delete_evidence(self, evidence_id: uuid.UUID) -> bool:
+        evidence = self.get_evidence_item(evidence_id)
+        if not evidence:
+            return False
+        self.db.delete(evidence)
+        self.db.commit()
+        return True
