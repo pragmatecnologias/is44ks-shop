@@ -11,6 +11,7 @@ from app.routes import (
     profit_router,
     agents_router,
     discovery_router,
+    product_ideas_router,
     research_router,
     listings_router,
     inventory_router,
@@ -34,6 +35,7 @@ app.include_router(marketplace_router)
 app.include_router(profit_router)
 app.include_router(agents_router)
 app.include_router(discovery_router)
+app.include_router(product_ideas_router)
 app.include_router(research_router)
 app.include_router(listings_router)
 app.include_router(inventory_router)

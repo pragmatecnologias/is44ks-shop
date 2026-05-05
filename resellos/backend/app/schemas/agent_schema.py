@@ -140,6 +140,7 @@ class DecisionAgentOutput(BaseModel):
     research_completeness_score: int = 0
     opportunity_score: int = 0
     total_score: int = 0
+    main_blocker: str = ""
     confidence: ConfidenceLevel = "LOW"
     reason: str = ""
     next_action: str = ""

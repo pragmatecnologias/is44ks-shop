@@ -128,7 +128,7 @@ export default function ProductDetailPage() {
     { label: 'Target price', ok: targetPricePresent, detail: targetPricePresent ? money(targetSalePrice) : 'Missing' },
   ];
   const readinessScore = Math.round((readinessChecks.filter((check) => check.ok).length / readinessChecks.length) * 100);
-  const mainBlocker = readinessChecks.find((check) => !check.ok)?.label || 'None';
+  const mainBlocker = decision.main_blocker || readinessChecks.find((check) => !check.ok)?.label || 'None';
 
   const decisionAccent =
     finalDecision === 'BLOCKED'
@@ -470,25 +470,33 @@ export default function ProductDetailPage() {
 
           <Panel title="Reorder Intelligence" icon={RefreshCw}>
             <div className="space-y-4">
-              <div className="grid gap-3 md:grid-cols-2">
-                <StatRow label="Recommendation" value={reorderRecommendation.replace(/_/g, ' ')} />
-                <StatRow label="On hand" value={reorder?.current_inventory != null ? String(reorder.current_inventory) : '—'} />
-                <StatRow label="Sold" value={reorder?.quantity_sold != null ? String(reorder.quantity_sold) : '—'} />
-                <StatRow label="Days cover" value={reorder?.days_of_cover != null ? String(reorder.days_of_cover) : '—'} />
-                <StatRow label="Stockout risk" value={reorder?.stockout_risk ?? '—'} />
-                <StatRow label="Max reorder" value={reorder?.max_reorder_qty != null ? String(reorder.max_reorder_qty) : '—'} />
-              </div>
-              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
-                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Reason</div>
-                <div className="mt-2 text-sm text-zinc-200">{reorder?.reorder_reason || 'Add inventory and sales history to evaluate reorder risk.'}</div>
-              </div>
-              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
-                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Inventory / Sales</div>
-                <div className="mt-2 grid gap-2 text-sm text-zinc-300 md:grid-cols-2">
-                  <StatRow label="Inventory rows" value={String(inventoryRows.length)} />
-                  <StatRow label="Sales rows" value={String(salesRows.length)} />
+              {inventoryRows.length === 0 && salesRows.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/40 p-4 text-sm text-zinc-400">
+                  Reorder intelligence appears after you have real inventory and sales history.
                 </div>
-              </div>
+              ) : (
+                <>
+                  <div className="grid gap-3 md:grid-cols-2">
+                    <StatRow label="Recommendation" value={reorderRecommendation.replace(/_/g, ' ')} />
+                    <StatRow label="On hand" value={reorder?.current_inventory != null ? String(reorder.current_inventory) : '—'} />
+                    <StatRow label="Sold" value={reorder?.quantity_sold != null ? String(reorder.quantity_sold) : '—'} />
+                    <StatRow label="Days cover" value={reorder?.days_of_cover != null ? String(reorder.days_of_cover) : '—'} />
+                    <StatRow label="Stockout risk" value={reorder?.stockout_risk ?? '—'} />
+                    <StatRow label="Max reorder" value={reorder?.max_reorder_qty != null ? String(reorder.max_reorder_qty) : '—'} />
+                  </div>
+                  <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                    <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Reason</div>
+                    <div className="mt-2 text-sm text-zinc-200">{reorder?.reorder_reason || 'Add inventory and sales history to evaluate reorder risk.'}</div>
+                  </div>
+                  <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                    <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Inventory / Sales</div>
+                    <div className="mt-2 grid gap-2 text-sm text-zinc-300 md:grid-cols-2">
+                      <StatRow label="Inventory rows" value={String(inventoryRows.length)} />
+                      <StatRow label="Sales rows" value={String(salesRows.length)} />
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </Panel>
 

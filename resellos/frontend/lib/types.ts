@@ -225,6 +225,7 @@ export interface DecisionSummary {
   buy_readiness_status?: 'NOT_READY' | 'ALMOST_READY' | 'READY';
   research_completeness_score?: number;
   opportunity_score?: number;
+  main_blocker?: string;
   total_score?: number;
   confidence?: 'LOW' | 'MEDIUM' | 'HIGH';
   reason?: string;

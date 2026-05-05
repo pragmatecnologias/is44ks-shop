@@ -282,6 +282,11 @@ function demoCockpit(productId: string): ResearchCockpit {
     decision: {
       recommendation: 'BUY_SAMPLE',
       total_score: 78,
+      research_verdict: 'READY_FOR_SAMPLE',
+      buy_readiness_status: 'READY',
+      research_completeness_score: 82,
+      opportunity_score: 78,
+      main_blocker: 'None',
       confidence: 'MEDIUM',
       reason: 'Strong evidence and acceptable profit.',
       next_action: 'Add 10 sold examples before ordering.',

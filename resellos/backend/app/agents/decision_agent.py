@@ -197,18 +197,24 @@ class DecisionAgent(BaseAgent):
                 recommendation = "WATCHLIST"
             hard_blockers.append("Market evidence is insufficient for a buy decision.")
             required_before_buying.append("Add real sold listings and a market price.")
+            if research_verdict == "READY_FOR_SAMPLE":
+                research_verdict = "NEEDS_MORE_RESEARCH"
 
         if not can_compete:
             if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
                 recommendation = "WATCHLIST"
             hard_blockers.append("Competition gap is too small to compete reliably.")
             required_before_buying.append("Capture competitor weaknesses and find a clearer angle.")
+            if research_verdict == "READY_FOR_SAMPLE":
+                research_verdict = "PROMISING_RESEARCH"
 
         if not has_supplier_cost:
             if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
                 recommendation = "WATCHLIST"
             hard_blockers.append("Supplier cost is missing.")
             required_before_buying.append("Add supplier unit cost and shipping.")
+            if research_verdict == "READY_FOR_SAMPLE":
+                research_verdict = "NEEDS_MORE_RESEARCH"
 
         if target_sale_price <= 0:
             required_before_buying.append("Record a real target sale price from market evidence.")
@@ -229,6 +235,7 @@ class DecisionAgent(BaseAgent):
         missing_evidence = list(dict.fromkeys(missing_evidence))
         required_before_buying = list(dict.fromkeys(required_before_buying))
         hard_blockers = list(dict.fromkeys(hard_blockers))
+        main_blocker = hard_blockers[0] if hard_blockers else (missing_evidence[0] if missing_evidence else "None")
 
         output = DecisionAgentOutput.model_validate(
             {
@@ -239,6 +246,7 @@ class DecisionAgent(BaseAgent):
                 "research_completeness_score": research_completeness_score,
                 "opportunity_score": score,
                 "total_score": score,
+                "main_blocker": main_blocker,
                 "confidence": "HIGH" if score >= 75 else "MEDIUM" if score >= 55 else "LOW",
                 "reason": llm_result.get("reason") or reason,
                 "next_action": llm_result.get("next_action") or next_action,
