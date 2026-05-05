@@ -286,6 +286,10 @@ class ResearchTaskResponse(BaseModel):
     status: str
     notes: Optional[str] = None
     sort_order: int
+    linked_evidence_id: Optional[uuid.UUID] = None
+    linked_source_id: Optional[uuid.UUID] = None
+    linked_competitor_id: Optional[uuid.UUID] = None
+    linked_product_id: Optional[uuid.UUID] = None
     created_at: datetime
 
     class Config:
@@ -295,6 +299,10 @@ class ResearchTaskResponse(BaseModel):
 class ResearchTaskUpdate(BaseModel):
     status: Optional[str] = None
     notes: Optional[str] = None
+    linked_evidence_id: Optional[uuid.UUID] = None
+    linked_source_id: Optional[uuid.UUID] = None
+    linked_competitor_id: Optional[uuid.UUID] = None
+    linked_product_id: Optional[uuid.UUID] = None
 
 
 class ProductIdeaResponse(BaseModel):

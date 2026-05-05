@@ -291,7 +291,7 @@ export default function DiscoveryPage() {
                 <tr>
                   <th className="px-4 py-3">Idea / Product</th>
                   <th className="px-4 py-3">Type</th>
-                  <th className="px-4 py-3">Readiness</th>
+                  <th className="px-4 py-3">Progress</th>
                   <th className="px-4 py-3">Evidence</th>
                   <th className="px-4 py-3">Market</th>
                   <th className="px-4 py-3">Best Cost</th>
@@ -308,9 +308,14 @@ export default function DiscoveryPage() {
                     </td>
                     <td className="px-4 py-3 text-zinc-300">{row.entity_type}</td>
                     <td className="px-4 py-3 text-zinc-300">
-                      {row.entity_type === 'idea'
-                        ? `${row.discovery_completeness_score ?? row.research_completeness_score}%`
-                        : `${row.research_completeness_score}%`}
+                      <div className="font-medium">
+                        {row.entity_type === 'idea'
+                          ? `${row.discovery_completeness_score ?? row.research_completeness_score}%`
+                          : `${row.research_completeness_score}%`}
+                      </div>
+                      <div className="text-xs text-zinc-500">
+                        {row.entity_type === 'idea' ? 'Discovery completeness' : 'Research completeness'}
+                      </div>
                     </td>
                     <td className="px-4 py-3 text-zinc-300">
                       {row.sold_evidence_count} sold / {row.active_evidence_count} active
@@ -386,7 +391,7 @@ function IdeaCard({
         <StatRow label="Verdict" value={idea.quick_scan_verdict || 'IDEA'} />
         <StatRow label="Priority" value={idea.research_priority || '—'} />
         <StatRow label="Readiness" value={idea.buy_readiness_status || 'NOT_READY'} />
-        <StatRow label="Discovery" value={`${idea.discovery_completeness_score ?? idea.research_completeness_score ?? 0}%`} />
+        <StatRow label="Discovery completeness" value={`${idea.discovery_completeness_score ?? idea.research_completeness_score ?? 0}%`} />
         <StatRow label="Supplier cost" value={money(idea.rough_supplier_cost)} />
         <StatRow label="Landed cost" value={money(idea.estimated_landed_cost)} />
       </div>

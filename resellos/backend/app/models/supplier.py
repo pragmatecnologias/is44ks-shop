@@ -233,6 +233,10 @@ class DiscoveryTask(Base):
     status = Column(String(30), default="TODO")
     notes = Column(Text)
     sort_order = Column(Integer, default=0)
+    linked_evidence_id = Column(UUID(as_uuid=True), ForeignKey("marketplace_evidence.id"))
+    linked_source_id = Column(UUID(as_uuid=True), ForeignKey("product_sources.id"))
+    linked_competitor_id = Column(UUID(as_uuid=True), ForeignKey("competitor_listings.id"))
+    linked_product_id = Column(UUID(as_uuid=True), ForeignKey("products.id"))
     created_at = Column(DateTime, default=datetime.utcnow)
 
     idea = relationship("ProductIdea", back_populates="tasks")

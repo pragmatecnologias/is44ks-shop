@@ -71,7 +71,7 @@ export default function OpportunitiesPage() {
                 <tr>
                   <th className="px-4 py-3">Title</th>
                   <th className="px-4 py-3">Type</th>
-                  <th className="px-4 py-3">Completeness</th>
+                  <th className="px-4 py-3">Progress</th>
                   <th className="px-4 py-3">Verdict</th>
                   <th className="px-4 py-3">Evidence</th>
                   <th className="px-4 py-3">Market</th>
@@ -88,7 +88,16 @@ export default function OpportunitiesPage() {
                       <div className="text-xs text-zinc-500">{row.category || 'Uncategorized'}</div>
                     </td>
                     <td className="px-4 py-3 text-zinc-300">{row.entity_type}</td>
-                    <td className="px-4 py-3 text-zinc-300">{row.research_completeness_score}%</td>
+                    <td className="px-4 py-3 text-zinc-300">
+                      <div className="font-medium">
+                        {row.entity_type === 'idea'
+                          ? `${row.discovery_completeness_score ?? row.research_completeness_score}%`
+                          : `${row.research_completeness_score}%`}
+                      </div>
+                      <div className="text-xs text-zinc-500">
+                        {row.entity_type === 'idea' ? 'Discovery completeness' : 'Research completeness'}
+                      </div>
+                    </td>
                     <td className="px-4 py-3 text-zinc-300">{row.research_verdict || row.status || '—'}</td>
                     <td className="px-4 py-3 text-zinc-300">{row.sold_evidence_count} sold / {row.active_evidence_count} active</td>
                     <td className="px-4 py-3 text-zinc-300">

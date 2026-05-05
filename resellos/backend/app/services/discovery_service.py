@@ -464,6 +464,10 @@ class DiscoveryService:
             "status": task.status,
             "notes": task.notes,
             "sort_order": task.sort_order,
+            "linked_evidence_id": str(task.linked_evidence_id) if task.linked_evidence_id else None,
+            "linked_source_id": str(task.linked_source_id) if task.linked_source_id else None,
+            "linked_competitor_id": str(task.linked_competitor_id) if task.linked_competitor_id else None,
+            "linked_product_id": str(task.linked_product_id) if task.linked_product_id else None,
             "created_at": task.created_at,
         }
 

@@ -350,6 +350,10 @@ export interface DiscoveryTask {
   status: 'TODO' | 'DONE' | 'SKIPPED' | 'BLOCKED' | string;
   notes?: string;
   sort_order: number;
+  linked_evidence_id?: string | null;
+  linked_source_id?: string | null;
+  linked_competitor_id?: string | null;
+  linked_product_id?: string | null;
   created_at: string;
 }
 
