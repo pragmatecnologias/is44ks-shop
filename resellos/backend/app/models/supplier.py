@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime
-from sqlalchemy import Column, String, Text, DateTime, Numeric, ForeignKey, Boolean
+from sqlalchemy import Column, String, Text, DateTime, Numeric, ForeignKey, Boolean, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from app.db import Base
@@ -116,6 +116,30 @@ class AgentReport(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
     product = relationship("Product", back_populates="agent_reports")
+
+
+class MarketplaceEvidence(Base):
+    __tablename__ = "marketplace_evidence"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    product_id = Column(UUID(as_uuid=True), ForeignKey("products.id"), nullable=False)
+    marketplace = Column(Text, nullable=False)
+    evidence_type = Column(String(50), nullable=False)
+    title = Column(Text)
+    url = Column(Text)
+    price = Column(Numeric(10, 2))
+    shipping_price = Column(Numeric(10, 2))
+    sold_date = Column(DateTime)
+    condition = Column(String(100))
+    seller_name = Column(String(200))
+    source_method = Column(String(50))
+    raw_text = Column(Text)
+    screenshot_url = Column(Text)
+    confidence = Column(String(50))
+    notes = Column(Text)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    product = relationship("Product", back_populates="marketplace_evidence")
 
 
 class InventoryItem(Base):

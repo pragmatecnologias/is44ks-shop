@@ -1,14 +1,28 @@
 from app.llm.base import LLMProvider, Message
-from app.llm.minimax_provider import MiniMaxProvider
-from app.llm.openai_provider import OpenAIProvider
-from app.llm.ollama_provider import OllamaProvider
 import os
 
-_providers = {
-    "minimax": MiniMaxProvider,
-    "openai": OpenAIProvider,
-    "ollama": OllamaProvider,
-}
+_providers = {}
+
+try:
+    from app.llm.minimax_provider import MiniMaxProvider
+
+    _providers["minimax"] = MiniMaxProvider
+except Exception:
+    MiniMaxProvider = None  # type: ignore[assignment]
+
+try:
+    from app.llm.openai_provider import OpenAIProvider
+
+    _providers["openai"] = OpenAIProvider
+except Exception:
+    OpenAIProvider = None  # type: ignore[assignment]
+
+try:
+    from app.llm.ollama_provider import OllamaProvider
+
+    _providers["ollama"] = OllamaProvider
+except Exception:
+    OllamaProvider = None  # type: ignore[assignment]
 
 
 def get_llm_provider() -> LLMProvider:

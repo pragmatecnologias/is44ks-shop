@@ -1,30 +1,10 @@
 from app.agents.base_agent import BaseAgent
 from app.llm.base import LLMProvider, Message
 from typing import Dict, Any, List
-
-
-COUNTERFEIT_BRANDS = {
-    "nike", "apple", "rolex", "gucci", "chanel", "louis vuitton", "lv",
-    "adidas", "hermes", "prada", "dior", "versace", "burberry", "cartier",
-    "samsung", "sony", "microsoft", "beats", "uggs", "north face", "patagonia",
-    "coach", "michael kors", "kate spade", "fendi", "balenciaga", "givenchy",
-    "armani", "ralph lauren", "polo ralph lauren", "tommy hilfiger",
-}
-
-UNSAFE_CATEGORIES = {
-    "battery", "lithium", "batteries", "cell", "power bank",
-    "medical", "healthcare", "medical device", "diagnostic",
-    "cosmetic", "skincare", "beauty", "makeup", "personal care",
-    "supplement", "vitamin", "nutraceutical", "dietary supplement",
-    "pharmaceutical", "drug", "medication", "rx", "prescription",
-    "children toy", "kids toy", "childcare", "infant",
-    "food", "edible", "consumable",
-    "firearm", "weapon", "ammunition", "explosive",
-    "animal", "pet", "livestock",
-    "pornography", "adult", "mature",
-    "cannabis", "thc", "cbd", "marijuana", "hemp",
-    "alcohol", "tobacco", "vape", "e-cigarette",
-}
+from app.schemas.agent_schema import RiskAgentOutput
+from app.services.agent_utils import collect_text_fields
+from app.services.risk_rules import evaluate_risk_rules
+import json
 
 
 class RiskAgent(BaseAgent):
@@ -34,8 +14,8 @@ class RiskAgent(BaseAgent):
     async def run(self, context: Dict[str, Any]) -> Dict[str, Any]:
         template = self._load_prompt("risk_agent.txt")
 
-        import json
-        product_json = json.dumps(context.get("product", {}), indent=2)
+        product = context.get("product", {})
+        product_json = json.dumps(product, indent=2)
         prompt = self._format_prompt(template, PRODUCT_JSON=product_json)
 
         system_msg = Message(
@@ -44,42 +24,50 @@ class RiskAgent(BaseAgent):
             "Analyze the product and return ONLY valid JSON with risk assessment.",
         )
         user_msg = Message("user", prompt)
-        result = await self.llm.complete_json([system_msg, user_msg])
+        try:
+            result = await self.llm.complete_json([system_msg, user_msg])
+        except Exception:
+            result = {}
 
-        risk_level = result.get("risk_level", "MEDIUM")
-        blocked = result.get("blocked", False)
-        warnings = []
+        rule_result = evaluate_risk_rules(
+            {
+                "name": product.get("name"),
+                "description": product.get("description"),
+                "category": product.get("category"),
+                "supplier_title": context.get("supplier_title"),
+                "supplier_notes": context.get("supplier_notes"),
+                "marketplace_notes": context.get("marketplace_notes"),
+                "competitor_text": collect_text_fields(context.get("competitor_text"), context.get("competitor_listings")),
+            }
+        )
 
-        # Rule-based overrides
-        product_name = context.get("product", {}).get("name", "").lower()
-        category = context.get("product", {}).get("category", "").lower()
+        merged = {
+            "risk_level": rule_result["risk_level"],
+            "blocked": rule_result["blocked"],
+            "risk_flags": rule_result["risk_flags"],
+            "red_flags": rule_result["red_flags"],
+            "requires_manual_review": rule_result["requires_manual_review"],
+            "confidence": "HIGH" if rule_result["risk_flags"] else "MEDIUM",
+            "summary": result.get("summary", result.get("reasoning_summary", "")),
+            "warnings": result.get("warnings", []),
+            "evidence_refs": result.get("evidence_refs", []),
+        }
 
-        for brand in COUNTERFEIT_BRANDS:
-            if brand in product_name:
-                blocked = True
-                risk_level = "BLOCKED"
-                warnings.append(f"Counterfeit/trademark brand detected: {brand}")
+        warnings = list({*merged["warnings"], *merged["red_flags"]})
 
-        for unsafe in UNSAFE_CATEGORIES:
-            if unsafe in category:
-                blocked = True
-                risk_level = "BLOCKED"
-                warnings.append(f"Unsafe category detected: {unsafe}")
-
-        # Merge red flags
-        existing_flags = result.get("red_flags", [])
-        if isinstance(existing_flags, list):
-            warnings = warnings + [w for w in existing_flags if w not in warnings]
+        output = RiskAgentOutput.model_validate(
+            {
+                **merged,
+                "warnings": warnings,
+                "summary": merged["summary"] or "Risk evaluation completed.",
+            }
+        )
 
         return {
             "agent_name": "risk_agent",
-            "output_json": {
-                **result,
-                "blocked": blocked,
-                "risk_level": risk_level,
-                "red_flags": warnings,
-            },
-            "summary": result.get("reasoning_summary", ""),
-            "confidence": result.get("confidence", "MEDIUM"),
-            "warnings": warnings,
+            "output_json": output.model_dump(),
+            "summary": output.summary,
+            "confidence": output.confidence,
+            "warnings": output.warnings,
+            "evidence_refs": output.evidence_refs,
         }

@@ -1,126 +1,200 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import * as Tabs from '@radix-ui/react-tabs';
 import {
   ArrowLeft,
-  RefreshCw,
-  Package,
-  Building2,
-  BarChart3,
-  DollarSign,
-  Users,
-  Brain,
-  Tag,
-  Warehouse,
-  TrendingUp,
-  ExternalLink,
-  Star,
-  AlertTriangle,
+  BadgeAlert,
   CheckCircle2,
+  Clock3,
+  ExternalLink,
+  FileText,
+  Package,
+  Sparkles,
+  ShieldAlert,
+  TrendingUp,
+  Truck,
+  Users,
+  Wallet,
   XCircle,
+  RefreshCw,
 } from 'lucide-react';
-import { StatusBadge } from '@/components/shared/status-badge';
-import { RiskBadge } from '@/components/shared/risk-badge';
+import { StatusBadge } from '@/components/shared/StatusBadge';
+import { RiskBadge } from '@/components/shared/RiskBadge';
 import { getProduct } from '@/lib/api';
-import type { Product, AgentReport, ProfitAnalysis, CompetitorListing, MarketplaceResearch, InventoryItem, Sale, Listing } from '@/lib/types';
+import type {
+  AgentReport,
+  MarketplaceEvidence,
+  ProfitAnalysis,
+  Product,
+} from '@/lib/types';
+
+const DEFAULT_MISSING_EVIDENCE = [
+  'Sold listings missing',
+  'Shipping weight missing',
+  'Competitor photo review missing',
+  'Supplier comparison missing',
+];
+
+const MOCK_EVIDENCE: MarketplaceEvidence[] = [
+  {
+    id: 'e1',
+    product_id: '1',
+    marketplace: 'eBay',
+    evidence_type: 'SOLD_LISTING',
+    title: '2-Pack Car Seat Gap Organizer',
+    price: 18.99,
+    shipping_price: 0,
+    condition: 'New',
+    seller_name: 'AutoGearSupply',
+    source_method: 'MANUAL',
+    confidence: 'HIGH',
+    notes: '12 sold examples seen across sold listings.',
+  },
+  {
+    id: 'e2',
+    product_id: '1',
+    marketplace: 'eBay',
+    evidence_type: 'ACTIVE_LISTING',
+    title: 'Car Seat Gap Filler Organizer - Black',
+    price: 21.99,
+    shipping_price: 0,
+    condition: 'New',
+    seller_name: 'FastParts',
+    source_method: 'SCREENSHOT',
+    confidence: 'MEDIUM',
+    notes: 'Active competition appears crowded but not saturated.',
+  },
+  {
+    id: 'e3',
+    product_id: '1',
+    marketplace: 'Mercari',
+    evidence_type: 'MANUAL_NOTE',
+    title: 'Bundle option',
+    raw_text: 'Bundle of 2 units seems to land above the break-even line.',
+    source_method: 'MANUAL',
+    confidence: 'LOW',
+    notes: 'Manual note from research session.',
+  },
+];
+
+const MOCK_SUPPLIERS = [
+  {
+    id: 's1',
+    name: 'Shenzhen Auto Parts',
+    platform: 'Alibaba',
+    unitCost: 4.15,
+    domesticShipping: 0.35,
+    internationalShipping: 1.20,
+    moq: 50,
+    landedCost: 5.7,
+    sample: 'Recommended',
+  },
+  {
+    id: 's2',
+    name: 'Yiwu Gear House',
+    platform: '1688',
+    unitCost: 3.95,
+    domesticShipping: 0.40,
+    internationalShipping: 1.65,
+    moq: 100,
+    landedCost: 6.0,
+    sample: 'Good backup',
+  },
+];
+
+const MOCK_PROFIT_SCENARIOS: ProfitAnalysis[] = [
+  {
+    id: 'p1',
+    product_id: '1',
+    scenario_name: 'eBay buyer-paid shipping',
+    expected_sale_price: 18.99,
+    landed_cost: 5.7,
+    selling_cost: 5.87,
+    marketplace_fee: 2.47,
+    estimated_net_profit: 7.42,
+    margin_percent: 39.1,
+    roi_percent: 0,
+    verdict: 'GOOD',
+  },
+  {
+    id: 'p2',
+    product_id: '1',
+    scenario_name: 'eBay free shipping',
+    expected_sale_price: 18.99,
+    landed_cost: 5.7,
+    selling_cost: 9.89,
+    marketplace_fee: 2.47,
+    estimated_net_profit: 3.10,
+    margin_percent: 16.3,
+    roi_percent: 0,
+    verdict: 'WEAK',
+  },
+  {
+    id: 'p3',
+    product_id: '1',
+    scenario_name: '2-pack bundle',
+    expected_sale_price: 36.99,
+    landed_cost: 11.4,
+    selling_cost: 13.79,
+    marketplace_fee: 4.81,
+    estimated_net_profit: 11.8,
+    margin_percent: 35.7,
+    roi_percent: 0,
+    verdict: 'GOOD',
+  },
+];
 
 const MOCK_REPORTS: AgentReport[] = [
   {
     id: 'r1',
     product_id: '1',
-    agent_name: 'Risk Agent',
-    report_type: 'risk',
-    summary: 'Low risk product. Supplier has positive ratings and stable pricing history.',
-    confidence: '0.85',
-    created_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    agent_name: 'risk_agent',
+    report_type: 'risk_agent',
+    summary: 'No counterfeit brand terms found. Pet accessory terms allowed.',
+    confidence: 'HIGH',
+    evidence_refs: ['rule:pet_accessory'],
+    created_at: new Date().toISOString(),
   },
   {
     id: 'r2',
     product_id: '1',
-    agent_name: 'Market Agent',
-    report_type: 'market',
-    summary: 'Strong demand signal on eBay with 200+ monthly sales in category. Moderate competition.',
-    confidence: '0.88',
-    created_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    agent_name: 'market_agent',
+    report_type: 'market_agent',
+    summary: 'Marketplace evidence is medium quality and enough for a cautious sample decision.',
+    confidence: 'MEDIUM',
+    evidence_refs: ['e1', 'e2'],
+    created_at: new Date().toISOString(),
   },
   {
     id: 'r3',
     product_id: '1',
-    agent_name: 'Profit Agent',
-    report_type: 'profit',
-    summary: 'Expected ROI of 96% at target sale price of $49.99. Break-even at $30.00.',
-    confidence: '0.82',
-    created_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    agent_name: 'profit_agent',
+    report_type: 'profit_agent',
+    summary: 'The 2-pack bundle is the strongest scenario.',
+    confidence: 'MEDIUM',
+    evidence_refs: ['p3'],
+    created_at: new Date().toISOString(),
   },
   {
     id: 'r4',
     product_id: '1',
-    agent_name: 'Decision Agent',
-    report_type: 'decision',
-    summary: 'Recommendation: BUY_SAMPLE. All factors indicate this is a viable product with good margins.',
-    confidence: '0.90',
-    created_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    agent_name: 'decision_agent',
+    report_type: 'decision_agent',
+    summary: 'BUY_SAMPLE with medium confidence. Add sold listings and supplier comparison before ordering.',
+    confidence: 'MEDIUM',
+    evidence_refs: ['e1', 'p1'],
+    created_at: new Date().toISOString(),
   },
 ];
 
-const MOCK_SUPPLIERS = [
-  { id: 's1', name: 'Shenzhen Electronics Co.', cost: 18.50, moq: 10, landed_cost: 22.00, preferred: true },
-  { id: 's2', name: 'Guangzhou Trading Ltd.', cost: 16.00, moq: 50, landed_cost: 21.50, preferred: false },
-  { id: 's3', name: 'Ningbo Goods Export', cost: 20.00, moq: 5, landed_cost: 23.00, preferred: false },
-];
-
-const MOCK_MARKET_RESEARCH: MarketplaceResearch[] = [
-  {
-    id: 'mr1',
-    product_id: '1',
-    marketplace: 'eBay',
-    active_listing_count: 145,
-    sold_listing_count: 892,
-    median_active_price: 42.50,
-    median_sold_price: 38.99,
-    competition_level: 'Moderate',
-    demand_signal: 'High',
-  },
-  {
-    id: 'mr2',
-    product_id: '1',
-    marketplace: 'Mercari',
-    active_listing_count: 67,
-    sold_listing_count: 423,
-    median_active_price: 38.00,
-    median_sold_price: 35.50,
-    competition_level: 'Low',
-    demand_signal: 'Medium',
-  },
-];
-
-const MOCK_COMPETITORS: CompetitorListing[] = [
-  { id: 'c1', product_id: '1', marketplace: 'eBay', title: 'Portable Bluetooth Speaker Waterproof', price: 39.99, sold: true, photo_score: 7, seller_name: 'AudioDeals123' },
-  { id: 'c2', product_id: '1', marketplace: 'eBay', title: 'BT Speaker 360 Sound | Black', price: 44.99, sold: false, photo_score: 8, seller_name: 'TechWorld' },
-  { id: 'c3', product_id: '1', marketplace: 'Mercari', title: 'Bluetooth Speaker - Like New', price: 32.00, sold: true, photo_score: 9, seller_name: 'User_Seller' },
-];
-
-const MOCK_PROFIT: ProfitAnalysis[] = [
-  { id: 'p1', product_id: '1', scenario_name: 'Buyer Paid Shipping', expected_sale_price: 49.99, landed_cost: 22.00, marketplace_fee: 5.50, estimated_net_profit: 22.49, margin_percent: 45, roi_percent: 102 },
-  { id: 'p2', product_id: '1', scenario_name: 'Seller Paid Shipping', expected_sale_price: 49.99, landed_cost: 22.00, marketplace_fee: 5.50, shipping_cost: 5.00, estimated_net_profit: 17.49, margin_percent: 35, roi_percent: 79 },
-  { id: 'p3', product_id: '1', scenario_name: 'Bundle Discount', expected_sale_price: 44.99, landed_cost: 22.00, marketplace_fee: 4.95, estimated_net_profit: 18.04, margin_percent: 40, roi_percent: 82 },
-];
-
-const MOCK_INVENTORY: InventoryItem[] = [
-  { id: 'i1', product_id: '1', quantity_on_hand: 3, quantity_ordered: 10, quantity_sold: 7, quantity_returned: 0, location_code: 'SHELF-A3' },
-];
-
-const MOCK_SALES: Sale[] = [
-  { id: 'sl1', product_id: '1', marketplace: 'eBay', sale_date: '2026-04-28', quantity: 1, sale_price: 44.99, marketplace_fee: 4.95, net_profit: 18.04 },
-  { id: 'sl2', product_id: '1', marketplace: 'eBay', sale_date: '2026-04-20', quantity: 1, sale_price: 47.99, marketplace_fee: 5.28, net_profit: 20.71 },
-];
-
-const MOCK_LISTINGS: Listing[] = [
-  { id: 'l1', product_id: '1', marketplace: 'ebay', title: 'Portable Bluetooth Speaker - Waterproof 360 Sound', price: 49.99, status: 'draft' },
-  { id: 'l2', product_id: '1', marketplace: 'mercari', title: 'Bluetooth Speaker', price: 38.00, status: 'published' },
+const TIMELINE = [
+  { label: 'Product created', detail: 'Added to research queue', time: '09:20' },
+  { label: 'Risk check', detail: 'Pet accessory allowed, no brand issues', time: '09:31' },
+  { label: 'Marketplace evidence', detail: '2 sold listings and 1 active listing captured', time: '09:44' },
+  { label: 'Profit scenarios', detail: '2-pack bundle returned the best margin', time: '09:52' },
+  { label: 'Decision', detail: 'BUY_SAMPLE with missing evidence noted', time: '09:58' },
 ];
 
 export default function ProductDetailPage() {
@@ -129,27 +203,46 @@ export default function ProductDetailPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProduct(params.id as string).then((p) => {
-      setProduct(p);
+    getProduct(params.id as string).then((result) => {
+      setProduct(result);
       setLoading(false);
     });
   }, [params.id]);
 
+  const cockpit = useMemo(() => {
+    if (!product) return null;
+
+    const score = product.final_score ?? (product.final_decision === 'BLOCKED' ? 0 : 78);
+    const decision = product.final_decision ?? 'BUY_SAMPLE';
+    const confidence = product.confidence ?? 'MEDIUM';
+    const nextAction = product.next_action ?? 'Add 10 sold examples and confirm supplier landed cost.';
+    const missingEvidence = product.missing_evidence?.length ? product.missing_evidence : DEFAULT_MISSING_EVIDENCE;
+
+    return {
+      score,
+      decision,
+      confidence,
+      nextAction,
+      missingEvidence,
+    };
+  }, [product]);
+
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <RefreshCw className="w-6 h-6 animate-spin text-indigo-400" />
+      <div className="flex min-h-screen items-center justify-center">
+        <RefreshCw className="h-6 w-6 animate-spin text-indigo-400" />
       </div>
     );
   }
 
-  if (!product) {
+  if (!product || !cockpit) {
     return (
       <div className="p-6">
-        <div className="text-center py-20">
-          <XCircle className="w-12 h-12 text-red-400 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-white mb-2">Product not found</h2>
-          <Link href="/products" className="text-indigo-400 hover:text-indigo-300 text-sm">
+        <div className="mx-auto max-w-xl rounded-3xl border border-zinc-800 bg-zinc-950/80 p-10 text-center">
+          <XCircle className="mx-auto mb-4 h-12 w-12 text-red-400" />
+          <h2 className="text-xl font-semibold text-white">Product not found</h2>
+          <p className="mt-2 text-sm text-zinc-400">The product record could not be loaded.</p>
+          <Link href="/products" className="mt-6 inline-flex text-sm text-indigo-400 hover:text-indigo-300">
             Back to Products
           </Link>
         </div>
@@ -158,596 +251,295 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="p-6 max-w-[1400px]">
-      {/* Header */}
-      <div className="flex items-start gap-4 mb-6">
-        <Link
-          href="/products"
-          className="mt-1 p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </Link>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-3 flex-wrap">
-            <h1 className="text-2xl font-semibold text-white">{product.name}</h1>
-            <StatusBadge status={product.status} />
-            {product.risk_level && <RiskBadge risk={product.risk_level} />}
-          </div>
-          <div className="flex items-center gap-4 mt-1 text-sm text-zinc-500">
-            <span>{product.sku}</span>
-            {product.category && <span>{product.category}</span>}
-            {product.subcategory && <span>· {product.subcategory}</span>}
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          {product.final_score != null && (
-            <div className="text-right mr-4">
-              <div className={`text-2xl font-bold ${
-                product.final_score >= 70 ? 'text-green-400' : product.final_score >= 50 ? 'text-yellow-400' : 'text-red-400'
-              }`}>
-                {product.final_score}
+    <div className="p-6">
+      <div className="mx-auto max-w-[1440px] space-y-6">
+        <header className="rounded-[28px] border border-zinc-800 bg-[radial-gradient(circle_at_top_left,_rgba(79,70,229,0.22),_transparent_28%),linear-gradient(180deg,rgba(9,9,11,0.96),rgba(17,17,17,0.96))] p-6 shadow-2xl shadow-black/20">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <Link href="/products" className="mt-1 rounded-xl border border-zinc-800 bg-zinc-950/60 p-2 text-zinc-400 transition hover:text-white hover:border-zinc-700">
+                <ArrowLeft className="h-5 w-5" />
+              </Link>
+              <div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <h1 className="text-3xl font-semibold tracking-tight text-white">{product.name}</h1>
+                  <StatusBadge status={product.status} />
+                  {product.risk_level && <RiskBadge risk={product.risk_level} />}
+                </div>
+                <p className="mt-2 max-w-3xl text-sm text-zinc-400">
+                  {product.category ?? 'General'} {product.subcategory ? `· ${product.subcategory}` : ''}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3 text-xs text-zinc-400">
+                  <Pill icon={Package} label={product.sku} />
+                  <Pill icon={ShieldAlert} label={`Decision: ${cockpit.decision.replace(/_/g, ' ')}`} />
+                  <Pill icon={Sparkles} label={`Confidence: ${cockpit.confidence}`} />
+                  <Pill icon={TrendingUp} label={`Score: ${cockpit.score}/100`} />
+                </div>
               </div>
-              <div className="text-xs text-zinc-500">Score</div>
             </div>
-          )}
-          {product.final_decision && (
-            <span className="px-3 py-1.5 text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-lg">
-              {product.final_decision.replace(/_/g, ' ')}
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Tabs */}
-      <Tabs.Root defaultValue="overview" className="w-full">
-        <Tabs.List className="flex items-center gap-0.5 p-1 bg-zinc-900 rounded-xl border border-zinc-800 mb-6 overflow-x-auto scrollbar-hide">
-          {TAB_ITEMS.map((tab) => (
-            <Tabs.Trigger
-              key={tab.value}
-              value={tab.value}
-              className="flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-zinc-400 data-[state=active]:text-white data-[state=active]:bg-zinc-800 rounded-lg transition-colors whitespace-nowrap"
-            >
-              <tab.icon className="w-3.5 h-3.5" />
-              {tab.label}
-            </Tabs.Trigger>
-          ))}
-        </Tabs.List>
-
-        <Tabs.Content value="overview" className="outline-none">
-          <OverviewTab product={product} />
-        </Tabs.Content>
-
-        <Tabs.Content value="suppliers" className="outline-none">
-          <SupplierTab />
-        </Tabs.Content>
-
-        <Tabs.Content value="marketplace" className="outline-none">
-          <MarketplaceTab research={MOCK_MARKET_RESEARCH} competitors={MOCK_COMPETITORS} />
-        </Tabs.Content>
-
-        <Tabs.Content value="profit" className="outline-none">
-          <ProfitTab analyses={MOCK_PROFIT} />
-        </Tabs.Content>
-
-        <Tabs.Content value="competition" className="outline-none">
-          <CompetitionTab competitors={MOCK_COMPETITORS} />
-        </Tabs.Content>
-
-        <Tabs.Content value="reports" className="outline-none">
-          <ReportsTab reports={MOCK_REPORTS} />
-        </Tabs.Content>
-
-        <Tabs.Content value="listings" className="outline-none">
-          <ListingsTab listings={MOCK_LISTINGS} />
-        </Tabs.Content>
-
-        <Tabs.Content value="inventory" className="outline-none">
-          <InventoryTab items={MOCK_INVENTORY} />
-        </Tabs.Content>
-
-        <Tabs.Content value="sales" className="outline-none">
-          <SalesTab sales={MOCK_SALES} />
-        </Tabs.Content>
-
-        <Tabs.Content value="reorder" className="outline-none">
-          <ReorderTab />
-        </Tabs.Content>
-      </Tabs.Root>
-    </div>
-  );
-}
-
-const TAB_ITEMS = [
-  { value: 'overview', label: 'Overview', icon: Package },
-  { value: 'suppliers', label: 'Suppliers', icon: Building2 },
-  { value: 'marketplace', label: 'Marketplace', icon: BarChart3 },
-  { value: 'profit', label: 'Profit', icon: DollarSign },
-  { value: 'competition', label: 'Competition', icon: Users },
-  { value: 'reports', label: 'AI Reports', icon: Brain },
-  { value: 'listings', label: 'Listings', icon: Tag },
-  { value: 'inventory', label: 'Inventory', icon: Warehouse },
-  { value: 'sales', label: 'Sales', icon: TrendingUp },
-  { value: 'reorder', label: 'Reorder', icon: RefreshCw },
-];
-
-// ─── Tab Components ───────────────────────────────────────────────────────────
-
-function OverviewTab({ product }: { product: Product }) {
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div className="lg:col-span-2 space-y-6">
-        {/* Product Details */}
-        <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-          <h3 className="text-sm font-semibold text-white mb-4">Product Details</h3>
-          {product.description ? (
-            <p className="text-sm text-zinc-400 leading-relaxed">{product.description}</p>
-          ) : (
-            <p className="text-sm text-zinc-600 italic">No description provided</p>
-          )}
-        </div>
-
-        {/* Timeline */}
-        <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-          <h3 className="text-sm font-semibold text-white mb-4">Timeline</h3>
-          <div className="space-y-4">
-            <TimelineItem label="Created" date={product.created_at} color="blue" />
-            <TimelineItem label="Last Updated" date={product.updated_at} color="green" />
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <MetricCard label="Max sample qty" value="5" />
+              <MetricCard label="Target sale price" value="$18.99" />
+              <MetricCard label="Max landed cost" value="$5.75" />
+              <MetricCard label="Next action" value="Evidence first" />
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div className="space-y-6">
-        {/* Quick Stats */}
-        <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-          <h3 className="text-sm font-semibold text-white mb-4">Financials</h3>
-          <div className="space-y-3">
-            <StatRow label="Target Sale Price" value={product.target_sale_price ? `$${product.target_sale_price.toFixed(2)}` : '—'} />
-            <StatRow label="Target Cost" value={product.target_cost ? `$${product.target_cost.toFixed(2)}` : '—'} />
-            <StatRow label="Est. Profit" value={product.expected_profit ? `$${product.expected_profit.toFixed(2)}` : '—'} highlight />
-          </div>
-        </div>
-
-        {/* Next Action */}
-        <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-          <h3 className="text-sm font-semibold text-white mb-4">Next Action</h3>
-          <div className="p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/20">
-            <p className="text-sm text-indigo-400 font-medium">
-              {getNextActionText(product.status)}
+          <div className="mt-5 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm text-emerald-100">
+            <div className="flex items-center gap-2 font-medium text-emerald-200">
+              <CheckCircle2 className="h-4 w-4" />
+              Decision header
+            </div>
+            <p className="mt-2 text-emerald-50">
+              {cockpit.decision.replace(/_/g, ' ')} because the product has enough margin to test, but the app still wants more sold evidence before committing capital.
             </p>
+            <p className="mt-2 text-xs text-emerald-100/80">Next action: {cockpit.nextAction}</p>
           </div>
+        </header>
+
+        <div className="grid gap-6 xl:grid-cols-3">
+          <Panel title="Missing Evidence Checklist" icon={BadgeAlert}>
+            <Checklist items={cockpit.missingEvidence} />
+          </Panel>
+
+          <Panel title="Risk Panel" icon={ShieldAlert}>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">Risk level</p>
+                  <p className="mt-1 text-lg font-semibold text-white">{product.risk_level ?? 'MEDIUM'}</p>
+                </div>
+                <RiskBadge risk={product.risk_level ?? 'MEDIUM'} />
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <h3 className="text-sm font-medium text-white">Risk flags</h3>
+                <ul className="mt-3 space-y-2 text-sm text-zinc-300">
+                  <li>• Generic pet accessory allowed by the rule engine.</li>
+                  <li>• No trademark or replica language detected.</li>
+                  <li>• Manual review only if compliance-sensitive text appears later.</li>
+                </ul>
+              </div>
+            </div>
+          </Panel>
+
+          <Panel title="Marketplace Evidence" icon={Users}>
+            <div className="space-y-3">
+              {MOCK_EVIDENCE.map((item) => (
+                <EvidenceRow key={item.id} item={item} />
+              ))}
+            </div>
+          </Panel>
         </div>
-      </div>
-    </div>
-  );
-}
 
-function SupplierTab() {
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-white">Supplier Options</h3>
-        <button className="px-3 py-1.5 text-xs font-medium bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors">
-          + Add Supplier
-        </button>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {MOCK_SUPPLIERS.map((supplier) => (
-          <div key={supplier.id} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-            <div className="flex items-start justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <Building2 className="w-4 h-4 text-zinc-500" />
-                <span className="text-sm font-medium text-white">{supplier.name}</span>
-              </div>
-              {supplier.preferred && (
-                <span className="px-2 py-0.5 text-xs bg-indigo-500/10 text-indigo-400 rounded-full border border-indigo-500/20">
-                  Preferred
-                </span>
-              )}
+        <div className="grid gap-6 xl:grid-cols-2">
+          <Panel title="Profit Scenarios" icon={Wallet}>
+            <div className="overflow-hidden rounded-2xl border border-zinc-800">
+              <table className="w-full text-sm">
+                <thead className="bg-zinc-950/70 text-xs uppercase tracking-[0.18em] text-zinc-500">
+                  <tr>
+                    <th className="px-4 py-3 text-left">Scenario</th>
+                    <th className="px-4 py-3 text-right">Net profit</th>
+                    <th className="px-4 py-3 text-right">Margin</th>
+                    <th className="px-4 py-3 text-right">Decision</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-zinc-800 bg-zinc-950/40">
+                  {MOCK_PROFIT_SCENARIOS.map((scenario) => (
+                    <tr key={scenario.id} className="text-zinc-300">
+                      <td className="px-4 py-3">
+                        <div className="font-medium text-white">{scenario.scenario_name}</div>
+                        <div className="text-xs text-zinc-500">
+                          landed ${scenario.landed_cost?.toFixed(2)} · selling ${scenario.selling_cost?.toFixed(2)}
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 text-right font-mono text-emerald-400">
+                        +${scenario.estimated_net_profit?.toFixed(2)}
+                      </td>
+                      <td className="px-4 py-3 text-right font-mono text-zinc-100">
+                        {scenario.margin_percent?.toFixed(1)}%
+                      </td>
+                      <td className="px-4 py-3 text-right">
+                        <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                          {scenario.verdict}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Unit Cost</span>
-                <span className="text-white font-mono">${supplier.cost.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">MOQ</span>
-                <span className="text-white">{supplier.moq} units</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Landed Cost</span>
-                <span className="text-green-400 font-mono">${supplier.landed_cost.toFixed(2)}</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+          </Panel>
 
-function MarketplaceTab({ research, competitors }: { research: MarketplaceResearch[]; competitors: CompetitorListing[] }) {
-  return (
-    <div className="space-y-6">
-      <div>
-        <h3 className="text-sm font-semibold text-white mb-4">Market Research</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {research.map((r) => (
-            <div key={r.id} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <BarChart3 className="w-4 h-4 text-indigo-400" />
-                <span className="text-sm font-medium text-white">{r.marketplace}</span>
-              </div>
-              <div className="grid grid-cols-2 gap-3 text-sm">
-                <div>
-                  <span className="text-zinc-500 block text-xs">Active Listings</span>
-                  <span className="text-white">{r.active_listing_count ?? '—'}</span>
-                </div>
-                <div>
-                  <span className="text-zinc-500 block text-xs">Monthly Sales</span>
-                  <span className="text-white">{r.sold_listing_count ?? '—'}</span>
-                </div>
-                <div>
-                  <span className="text-zinc-500 block text-xs">Median Price</span>
-                  <span className="text-white">${r.median_active_price?.toFixed(2) ?? '—'}</span>
-                </div>
-                <div>
-                  <span className="text-zinc-500 block text-xs">Median Sold</span>
-                  <span className="text-green-400">${r.median_sold_price?.toFixed(2) ?? '—'}</span>
-                </div>
-                <div>
-                  <span className="text-zinc-500 block text-xs">Competition</span>
-                  <span className={r.competition_level === 'Low' ? 'text-green-400' : r.competition_level === 'Moderate' ? 'text-yellow-400' : 'text-red-400'}>
-                    {r.competition_level ?? '—'}
-                  </span>
-                </div>
-                <div>
-                  <span className="text-zinc-500 block text-xs">Demand</span>
-                  <span className={r.demand_signal === 'High' ? 'text-green-400' : 'text-yellow-400'}>
-                    {r.demand_signal ?? '—'}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ProfitTab({ analyses }: { analyses: ProfitAnalysis[] }) {
-  return (
-    <div className="space-y-4">
-      <h3 className="text-sm font-semibold text-white">Profit Scenarios</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {analyses.map((a) => (
-          <div key={a.id} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-            <div className="flex items-center gap-2 mb-3">
-              {a.estimated_net_profit && a.estimated_net_profit > 0 ? (
-                <CheckCircle2 className="w-4 h-4 text-green-400" />
-              ) : (
-                <AlertTriangle className="w-4 h-4 text-red-400" />
-              )}
-              <span className="text-sm font-medium text-white">{a.scenario_name}</span>
-            </div>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Sale Price</span>
-                <span className="text-white font-mono">${a.expected_sale_price?.toFixed(2) ?? '—'}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Landed Cost</span>
-                <span className="text-white font-mono">${a.landed_cost?.toFixed(2) ?? '—'}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Fees</span>
-                <span className="text-red-400 font-mono">-${a.marketplace_fee?.toFixed(2) ?? '—'}</span>
-              </div>
-              {a.shipping_cost && (
-                <div className="flex justify-between">
-                  <span className="text-zinc-500">Shipping</span>
-                  <span className="text-red-400 font-mono">-${a.shipping_cost.toFixed(2)}</span>
-                </div>
-              )}
-              <div className="border-t border-zinc-800 pt-2 flex justify-between">
-                <span className="text-zinc-500">Net Profit</span>
-                <span className={`font-mono font-medium ${(a.estimated_net_profit ?? 0) > 0 ? 'text-green-400' : 'text-red-400'}`}>
-                  ${a.estimated_net_profit?.toFixed(2) ?? '—'}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Margin</span>
-                <span className="text-white">{a.margin_percent ?? '—'}%</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">ROI</span>
-                <span className="text-indigo-400">{a.roi_percent ?? '—'}%</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function CompetitionTab({ competitors }: { competitors: CompetitorListing[] }) {
-  return (
-    <div className="space-y-4">
-      <h3 className="text-sm font-semibold text-white">Competitor Listings</h3>
-      <div className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-zinc-800">
-              <th className="text-left px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Title</th>
-              <th className="text-left px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Marketplace</th>
-              <th className="text-right px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Price</th>
-              <th className="text-center px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Status</th>
-              <th className="text-center px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Photo</th>
-              <th className="text-left px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Seller</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-zinc-800">
-            {competitors.map((c) => (
-              <tr key={c.id} className="hover:bg-zinc-800/30">
-                <td className="px-4 py-3">
-                  <span className="text-white">{c.title}</span>
-                </td>
-                <td className="px-4 py-3 text-zinc-400">{c.marketplace}</td>
-                <td className="px-4 py-3 text-right text-white font-mono">${c.price?.toFixed(2)}</td>
-                <td className="px-4 py-3 text-center">
-                  {c.sold ? (
-                    <span className="text-xs text-green-400">Sold</span>
-                  ) : (
-                    <span className="text-xs text-zinc-500">Active</span>
-                  )}
-                </td>
-                <td className="px-4 py-3 text-center">
-                  {c.photo_score && (
-                    <div className="flex items-center justify-center gap-1">
-                      <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
-                      <span className="text-xs text-white">{c.photo_score}/10</span>
+          <Panel title="Supplier Comparison" icon={Truck}>
+            <div className="space-y-3">
+              {MOCK_SUPPLIERS.map((supplier) => (
+                <div key={supplier.id} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3 className="text-sm font-medium text-white">{supplier.name}</h3>
+                      <p className="mt-1 text-xs text-zinc-500">{supplier.platform} · MOQ {supplier.moq}</p>
                     </div>
-                  )}
-                </td>
-                <td className="px-4 py-3 text-zinc-500">{c.seller_name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-}
-
-function ReportsTab({ reports }: { reports: AgentReport[] }) {
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-white">AI Agent Reports</h3>
-        <button className="px-3 py-1.5 text-xs font-medium bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors">
-          Run All Agents
-        </button>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {reports.map((report) => (
-          <div key={report.id} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <Brain className="w-4 h-4 text-purple-400" />
-                <span className="text-sm font-medium text-white">{report.agent_name}</span>
-              </div>
-              {report.confidence && (
-                <span className="text-xs text-zinc-500">
-                  {(parseFloat(report.confidence) * 100).toFixed(0)}% confidence
-                </span>
-              )}
-            </div>
-            {report.summary && (
-              <p className="text-sm text-zinc-400 leading-relaxed">{report.summary}</p>
-            )}
-            <div className="mt-3 text-xs text-zinc-600">
-              {new Date(report.created_at).toLocaleDateString()}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ListingsTab({ listings }: { listings: Listing[] }) {
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-white">Generated Listings</h3>
-        <button className="px-3 py-1.5 text-xs font-medium bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors">
-          Generate New Listing
-        </button>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {listings.map((listing) => (
-          <div key={listing.id} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-sm font-medium text-white capitalize">{listing.marketplace}</span>
-              <span className={`px-2 py-0.5 text-xs rounded-full border ${
-                listing.status === 'published'
-                  ? 'bg-green-500/10 text-green-400 border-green-500/30'
-                  : 'bg-zinc-500/10 text-zinc-400 border-zinc-500/30'
-              }`}>
-                {listing.status}
-              </span>
-            </div>
-            {listing.title && (
-              <p className="text-sm text-zinc-400 mb-2 line-clamp-2">{listing.title}</p>
-            )}
-            <div className="flex items-center justify-between">
-              <span className="text-lg font-semibold text-white font-mono">
-                ${listing.price?.toFixed(2)}
-              </span>
-              <div className="flex items-center gap-2">
-                <button className="px-2 py-1 text-xs text-indigo-400 hover:bg-indigo-500/10 rounded transition-colors">
-                  Edit
-                </button>
-                {listing.status === 'draft' && (
-                  <button className="px-2 py-1 text-xs text-green-400 hover:bg-green-500/10 rounded transition-colors">
-                    Publish
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function InventoryTab({ items }: { items: InventoryItem[] }) {
-  return (
-    <div className="space-y-4">
-      <h3 className="text-sm font-semibold text-white">Inventory</h3>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {items.map((item) => (
-          <div key={item.id} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-            <div className="space-y-3 text-sm">
-              <div className="flex justify-between">
-                <span className="text-zinc-500">On Hand</span>
-                <span className="text-white font-medium">{item.quantity_on_hand}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Ordered</span>
-                <span className="text-indigo-400">{item.quantity_ordered}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Sold</span>
-                <span className="text-green-400">{item.quantity_sold}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Returned</span>
-                <span className="text-red-400">{item.quantity_returned}</span>
-              </div>
-              {item.location_code && (
-                <div className="flex justify-between">
-                  <span className="text-zinc-500">Location</span>
-                  <span className="text-white">{item.location_code}</span>
+                    <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-indigo-300">
+                      {supplier.sample}
+                    </span>
+                  </div>
+                  <div className="mt-3 grid grid-cols-2 gap-3 text-xs text-zinc-400 sm:grid-cols-4">
+                    <Stat label="Unit cost" value={`$${supplier.unitCost.toFixed(2)}`} />
+                    <Stat label="Domestic" value={`$${supplier.domesticShipping.toFixed(2)}`} />
+                    <Stat label="International" value={`$${supplier.internationalShipping.toFixed(2)}`} />
+                    <Stat label="Landed" value={`$${supplier.landedCost.toFixed(2)}`} />
+                  </div>
                 </div>
-              )}
+              ))}
             </div>
-          </div>
-        ))}
+          </Panel>
+        </div>
+
+        <div className="grid gap-6 xl:grid-cols-3">
+          <Panel title="Agent Reports" icon={FileText}>
+            <div className="space-y-3">
+              {MOCK_REPORTS.map((report) => (
+                <div key={report.id} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-sm font-medium text-white">{report.agent_name.replace(/_/g, ' ')}</div>
+                    <span className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">{report.confidence}</span>
+                  </div>
+                  <p className="mt-2 text-sm text-zinc-300">{report.summary}</p>
+                  {report.evidence_refs?.length ? (
+                    <p className="mt-2 text-xs text-zinc-500">Evidence refs: {report.evidence_refs.join(', ')}</p>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </Panel>
+
+          <Panel title="Listing Builder" icon={Sparkles}>
+            <div className="space-y-4">
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Suggested title</p>
+                <p className="mt-2 text-sm font-medium text-white">2-Pack Car Seat Gap Organizer - Black, Compact Auto Storage</p>
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Photo checklist</p>
+                <ul className="mt-3 space-y-2 text-sm text-zinc-300">
+                  <li>• Hero shot on clean background</li>
+                  <li>• Installed in car seat gap</li>
+                  <li>• Close-up of material and seam</li>
+                  <li>• Bundle contents photographed together</li>
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm text-emerald-100">
+                Build listing only after the evidence checklist is mostly green.
+              </div>
+            </div>
+          </Panel>
+
+          <Panel title="Sample / Sales / Reorder Timeline" icon={Clock3}>
+            <div className="space-y-4">
+              {TIMELINE.map((step) => (
+                <div key={step.label} className="flex gap-3">
+                  <div className="mt-1 h-2.5 w-2.5 rounded-full bg-indigo-400" />
+                  <div>
+                    <p className="text-sm font-medium text-white">{step.label}</p>
+                    <p className="text-xs text-zinc-500">{step.detail}</p>
+                    <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-zinc-600">{step.time}</p>
+                  </div>
+                </div>
+              ))}
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-300">
+                Reorder candidates only appear after actual sales data confirms demand and profit stability.
+              </div>
+            </div>
+          </Panel>
+        </div>
       </div>
     </div>
   );
 }
 
-function SalesTab({ sales }: { sales: Sale[] }) {
+function Panel({
+  title,
+  icon: Icon,
+  children,
+}: {
+  title: string;
+  icon: React.ElementType;
+  children: React.ReactNode;
+}) {
   return (
-    <div className="space-y-4">
-      <h3 className="text-sm font-semibold text-white">Sales History</h3>
-      <div className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-zinc-800">
-              <th className="text-left px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Date</th>
-              <th className="text-left px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Marketplace</th>
-              <th className="text-right px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Sale Price</th>
-              <th className="text-right px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Fees</th>
-              <th className="text-right px-4 py-3 text-zinc-500 font-medium text-xs uppercase">Net Profit</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-zinc-800">
-            {sales.map((s) => (
-              <tr key={s.id} className="hover:bg-zinc-800/30">
-                <td className="px-4 py-3 text-zinc-400">{s.sale_date}</td>
-                <td className="px-4 py-3 text-zinc-400">{s.marketplace}</td>
-                <td className="px-4 py-3 text-right text-white font-mono">${s.sale_price?.toFixed(2)}</td>
-                <td className="px-4 py-3 text-right text-red-400 font-mono">-${s.marketplace_fee?.toFixed(2)}</td>
-                <td className="px-4 py-3 text-right text-green-400 font-mono">
-                  ${s.net_profit?.toFixed(2)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <section className="rounded-[24px] border border-zinc-800 bg-zinc-950/80 p-5 shadow-xl shadow-black/10">
+      <div className="mb-4 flex items-center gap-2">
+        <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-300">
+          <Icon className="h-4 w-4" />
+        </div>
+        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-200">{title}</h2>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function Checklist({ items }: { items: string[] }) {
+  return (
+    <div className="space-y-3">
+      {items.map((item) => (
+        <div key={item} className="flex items-start gap-3 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+          <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
+          <p className="text-sm text-zinc-300">{item}</p>
+        </div>
+      ))}
+      <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm text-emerald-100">
+        Keep missing evidence visible until the product is ready to buy, list, or reorder.
       </div>
     </div>
   );
 }
 
-function ReorderTab() {
+function EvidenceRow({ item }: { item: MarketplaceEvidence }) {
   return (
-    <div className="space-y-4">
-      <h3 className="text-sm font-semibold text-white">Reorder Recommendations</h3>
-      <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8 text-center">
-        <TrendingUp className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-        <p className="text-sm text-zinc-400">
-          This product has sold {MOCK_SALES.length} units with positive reviews.
-        </p>
-        <p className="text-sm text-zinc-500 mt-2">
-          Consider reordering when inventory drops below threshold.
-        </p>
-        <button className="mt-4 px-4 py-2 text-sm font-medium bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors">
-          Create Reorder
-        </button>
+    <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-sm font-medium text-white">{item.title ?? item.marketplace}</p>
+          <p className="mt-1 text-xs text-zinc-500">
+            {item.marketplace} · {item.evidence_type.replace(/_/g, ' ')} · {item.confidence ?? 'LOW'}
+          </p>
+        </div>
+        <div className="text-right">
+          {item.price != null ? <p className="text-sm font-mono text-emerald-400">${item.price.toFixed(2)}</p> : null}
+          {item.url ? (
+            <a href={item.url} className="inline-flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300">
+              Source <ExternalLink className="h-3 w-3" />
+            </a>
+          ) : null}
+        </div>
       </div>
+      {item.notes ? <p className="mt-3 text-sm text-zinc-300">{item.notes}</p> : null}
     </div>
   );
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function StatRow({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
+function MetricCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between">
-      <span className="text-zinc-500">{label}</span>
-      <span className={highlight ? 'text-green-400 font-mono font-medium' : 'text-white font-mono'}>
-        {value}
-      </span>
+    <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-3">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">{label}</p>
+      <p className="mt-2 text-sm font-semibold text-white">{value}</p>
     </div>
   );
 }
 
-function TimelineItem({ label, date, color }: { label: string; date: string; color: string }) {
-  const colorMap: Record<string, string> = {
-    blue: 'bg-blue-500',
-    green: 'bg-green-500',
-    yellow: 'bg-yellow-500',
-    red: 'bg-red-500',
-    purple: 'bg-purple-500',
-    gray: 'bg-zinc-500',
-  };
+function Pill({ icon: Icon, label }: { icon: React.ElementType; label: string }) {
   return (
-    <div className="flex items-center gap-3">
-      <div className={`w-2 h-2 rounded-full ${colorMap[color] || 'bg-zinc-500'}`} />
-      <div className="flex-1">
-        <span className="text-xs text-zinc-500">{label}</span>
-      </div>
-      <span className="text-xs text-zinc-400">
-        {new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-      </span>
-    </div>
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-950/60 px-3 py-1.5 text-xs text-zinc-300">
+      <Icon className="h-3.5 w-3.5 text-zinc-500" />
+      {label}
+    </span>
   );
 }
 
-function getNextActionText(status: string): string {
-  const actions: Record<string, string> = {
-    NEW: 'Run research pipeline to evaluate this product',
-    NEEDS_RESEARCH: 'Initiate marketplace and supplier research',
-    RESEARCHING: 'Waiting for agent analysis to complete',
-    BLOCKED: 'Review and address blocking issues',
-    WATCHLIST: 'Monitor for price changes or new opportunities',
-    BUY_SAMPLE: 'Order a sample to evaluate quality',
-    SAMPLE_ORDERED: 'Waiting for sample delivery',
-    SAMPLE_RECEIVED: 'Inspect sample and finalize decision',
-    APPROVED_TO_LIST: 'Create and publish listings',
-    LISTED: 'Monitor sales performance',
-    SELLING: 'Track inventory and sales velocity',
-    SLOW_MOVING: 'Consider price adjustment or promotion',
-    REORDER_CANDIDATE: 'Evaluate reorder quantities and timing',
-    REORDERED: 'Awaiting new inventory delivery',
-    KILL_PRODUCT: 'Archive and discontinue listing',
-    ARCHIVED: 'Product is archived',
-  };
-  return actions[status] || 'No action defined for this status';
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-zinc-800 bg-zinc-950/60 p-3">
+      <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">{label}</div>
+      <div className="mt-2 text-sm font-semibold text-white">{value}</div>
+    </div>
+  );
 }

@@ -2,8 +2,8 @@ from sqlalchemy.orm import Session
 import uuid
 from typing import Optional
 
-from app.models.marketplace import MarketplaceResearch, CompetitorListing
-from app.schemas.product_schema import MarketplaceResearchCreate
+from app.models.marketplace import MarketplaceResearch, CompetitorListing, MarketplaceEvidence
+from app.schemas.product_schema import MarketplaceResearchCreate, MarketplaceEvidenceCreate
 
 
 class MarketplaceService:
@@ -82,3 +82,29 @@ class MarketplaceService:
 
     def get_competitor_listings(self, product_id: uuid.UUID) -> list[CompetitorListing]:
         return self.db.query(CompetitorListing).filter(CompetitorListing.product_id == product_id).all()
+
+    def create_evidence(self, product_id: uuid.UUID, data: MarketplaceEvidenceCreate) -> MarketplaceEvidence:
+        evidence = MarketplaceEvidence(
+            product_id=product_id,
+            marketplace=data.marketplace,
+            evidence_type=data.evidence_type,
+            title=data.title,
+            url=data.url,
+            price=data.price,
+            shipping_price=data.shipping_price,
+            sold_date=data.sold_date,
+            condition=data.condition,
+            seller_name=data.seller_name,
+            source_method=data.source_method,
+            raw_text=data.raw_text,
+            screenshot_url=data.screenshot_url,
+            confidence=data.confidence,
+            notes=data.notes,
+        )
+        self.db.add(evidence)
+        self.db.commit()
+        self.db.refresh(evidence)
+        return evidence
+
+    def get_evidence(self, product_id: uuid.UUID) -> list[MarketplaceEvidence]:
+        return self.db.query(MarketplaceEvidence).filter(MarketplaceEvidence.product_id == product_id).all()

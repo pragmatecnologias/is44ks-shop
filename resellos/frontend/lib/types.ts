@@ -86,10 +86,15 @@ export interface Product {
   target_sale_price?: number;
   expected_profit?: number;
   target_cost?: number;
+  confidence?: 'LOW' | 'MEDIUM' | 'HIGH';
+  next_action?: string;
+  decision_reason?: string;
+  missing_evidence?: string[];
   created_at: string;
   updated_at: string;
   sources?: ProductSource[];
   marketplace_research?: MarketplaceResearch[];
+  marketplace_evidence?: MarketplaceEvidence[];
   competitor_listings?: CompetitorListing[];
   profit_analyses?: ProfitAnalysis[];
   agent_reports?: AgentReport[];
@@ -126,6 +131,25 @@ export interface MarketplaceResearch {
   demand_signal?: string;
 }
 
+export interface MarketplaceEvidence {
+  id: string;
+  product_id: string;
+  marketplace: string;
+  evidence_type: 'ACTIVE_LISTING' | 'SOLD_LISTING' | 'SCREENSHOT' | 'MANUAL_NOTE' | string;
+  title?: string;
+  url?: string;
+  price?: number;
+  shipping_price?: number;
+  sold_date?: string;
+  condition?: string;
+  seller_name?: string;
+  source_method?: string;
+  raw_text?: string;
+  screenshot_url?: string;
+  confidence?: string;
+  notes?: string;
+}
+
 export interface CompetitorListing {
   id: string;
   product_id: string;
@@ -149,6 +173,7 @@ export interface ProfitAnalysis {
   scenario_name?: string;
   expected_sale_price?: number;
   landed_cost?: number;
+  selling_cost?: number;
   marketplace_fee?: number;
   estimated_net_profit?: number;
   margin_percent?: number;
@@ -165,15 +190,20 @@ export interface AgentReport {
   output_json?: string;
   summary?: string;
   confidence?: string;
+  warnings?: string[];
+  evidence_refs?: string[];
   created_at: string;
 }
 
 export interface AgentResult {
-  agent_type: string;
-  status: 'pending' | 'running' | 'completed' | 'failed';
-  output?: string;
-  confidence?: number;
+  agent_name?: string;
+  agent_type?: string;
+  status?: 'pending' | 'running' | 'completed' | 'failed';
+  output_json?: Record<string, unknown>;
+  summary?: string;
+  confidence?: string;
   warnings?: string[];
+  evidence_refs?: string[];
   errors?: string[];
   started_at?: string;
   completed_at?: string;

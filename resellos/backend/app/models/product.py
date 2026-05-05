@@ -29,6 +29,7 @@ class Product(Base):
     competitor_listings = relationship("CompetitorListing", back_populates="product", cascade="all, delete-orphan")
     profit_analyses = relationship("ProfitAnalysis", back_populates="product", cascade="all, delete-orphan")
     agent_reports = relationship("AgentReport", back_populates="product", cascade="all, delete-orphan")
+    marketplace_evidence = relationship("MarketplaceEvidence", back_populates="product", cascade="all, delete-orphan")
     inventory = relationship("InventoryItem", back_populates="product", cascade="all, delete-orphan")
     sales = relationship("Sale", back_populates="product", cascade="all, delete-orphan")
     files = relationship("ProductFile", back_populates="product", cascade="all, delete-orphan")

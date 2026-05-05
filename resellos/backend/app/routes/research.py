@@ -36,36 +36,25 @@ async def run_research(product_id: uuid.UUID, db: Session = Depends(get_db)):
     agents = _get_agents()
     service = ProductResearchService(db, agents)
 
-    # Convert agents to sync-friendly wrapper
-    class SyncAgentWrapper:
-        def __init__(self, async_agent):
-            self._agent = async_agent
-
-        def run(self, input_data: dict):
-            import asyncio
-            return asyncio.run(self._agent.run(input_data))
-
-    sync_agents = {k: SyncAgentWrapper(v) for k, v in agents.items()}
-    service.agents = sync_agents
-
-    result = service.run_research_pipeline(product_id)
-
+    result = await service.run_research_pipeline(product_id)
     reports = []
     for name, report in result.get("reports", {}).items():
-        reports.append({
-            "id": uuid.uuid4(),
-            "product_id": product_id,
-            "agent_name": name,
-            "report_type": name,
-            "summary": report.get("summary", ""),
-            "confidence": report.get("confidence"),
-            "created_at": report.get("created_at", ""),
-        })
+        reports.append(
+            {
+                "id": uuid.uuid4(),
+                "product_id": product_id,
+                "agent_name": name,
+                "report_type": name,
+                "summary": report.get("summary", ""),
+                "confidence": report.get("confidence"),
+                "created_at": report.get("created_at", ""),
+            }
+        )
 
     return ResearchRunResponse(
         product_id=product_id,
         status=result.get("status", product.status),
         final_decision=result.get("final_decision"),
-        final_score=float(result.get("final_score")) if result.get("final_score") else None,
+        final_score=float(result.get("final_score")) if result.get("final_score") is not None else None,
         reports=reports,
     )

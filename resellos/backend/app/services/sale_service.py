@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 import uuid
 from typing import Optional
 
-from app.models.sale import Sale
+from app.models.supplier import Sale
 from app.schemas.product_schema import SaleCreate
 
 

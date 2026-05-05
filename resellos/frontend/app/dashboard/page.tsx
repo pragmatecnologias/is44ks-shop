@@ -18,8 +18,8 @@ import {
   BarChart3,
   Brain,
 } from 'lucide-react';
-import { StatusBadge } from '@/components/shared/status-badge';
-import { RiskBadge } from '@/components/shared/risk-badge';
+import { StatusBadge } from '@/components/shared/StatusBadge';
+import { RiskBadge } from '@/components/shared/RiskBadge';
 import { getDashboardStats } from '@/lib/api';
 import type { DashboardStats, AgentResult } from '@/lib/types';
 
@@ -231,13 +231,14 @@ function AgentActivityCard({ agent }: { agent: AgentResult }) {
     listing: { icon: Tag, color: 'text-indigo-400', bgColor: 'bg-indigo-500/10' },
     overall: { icon: CheckCircle2, color: 'text-green-400', bgColor: 'bg-green-500/10' },
   };
-  const { icon: Icon, color, bgColor } = iconMap[agent.agent_type] || { icon: Brain, color: 'text-zinc-400', bgColor: 'bg-zinc-500/10' };
+  const agentType = agent.agent_type ?? 'overall';
+  const { icon: Icon, color, bgColor } = iconMap[agentType] || iconMap.overall;
   const statusIcon = {
     completed: <CheckCircle2 className="w-3.5 h-3.5 text-green-400" />,
     running: <RefreshCw className="w-3.5 h-3.5 text-blue-400 animate-spin" />,
     pending: <Clock className="w-3.5 h-3.5 text-yellow-400" />,
     failed: <AlertCircle className="w-3.5 h-3.5 text-red-400" />,
-  }[agent.status] || <Clock className="w-3.5 h-3.5 text-zinc-400" />;
+  }[agent.status ?? 'pending'] || <Clock className="w-3.5 h-3.5 text-zinc-400" />;
 
   return (
     <div className="flex items-start gap-3 p-3 rounded-lg bg-zinc-800/30">
@@ -246,11 +247,11 @@ function AgentActivityCard({ agent }: { agent: AgentResult }) {
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-medium text-white capitalize">{agent.agent_type} Agent</span>
+          <span className="text-xs font-medium text-white capitalize">{agentType} Agent</span>
           {statusIcon}
         </div>
-        {agent.output && <p className="text-xs text-zinc-500 mt-1 line-clamp-2">{agent.output}</p>}
-        {agent.confidence && <div className="text-xs text-zinc-500 mt-1">Confidence: {(agent.confidence * 100).toFixed(0)}%</div>}
+        {agent.summary && <p className="text-xs text-zinc-500 mt-1 line-clamp-2">{agent.summary}</p>}
+        {agent.confidence && <div className="text-xs text-zinc-500 mt-1">Confidence: {agent.confidence}</div>}
       </div>
     </div>
   );

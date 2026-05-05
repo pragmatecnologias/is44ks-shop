@@ -123,8 +123,8 @@ export async function getDashboardStats(): Promise<DashboardStats> {
       {
         agent_type: 'market',
         status: 'completed',
-        output: 'Market analysis completed for 3 products',
-        confidence: 0.85,
+        summary: 'Market analysis completed for 3 products',
+        confidence: 'HIGH',
         started_at: new Date(Date.now() - 30 * 60 * 1000).toISOString(),
         completed_at: new Date(Date.now() - 25 * 60 * 1000).toISOString(),
         duration_seconds: 300,
@@ -132,8 +132,8 @@ export async function getDashboardStats(): Promise<DashboardStats> {
       {
         agent_type: 'profit',
         status: 'completed',
-        output: 'Profit analysis completed for 5 products',
-        confidence: 0.92,
+        summary: 'Profit analysis completed for 5 products',
+        confidence: 'HIGH',
         started_at: new Date(Date.now() - 40 * 60 * 1000).toISOString(),
         completed_at: new Date(Date.now() - 35 * 60 * 1000).toISOString(),
         duration_seconds: 180,
@@ -141,6 +141,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
       {
         agent_type: 'decision',
         status: 'running',
+        summary: 'Decision agent is waiting on more evidence.',
         started_at: new Date(Date.now() - 5 * 60 * 1000).toISOString(),
       },
     ],

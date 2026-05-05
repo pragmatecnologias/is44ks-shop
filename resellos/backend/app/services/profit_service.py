@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 import uuid
 from typing import Optional
 
-from app.models.profit import ProfitAnalysis
+from app.models.supplier import ProfitAnalysis
 from app.schemas.product_schema import ProfitAnalysisCreate, ProfitAnalysisUpdate
 
 

@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 import uuid
 from typing import Optional
 
-from app.models.agent_report import AgentReport
+from app.models.supplier import AgentReport
 
 
 class AgentService:

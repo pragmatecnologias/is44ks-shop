@@ -7,21 +7,30 @@ AI-powered product research and reselling intelligence platform for solo entrepr
 ```bash
 # Backend
 cd backend
-cp .env.example .env
 pip install -r requirements.txt
+python -m unittest discover -s tests
 uvicorn app.main:app --reload --port 8000
 
 # Frontend
 cd frontend
 npm install
+npm run build
 npm run dev
 ```
 
 ## Docker
 
 ```bash
-docker-compose up --build
+docker compose config
+docker compose up --build
 ```
+
+## Verified Checks
+
+- `python -m compileall backend/app`
+- `PYTHONPATH=. python -m unittest discover -s tests`
+- `npm run build`
+- `docker compose config`
 
 ## Architecture
 

@@ -14,8 +14,8 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
-import { StatusBadge } from '@/components/shared/status-badge';
-import { RiskBadge } from '@/components/shared/risk-badge';
+import { StatusBadge } from '@/components/shared/StatusBadge';
+import { RiskBadge } from '@/components/shared/RiskBadge';
 import { getProducts } from '@/lib/api';
 import type { Product, ProductStatus } from '@/lib/types';
 

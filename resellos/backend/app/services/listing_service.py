@@ -3,7 +3,7 @@ import uuid
 from typing import Optional
 
 from app.models.product import Product
-from app.models.agent_report import AgentReport
+from app.models.supplier import AgentReport
 
 
 class ListingService:

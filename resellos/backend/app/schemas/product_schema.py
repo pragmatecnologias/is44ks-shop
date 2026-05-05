@@ -100,6 +100,23 @@ class MarketplaceResearchCreate(BaseModel):
     notes: Optional[str] = None
 
 
+class MarketplaceEvidenceCreate(BaseModel):
+    marketplace: str
+    evidence_type: str
+    title: Optional[str] = None
+    url: Optional[str] = None
+    price: Optional[float] = None
+    shipping_price: Optional[float] = None
+    sold_date: Optional[datetime] = None
+    condition: Optional[str] = None
+    seller_name: Optional[str] = None
+    source_method: Optional[str] = None
+    raw_text: Optional[str] = None
+    screenshot_url: Optional[str] = None
+    confidence: Optional[str] = None
+    notes: Optional[str] = None
+
+
 class ProfitAnalysisCreate(BaseModel):
     scenario_name: Optional[str] = "default"
     expected_sale_price: float
@@ -112,6 +129,19 @@ class ProfitAnalysisCreate(BaseModel):
     ad_cost: float = 0
 
 
+class ProfitAnalysisUpdate(BaseModel):
+    scenario_name: Optional[str] = None
+    expected_sale_price: Optional[float] = None
+    product_cost: Optional[float] = None
+    import_shipping_per_unit: Optional[float] = None
+    landed_cost: Optional[float] = None
+    marketplace_fee: Optional[float] = None
+    us_shipping: Optional[float] = None
+    packaging_cost: Optional[float] = None
+    return_allowance: Optional[float] = None
+    ad_cost: Optional[float] = None
+
+
 class CompetitorListingCreate(BaseModel):
     marketplace: Optional[str] = None
     title: Optional[str] = None
@@ -121,6 +151,9 @@ class CompetitorListingCreate(BaseModel):
     condition: Optional[str] = None
     seller_name: Optional[str] = None
     sold: bool = False
+    photo_score: Optional[float] = None
+    title_score: Optional[float] = None
+    description_score: Optional[float] = None
     notes: Optional[str] = None
 
 
@@ -140,6 +173,7 @@ class SaleCreate(BaseModel):
     marketplace_fee: float = 0
     shipping_cost: float = 0
     packaging_cost: float = 0.50
+    net_profit: Optional[float] = None
     buyer_paid_shipping: bool = False
     returned: bool = False
     notes: Optional[str] = None
@@ -151,6 +185,14 @@ class ResearchPipelineResponse(BaseModel):
     final_score: float
     final_decision: str
     next_action: str
+
+
+class ResearchRunResponse(BaseModel):
+    product_id: uuid.UUID
+    status: str
+    final_decision: Optional[str] = None
+    final_score: Optional[float] = None
+    reports: list[dict] = Field(default_factory=list)
 
 
 class ListingGenerateRequest(BaseModel):

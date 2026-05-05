@@ -4,7 +4,7 @@ from typing import List
 import uuid
 
 from app.db import get_db
-from app.schemas.product_schema import MarketplaceResearchCreate, CompetitorListingCreate
+from app.schemas.product_schema import MarketplaceResearchCreate, CompetitorListingCreate, MarketplaceEvidenceCreate
 from app.services.marketplace_service import MarketplaceService
 
 router = APIRouter(prefix="/api/marketplace", tags=["marketplace"])
@@ -48,3 +48,15 @@ def create_competitor(product_id: uuid.UUID, data: CompetitorListingCreate, db: 
 def get_competitors(product_id: uuid.UUID, db: Session = Depends(get_db)):
     service = MarketplaceService(db)
     return service.get_competitor_listings(product_id)
+
+
+@router.post("/evidence/{product_id}", status_code=201)
+def create_evidence(product_id: uuid.UUID, data: MarketplaceEvidenceCreate, db: Session = Depends(get_db)):
+    service = MarketplaceService(db)
+    return service.create_evidence(product_id, data)
+
+
+@router.get("/evidence/{product_id}")
+def get_evidence(product_id: uuid.UUID, db: Session = Depends(get_db)):
+    service = MarketplaceService(db)
+    return service.get_evidence(product_id)
