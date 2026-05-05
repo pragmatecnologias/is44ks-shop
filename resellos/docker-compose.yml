@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: resellos
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/resellos
+      - LLM_PROVIDER=${LLM_PROVIDER:-minimax}
+      - MINIMAX_API_KEY=${MINIMAX_API_KEY:-}
+      - MINIMAX_MODEL=${MINIMAX_MODEL:-MiniMax-Text-01}
+      - MINIMAX_BASE_URL=${MINIMAX_BASE_URL:-https://api.minimax.chat/v1}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - DEFAULT_MARKETPLACE_FEE_PERCENT=${DEFAULT_MARKETPLACE_FEE_PERCENT:-13.0}
+      - DEFAULT_PACKAGING_COST=${DEFAULT_PACKAGING_COST:-0.50}
+      - DEFAULT_RETURN_ALLOWANCE=${DEFAULT_RETURN_ALLOWANCE:-0.50}
+      - MIN_ACCEPTABLE_PROFIT=${MIN_ACCEPTABLE_PROFIT:-3.0}
+      - ALLOWED_ORIGINS=http://localhost:3000
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

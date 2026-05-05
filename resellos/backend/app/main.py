@@ -1,0 +1,44 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.routes import (
+    products_router,
+    supplier_router,
+    marketplace_router,
+    profit_router,
+    agents_router,
+    research_router,
+    listings_router,
+    inventory_router,
+    sales_router,
+)
+
+app = FastAPI(title="ResellOS API", version="0.1.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(products_router)
+app.include_router(supplier_router)
+app.include_router(marketplace_router)
+app.include_router(profit_router)
+app.include_router(agents_router)
+app.include_router(research_router)
+app.include_router(listings_router)
+app.include_router(inventory_router)
+app.include_router(sales_router)
+
+
+@app.get("/")
+def root():
+    return {"message": "ResellOS API", "version": "0.1.0"}
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
