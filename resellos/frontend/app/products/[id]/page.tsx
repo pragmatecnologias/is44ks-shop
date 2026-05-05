@@ -115,9 +115,9 @@ export default function ProductDetailPage() {
   const targetPricePresent = Boolean(targetSalePrice && targetSalePrice > 0);
   const canCompete = competition?.can_compete ?? false;
   const competitionLevel = competition?.competition_level ?? 'UNKNOWN';
-  const reorderRecommendation = reorder?.reorder_recommendation ?? 'DO_NOT_REORDER';
   const inventoryRows = cockpit?.inventory ?? [];
   const salesRows = cockpit?.sales ?? [];
+  const reorderRecommendation = inventoryRows.length > 0 || salesRows.length > 0 ? reorder?.reorder_recommendation ?? 'DO_NOT_REORDER' : null;
 
   const readinessChecks = [
     { label: 'Sold evidence', ok: soldEvidenceCount >= 5, detail: `${soldEvidenceCount}/5+ sold listings` },
@@ -155,7 +155,7 @@ export default function ProductDetailPage() {
       { label: 'Max landed', value: maxLandedCost ? money(maxLandedCost) : '—' },
       { label: 'Target price', value: targetPricePresent ? money(targetSalePrice) : '—' },
       { label: 'Can compete', value: canCompete ? 'Yes' : 'No' },
-      { label: 'Reorder', value: reorderRecommendation.replace(/_/g, ' ') },
+      ...(reorderRecommendation ? [{ label: 'Reorder', value: reorderRecommendation.replace(/_/g, ' ') }] : []),
     ];
   }, [product, cockpit?.current_status, finalDecision, researchVerdict, buyReadinessStatus, score, researchCompleteness, readinessScore, confidence, maxQuantityToBuy, maxLandedCost, targetSalePrice, targetPricePresent, canCompete, reorderRecommendation]);
 
@@ -517,7 +517,7 @@ export default function ProductDetailPage() {
               ) : (
                 <>
                   <div className="grid gap-3 md:grid-cols-2">
-                    <StatRow label="Recommendation" value={reorderRecommendation.replace(/_/g, ' ')} />
+                    <StatRow label="Recommendation" value={(reorderRecommendation ?? 'DO_NOT_REORDER').replace(/_/g, ' ')} />
                     <StatRow label="On hand" value={reorder?.current_inventory != null ? String(reorder.current_inventory) : '—'} />
                     <StatRow label="Sold" value={reorder?.quantity_sold != null ? String(reorder.quantity_sold) : '—'} />
                     <StatRow label="Days cover" value={reorder?.days_of_cover != null ? String(reorder.days_of_cover) : '—'} />

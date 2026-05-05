@@ -315,6 +315,7 @@ class ProductIdeaResponse(BaseModel):
     quick_scan_verdict: Optional[str] = None
     quick_scan_reason: Optional[str] = None
     research_completeness_score: int = 0
+    discovery_completeness_score: int = 0
     opportunity_score: int = 0
     buy_readiness_status: str = "NOT_READY"
     suggested_keywords: Optional[object] = None
@@ -346,6 +347,7 @@ class ProductIdeaQuickScanResponse(BaseModel):
     quick_scan_reason: str
     research_priority: str
     research_completeness_score: int = 0
+    discovery_completeness_score: int = 0
     opportunity_score: int = 0
     buy_readiness_status: str = "NOT_READY"
     required_next_evidence: object = Field(default_factory=list)
@@ -359,6 +361,7 @@ class OpportunityBoardRow(BaseModel):
     entity_type: str
     title: str
     category: Optional[str] = None
+    discovery_completeness_score: int = 0
     research_completeness_score: int = 0
     research_verdict: Optional[str] = None
     buy_readiness_status: Optional[str] = None

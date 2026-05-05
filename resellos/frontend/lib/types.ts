@@ -371,6 +371,7 @@ export interface ProductIdea {
   quick_scan_verdict?: string;
   quick_scan_reason?: string;
   research_completeness_score?: number;
+  discovery_completeness_score?: number;
   opportunity_score?: number;
   buy_readiness_status?: 'NOT_READY' | 'ALMOST_READY' | 'READY' | string;
   suggested_keywords?: Record<string, string[]> | string[] | string | null;
@@ -403,6 +404,7 @@ export interface ProductIdeaQuickScanResponse {
   quick_scan_reason: string;
   research_priority: string;
   research_completeness_score?: number;
+  discovery_completeness_score?: number;
   opportunity_score?: number;
   buy_readiness_status?: string;
   required_next_evidence: string[];
@@ -418,6 +420,7 @@ export interface OpportunityBoardRow {
   entity_type: 'idea' | 'product' | string;
   title: string;
   category?: string;
+  discovery_completeness_score?: number;
   research_completeness_score: number;
   research_verdict?: string;
   buy_readiness_status?: string;

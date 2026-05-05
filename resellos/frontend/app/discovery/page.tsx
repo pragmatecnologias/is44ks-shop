@@ -307,7 +307,11 @@ export default function DiscoveryPage() {
                       <div className="text-xs text-zinc-500">{row.category || 'Uncategorized'}</div>
                     </td>
                     <td className="px-4 py-3 text-zinc-300">{row.entity_type}</td>
-                    <td className="px-4 py-3 text-zinc-300">{row.research_completeness_score}%</td>
+                    <td className="px-4 py-3 text-zinc-300">
+                      {row.entity_type === 'idea'
+                        ? `${row.discovery_completeness_score ?? row.research_completeness_score}%`
+                        : `${row.research_completeness_score}%`}
+                    </td>
                     <td className="px-4 py-3 text-zinc-300">
                       {row.sold_evidence_count} sold / {row.active_evidence_count} active
                     </td>
@@ -382,7 +386,7 @@ function IdeaCard({
         <StatRow label="Verdict" value={idea.quick_scan_verdict || 'IDEA'} />
         <StatRow label="Priority" value={idea.research_priority || '—'} />
         <StatRow label="Readiness" value={idea.buy_readiness_status || 'NOT_READY'} />
-        <StatRow label="Research" value={`${idea.research_completeness_score ?? 0}%`} />
+        <StatRow label="Discovery" value={`${idea.discovery_completeness_score ?? idea.research_completeness_score ?? 0}%`} />
         <StatRow label="Supplier cost" value={money(idea.rough_supplier_cost)} />
         <StatRow label="Landed cost" value={money(idea.estimated_landed_cost)} />
       </div>

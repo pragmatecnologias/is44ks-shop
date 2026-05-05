@@ -204,6 +204,7 @@ class DiscoveryService:
                 "supplier": [],
             },
         )
+        research_tasks = list(template.get("research_tasks", []))
         scan_output = scan.get("output_json", {})
         verdict = scan_output.get("quick_scan_verdict", "NEEDS_MARKET_CHECK")
         research_priority = scan_output.get("research_priority", "MEDIUM")
@@ -244,12 +245,7 @@ class DiscoveryService:
 
         tasks = self._replace_tasks(
             idea.id,
-            [
-                ("market_research", "Add 5 sold eBay listings", 1),
-                ("market_research", "Add 5 active eBay listings", 2),
-                ("supplier_research", "Add 2 supplier sources", 3),
-                ("competition_research", "Capture competitor photos and listing notes", 4),
-            ],
+            self._generate_task_tuples(research_tasks),
         )
         return {
             "idea": self._serialize_idea(idea),
@@ -257,6 +253,7 @@ class DiscoveryService:
             "quick_scan_reason": idea.quick_scan_reason,
             "research_priority": idea.research_priority,
             "research_completeness_score": min(100, max(0, score)),
+            "discovery_completeness_score": self._research_completeness_for_idea(idea),
             "opportunity_score": min(100, max(0, score)),
             "buy_readiness_status": "NOT_READY",
             "required_next_evidence": _json_load(idea.required_next_evidence, []),
@@ -339,14 +336,17 @@ class DiscoveryService:
         idea = self.get_idea(idea_id)
         if not idea:
             return []
-        tasks = [
-            ("market_research", "Add 5 sold eBay listings", 1),
-            ("market_research", "Add 5 active eBay listings", 2),
-            ("supplier_research", "Add 2 supplier sources", 3),
-            ("competition_research", "Add 3 competitor listings", 4),
-            ("research", "Confirm product weight and shipping", 5),
-        ]
-        return self._replace_tasks(idea.id, tasks)
+        template = CATEGORY_TEMPLATES.get(_norm_category(idea.category), {})
+        tasks = list(template.get("research_tasks", []))
+        if not tasks:
+            tasks = [
+                "Add 5 sold eBay listings",
+                "Add 5 active eBay listings",
+                "Add 2 supplier sources",
+                "Add 3 competitor listings",
+                "Confirm product weight and shipping",
+            ]
+        return self._replace_tasks(idea.id, self._generate_task_tuples(tasks))
 
     def _apply_scan_result(
         self,
@@ -409,15 +409,23 @@ class DiscoveryService:
             .all()
         )
         done_tasks = sum(1 for task in tasks if task.status == "DONE")
-        research_completeness_score = 0
+        discovery_completeness_score = 0
         if tasks:
-            research_completeness_score += min(60, int((done_tasks / len(tasks)) * 60))
+            discovery_completeness_score += min(60, int((done_tasks / len(tasks)) * 60))
         if idea.status == "PROMISING":
-            research_completeness_score += 25
+            discovery_completeness_score += 25
         elif idea.status == "QUICK_SCAN_COMPLETE":
-            research_completeness_score += 15
+            discovery_completeness_score += 15
         elif idea.status == "REJECTED":
-            research_completeness_score += 5
+            discovery_completeness_score += 5
+        template = CATEGORY_TEMPLATES.get(_norm_category(idea.category), {})
+        thresholds = template.get("evidence_thresholds", {})
+        if idea.rough_supplier_cost is not None:
+            discovery_completeness_score += 10
+        if idea.estimated_landed_cost is not None:
+            discovery_completeness_score += 10
+        if thresholds:
+            discovery_completeness_score += 0
         return {
             "id": str(idea.id),
             "idea_name": idea.idea_name,
@@ -435,8 +443,9 @@ class DiscoveryService:
             "status": idea.status,
             "quick_scan_verdict": idea.quick_scan_verdict,
             "quick_scan_reason": idea.quick_scan_reason,
-            "research_completeness_score": min(100, research_completeness_score),
-            "opportunity_score": min(100, research_completeness_score),
+            "research_completeness_score": min(100, discovery_completeness_score),
+            "discovery_completeness_score": min(100, discovery_completeness_score),
+            "opportunity_score": min(100, discovery_completeness_score),
             "buy_readiness_status": "NOT_READY",
             "suggested_keywords": _json_load(idea.suggested_keywords, []),
             "required_next_evidence": _json_load(idea.required_next_evidence, []),
@@ -472,6 +481,23 @@ class DiscoveryService:
             research_completeness_score += 5
         return min(100, research_completeness_score)
 
+    def _generate_task_tuples(self, task_titles: list[str]) -> list[tuple[str, str, int]]:
+        tasks: list[tuple[str, str, int]] = []
+        for index, title in enumerate(task_titles, start=1):
+            lowered = title.lower()
+            if "supplier" in lowered:
+                task_type = "supplier_research"
+            elif "competitor" in lowered or "listing" in lowered and "sold" not in lowered and "active" not in lowered:
+                task_type = "competition_research"
+            elif "weight" in lowered or "shipping" in lowered:
+                task_type = "market_research"
+            elif "fitment" in lowered or "dimension" in lowered or "photo" in lowered or "material" in lowered:
+                task_type = "research"
+            else:
+                task_type = "research"
+            tasks.append((task_type, title, index))
+        return tasks
+
     def opportunity_board(self) -> list[dict[str, Any]]:
         from app.models.product import Product
 
@@ -481,20 +507,21 @@ class DiscoveryService:
             tasks = self.db.query(DiscoveryTask).filter(DiscoveryTask.idea_id == idea.id).all()
             total_tasks = len(tasks)
             done_tasks = sum(1 for task in tasks if task.status == "DONE")
-            completeness = 20 if idea.quick_scan_verdict else 10
+            discovery_completeness = 20 if idea.quick_scan_verdict else 10
             if total_tasks:
-                completeness += min(50, int((done_tasks / total_tasks) * 50))
+                discovery_completeness += min(50, int((done_tasks / total_tasks) * 50))
             if idea.status == "PROMISING":
-                completeness += 20
+                discovery_completeness += 20
             elif idea.status == "REJECTED":
-                completeness = min(completeness, 20)
+                discovery_completeness = min(discovery_completeness, 20)
             board.append(
                 {
                     "id": str(idea.id),
                     "entity_type": "idea",
                     "title": idea.idea_name,
                     "category": idea.category,
-                    "research_completeness_score": max(0, min(100, completeness)),
+                    "discovery_completeness_score": max(0, min(100, discovery_completeness)),
+                    "research_completeness_score": max(0, min(100, discovery_completeness)),
                     "research_verdict": idea.quick_scan_verdict or ("PROMISING_FOR_RESEARCH" if idea.status == "PROMISING" else "NEEDS_MORE_RESEARCH"),
                     "buy_readiness_status": "NOT_READY",
                     "risk_level": "BLOCKED" if idea.status == "REJECTED" else "LOW",
