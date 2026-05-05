@@ -3,14 +3,22 @@ from __future__ import annotations
 import asyncio
 import unittest
 
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
+
 from app.agents.decision_agent import DecisionAgent
 from app.agents.competition_agent import CompetitionAgent
 from app.agents.market_agent import MarketAgent
 from app.agents.profit_agent import ProfitAgent
 from app.agents.reorder_agent import ReorderAgent
 from app.agents.risk_agent import RiskAgent
+from app.db import Base
 from app.llm.base import LLMProvider, Message
+from app.models.product import Product
+from app.models.supplier import AgentReport, CompetitorListing, MarketplaceEvidence, ProfitAnalysis, ProductSource
 from app.services.agent_utils import agent_data
+from app.services.discovery_service import DiscoveryService
 from app.services.risk_rules import evaluate_risk_rules
 
 
@@ -211,6 +219,125 @@ class AgentContractTests(unittest.TestCase):
         self.assertGreaterEqual(output["current_inventory"], 0)
         self.assertGreaterEqual(output["quantity_sold"], 0)
         self.assertTrue(output["reorder_reason"])
+
+    def test_opportunity_board_uses_saved_evidence_and_reports(self) -> None:
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(
+                sku="RS-TEST-001",
+                name="Car seat gap organizer",
+                category="Automotive",
+                status="RESEARCHING",
+                risk_level="LOW",
+                final_decision="WATCHLIST",
+            )
+            session.add(product)
+            session.flush()
+
+            session.add(
+                ProductSource(
+                    product_id=product.id,
+                    supplier_name="Supplier A",
+                    supplier_platform="Alibaba",
+                    estimated_landed_cost=5.70,
+                    unit_cost=4.15,
+                    domestic_shipping=0.35,
+                    international_shipping_estimate=1.20,
+                    supplier_rating="A",
+                    is_primary=True,
+                )
+            )
+            session.add_all(
+                [
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=10.0, shipping_price=2.0),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=12.0, shipping_price=2.5),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=14.0, shipping_price=3.0),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=16.0, shipping_price=3.0),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=18.0, shipping_price=3.5),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=19.0, shipping_price=4.0),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=20.0, shipping_price=4.0),
+                ]
+            )
+            session.add_all(
+                [
+                    CompetitorListing(
+                        product_id=product.id,
+                        marketplace="eBay",
+                        price=19.99,
+                        sold=False,
+                        photo_score=45,
+                        title_score=55,
+                        description_score=50,
+                    ),
+                    CompetitorListing(
+                        product_id=product.id,
+                        marketplace="eBay",
+                        price=18.49,
+                        sold=True,
+                        photo_score=52,
+                        title_score=58,
+                        description_score=40,
+                    ),
+                ]
+            )
+            session.add_all(
+                [
+                    AgentReport(
+                        product_id=product.id,
+                        agent_name="decision_agent",
+                        report_type="decision_agent",
+                        output_json='{"research_verdict":"PROMISING_RESEARCH","buy_readiness_status":"NOT_READY","next_action":"Add 5 sold listings"}',
+                        summary="Decision summary",
+                        confidence="HIGH",
+                    ),
+                    AgentReport(
+                        product_id=product.id,
+                        agent_name="competition_agent",
+                        report_type="competition_agent",
+                        output_json='{"listing_gap_score":84,"recommended_angle":"Real photos"}',
+                        summary="Competition summary",
+                        confidence="HIGH",
+                    ),
+                ]
+            )
+            session.flush()
+            session.add_all(
+                [
+                    ProfitAnalysis(
+                        product_id=product.id,
+                        scenario_name="eBay buyer-paid shipping",
+                        estimated_net_profit=7.42,
+                    ),
+                    ProfitAnalysis(
+                        product_id=product.id,
+                        scenario_name="eBay free shipping",
+                        estimated_net_profit=3.10,
+                    ),
+                ]
+            )
+            session.commit()
+
+            board = DiscoveryService(session).opportunity_board()
+            product_row = next(row for row in board if row["entity_type"] == "product")
+
+            self.assertEqual(product_row["sold_evidence_count"], 5)
+            self.assertEqual(product_row["active_evidence_count"], 2)
+            self.assertEqual(product_row["median_sold_price"], 14.0)
+            self.assertEqual(product_row["median_active_price"], 19.5)
+            self.assertEqual(product_row["median_shipping"], 3.0)
+            self.assertEqual(product_row["best_landed_cost"], 5.7)
+            self.assertEqual(product_row["competition_gap_score"], 84)
+            self.assertEqual(product_row["best_profit_scenario"], "eBay buyer-paid shipping")
+            self.assertEqual(product_row["next_action"], "Add 5 sold listings")
+        finally:
+            session.close()
 
 
 if __name__ == "__main__":

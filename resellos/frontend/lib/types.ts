@@ -413,6 +413,9 @@ export interface OpportunityBoardRow {
   active_evidence_count: number;
   median_sold_price?: number | null;
   median_active_price?: number | null;
+  median_sold_shipping?: number | null;
+  median_active_shipping?: number | null;
+  median_shipping?: number | null;
   best_landed_cost?: number | null;
   best_profit_scenario?: string | null;
   competition_gap_score?: number | null;

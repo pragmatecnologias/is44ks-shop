@@ -361,6 +361,9 @@ class OpportunityBoardRow(BaseModel):
     active_evidence_count: int = 0
     median_sold_price: Optional[float] = None
     median_active_price: Optional[float] = None
+    median_sold_shipping: Optional[float] = None
+    median_active_shipping: Optional[float] = None
+    median_shipping: Optional[float] = None
     best_landed_cost: Optional[float] = None
     best_profit_scenario: Optional[str] = None
     competition_gap_score: Optional[int] = None

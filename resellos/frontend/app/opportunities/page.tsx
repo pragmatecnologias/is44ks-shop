@@ -75,6 +75,7 @@ export default function OpportunitiesPage() {
                   <th className="px-4 py-3">Verdict</th>
                   <th className="px-4 py-3">Evidence</th>
                   <th className="px-4 py-3">Market</th>
+                  <th className="px-4 py-3">Competition</th>
                   <th className="px-4 py-3">Cost</th>
                   <th className="px-4 py-3">Next Action</th>
                 </tr>
@@ -90,7 +91,24 @@ export default function OpportunitiesPage() {
                     <td className="px-4 py-3 text-zinc-300">{row.research_completeness_score}%</td>
                     <td className="px-4 py-3 text-zinc-300">{row.research_verdict || row.status || '—'}</td>
                     <td className="px-4 py-3 text-zinc-300">{row.sold_evidence_count} sold / {row.active_evidence_count} active</td>
-                    <td className="px-4 py-3 text-zinc-300">{row.median_sold_price != null ? money(row.median_sold_price) : '—'}</td>
+                    <td className="px-4 py-3 text-zinc-300">
+                      <div>{row.median_sold_price != null ? `Sold ${money(row.median_sold_price)}` : 'Sold —'}</div>
+                      <div className="text-xs text-zinc-500">
+                        {row.median_active_price != null ? `Active ${money(row.median_active_price)}` : 'Active —'}
+                      </div>
+                      <div className="text-xs text-zinc-500">
+                        {row.median_shipping != null
+                          ? `Ship ${money(row.median_shipping)}`
+                          : row.median_sold_shipping != null
+                            ? `Ship ${money(row.median_sold_shipping)}`
+                            : row.median_active_shipping != null
+                              ? `Ship ${money(row.median_active_shipping)}`
+                              : 'Ship —'}
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-zinc-300">
+                      {row.competition_gap_score != null ? `${row.competition_gap_score}/100` : '—'}
+                    </td>
                     <td className="px-4 py-3 text-zinc-300">{money(row.best_landed_cost)}</td>
                     <td className="px-4 py-3 text-zinc-400">{row.next_action || '—'}</td>
                   </tr>

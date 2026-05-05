@@ -3,12 +3,13 @@ from __future__ import annotations
 import json
 import uuid
 from datetime import datetime
+from statistics import median
 from typing import Any
 
 from sqlalchemy.orm import Session
 
 from app.models.product import Product
-from app.models.supplier import DiscoveryTask, ProductIdea
+from app.models.supplier import AgentReport, CompetitorListing, DiscoveryTask, MarketplaceEvidence, ProfitAnalysis, ProductIdea, ProductSource
 from app.agents.quick_scan_agent import QuickScanAgent
 from app.schemas.product_schema import (
     OpportunityBoardRow,
@@ -96,6 +97,85 @@ def _json_load(value: str | None, default: Any) -> Any:
         return json.loads(value)
     except Exception:
         return default
+
+
+def _median_or_none(values: list[float]) -> float | None:
+    if not values:
+        return None
+    return round(float(median(values)), 2)
+
+
+def _best_source_landed_cost(source: ProductSource) -> float | None:
+    if source.estimated_landed_cost is not None:
+        return round(float(source.estimated_landed_cost), 2)
+    components = [
+        source.unit_cost,
+        source.domestic_shipping,
+        source.international_shipping_estimate,
+    ]
+    values = [float(value) for value in components if value is not None]
+    if not values:
+        return None
+    return round(sum(values), 2)
+
+
+def _latest_report_output(agent_rows: list[AgentReport], agent_name: str) -> dict[str, Any]:
+    for report in agent_rows:
+        if report.agent_name == agent_name and report.output_json:
+            return _json_load(report.output_json, {})
+    return {}
+
+
+def _competition_gap_from_listings(competitor_rows: list[CompetitorListing]) -> int | None:
+    if not competitor_rows:
+        return None
+
+    prices = [float(row.price) for row in competitor_rows if row.price is not None]
+    photo_scores = [float(row.photo_score) for row in competitor_rows if row.photo_score is not None]
+    title_scores = [float(row.title_score) for row in competitor_rows if row.title_score is not None]
+    description_scores = [float(row.description_score) for row in competitor_rows if row.description_score is not None]
+    sold_count = sum(1 for row in competitor_rows if row.sold)
+    active_count = len(competitor_rows) - sold_count
+
+    score = 50
+    if active_count >= 10:
+        score -= 15
+    elif active_count >= 5:
+        score -= 8
+    elif active_count == 0:
+        score += 8
+
+    if sold_count > active_count:
+        score += 10
+    elif active_count > sold_count * 2 and active_count >= 5:
+        score -= 8
+
+    if photo_scores:
+        avg_photo = sum(photo_scores) / len(photo_scores)
+        if avg_photo < 60:
+            score += 10
+        elif avg_photo >= 80:
+            score -= 8
+
+    if title_scores:
+        avg_title = sum(title_scores) / len(title_scores)
+        if avg_title < 60:
+            score += 8
+
+    if description_scores:
+        avg_description = sum(description_scores) / len(description_scores)
+        if avg_description < 55:
+            score += 6
+
+    if prices:
+        median_price = _median_or_none(prices)
+        if median_price is not None:
+            if median_price < 10:
+                score += 4
+            elif median_price > 25:
+                score += 2
+
+    return max(0, min(100, score))
 
 
 class DiscoveryService:
@@ -382,7 +462,6 @@ class DiscoveryService:
 
     def opportunity_board(self) -> list[dict[str, Any]]:
         from app.models.product import Product
-        from app.models.supplier import CompetitorListing, MarketplaceEvidence, ProfitAnalysis, ProductSource
 
         board: list[dict[str, Any]] = []
 
@@ -427,17 +506,35 @@ class DiscoveryService:
             sources = self.db.query(ProductSource).filter(ProductSource.product_id == product.id).all()
             profit_rows = self.db.query(ProfitAnalysis).filter(ProfitAnalysis.product_id == product.id).all()
             competitor_rows = self.db.query(CompetitorListing).filter(CompetitorListing.product_id == product.id).all()
+            agent_rows = self.db.query(AgentReport).filter(AgentReport.product_id == product.id).order_by(AgentReport.created_at.desc()).all()
 
             sold_count = sum(1 for row in evidence_rows if row.evidence_type == "SOLD_LISTING")
             active_count = sum(1 for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING")
-            best_profit = max((float(row.estimated_net_profit or 0) for row in profit_rows), default=0)
+            screenshot_count = sum(1 for row in evidence_rows if row.evidence_type == "SCREENSHOT")
+            manual_note_count = sum(1 for row in evidence_rows if row.evidence_type == "MANUAL_NOTE")
+            sold_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "SOLD_LISTING" and row.price is not None]
+            active_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING" and row.price is not None]
+            median_sold_price = _median_or_none(sold_prices)
+            median_active_price = _median_or_none(active_prices)
+            sold_shipping = [float(row.shipping_price) for row in evidence_rows if row.evidence_type == "SOLD_LISTING" and row.shipping_price is not None]
+            active_shipping = [float(row.shipping_price) for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING" and row.shipping_price is not None]
+            median_sold_shipping = _median_or_none(sold_shipping)
+            median_active_shipping = _median_or_none(active_shipping)
+            median_shipping = _median_or_none([value for value in sold_shipping + active_shipping if value is not None])
             best_scenario = None
             if profit_rows:
                 top_profit = max(profit_rows, key=lambda row: float(row.estimated_net_profit or 0))
                 best_scenario = top_profit.scenario_name
+            best_landed_cost = min((value for value in (_best_source_landed_cost(source) for source in sources) if value is not None), default=None)
+            latest_decision_output = _latest_report_output(agent_rows, "decision_agent")
+            latest_competition_output = _latest_report_output(agent_rows, "competition_agent")
+            competition_gap_score = latest_competition_output.get("listing_gap_score")
+            if competition_gap_score is None:
+                competition_gap_score = _competition_gap_from_listings(competitor_rows)
             completeness = 0
             completeness += min(30, sold_count * 6)
             completeness += min(20, active_count * 4)
+            completeness += min(10, (screenshot_count + manual_note_count) * 2)
             completeness += min(20, len(sources) * 10)
             completeness += min(15, len(profit_rows) * 5)
             completeness += min(15, len(competitor_rows) * 3)
@@ -449,18 +546,21 @@ class DiscoveryService:
                     "title": product.name,
                     "category": product.category,
                     "research_completeness_score": max(0, min(100, completeness)),
-                    "research_verdict": getattr(product, "final_decision", None) or product.status,
-                    "buy_readiness_status": "READY" if product.status in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "APPROVED_TO_LIST"} else "NOT_READY",
+                    "research_verdict": (latest_decision_output or {}).get("research_verdict") or getattr(product, "final_decision", None) or product.status,
+                    "buy_readiness_status": (latest_decision_output or {}).get("buy_readiness_status") or ("READY" if product.status in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "APPROVED_TO_LIST"} else "NOT_READY"),
                     "risk_level": product.risk_level,
                     "sold_evidence_count": sold_count,
                     "active_evidence_count": active_count,
-                    "median_sold_price": None,
-                    "median_active_price": None,
-                    "best_landed_cost": float(sources[0].estimated_landed_cost) if sources and sources[0].estimated_landed_cost is not None else None,
+                    "median_sold_price": median_sold_price,
+                    "median_active_price": median_active_price,
+                    "median_sold_shipping": median_sold_shipping,
+                    "median_active_shipping": median_active_shipping,
+                    "median_shipping": median_shipping,
+                    "best_landed_cost": best_landed_cost,
                     "best_profit_scenario": best_scenario,
-                    "competition_gap_score": None,
-                    "supplier_confidence": sources[0].supplier_rating if sources else None,
-                    "next_action": getattr(product, "next_action", None) or getattr(product, "decision_reason", None),
+                    "competition_gap_score": competition_gap_score,
+                    "supplier_confidence": next((source.supplier_rating for source in sources if source.supplier_rating), None),
+                    "next_action": (latest_decision_output or {}).get("next_action") or getattr(product, "next_action", None) or getattr(product, "decision_reason", None),
                     "source_platform": sources[0].supplier_platform if sources else None,
                     "status": product.status,
                 }
