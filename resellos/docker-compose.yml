@@ -30,10 +30,10 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o}
       - OPENAI_BASE_URL=${OPENAI_BASE_URL:-https://api.openai.com/v1}
-      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://localhost:11434}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
       - OLLAMA_MODEL=${OLLAMA_MODEL:-llama3}
       - VISION_LLM_PROVIDER=${VISION_LLM_PROVIDER:-qwen_vl}
-      - VISION_LLM_BASE_URL=${VISION_LLM_BASE_URL:-http://localhost:8001/v1}
+      - VISION_LLM_BASE_URL=${VISION_LLM_BASE_URL:-http://host.docker.internal:8001/v1}
       - VISION_LLM_MODEL=${VISION_LLM_MODEL:-Qwen/Qwen3-VL-8B-Instruct}
       - VISION_LLM_TIMEOUT_SECONDS=${VISION_LLM_TIMEOUT_SECONDS:-120}
       - VISION_LLM_API_KEY=${VISION_LLM_API_KEY:-}
