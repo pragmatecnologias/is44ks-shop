@@ -168,7 +168,7 @@ class ExternalResearchService:
         if cached:
             return cached
 
-        if not budget_override and self._recent_spend() + self._estimate_cost(1, max_results) > 30.0:
+        if not budget_override and self._recent_spend() + self._estimate_cost(1, max_results) > settings.DATAFORSEO_MONTHLY_BUDGET_USD:
             raise HTTPException(status_code=400, detail="DataForSEO monthly hard stop reached.")
 
         job = ExternalResearchJob(
@@ -232,7 +232,7 @@ class ExternalResearchService:
         budget_warning = None
         spend_after = self._recent_spend() + estimated_cost
         warning_threshold = min(20.0, settings.DATAFORSEO_MONTHLY_BUDGET_USD)
-        if not request.budget_override and spend_after > 30.0:
+        if not request.budget_override and spend_after > settings.DATAFORSEO_MONTHLY_BUDGET_USD:
             raise HTTPException(status_code=400, detail="DataForSEO monthly hard stop reached.")
         if spend_after > warning_threshold:
             budget_warning = "Estimated monthly spend is approaching the warning threshold."
@@ -274,7 +274,7 @@ class ExternalResearchService:
         budget_warning = None
         spend_after = self._recent_spend() + estimated_cost
         warning_threshold = min(20.0, settings.DATAFORSEO_MONTHLY_BUDGET_USD)
-        if not request.budget_override and spend_after > 30.0:
+        if not request.budget_override and spend_after > settings.DATAFORSEO_MONTHLY_BUDGET_USD:
             raise HTTPException(status_code=400, detail="DataForSEO monthly hard stop reached.")
         if spend_after > warning_threshold:
             budget_warning = "Estimated monthly spend is approaching the warning threshold."
