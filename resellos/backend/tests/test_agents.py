@@ -75,7 +75,8 @@ class AgentContractTests(unittest.TestCase):
             )
         )
 
-        self.assertEqual(result["output_json"]["recommendation"], "BUY_SAMPLE")
+        self.assertEqual(result["output_json"]["recommendation"], "WATCHLIST")
+        self.assertEqual(result["output_json"]["research_verdict"], "PROMISING_RESEARCH")
         self.assertGreater(result["output_json"]["total_score"], 0)
 
     def test_decision_agent_caps_buy_when_market_data_is_thin(self) -> None:

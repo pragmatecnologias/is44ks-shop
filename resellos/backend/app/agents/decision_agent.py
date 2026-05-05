@@ -1,4 +1,5 @@
 from app.agents.base_agent import BaseAgent
+from app.config import settings
 from app.llm.base import LLMProvider, Message
 from typing import Dict, Any
 from app.schemas.agent_schema import DecisionAgentOutput
@@ -58,6 +59,10 @@ class DecisionAgent(BaseAgent):
         international_shipping = float(supplier_summary.get("international_shipping_estimate") or 0)
         max_landed_cost = float(supplier_summary.get("estimated_landed_cost") or (product_cost + domestic_shipping + international_shipping))
         target_sale_price = float(profit.get("target_sale_price") or 0)
+        best_margin = max(
+            [float(s.get("margin_percent") or 0) for s in (profit.get("scenarios") or []) if isinstance(s, dict)],
+            default=0.0,
+        )
         hard_blockers: list[str] = []
         required_before_buying: list[str] = []
 
@@ -118,61 +123,96 @@ class DecisionAgent(BaseAgent):
         if competition.get("competitor_count", 0) == 0:
             missing_evidence.append("Competition listings missing")
             required_before_buying.append("Add competitor listings to understand the market gap.")
+        required_before_buying.extend(market.get("required_next_evidence", []))
 
         assumptions = []
         if net_profit == 0:
             assumptions.append("Profit estimate depends on placeholder costs until supplier data is added.")
 
+        min_profit = float(settings.MIN_ACCEPTABLE_PROFIT)
+        min_margin = float(settings.MIN_ACCEPTABLE_MARGIN)
+        ready_for_sample = (
+            not blocked
+            and risk_level != "BLOCKED"
+            and sold_listing_count >= 5
+            and active_listing_count >= 5
+            and has_supplier_cost
+            and not market_price_missing
+            and target_sale_price > 0
+            and net_profit >= min_profit
+            and best_margin >= min_margin
+            and score >= 70
+            and competition.get("can_compete", True)
+        )
+
         if blocked or risk_level == "BLOCKED":
+            research_verdict = "REJECT"
             recommendation = "BLOCKED"
             next_action = "Stop research and resolve risk flags before spending money."
             reason = "Risk rules blocked this product."
             hard_blockers.append("Risk rules blocked the product.")
-        elif score >= 85 and net_profit >= 10 and evidence_quality == "HIGH":
-            recommendation = "BUY_SMALL_BATCH"
-            next_action = "Order a small test batch if supplier terms are acceptable."
-            reason = "Strong evidence, healthy margin, and acceptable risk."
-        elif score >= 70 and net_profit >= 3:
-            recommendation = "BUY_SAMPLE"
-            next_action = "Buy a sample only after filling the missing evidence gaps."
-            reason = "Promising product with enough margin to justify sample testing."
-        elif score >= 55:
+        elif ready_for_sample:
+            research_verdict = "READY_FOR_SAMPLE"
+            if score >= 85 and net_profit >= max(min_profit * 2, 10) and float(profit.get("minimum_recommended_price") or 0) > 0:
+                recommendation = "BUY_SMALL_BATCH"
+                next_action = "Order a controlled test batch."
+                reason = "Research gates are met and the economics support a small batch."
+            else:
+                recommendation = "BUY_SAMPLE"
+                next_action = "Order a small sample batch."
+                reason = "Research gates are met and the idea is ready for sampling."
+        elif score >= 70 and not insufficient_data and not market_price_missing:
+            research_verdict = "PROMISING_RESEARCH"
             recommendation = "WATCHLIST"
-            next_action = "Collect more sold listings and supplier proof before ordering."
+            next_action = "Keep researching until sold evidence, supplier, and competition checks are complete."
+            reason = "Promising but not yet ready for sample buying."
+        elif score >= 55:
+            research_verdict = "NEEDS_MORE_RESEARCH"
+            recommendation = "WATCHLIST"
+            next_action = "Collect more sold listings, supplier proof, and competitor evidence."
             reason = "The idea is promising, but evidence is still thin."
-        else:
+        elif score >= 35:
+            research_verdict = "WEAK_IDEA"
             recommendation = "SKIP"
             next_action = "Skip for now and move on to stronger candidates."
+            reason = "Weak economics or too much uncertainty."
+        else:
+            research_verdict = "REJECT"
+            recommendation = "SKIP"
+            next_action = "Reject this idea and do not spend more time on it."
             reason = "Insufficient confidence or weak economics."
 
         if insufficient_data or market_price_missing:
             if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
                 recommendation = "WATCHLIST"
-                next_action = "Add sold listings and a real market price before ordering."
-                reason = "Market evidence is too thin for a sample order."
             hard_blockers.append("Market evidence is insufficient for a buy decision.")
+            required_before_buying.append("Add real sold listings and a market price.")
 
         if not can_compete:
             if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
                 recommendation = "WATCHLIST"
-                next_action = "Improve the listing angle and competition gap before buying."
-                reason = "Competition is too strong for a confident buy."
             hard_blockers.append("Competition gap is too small to compete reliably.")
+            required_before_buying.append("Capture competitor weaknesses and find a clearer angle.")
 
         if not has_supplier_cost:
             if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
                 recommendation = "WATCHLIST"
-                next_action = "Add supplier cost and shipping before ordering."
             hard_blockers.append("Supplier cost is missing.")
+            required_before_buying.append("Add supplier unit cost and shipping.")
+
+        if target_sale_price <= 0:
+            required_before_buying.append("Record a real target sale price from market evidence.")
+
+        if ready_for_sample:
+            buy_readiness = "READY"
+        else:
+            buy_readiness = "NOT_READY"
 
         max_quantity_to_buy = 0
         if recommendation == "BUY_SAMPLE":
             max_quantity_to_buy = 5
         elif recommendation == "BUY_SMALL_BATCH":
             max_quantity_to_buy = 20
-
-        if target_sale_price <= 0:
-            required_before_buying.append("Record a real target sale price from market evidence.")
 
         missing_evidence = list(dict.fromkeys(missing_evidence))
         required_before_buying = list(dict.fromkeys(required_before_buying))
@@ -181,6 +221,8 @@ class DecisionAgent(BaseAgent):
         output = DecisionAgentOutput.model_validate(
             {
                 "recommendation": recommendation,
+                "research_verdict": research_verdict,
+                "buy_readiness": buy_readiness,
                 "total_score": score,
                 "confidence": "HIGH" if score >= 75 else "MEDIUM" if score >= 55 else "LOW",
                 "reason": llm_result.get("reason") or reason,

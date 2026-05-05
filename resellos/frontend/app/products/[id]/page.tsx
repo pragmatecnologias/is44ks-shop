@@ -95,6 +95,10 @@ export default function ProductDetailPage() {
   const reports = cockpit?.agent_reports ?? [];
   const competition = cockpit?.competition ?? null;
   const reorder = cockpit?.reorder ?? null;
+  const researchVerdict = decision.research_verdict || 'NEEDS_MORE_RESEARCH';
+  const buyReadiness = decision.buy_readiness || 'NOT_READY';
+  const marketReport = reports.find((report) => report.agent_name === 'market_agent');
+  const marketData = safeJson(marketReport?.output_json);
   const hardBlockers = cockpit?.hard_blockers?.length ? cockpit.hard_blockers : decision.hard_blockers ?? [];
   const requiredBeforeBuying = decision.required_before_buying ?? [];
   const maxQuantityToBuy = decision.max_quantity_to_buy ?? 0;
@@ -122,6 +126,8 @@ export default function ProductDetailPage() {
     { label: 'Risk review', ok: riskPassed, detail: riskPassed ? 'Passed' : 'Blocked' },
     { label: 'Target price', ok: targetPricePresent, detail: targetPricePresent ? money(targetSalePrice) : 'Missing' },
   ];
+  const readinessScore = Math.round((readinessChecks.filter((check) => check.ok).length / readinessChecks.length) * 100);
+  const mainBlocker = readinessChecks.find((check) => !check.ok)?.label || 'None';
 
   const decisionAccent =
     finalDecision === 'BLOCKED'
@@ -137,7 +143,10 @@ export default function ProductDetailPage() {
     return [
       { label: 'Status', value: cockpit?.current_status || product.status },
       { label: 'Decision', value: finalDecision.replace(/_/g, ' ') },
+      { label: 'Research', value: researchVerdict.replace(/_/g, ' ') },
+      { label: 'Ready', value: buyReadiness },
       { label: 'Score', value: `${score}/100` },
+      { label: 'Readiness', value: `${readinessScore}%` },
       { label: 'Confidence', value: confidence },
       { label: 'Max qty', value: maxQuantityToBuy ? String(maxQuantityToBuy) : '—' },
       { label: 'Max landed', value: maxLandedCost ? money(maxLandedCost) : '—' },
@@ -145,7 +154,7 @@ export default function ProductDetailPage() {
       { label: 'Can compete', value: canCompete ? 'Yes' : 'No' },
       { label: 'Reorder', value: reorderRecommendation.replace(/_/g, ' ') },
     ];
-  }, [product, cockpit?.current_status, finalDecision, score, confidence, maxQuantityToBuy, maxLandedCost, targetSalePrice, targetPricePresent, canCompete, reorderRecommendation]);
+  }, [product, cockpit?.current_status, finalDecision, researchVerdict, buyReadiness, score, readinessScore, confidence, maxQuantityToBuy, maxLandedCost, targetSalePrice, targetPricePresent, canCompete, reorderRecommendation]);
 
   async function handleRunResearch() {
     if (!product) return;
@@ -284,7 +293,7 @@ export default function ProductDetailPage() {
           ) : null}
         </header>
 
-        <div className="grid gap-6 xl:grid-cols-3">
+        <div className="grid gap-6 xl:grid-cols-4">
           <Panel title="Missing Evidence" icon={BadgeAlert}>
             <Checklist items={missingEvidence} />
           </Panel>
@@ -301,6 +310,20 @@ export default function ProductDetailPage() {
             </div>
           </Panel>
 
+          <Panel title="Market Signal" icon={Target}>
+            <div className="space-y-3">
+              <StatRow label="Evidence quality" value={(marketData?.evidence_quality as string) || 'LOW'} />
+              <StatRow label="Sell-through" value={(marketData?.sell_through_signal as string) || 'UNKNOWN'} />
+              <StatRow label="Sold listings" value={marketData?.sold_listing_count != null ? String(marketData.sold_listing_count) : String(soldEvidenceCount)} />
+              <StatRow label="Active listings" value={marketData?.active_listing_count != null ? String(marketData.active_listing_count) : String(activeEvidenceCount)} />
+              <StatRow label="Median sold" value={money((marketData?.median_sold_price as number) ?? null)} />
+              <StatRow label="Median active" value={money((marketData?.median_active_price as number) ?? null)} />
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-300">
+                {marketData?.recommended_research_action || 'Add sold and active listings to get a market action.'}
+              </div>
+            </div>
+          </Panel>
+
           <Panel title="Decision Summary" icon={CheckCircle2}>
             <div className="space-y-3">
               <StatRow label="Decision" value={finalDecision.replace(/_/g, ' ')} />
@@ -313,8 +336,18 @@ export default function ProductDetailPage() {
         </div>
 
         <div className="grid gap-6 xl:grid-cols-2">
-          <Panel title="Buy Readiness" icon={ClipboardCheck}>
+          <Panel title="Research Readiness" icon={ClipboardCheck}>
             <div className="space-y-3">
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Readiness score</div>
+                    <div className="mt-1 text-2xl font-semibold text-white">{readinessScore}%</div>
+                  </div>
+                  <div className={`text-xs font-semibold ${buyReadiness === 'READY' ? 'text-emerald-400' : 'text-yellow-400'}`}>{buyReadiness.replace(/_/g, ' ')}</div>
+                </div>
+                <div className="mt-2 text-xs text-zinc-400">Main blocker: {mainBlocker}</div>
+              </div>
               {readinessChecks.map((check) => (
                 <div key={check.label} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
                   <div className="flex items-center justify-between gap-3">
@@ -705,4 +738,13 @@ function Pill({ label }: { label: string }) {
 function money(value?: number | null) {
   if (value == null) return '—';
   return `$${Number(value).toFixed(2)}`;
+}
+
+function safeJson(value?: string | null): any {
+  if (!value) return {};
+  try {
+    return JSON.parse(value);
+  } catch {
+    return {};
+  }
 }

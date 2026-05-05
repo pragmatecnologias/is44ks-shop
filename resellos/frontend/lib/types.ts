@@ -220,6 +220,8 @@ export interface ProfitAnalysis {
 
 export interface DecisionSummary {
   recommendation?: FinalDecision;
+  research_verdict?: 'REJECT' | 'WEAK_IDEA' | 'NEEDS_MORE_RESEARCH' | 'PROMISING_RESEARCH' | 'READY_FOR_SAMPLE';
+  buy_readiness?: 'NOT_READY' | 'READY';
   total_score?: number;
   confidence?: 'LOW' | 'MEDIUM' | 'HIGH';
   reason?: string;
@@ -321,6 +323,64 @@ export interface ResearchCockpit {
   next_action?: string | null;
   confidence?: string | null;
   current_status?: string | null;
+}
+
+export interface DiscoveryTask {
+  id: string;
+  idea_id: string;
+  task_type: string;
+  title: string;
+  status: 'TODO' | 'DONE' | 'SKIPPED' | string;
+  notes?: string;
+  sort_order: number;
+  created_at: string;
+}
+
+export interface DiscoveryIdea {
+  id: string;
+  idea_name: string;
+  category?: string;
+  source_platform?: string;
+  source_url?: string;
+  rough_supplier_cost?: number;
+  estimated_landed_cost?: number;
+  why_interesting?: string;
+  risk_flags?: string[] | string | null;
+  quick_market_signal?: string;
+  quick_profit_signal?: string;
+  research_priority?: string;
+  notes?: string;
+  status: string;
+  quick_scan_verdict?: string;
+  quick_scan_reason?: string;
+  suggested_keywords?: string[] | string | null;
+  required_next_evidence?: string[] | string | null;
+  promoted_product_id?: string | null;
+  tasks?: DiscoveryTask[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DiscoveryQuickScanInput {
+  idea_name: string;
+  category?: string;
+  source_platform?: string;
+  source_url?: string;
+  rough_supplier_cost?: number;
+  estimated_landed_cost?: number;
+  why_interesting?: string;
+  notes?: string;
+}
+
+export interface DiscoveryQuickScanResponse {
+  idea: DiscoveryIdea;
+  quick_scan_verdict: string;
+  quick_scan_reason: string;
+  research_priority: string;
+  required_next_evidence: string[];
+  suggested_keywords: string[];
+  risk_flags: string[];
+  tasks: DiscoveryTask[];
 }
 
 export interface ResearchRunResponse {

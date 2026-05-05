@@ -193,3 +193,53 @@ class ProductFile(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
     product = relationship("Product", back_populates="files")
+
+
+class ProductDiscoveryIdea(Base):
+    __tablename__ = "product_discovery_ideas"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    idea_name = Column(Text, nullable=False)
+    category = Column(String(120))
+    source_platform = Column(String(100))
+    source_url = Column(Text)
+    rough_supplier_cost = Column(Numeric(10, 2))
+    estimated_landed_cost = Column(Numeric(10, 2))
+    why_interesting = Column(Text)
+    risk_flags = Column(Text)
+    quick_market_signal = Column(Text)
+    quick_profit_signal = Column(Text)
+    research_priority = Column(String(50), default="MEDIUM")
+    notes = Column(Text)
+    status = Column(String(50), default="IDEA")
+    quick_scan_verdict = Column(String(50))
+    quick_scan_reason = Column(Text)
+    suggested_keywords = Column(Text)
+    required_next_evidence = Column(Text)
+    promoted_product_id = Column(UUID(as_uuid=True), ForeignKey("products.id"))
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    promoted_product = relationship("Product", foreign_keys=[promoted_product_id])
+
+
+class DiscoveryTask(Base):
+    __tablename__ = "discovery_tasks"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    idea_id = Column(UUID(as_uuid=True), ForeignKey("product_discovery_ideas.id"), nullable=False)
+    task_type = Column(String(80), nullable=False)
+    title = Column(Text, nullable=False)
+    status = Column(String(30), default="TODO")
+    notes = Column(Text)
+    sort_order = Column(Integer, default=0)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    idea = relationship("ProductDiscoveryIdea", back_populates="tasks")
+
+
+ProductDiscoveryIdea.tasks = relationship(
+    "DiscoveryTask",
+    back_populates="idea",
+    cascade="all, delete-orphan",
+)

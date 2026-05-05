@@ -2,6 +2,9 @@ import type {
   AgentResult,
   CreateProductInput,
   DashboardStats,
+  DiscoveryIdea,
+  DiscoveryQuickScanInput,
+  DiscoveryQuickScanResponse,
   MarketplaceEvidenceInput,
   Product,
   ProductSource,
@@ -74,6 +77,34 @@ const DEMO_PRODUCTS: Product[] = [
   },
 ];
 
+const DEMO_DISCOVERY_IDEAS: DiscoveryIdea[] = [
+  {
+    id: 'idea-demo-1',
+    idea_name: 'Car trash bag holder',
+    category: 'Car accessories',
+    source_platform: 'Alibaba',
+    source_url: 'https://example.com',
+    rough_supplier_cost: 1.2,
+    estimated_landed_cost: 4.8,
+    why_interesting: 'Small, cheap, solves a daily annoyance.',
+    risk_flags: [],
+    quick_market_signal: 'Need eBay sold check',
+    quick_profit_signal: 'Potentially viable',
+    research_priority: 'MEDIUM',
+    notes: 'Demo discovery idea.',
+    status: 'QUICK_SCAN_COMPLETE',
+    quick_scan_verdict: 'CONTINUE_RESEARCH',
+    quick_scan_reason: 'Promising but needs evidence.',
+    suggested_keywords: ['car trash bag holder', 'car organizer'],
+    required_next_evidence: ['Add 5 sold listings', 'Add 10 active listings'],
+    tasks: [
+      { id: 'task-demo-1', idea_id: 'idea-demo-1', task_type: 'market_research', title: 'Search eBay sold listings', status: 'TODO', sort_order: 1, created_at: new Date().toISOString() },
+    ],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+];
+
 function demoDashboard(): DashboardStats {
   return {
     total_products: DEMO_PRODUCTS.length,
@@ -94,6 +125,10 @@ function demoDashboard(): DashboardStats {
       },
     ] as AgentResult[],
   };
+}
+
+function demoDiscovery(): DiscoveryIdea[] {
+  return DEMO_DISCOVERY_IDEAS;
 }
 
 function demoCockpit(productId: string): ResearchCockpit {
@@ -287,6 +322,34 @@ export async function getProduct(id: string): Promise<Product | null> {
 
 export async function getProductCockpit(id: string): Promise<ResearchCockpit | null> {
   return getMaybe(`/api/products/${id}/research/cockpit`, demoCockpit(id));
+}
+
+export async function listDiscoveryIdeas(): Promise<DiscoveryIdea[]> {
+  return getMaybe('/api/discovery', demoDiscovery());
+}
+
+export async function createDiscoveryIdea(data: DiscoveryQuickScanInput): Promise<DiscoveryIdea> {
+  return requestJson<DiscoveryIdea>('/api/discovery', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function quickScanDiscoveryIdea(data: DiscoveryQuickScanInput): Promise<DiscoveryQuickScanResponse> {
+  return requestJson<DiscoveryQuickScanResponse>('/api/discovery/quick-scan', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function promoteDiscoveryIdea(ideaId: string): Promise<{ product_id: string }> {
+  return requestJson<{ product_id: string }>(`/api/discovery/${ideaId}/promote`, {
+    method: 'POST',
+  });
+}
+
+export async function deleteDiscoveryIdea(ideaId: string): Promise<void> {
+  await requestJson<void>(`/api/discovery/${ideaId}`, { method: 'DELETE' });
 }
 
 export async function runProductResearch(id: string): Promise<ResearchRunResponse> {

@@ -50,21 +50,10 @@ class MarketAgent(BaseAgent):
         except Exception:
             result = {}
 
-        active_rows = []
-        sold_rows = []
-        if isinstance(evidence, list) and evidence:
-            active_rows = [row for row in evidence if str(row.get("evidence_type", "")).upper() == "ACTIVE_LISTING"]
-            sold_rows = [row for row in evidence if str(row.get("evidence_type", "")).upper() == "SOLD_LISTING"]
-
-        if not active_rows and isinstance(marketplace_research, list):
-            active_listing_count = sum(int(row.get("active_listing_count") or 0) for row in marketplace_research)
-        else:
-            active_listing_count = len(active_rows)
-
-        if not sold_rows and isinstance(marketplace_research, list):
-            sold_listing_count = sum(int(row.get("sold_listing_count") or 0) for row in marketplace_research)
-        else:
-            sold_listing_count = len(sold_rows)
+        evidence_rows = evidence if isinstance(evidence, list) else []
+        active_rows = [row for row in evidence_rows if str(row.get("evidence_type", "")).upper() == "ACTIVE_LISTING"]
+        sold_rows = [row for row in evidence_rows if str(row.get("evidence_type", "")).upper() == "SOLD_LISTING"]
+        supporting_rows = [row for row in evidence_rows if str(row.get("evidence_type", "")).upper() in {"SCREENSHOT", "MANUAL_NOTE"}]
 
         active_prices = [float(row.get("price")) for row in active_rows if row.get("price") is not None]
         sold_prices = [float(row.get("price")) for row in sold_rows if row.get("price") is not None]
@@ -80,9 +69,15 @@ class MarketAgent(BaseAgent):
         if not sold_shipping_prices and isinstance(marketplace_research, list):
             sold_shipping_prices = [float(row.get("shipping_median")) for row in marketplace_research if row.get("shipping_median") is not None]
 
+        active_listing_count = len(active_rows)
+        sold_listing_count = len(sold_rows)
+
+        active_price_range = [round(min(active_prices), 2), round(max(active_prices), 2)] if active_prices else []
+        sold_price_range = [round(min(sold_prices), 2), round(max(sold_prices), 2)] if sold_prices else []
         median_active_price = _median(active_prices)
         median_sold_price = _median(sold_prices)
-        median_shipping = _median(active_shipping_prices + sold_shipping_prices)
+        median_active_shipping = _median(active_shipping_prices)
+        median_sold_shipping = _median(sold_shipping_prices)
         marketplace_coverage = sorted(
             {
                 str(row.get("marketplace")).strip()
@@ -92,6 +87,7 @@ class MarketAgent(BaseAgent):
         )
 
         market_price_missing = median_sold_price is None and median_active_price is None
+        supporting_evidence_count = len(supporting_rows)
         insufficient_data = sold_listing_count == 0 or market_price_missing
 
         if sold_listing_count >= 10 and active_listing_count >= 10 and median_sold_price is not None:
@@ -103,18 +99,54 @@ class MarketAgent(BaseAgent):
         else:
             evidence_quality = "LOW"
 
+        if sold_listing_count >= 10:
+            sell_through_signal = "HIGH"
+        elif sold_listing_count >= 5:
+            sell_through_signal = "MEDIUM"
+        elif sold_listing_count > 0:
+            sell_through_signal = "LOW"
+        else:
+            sell_through_signal = "UNKNOWN"
+
+        required_next_evidence = []
+        if sold_listing_count < 5:
+            required_next_evidence.append("Add at least 5 sold listings.")
+        if active_listing_count < 5:
+            required_next_evidence.append("Add at least 5 active listings.")
+        if median_active_shipping is None and median_sold_shipping is None:
+            required_next_evidence.append("Capture shipping examples.")
+        if supporting_evidence_count == 0:
+            required_next_evidence.append("Add screenshots or manual notes for support.")
+
+        if evidence_quality == "HIGH":
+            recommended_research_action = "Proceed to profit and competition analysis."
+        elif sold_listing_count < 5:
+            recommended_research_action = "Add 2 more sold listings to improve confidence."
+        elif active_listing_count < 5:
+            recommended_research_action = "Add more active listings to compare competition."
+        else:
+            recommended_research_action = "Collect a few more evidence points before buying."
+
         output = MarketAgentOutput.model_validate(
             {
                 "evidence_quality": evidence_quality,
                 "insufficient_data": insufficient_data,
                 "market_price_missing": market_price_missing,
+                "supporting_evidence_count": supporting_evidence_count,
                 "active_listing_count": active_listing_count,
                 "sold_listing_count": sold_listing_count,
                 "demand_signal": "HIGH" if sold_listing_count >= 10 else "MEDIUM" if sold_listing_count > 0 else "UNKNOWN",
                 "competition_level": "HIGH" if active_listing_count >= 10 else "MEDIUM" if active_listing_count > 0 else "UNKNOWN",
                 "median_active_price": median_active_price,
                 "median_sold_price": median_sold_price,
+                "median_active_shipping": median_active_shipping,
+                "median_sold_shipping": median_sold_shipping,
+                "active_price_range": active_price_range,
+                "sold_price_range": sold_price_range,
                 "marketplace_coverage": marketplace_coverage,
+                "sell_through_signal": sell_through_signal,
+                "recommended_research_action": recommended_research_action,
+                "required_next_evidence": required_next_evidence,
                 "summary": result.get("summary", f"Marketplace evidence analyzed from {len(marketplace_coverage)} marketplaces."),
                 "confidence": "LOW" if insufficient_data else "MEDIUM",
                 "warnings": result.get("warnings", []),

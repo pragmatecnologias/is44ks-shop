@@ -8,6 +8,7 @@ import {
   Warehouse,
   TrendingUp,
   Settings,
+  Lightbulb,
   ChevronRight,
   Zap,
 } from 'lucide-react';
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/products', label: 'Products', icon: Package },
+  { href: '/discovery', label: 'Idea Lab', icon: Lightbulb },
   { href: '/listings', label: 'Listings', icon: ListOrdered },
   { href: '/inventory', label: 'Inventory', icon: Warehouse },
   { href: '/sales', label: 'Sales', icon: TrendingUp },

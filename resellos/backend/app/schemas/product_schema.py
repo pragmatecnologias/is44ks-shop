@@ -241,3 +241,99 @@ class ListingGenerateRequest(BaseModel):
     target_price: Optional[float] = None
     shipping_policy: Optional[str] = None
     bundle_option: bool = False
+
+
+class DiscoveryIdeaCreate(BaseModel):
+    idea_name: str = Field(..., min_length=1, max_length=300)
+    category: Optional[str] = None
+    source_platform: Optional[str] = None
+    source_url: Optional[str] = None
+    rough_supplier_cost: Optional[float] = None
+    estimated_landed_cost: Optional[float] = None
+    why_interesting: Optional[str] = None
+    notes: Optional[str] = None
+
+
+class DiscoveryIdeaUpdate(BaseModel):
+    idea_name: Optional[str] = None
+    category: Optional[str] = None
+    source_platform: Optional[str] = None
+    source_url: Optional[str] = None
+    rough_supplier_cost: Optional[float] = None
+    estimated_landed_cost: Optional[float] = None
+    why_interesting: Optional[str] = None
+    risk_flags: Optional[str] = None
+    quick_market_signal: Optional[str] = None
+    quick_profit_signal: Optional[str] = None
+    research_priority: Optional[str] = None
+    notes: Optional[str] = None
+    status: Optional[str] = None
+    quick_scan_verdict: Optional[str] = None
+    quick_scan_reason: Optional[str] = None
+    suggested_keywords: Optional[str] = None
+    required_next_evidence: Optional[str] = None
+    promoted_product_id: Optional[uuid.UUID] = None
+
+
+class DiscoveryTaskResponse(BaseModel):
+    id: uuid.UUID
+    idea_id: uuid.UUID
+    task_type: str
+    title: str
+    status: str
+    notes: Optional[str] = None
+    sort_order: int
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class DiscoveryIdeaResponse(BaseModel):
+    id: uuid.UUID
+    idea_name: str
+    category: Optional[str] = None
+    source_platform: Optional[str] = None
+    source_url: Optional[str] = None
+    rough_supplier_cost: Optional[float] = None
+    estimated_landed_cost: Optional[float] = None
+    why_interesting: Optional[str] = None
+    risk_flags: Optional[str] = None
+    quick_market_signal: Optional[str] = None
+    quick_profit_signal: Optional[str] = None
+    research_priority: Optional[str] = None
+    notes: Optional[str] = None
+    status: str
+    quick_scan_verdict: Optional[str] = None
+    quick_scan_reason: Optional[str] = None
+    suggested_keywords: Optional[str] = None
+    required_next_evidence: Optional[str] = None
+    promoted_product_id: Optional[uuid.UUID] = None
+    tasks: list[DiscoveryTaskResponse] = Field(default_factory=list)
+    created_at: datetime
+    updated_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class DiscoveryQuickScanRequest(BaseModel):
+    idea_name: str = Field(..., min_length=1, max_length=300)
+    category: Optional[str] = None
+    source_platform: Optional[str] = None
+    source_url: Optional[str] = None
+    rough_supplier_cost: Optional[float] = None
+    estimated_landed_cost: Optional[float] = None
+    why_interesting: Optional[str] = None
+    notes: Optional[str] = None
+
+
+class DiscoveryQuickScanResponse(BaseModel):
+    idea: DiscoveryIdeaResponse
+    quick_scan_verdict: str
+    quick_scan_reason: str
+    research_priority: str
+    required_next_evidence: list[str] = Field(default_factory=list)
+    suggested_keywords: list[str] = Field(default_factory=list)
+    risk_flags: list[str] = Field(default_factory=list)
+    tasks: list[DiscoveryTaskResponse] = Field(default_factory=list)

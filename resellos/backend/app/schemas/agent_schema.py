@@ -41,13 +41,21 @@ class MarketAgentOutput(BaseModel):
     evidence_quality: Literal["LOW", "MEDIUM", "HIGH"] = "LOW"
     insufficient_data: bool = True
     market_price_missing: bool = True
+    supporting_evidence_count: int = 0
     active_listing_count: int = 0
     sold_listing_count: int = 0
     demand_signal: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"
     competition_level: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"
     median_active_price: float | None = None
     median_sold_price: float | None = None
+    median_active_shipping: float | None = None
+    median_sold_shipping: float | None = None
+    active_price_range: list[float] = Field(default_factory=list)
+    sold_price_range: list[float] = Field(default_factory=list)
     marketplace_coverage: list[str] = Field(default_factory=list)
+    sell_through_signal: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"
+    recommended_research_action: str = ""
+    required_next_evidence: list[str] = Field(default_factory=list)
     summary: str = ""
     confidence: ConfidenceLevel = "LOW"
     warnings: list[str] = Field(default_factory=list)
@@ -122,6 +130,8 @@ class ReorderAgentOutput(BaseModel):
 
 class DecisionAgentOutput(BaseModel):
     recommendation: DecisionLevel = "SKIP"
+    research_verdict: Literal["REJECT", "WEAK_IDEA", "NEEDS_MORE_RESEARCH", "PROMISING_RESEARCH", "READY_FOR_SAMPLE"] = "NEEDS_MORE_RESEARCH"
+    buy_readiness: Literal["NOT_READY", "READY"] = "NOT_READY"
     total_score: int = 0
     confidence: ConfidenceLevel = "LOW"
     reason: str = ""
