@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import {
   ArrowRight,
   Brain,
@@ -16,13 +17,14 @@ import {
   createDiscoveryIdea,
   deleteDiscoveryIdea,
   getOpportunityBoard,
+  getProductCockpit,
   generateDiscoveryTasks,
   listDiscoveryIdeas,
   promoteDiscoveryIdea,
   quickScanDiscoveryIdea,
   updateDiscoveryTask,
 } from '@/lib/api';
-import type { DiscoveryIdea, DiscoveryQuickScanInput, OpportunityBoardRow } from '@/lib/types';
+import type { DiscoveryIdea, DiscoveryQuickScanInput, OpportunityBoardRow, ResearchCockpit } from '@/lib/types';
 
 const emptyQuickScan: DiscoveryQuickScanInput = {
   idea_name: '',
@@ -263,10 +265,10 @@ export default function DiscoveryPage() {
                   onDelete={() => handleDeleteIdea(idea.id)}
                   onGenerateTasks={() => handleGenerateTasks(idea.id)}
                   onArchive={() => handleArchiveIdea(idea.id)}
-                  onUpdateTask={async (taskId, status, notes) => {
+                  onUpdateTask={async (taskId, status, notes, linkData) => {
                     setError(null);
                     try {
-                      await updateDiscoveryTask(taskId, { status, notes });
+                      await updateDiscoveryTask(taskId, { status, notes, ...linkData });
                       await loadIdeas();
                     } catch (err) {
                       setError(err instanceof Error ? err.message : 'Could not update task');
@@ -352,9 +354,43 @@ function IdeaCard({
   onDelete: () => void;
   onGenerateTasks: () => void;
   onArchive: () => void;
-  onUpdateTask: (taskId: string, status?: string, notes?: string) => void;
+  onUpdateTask: (
+    taskId: string,
+    status?: string,
+    notes?: string,
+    linkData?: {
+      linked_evidence_id?: string | null;
+      linked_source_id?: string | null;
+      linked_competitor_id?: string | null;
+      linked_product_id?: string | null;
+    },
+  ) => void;
 }) {
   const [draftNotes, setDraftNotes] = useState<Record<string, string>>({});
+  const [draftLinks, setDraftLinks] = useState<Record<string, string>>({});
+  const [linkedContext, setLinkedContext] = useState<ResearchCockpit | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    async function loadLinkedContext() {
+      if (!idea.promoted_product_id) {
+        if (mounted) setLinkedContext(null);
+        return;
+      }
+      try {
+        const data = await getProductCockpit(idea.promoted_product_id);
+        if (mounted) setLinkedContext(data);
+      } catch {
+        if (mounted) setLinkedContext(null);
+      }
+    }
+    loadLinkedContext();
+    return () => {
+      mounted = false;
+    };
+  }, [idea.promoted_product_id]);
+
+  const linkOptions = buildLinkOptions(linkedContext, idea.promoted_product_id);
   return (
     <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
       <div className="flex items-start justify-between gap-4">
@@ -452,6 +488,18 @@ function IdeaCard({
                     {task.status}
                   </span>
                 </div>
+                <div className="mt-2 text-xs text-zinc-400">
+                  {renderTaskLinkStatus(task) === 'No evidence linked' ? (
+                    renderTaskLinkStatus(task)
+                  ) : (
+                    <Link href={taskLinkHref(task, idea.promoted_product_id)} className="text-indigo-300 hover:text-indigo-200">
+                      {renderTaskLinkStatus(task)}
+                    </Link>
+                  )}
+                </div>
+                {task.status === 'DONE' && !hasTaskLink(task) ? (
+                  <div className="mt-1 text-xs text-amber-300">Done by note only — no evidence linked.</div>
+                ) : null}
                 <textarea
                   value={draftNotes[task.id] ?? task.notes ?? ''}
                   onChange={(event) => setDraftNotes((current) => ({ ...current, [task.id]: event.target.value }))}
@@ -459,6 +507,55 @@ function IdeaCard({
                   rows={2}
                   className="mt-3 w-full rounded-xl border border-zinc-800 bg-zinc-950/80 px-3 py-2 text-sm text-white outline-none transition focus:border-indigo-500/50"
                 />
+                <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-950/80 p-3">
+                  <div className="text-[11px] uppercase tracking-[0.14em] text-zinc-500">Link evidence</div>
+                  {idea.promoted_product_id ? (
+                    <div className="mt-2 space-y-2">
+                      <select
+                        value={draftLinks[task.id] ?? taskLinkValue(task)}
+                        onChange={(event) => setDraftLinks((current) => ({ ...current, [task.id]: event.target.value }))}
+                        className="w-full rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-white outline-none transition focus:border-indigo-500/50"
+                      >
+                        <option value="">No link selected</option>
+                        {linkOptions.marketplaceEvidence.length ? (
+                          <optgroup label="Marketplace evidence">
+                            {linkOptions.marketplaceEvidence.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </optgroup>
+                        ) : null}
+                        {linkOptions.sources.length ? (
+                          <optgroup label="Supplier sources">
+                            {linkOptions.sources.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </optgroup>
+                        ) : null}
+                        {linkOptions.competitors.length ? (
+                          <optgroup label="Competitor listings">
+                            {linkOptions.competitors.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </optgroup>
+                        ) : null}
+                        <optgroup label="Product">
+                          <option value={linkOptions.product.value}>{linkOptions.product.label}</option>
+                        </optgroup>
+                      </select>
+                      <div className="text-[11px] text-zinc-500">
+                        Choose a single evidence target. Saving a link is optional.
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mt-2 text-sm text-zinc-500">Promote the idea to attach evidence from the product cockpit.</div>
+                  )}
+                </div>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <button
                     type="button"
@@ -467,27 +564,59 @@ function IdeaCard({
                   >
                     Save note
                   </button>
-                  <button
-                    type="button"
-                    onClick={() => onUpdateTask(task.id, 'DONE', draftNotes[task.id] ?? task.notes ?? '')}
-                    className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-500/20"
-                  >
-                    Mark done
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onUpdateTask(task.id, 'SKIPPED', draftNotes[task.id] ?? task.notes ?? '')}
-                    className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
-                  >
-                    Skip
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onUpdateTask(task.id, 'BLOCKED', draftNotes[task.id] ?? task.notes ?? '')}
-                    className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs text-red-300 hover:bg-red-500/20"
-                  >
-                    Block
-                  </button>
+                  {idea.promoted_product_id ? (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onUpdateTask(task.id, task.status, draftNotes[task.id] ?? task.notes ?? '', taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)))
+                      }
+                      className="rounded-lg border border-indigo-500/20 bg-indigo-500/10 px-3 py-1.5 text-xs text-indigo-300 hover:bg-indigo-500/20"
+                    >
+                      Save link
+                    </button>
+                  ) : null}
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onUpdateTask(
+                          task.id,
+                          'DONE',
+                          draftNotes[task.id] ?? task.notes ?? '',
+                          taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)),
+                        )
+                      }
+                      className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-500/20"
+                    >
+                      Mark done
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onUpdateTask(
+                          task.id,
+                          'SKIPPED',
+                          draftNotes[task.id] ?? task.notes ?? '',
+                          taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)),
+                        )
+                      }
+                      className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-600"
+                    >
+                      Skip
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onUpdateTask(
+                          task.id,
+                          'BLOCKED',
+                          draftNotes[task.id] ?? task.notes ?? '',
+                          taskLinkPayload(draftLinks[task.id] ?? taskLinkValue(task)),
+                        )
+                      }
+                      className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs text-red-300 hover:bg-red-500/20"
+                    >
+                      Block
+                    </button>
                 </div>
               </div>
             ))
@@ -498,6 +627,103 @@ function IdeaCard({
       </div>
     </div>
   );
+}
+
+function buildLinkOptions(
+  cockpit: ResearchCockpit | null,
+  promotedProductId?: string | null,
+) {
+  return {
+    marketplaceEvidence:
+      cockpit?.marketplace_evidence?.map((row) => ({
+        value: `evidence:${row.id}`,
+        label: `${row.evidence_type === 'SOLD_LISTING' ? 'Sold evidence' : 'Marketplace evidence'}: ${row.title || row.marketplace}`,
+      })) ?? [],
+    sources:
+      cockpit?.sources?.map((source) => ({
+        value: `source:${source.id}`,
+        label: `Supplier source: ${source.supplier_name || source.supplier_platform || source.id}`,
+      })) ?? [],
+    competitors:
+      cockpit?.competitor_listings?.map((listing) => ({
+        value: `competitor:${listing.id}`,
+        label: `Competitor listing: ${listing.title || listing.marketplace || listing.id}`,
+      })) ?? [],
+    product: {
+      value: promotedProductId ? `product:${promotedProductId}` : '',
+      label: 'Promoted product',
+    },
+  };
+}
+
+function taskLinkHref(
+  task: {
+    linked_evidence_id?: string | null;
+    linked_source_id?: string | null;
+    linked_competitor_id?: string | null;
+    linked_product_id?: string | null;
+  },
+  promotedProductId?: string | null,
+) {
+  const productId = task.linked_product_id || promotedProductId;
+  if (!productId) return '#';
+  if (task.linked_evidence_id) return `/products/${productId}#evidence-${task.linked_evidence_id}`;
+  if (task.linked_source_id) return `/products/${productId}#source-${task.linked_source_id}`;
+  if (task.linked_competitor_id) return `/products/${productId}#competitor-${task.linked_competitor_id}`;
+  return `/products/${productId}`;
+}
+
+function taskLinkValue(task: {
+  linked_evidence_id?: string | null;
+  linked_source_id?: string | null;
+  linked_competitor_id?: string | null;
+  linked_product_id?: string | null;
+}) {
+  if (task.linked_evidence_id) return `evidence:${task.linked_evidence_id}`;
+  if (task.linked_source_id) return `source:${task.linked_source_id}`;
+  if (task.linked_competitor_id) return `competitor:${task.linked_competitor_id}`;
+  if (task.linked_product_id) return `product:${task.linked_product_id}`;
+  return '';
+}
+
+function taskLinkPayload(value: string) {
+  if (!value) {
+    return {
+      linked_evidence_id: null,
+      linked_source_id: null,
+      linked_competitor_id: null,
+      linked_product_id: null,
+    };
+  }
+  const [kind, id] = value.split(':', 2);
+  return {
+    linked_evidence_id: kind === 'evidence' ? id : null,
+    linked_source_id: kind === 'source' ? id : null,
+    linked_competitor_id: kind === 'competitor' ? id : null,
+    linked_product_id: kind === 'product' ? id : null,
+  };
+}
+
+function hasTaskLink(task: {
+  linked_evidence_id?: string | null;
+  linked_source_id?: string | null;
+  linked_competitor_id?: string | null;
+  linked_product_id?: string | null;
+}) {
+  return Boolean(task.linked_evidence_id || task.linked_source_id || task.linked_competitor_id || task.linked_product_id);
+}
+
+function renderTaskLinkStatus(task: {
+  linked_evidence_id?: string | null;
+  linked_source_id?: string | null;
+  linked_competitor_id?: string | null;
+  linked_product_id?: string | null;
+}) {
+  if (task.linked_evidence_id) return 'Linked to sold evidence';
+  if (task.linked_source_id) return 'Linked to supplier source';
+  if (task.linked_competitor_id) return 'Linked to competitor listing';
+  if (task.linked_product_id) return 'Linked to product';
+  return 'No evidence linked';
 }
 
 function renderKeywordGroup(

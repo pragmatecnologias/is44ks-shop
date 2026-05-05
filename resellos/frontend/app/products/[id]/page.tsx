@@ -92,6 +92,7 @@ export default function ProductDetailPage() {
   const missingEvidence = cockpit?.missing_evidence?.length ? cockpit.missing_evidence : product?.missing_evidence ?? [];
   const supplierSources = cockpit?.sources ?? [];
   const evidenceRows = cockpit?.marketplace_evidence ?? [];
+  const competitorRows = cockpit?.competitor_listings ?? [];
   const profitRows = cockpit?.profit_analyses ?? [];
   const reports = cockpit?.agent_reports ?? [];
   const discoveryContext = getDiscoveryContext(cockpit?.discovery_context ?? reports.find((report) => report.agent_name === 'discovery_context')?.output_json);
@@ -429,7 +430,7 @@ export default function ProductDetailPage() {
         </div>
 
         <div className="grid gap-6 xl:grid-cols-2">
-          <Panel title="Marketplace Evidence" icon={Users}>
+          <Panel title="Marketplace Evidence" icon={Users} panelId="marketplace-evidence">
             <div className="space-y-4">
               <form
                 className="grid gap-3 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4"
@@ -460,7 +461,7 @@ export default function ProductDetailPage() {
                   <EmptyState title="No evidence yet" description="Add sold or active listings to unlock better decisions." />
                 ) : (
                   evidenceRows.map((row) => (
-                    <div key={row.id} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                    <div key={row.id} id={`evidence-${row.id}`} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <div className="text-sm font-medium text-white">{row.title || row.marketplace}</div>
@@ -489,7 +490,7 @@ export default function ProductDetailPage() {
             </div>
           </Panel>
 
-          <Panel title="Competition Intelligence" icon={Target}>
+          <Panel title="Competition Intelligence" icon={Target} panelId="competition-intelligence">
             <div className="space-y-4">
               <div className="grid gap-3 md:grid-cols-2">
                 <StatRow label="Competition" value={competitionLevel} />
@@ -505,42 +506,70 @@ export default function ProductDetailPage() {
                 <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Weaknesses</div>
                 <Checklist items={competition?.weaknesses?.length ? competition.weaknesses : ['No competition weaknesses captured yet.']} />
               </div>
-            </div>
-          </Panel>
-
-          <Panel title="Reorder Intelligence" icon={RefreshCw}>
-            <div className="space-y-4">
-              {inventoryRows.length === 0 && salesRows.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/40 p-4 text-sm text-zinc-400">
-                  Reorder intelligence appears after you have real inventory and sales history.
-                </div>
-              ) : (
-                <>
-                  <div className="grid gap-3 md:grid-cols-2">
-                    <StatRow label="Recommendation" value={(reorderRecommendation ?? 'DO_NOT_REORDER').replace(/_/g, ' ')} />
-                    <StatRow label="On hand" value={reorder?.current_inventory != null ? String(reorder.current_inventory) : '—'} />
-                    <StatRow label="Sold" value={reorder?.quantity_sold != null ? String(reorder.quantity_sold) : '—'} />
-                    <StatRow label="Days cover" value={reorder?.days_of_cover != null ? String(reorder.days_of_cover) : '—'} />
-                    <StatRow label="Stockout risk" value={reorder?.stockout_risk ?? '—'} />
-                    <StatRow label="Max reorder" value={reorder?.max_reorder_qty != null ? String(reorder.max_reorder_qty) : '—'} />
+              <div className="space-y-3">
+                {competitorRows.length === 0 ? (
+                  <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/40 p-4 text-sm text-zinc-400">
+                    No competitor listings yet.
                   </div>
-                  <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
-                    <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Reason</div>
-                    <div className="mt-2 text-sm text-zinc-200">{reorder?.reorder_reason || 'Add inventory and sales history to evaluate reorder risk.'}</div>
-                  </div>
-                  <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
-                    <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Inventory / Sales</div>
-                    <div className="mt-2 grid gap-2 text-sm text-zinc-300 md:grid-cols-2">
-                      <StatRow label="Inventory rows" value={String(inventoryRows.length)} />
-                      <StatRow label="Sales rows" value={String(salesRows.length)} />
+                ) : (
+                  competitorRows.map((row) => (
+                    <div key={row.id} id={`competitor-${row.id}`} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <div className="text-sm font-medium text-white">{row.title || 'Competitor listing'}</div>
+                          <div className="text-xs text-zinc-500">
+                            {row.marketplace || 'Marketplace unknown'} · {row.sold ? 'Sold' : 'Active'}
+                          </div>
+                        </div>
+                        {row.url ? (
+                          <a href={row.url} className="text-xs text-indigo-400 hover:text-indigo-300" target="_blank" rel="noreferrer">
+                            <ExternalLink className="h-3.5 w-3.5" />
+                          </a>
+                        ) : null}
+                      </div>
+                      <div className="mt-2 grid gap-2 text-sm text-zinc-300 md:grid-cols-2">
+                        <StatRow label="Price" value={money(row.price)} />
+                        <StatRow label="Shipping" value={money(row.shipping_price)} />
+                        <StatRow label="Photo" value={row.photo_score != null ? `${row.photo_score}/100` : '—'} />
+                        <StatRow label="Title" value={row.title_patterns?.length ? String(row.title_patterns.length) : '—'} />
+                      </div>
+                      {row.weaknesses?.length ? (
+                        <Checklist items={row.weaknesses} />
+                      ) : null}
                     </div>
-                  </div>
-                </>
-              )}
+                  ))
+                )}
+              </div>
             </div>
           </Panel>
 
-          <Panel title="Supplier Comparison" icon={Truck}>
+          {inventoryRows.length > 0 || salesRows.length > 0 ? (
+            <Panel title="Reorder Intelligence" icon={RefreshCw} panelId="reorder-intelligence">
+              <div className="space-y-4">
+                <div className="grid gap-3 md:grid-cols-2">
+                  <StatRow label="Recommendation" value={(reorderRecommendation ?? 'DO_NOT_REORDER').replace(/_/g, ' ')} />
+                  <StatRow label="On hand" value={reorder?.current_inventory != null ? String(reorder.current_inventory) : '—'} />
+                  <StatRow label="Sold" value={reorder?.quantity_sold != null ? String(reorder.quantity_sold) : '—'} />
+                  <StatRow label="Days cover" value={reorder?.days_of_cover != null ? String(reorder.days_of_cover) : '—'} />
+                  <StatRow label="Stockout risk" value={reorder?.stockout_risk ?? '—'} />
+                  <StatRow label="Max reorder" value={reorder?.max_reorder_qty != null ? String(reorder.max_reorder_qty) : '—'} />
+                </div>
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                  <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Reason</div>
+                  <div className="mt-2 text-sm text-zinc-200">{reorder?.reorder_reason || 'Add inventory and sales history to evaluate reorder risk.'}</div>
+                </div>
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                  <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Inventory / Sales</div>
+                  <div className="mt-2 grid gap-2 text-sm text-zinc-300 md:grid-cols-2">
+                    <StatRow label="Inventory rows" value={String(inventoryRows.length)} />
+                    <StatRow label="Sales rows" value={String(salesRows.length)} />
+                  </div>
+                </div>
+              </div>
+            </Panel>
+          ) : null}
+
+          <Panel title="Supplier Comparison" icon={Truck} panelId="supplier-comparison">
             <div className="space-y-4">
               <form
                 className="grid gap-3 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4"
@@ -575,7 +604,7 @@ export default function ProductDetailPage() {
                   <EmptyState title="No supplier comparison yet" description="Add 2-3 suppliers so landed cost can be compared." />
                 ) : (
                   supplierSources.map((source) => (
-                    <div key={source.id} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                    <div key={source.id} id={`source-${source.id}`} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <div className="text-sm font-medium text-white">{source.supplier_name || 'Unnamed supplier'}</div>
@@ -673,14 +702,16 @@ export default function ProductDetailPage() {
 function Panel({
   title,
   icon: Icon,
+  panelId,
   children,
 }: {
   title: string;
   icon: React.ElementType;
+  panelId?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-[24px] border border-zinc-800 bg-zinc-950/80 p-5 shadow-xl shadow-black/10">
+    <section id={panelId} className="rounded-[24px] border border-zinc-800 bg-zinc-950/80 p-5 shadow-xl shadow-black/10">
       <div className="mb-4 flex items-center gap-2">
         <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-300">
           <Icon className="h-4 w-4" />

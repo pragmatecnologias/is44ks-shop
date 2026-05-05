@@ -5,6 +5,7 @@ import type {
   DiscoveryIdea,
   DiscoveryQuickScanInput,
   DiscoveryQuickScanResponse,
+  DiscoveryTaskUpdate,
   OpportunityBoardRow,
   MarketplaceEvidenceInput,
   Product,
@@ -452,14 +453,7 @@ export async function generateDiscoveryTasks(ideaId: string): Promise<Array<Reco
 
 export async function updateDiscoveryTask(
   taskId: string,
-  data: {
-    status?: string;
-    notes?: string;
-    linked_evidence_id?: string | null;
-    linked_source_id?: string | null;
-    linked_competitor_id?: string | null;
-    linked_product_id?: string | null;
-  },
+  data: DiscoveryTaskUpdate,
 ): Promise<DiscoveryTask> {
   return requestJson<DiscoveryTask>(`/api/discovery/tasks/${taskId}`, {
     method: 'PATCH',

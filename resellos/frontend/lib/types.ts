@@ -357,6 +357,15 @@ export interface DiscoveryTask {
   created_at: string;
 }
 
+export interface DiscoveryTaskUpdate {
+  status?: 'TODO' | 'DONE' | 'SKIPPED' | 'BLOCKED' | string;
+  notes?: string;
+  linked_evidence_id?: string | null;
+  linked_source_id?: string | null;
+  linked_competitor_id?: string | null;
+  linked_product_id?: string | null;
+}
+
 export interface ProductIdea {
   id: string;
   idea_name: string;
