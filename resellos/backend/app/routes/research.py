@@ -95,45 +95,7 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
     reorder = next((row for row in agent_rows if row.agent_name == "reorder_agent"), None)
     reorder_output = json.loads(reorder.output_json) if reorder and reorder.output_json else None
 
-    missing_evidence = []
-    if not any(row.evidence_type == "SOLD_LISTING" for row in evidence_rows):
-        missing_evidence.append("Sold listings missing")
-    if not any(row.evidence_type == "ACTIVE_LISTING" for row in evidence_rows):
-        missing_evidence.append("Active listings missing")
-    if not sources:
-        missing_evidence.append("Supplier comparison missing")
-    if not profit_rows:
-        missing_evidence.append("Profit scenarios missing")
-
-    buy_readiness = {
-        "sold_evidence_count": sum(1 for row in evidence_rows if row.evidence_type == "SOLD_LISTING"),
-        "active_evidence_count": sum(1 for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING"),
-        "verified_sold_evidence_count": sum(
-            1 for row in evidence_rows
-            if row.evidence_type == "SOLD_LISTING" and row.verification_status in {"USER_VERIFIED", "API_IMPORTED"}
-        ),
-        "verified_active_evidence_count": sum(
-            1 for row in evidence_rows
-            if row.evidence_type == "ACTIVE_LISTING" and row.verification_status in {"USER_VERIFIED", "API_IMPORTED"}
-        ),
-        "test_data_evidence_count": sum(1 for row in evidence_rows if row.verification_status == "TEST_DATA"),
-        "supplier_cost_present": any(
-            source.unit_cost is not None or source.estimated_landed_cost is not None for source in sources
-        ),
-        "international_shipping_present": any(
-            source.international_shipping_estimate is not None for source in sources
-        ),
-        "outbound_shipping_present": float(settings.DEFAULT_OUTBOUND_SHIPPING) > 0,
-        "profit_scenarios_present": bool(profit_rows),
-        "risk_passed": (decision_output or {}).get("blocked") is False if decision_output else product.status != "BLOCKED",
-        "target_price_present": product.target_sale_price is not None and float(product.target_sale_price or 0) > 0,
-        "verification_coverage": (
-            sum(1 for row in evidence_rows if row.verification_status in {"USER_VERIFIED", "API_IMPORTED"}) / len(evidence_rows)
-            if evidence_rows
-            else 0.0
-        ),
-    }
-    hard_blockers = list(dict.fromkeys((decision_output or {}).get("hard_blockers", []))) if decision_output else []
+    buy_readiness, missing_evidence, hard_blockers = _build_buy_readiness(product, sources, evidence_rows, profit_rows, decision_output)
 
     return ResearchCockpitResponse(
         product=product,
@@ -157,6 +119,48 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
         discovery_context=discovery_context_output,
     )
 
+
+def _build_buy_readiness(product, sources, evidence_rows, profit_rows, decision_output=None):
+    missing_evidence = []
+    if not any(row.evidence_type == "SOLD_LISTING" for row in evidence_rows):
+        missing_evidence.append("Sold listings missing")
+    if not any(row.evidence_type == "ACTIVE_LISTING" for row in evidence_rows):
+        missing_evidence.append("Active listings missing")
+    if not sources:
+        missing_evidence.append("Supplier comparison missing")
+    if not profit_rows:
+        missing_evidence.append("Profit scenarios missing")
+
+    buy_readiness = {
+        "sold_evidence_count": sum(1 for row in evidence_rows if row.evidence_type == "SOLD_LISTING"),
+        "active_evidence_count": sum(1 for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING"),
+        "verified_sold_evidence_count": sum(
+            1 for row in evidence_rows
+            if row.evidence_type == "SOLD_LISTING" and row.verification_status == "USER_VERIFIED"
+        ),
+        "verified_active_evidence_count": sum(
+            1 for row in evidence_rows
+            if row.evidence_type == "ACTIVE_LISTING" and row.verification_status in {"USER_VERIFIED", "API_IMPORTED"}
+        ),
+        "test_data_evidence_count": sum(1 for row in evidence_rows if row.verification_status == "TEST_DATA"),
+        "supplier_cost_present": any(
+            source.unit_cost is not None or source.estimated_landed_cost is not None for source in sources
+        ),
+        "international_shipping_present": any(
+            source.international_shipping_estimate is not None for source in sources
+        ),
+        "outbound_shipping_present": float(settings.DEFAULT_OUTBOUND_SHIPPING) > 0,
+        "profit_scenarios_present": bool(profit_rows),
+        "risk_passed": (decision_output or {}).get("blocked") is False if decision_output else getattr(product, "status", None) != "BLOCKED",
+        "target_price_present": getattr(product, "target_sale_price", None) is not None and float(getattr(product, "target_sale_price", 0) or 0) > 0,
+        "verification_coverage": (
+            sum(1 for row in evidence_rows if row.verification_status in {"USER_VERIFIED", "API_IMPORTED"}) / len(evidence_rows)
+            if evidence_rows
+            else 0.0
+        ),
+    }
+    hard_blockers = list(dict.fromkeys((decision_output or {}).get("hard_blockers", []))) if decision_output else []
+    return buy_readiness, missing_evidence, hard_blockers
 
 def _serialize_model(row):
     if hasattr(row, "model_dump"):

@@ -295,6 +295,31 @@ class AgentContractTests(unittest.TestCase):
         self.assertNotIn("Add verified active listing evidence for competition checks.", output["required_before_buying"])
         self.assertIn("Reduce landed cost to approximately $15.52 or prove a higher sustainable sale price above $33.84.", output["required_before_buying"])
 
+    def test_research_cockpit_counts_verified_sold_only(self) -> None:
+        from types import SimpleNamespace
+
+        from app.routes.research import _build_buy_readiness
+
+        product = SimpleNamespace(status="NEEDS_RESEARCH", target_sale_price=19.99)
+        sources = [SimpleNamespace(unit_cost=4.0, estimated_landed_cost=5.0, international_shipping_estimate=1.0)]
+        evidence_rows = [
+            SimpleNamespace(evidence_type="SOLD_LISTING", verification_status="USER_VERIFIED"),
+            SimpleNamespace(evidence_type="SOLD_LISTING", verification_status="API_IMPORTED"),
+            SimpleNamespace(evidence_type="ACTIVE_LISTING", verification_status="USER_VERIFIED"),
+            SimpleNamespace(evidence_type="ACTIVE_LISTING", verification_status="API_IMPORTED"),
+        ]
+        profit_rows = [SimpleNamespace()]
+        decision_output = {"blocked": False, "hard_blockers": []}
+
+        buy_readiness, missing_evidence, hard_blockers = _build_buy_readiness(product, sources, evidence_rows, profit_rows, decision_output)
+
+        self.assertEqual(buy_readiness["sold_evidence_count"], 2)
+        self.assertEqual(buy_readiness["verified_sold_evidence_count"], 1)
+        self.assertEqual(buy_readiness["active_evidence_count"], 2)
+        self.assertEqual(buy_readiness["verified_active_evidence_count"], 2)
+        self.assertNotIn("Sold listings missing", missing_evidence)
+        self.assertEqual(hard_blockers, [])
+
     def test_profit_agent_returns_profit_gap_fields(self) -> None:
         agent = ProfitAgent(self.llm)
         result = asyncio.run(
