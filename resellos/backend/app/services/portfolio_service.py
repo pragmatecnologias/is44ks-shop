@@ -58,12 +58,12 @@ def _product_decision(product: Product, agent_rows: list[AgentReport]) -> dict[s
         if report.agent_name == "decision_agent" and report.output_json:
             latest = _json_load(report.output_json, {})
             break
-    decision = (latest.get("research_verdict") or product.final_decision or product.status or "UNKNOWN").upper()
+    decision = (product.final_decision or latest.get("research_verdict") or product.status or "UNKNOWN").upper()
     readiness = (latest.get("buy_readiness_status") or latest.get("buy_readiness") or product.status or "NOT_READY").upper()
     return {
         "final_decision": decision,
         "buy_readiness_status": readiness,
-        "research_verdict": latest.get("research_verdict") or product.final_decision or product.status,
+        "research_verdict": product.final_decision or latest.get("research_verdict") or product.status,
         "main_blocker": latest.get("main_blocker"),
         "next_action": latest.get("next_action") or getattr(product, "decision_reason", None),
     }
@@ -370,10 +370,12 @@ class PortfolioService:
                 ready_for_sample_products.append(summary)
 
         ideas_still_under_research = [self._idea_summary(idea) for idea in ideas if idea.promoted_product_id is None or (idea.quick_scan_verdict or "").upper() in {"", "NEEDS_MARKET_CHECK", "NEEDS_SUPPLIER_CHECK"}]
+        hero_count = sum(1 for item in items if (item.role or "").upper() == "HERO")
+        support_item_count = sum(1 for item in items if (item.role or "").upper() in {"ADD_ON", "BUNDLE_SUPPORT"})
         collection_gaps: list[str] = []
-        if not any((item.role or "").upper() == "HERO" for item in items):
+        if hero_count < 1:
             collection_gaps.append("No hero portfolio item yet.")
-        if not any((item.role or "").upper() in {"ADD_ON", "BUNDLE_SUPPORT"} for item in items):
+        if support_item_count < 2:
             collection_gaps.append("No add-on or bundle support items yet.")
         if not ready_for_sample_products:
             collection_gaps.append("No sample-ready product yet.")
@@ -383,16 +385,18 @@ class PortfolioService:
         shop_readiness_blockers: list[str] = []
         if not collections:
             shop_readiness_blockers.append("No collections defined yet.")
-        if not any((item.role or "").upper() == "HERO" for item in items):
+        if hero_count < 1:
             shop_readiness_blockers.append("No hero portfolio item yet.")
+        if support_item_count < 2:
+            shop_readiness_blockers.append("Need at least two add-on or bundle support items.")
         if not ready_for_sample_products:
             shop_readiness_blockers.append("No sample-ready product yet.")
-        if len({(item.collection_id or item.role) for item in items}) < 2 and len(collections) < 2:
-            shop_readiness_blockers.append("Need at least two active collections or collection-linked items to form a coherent shop.")
+        if len(collections) < 2:
+            shop_readiness_blockers.append("Need at least two collections.")
 
         if not collections or not items:
             shop_readiness_status = "NOT_READY"
-        elif not ready_for_sample_products or len(collections) < 2:
+        elif hero_count < 1 or support_item_count < 2 or len(collections) < 2 or not ready_for_sample_products:
             shop_readiness_status = "BUILDING_ASSORTMENT"
         else:
             shop_readiness_status = "READY_FOR_BASIC_WEBSITE"
@@ -404,11 +408,11 @@ class PortfolioService:
             shop_readiness_score += 20
         if items:
             shop_readiness_score += 15
-        if any((item.role or "").upper() == "HERO" for item in items):
+        if hero_count >= 1:
             shop_readiness_score += 15
         if ready_for_sample_products:
             shop_readiness_score += 15
-        if any((item.role or "").upper() in {"ADD_ON", "BUNDLE_SUPPORT"} for item in items):
+        if support_item_count >= 2:
             shop_readiness_score += 10
 
         next_recommended_campaign = None

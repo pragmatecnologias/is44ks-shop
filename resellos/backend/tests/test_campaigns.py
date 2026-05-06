@@ -13,6 +13,7 @@ from sqlalchemy.pool import StaticPool
 import app.models  # noqa: F401 - register SQLAlchemy models
 from app.main import app as fastapi_app
 from app.models.external_research import ExternalResearchJob
+from app.models.supplier import AgentReport
 from app.db import Base, engine
 from app.schemas.campaign_schema import DiscoveryCampaignCreate, DiscoveryCampaignTaskCreate, DiscoveryCampaignTaskUpdate
 from app.schemas.portfolio_schema import PortfolioItemCreate, ProductCollectionCreate, ShopConceptCreate
@@ -565,6 +566,66 @@ class CampaignServiceTests(unittest.TestCase):
         self.assertEqual(report["shop_readiness_status"], "BUILDING_ASSORTMENT")
         self.assertIn("No sample-ready product yet.", report["shop_readiness_blockers"])
         self.assertIn("No sample-ready product yet.", report["collection_gaps"])
+
+    def test_portfolio_report_prefers_current_product_decision_over_stale_agent_output(self) -> None:
+        portfolio = PortfolioService(self.session)
+        campaign_service = CampaignService(self.session)
+
+        shop = portfolio.create_shop_concept(
+            ShopConceptCreate(
+                name="Practical Pet Home",
+                category="Pet accessories",
+                status="ACTIVE",
+            )
+        )
+        collection = portfolio.create_collection(
+            shop.id,
+            ProductCollectionCreate(
+                name="Pet Hair Cleanup",
+                theme="Home-cleaning accessories",
+            ),
+        )
+        campaign = campaign_service.create_campaign(
+            DiscoveryCampaignCreate(
+                name="Portfolio-aligned campaign",
+                category="Pet accessories",
+                shop_concept_id=shop.id,
+                collection_id=collection.id,
+                max_ideas=2,
+                max_products_to_promote=1,
+            )
+        )
+        idea = campaign_service.add_idea_to_campaign(
+            campaign.id,
+            ProductIdeaCreate(
+                idea_name="Reusable pet hair remover roller",
+                category="Pet accessories",
+                campaign_id=campaign.id,
+                source_platform="Manual",
+                why_interesting="Reusable pet accessory.",
+            ),
+        )
+        product = campaign_service.discovery.promote_to_product(idea.id)
+        self.assertIsNotNone(product)
+
+        product.final_decision = "WATCHLIST"
+        self.session.add(
+            AgentReport(
+                product_id=product.id,
+                agent_name="decision_agent",
+                report_type="decision",
+                output_json='{"research_verdict":"PROMISING_RESEARCH","buy_readiness_status":"NOT_READY","main_blocker":"Stale agent output","next_action":"Collect more evidence."}',
+                summary="Stale decision output",
+                confidence="MEDIUM",
+            )
+        )
+        self.session.commit()
+
+        report = portfolio.get_shop_report(shop.id)
+        self.assertEqual(report["watchlist_products"][0]["final_decision"], "WATCHLIST")
+        self.assertEqual(report["watchlist_products"][0]["research_verdict"], "WATCHLIST")
+        self.assertEqual(report["products_by_decision"]["WATCHLIST"], 1)
+        self.assertEqual(report["ready_for_sample_products"], [])
 
     def test_portfolio_detail_and_product_context_are_exposed(self) -> None:
         portfolio = PortfolioService(self.session)
