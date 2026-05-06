@@ -5,13 +5,15 @@ import uuid
 import asyncio
 
 from fastapi import HTTPException
+from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 import app.models  # noqa: F401 - register SQLAlchemy models
+from app.main import app as fastapi_app
 from app.models.external_research import ExternalResearchJob
-from app.db import Base
+from app.db import Base, engine
 from app.schemas.campaign_schema import DiscoveryCampaignCreate, DiscoveryCampaignTaskCreate, DiscoveryCampaignTaskUpdate
 from app.schemas.validation_schema import ProductDemandResearchCreate, ProductTrendResearchCreate, ProductDemandResearchVerifyRequest, ProductTrendResearchVerifyRequest
 from app.schemas.product_schema import ProductIdeaCreate
@@ -259,6 +261,13 @@ class CampaignServiceTests(unittest.TestCase):
             )
         )
         self.assertEqual(candidate.campaign_id, campaign.id)
+
+    def test_campaign_list_route_is_reachable(self) -> None:
+        Base.metadata.create_all(bind=engine)
+        client = TestClient(fastapi_app)
+        response = client.get("/api/discovery/campaigns")
+        self.assertEqual(response.status_code, 200)
+        self.assertIsInstance(response.json(), list)
 
     def test_manual_capture_inherits_campaign_id_from_product(self) -> None:
         """When capture_manual is called with only product_id, campaign_id is traced via discovery_context AgentReport."""
