@@ -224,6 +224,21 @@ class CampaignService:
             "main_blocker": decision.get("main_blocker"),
         }
 
+    def _next_action_for_idea(self, idea_payload: dict[str, Any]) -> str:
+        idea_name = str(idea_payload.get("idea_name") or "idea")
+        verdict = str(idea_payload.get("quick_scan_verdict") or "").upper()
+        if idea_payload.get("promoted_product_id"):
+            return f"Review product cockpit for {idea_name}."
+        if verdict == "REJECT":
+            return f"Skip {idea_name} unless new evidence appears."
+        if verdict == "PROMISING_FOR_RESEARCH":
+            return f"Collect verified evidence for {idea_name} before promotion."
+        if verdict == "NEEDS_MARKET_CHECK":
+            return f"Run market presence research for {idea_name} before promotion."
+        if verdict == "NEEDS_SUPPLIER_CHECK":
+            return f"Collect supplier evidence for {idea_name} before promotion."
+        return f"Run quick scan for {idea_name}."
+
     def _build_report(self, campaign: DiscoveryCampaign) -> dict[str, Any]:
         ideas = self._campaign_ideas(campaign.id)
         products = self._campaign_products(campaign.id)
@@ -301,12 +316,7 @@ class CampaignService:
         next_actions: list[str] = []
         if ideas:
             for idea in idea_payloads[:3]:
-                if idea.get("promoted_product_id"):
-                    next_actions.append(f"Review product cockpit for {idea.get('idea_name')}.")
-                elif str(idea.get("quick_scan_verdict") or "").upper() == "REJECT":
-                    next_actions.append(f"Skip {idea.get('idea_name')} unless new evidence appears.")
-                else:
-                    next_actions.append(f"Advance {idea.get('idea_name')}: improve evidence or promote if strong enough.")
+                next_actions.append(self._next_action_for_idea(idea))
         else:
             next_actions.append("Create discovery ideas for this campaign.")
         if spend_estimate > 0 and spend_estimate < float(campaign.budget_limit_usd or 0):

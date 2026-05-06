@@ -125,6 +125,33 @@ class CampaignServiceTests(unittest.TestCase):
         self.assertIn("candidate_count_by_status", report.model_dump())
         self.assertIn("next_best_task", report.model_dump())
 
+    def test_campaign_next_best_task_does_not_suggest_promotion_without_evidence(self) -> None:
+        service = CampaignService(self.session)
+        campaign = service.create_campaign(
+            DiscoveryCampaignCreate(
+                name="Pet accessories discovery",
+                category="Pet accessories",
+                budget_limit_usd=10.0,
+                max_ideas=5,
+                max_products_to_promote=2,
+            )
+        )
+        idea = service.add_idea_to_campaign(
+            campaign.id,
+            ProductIdeaCreate(
+                idea_name="Pet blanket hair remover",
+                category="Pet accessories",
+                campaign_id=campaign.id,
+                source_platform="Manual",
+                why_interesting="Reusable pet accessory.",
+            ),
+        )
+        discovery = DiscoveryService(self.session)
+        discovery.quick_scan_existing(idea.id)
+        report = service.get_report(campaign.id)
+        self.assertIn("Run market presence research for Pet blanket hair remover", report.next_best_task or "")
+        self.assertNotIn("promote", (report.next_best_task or "").lower())
+
     def test_campaign_promotion_limit_blocks_extra_product(self) -> None:
         discovery = DiscoveryService(self.session)
         campaign_service = CampaignService(self.session)
