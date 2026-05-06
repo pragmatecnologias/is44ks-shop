@@ -15,6 +15,7 @@ export interface ToolResult<T = unknown> {
     timestamp: string;
     product_id?: string | null;
     idea_id?: string | null;
+    campaign_id?: string | null;
     cost_estimate?: number | null;
   };
 }

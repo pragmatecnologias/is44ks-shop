@@ -296,6 +296,9 @@ export default function DiscoveryPage() {
               <Pill label={`Promoted: ${promotedCount}`} />
               <Pill label={`Jobs: ${externalJobs.length}`} />
               <Pill label={`Candidates: ${evidenceCandidates.length}`} />
+              <Link href="/discovery/campaigns" className="rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-indigo-200 hover:bg-indigo-500/20">
+                Campaigns
+              </Link>
             </div>
           </div>
         </header>

@@ -282,6 +282,7 @@ class ListingGenerateRequest(BaseModel):
 class ProductIdeaCreate(BaseModel):
     idea_name: str = Field(..., min_length=1, max_length=300)
     category: Optional[str] = None
+    campaign_id: Optional[uuid.UUID] = None
     source_platform: Optional[str] = None
     source_url: Optional[str] = None
     rough_supplier_cost: Optional[float] = None
@@ -295,6 +296,7 @@ class ProductIdeaCreate(BaseModel):
 class ProductIdeaUpdate(BaseModel):
     idea_name: Optional[str] = None
     category: Optional[str] = None
+    campaign_id: Optional[uuid.UUID] = None
     source_platform: Optional[str] = None
     source_url: Optional[str] = None
     rough_supplier_cost: Optional[float] = None
@@ -344,6 +346,7 @@ class ProductIdeaResponse(BaseModel):
     id: uuid.UUID
     idea_name: str
     category: Optional[str] = None
+    campaign_id: Optional[uuid.UUID] = None
     source_platform: Optional[str] = None
     source_url: Optional[str] = None
     rough_supplier_cost: Optional[float] = None
@@ -375,6 +378,7 @@ class ProductIdeaResponse(BaseModel):
 class ProductIdeaQuickScanRequest(BaseModel):
     idea_name: str = Field(..., min_length=1, max_length=300)
     category: Optional[str] = None
+    campaign_id: Optional[uuid.UUID] = None
     source_platform: Optional[str] = None
     source_url: Optional[str] = None
     rough_supplier_cost: Optional[float] = None

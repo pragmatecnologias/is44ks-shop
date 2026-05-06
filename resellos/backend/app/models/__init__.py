@@ -1,5 +1,6 @@
 from app.db import Base
 from app.models.product import Product
+from app.models.campaign import DiscoveryCampaign, DiscoveryCampaignTask
 from app.models.supplier import (
     ProductSource,
     MarketplaceResearch,
@@ -23,6 +24,8 @@ from app.models.supplier import MarketplaceResearch as MR, CompetitorListing as 
 __all__ = [
     "Base",
     "Product",
+    "DiscoveryCampaign",
+    "DiscoveryCampaignTask",
     "ProductSource",
     "MarketplaceResearch",
     "CompetitorListing",

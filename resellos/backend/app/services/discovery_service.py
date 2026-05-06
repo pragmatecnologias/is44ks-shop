@@ -138,6 +138,7 @@ class DiscoveryService:
         idea = ProductIdea(
             idea_name=data.idea_name,
             category=data.category,
+            campaign_id=data.campaign_id,
             source_platform=data.source_platform,
             source_url=data.source_url,
             rough_supplier_cost=data.rough_supplier_cost,
@@ -218,6 +219,7 @@ class DiscoveryService:
             ProductIdeaCreate(
                 idea_name=data.idea_name,
                 category=data.category,
+                campaign_id=data.campaign_id,
                 source_platform=data.source_platform,
                 source_url=data.source_url,
                 rough_supplier_cost=data.rough_supplier_cost,
@@ -430,6 +432,7 @@ class DiscoveryService:
             "id": str(idea.id),
             "idea_name": idea.idea_name,
             "category": idea.category,
+            "campaign_id": str(idea.campaign_id) if idea.campaign_id else None,
             "source_platform": idea.source_platform,
             "source_url": idea.source_url,
             "rough_supplier_cost": float(idea.rough_supplier_cost) if idea.rough_supplier_cost is not None else None,

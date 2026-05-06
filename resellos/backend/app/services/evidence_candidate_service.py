@@ -38,6 +38,7 @@ def _candidate_payload(candidate: EvidenceCandidate) -> dict[str, Any]:
         "job_id": candidate.job_id,
         "idea_id": candidate.idea_id,
         "product_id": candidate.product_id,
+        "campaign_id": candidate.campaign_id,
         "source": candidate.source,
         "candidate_type": candidate.candidate_type,
         "marketplace": candidate.marketplace,
@@ -110,6 +111,8 @@ class EvidenceCandidateService:
         candidate = self.get_candidate(candidate_id)
         if not candidate:
             raise HTTPException(status_code=404, detail="Evidence candidate not found")
+        if candidate.campaign_id is None and candidate.job and candidate.job.campaign_id is not None:
+            candidate.campaign_id = candidate.job.campaign_id
 
         product_id = data.product_id or candidate.product_id or self._resolve_product_from_idea(candidate.idea_id)
         if not product_id:

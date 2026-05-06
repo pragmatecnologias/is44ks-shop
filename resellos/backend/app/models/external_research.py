@@ -16,6 +16,7 @@ class ExternalResearchJob(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     idea_id = Column(UUID(as_uuid=True), ForeignKey("product_discovery_ideas.id"), nullable=True)
     product_id = Column(UUID(as_uuid=True), ForeignKey("products.id"), nullable=True)
+    campaign_id = Column(UUID(as_uuid=True), ForeignKey("discovery_campaigns.id"), nullable=True)
     provider = Column(String(50), nullable=False)
     api_area = Column(String(100), nullable=False)
     query = Column(String(500), nullable=False)
@@ -32,6 +33,7 @@ class ExternalResearchJob(Base):
 
     idea = relationship("ProductIdea", back_populates="external_research_jobs")
     product = relationship("Product", back_populates="external_research_jobs")
+    campaign = relationship("DiscoveryCampaign", back_populates="research_jobs")
     candidates = relationship("EvidenceCandidate", back_populates="job", cascade="all, delete-orphan")
 
 
@@ -42,6 +44,7 @@ class EvidenceCandidate(Base):
     job_id = Column(UUID(as_uuid=True), ForeignKey("external_research_jobs.id"), nullable=True)
     idea_id = Column(UUID(as_uuid=True), ForeignKey("product_discovery_ideas.id"), nullable=True)
     product_id = Column(UUID(as_uuid=True), ForeignKey("products.id"), nullable=True)
+    campaign_id = Column(UUID(as_uuid=True), ForeignKey("discovery_campaigns.id"), nullable=True)
     source = Column(String(50), nullable=False)
     candidate_type = Column(String(50), nullable=False)
     marketplace = Column(String(120), nullable=True)
@@ -62,3 +65,4 @@ class EvidenceCandidate(Base):
     job = relationship("ExternalResearchJob", back_populates="candidates")
     idea = relationship("ProductIdea")
     product = relationship("Product")
+    campaign = relationship("DiscoveryCampaign", back_populates="evidence_candidates")

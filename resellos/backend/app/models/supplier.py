@@ -219,10 +219,12 @@ class ProductIdea(Base):
     quick_scan_reason = Column(Text)
     suggested_keywords = Column(Text)
     required_next_evidence = Column(Text)
+    campaign_id = Column(UUID(as_uuid=True), ForeignKey("discovery_campaigns.id"))
     promoted_product_id = Column(UUID(as_uuid=True), ForeignKey("products.id"))
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    campaign = relationship("DiscoveryCampaign", back_populates="ideas")
     promoted_product = relationship("Product", foreign_keys=[promoted_product_id])
     vision_reports = relationship("VisionAnalysisReport", back_populates="idea", cascade="all, delete-orphan")
     external_research_jobs = relationship("ExternalResearchJob", back_populates="idea", cascade="all, delete-orphan")

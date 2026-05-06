@@ -13,7 +13,7 @@ from app.connectors.dataforseo import DataForSEOClient, DataForSEOMerchantClient
 from app.connectors.dataforseo.mappers import iter_google_shopping_items, map_google_shopping_item_to_candidate
 from app.models.external_research import EvidenceCandidate, ExternalResearchJob
 from app.models.product import Product
-from app.models.supplier import ProductIdea
+from app.models.supplier import AgentReport, ProductIdea
 from app.schemas.external_research_schema import ExternalResearchJobResponse, ExternalResearchRunRequest, ExternalResearchRunResponse
 
 
@@ -106,11 +106,30 @@ class ExternalResearchService:
     def _get_idea(self, idea_id: uuid.UUID) -> ProductIdea | None:
         return self.db.query(ProductIdea).filter(ProductIdea.id == idea_id).first()
 
+    def _campaign_id_for_product(self, product_id: uuid.UUID | None) -> uuid.UUID | None:
+        if product_id is None:
+            return None
+        latest_discovery = (
+            self.db.query(AgentReport)
+            .filter(AgentReport.product_id == product_id, AgentReport.agent_name == "discovery_context")
+            .order_by(AgentReport.created_at.desc())
+            .first()
+        )
+        if not latest_discovery or not latest_discovery.output_json:
+            return None
+        output = _json_load(latest_discovery.output_json, {})
+        idea_id = output.get("idea_id")
+        if not idea_id:
+            return None
+        idea = self._get_idea(uuid.UUID(str(idea_id)))
+        return idea.campaign_id if idea else None
+
     def _serialize_job(self, job: ExternalResearchJob) -> dict[str, Any]:
         return {
             "id": job.id,
             "idea_id": job.idea_id,
             "product_id": job.product_id,
+            "campaign_id": job.campaign_id,
             "provider": job.provider,
             "api_area": job.api_area,
             "query": job.query,
@@ -133,6 +152,7 @@ class ExternalResearchService:
             "job_id": candidate.job_id,
             "idea_id": candidate.idea_id,
             "product_id": candidate.product_id,
+            "campaign_id": candidate.campaign_id,
             "source": candidate.source,
             "candidate_type": candidate.candidate_type,
             "marketplace": candidate.marketplace,
@@ -156,6 +176,7 @@ class ExternalResearchService:
         *,
         idea_id: uuid.UUID | None,
         product_id: uuid.UUID | None,
+        campaign_id: uuid.UUID | None,
         query: str,
         max_results: int,
         queue: str,
@@ -166,6 +187,9 @@ class ExternalResearchService:
 
         cached = self._find_cached_job(idea_id=idea_id, product_id=product_id, query=query)
         if cached:
+            if campaign_id is not None and cached.campaign_id is None:
+                cached.campaign_id = campaign_id
+                self.db.commit()
             return cached
 
         if not budget_override and self._recent_spend() + self._estimate_cost(1, max_results) > settings.DATAFORSEO_MONTHLY_BUDGET_USD:
@@ -174,6 +198,7 @@ class ExternalResearchService:
         job = ExternalResearchJob(
             idea_id=idea_id,
             product_id=product_id,
+            campaign_id=campaign_id,
             provider="DATAFORSEO",
             api_area="MERCHANT_GOOGLE_PRODUCTS",
             query=query,
@@ -249,6 +274,7 @@ class ExternalResearchService:
             self._submit_query_job(
                 idea_id=request.idea_id,
                 product_id=request.product_id,
+                campaign_id=idea.campaign_id,
                 query=query,
                 max_results=max_results,
                 queue=request.queue,
@@ -270,6 +296,7 @@ class ExternalResearchService:
         product = self.db.query(Product).filter(Product.id == request.product_id).first()
         if not product:
             raise HTTPException(status_code=404, detail="Product not found")
+        campaign_id = self._campaign_id_for_product(product.id)
         queries = self._normalize_queries(request.queries, fallback=[product.name])
         if request.queries and len(queries) > settings.DATAFORSEO_MAX_QUERIES_PER_IDEA:
             raise HTTPException(status_code=400, detail=f"Maximum {settings.DATAFORSEO_MAX_QUERIES_PER_IDEA} queries per idea.")
@@ -291,6 +318,7 @@ class ExternalResearchService:
             self._submit_query_job(
                 idea_id=request.idea_id,
                 product_id=request.product_id,
+                campaign_id=campaign_id,
                 query=query,
                 max_results=max_results,
                 queue=request.queue,
@@ -309,6 +337,7 @@ class ExternalResearchService:
         *,
         idea_id: uuid.UUID | None = None,
         product_id: uuid.UUID | None = None,
+        campaign_id: uuid.UUID | None = None,
         status: str | None = None,
     ) -> list[ExternalResearchJob]:
         query = self.db.query(ExternalResearchJob)
@@ -316,6 +345,8 @@ class ExternalResearchService:
             query = query.filter(ExternalResearchJob.idea_id == idea_id)
         if product_id is not None:
             query = query.filter(ExternalResearchJob.product_id == product_id)
+        if campaign_id is not None:
+            query = query.filter(ExternalResearchJob.campaign_id == campaign_id)
         if status:
             query = query.filter(ExternalResearchJob.status == status)
         return query.order_by(ExternalResearchJob.created_at.desc()).all()
@@ -326,6 +357,7 @@ class ExternalResearchService:
         idea_id: uuid.UUID | None = None,
         product_id: uuid.UUID | None = None,
         job_id: uuid.UUID | None = None,
+        campaign_id: uuid.UUID | None = None,
     ) -> list[EvidenceCandidate]:
         query = self.db.query(EvidenceCandidate)
         if idea_id is not None:
@@ -334,6 +366,8 @@ class ExternalResearchService:
             query = query.filter(EvidenceCandidate.product_id == product_id)
         if job_id is not None:
             query = query.filter(EvidenceCandidate.job_id == job_id)
+        if campaign_id is not None:
+            query = query.filter(EvidenceCandidate.campaign_id == campaign_id)
         return query.order_by(EvidenceCandidate.created_at.desc()).all()
 
     def get_job(self, job_id: uuid.UUID) -> ExternalResearchJob | None:
@@ -391,6 +425,7 @@ class ExternalResearchService:
                 job_id=job.id,
                 idea_id=job.idea_id,
                 product_id=job.product_id,
+                campaign_id=job.campaign_id,
                 source=candidate_payload["source"],
                 candidate_type=candidate_payload["candidate_type"],
                 marketplace=candidate_payload["marketplace"],

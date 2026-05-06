@@ -7,6 +7,7 @@ export function buildAudit(tool: string, actor: string, input: Record<string, un
     timestamp: new Date().toISOString(),
     product_id: input.product_id ? String(input.product_id) : null,
     idea_id: input.idea_id ? String(input.idea_id) : null,
+    campaign_id: input.campaign_id ? String(input.campaign_id) : null,
     cost_estimate: typeof costEstimate === 'number' ? costEstimate : null,
   };
 }

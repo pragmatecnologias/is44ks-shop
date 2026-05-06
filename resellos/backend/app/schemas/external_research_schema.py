@@ -28,6 +28,7 @@ class ExternalResearchJobResponse(BaseModel):
     id: uuid.UUID
     idea_id: uuid.UUID | None = None
     product_id: uuid.UUID | None = None
+    campaign_id: uuid.UUID | None = None
     provider: str
     api_area: str
     query: str
@@ -52,6 +53,7 @@ class EvidenceCandidateResponse(BaseModel):
     job_id: uuid.UUID | None = None
     idea_id: uuid.UUID | None = None
     product_id: uuid.UUID | None = None
+    campaign_id: uuid.UUID | None = None
     source: EvidenceCandidateSource
     candidate_type: EvidenceCandidateType
     marketplace: str | None = None

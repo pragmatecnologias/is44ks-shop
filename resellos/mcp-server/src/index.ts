@@ -6,11 +6,12 @@ import { ResellOSClient } from './resellosClient.js';
 import { TOOL_DEFINITIONS } from './toolRegistry.js';
 import { toErrorPayload } from './utils/errors.js';
 import { createDiscoveryIdea, getDiscoveryBoard, runQuickScan } from './tools/discoveryTools.js';
+import { createDiscoveryCampaign, listDiscoveryCampaigns, getDiscoveryCampaign, createCampaignTask, updateCampaignTask, getCampaignReport, addIdeaToCampaign } from './tools/campaignTools.js';
 import { runDataForSeoGoogleShopping, pollExternalResearchJob } from './tools/externalResearchTools.js';
 import { listEvidenceCandidates, approveCandidate, rejectCandidate, captureManualEvidence } from './tools/candidateTools.js';
 import { getProductCockpit, runProductResearch, getNextResearchAction, generateProductResearchReport } from './tools/productTools.js';
 import { verifyMarketplaceEvidence, verifySupplierSource, verifyCompetitorListing } from './tools/verificationTools.js';
-import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema } from './toolRegistry.js';
+import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema } from './toolRegistry.js';
 import { guardWriteEnabled } from './guards/approvalGuards.js';
 import type { ToolResult } from './types.js';
 import type { z } from 'zod';
@@ -76,6 +77,33 @@ async function invokeTool(name: string, args: Record<string, unknown>, config: A
       const input = researchTasksSchema.parse(args);
       const tasks = await client.post<any[]>(`/api/discovery/${input.idea_id}/tasks/generate`, {});
       return wrap('resellos_generate_research_tasks', config, input, { tasks }, `Generated ${tasks.length} research tasks.`, 'resellos_run_dataforseo_google_shopping');
+    }
+    case 'resellos_create_discovery_campaign': {
+      const input = createCampaignSchema.parse(args);
+      return createDiscoveryCampaign(client, input, config);
+    }
+    case 'resellos_list_discovery_campaigns': {
+      return listDiscoveryCampaigns(client, config);
+    }
+    case 'resellos_get_discovery_campaign': {
+      const input = campaignIdSchema.parse(args);
+      return getDiscoveryCampaign(client, input.campaign_id, config);
+    }
+    case 'resellos_create_campaign_task': {
+      const input = createCampaignTaskSchema.parse(args);
+      return createCampaignTask(client, input, config);
+    }
+    case 'resellos_update_campaign_task': {
+      const input = updateCampaignTaskSchema.parse(args);
+      return updateCampaignTask(client, input, config);
+    }
+    case 'resellos_get_campaign_report': {
+      const input = campaignIdSchema.parse(args);
+      return getCampaignReport(client, input.campaign_id, config);
+    }
+    case 'resellos_add_idea_to_campaign': {
+      const input = addCampaignIdeaSchema.parse(args);
+      return addIdeaToCampaign(client, input, config);
     }
     case 'resellos_run_dataforseo_google_shopping': {
       const input = dataForSeoSchema.parse(args);
@@ -154,6 +182,7 @@ function wrap(
       timestamp: new Date().toISOString(),
       product_id: input.product_id ? String(input.product_id) : null,
       idea_id: input.idea_id ? String(input.idea_id) : null,
+      campaign_id: input.campaign_id ? String(input.campaign_id) : null,
       cost_estimate: null,
     },
   };

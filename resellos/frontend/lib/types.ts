@@ -390,6 +390,118 @@ export interface DiscoveryTask {
   created_at: string;
 }
 
+export interface DiscoveryCampaign {
+  id: string;
+  name: string;
+  category?: string;
+  goal?: string;
+  constraints_json?: Record<string, unknown>;
+  budget_limit_usd?: number;
+  max_ideas?: number;
+  max_products_to_promote?: number;
+  status: 'DRAFT' | 'RUNNING' | 'PAUSED' | 'COMPLETED' | string;
+  created_by?: string;
+  report_generated_at?: string | null;
+  created_at: string;
+  updated_at: string;
+  idea_count?: number;
+  rejected_idea_count?: number;
+  promising_idea_count?: number;
+  promoted_product_count?: number;
+  dataforseo_spend_estimate?: number;
+}
+
+export interface DiscoveryCampaignInput {
+  name: string;
+  category?: string;
+  goal?: string;
+  constraints_json?: Record<string, unknown>;
+  budget_limit_usd?: number;
+  max_ideas?: number;
+  max_products_to_promote?: number;
+  status?: 'DRAFT' | 'RUNNING' | 'PAUSED' | 'COMPLETED' | string;
+  created_by?: string;
+}
+
+export interface DiscoveryCampaignUpdateInput {
+  name?: string;
+  category?: string;
+  goal?: string;
+  constraints_json?: Record<string, unknown>;
+  budget_limit_usd?: number;
+  max_ideas?: number;
+  max_products_to_promote?: number;
+  status?: 'DRAFT' | 'RUNNING' | 'PAUSED' | 'COMPLETED' | string;
+  created_by?: string;
+}
+
+export interface DiscoveryCampaignTask {
+  id: string;
+  campaign_id: string;
+  task_type: string;
+  status: 'TODO' | 'IN_PROGRESS' | 'DONE' | 'BLOCKED' | 'SKIPPED' | string;
+  title: string;
+  description?: string | null;
+  related_idea_id?: string | null;
+  related_product_id?: string | null;
+  related_candidate_id?: string | null;
+  result_json?: Record<string, unknown>;
+  error_message?: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DiscoveryCampaignIdeaSummary {
+  id: string;
+  idea_name: string;
+  category?: string;
+  status: string;
+  quick_scan_verdict?: string | null;
+  buy_readiness_status?: string;
+  opportunity_score?: number;
+  research_completeness_score?: number;
+  promoted_product_id?: string | null;
+  required_next_evidence?: string[] | string | null;
+}
+
+export interface DiscoveryCampaignProductSummary {
+  id: string;
+  name: string;
+  category?: string;
+  status: string;
+  research_verdict?: string | null;
+  buy_readiness_status?: string | null;
+  final_decision?: string | null;
+  research_completeness_score: number;
+  opportunity_score: number;
+  next_action?: string | null;
+  main_blocker?: string | null;
+}
+
+export interface DiscoveryCampaignTaskInput {
+  task_type: string;
+  title: string;
+  description?: string | null;
+  status?: 'TODO' | 'IN_PROGRESS' | 'DONE' | 'BLOCKED' | 'SKIPPED' | string;
+  related_idea_id?: string | null;
+  related_product_id?: string | null;
+  related_candidate_id?: string | null;
+  result_json?: Record<string, unknown>;
+  error_message?: string | null;
+}
+
+export interface DiscoveryCampaignTaskUpdateInput {
+  task_type?: string;
+  title?: string;
+  description?: string | null;
+  status?: 'TODO' | 'IN_PROGRESS' | 'DONE' | 'BLOCKED' | 'SKIPPED' | string;
+  related_idea_id?: string | null;
+  related_product_id?: string | null;
+  related_candidate_id?: string | null;
+  result_json?: Record<string, unknown>;
+  error_message?: string | null;
+}
+
 export interface DiscoveryTaskUpdate {
   status?: 'TODO' | 'DONE' | 'SKIPPED' | 'BLOCKED' | string;
   notes?: string;
@@ -403,6 +515,7 @@ export interface ProductIdea {
   id: string;
   idea_name: string;
   category?: string;
+  campaign_id?: string | null;
   source_platform?: string;
   source_url?: string;
   rough_supplier_cost?: number;
@@ -433,6 +546,7 @@ export type DiscoveryIdea = ProductIdea;
 export interface ProductIdeaQuickScanInput {
   idea_name: string;
   category?: string;
+  campaign_id?: string | null;
   source_platform?: string;
   source_url?: string;
   rough_supplier_cost?: number;
@@ -465,6 +579,7 @@ export interface ExternalResearchJob {
   id: string;
   idea_id?: string | null;
   product_id?: string | null;
+  campaign_id?: string | null;
   provider: string;
   api_area: string;
   query: string;
@@ -491,6 +606,7 @@ export interface EvidenceCandidate {
   job_id?: string | null;
   idea_id?: string | null;
   product_id?: string | null;
+  campaign_id?: string | null;
   source: EvidenceCandidateSource;
   candidate_type: EvidenceCandidateType;
   marketplace?: string | null;
@@ -507,6 +623,29 @@ export interface EvidenceCandidate {
   review_status: EvidenceReviewStatus;
   raw_json?: Record<string, unknown>;
   created_at: string;
+}
+
+export interface DiscoveryCampaignReport {
+  campaign_id: string;
+  total_ideas: number;
+  rejected_ideas: number;
+  promising_ideas: number;
+  promoted_products: number;
+  dataforseo_spend_estimate: number;
+  budget_limit_usd: number;
+  top_ranked_ideas: DiscoveryCampaignIdeaSummary[];
+  top_products: DiscoveryCampaignProductSummary[];
+  next_actions: string[];
+}
+
+export interface DiscoveryCampaignDetail {
+  campaign: DiscoveryCampaign;
+  ideas: DiscoveryCampaignIdeaSummary[];
+  tasks: DiscoveryCampaignTask[];
+  report: DiscoveryCampaignReport;
+  products: DiscoveryCampaignProductSummary[];
+  evidence_candidates: EvidenceCandidate[];
+  tasks_by_status: Record<string, number>;
 }
 
 export interface EvidenceCandidateReviewInput {

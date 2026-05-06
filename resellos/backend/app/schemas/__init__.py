@@ -23,6 +23,18 @@ from app.schemas.external_research_schema import (
     ExternalResearchRunResponse,
     ExternalResearchJobDetailResponse,
 )
+from app.schemas.campaign_schema import (
+    DiscoveryCampaignCreate,
+    DiscoveryCampaignUpdate,
+    DiscoveryCampaignResponse,
+    DiscoveryCampaignTaskCreate,
+    DiscoveryCampaignTaskUpdate,
+    DiscoveryCampaignTaskResponse,
+    DiscoveryCampaignIdeaSummary,
+    DiscoveryCampaignProductSummary,
+    DiscoveryCampaignReportResponse,
+    DiscoveryCampaignDetailResponse,
+)
 
 __all__ = [
     "ProductCreate",
@@ -46,4 +58,14 @@ __all__ = [
     "ManualCaptureResponse",
     "ExternalResearchRunResponse",
     "ExternalResearchJobDetailResponse",
+    "DiscoveryCampaignCreate",
+    "DiscoveryCampaignUpdate",
+    "DiscoveryCampaignResponse",
+    "DiscoveryCampaignTaskCreate",
+    "DiscoveryCampaignTaskUpdate",
+    "DiscoveryCampaignTaskResponse",
+    "DiscoveryCampaignIdeaSummary",
+    "DiscoveryCampaignProductSummary",
+    "DiscoveryCampaignReportResponse",
+    "DiscoveryCampaignDetailResponse",
 ]

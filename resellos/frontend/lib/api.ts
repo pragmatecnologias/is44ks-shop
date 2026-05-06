@@ -2,6 +2,14 @@ import type {
   AgentResult,
   CreateProductInput,
   DashboardStats,
+  DiscoveryCampaign,
+  DiscoveryCampaignDetail,
+  DiscoveryCampaignInput,
+  DiscoveryCampaignReport,
+  DiscoveryCampaignTask,
+  DiscoveryCampaignTaskInput,
+  DiscoveryCampaignTaskUpdateInput,
+  DiscoveryCampaignUpdateInput,
   DiscoveryIdea,
   DiscoveryQuickScanInput,
   DiscoveryQuickScanResponse,
@@ -465,6 +473,13 @@ export async function createDiscoveryIdea(data: DiscoveryQuickScanInput): Promis
   });
 }
 
+export async function updateDiscoveryIdea(ideaId: string, data: Partial<DiscoveryQuickScanInput> & Partial<DiscoveryIdea>): Promise<DiscoveryIdea> {
+  return requestJson<DiscoveryIdea>(`/api/discovery/${ideaId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  });
+}
+
 export async function quickScanDiscoveryIdea(data: DiscoveryQuickScanInput): Promise<DiscoveryQuickScanResponse> {
   return requestJson<DiscoveryQuickScanResponse>('/api/discovery/quick-scan', {
     method: 'POST',
@@ -497,6 +512,69 @@ export async function archiveDiscoveryIdea(ideaId: string): Promise<DiscoveryIde
 export async function promoteDiscoveryIdea(ideaId: string): Promise<{ product_id: string }> {
   return requestJson<{ product_id: string }>(`/api/discovery/${ideaId}/promote`, {
     method: 'POST',
+  });
+}
+
+export async function listDiscoveryCampaigns(): Promise<DiscoveryCampaign[]> {
+  return requestJson<DiscoveryCampaign[]>('/api/discovery/campaigns');
+}
+
+export async function createDiscoveryCampaign(data: DiscoveryCampaignInput): Promise<DiscoveryCampaign> {
+  return requestJson<DiscoveryCampaign>('/api/discovery/campaigns', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function getDiscoveryCampaign(campaignId: string): Promise<DiscoveryCampaignDetail> {
+  return requestJson<DiscoveryCampaignDetail>(`/api/discovery/campaigns/${campaignId}`);
+}
+
+export async function updateDiscoveryCampaign(campaignId: string, data: DiscoveryCampaignUpdateInput): Promise<DiscoveryCampaign> {
+  return requestJson<DiscoveryCampaign>(`/api/discovery/campaigns/${campaignId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function createDiscoveryCampaignTask(
+  campaignId: string,
+  data: DiscoveryCampaignTaskInput,
+): Promise<DiscoveryCampaignTask> {
+  return requestJson<DiscoveryCampaignTask>(`/api/discovery/campaigns/${campaignId}/tasks`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function updateDiscoveryCampaignTask(
+  campaignId: string,
+  taskId: string,
+  data: DiscoveryCampaignTaskUpdateInput,
+): Promise<DiscoveryCampaignTask> {
+  return requestJson<DiscoveryCampaignTask>(`/api/discovery/campaigns/${campaignId}/tasks/${taskId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function getDiscoveryCampaignReport(campaignId: string): Promise<DiscoveryCampaignReport> {
+  return requestJson<DiscoveryCampaignReport>(`/api/discovery/campaigns/${campaignId}/report`);
+}
+
+export async function generateDiscoveryCampaignNextTasks(campaignId: string): Promise<DiscoveryCampaignTask[]> {
+  return requestJson<DiscoveryCampaignTask[]>(`/api/discovery/campaigns/${campaignId}/generate-next-tasks`, {
+    method: 'POST',
+  });
+}
+
+export async function addIdeaToCampaign(
+  campaignId: string,
+  data: DiscoveryQuickScanInput,
+): Promise<DiscoveryIdea> {
+  return requestJson<DiscoveryIdea>(`/api/discovery/campaigns/${campaignId}/ideas`, {
+    method: 'POST',
+    body: JSON.stringify({ ...data, campaign_id: campaignId }),
   });
 }
 
