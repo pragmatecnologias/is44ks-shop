@@ -58,8 +58,12 @@ class MarketAgentOutput(BaseModel):
     competition_level: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"
     median_active_price: float | None = None
     median_sold_price: float | None = None
+    median_active_price_total: float | None = None
+    median_sold_price_total: float | None = None
     median_active_shipping: float | None = None
     median_sold_shipping: float | None = None
+    median_active_shipping_total: float | None = None
+    median_sold_shipping_total: float | None = None
     median_shipping: float | None = None
     active_price_range: list[float] = Field(default_factory=list)
     sold_price_range: list[float] = Field(default_factory=list)

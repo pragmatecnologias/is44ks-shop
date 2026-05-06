@@ -62,7 +62,7 @@ class DecisionAgent(BaseAgent):
         unverified_evidence_count = int(market.get("unverified_evidence_count", 0) or 0)
         has_supplier_cost = bool(supplier_summary.get("unit_cost") is not None or supplier_summary.get("estimated_landed_cost") is not None)
         supplier_verification_status = str(supplier_summary.get("verification_status") or "").upper()
-        supplier_verified = supplier_verification_status in {"USER_VERIFIED", "API_IMPORTED"}
+        supplier_verified = supplier_verification_status == "USER_VERIFIED"
         product_cost = float(supplier_summary.get("unit_cost") or 0)
         domestic_shipping = float(supplier_summary.get("domestic_shipping") or 0)
         international_shipping = float(supplier_summary.get("international_shipping_estimate") or 0)
@@ -77,7 +77,8 @@ class DecisionAgent(BaseAgent):
         research_completeness_score += 10 if profit.get("scenarios") else 0
         research_completeness_score += 10 if competition.get("competitor_count", 0) > 0 else 0
         research_completeness_score += 10 if target_sale_price > 0 else 0
-        research_completeness_score = max(research_completeness_score, int(market.get("research_completeness_score", 0) or 0))
+        if supplier_verified and verified_competitor_count >= 3 and verification_coverage >= 1.0:
+            research_completeness_score = max(research_completeness_score, int(market.get("research_completeness_score", 0) or 0))
         research_completeness_score = max(0, min(100, research_completeness_score))
         best_margin = max(
             [float(s.get("margin_percent") or 0) for s in (profit.get("scenarios") or []) if isinstance(s, dict)],
@@ -143,9 +144,9 @@ class DecisionAgent(BaseAgent):
         if competition.get("competitor_count", 0) == 0:
             missing_evidence.append("Competition listings missing")
             required_before_buying.append("Add competitor listings to understand the market gap.")
-        if verified_competitor_count == 0:
+        if verified_competitor_count < 3:
             missing_evidence.append("Verified competitor evidence missing")
-            required_before_buying.append("Add verified competitor listings before buying.")
+            required_before_buying.append("Add at least 3 verified competitor listings before buying.")
         if not supplier_verified:
             missing_evidence.append("Verified supplier source missing")
             required_before_buying.append("Verify supplier source before buying.")
@@ -173,7 +174,7 @@ class DecisionAgent(BaseAgent):
             and best_margin >= min_margin
             and score >= 70
             and competition.get("can_compete", True)
-            and verified_competitor_count >= 1
+            and verified_competitor_count >= 3
         )
 
         if blocked or risk_level == "BLOCKED":
@@ -248,8 +249,8 @@ class DecisionAgent(BaseAgent):
         if not supplier_verified:
             if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
                 recommendation = "WATCHLIST"
-            hard_blockers.append("Supplier source is not verified.")
-            required_before_buying.append("Verify supplier source before buying.")
+            hard_blockers.append("Supplier cost is not verified.")
+            required_before_buying.append("Verify supplier URL, screenshot, unit cost, shipping, and landed cost.")
             if research_verdict == "READY_FOR_SAMPLE":
                 research_verdict = "NEEDS_MORE_RESEARCH"
 
@@ -273,7 +274,20 @@ class DecisionAgent(BaseAgent):
         else:
             buy_readiness = "NOT_READY"
 
-        buy_readiness_status = "READY" if ready_for_sample else "ALMOST_READY" if score >= 60 and not blocked and not market_price_missing and not verification_blocker else "NOT_READY"
+        buy_readiness_status = (
+            "READY"
+            if ready_for_sample
+            else "ALMOST_READY"
+            if score >= 60
+            and not blocked
+            and not market_price_missing
+            and not verification_blocker
+            and supplier_verified
+            and verified_competitor_count >= 3
+            and test_data_count == 0
+            and verification_coverage >= 1.0
+            else "NOT_READY"
+        )
 
         max_quantity_to_buy = 0
         if recommendation == "BUY_SAMPLE":

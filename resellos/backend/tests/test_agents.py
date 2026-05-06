@@ -111,7 +111,7 @@ class AgentContractTests(unittest.TestCase):
         self.assertEqual(result["output_json"]["recommendation"], "WATCHLIST")
         self.assertEqual(result["output_json"]["research_verdict"], "PROMISING_RESEARCH")
         self.assertIn(result["output_json"]["buy_readiness_status"], {"NOT_READY", "ALMOST_READY", "READY"})
-        self.assertIn(result["output_json"]["main_blocker"], {"None", "Sold listings missing", "Active listings missing", "Marketplace evidence is insufficient for a buy decision.", "Supplier cost is missing.", "Competition gap is too small to compete reliably.", "Competition listings missing"})
+        self.assertIn(result["output_json"]["main_blocker"], {"None", "Sold listings missing", "Active listings missing", "Marketplace evidence is insufficient for a buy decision.", "Supplier cost is missing.", "Supplier cost is not verified.", "Competition gap is too small to compete reliably.", "Competition listings missing"})
         self.assertGreater(result["output_json"]["total_score"], 0)
 
     def test_decision_agent_blocks_unverified_evidence(self) -> None:
@@ -150,6 +150,82 @@ class AgentContractTests(unittest.TestCase):
         self.assertEqual(output["research_verdict"], "NEEDS_MORE_RESEARCH")
         self.assertIn("Evidence is not verified.", output["hard_blockers"])
         self.assertEqual(output["main_blocker"], "Evidence is not verified.")
+
+    def test_decision_agent_blocks_unverified_supplier_cost(self) -> None:
+        agent = DecisionAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "supplier_summary": {"unit_cost": 4.15, "estimated_landed_cost": 5.70, "international_shipping_estimate": 1.2, "verification_status": "API_IMPORTED"},
+                    "agent_reports": {
+                        "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
+                        "market_agent": {
+                            "output_json": {
+                                "evidence_quality": "HIGH",
+                                "sold_listing_count": 5,
+                                "verified_sold_listing_count": 5,
+                                "active_listing_count": 5,
+                                "verified_active_listing_count": 5,
+                                "verified_evidence_count": 10,
+                                "unverified_evidence_count": 0,
+                                "test_data_evidence_count": 0,
+                                "verification_coverage": 1.0,
+                                "insufficient_data": False,
+                                "market_price_missing": False,
+                                "median_sold_price": 18.99,
+                                "median_active_price": 19.99,
+                                "required_next_evidence": [],
+                            }
+                        },
+                        "profit_agent": {"output_json": {"estimated_net_profit": 8.0, "scenarios": [{"net_profit": 8.0, "margin_percent": 31.0}], "target_sale_price": 18.99, "minimum_recommended_price": 20.99}},
+                        "competition_agent": {"output_json": {"competition_level": "LOW", "listing_gap_score": 72, "can_compete": True, "competitor_count": 3, "verified_competitor_count": 3}},
+                    }
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertEqual(output["buy_readiness_status"], "NOT_READY")
+        self.assertIn("Supplier cost is not verified.", output["hard_blockers"])
+        self.assertEqual(output["main_blocker"], "Supplier cost is not verified.")
+
+    def test_decision_agent_requires_verified_competitors(self) -> None:
+        agent = DecisionAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "supplier_summary": {"unit_cost": 4.15, "estimated_landed_cost": 5.70, "international_shipping_estimate": 1.2, "verification_status": "USER_VERIFIED"},
+                    "agent_reports": {
+                        "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
+                        "market_agent": {
+                            "output_json": {
+                                "evidence_quality": "HIGH",
+                                "sold_listing_count": 5,
+                                "verified_sold_listing_count": 5,
+                                "active_listing_count": 5,
+                                "verified_active_listing_count": 5,
+                                "verified_evidence_count": 10,
+                                "unverified_evidence_count": 0,
+                                "test_data_evidence_count": 0,
+                                "verification_coverage": 1.0,
+                                "insufficient_data": False,
+                                "market_price_missing": False,
+                                "median_sold_price": 18.99,
+                                "median_active_price": 19.99,
+                                "required_next_evidence": [],
+                            }
+                        },
+                        "profit_agent": {"output_json": {"estimated_net_profit": 8.0, "scenarios": [{"net_profit": 8.0, "margin_percent": 31.0}], "target_sale_price": 18.99, "minimum_recommended_price": 20.99}},
+                        "competition_agent": {"output_json": {"competition_level": "LOW", "listing_gap_score": 72, "can_compete": True, "competitor_count": 2, "verified_competitor_count": 2}},
+                    }
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertEqual(output["buy_readiness_status"], "NOT_READY")
+        self.assertIn("Verified competitor evidence missing", output["missing_evidence"])
+        self.assertIn("Add at least 3 verified competitor listings before buying.", output["required_before_buying"])
 
     def test_decision_agent_caps_buy_when_market_data_is_thin(self) -> None:
         agent = DecisionAgent(self.llm)
@@ -261,6 +337,27 @@ class AgentContractTests(unittest.TestCase):
         self.assertIsNone(output["median_sold_price"])
         self.assertIsNone(output["median_active_price"])
         self.assertTrue(output["insufficient_data"])
+
+    def test_market_agent_does_not_treat_api_imported_sold_as_verified_demand(self) -> None:
+        agent = MarketAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "product": {"name": "Test product"},
+                    "marketplace_evidence": [
+                        {"marketplace": "Google Shopping", "evidence_type": "SOLD_LISTING", "price": 19.0, "shipping_price": 4.0, "verification_status": "API_IMPORTED"},
+                        {"marketplace": "eBay", "evidence_type": "ACTIVE_LISTING", "price": 21.0, "shipping_price": 4.0, "verification_status": "API_IMPORTED"},
+                    ],
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertEqual(output["sold_listing_count"], 1)
+        self.assertEqual(output["verified_sold_listing_count"], 0)
+        self.assertEqual(output["verified_active_listing_count"], 1)
+        self.assertIsNone(output["median_sold_price"])
+        self.assertIsNotNone(output["median_active_price"])
 
     def test_competition_agent_reads_competitor_listings(self) -> None:
         agent = CompetitionAgent(self.llm)

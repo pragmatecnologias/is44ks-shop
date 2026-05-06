@@ -56,34 +56,44 @@ class MarketAgent(BaseAgent):
         supporting_rows = [row for row in evidence_rows if str(row.get("evidence_type", "")).upper() in {"SCREENSHOT", "MANUAL_NOTE"}]
 
         # Verification-aware filtering
-        VERIFIED = {"USER_VERIFIED", "API_IMPORTED"}
+        VERIFIED_SOLD = {"USER_VERIFIED"}
+        VERIFIED_ACTIVE = {"USER_VERIFIED", "API_IMPORTED"}
         TEST = {"TEST_DATA", "REJECTED"}
 
         def _status(row: dict) -> str:
             return str(row.get("verification_status") or "").upper()
 
-        verified_sold_rows = [row for row in sold_rows if _status(row) in VERIFIED]
-        verified_active_rows = [row for row in active_rows if _status(row) in VERIFIED]
+        verified_sold_rows = [row for row in sold_rows if _status(row) in VERIFIED_SOLD]
+        verified_active_rows = [row for row in active_rows if _status(row) in VERIFIED_ACTIVE]
         test_data_count = sum(1 for row in evidence_rows if _status(row) == "TEST_DATA")
-        verified_evidence_count = sum(1 for row in evidence_rows if _status(row) in VERIFIED)
-        unverified_evidence_count = sum(1 for row in evidence_rows if _status(row) not in VERIFIED and _status(row) not in TEST and _status(row) != "")
+        verified_evidence_count = sum(1 for row in evidence_rows if _status(row) in VERIFIED_SOLD or _status(row) in VERIFIED_ACTIVE)
+        unverified_evidence_count = sum(1 for row in evidence_rows if _status(row) not in VERIFIED_SOLD and _status(row) not in VERIFIED_ACTIVE and _status(row) not in TEST and _status(row) != "")
 
         active_listing_count = len(active_rows)
         sold_listing_count = len(sold_rows)
         verified_sold_count = len(verified_sold_rows)
         verified_active_count = len(verified_active_rows)
 
+        active_prices_total = [float(row.get("price")) for row in active_rows if row.get("price") is not None]
+        sold_prices_total = [float(row.get("price")) for row in sold_rows if row.get("price") is not None]
+        active_shipping_prices_total = [float(row.get("shipping_price")) for row in active_rows if row.get("shipping_price") is not None]
+        sold_shipping_prices_total = [float(row.get("shipping_price")) for row in sold_rows if row.get("shipping_price") is not None]
+
         verified_active_prices = [float(row.get("price")) for row in verified_active_rows if row.get("price") is not None]
         verified_sold_prices = [float(row.get("price")) for row in verified_sold_rows if row.get("price") is not None]
         verified_active_shipping_prices = [float(row.get("shipping_price")) for row in verified_active_rows if row.get("shipping_price") is not None]
         verified_sold_shipping_prices = [float(row.get("shipping_price")) for row in verified_sold_rows if row.get("shipping_price") is not None]
 
-        active_price_range = [round(min(verified_active_prices), 2), round(max(verified_active_prices), 2)] if verified_active_prices else []
-        sold_price_range = [round(min(verified_sold_prices), 2), round(max(verified_sold_prices), 2)] if verified_sold_prices else []
+        active_price_range = [round(min(active_prices_total), 2), round(max(active_prices_total), 2)] if active_prices_total else []
+        sold_price_range = [round(min(sold_prices_total), 2), round(max(sold_prices_total), 2)] if sold_prices_total else []
         median_active_price = _median(verified_active_prices)
         median_sold_price = _median(verified_sold_prices)
         median_active_shipping = _median(verified_active_shipping_prices)
         median_sold_shipping = _median(verified_sold_shipping_prices)
+        median_active_price_total = _median(active_prices_total)
+        median_sold_price_total = _median(sold_prices_total)
+        median_active_shipping_total = _median(active_shipping_prices_total)
+        median_sold_shipping_total = _median(sold_shipping_prices_total)
         shipping_values = [value for value in [median_active_shipping, median_sold_shipping] if value is not None]
         median_shipping = _median([float(value) for value in shipping_values]) if shipping_values else None
         marketplace_coverage = sorted(
@@ -174,8 +184,12 @@ class MarketAgent(BaseAgent):
                 "competition_level": "HIGH" if verified_active_count >= 10 else "MEDIUM" if verified_active_count > 0 else "UNKNOWN",
                 "median_active_price": median_active_price,
                 "median_sold_price": median_sold_price,
+                "median_active_price_total": median_active_price_total,
+                "median_sold_price_total": median_sold_price_total,
                 "median_active_shipping": median_active_shipping,
                 "median_sold_shipping": median_sold_shipping,
+                "median_active_shipping_total": median_active_shipping_total,
+                "median_sold_shipping_total": median_sold_shipping_total,
                 "median_shipping": median_shipping,
                 "active_price_range": active_price_range,
                 "sold_price_range": sold_price_range,
