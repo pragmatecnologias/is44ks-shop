@@ -149,6 +149,9 @@ class PortfolioItemResponse(BaseModel):
 class ShopPortfolioReportResponse(BaseModel):
     shop_concept_id: uuid.UUID
     shop_concept_name: str
+    shop_readiness_status: Optional[str] = None
+    shop_readiness_score: int = 0
+    shop_readiness_blockers: list[str] = Field(default_factory=list)
     collections: list[ProductCollectionResponse] = Field(default_factory=list)
     portfolio_items: list[PortfolioItemResponse] = Field(default_factory=list)
     total_items: int = 0
@@ -169,4 +172,3 @@ class ShopConceptDetailResponse(BaseModel):
     collections: list[ProductCollectionResponse] = Field(default_factory=list)
     portfolio_items: list[PortfolioItemResponse] = Field(default_factory=list)
     report: ShopPortfolioReportResponse
-

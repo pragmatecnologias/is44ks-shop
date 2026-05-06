@@ -562,6 +562,8 @@ class CampaignServiceTests(unittest.TestCase):
         self.assertEqual(report["shop_concept_id"], str(shop.id))
         self.assertEqual(report["total_items"], 1)
         self.assertEqual(report["items_by_role"]["HERO"], 1)
+        self.assertEqual(report["shop_readiness_status"], "BUILDING_ASSORTMENT")
+        self.assertIn("No sample-ready product yet.", report["shop_readiness_blockers"])
         self.assertIn("No sample-ready product yet.", report["collection_gaps"])
 
     def test_portfolio_detail_and_product_context_are_exposed(self) -> None:

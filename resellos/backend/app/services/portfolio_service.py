@@ -380,6 +380,37 @@ class PortfolioService:
         if not items:
             collection_gaps.append("No portfolio items have been added.")
 
+        shop_readiness_blockers: list[str] = []
+        if not collections:
+            shop_readiness_blockers.append("No collections defined yet.")
+        if not any((item.role or "").upper() == "HERO" for item in items):
+            shop_readiness_blockers.append("No hero portfolio item yet.")
+        if not ready_for_sample_products:
+            shop_readiness_blockers.append("No sample-ready product yet.")
+        if len({(item.collection_id or item.role) for item in items}) < 2 and len(collections) < 2:
+            shop_readiness_blockers.append("Need at least two active collections or collection-linked items to form a coherent shop.")
+
+        if not collections or not items:
+            shop_readiness_status = "NOT_READY"
+        elif not ready_for_sample_products or len(collections) < 2:
+            shop_readiness_status = "BUILDING_ASSORTMENT"
+        else:
+            shop_readiness_status = "READY_FOR_BASIC_WEBSITE"
+
+        shop_readiness_score = 0
+        if collections:
+            shop_readiness_score += 25
+        if len(collections) >= 2:
+            shop_readiness_score += 20
+        if items:
+            shop_readiness_score += 15
+        if any((item.role or "").upper() == "HERO" for item in items):
+            shop_readiness_score += 15
+        if ready_for_sample_products:
+            shop_readiness_score += 15
+        if any((item.role or "").upper() in {"ADD_ON", "BUNDLE_SUPPORT"} for item in items):
+            shop_readiness_score += 10
+
         next_recommended_campaign = None
         if not any((item.role or "").upper() == "HERO" for item in items):
             next_recommended_campaign = f"Run a hero-product campaign for {shop.name}."
@@ -393,6 +424,9 @@ class PortfolioService:
         return {
             "shop_concept_id": str(shop.id),
             "shop_concept_name": shop.name,
+            "shop_readiness_status": shop_readiness_status,
+            "shop_readiness_score": min(shop_readiness_score, 100),
+            "shop_readiness_blockers": shop_readiness_blockers,
             "collections": [self._serialize_collection(collection) for collection in collections],
             "portfolio_items": [self._serialize_item(item) for item in items],
             "total_items": len(items),

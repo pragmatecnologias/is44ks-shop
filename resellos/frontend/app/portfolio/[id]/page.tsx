@@ -258,6 +258,40 @@ export default function ShopConceptDetailPage() {
         <section className="rounded-[24px] border border-zinc-800 bg-zinc-950/80 p-5 shadow-xl shadow-black/10">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
+              <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Shop readiness</div>
+              <div className="mt-1 text-lg font-semibold text-white">{report?.shop_readiness_status ?? 'UNKNOWN'}</div>
+            </div>
+            <div className="text-right text-sm text-zinc-300">
+              <div>Score {report?.shop_readiness_score ?? 0}/100</div>
+              <div>{report?.next_recommended_campaign || 'No recommended campaign yet'}</div>
+            </div>
+          </div>
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+              <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Blockers</div>
+              <div className="mt-2 space-y-2 text-sm text-zinc-300">
+                {(report?.shop_readiness_blockers?.length ? report.shop_readiness_blockers : ['No shop readiness blockers recorded.']).map((blocker) => (
+                  <div key={blocker} className="rounded-xl border border-zinc-800 bg-zinc-950/80 px-3 py-2">
+                    {blocker}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+              <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Portfolio context</div>
+              <div className="mt-2 space-y-2 text-sm text-zinc-300">
+                <div>Collections: {collections.length}</div>
+                <div>Portfolio items: {portfolioItems.length}</div>
+                <div>Sample-ready products: {(report?.ready_for_sample_products ?? []).length}</div>
+                <div>{report?.next_action || 'No next action recorded.'}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="rounded-[24px] border border-zinc-800 bg-zinc-950/80 p-5 shadow-xl shadow-black/10">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
               <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Portfolio gaps</div>
               <div className="mt-1 text-lg font-semibold text-white">
                 {(report?.collection_gaps?.length ?? 0) > 0 ? `${report?.collection_gaps?.length} gaps` : 'No major gaps flagged'}

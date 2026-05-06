@@ -954,6 +954,9 @@ export interface PortfolioItem {
 export interface ShopPortfolioReport {
   shop_concept_id: string;
   shop_concept_name: string;
+  shop_readiness_status?: string | null;
+  shop_readiness_score?: number;
+  shop_readiness_blockers?: string[];
   collections: ProductCollection[];
   portfolio_items: PortfolioItem[];
   total_items: number;
