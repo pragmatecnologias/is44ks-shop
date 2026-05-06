@@ -7,12 +7,13 @@ import { TOOL_DEFINITIONS } from './toolRegistry.js';
 import { toErrorPayload } from './utils/errors.js';
 import { createDiscoveryIdea, getDiscoveryBoard, runQuickScan } from './tools/discoveryTools.js';
 import { createDiscoveryCampaign, listDiscoveryCampaigns, getDiscoveryCampaign, createCampaignTask, updateCampaignTask, getCampaignReport, generateCampaignNextTasks, addIdeaToCampaign, getCampaignNextTask, completeCampaignTask, blockCampaignTask } from './tools/campaignTools.js';
+import { createShopConcept, listShopConcepts, getShopConcept, updateShopConcept, createProductCollection, updateProductCollection, addPortfolioItem, updatePortfolioItem, getShopPortfolioReport } from './tools/portfolioTools.js';
 import { runDataForSeoGoogleShopping, pollExternalResearchJob } from './tools/externalResearchTools.js';
 import { listEvidenceCandidates, approveCandidate, rejectCandidate, captureManualEvidence } from './tools/candidateTools.js';
 import { addKeywordDemand, listKeywordDemand, verifyKeywordDemand, addTrendResearch, listTrendResearch, verifyTrendResearch, getProductValidationChecklist, runProductValidation } from './tools/validationTools.js';
 import { getProductCockpit, runProductResearch, getNextResearchAction, generateProductResearchReport } from './tools/productTools.js';
 import { verifyMarketplaceEvidence, verifySupplierSource, verifyCompetitorListing } from './tools/verificationTools.js';
-import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema, getCampaignNextTaskSchema, completeCampaignTaskSchema, blockCampaignTaskSchema, addKeywordDemandSchema, listKeywordDemandSchema, verifyKeywordDemandSchema, addTrendResearchSchema, listTrendResearchSchema, verifyTrendResearchSchema, productValidationChecklistSchema, runProductValidationSchema } from './toolRegistry.js';
+import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema, getCampaignNextTaskSchema, completeCampaignTaskSchema, blockCampaignTaskSchema, addKeywordDemandSchema, listKeywordDemandSchema, verifyKeywordDemandSchema, addTrendResearchSchema, listTrendResearchSchema, verifyTrendResearchSchema, productValidationChecklistSchema, runProductValidationSchema, shopConceptSchema, getShopConceptSchema, updateShopConceptSchema, productCollectionSchema, updateProductCollectionSchema, portfolioItemSchema, updatePortfolioItemSchema, shopPortfolioReportSchema } from './toolRegistry.js';
 import { guardWriteEnabled } from './guards/approvalGuards.js';
 import type { ToolResult } from './types.js';
 import type { z } from 'zod';
@@ -109,6 +110,41 @@ async function invokeTool(name: string, args: Record<string, unknown>, config: A
     case 'resellos_add_idea_to_campaign': {
       const input = addCampaignIdeaSchema.parse(args);
       return addIdeaToCampaign(client, input, config);
+    }
+    case 'resellos_create_shop_concept': {
+      const input = shopConceptSchema.parse(args);
+      return createShopConcept(client, input, config);
+    }
+    case 'resellos_list_shop_concepts': {
+      return listShopConcepts(client, config);
+    }
+    case 'resellos_get_shop_concept': {
+      const input = getShopConceptSchema.parse(args);
+      return getShopConcept(client, input.shop_id, config);
+    }
+    case 'resellos_update_shop_concept': {
+      const input = updateShopConceptSchema.parse(args);
+      return updateShopConcept(client, input, config);
+    }
+    case 'resellos_create_product_collection': {
+      const input = productCollectionSchema.parse(args);
+      return createProductCollection(client, input, config);
+    }
+    case 'resellos_update_product_collection': {
+      const input = updateProductCollectionSchema.parse(args);
+      return updateProductCollection(client, input, config);
+    }
+    case 'resellos_add_portfolio_item': {
+      const input = portfolioItemSchema.parse(args);
+      return addPortfolioItem(client, input, config);
+    }
+    case 'resellos_update_portfolio_item': {
+      const input = updatePortfolioItemSchema.parse(args);
+      return updatePortfolioItem(client, input, config);
+    }
+    case 'resellos_get_shop_portfolio_report': {
+      const input = shopPortfolioReportSchema.parse(args);
+      return getShopPortfolioReport(client, input.shop_id, config);
     }
     case 'resellos_run_dataforseo_google_shopping': {
       const input = dataForSeoSchema.parse(args);

@@ -8,6 +8,8 @@ import type { DiscoveryCampaign, DiscoveryCampaignInput } from '@/lib/types';
 
 const DEFAULT_FORM: DiscoveryCampaignInput & { constraints_text: string } = {
   name: 'Pet accessories discovery',
+  shop_concept_id: '',
+  collection_id: '',
   category: 'Pet accessories',
   goal: 'Find low-risk pet accessory ideas worth deeper research.',
   constraints_json: {},
@@ -59,6 +61,8 @@ export default function DiscoveryCampaignsPage() {
       }
       await createDiscoveryCampaign({
         name: form.name,
+        shop_concept_id: form.shop_concept_id || undefined,
+        collection_id: form.collection_id || undefined,
         category: form.category,
         goal: form.goal,
         constraints_json,
@@ -128,6 +132,8 @@ export default function DiscoveryCampaignsPage() {
 
             <div className="space-y-3">
               <Field label="Name" value={form.name} onChange={(value) => setForm((current) => ({ ...current, name: value }))} />
+              <Field label="Shop concept ID" value={form.shop_concept_id || ''} onChange={(value) => setForm((current) => ({ ...current, shop_concept_id: value }))} />
+              <Field label="Collection ID" value={form.collection_id || ''} onChange={(value) => setForm((current) => ({ ...current, collection_id: value }))} />
               <Field label="Category" value={form.category || ''} onChange={(value) => setForm((current) => ({ ...current, category: value }))} />
               <Field label="Goal" value={form.goal || ''} onChange={(value) => setForm((current) => ({ ...current, goal: value }))} />
               <Field label="Budget limit USD" type="number" value={String(form.budget_limit_usd ?? '')} onChange={(value) => setForm((current) => ({ ...current, budget_limit_usd: value ? Number(value) : undefined }))} />
@@ -189,6 +195,11 @@ export default function DiscoveryCampaignsPage() {
                         <div className="text-xs text-zinc-500">
                           {campaign.category || 'Uncategorized'} · {campaign.status}
                         </div>
+                        {(campaign.shop_concept_name || campaign.collection_name) ? (
+                          <div className="mt-1 text-xs text-zinc-400">
+                            {campaign.shop_concept_name || campaign.shop_concept_id || 'No shop concept'}{campaign.collection_name ? ` · ${campaign.collection_name}` : campaign.collection_id ? ` · ${campaign.collection_id}` : ''}
+                          </div>
+                        ) : null}
                         <div className="mt-2 text-sm text-zinc-300">{campaign.goal || 'No goal recorded.'}</div>
                       </div>
                       <div className="text-right text-xs text-zinc-400">

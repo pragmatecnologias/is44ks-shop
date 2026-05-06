@@ -10,6 +10,7 @@ from app.schemas.product_schema import ResearchRunResponse, ResearchCockpitRespo
 from app.services.research_pipeline_service import ProductResearchService
 from app.services.agent_factory import build_agents
 from app.models.supplier import MarketplaceResearch, CompetitorListing, MarketplaceEvidence, ProductSource, ProfitAnalysis, AgentReport, InventoryItem, Sale
+from app.services.portfolio_service import PortfolioService
 
 
 router = APIRouter(prefix="/api/products", tags=["research"])
@@ -80,6 +81,8 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
         decision_output = json.loads(decision.output_json)
     discovery_context = next((row for row in agent_rows if row.agent_name == "discovery_context"), None)
     discovery_context_output = json.loads(discovery_context.output_json) if discovery_context and discovery_context.output_json else None
+    portfolio_service = PortfolioService(db)
+    portfolio_context = portfolio_service.get_product_portfolio_context(product_id)
     competition = next((row for row in agent_rows if row.agent_name == "competition_agent"), None)
     competition_output = json.loads(competition.output_json) if competition and competition.output_json else None
     reorder = next((row for row in agent_rows if row.agent_name == "reorder_agent"), None)
@@ -107,6 +110,7 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
         confidence=(decision_output or {}).get("confidence") if decision_output else None,
         current_status=product.status,
         discovery_context=discovery_context_output,
+        portfolio_context=portfolio_context,
     )
 
 

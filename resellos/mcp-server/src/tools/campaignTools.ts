@@ -26,6 +26,8 @@ export async function createDiscoveryCampaign(
   client: ResellOSClient,
   input: {
     name: string;
+    shop_concept_id?: string;
+    collection_id?: string;
     category?: string;
     goal?: string;
     constraints_json?: Record<string, unknown>;
@@ -40,6 +42,8 @@ export async function createDiscoveryCampaign(
   guardWriteEnabled(config);
   const payload = {
     name: ensureDefined(input.name, 'name'),
+    shop_concept_id: input.shop_concept_id ?? undefined,
+    collection_id: input.collection_id ?? undefined,
     category: input.category ?? undefined,
     goal: input.goal ?? undefined,
     constraints_json: input.constraints_json ?? {},

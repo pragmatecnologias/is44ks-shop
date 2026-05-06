@@ -7,6 +7,7 @@ from app.routes.profit import router as profit_router
 from app.routes.agents import router as agents_router
 from app.routes.discovery import router as discovery_router
 from app.routes.campaigns import router as campaigns_router
+from app.routes.portfolio import router as portfolio_router
 from app.routes.validation import router as validation_router
 from app.routes.research import router as research_router
 from app.routes.vision import router as vision_router
@@ -26,6 +27,7 @@ __all__ = [
     "agents_router",
     "discovery_router",
     "campaigns_router",
+    "portfolio_router",
     "validation_router",
     "research_router",
     "vision_router",

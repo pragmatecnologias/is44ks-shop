@@ -105,6 +105,8 @@ export interface Product {
   id: string;
   sku: string;
   name: string;
+  shop_concept_id?: string | null;
+  collection_id?: string | null;
   category?: string;
   subcategory?: string;
   description?: string;
@@ -529,6 +531,7 @@ export interface AgentResult {
 
 export interface ResearchCockpit {
   product: Product;
+  portfolio_context?: PortfolioContext | null;
   sources: ProductSource[];
   marketplace_research: Array<Record<string, unknown>>;
   marketplace_evidence: MarketplaceEvidence[];
@@ -561,6 +564,12 @@ export interface ResearchCockpit {
   } | null;
 }
 
+export interface PortfolioContext {
+  shop_concept?: ShopConcept | null;
+  collection?: ProductCollection | null;
+  portfolio_items?: PortfolioItem[];
+}
+
 export interface DiscoveryTask {
   id: string;
   idea_id: string;
@@ -579,6 +588,8 @@ export interface DiscoveryTask {
 export interface DiscoveryCampaign {
   id: string;
   name: string;
+  shop_concept_id?: string | null;
+  collection_id?: string | null;
   category?: string;
   goal?: string;
   constraints_json?: Record<string, unknown>;
@@ -587,6 +598,8 @@ export interface DiscoveryCampaign {
   max_products_to_promote?: number;
   status: 'DRAFT' | 'RUNNING' | 'PAUSED' | 'COMPLETED' | string;
   created_by?: string;
+  shop_concept_name?: string | null;
+  collection_name?: string | null;
   report_generated_at?: string | null;
   created_at: string;
   updated_at: string;
@@ -599,6 +612,8 @@ export interface DiscoveryCampaign {
 
 export interface DiscoveryCampaignInput {
   name: string;
+  shop_concept_id?: string | null;
+  collection_id?: string | null;
   category?: string;
   goal?: string;
   constraints_json?: Record<string, unknown>;
@@ -611,6 +626,8 @@ export interface DiscoveryCampaignInput {
 
 export interface DiscoveryCampaignUpdateInput {
   name?: string;
+  shop_concept_id?: string | null;
+  collection_id?: string | null;
   category?: string;
   goal?: string;
   constraints_json?: Record<string, unknown>;
@@ -641,6 +658,8 @@ export interface DiscoveryCampaignIdeaSummary {
   id: string;
   idea_name: string;
   category?: string;
+  shop_concept_id?: string | null;
+  collection_id?: string | null;
   status: string;
   quick_scan_verdict?: string | null;
   buy_readiness_status?: string;
@@ -654,6 +673,8 @@ export interface DiscoveryCampaignProductSummary {
   id: string;
   name: string;
   category?: string;
+  shop_concept_id?: string | null;
+  collection_id?: string | null;
   status: string;
   research_verdict?: string | null;
   buy_readiness_status?: string | null;
@@ -702,6 +723,8 @@ export interface ProductIdea {
   idea_name: string;
   category?: string;
   campaign_id?: string | null;
+  shop_concept_id?: string | null;
+  collection_id?: string | null;
   source_platform?: string;
   source_url?: string;
   rough_supplier_cost?: number;
@@ -733,6 +756,8 @@ export interface ProductIdeaQuickScanInput {
   idea_name: string;
   category?: string;
   campaign_id?: string | null;
+  shop_concept_id?: string | null;
+  collection_id?: string | null;
   source_platform?: string;
   source_url?: string;
   rough_supplier_cost?: number;
@@ -813,6 +838,10 @@ export interface EvidenceCandidate {
 
 export interface DiscoveryCampaignReport {
   campaign_id: string;
+  shop_concept_id?: string | null;
+  shop_concept_name?: string | null;
+  collection_id?: string | null;
+  collection_name?: string | null;
   total_ideas: number;
   rejected_ideas: number;
   promising_ideas: number;
@@ -830,6 +859,10 @@ export interface DiscoveryCampaignReport {
   products_with_trend_research?: number;
   products_with_evergreen_trend?: number;
   products_with_weak_landed_cost_ratio?: number;
+  portfolio_items_total?: number;
+  portfolio_items_by_role?: Record<string, number>;
+  portfolio_items_by_status?: Record<string, number>;
+  portfolio_collection_gaps?: string[];
   external_jobs_total?: number;
   external_jobs_pending_count?: number;
   external_jobs_imported_count?: number;
@@ -855,6 +888,92 @@ export interface DiscoveryCampaignDetail {
   products: DiscoveryCampaignProductSummary[];
   evidence_candidates: EvidenceCandidate[];
   tasks_by_status: Record<string, number>;
+}
+
+export type ShopConceptStatus = 'DRAFT' | 'ACTIVE' | 'PAUSED' | string;
+export type CollectionStatus = 'DRAFT' | 'ACTIVE' | 'PAUSED' | string;
+export type PortfolioRole = 'CONSIDERING' | 'HERO' | 'ADD_ON' | 'BUNDLE_SUPPORT' | 'TRAFFIC' | 'PROFIT' | 'TEST' | 'REJECTED' | string;
+export type PortfolioItemStatus = 'CONSIDERING' | 'RESEARCHING' | 'SAMPLE_READY' | 'SAMPLED' | 'REJECTED' | string;
+
+export interface ShopConcept {
+  id: string;
+  name: string;
+  description?: string | null;
+  target_customer?: string | null;
+  category?: string | null;
+  price_min?: number | null;
+  price_max?: number | null;
+  avoid_list_json?: Record<string, unknown>;
+  preferred_attributes_json?: Record<string, unknown>;
+  brand_angle?: string | null;
+  status: ShopConceptStatus;
+  created_at: string;
+  updated_at: string;
+  campaign_count?: number;
+  collection_count?: number;
+  idea_count?: number;
+  product_count?: number;
+  portfolio_item_count?: number;
+}
+
+export interface ProductCollection {
+  id: string;
+  shop_concept_id: string;
+  shop_concept_name?: string | null;
+  name: string;
+  theme?: string | null;
+  target_problem?: string | null;
+  description?: string | null;
+  status: CollectionStatus;
+  created_at: string;
+  updated_at: string;
+  portfolio_item_count?: number;
+  idea_count?: number;
+  product_count?: number;
+}
+
+export interface PortfolioItem {
+  id: string;
+  shop_concept_id: string;
+  shop_concept_name?: string | null;
+  collection_id?: string | null;
+  collection_name?: string | null;
+  idea_id?: string | null;
+  idea_name?: string | null;
+  product_id?: string | null;
+  product_name?: string | null;
+  role: PortfolioRole;
+  status: PortfolioItemStatus;
+  assortment_fit_score: number;
+  bundle_potential_score: number;
+  notes?: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ShopPortfolioReport {
+  shop_concept_id: string;
+  shop_concept_name: string;
+  collections: ProductCollection[];
+  portfolio_items: PortfolioItem[];
+  total_items: number;
+  items_by_role: Record<string, number>;
+  items_by_status: Record<string, number>;
+  products_by_decision: Record<string, number>;
+  watchlist_products: Array<Record<string, unknown>>;
+  skip_products: Array<Record<string, unknown>>;
+  ready_for_sample_products: Array<Record<string, unknown>>;
+  ideas_still_under_research: Array<Record<string, unknown>>;
+  collection_gaps: string[];
+  next_recommended_campaign?: string | null;
+  next_action?: string | null;
+}
+
+export interface ShopConceptDetail {
+  shop_concept: ShopConcept;
+  collections: ProductCollection[];
+  portfolio_items: PortfolioItem[];
+  report: ShopPortfolioReport;
 }
 
 export interface EvidenceCandidateReviewInput {

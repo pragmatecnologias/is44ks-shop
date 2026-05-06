@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 
 from app.models.campaign import DiscoveryCampaign, DiscoveryCampaignTask
 from app.models.external_research import EvidenceCandidate, ExternalResearchJob
+from app.models.portfolio import PortfolioItem, ProductCollection, ShopConcept
 from app.models.product import Product
 from app.models.product_validation import ProductDemandResearch, ProductTrendResearch, ProductValidationSummary
 from app.models.supplier import AgentReport, ProductIdea
@@ -27,6 +28,7 @@ from app.schemas.campaign_schema import (
 from app.schemas.external_research_schema import EvidenceCandidateResponse
 from app.schemas.product_schema import ProductIdeaCreate
 from app.services.discovery_service import DiscoveryService
+from app.services.portfolio_service import PortfolioService
 
 
 def _json_load(value: Any, default: Any) -> Any:
@@ -46,6 +48,7 @@ class CampaignService:
     def __init__(self, db: Session):
         self.db = db
         self.discovery = DiscoveryService(db)
+        self.portfolio = PortfolioService(db)
 
     def list_campaigns(self) -> list[DiscoveryCampaign]:
         return self.db.query(DiscoveryCampaign).order_by(DiscoveryCampaign.updated_at.desc()).all()
@@ -56,6 +59,8 @@ class CampaignService:
     def create_campaign(self, data: DiscoveryCampaignCreate) -> DiscoveryCampaign:
         campaign = DiscoveryCampaign(
             name=data.name,
+            shop_concept_id=getattr(data, "shop_concept_id", None),
+            collection_id=getattr(data, "collection_id", None),
             category=data.category,
             goal=data.goal,
             constraints_json=data.constraints_json or {},
@@ -142,6 +147,8 @@ class CampaignService:
                 raise HTTPException(status_code=400, detail="Campaign idea limit reached.")
         payload = idea_data.model_dump()
         payload["campaign_id"] = campaign.id
+        payload["shop_concept_id"] = payload.get("shop_concept_id") or campaign.shop_concept_id or (campaign.collection.shop_concept_id if campaign.collection else None)
+        payload["collection_id"] = payload.get("collection_id") or campaign.collection_id
         return self.discovery.create_idea(ProductIdeaCreate(**payload))
 
     def _campaign_ideas(self, campaign_id: uuid.UUID) -> list[ProductIdea]:
@@ -175,6 +182,8 @@ class CampaignService:
         return {
             "id": str(campaign.id),
             "name": campaign.name,
+            "shop_concept_id": str(campaign.shop_concept_id) if campaign.shop_concept_id else None,
+            "collection_id": str(campaign.collection_id) if campaign.collection_id else None,
             "category": campaign.category,
             "goal": campaign.goal,
             "constraints_json": _json_load(campaign.constraints_json, {}),
@@ -183,6 +192,8 @@ class CampaignService:
             "max_products_to_promote": int(campaign.max_products_to_promote or 0),
             "status": campaign.status,
             "created_by": campaign.created_by,
+            "shop_concept_name": campaign.shop_concept.name if campaign.shop_concept else None,
+            "collection_name": campaign.collection.name if campaign.collection else None,
             "created_at": campaign.created_at,
             "updated_at": campaign.updated_at,
             "idea_count": len(ideas),
@@ -226,6 +237,8 @@ class CampaignService:
         return {
             "id": str(product.id),
             "name": product.name,
+            "shop_concept_id": str(product.shop_concept_id) if product.shop_concept_id else None,
+            "collection_id": str(product.collection_id) if product.collection_id else None,
             "category": product.category,
             "status": product.status,
             "research_verdict": decision.get("research_verdict") or product.final_decision,
@@ -272,6 +285,8 @@ class CampaignService:
         products = self._campaign_products(campaign.id)
         jobs = self._campaign_jobs(campaign.id)
         candidates = self._campaign_candidates(campaign.id)
+        portfolio_shop_id = campaign.shop_concept_id or (campaign.collection.shop_concept_id if campaign.collection else None)
+        portfolio_report = self.portfolio.get_shop_report(portfolio_shop_id) if portfolio_shop_id else None
         idea_ids = [idea.id for idea in ideas]
         product_ids = [product.id for product in products]
         demand_rows = self.db.query(ProductDemandResearch).filter(ProductDemandResearch.idea_id.in_(idea_ids) if idea_ids else False).all() if idea_ids else []
@@ -413,8 +428,17 @@ class CampaignService:
             next_actions.append(f"Poll {external_jobs_pending_count} pending external research job(s).")
         next_best_task = next_actions[0] if next_actions else None
 
+        portfolio_items_total = int(portfolio_report.get("total_items") if portfolio_report else 0)
+        portfolio_items_by_role = dict(portfolio_report.get("items_by_role") if portfolio_report else {})
+        portfolio_items_by_status = dict(portfolio_report.get("items_by_status") if portfolio_report else {})
+        portfolio_collection_gaps = list(portfolio_report.get("collection_gaps") if portfolio_report else [])
+
         return {
             "campaign_id": str(campaign.id),
+            "shop_concept_id": str(portfolio_shop_id) if portfolio_shop_id else None,
+            "shop_concept_name": campaign.shop_concept.name if campaign.shop_concept else (campaign.collection.shop_concept.name if campaign.collection and campaign.collection.shop_concept else None),
+            "collection_id": str(campaign.collection_id) if campaign.collection_id else None,
+            "collection_name": campaign.collection.name if campaign.collection else None,
             "total_ideas": total_ideas,
             "rejected_ideas": rejected_ideas,
             "promising_ideas": promising_ideas,
@@ -432,6 +456,10 @@ class CampaignService:
             "products_with_trend_research": products_with_trend_research,
             "products_with_evergreen_trend": products_with_evergreen_trend,
             "products_with_weak_landed_cost_ratio": products_with_weak_landed_cost_ratio,
+            "portfolio_items_total": portfolio_items_total,
+            "portfolio_items_by_role": portfolio_items_by_role,
+            "portfolio_items_by_status": portfolio_items_by_status,
+            "portfolio_collection_gaps": portfolio_collection_gaps,
             "external_jobs_total": external_jobs_total,
             "external_jobs_pending_count": external_jobs_pending_count,
             "external_jobs_imported_count": external_jobs_imported,

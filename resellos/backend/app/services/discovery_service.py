@@ -136,10 +136,19 @@ class DiscoveryService:
         notes = data.notes or ""
         if getattr(data, "marketplace_observation", None):
             notes = "\n".join(part for part in [notes, f"Marketplace observation: {data.marketplace_observation}"] if part)
+        shop_concept_id = data.shop_concept_id
+        collection_id = data.collection_id
+        if data.campaign_id is not None:
+            campaign = self.db.query(DiscoveryCampaign).filter(DiscoveryCampaign.id == data.campaign_id).first()
+            if campaign:
+                shop_concept_id = shop_concept_id or campaign.shop_concept_id or (campaign.collection.shop_concept_id if campaign.collection else None)
+                collection_id = collection_id or campaign.collection_id
         idea = ProductIdea(
             idea_name=data.idea_name,
             category=data.category,
             campaign_id=data.campaign_id,
+            shop_concept_id=shop_concept_id,
+            collection_id=collection_id,
             source_platform=data.source_platform,
             source_url=data.source_url,
             rough_supplier_cost=data.rough_supplier_cost,
@@ -194,6 +203,8 @@ class DiscoveryService:
             idea_name=idea.idea_name,
             category=idea.category,
             campaign_id=idea.campaign_id,
+            shop_concept_id=idea.shop_concept_id,
+            collection_id=idea.collection_id,
             source_platform=idea.source_platform,
             source_url=idea.source_url,
             rough_supplier_cost=idea.rough_supplier_cost,
@@ -210,6 +221,8 @@ class DiscoveryService:
                 idea_name=data.idea_name,
                 category=data.category,
                 campaign_id=data.campaign_id,
+                shop_concept_id=data.shop_concept_id,
+                collection_id=data.collection_id,
                 source_platform=data.source_platform,
                 source_url=data.source_url,
                 rough_supplier_cost=data.rough_supplier_cost,
@@ -319,6 +332,8 @@ class DiscoveryService:
         product = product_service.create_product(
             ProductCreate(
                 name=idea.idea_name,
+                shop_concept_id=idea.shop_concept_id,
+                collection_id=idea.collection_id,
                 category=idea.category,
                 subcategory=None,
                 description="\n".join(
@@ -477,6 +492,8 @@ class DiscoveryService:
             "idea_name": idea.idea_name,
             "category": idea.category,
             "campaign_id": str(idea.campaign_id) if idea.campaign_id else None,
+            "shop_concept_id": str(idea.shop_concept_id) if idea.shop_concept_id else None,
+            "collection_id": str(idea.collection_id) if idea.collection_id else None,
             "source_platform": idea.source_platform,
             "source_url": idea.source_url,
             "rough_supplier_cost": float(idea.rough_supplier_cost) if idea.rough_supplier_cost is not None else None,

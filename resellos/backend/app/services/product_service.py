@@ -30,6 +30,8 @@ class ProductService:
             id=uuid.uuid4(),
             sku=sku,
             name=product_data.name,
+            shop_concept_id=product_data.shop_concept_id,
+            collection_id=product_data.collection_id,
             category=product_data.category,
             subcategory=product_data.subcategory,
             description=product_data.description,

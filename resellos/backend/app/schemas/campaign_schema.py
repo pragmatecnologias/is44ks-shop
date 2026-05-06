@@ -15,6 +15,8 @@ CampaignTaskStatus = str
 
 class DiscoveryCampaignCreate(BaseModel):
     name: str = Field(..., min_length=1, max_length=300)
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     category: Optional[str] = None
     goal: Optional[str] = None
     constraints_json: dict[str, Any] = Field(default_factory=dict)
@@ -27,6 +29,8 @@ class DiscoveryCampaignCreate(BaseModel):
 
 class DiscoveryCampaignUpdate(BaseModel):
     name: Optional[str] = None
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     category: Optional[str] = None
     goal: Optional[str] = None
     constraints_json: Optional[dict[str, Any]] = None
@@ -40,6 +44,8 @@ class DiscoveryCampaignUpdate(BaseModel):
 class DiscoveryCampaignResponse(BaseModel):
     id: uuid.UUID
     name: str
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     category: Optional[str] = None
     goal: Optional[str] = None
     constraints_json: dict[str, Any] = Field(default_factory=dict)
@@ -48,6 +54,8 @@ class DiscoveryCampaignResponse(BaseModel):
     max_products_to_promote: int = 0
     status: CampaignStatus
     created_by: Optional[str] = None
+    shop_concept_name: Optional[str] = None
+    collection_name: Optional[str] = None
     report_generated_at: Optional[datetime] = None
     created_at: datetime
     updated_at: datetime
@@ -108,6 +116,8 @@ class DiscoveryCampaignIdeaSummary(BaseModel):
     id: uuid.UUID
     idea_name: str
     category: Optional[str] = None
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     status: str
     quick_scan_verdict: Optional[str] = None
     buy_readiness_status: str = "NOT_READY"
@@ -121,6 +131,8 @@ class DiscoveryCampaignProductSummary(BaseModel):
     id: uuid.UUID
     name: str
     category: Optional[str] = None
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     status: str
     research_verdict: Optional[str] = None
     buy_readiness_status: Optional[str] = None
@@ -133,6 +145,10 @@ class DiscoveryCampaignProductSummary(BaseModel):
 
 class DiscoveryCampaignReportResponse(BaseModel):
     campaign_id: uuid.UUID
+    shop_concept_id: Optional[uuid.UUID] = None
+    shop_concept_name: Optional[str] = None
+    collection_id: Optional[uuid.UUID] = None
+    collection_name: Optional[str] = None
     total_ideas: int
     rejected_ideas: int
     promising_ideas: int
@@ -150,6 +166,10 @@ class DiscoveryCampaignReportResponse(BaseModel):
     products_with_trend_research: int = 0
     products_with_evergreen_trend: int = 0
     products_with_weak_landed_cost_ratio: int = 0
+    portfolio_items_total: int = 0
+    portfolio_items_by_role: dict[str, int] = Field(default_factory=dict)
+    portfolio_items_by_status: dict[str, int] = Field(default_factory=dict)
+    portfolio_collection_gaps: list[str] = Field(default_factory=list)
     external_jobs_total: int = 0
     external_jobs_pending_count: int = 0
     external_jobs_imported_count: int = 0

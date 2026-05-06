@@ -40,6 +40,14 @@ import type {
   ProductTrendResearch,
   ProductTrendResearchInput,
   ProductTrendResearchVerifyInput,
+  PortfolioItem,
+  PortfolioItemStatus,
+  PortfolioRole,
+  ProductCollection,
+  ShopConcept,
+  ShopConceptDetail,
+  ShopPortfolioReport,
+  PortfolioContext,
   ValidationChecklistResponse,
 } from './types';
 
@@ -665,6 +673,131 @@ export async function addIdeaToCampaign(
     method: 'POST',
     body: JSON.stringify({ ...data, campaign_id: campaignId }),
   });
+}
+
+export async function listShopConcepts(): Promise<ShopConcept[]> {
+  return requestJson<ShopConcept[]>('/api/portfolio/shops');
+}
+
+export async function createShopConcept(data: {
+  name: string;
+  description?: string | null;
+  target_customer?: string | null;
+  category?: string | null;
+  price_min?: number | null;
+  price_max?: number | null;
+  avoid_list_json?: Record<string, unknown>;
+  preferred_attributes_json?: Record<string, unknown>;
+  brand_angle?: string | null;
+  status?: string;
+}): Promise<ShopConcept> {
+  return requestJson<ShopConcept>('/api/portfolio/shops', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function getShopConcept(shopId: string): Promise<ShopConceptDetail> {
+  return requestJson<ShopConceptDetail>(`/api/portfolio/shops/${shopId}`);
+}
+
+export async function updateShopConcept(
+  shopId: string,
+  data: Partial<{
+    name: string;
+    description: string | null;
+    target_customer: string | null;
+    category: string | null;
+    price_min: number | null;
+    price_max: number | null;
+    avoid_list_json: Record<string, unknown>;
+    preferred_attributes_json: Record<string, unknown>;
+    brand_angle: string | null;
+    status: string;
+  }>,
+): Promise<ShopConcept> {
+  return requestJson<ShopConcept>(`/api/portfolio/shops/${shopId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function createProductCollection(
+  shopId: string,
+  data: {
+    shop_concept_id?: string | null;
+    name: string;
+    theme?: string | null;
+    target_problem?: string | null;
+    description?: string | null;
+    status?: string;
+  },
+): Promise<ProductCollection> {
+  return requestJson<ProductCollection>(`/api/portfolio/shops/${shopId}/collections`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function updateProductCollection(
+  collectionId: string,
+  data: Partial<{
+    shop_concept_id: string | null;
+    name: string;
+    theme: string | null;
+    target_problem: string | null;
+    description: string | null;
+    status: string;
+  }>,
+): Promise<ProductCollection> {
+  return requestJson<ProductCollection>(`/api/portfolio/collections/${collectionId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function addPortfolioItem(
+  shopId: string,
+  data: {
+    shop_concept_id?: string | null;
+    collection_id?: string | null;
+    idea_id?: string | null;
+    product_id?: string | null;
+    role?: PortfolioRole;
+    status?: PortfolioItemStatus;
+    assortment_fit_score?: number;
+    bundle_potential_score?: number;
+    notes?: string | null;
+  },
+): Promise<PortfolioItem> {
+  return requestJson<PortfolioItem>(`/api/portfolio/shops/${shopId}/items`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function updatePortfolioItem(
+  itemId: string,
+  data: Partial<{
+    shop_concept_id: string | null;
+    collection_id: string | null;
+    idea_id: string | null;
+    product_id: string | null;
+    role: PortfolioRole;
+    status: PortfolioItemStatus;
+    assortment_fit_score: number;
+    bundle_potential_score: number;
+    notes: string | null;
+  }>,
+): Promise<PortfolioItem> {
+  return requestJson<PortfolioItem>(`/api/portfolio/items/${itemId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function getShopPortfolioReport(shopId: string): Promise<ShopPortfolioReport> {
+  return requestJson<ShopPortfolioReport>(`/api/portfolio/shops/${shopId}/report`);
 }
 
 export async function runExternalResearchGoogleShopping(

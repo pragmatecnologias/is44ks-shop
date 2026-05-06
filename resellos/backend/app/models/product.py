@@ -12,6 +12,8 @@ class Product(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     sku = Column(String(100), unique=True, nullable=False)
     name = Column(Text, nullable=False)
+    shop_concept_id = Column(UUID(as_uuid=True), ForeignKey("shop_concepts.id"), nullable=True)
+    collection_id = Column(UUID(as_uuid=True), ForeignKey("product_collections.id"), nullable=True)
     category = Column(String(100))
     subcategory = Column(String(100))
     description = Column(Text)
@@ -24,6 +26,8 @@ class Product(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    shop_concept = relationship("ShopConcept", back_populates="products")
+    collection = relationship("ProductCollection", back_populates="products")
     sources = relationship("ProductSource", back_populates="product", cascade="all, delete-orphan")
     marketplace_research = relationship("MarketplaceResearch", back_populates="product", cascade="all, delete-orphan")
     competitor_listings = relationship("CompetitorListing", back_populates="product", cascade="all, delete-orphan")
@@ -38,3 +42,4 @@ class Product(Base):
     demand_research = relationship("ProductDemandResearch", back_populates="product", cascade="all, delete-orphan")
     trend_research = relationship("ProductTrendResearch", back_populates="product", cascade="all, delete-orphan")
     validation_summary = relationship("ProductValidationSummary", back_populates="product", cascade="all, delete-orphan", uselist=False)
+    portfolio_items = relationship("PortfolioItem", back_populates="product", cascade="all, delete-orphan")

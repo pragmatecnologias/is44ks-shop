@@ -15,6 +15,8 @@ class DiscoveryCampaign(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(String(300), nullable=False)
+    shop_concept_id = Column(UUID(as_uuid=True), ForeignKey("shop_concepts.id"), nullable=True)
+    collection_id = Column(UUID(as_uuid=True), ForeignKey("product_collections.id"), nullable=True)
     category = Column(String(120), nullable=True)
     goal = Column(Text, nullable=True)
     constraints_json = Column(JSON, nullable=True)
@@ -28,6 +30,8 @@ class DiscoveryCampaign(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    shop_concept = relationship("ShopConcept", back_populates="campaigns")
+    collection = relationship("ProductCollection", back_populates="campaigns")
     ideas = relationship("ProductIdea", back_populates="campaign", cascade="all, delete-orphan")
     tasks = relationship("DiscoveryCampaignTask", back_populates="campaign", cascade="all, delete-orphan")
     research_jobs = relationship("ExternalResearchJob", back_populates="campaign", cascade="all, delete-orphan")

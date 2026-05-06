@@ -15,12 +15,14 @@ from app.main import app as fastapi_app
 from app.models.external_research import ExternalResearchJob
 from app.db import Base, engine
 from app.schemas.campaign_schema import DiscoveryCampaignCreate, DiscoveryCampaignTaskCreate, DiscoveryCampaignTaskUpdate
+from app.schemas.portfolio_schema import PortfolioItemCreate, ProductCollectionCreate, ShopConceptCreate
 from app.schemas.validation_schema import ProductDemandResearchCreate, ProductTrendResearchCreate, ProductDemandResearchVerifyRequest, ProductTrendResearchVerifyRequest
 from app.schemas.product_schema import ProductIdeaCreate
 from app.services.campaign_service import CampaignService
 from app.services.capture_service import CaptureService
 from app.services.discovery_service import DiscoveryService
 from app.services.demand_research_service import DemandResearchService
+from app.services.portfolio_service import PortfolioService
 from app.services.trend_research_service import TrendResearchService
 
 
@@ -493,6 +495,112 @@ class CampaignServiceTests(unittest.TestCase):
         self.assertEqual(report.external_jobs_failed_count, 0)
         # The report should suggest polling, not report failure
         self.assertIsNotNone(report.external_research_next_action)
+
+    def test_portfolio_concept_inheritance_and_report(self) -> None:
+        portfolio = PortfolioService(self.session)
+        campaign_service = CampaignService(self.session)
+
+        shop = portfolio.create_shop_concept(
+            ShopConceptCreate(
+                name="Practical Pet Home",
+                category="Pet accessories",
+                target_customer="Pet owners who want cleaner homes.",
+                status="ACTIVE",
+            )
+        )
+        collection = portfolio.create_collection(
+            shop.id,
+            ProductCollectionCreate(
+                name="Pet Hair Cleanup",
+                theme="Home-cleaning accessories",
+                target_problem="Remove hair from furniture and clothes.",
+            ),
+        )
+        campaign = campaign_service.create_campaign(
+            DiscoveryCampaignCreate(
+                name="Portfolio-aligned campaign",
+                category="Pet accessories",
+                shop_concept_id=shop.id,
+                collection_id=collection.id,
+                max_ideas=2,
+                max_products_to_promote=1,
+            )
+        )
+        idea = campaign_service.add_idea_to_campaign(
+            campaign.id,
+            ProductIdeaCreate(
+                idea_name="Reusable pet hair remover roller",
+                category="Pet accessories",
+                campaign_id=campaign.id,
+                source_platform="Manual",
+                why_interesting="Reusable pet accessory.",
+            ),
+        )
+        self.assertEqual(idea.shop_concept_id, shop.id)
+        self.assertEqual(idea.collection_id, collection.id)
+
+        product = campaign_service.discovery.promote_to_product(idea.id)
+        self.assertIsNotNone(product)
+        self.assertEqual(product.shop_concept_id, shop.id)
+        self.assertEqual(product.collection_id, collection.id)
+
+        item = portfolio.add_portfolio_item(
+            shop.id,
+            PortfolioItemCreate(
+                collection_id=collection.id,
+                product_id=product.id,
+                role="HERO",
+                status="CONSIDERING",
+                assortment_fit_score=82,
+                bundle_potential_score=74,
+                notes="Hero candidate for Pet Hair Cleanup.",
+            ),
+        )
+        self.assertEqual(item.shop_concept_id, shop.id)
+        self.assertEqual(item.collection_id, collection.id)
+        report = portfolio.get_shop_report(shop.id)
+        self.assertEqual(report["shop_concept_id"], str(shop.id))
+        self.assertEqual(report["total_items"], 1)
+        self.assertEqual(report["items_by_role"]["HERO"], 1)
+        self.assertIn("No sample-ready product yet.", report["collection_gaps"])
+
+    def test_portfolio_detail_and_product_context_are_exposed(self) -> None:
+        portfolio = PortfolioService(self.session)
+        shop = portfolio.create_shop_concept(ShopConceptCreate(name="Practical Pet Home", category="Pet accessories"))
+        collection = portfolio.create_collection(shop.id, ProductCollectionCreate(name="Walk & Travel"))
+        product_service = PortfolioService(self.session)
+        # Reuse product service via direct product creation through discovery promotion for consistent SKU generation.
+        campaign_service = CampaignService(self.session)
+        campaign = campaign_service.create_campaign(
+            DiscoveryCampaignCreate(
+                name="Portfolio context campaign",
+                category="Pet accessories",
+                shop_concept_id=shop.id,
+                collection_id=collection.id,
+            )
+        )
+        idea = campaign_service.add_idea_to_campaign(
+            campaign.id,
+            ProductIdeaCreate(
+                idea_name="Dog waste bag holder",
+                category="Pet accessories",
+                campaign_id=campaign.id,
+                source_platform="Manual",
+                why_interesting="Tiny travel add-on.",
+            ),
+        )
+        product = campaign_service.discovery.promote_to_product(idea.id)
+        self.assertIsNotNone(product)
+        context = portfolio.get_product_portfolio_context(product.id)
+        self.assertIsNotNone(context)
+        self.assertIsNotNone(context["shop_concept"])
+        self.assertEqual(context["shop_concept"]["id"], str(shop.id))
+        self.assertEqual(context["collection"]["id"], str(collection.id))
+
+        detail = portfolio.get_shop_detail(shop.id)
+        self.assertEqual(detail.shop_concept.id, shop.id)
+        self.assertEqual(len(detail.collections), 1)
+        self.assertEqual(len(detail.portfolio_items), 0)
 
 
 if __name__ == "__main__":

@@ -13,6 +13,15 @@ export type ToolName =
   | 'resellos_get_campaign_report'
   | 'resellos_generate_campaign_next_tasks'
   | 'resellos_add_idea_to_campaign'
+  | 'resellos_create_shop_concept'
+  | 'resellos_list_shop_concepts'
+  | 'resellos_get_shop_concept'
+  | 'resellos_update_shop_concept'
+  | 'resellos_create_product_collection'
+  | 'resellos_update_product_collection'
+  | 'resellos_add_portfolio_item'
+  | 'resellos_update_portfolio_item'
+  | 'resellos_get_shop_portfolio_report'
   | 'resellos_run_dataforseo_google_shopping'
   | 'resellos_poll_external_research_job'
   | 'resellos_list_evidence_candidates'
@@ -72,6 +81,8 @@ export const researchTasksSchema = z.object({
 
 export const createCampaignSchema = z.object({
   name: z.string().min(1),
+  shop_concept_id: z.string().uuid().optional(),
+  collection_id: z.string().uuid().optional(),
   category: z.string().optional(),
   goal: z.string().optional(),
   constraints_json: z.record(z.string(), z.unknown()).default({}),
@@ -108,6 +119,85 @@ export const updateCampaignTaskSchema = z.object({
 
 export const addCampaignIdeaSchema = createDiscoveryIdeaSchema.extend({
   campaign_id: z.string().uuid(),
+});
+
+export const shopConceptSchema = z.object({
+  name: z.string().min(1),
+  description: z.string().optional(),
+  target_customer: z.string().optional(),
+  category: z.string().optional(),
+  price_min: z.number().nullable().optional(),
+  price_max: z.number().nullable().optional(),
+  avoid_list_json: z.record(z.string(), z.unknown()).default({}),
+  preferred_attributes_json: z.record(z.string(), z.unknown()).default({}),
+  brand_angle: z.string().optional(),
+  status: z.enum(['DRAFT', 'ACTIVE', 'PAUSED']).default('DRAFT'),
+});
+
+export const updateShopConceptSchema = z.object({
+  shop_id: z.string().uuid(),
+  name: z.string().min(1).optional(),
+  description: z.string().optional(),
+  target_customer: z.string().optional(),
+  category: z.string().optional(),
+  price_min: z.number().nullable().optional(),
+  price_max: z.number().nullable().optional(),
+  avoid_list_json: z.record(z.string(), z.unknown()).optional(),
+  preferred_attributes_json: z.record(z.string(), z.unknown()).optional(),
+  brand_angle: z.string().optional(),
+  status: z.enum(['DRAFT', 'ACTIVE', 'PAUSED']).optional(),
+});
+
+export const getShopConceptSchema = z.object({
+  shop_id: z.string().uuid(),
+});
+
+export const productCollectionSchema = z.object({
+  shop_concept_id: z.string().uuid(),
+  name: z.string().min(1),
+  theme: z.string().optional(),
+  target_problem: z.string().optional(),
+  description: z.string().optional(),
+  status: z.enum(['DRAFT', 'ACTIVE', 'PAUSED']).default('DRAFT'),
+});
+
+export const updateProductCollectionSchema = z.object({
+  collection_id: z.string().uuid(),
+  shop_concept_id: z.string().uuid().optional(),
+  name: z.string().min(1).optional(),
+  theme: z.string().optional(),
+  target_problem: z.string().optional(),
+  description: z.string().optional(),
+  status: z.enum(['DRAFT', 'ACTIVE', 'PAUSED']).optional(),
+});
+
+export const portfolioItemSchema = z.object({
+  shop_concept_id: z.string().uuid(),
+  collection_id: z.string().uuid().optional(),
+  idea_id: z.string().uuid().optional(),
+  product_id: z.string().uuid().optional(),
+  role: z.enum(['CONSIDERING', 'HERO', 'ADD_ON', 'BUNDLE_SUPPORT', 'TRAFFIC', 'PROFIT', 'TEST', 'REJECTED']).default('CONSIDERING'),
+  status: z.enum(['CONSIDERING', 'RESEARCHING', 'SAMPLE_READY', 'SAMPLED', 'REJECTED']).default('CONSIDERING'),
+  assortment_fit_score: z.number().int().default(0),
+  bundle_potential_score: z.number().int().default(0),
+  notes: z.string().optional(),
+});
+
+export const updatePortfolioItemSchema = z.object({
+  item_id: z.string().uuid(),
+  shop_concept_id: z.string().uuid().optional(),
+  collection_id: z.string().uuid().optional(),
+  idea_id: z.string().uuid().optional(),
+  product_id: z.string().uuid().optional(),
+  role: z.enum(['CONSIDERING', 'HERO', 'ADD_ON', 'BUNDLE_SUPPORT', 'TRAFFIC', 'PROFIT', 'TEST', 'REJECTED']).optional(),
+  status: z.enum(['CONSIDERING', 'RESEARCHING', 'SAMPLE_READY', 'SAMPLED', 'REJECTED']).optional(),
+  assortment_fit_score: z.number().int().optional(),
+  bundle_potential_score: z.number().int().optional(),
+  notes: z.string().optional(),
+});
+
+export const shopPortfolioReportSchema = z.object({
+  shop_id: z.string().uuid(),
 });
 
 export const dataForSeoSchema = z.object({
@@ -332,6 +422,15 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   { name: 'resellos_get_campaign_report', description: 'Generate or read the current campaign report.', inputSchema: campaignIdSchema, jsonSchema: z.toJSONSchema(campaignIdSchema) as Record<string, unknown> },
   { name: 'resellos_generate_campaign_next_tasks', description: 'Generate the next suggested tasks for a discovery campaign.', inputSchema: campaignIdSchema, jsonSchema: z.toJSONSchema(campaignIdSchema) as Record<string, unknown> },
   { name: 'resellos_add_idea_to_campaign', description: 'Create a new discovery idea inside a campaign.', inputSchema: addCampaignIdeaSchema, jsonSchema: z.toJSONSchema(addCampaignIdeaSchema) as Record<string, unknown> },
+  { name: 'resellos_create_shop_concept', description: 'Create a shop concept for assortment planning.', inputSchema: shopConceptSchema, jsonSchema: z.toJSONSchema(shopConceptSchema) as Record<string, unknown> },
+  { name: 'resellos_list_shop_concepts', description: 'List shop concepts.', inputSchema: z.object({}).strict(), jsonSchema: z.toJSONSchema(z.object({}).strict()) as Record<string, unknown> },
+  { name: 'resellos_get_shop_concept', description: 'Get a shop concept and portfolio detail.', inputSchema: getShopConceptSchema, jsonSchema: z.toJSONSchema(getShopConceptSchema) as Record<string, unknown> },
+  { name: 'resellos_update_shop_concept', description: 'Update a shop concept.', inputSchema: updateShopConceptSchema, jsonSchema: z.toJSONSchema(updateShopConceptSchema) as Record<string, unknown> },
+  { name: 'resellos_create_product_collection', description: 'Create a product collection under a shop concept.', inputSchema: productCollectionSchema, jsonSchema: z.toJSONSchema(productCollectionSchema) as Record<string, unknown> },
+  { name: 'resellos_update_product_collection', description: 'Update a product collection.', inputSchema: updateProductCollectionSchema, jsonSchema: z.toJSONSchema(updateProductCollectionSchema) as Record<string, unknown> },
+  { name: 'resellos_add_portfolio_item', description: 'Add an idea or product to a shop portfolio.', inputSchema: portfolioItemSchema, jsonSchema: z.toJSONSchema(portfolioItemSchema) as Record<string, unknown> },
+  { name: 'resellos_update_portfolio_item', description: 'Update a portfolio item.', inputSchema: updatePortfolioItemSchema, jsonSchema: z.toJSONSchema(updatePortfolioItemSchema) as Record<string, unknown> },
+  { name: 'resellos_get_shop_portfolio_report', description: 'Get a shop portfolio report.', inputSchema: shopPortfolioReportSchema, jsonSchema: z.toJSONSchema(shopPortfolioReportSchema) as Record<string, unknown> },
   { name: 'resellos_run_dataforseo_google_shopping', description: 'Run one controlled Google Shopping DataForSEO query.', inputSchema: dataForSeoSchema, jsonSchema: z.toJSONSchema(dataForSeoSchema) as Record<string, unknown> },
   { name: 'resellos_poll_external_research_job', description: 'Poll a DataForSEO job and import candidates when ready.', inputSchema: pollJobSchema, jsonSchema: z.toJSONSchema(pollJobSchema) as Record<string, unknown> },
   { name: 'resellos_list_evidence_candidates', description: 'List pending or filtered evidence candidates.', inputSchema: listCandidatesSchema, jsonSchema: z.toJSONSchema(listCandidatesSchema) as Record<string, unknown> },

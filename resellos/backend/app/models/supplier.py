@@ -204,6 +204,8 @@ class ProductIdea(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     idea_name = Column(Text, nullable=False)
     category = Column(String(120))
+    shop_concept_id = Column(UUID(as_uuid=True), ForeignKey("shop_concepts.id"), nullable=True)
+    collection_id = Column(UUID(as_uuid=True), ForeignKey("product_collections.id"), nullable=True)
     source_platform = Column(String(100))
     source_url = Column(Text)
     rough_supplier_cost = Column(Numeric(10, 2))
@@ -225,9 +227,12 @@ class ProductIdea(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     campaign = relationship("DiscoveryCampaign", back_populates="ideas")
+    shop_concept = relationship("ShopConcept", back_populates="ideas")
+    collection = relationship("ProductCollection", back_populates="ideas")
     promoted_product = relationship("Product", foreign_keys=[promoted_product_id])
     vision_reports = relationship("VisionAnalysisReport", back_populates="idea", cascade="all, delete-orphan")
     external_research_jobs = relationship("ExternalResearchJob", back_populates="idea", cascade="all, delete-orphan")
+    portfolio_items = relationship("PortfolioItem", back_populates="idea", cascade="all, delete-orphan")
 
 
 class DiscoveryTask(Base):

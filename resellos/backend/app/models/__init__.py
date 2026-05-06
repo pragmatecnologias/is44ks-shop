@@ -1,4 +1,5 @@
 from app.db import Base
+from app.models.portfolio import ShopConcept, ProductCollection, PortfolioItem
 from app.models.product import Product
 from app.models.campaign import DiscoveryCampaign, DiscoveryCampaignTask
 from app.models.product_validation import ProductDemandResearch, ProductTrendResearch, ProductValidationSummary
@@ -24,6 +25,9 @@ from app.models.supplier import MarketplaceResearch as MR, CompetitorListing as 
 
 __all__ = [
     "Base",
+    "ShopConcept",
+    "ProductCollection",
+    "PortfolioItem",
     "Product",
     "DiscoveryCampaign",
     "DiscoveryCampaignTask",

@@ -6,6 +6,8 @@ import uuid
 
 class ProductCreate(BaseModel):
     name: str = Field(..., min_length=1, max_length=500)
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     category: Optional[str] = None
     subcategory: Optional[str] = None
     description: Optional[str] = None
@@ -14,6 +16,8 @@ class ProductCreate(BaseModel):
 
 class ProductUpdate(BaseModel):
     name: Optional[str] = None
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     category: Optional[str] = None
     subcategory: Optional[str] = None
     description: Optional[str] = None
@@ -29,6 +33,8 @@ class ProductResponse(BaseModel):
     id: uuid.UUID
     sku: str
     name: str
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     category: Optional[str] = None
     subcategory: Optional[str] = None
     description: Optional[str] = None
@@ -250,6 +256,7 @@ class ResearchRunResponse(BaseModel):
 
 class ResearchCockpitResponse(BaseModel):
     product: ProductResponse
+    portfolio_context: Optional[dict] = None
     sources: list[SupplierResponse] = Field(default_factory=list)
     marketplace_research: list[dict] = Field(default_factory=list)
     marketplace_evidence: list[dict] = Field(default_factory=list)
@@ -283,6 +290,8 @@ class ProductIdeaCreate(BaseModel):
     idea_name: str = Field(..., min_length=1, max_length=300)
     category: Optional[str] = None
     campaign_id: Optional[uuid.UUID] = None
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     source_platform: Optional[str] = None
     source_url: Optional[str] = None
     rough_supplier_cost: Optional[float] = None
@@ -297,6 +306,8 @@ class ProductIdeaUpdate(BaseModel):
     idea_name: Optional[str] = None
     category: Optional[str] = None
     campaign_id: Optional[uuid.UUID] = None
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     source_platform: Optional[str] = None
     source_url: Optional[str] = None
     rough_supplier_cost: Optional[float] = None
@@ -347,6 +358,8 @@ class ProductIdeaResponse(BaseModel):
     idea_name: str
     category: Optional[str] = None
     campaign_id: Optional[uuid.UUID] = None
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     source_platform: Optional[str] = None
     source_url: Optional[str] = None
     rough_supplier_cost: Optional[float] = None
@@ -379,6 +392,8 @@ class ProductIdeaQuickScanRequest(BaseModel):
     idea_name: str = Field(..., min_length=1, max_length=300)
     category: Optional[str] = None
     campaign_id: Optional[uuid.UUID] = None
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     source_platform: Optional[str] = None
     source_url: Optional[str] = None
     rough_supplier_cost: Optional[float] = None
@@ -408,6 +423,8 @@ class OpportunityBoardRow(BaseModel):
     entity_type: str
     title: str
     category: Optional[str] = None
+    shop_concept_id: Optional[uuid.UUID] = None
+    collection_id: Optional[uuid.UUID] = None
     discovery_completeness_score: int = 0
     research_completeness_score: int = 0
     research_verdict: Optional[str] = None

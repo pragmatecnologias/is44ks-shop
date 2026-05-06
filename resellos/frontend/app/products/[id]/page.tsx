@@ -147,6 +147,7 @@ export default function ProductDetailPage() {
   const profitRows = cockpit?.profit_analyses ?? [];
   const reports = cockpit?.agent_reports ?? [];
   const discoveryContext = getDiscoveryContext(cockpit?.discovery_context ?? reports.find((report) => report.agent_name === 'discovery_context')?.output_json);
+  const portfolioContext = cockpit?.portfolio_context ?? null;
   const competition = cockpit?.competition ?? null;
   const reorder = cockpit?.reorder ?? null;
   const researchVerdict = decision.research_verdict || 'NEEDS_MORE_RESEARCH';
@@ -529,6 +530,47 @@ export default function ProductDetailPage() {
                 <Checklist items={discoveryRiskFlags.length ? discoveryRiskFlags : ['No discovery risk flags recorded.']} />
               </div>
             </div>
+          </Panel>
+
+          <Panel title="Shop Portfolio" icon={Package}>
+            {portfolioContext ? (
+              <div className="space-y-3">
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                  <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Shop concept</div>
+                  <div className="mt-2 text-sm font-medium text-white">{portfolioContext.shop_concept?.name || 'Unnamed concept'}</div>
+                  <div className="mt-1 text-xs text-zinc-400">{portfolioContext.shop_concept?.category || 'Uncategorized'} · {portfolioContext.shop_concept?.status || 'DRAFT'}</div>
+                </div>
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                  <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Collection</div>
+                  <div className="mt-2 text-sm font-medium text-white">{portfolioContext.collection?.name || 'No collection'}</div>
+                  <div className="mt-1 text-xs text-zinc-400">{portfolioContext.collection?.theme || portfolioContext.collection?.target_problem || 'No collection theme recorded.'}</div>
+                </div>
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                  <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Portfolio items</div>
+                  {portfolioContext.portfolio_items?.length ? (
+                    <div className="mt-2 space-y-2">
+                      {portfolioContext.portfolio_items.slice(0, 4).map((item) => (
+                        <div key={item.id} className="rounded-xl border border-zinc-800 bg-zinc-950/80 p-3 text-xs text-zinc-300">
+                          <div className="font-medium text-white">{item.product_name || item.idea_name || 'Portfolio item'}</div>
+                          <div className="mt-1">
+                            {item.role} · {item.status} · fit {item.assortment_fit_score}
+                          </div>
+                        </div>
+                      ))}
+                      {portfolioContext.portfolio_items.length > 4 ? (
+                        <div className="text-xs text-zinc-500">+ {portfolioContext.portfolio_items.length - 4} more</div>
+                      ) : null}
+                    </div>
+                  ) : (
+                    <div className="mt-2 text-sm text-zinc-400">No portfolio items linked yet.</div>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-300">
+                No shop portfolio context linked to this product yet.
+              </div>
+            )}
           </Panel>
 
           <Panel title="Missing Evidence" icon={BadgeAlert}>

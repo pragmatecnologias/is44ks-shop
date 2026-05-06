@@ -180,6 +180,12 @@ export default function DiscoveryCampaignDetailPage() {
                 {campaign.category || 'Uncategorized'} · {campaign.status}
               </p>
               <p className="mt-2 max-w-4xl text-sm text-zinc-300">{campaign.goal || 'No goal recorded.'}</p>
+              {(campaign.shop_concept_name || campaign.collection_name || campaign.shop_concept_id || campaign.collection_id) ? (
+                <div className="mt-3 flex flex-wrap gap-2 text-xs text-zinc-300">
+                  <Pill label={`Shop ${campaign.shop_concept_name || campaign.shop_concept_id || '—'}`} />
+                  <Pill label={`Collection ${campaign.collection_name || campaign.collection_id || '—'}`} />
+                </div>
+              ) : null}
             </div>
             <div className="flex flex-wrap gap-3 text-xs text-zinc-300">
               <Pill label={`Budget ${money(campaign.budget_limit_usd)}`} />
@@ -216,11 +222,12 @@ export default function DiscoveryCampaignDetailPage() {
           </div>
         ) : null}
 
-        <section className="grid gap-3 md:grid-cols-4">
+        <section className="grid gap-3 md:grid-cols-5">
           <Metric label="Total ideas" value={String(report.total_ideas)} />
           <Metric label="Promising ideas" value={String(report.promising_ideas)} />
           <Metric label="Promoted products" value={String(report.promoted_products)} />
           <Metric label="DataForSEO spend" value={money(report.dataforseo_spend_estimate)} />
+          <Metric label="Portfolio items" value={String(report.portfolio_items_total ?? 0)} />
         </section>
 
         <section className="rounded-[24px] border border-zinc-800 bg-zinc-950/80 p-5 shadow-xl shadow-black/10">
@@ -247,6 +254,26 @@ export default function DiscoveryCampaignDetailPage() {
             <SummaryBox title="Products by decision" value={formatCounts(report.products_by_decision)} />
             <SummaryBox title="Candidate status" value={formatCounts(report.candidate_count_by_status)} />
           </div>
+          {(report.portfolio_items_total ?? 0) > 0 || (report.portfolio_collection_gaps?.length ?? 0) > 0 ? (
+            <div className="mt-4 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-300">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Portfolio linkage</div>
+                  <div className="mt-1">
+                    {report.portfolio_items_total ?? 0} portfolio item{(report.portfolio_items_total ?? 0) === 1 ? '' : 's'} · {formatCounts(report.portfolio_items_by_role)}
+                  </div>
+                </div>
+                <div className="text-right text-xs text-zinc-400">
+                  {report.shop_concept_name || report.shop_concept_id ? `Shop: ${report.shop_concept_name || report.shop_concept_id}` : 'No shop concept linked'}
+                </div>
+              </div>
+              {report.portfolio_collection_gaps?.length ? (
+                <div className="mt-3 text-xs text-zinc-500">
+                  Gaps: {report.portfolio_collection_gaps.join(' · ')}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
           <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
             <Metric label="Keyword demand ideas" value={String(report.ideas_with_keyword_demand ?? 0)} />
             <Metric label="Trend research ideas" value={String(report.ideas_with_trend_research ?? 0)} />
