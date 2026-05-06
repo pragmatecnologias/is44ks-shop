@@ -9,7 +9,6 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from app.models.external_research import EvidenceCandidate
-from app.models.product import Product
 from app.models.supplier import CompetitorListing, DiscoveryTask, MarketplaceEvidence, ProductSource
 from app.schemas.external_research_schema import (
     EvidenceCandidateRejectRequest,
@@ -84,6 +83,54 @@ class EvidenceCandidateService:
     def get_candidate(self, candidate_id: uuid.UUID) -> EvidenceCandidate | None:
         return self.db.query(EvidenceCandidate).filter(EvidenceCandidate.id == candidate_id).first()
 
+    def _resolve_campaign_from_product(self, product_id: uuid.UUID | None) -> uuid.UUID | None:
+        if not product_id:
+            return None
+        latest_report = (
+            self.db.query(DiscoveryTask)
+            .filter(DiscoveryTask.linked_product_id == product_id)
+            .order_by(DiscoveryTask.created_at.desc())
+            .first()
+        )
+        if latest_report and latest_report.idea and latest_report.idea.campaign_id:
+            return latest_report.idea.campaign_id
+        from app.models.supplier import AgentReport, ProductIdea
+
+        discovery_report = (
+            self.db.query(AgentReport)
+            .filter(AgentReport.product_id == product_id, AgentReport.agent_name == "discovery_context")
+            .order_by(AgentReport.created_at.desc())
+            .first()
+        )
+        if not discovery_report or not discovery_report.output_json:
+            return None
+        raw = _json_load(discovery_report.output_json, {})
+        idea_id = raw.get("idea_id")
+        if not idea_id:
+            return None
+        idea = self.db.query(ProductIdea).filter(ProductIdea.id == uuid.UUID(str(idea_id))).first()
+        return idea.campaign_id if idea else None
+
+    def _resolve_campaign_from_idea(self, idea_id: uuid.UUID | None) -> uuid.UUID | None:
+        if not idea_id:
+            return None
+        from app.models.supplier import ProductIdea
+
+        idea = self.db.query(ProductIdea).filter(ProductIdea.id == idea_id).first()
+        return idea.campaign_id if idea else None
+
+    def _resolve_campaign_from_task(self, task_id: uuid.UUID | None) -> uuid.UUID | None:
+        if not task_id:
+            return None
+        task = self.db.query(DiscoveryTask).filter(DiscoveryTask.id == task_id).first()
+        if not task:
+            return None
+        if task.idea and task.idea.campaign_id:
+            return task.idea.campaign_id
+        if task.linked_product_id:
+            return self._resolve_campaign_from_product(task.linked_product_id)
+        return None
+
     def serialize_candidate(self, candidate: EvidenceCandidate) -> dict[str, Any]:
         return _candidate_payload(candidate)
 
@@ -119,6 +166,12 @@ class EvidenceCandidateService:
             raise HTTPException(
                 status_code=400,
                 detail="A promoted product is required before approving this candidate.",
+            )
+        if candidate.campaign_id is None:
+            candidate.campaign_id = (
+                self._resolve_campaign_from_task(data.task_id)
+                or self._resolve_campaign_from_idea(candidate.idea_id)
+                or self._resolve_campaign_from_product(candidate.product_id or product_id)
             )
 
         created_object_type: str | None = None

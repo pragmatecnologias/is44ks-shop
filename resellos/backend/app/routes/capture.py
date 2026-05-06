@@ -28,6 +28,7 @@ async def manual_capture(
     capture_type: str = Form(...),
     idea_id: uuid.UUID | None = Form(None),
     product_id: uuid.UUID | None = Form(None),
+    task_id: uuid.UUID | None = Form(None),
     url: str | None = Form(None),
     pasted_text: str | None = Form(None),
     notes: str | None = Form(None),
@@ -49,6 +50,7 @@ async def manual_capture(
     candidate, report_id = await service.capture_manual(
         idea_id=idea_id,
         product_id=product_id,
+        task_id=task_id,
         capture_type=capture_type,
         url=url,
         pasted_text=pasted_text,
@@ -59,4 +61,3 @@ async def manual_capture(
         candidate=EvidenceCandidateResponse.model_validate(service.candidate_service.serialize_candidate(candidate)),
         vision_report_id=report_id,
     )
-

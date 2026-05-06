@@ -11,6 +11,7 @@ export type ToolName =
   | 'resellos_create_campaign_task'
   | 'resellos_update_campaign_task'
   | 'resellos_get_campaign_report'
+  | 'resellos_generate_campaign_next_tasks'
   | 'resellos_add_idea_to_campaign'
   | 'resellos_run_dataforseo_google_shopping'
   | 'resellos_poll_external_research_job'
@@ -134,6 +135,7 @@ export const rejectCandidateSchema = z.object({
 export const captureManualEvidenceSchema = z.object({
   idea_id: z.string().uuid().optional(),
   product_id: z.string().uuid().optional(),
+  task_id: z.string().uuid().optional(),
   capture_type: z.enum(['MARKETPLACE_SCREENSHOT', 'SUPPLIER_SCREENSHOT', 'COMPETITOR_SCREENSHOT', 'VISUAL_RISK']),
   url: z.string().optional(),
   pasted_text: z.string().optional(),
@@ -206,6 +208,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   { name: 'resellos_create_campaign_task', description: 'Create a task within a discovery campaign.', inputSchema: createCampaignTaskSchema, jsonSchema: z.toJSONSchema(createCampaignTaskSchema) as Record<string, unknown> },
   { name: 'resellos_update_campaign_task', description: 'Update a discovery campaign task.', inputSchema: updateCampaignTaskSchema, jsonSchema: z.toJSONSchema(updateCampaignTaskSchema) as Record<string, unknown> },
   { name: 'resellos_get_campaign_report', description: 'Generate or read the current campaign report.', inputSchema: campaignIdSchema, jsonSchema: z.toJSONSchema(campaignIdSchema) as Record<string, unknown> },
+  { name: 'resellos_generate_campaign_next_tasks', description: 'Generate the next suggested tasks for a discovery campaign.', inputSchema: campaignIdSchema, jsonSchema: z.toJSONSchema(campaignIdSchema) as Record<string, unknown> },
   { name: 'resellos_add_idea_to_campaign', description: 'Create a new discovery idea inside a campaign.', inputSchema: addCampaignIdeaSchema, jsonSchema: z.toJSONSchema(addCampaignIdeaSchema) as Record<string, unknown> },
   { name: 'resellos_run_dataforseo_google_shopping', description: 'Run one controlled Google Shopping DataForSEO query.', inputSchema: dataForSeoSchema, jsonSchema: z.toJSONSchema(dataForSeoSchema) as Record<string, unknown> },
   { name: 'resellos_poll_external_research_job', description: 'Poll a DataForSEO job and import candidates when ready.', inputSchema: pollJobSchema, jsonSchema: z.toJSONSchema(pollJobSchema) as Record<string, unknown> },

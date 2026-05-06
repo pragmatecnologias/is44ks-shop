@@ -3,16 +3,20 @@ from __future__ import annotations
 import unittest
 import uuid
 
+from fastapi import HTTPException
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from app.config import settings
 from app.db import Base
+from app.schemas.campaign_schema import DiscoveryCampaignCreate
 from app.models.external_research import EvidenceCandidate, ExternalResearchJob
 from app.models.product import Product
 from app.models.supplier import DiscoveryTask, ProductIdea, MarketplaceEvidence
 from app.schemas.external_research_schema import EvidenceCandidateReviewRequest, ExternalResearchRunRequest
+from app.schemas.product_schema import ProductIdeaCreate
+from app.services.campaign_service import CampaignService
 from app.services.evidence_candidate_service import EvidenceCandidateService
 from app.services.external_research_service import ExternalResearchService
 from app.connectors.dataforseo.mappers import map_google_shopping_item_to_candidate
@@ -185,3 +189,43 @@ class ExternalResearchTests(unittest.TestCase):
         candidates = service.list_candidates(job_id=job_id)
         self.assertEqual(len(candidates), 1)
         self.assertEqual(candidates[0].candidate_type, "MARKETPLACE_EVIDENCE")
+
+    def test_campaign_budget_blocks_paid_dataforseo_job(self) -> None:
+        campaign_service = CampaignService(self.session)
+        campaign = campaign_service.create_campaign(
+            DiscoveryCampaignCreate(
+                name="Pet accessories discovery",
+                category="Pet accessories",
+                budget_limit_usd=0.01,
+                max_ideas=5,
+                max_products_to_promote=2,
+            )
+        )
+        campaign.budget_limit_usd = 0.0
+        self.session.commit()
+        idea = campaign_service.add_idea_to_campaign(
+            campaign.id,
+            ProductIdeaCreate(
+                idea_name="Reusable pet hair remover roller",
+                category="Pet accessories",
+                campaign_id=campaign.id,
+                source_platform="Manual",
+            ),
+        )
+
+        service = ExternalResearchService(self.session)
+        service._dataforseo_client = FakeMerchantClient()
+
+        with self.assertRaises(HTTPException) as ctx:
+            service.run_google_shopping_for_idea(
+                ExternalResearchRunRequest(
+                    idea_id=idea.id,
+                    queries=["pet hair remover roller"],
+                    max_results=20,
+                    queue="standard",
+                )
+            )
+
+        self.assertEqual(ctx.exception.status_code, 400)
+        self.assertIn("Campaign DataForSEO budget reached", ctx.exception.detail)
+        self.assertEqual(service._dataforseo_client.submitted, [])

@@ -139,6 +139,15 @@ class DiscoveryCampaignReportResponse(BaseModel):
     promoted_products: int
     dataforseo_spend_estimate: float
     budget_limit_usd: float
+    spend_remaining: float | None = None
+    budget_used_percent: float = 0.0
+    ideas_by_verdict: dict[str, int] = Field(default_factory=dict)
+    products_by_decision: dict[str, int] = Field(default_factory=dict)
+    candidate_count_by_status: dict[str, int] = Field(default_factory=dict)
+    watchlist_products: list[DiscoveryCampaignProductSummary] = Field(default_factory=list)
+    skip_products: list[DiscoveryCampaignProductSummary] = Field(default_factory=list)
+    ready_for_sample_products: list[DiscoveryCampaignProductSummary] = Field(default_factory=list)
+    next_best_task: str | None = None
     top_ranked_ideas: list[DiscoveryCampaignIdeaSummary] = Field(default_factory=list)
     top_products: list[DiscoveryCampaignProductSummary] = Field(default_factory=list)
     next_actions: list[str] = Field(default_factory=list)

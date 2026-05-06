@@ -9,6 +9,7 @@ from typing import Any
 from sqlalchemy.orm import Session
 
 from app.models.product import Product
+from app.models.campaign import DiscoveryCampaign
 from app.models.supplier import AgentReport, CompetitorListing, DiscoveryTask, MarketplaceEvidence, ProfitAnalysis, ProductIdea, ProductSource
 from app.agents.quick_scan_agent import QuickScanAgent
 from app.services.category_templates import CATEGORY_TEMPLATES
@@ -270,6 +271,21 @@ class DiscoveryService:
             return None
         if idea.promoted_product_id:
             return self.db.query(Product).filter(Product.id == idea.promoted_product_id).first()
+        if idea.campaign_id is not None:
+            campaign = self.db.query(DiscoveryCampaign).filter(DiscoveryCampaign.id == idea.campaign_id).first()
+            if campaign and campaign.max_products_to_promote is not None:
+                promoted_count = (
+                    self.db.query(ProductIdea)
+                    .filter(
+                        ProductIdea.campaign_id == campaign.id,
+                        ProductIdea.promoted_product_id.isnot(None),
+                    )
+                    .count()
+                )
+                if promoted_count >= int(campaign.max_products_to_promote or 0):
+                    from fastapi import HTTPException
+
+                    raise HTTPException(status_code=400, detail="Campaign promoted product limit reached.")
 
         product_service = ProductService(self.db)
         product = product_service.create_product(

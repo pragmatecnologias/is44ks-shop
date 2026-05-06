@@ -155,6 +155,19 @@ export async function getCampaignReport(client: ResellOSClient, campaignId: stri
   };
 }
 
+export async function generateCampaignNextTasks(client: ResellOSClient, campaignId: string, config: AppConfig): Promise<ToolResult> {
+  guardWriteEnabled(config);
+  const tasks = await client.post<any[]>(`/api/discovery/campaigns/${campaignId}/generate-next-tasks`, {});
+  return {
+    ok: true,
+    data: { tasks },
+    summary: `Generated ${tasks.length} next task(s) for campaign ${campaignId}.`,
+    warnings: [],
+    next_recommended_tool: 'resellos_get_discovery_campaign',
+    audit: buildAudit('resellos_generate_campaign_next_tasks', config.actor, { campaign_id: campaignId }),
+  };
+}
+
 export async function addIdeaToCampaign(
   client: ResellOSClient,
   input: {

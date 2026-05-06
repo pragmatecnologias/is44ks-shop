@@ -223,6 +223,37 @@ export default function DiscoveryCampaignDetailPage() {
           <Metric label="DataForSEO spend" value={money(report.dataforseo_spend_estimate)} />
         </section>
 
+        <section className="rounded-[24px] border border-zinc-800 bg-zinc-950/80 p-5 shadow-xl shadow-black/10">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Budget usage</div>
+              <div className="mt-1 text-lg font-semibold text-white">
+                {money(report.dataforseo_spend_estimate)} spent of {money(report.budget_limit_usd)}
+              </div>
+            </div>
+            <div className="text-right text-sm text-zinc-300">
+              <div>Remaining {money(report.spend_remaining)}</div>
+              <div>{Number(report.budget_used_percent || 0).toFixed(1)}% used</div>
+            </div>
+          </div>
+          <div className="mt-3 h-2 overflow-hidden rounded-full bg-zinc-900">
+            <div
+              className="h-full rounded-full bg-indigo-500 transition-all"
+              style={{ width: `${Math.min(100, Number(report.budget_used_percent || 0))}%` }}
+            />
+          </div>
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            <SummaryBox title="Ideas by verdict" value={formatCounts(report.ideas_by_verdict)} />
+            <SummaryBox title="Products by decision" value={formatCounts(report.products_by_decision)} />
+            <SummaryBox title="Candidate status" value={formatCounts(report.candidate_count_by_status)} />
+          </div>
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            <ListBox title="Watchlist products" items={(report.watchlist_products || []).map((product) => `${product.name} · ${product.next_action || product.main_blocker || 'No blocker recorded.'}`)} />
+            <ListBox title="Skip products" items={(report.skip_products || []).map((product) => `${product.name} · ${product.main_blocker || 'Skipped by the pipeline.'}`)} />
+            <ListBox title="Ready products" items={(report.ready_for_sample_products || []).map((product) => `${product.name} · ${product.next_action || 'Ready for sample.'}`)} />
+          </div>
+        </section>
+
         <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
           <section className="rounded-[24px] border border-zinc-800 bg-zinc-950/80 p-5 shadow-xl shadow-black/10">
             <div className="mb-4 flex items-center gap-2">
@@ -468,6 +499,12 @@ export default function DiscoveryCampaignDetailPage() {
             </div>
             <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-200">Next Actions</h2>
           </div>
+          {report.next_best_task ? (
+            <div className="mb-3 rounded-2xl border border-indigo-500/20 bg-indigo-500/10 p-4 text-sm text-indigo-100">
+              <div className="text-[10px] uppercase tracking-[0.16em] text-indigo-200/80">Next best task</div>
+              <div className="mt-1 font-medium">{report.next_best_task}</div>
+            </div>
+          ) : null}
           <div className="space-y-2">
             {report.next_actions.length ? (
               report.next_actions.map((action) => (
@@ -564,4 +601,39 @@ function EmptyState({ title, description }: { title: string; description: string
 function money(value?: number | null) {
   if (value == null) return '—';
   return `$${Number(value).toFixed(2)}`;
+}
+
+function formatCounts(value?: Record<string, number> | null) {
+  if (!value || !Object.keys(value).length) return '—';
+  return Object.entries(value)
+    .map(([key, count]) => `${key}: ${count}`)
+    .join(' · ');
+}
+
+function SummaryBox({ title, value }: { title: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+      <div className="text-[10px] uppercase tracking-[0.16em] text-zinc-500">{title}</div>
+      <div className="mt-2 text-sm text-zinc-200">{value}</div>
+    </div>
+  );
+}
+
+function ListBox({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+      <div className="text-[10px] uppercase tracking-[0.16em] text-zinc-500">{title}</div>
+      <div className="mt-2 space-y-2">
+        {items.length ? (
+          items.map((item) => (
+            <div key={item} className="rounded-xl border border-zinc-800 bg-zinc-950/80 px-3 py-2 text-sm text-zinc-200">
+              {item}
+            </div>
+          ))
+        ) : (
+          <div className="text-sm text-zinc-500">—</div>
+        )}
+      </div>
+    </div>
+  );
 }

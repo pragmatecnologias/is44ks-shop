@@ -652,6 +652,7 @@ export async function captureManualEvidence(payload: ManualCaptureInput): Promis
   const formData = new FormData();
   if (payload.idea_id) formData.append('idea_id', payload.idea_id);
   if (payload.product_id) formData.append('product_id', payload.product_id);
+  if (payload.task_id) formData.append('task_id', payload.task_id);
   formData.append('capture_type', payload.capture_type);
   if (payload.url) formData.append('url', payload.url);
   if (payload.pasted_text) formData.append('pasted_text', payload.pasted_text);

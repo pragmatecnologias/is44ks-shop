@@ -633,6 +633,15 @@ export interface DiscoveryCampaignReport {
   promoted_products: number;
   dataforseo_spend_estimate: number;
   budget_limit_usd: number;
+  spend_remaining?: number | null;
+  budget_used_percent?: number;
+  ideas_by_verdict?: Record<string, number>;
+  products_by_decision?: Record<string, number>;
+  candidate_count_by_status?: Record<string, number>;
+  watchlist_products?: DiscoveryCampaignProductSummary[];
+  skip_products?: DiscoveryCampaignProductSummary[];
+  ready_for_sample_products?: DiscoveryCampaignProductSummary[];
+  next_best_task?: string | null;
   top_ranked_ideas: DiscoveryCampaignIdeaSummary[];
   top_products: DiscoveryCampaignProductSummary[];
   next_actions: string[];
@@ -670,6 +679,7 @@ export interface ManualCaptureResponse {
 export interface ManualCaptureInput {
   idea_id?: string | null;
   product_id?: string | null;
+  task_id?: string | null;
   capture_type: CaptureType;
   url?: string | null;
   pasted_text?: string | null;

@@ -9,6 +9,8 @@ from fastapi import HTTPException, UploadFile
 from sqlalchemy.orm import Session
 
 from app.config import settings
+from app.models.supplier import AgentReport, DiscoveryTask, ProductIdea
+from app.models.product import Product
 from app.models.external_research import EvidenceCandidate
 from app.schemas.vision_schema import VisionAnalysisType
 from app.services.evidence_candidate_service import EvidenceCandidateService
@@ -26,6 +28,7 @@ class CaptureService:
         *,
         idea_id: uuid.UUID | None = None,
         product_id: uuid.UUID | None = None,
+        task_id: uuid.UUID | None = None,
         capture_type: str,
         url: str | None = None,
         pasted_text: str | None = None,
@@ -62,6 +65,7 @@ class CaptureService:
                 candidate = self._build_candidate_from_vision(
                     idea_id=idea_id,
                     product_id=product_id,
+                    campaign_id=self._resolve_campaign_id(idea_id=idea_id, product_id=product_id, task_id=task_id),
                     capture_type=capture_type,
                     url=url,
                     notes=notes,
@@ -79,6 +83,7 @@ class CaptureService:
                 candidate = self._build_candidate_from_text(
                     idea_id=idea_id,
                     product_id=product_id,
+                    campaign_id=self._resolve_campaign_id(idea_id=idea_id, product_id=product_id, task_id=task_id),
                     capture_type=capture_type,
                     url=url,
                     notes=notes or "Vision capture unavailable; review-only fallback candidate created.",
@@ -100,6 +105,7 @@ class CaptureService:
         candidate = self._build_candidate_from_text(
             idea_id=idea_id,
             product_id=product_id,
+            campaign_id=self._resolve_campaign_id(idea_id=idea_id, product_id=product_id, task_id=task_id),
             capture_type=capture_type,
             url=url,
             notes=notes,
@@ -109,6 +115,54 @@ class CaptureService:
         self.db.commit()
         self.db.refresh(candidate)
         return candidate, None
+
+    def _campaign_id_for_idea(self, idea_id: uuid.UUID | None) -> uuid.UUID | None:
+        if not idea_id:
+            return None
+        idea = self.db.query(ProductIdea).filter(ProductIdea.id == idea_id).first()
+        return idea.campaign_id if idea else None
+
+    def _campaign_id_for_product(self, product_id: uuid.UUID | None) -> uuid.UUID | None:
+        if not product_id:
+            return None
+        latest_discovery = (
+            self.db.query(AgentReport)
+            .filter(AgentReport.product_id == product_id, AgentReport.agent_name == "discovery_context")
+            .order_by(AgentReport.created_at.desc())
+            .first()
+        )
+        if not latest_discovery or not latest_discovery.output_json:
+            return None
+        try:
+            output = json.loads(latest_discovery.output_json) if isinstance(latest_discovery.output_json, str) else latest_discovery.output_json
+        except Exception:
+            return None
+        idea_id = output.get("idea_id")
+        if not idea_id:
+            return None
+        idea = self.db.query(ProductIdea).filter(ProductIdea.id == uuid.UUID(str(idea_id))).first()
+        return idea.campaign_id if idea else None
+
+    def _campaign_id_for_task(self, task_id: uuid.UUID | None) -> uuid.UUID | None:
+        if not task_id:
+            return None
+        task = self.db.query(DiscoveryTask).filter(DiscoveryTask.id == task_id).first()
+        if not task:
+            return None
+        if task.idea and task.idea.campaign_id:
+            return task.idea.campaign_id
+        if task.linked_product_id:
+            return self._campaign_id_for_product(task.linked_product_id)
+        return None
+
+    def _resolve_campaign_id(
+        self,
+        *,
+        idea_id: uuid.UUID | None,
+        product_id: uuid.UUID | None,
+        task_id: uuid.UUID | None = None,
+    ) -> uuid.UUID | None:
+        return self._campaign_id_for_idea(idea_id) or self._campaign_id_for_product(product_id) or self._campaign_id_for_task(task_id)
 
     def _capture_type_to_analysis_type(self, capture_type: str) -> VisionAnalysisType:
         capture_type = capture_type.upper().strip()
@@ -130,6 +184,7 @@ class CaptureService:
         notes: str | None,
         pasted_text: str,
         screenshot_url: str | None = None,
+        campaign_id: uuid.UUID | None = None,
     ) -> EvidenceCandidate:
         capture_type = capture_type.upper().strip()
         evidence_type = "ACTIVE_LISTING"
@@ -154,6 +209,7 @@ class CaptureService:
         return EvidenceCandidate(
             idea_id=idea_id,
             product_id=product_id,
+            campaign_id=campaign_id,
             source="MANUAL_CAPTURE",
             candidate_type=candidate_type,
             marketplace=capture_type.replace("_", " ").title(),
@@ -179,6 +235,7 @@ class CaptureService:
         notes: str | None,
         output: dict[str, Any],
         screenshot_url: str | None,
+        campaign_id: uuid.UUID | None = None,
     ) -> EvidenceCandidate:
         capture_type = capture_type.upper().strip()
         candidate_type = self._candidate_type_for_capture(capture_type)
@@ -187,6 +244,7 @@ class CaptureService:
         return EvidenceCandidate(
             idea_id=idea_id,
             product_id=product_id,
+            campaign_id=campaign_id,
             source="VISION",
             candidate_type=candidate_type,
             marketplace=output.get("marketplace") or output.get("supplier_platform") or capture_type.replace("_", " ").title(),

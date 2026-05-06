@@ -234,6 +234,34 @@ class CampaignService:
         promising_ideas = sum(1 for idea in ideas if (idea.quick_scan_verdict or "").upper() == "PROMISING_FOR_RESEARCH")
         promoted_products = len(products)
         spend_estimate = round(sum(float(job.cost_estimate or 0) for job in jobs), 4)
+        budget_limit = float(campaign.budget_limit_usd or 0)
+        spend_remaining = round(max(0.0, budget_limit - spend_estimate), 4) if budget_limit else None
+        budget_used_percent = round(min(100.0, (spend_estimate / budget_limit) * 100), 2) if budget_limit else 0.0
+
+        ideas_by_verdict: dict[str, int] = {}
+        for idea in ideas:
+            verdict = str(idea.quick_scan_verdict or "UNSCANNED").upper()
+            ideas_by_verdict[verdict] = ideas_by_verdict.get(verdict, 0) + 1
+
+        products_by_decision: dict[str, int] = {}
+        watchlist_products: list[dict[str, Any]] = []
+        skip_products: list[dict[str, Any]] = []
+        ready_for_sample_products: list[dict[str, Any]] = []
+        for product in products:
+            product_payload = self._serialize_product(product)
+            decision = str(product_payload.get("final_decision") or product_payload.get("research_verdict") or "UNKNOWN").upper()
+            products_by_decision[decision] = products_by_decision.get(decision, 0) + 1
+            if decision == "WATCHLIST":
+                watchlist_products.append(product_payload)
+            elif decision in {"SKIP", "REJECT"}:
+                skip_products.append(product_payload)
+            elif str(product_payload.get("buy_readiness_status") or "").upper() == "READY" or decision == "READY_FOR_SAMPLE":
+                ready_for_sample_products.append(product_payload)
+
+        candidate_count_by_status: dict[str, int] = {}
+        for candidate in candidates:
+            status = str(candidate.review_status or "PENDING").upper()
+            candidate_count_by_status[status] = candidate_count_by_status.get(status, 0) + 1
 
         idea_payloads = [self.discovery._serialize_idea(idea) for idea in ideas]
         idea_payloads.sort(
@@ -283,6 +311,7 @@ class CampaignService:
             next_actions.append("Create discovery ideas for this campaign.")
         if spend_estimate > 0 and spend_estimate < float(campaign.budget_limit_usd or 0):
             next_actions.append("Review DataForSEO candidates and keep budget within limits.")
+        next_best_task = next_actions[0] if next_actions else None
 
         return {
             "campaign_id": str(campaign.id),
@@ -291,7 +320,16 @@ class CampaignService:
             "promising_ideas": promising_ideas,
             "promoted_products": promoted_products,
             "dataforseo_spend_estimate": spend_estimate,
-            "budget_limit_usd": float(campaign.budget_limit_usd or 0),
+            "budget_limit_usd": budget_limit,
+            "spend_remaining": spend_remaining,
+            "budget_used_percent": budget_used_percent,
+            "ideas_by_verdict": ideas_by_verdict,
+            "products_by_decision": products_by_decision,
+            "watchlist_products": watchlist_products,
+            "skip_products": skip_products,
+            "ready_for_sample_products": ready_for_sample_products,
+            "candidate_count_by_status": candidate_count_by_status,
+            "next_best_task": next_best_task,
             "top_ranked_ideas": idea_summaries,
             "top_products": product_summaries,
             "next_actions": next_actions,

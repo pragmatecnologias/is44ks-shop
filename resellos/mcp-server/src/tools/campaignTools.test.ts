@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { addCampaignIdeaSchema, createCampaignSchema, createCampaignTaskSchema, updateCampaignTaskSchema } from '../toolRegistry.js';
+import { TOOL_DEFINITIONS, addCampaignIdeaSchema, createCampaignSchema, createCampaignTaskSchema, updateCampaignTaskSchema } from '../toolRegistry.js';
 
 test('create campaign schema accepts a minimal campaign payload', () => {
   const parsed = createCampaignSchema.parse({
@@ -31,4 +31,8 @@ test('update campaign task schema accepts task identifiers', () => {
     status: 'DONE',
   });
   assert.equal(parsed.status, 'DONE');
+});
+
+test('campaign next tasks tool is registered', () => {
+  assert.ok(TOOL_DEFINITIONS.some((tool) => tool.name === 'resellos_generate_campaign_next_tasks'));
 });

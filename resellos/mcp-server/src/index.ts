@@ -6,7 +6,7 @@ import { ResellOSClient } from './resellosClient.js';
 import { TOOL_DEFINITIONS } from './toolRegistry.js';
 import { toErrorPayload } from './utils/errors.js';
 import { createDiscoveryIdea, getDiscoveryBoard, runQuickScan } from './tools/discoveryTools.js';
-import { createDiscoveryCampaign, listDiscoveryCampaigns, getDiscoveryCampaign, createCampaignTask, updateCampaignTask, getCampaignReport, addIdeaToCampaign } from './tools/campaignTools.js';
+import { createDiscoveryCampaign, listDiscoveryCampaigns, getDiscoveryCampaign, createCampaignTask, updateCampaignTask, getCampaignReport, generateCampaignNextTasks, addIdeaToCampaign } from './tools/campaignTools.js';
 import { runDataForSeoGoogleShopping, pollExternalResearchJob } from './tools/externalResearchTools.js';
 import { listEvidenceCandidates, approveCandidate, rejectCandidate, captureManualEvidence } from './tools/candidateTools.js';
 import { getProductCockpit, runProductResearch, getNextResearchAction, generateProductResearchReport } from './tools/productTools.js';
@@ -100,6 +100,10 @@ async function invokeTool(name: string, args: Record<string, unknown>, config: A
     case 'resellos_get_campaign_report': {
       const input = campaignIdSchema.parse(args);
       return getCampaignReport(client, input.campaign_id, config);
+    }
+    case 'resellos_generate_campaign_next_tasks': {
+      const input = campaignIdSchema.parse(args);
+      return generateCampaignNextTasks(client, input.campaign_id, config);
     }
     case 'resellos_add_idea_to_campaign': {
       const input = addCampaignIdeaSchema.parse(args);

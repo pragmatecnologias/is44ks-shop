@@ -86,6 +86,7 @@ export interface CandidateApproveInput {
 export interface ManualCaptureInput {
   idea_id?: string | null;
   product_id?: string | null;
+  task_id?: string | null;
   capture_type: 'MARKETPLACE_SCREENSHOT' | 'SUPPLIER_SCREENSHOT' | 'COMPETITOR_SCREENSHOT' | 'VISUAL_RISK';
   url?: string | null;
   pasted_text?: string | null;

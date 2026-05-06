@@ -79,6 +79,14 @@ class ExternalResearchService:
         )
         return round(sum(float(job.cost_estimate or 0) for job in jobs), 4)
 
+    def _campaign_spend(self, campaign_id: uuid.UUID) -> float:
+        jobs = (
+            self.db.query(ExternalResearchJob)
+            .filter(ExternalResearchJob.campaign_id == campaign_id)
+            .all()
+        )
+        return round(sum(float(job.cost_estimate or 0) for job in jobs), 4)
+
     def _cache_cutoff(self) -> datetime:
         return datetime.utcnow() - timedelta(days=settings.DATAFORSEO_CACHE_DAYS)
 
@@ -194,6 +202,11 @@ class ExternalResearchService:
 
         if not budget_override and self._recent_spend() + self._estimate_cost(1, max_results) > settings.DATAFORSEO_MONTHLY_BUDGET_USD:
             raise HTTPException(status_code=400, detail="DataForSEO monthly hard stop reached.")
+        if campaign_id is not None:
+            campaign_spend = self._campaign_spend(campaign_id)
+            campaign_budget = self._campaign_budget_limit(campaign_id)
+            if campaign_budget is not None and campaign_spend + self._estimate_cost(1, max_results) > campaign_budget:
+                raise HTTPException(status_code=400, detail="Campaign DataForSEO budget reached.")
 
         job = ExternalResearchJob(
             idea_id=idea_id,
@@ -236,6 +249,14 @@ class ExternalResearchService:
         self.db.commit()
         self.db.refresh(job)
         return job
+
+    def _campaign_budget_limit(self, campaign_id: uuid.UUID) -> float | None:
+        from app.models.campaign import DiscoveryCampaign
+
+        campaign = self.db.query(DiscoveryCampaign).filter(DiscoveryCampaign.id == campaign_id).first()
+        if not campaign or campaign.budget_limit_usd is None:
+            return None
+        return float(campaign.budget_limit_usd)
 
     def run_google_shopping_for_idea(self, request: ExternalResearchRunRequest) -> ExternalResearchRunResponse:
         self._require_enabled()
