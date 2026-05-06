@@ -266,6 +266,13 @@ export interface DecisionSummary {
   max_quantity_to_buy?: number;
   max_landed_cost?: number;
   target_sale_price?: number;
+  current_net_profit?: number;
+  target_net_profit_threshold?: number;
+  profit_gap_to_buy_sample?: number;
+  current_landed_cost?: number;
+  max_landed_cost_for_target_profit?: number;
+  current_target_sale_price?: number;
+  required_sale_price_for_target_profit?: number;
   required_before_buying?: string[];
   blocked?: boolean;
   verified_sold_listing_count?: number;

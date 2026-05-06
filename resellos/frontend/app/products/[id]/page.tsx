@@ -105,7 +105,9 @@ export default function ProductDetailPage() {
   const researchVerdict = decision.research_verdict || 'NEEDS_MORE_RESEARCH';
   const buyReadinessStatus = decision.buy_readiness_status || 'NOT_READY';
   const marketReport = reports.find((report) => report.agent_name === 'market_agent');
+  const profitReport = reports.find((report) => report.agent_name === 'profit_agent');
   const marketData = safeJson(marketReport?.output_json);
+  const profitData = safeJson(profitReport?.output_json);
   const hardBlockers = cockpit?.hard_blockers?.length ? cockpit.hard_blockers : decision.hard_blockers ?? [];
   const requiredBeforeBuying = decision.required_before_buying ?? [];
   const maxQuantityToBuy = decision.max_quantity_to_buy ?? 0;
@@ -115,6 +117,7 @@ export default function ProductDetailPage() {
   const activeEvidenceCount = evidenceRows.filter((row) => row.evidence_type === 'ACTIVE_LISTING').length;
   const VERIFIED_SOLD_STATUSES = ['USER_VERIFIED'];
   const VERIFIED_ACTIVE_STATUSES = ['USER_VERIFIED', 'API_IMPORTED'];
+  const verifiedCompetitorCount = competitorRows.filter((row) => row.verification_status === 'USER_VERIFIED').length;
   const primarySupplierSource = supplierSources.find((source) => source.is_primary) ?? supplierSources[0] ?? null;
   const primarySupplierHasCost = Boolean(primarySupplierSource && (primarySupplierSource.unit_cost != null || primarySupplierSource.estimated_landed_cost != null));
   const primarySupplierVerified = primarySupplierSource?.verification_status === 'USER_VERIFIED';
@@ -122,6 +125,15 @@ export default function ProductDetailPage() {
   const verifiedSoldCount = evidenceRows.filter((row) => row.evidence_type === 'SOLD_LISTING' && row.verification_status && VERIFIED_SOLD_STATUSES.includes(row.verification_status)).length;
   const verifiedActiveCount = evidenceRows.filter((row) => row.evidence_type === 'ACTIVE_LISTING' && row.verification_status && VERIFIED_ACTIVE_STATUSES.includes(row.verification_status)).length;
   const testDataCount = evidenceRows.filter((row) => row.verification_status === 'TEST_DATA').length;
+  const verificationCoverage = Number(marketData?.verification_coverage ?? 0);
+  const evidenceGatesComplete = verifiedSoldCount >= 5 && verifiedActiveCount >= 5 && verifiedCompetitorCount >= 3 && primarySupplierVerified && testDataCount === 0 && verificationCoverage >= 1;
+  const currentNetProfit = Number(decision.current_net_profit ?? profitData?.current_net_profit ?? profitRows[0]?.estimated_net_profit ?? 0);
+  const targetNetProfitThreshold = Number(decision.target_net_profit_threshold ?? profitData?.target_net_profit_threshold ?? 8);
+  const profitGapToBuySample = Number(decision.profit_gap_to_buy_sample ?? profitData?.profit_gap_to_buy_sample ?? Math.max(0, targetNetProfitThreshold - currentNetProfit));
+  const currentLandedCost = Number(decision.current_landed_cost ?? profitData?.current_landed_cost ?? profitRows[0]?.landed_cost ?? 0);
+  const maxLandedCostForTargetProfit = Number(decision.max_landed_cost_for_target_profit ?? profitData?.max_landed_cost_for_target_profit ?? 0);
+  const currentTargetSalePrice = Number(decision.current_target_sale_price ?? profitData?.current_target_sale_price ?? targetSalePrice ?? 0);
+  const requiredSalePriceForTargetProfit = Number(decision.required_sale_price_for_target_profit ?? profitData?.required_sale_price_for_target_profit ?? 0);
   const totalTestDataCount = [...evidenceRows, ...competitorRows, ...supplierSources].filter((row) => 'verification_status' in row && (row as { verification_status?: string }).verification_status === 'TEST_DATA').length;
   const supplierCostPresent = supplierSources.some((source) => source.unit_cost != null || source.estimated_landed_cost != null);
   const internationalShippingPresent = supplierSources.some((source) => source.international_shipping_estimate != null);
@@ -151,6 +163,7 @@ export default function ProductDetailPage() {
   ];
   const readinessScore = Math.round((readinessChecks.filter((check) => check.ok).length / readinessChecks.length) * 100);
   const mainBlocker = decision.main_blocker || readinessChecks.find((check) => !check.ok)?.label || 'None';
+  const showProfitGapCard = evidenceGatesComplete && buyReadinessStatus !== 'READY' && profitGapToBuySample > 0;
 
   const decisionAccent =
     finalDecision === 'BLOCKED'
@@ -414,6 +427,25 @@ export default function ProductDetailPage() {
               <StatRow label="Target price" value={targetPricePresent ? money(targetSalePrice) : '—'} />
             </div>
           </Panel>
+
+          {showProfitGapCard ? (
+            <Panel title="Profit Gap" icon={Wallet}>
+              <div className="space-y-3">
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-300">
+                  Verified evidence is complete, but the economics are still below the sample-buy threshold.
+                </div>
+                <div className="grid gap-3">
+                  <StatRow label="Current net profit" value={money(currentNetProfit)} />
+                  <StatRow label="Required profit" value={money(targetNetProfitThreshold)} />
+                  <StatRow label="Profit gap" value={money(profitGapToBuySample)} />
+                  <StatRow label="Current landed cost" value={money(currentLandedCost)} />
+                  <StatRow label="Max landed cost" value={money(maxLandedCostForTargetProfit)} />
+                  <StatRow label="Current target sale price" value={money(currentTargetSalePrice)} />
+                  <StatRow label="Required sale price" value={money(requiredSalePriceForTargetProfit)} />
+                </div>
+              </div>
+            </Panel>
+          ) : null}
         </div>
 
         <div className="grid gap-6 xl:grid-cols-2">

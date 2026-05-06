@@ -260,9 +260,16 @@ class AgentContractTests(unittest.TestCase):
                         },
                         "profit_agent": {
                             "output_json": {
-                                "estimated_net_profit": 0.0,
+                                "estimated_net_profit": 3.02,
+                                "current_net_profit": 3.02,
+                                "target_net_profit_threshold": 8.0,
+                                "profit_gap_to_buy_sample": 4.98,
+                                "current_landed_cost": 20.5,
+                                "max_landed_cost_for_target_profit": 15.52,
+                                "current_target_sale_price": 28.86,
+                                "required_sale_price_for_target_profit": 33.84,
                                 "scenarios": [{"net_profit": 0.0, "margin_percent": 0.0}],
-                                "target_sale_price": 10.0,
+                                "target_sale_price": 28.86,
                                 "minimum_recommended_price": 9.02,
                             }
                         },
@@ -281,11 +288,51 @@ class AgentContractTests(unittest.TestCase):
         )
 
         output = result["output_json"]
-        self.assertEqual(output["buy_readiness_status"], "NOT_READY")
-        self.assertEqual(output["main_blocker"], "Verified evidence is complete, but the opportunity score is still below the sample-buy threshold.")
-        self.assertIn("Improve supplier landed cost, validate the active price signal, and sharpen the competitor angle before sample buying.", output["next_action"])
+        self.assertEqual(output["buy_readiness_status"], "ALMOST_READY")
+        self.assertEqual(output["main_blocker"], "Verified evidence is complete, but profit is below the sample-buy threshold.")
+        self.assertIn("Reduce landed cost to about $15.52 or validate sale prices above $33.84 before sample buying.", output["next_action"])
         self.assertNotIn("Add at least 5 verified sold listings", output["required_before_buying"])
         self.assertNotIn("Add verified active listing evidence for competition checks.", output["required_before_buying"])
+        self.assertIn("Reduce landed cost to approximately $15.52 or prove a higher sustainable sale price above $33.84.", output["required_before_buying"])
+
+    def test_profit_agent_returns_profit_gap_fields(self) -> None:
+        agent = ProfitAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "profit_input": {
+                        "expected_sale_price": 28.86,
+                        "product_cost": 14.25,
+                        "china_domestic_shipping": 0.75,
+                        "international_shipping": 3.1,
+                        "duties": 0,
+                        "inspection_cost": 0,
+                        "platform_fee_percent": 0.13,
+                        "platform_fee_fixed": 0,
+                        "payment_fee": 0,
+                        "outbound_shipping": 4.0,
+                        "packaging": 0.4,
+                        "return_allowance": 0.5,
+                        "ad_cost": 0,
+                        "buyer_paid_shipping": False,
+                        "bundle_quantity": 2,
+                    }
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertIn("current_net_profit", output)
+        self.assertIn("target_net_profit_threshold", output)
+        self.assertIn("profit_gap_to_buy_sample", output)
+        self.assertIn("current_landed_cost", output)
+        self.assertIn("max_landed_cost_for_target_profit", output)
+        self.assertIn("required_sale_price_for_target_profit", output)
+        self.assertAlmostEqual(
+            output["profit_gap_to_buy_sample"],
+            round(max(0.0, float(output["target_net_profit_threshold"]) - float(output["current_net_profit"])), 2),
+        )
+        self.assertGreaterEqual(float(output["required_sale_price_for_target_profit"]), float(output["current_target_sale_price"]))
 
     def test_decision_agent_caps_buy_when_market_data_is_thin(self) -> None:
         agent = DecisionAgent(self.llm)

@@ -119,6 +119,13 @@ class ProfitScenario(BaseModel):
 class ProfitAgentOutput(BaseModel):
     scenarios: list[ProfitScenario] = Field(default_factory=list)
     estimated_net_profit: float = 0.0
+    current_net_profit: float = 0.0
+    target_net_profit_threshold: float = 8.0
+    profit_gap_to_buy_sample: float = 0.0
+    current_landed_cost: float = 0.0
+    max_landed_cost_for_target_profit: float = 0.0
+    current_target_sale_price: float = 0.0
+    required_sale_price_for_target_profit: float = 0.0
     break_even_price: float = 0.0
     minimum_recommended_price: float = 0.0
     target_sale_price: float = 0.0
@@ -168,6 +175,13 @@ class DecisionAgentOutput(BaseModel):
     max_quantity_to_buy: int = 0
     max_landed_cost: float = 0.0
     target_sale_price: float = 0.0
+    current_net_profit: float = 0.0
+    target_net_profit_threshold: float = 8.0
+    profit_gap_to_buy_sample: float = 0.0
+    current_landed_cost: float = 0.0
+    max_landed_cost_for_target_profit: float = 0.0
+    current_target_sale_price: float = 0.0
+    required_sale_price_for_target_profit: float = 0.0
     required_before_buying: list[str] = Field(default_factory=list)
     blocked: bool = False
     warnings: list[str] = Field(default_factory=list)

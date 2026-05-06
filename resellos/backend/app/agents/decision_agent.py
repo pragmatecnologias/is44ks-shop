@@ -40,6 +40,13 @@ class DecisionAgent(BaseAgent):
         risk_level = str(risk.get("risk_level", "MEDIUM"))
         blocked = bool(risk.get("blocked", False))
         net_profit = float(profit.get("estimated_net_profit", 0) or 0)
+        current_net_profit = float(profit.get("current_net_profit", net_profit) or net_profit)
+        target_net_profit_threshold = float(profit.get("target_net_profit_threshold", 8.0) or 8.0)
+        profit_gap_to_buy_sample = float(
+            profit.get("profit_gap_to_buy_sample", max(0.0, target_net_profit_threshold - current_net_profit)) or 0
+        )
+        current_landed_cost = float(profit.get("current_landed_cost", profit.get("break_even_price", 0)) or 0)
+        max_landed_cost_for_target_profit = float(profit.get("max_landed_cost_for_target_profit", 0) or 0)
         evidence_quality = str(market.get("evidence_quality", "LOW")).upper()
         insufficient_data = bool(market.get("insufficient_data", True))
         sold_listing_count = int(market.get("sold_listing_count", 0) or 0)
@@ -68,6 +75,8 @@ class DecisionAgent(BaseAgent):
         international_shipping = float(supplier_summary.get("international_shipping_estimate") or 0)
         max_landed_cost = float(supplier_summary.get("estimated_landed_cost") or (product_cost + domestic_shipping + international_shipping))
         target_sale_price = float(profit.get("target_sale_price") or 0)
+        current_target_sale_price = float(profit.get("current_target_sale_price", target_sale_price) or target_sale_price)
+        required_sale_price_for_target_profit = float(profit.get("required_sale_price_for_target_profit", 0) or 0)
         research_completeness_score = 0
         research_completeness_score += min(25, verified_sold * 5)
         research_completeness_score += min(20, verified_active * 2)
@@ -337,9 +346,18 @@ class DecisionAgent(BaseAgent):
                 )
 
             required_before_buying = [item for item in required_before_buying if not _is_evidence_request(item)]
+            if current_net_profit < target_net_profit_threshold:
+                required_before_buying.append(
+                    f"Reduce landed cost to approximately ${max_landed_cost_for_target_profit:.2f} or prove a higher sustainable sale price above ${required_sale_price_for_target_profit:.2f}."
+                )
 
         if evidence_gates_complete and not blocked and buy_readiness_status != "READY":
-            if research_verdict in {"NEEDS_MORE_RESEARCH", "PROMISING_RESEARCH"}:
+            if current_net_profit < target_net_profit_threshold:
+                next_action = (
+                    f"Verified evidence gates are complete. Reduce landed cost to about ${max_landed_cost_for_target_profit:.2f} "
+                    f"or validate sale prices above ${required_sale_price_for_target_profit:.2f} before sample buying."
+                )
+            elif research_verdict in {"NEEDS_MORE_RESEARCH", "PROMISING_RESEARCH"}:
                 next_action = "Verified evidence gates are complete. Improve supplier landed cost, validate the active price signal, and sharpen the competitor angle before sample buying."
             elif research_verdict in {"WEAK_IDEA", "REJECT"}:
                 next_action = "Verified evidence is complete, but the economics are too weak. Pause or look for a better supplier and stronger market gap."
@@ -357,6 +375,8 @@ class DecisionAgent(BaseAgent):
         elif buy_readiness_status != "READY":
             if research_verdict in {"WEAK_IDEA", "REJECT"}:
                 main_blocker = "Weak economics or too much uncertainty."
+            elif evidence_gates_complete and current_net_profit < target_net_profit_threshold:
+                main_blocker = "Verified evidence is complete, but profit is below the sample-buy threshold."
             elif research_verdict == "NEEDS_MORE_RESEARCH":
                 main_blocker = "Verified evidence is complete, but the opportunity score is still below the sample-buy threshold."
             elif not supplier_verified:
@@ -394,6 +414,13 @@ class DecisionAgent(BaseAgent):
                 "max_quantity_to_buy": max_quantity_to_buy,
                 "max_landed_cost": max_landed_cost,
                 "target_sale_price": target_sale_price,
+                "current_net_profit": current_net_profit,
+                "target_net_profit_threshold": target_net_profit_threshold,
+                "profit_gap_to_buy_sample": profit_gap_to_buy_sample,
+                "current_landed_cost": current_landed_cost,
+                "max_landed_cost_for_target_profit": max_landed_cost_for_target_profit,
+                "current_target_sale_price": current_target_sale_price,
+                "required_sale_price_for_target_profit": required_sale_price_for_target_profit,
                 "required_before_buying": required_before_buying,
                 "blocked": blocked,
                 "warnings": llm_result.get("warnings", []),

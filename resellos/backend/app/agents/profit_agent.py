@@ -120,15 +120,34 @@ class ProfitAgent(BaseAgent):
         # Bundle scenarios inflate profit because shipping doesn't scale.
         single_unit_scenarios = [s for s in scenarios if "bundle" not in s["name"].lower()]
         best = max(single_unit_scenarios or scenarios, key=lambda item: float(item["net_profit"]))
+        target_net_profit_threshold = 8.0
         break_even = float(best["landed_cost"]) + float(best["selling_cost"])
         minimum_recommended_price = round(break_even * 1.1, 2)
         market_reference_price = sale_price if sale_price > 0 else 0
         target_sale_price = sale_price if sale_price > 0 else 0
+        current_net_profit = float(best["net_profit"])
+        current_landed_cost = float(best["landed_cost"])
+        max_landed_cost_for_target_profit = max(
+            0.0,
+            round(float(best["sale_price"]) + float(best["shipping_revenue"]) - float(best["selling_cost"]) - target_net_profit_threshold, 2),
+        )
+        required_sale_price_for_target_profit = max(
+            0.0,
+            round(float(best["landed_cost"]) + float(best["selling_cost"]) + target_net_profit_threshold - float(best["shipping_revenue"]), 2),
+        )
+        profit_gap_to_buy_sample = round(max(0.0, target_net_profit_threshold - current_net_profit), 2)
 
         output = ProfitAgentOutput.model_validate(
             {
                 "scenarios": [ProfitScenario.model_validate(item).model_dump() for item in scenarios],
-                "estimated_net_profit": float(best["net_profit"]),
+                "estimated_net_profit": current_net_profit,
+                "current_net_profit": current_net_profit,
+                "target_net_profit_threshold": target_net_profit_threshold,
+                "profit_gap_to_buy_sample": profit_gap_to_buy_sample,
+                "current_landed_cost": current_landed_cost,
+                "max_landed_cost_for_target_profit": max_landed_cost_for_target_profit,
+                "current_target_sale_price": round(target_sale_price, 2),
+                "required_sale_price_for_target_profit": required_sale_price_for_target_profit,
                 "break_even_price": round(break_even, 2),
                 "minimum_recommended_price": minimum_recommended_price,
                 "target_sale_price": round(target_sale_price, 2),
