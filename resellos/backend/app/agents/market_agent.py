@@ -84,8 +84,10 @@ class MarketAgent(BaseAgent):
         verified_active_shipping_prices = [float(row.get("shipping_price")) for row in verified_active_rows if row.get("shipping_price") is not None]
         verified_sold_shipping_prices = [float(row.get("shipping_price")) for row in verified_sold_rows if row.get("shipping_price") is not None]
 
-        active_price_range = [round(min(active_prices_total), 2), round(max(active_prices_total), 2)] if active_prices_total else []
-        sold_price_range = [round(min(sold_prices_total), 2), round(max(sold_prices_total), 2)] if sold_prices_total else []
+        active_price_range = [round(min(verified_active_prices), 2), round(max(verified_active_prices), 2)] if verified_active_prices else []
+        sold_price_range = [round(min(verified_sold_prices), 2), round(max(verified_sold_prices), 2)] if verified_sold_prices else []
+        active_price_range_total = [round(min(active_prices_total), 2), round(max(active_prices_total), 2)] if active_prices_total else []
+        sold_price_range_total = [round(min(sold_prices_total), 2), round(max(sold_prices_total), 2)] if sold_prices_total else []
         median_active_price = _median(verified_active_prices)
         median_sold_price = _median(verified_sold_prices)
         median_active_shipping = _median(verified_active_shipping_prices)
@@ -193,6 +195,8 @@ class MarketAgent(BaseAgent):
                 "median_shipping": median_shipping,
                 "active_price_range": active_price_range,
                 "sold_price_range": sold_price_range,
+                "active_price_range_total": active_price_range_total,
+                "sold_price_range_total": sold_price_range_total,
                 "marketplace_coverage": marketplace_coverage,
                 "sell_through_signal": sell_through_signal,
                 "recommended_research_action": recommended_research_action,

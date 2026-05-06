@@ -336,6 +336,10 @@ class AgentContractTests(unittest.TestCase):
         self.assertEqual(output["verified_active_listing_count"], 0)
         self.assertIsNone(output["median_sold_price"])
         self.assertIsNone(output["median_active_price"])
+        self.assertEqual(output["sold_price_range"], [])
+        self.assertEqual(output["active_price_range"], [])
+        self.assertEqual(output["sold_price_range_total"], [100.0, 110.0])
+        self.assertEqual(output["active_price_range_total"], [120.0, 120.0])
         self.assertTrue(output["insufficient_data"])
 
     def test_market_agent_does_not_treat_api_imported_sold_as_verified_demand(self) -> None:

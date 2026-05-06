@@ -67,6 +67,8 @@ class MarketAgentOutput(BaseModel):
     median_shipping: float | None = None
     active_price_range: list[float] = Field(default_factory=list)
     sold_price_range: list[float] = Field(default_factory=list)
+    active_price_range_total: list[float] = Field(default_factory=list)
+    sold_price_range_total: list[float] = Field(default_factory=list)
     marketplace_coverage: list[str] = Field(default_factory=list)
     sell_through_signal: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"
     recommended_research_action: str = ""
