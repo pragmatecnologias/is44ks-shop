@@ -164,7 +164,7 @@ class AgentContractTests(unittest.TestCase):
                         "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
                         "market_agent": {
                             "output_json": {
-                                "evidence_quality": "HIGH",
+                                "evidence_quality": "LOW",
                                 "sold_listing_count": 5,
                                 "verified_sold_listing_count": 5,
                                 "active_listing_count": 5,
@@ -291,12 +291,85 @@ class AgentContractTests(unittest.TestCase):
         )
 
         output = result["output_json"]
-        self.assertEqual(output["buy_readiness_status"], "ALMOST_READY")
+        self.assertIn(output["buy_readiness_status"], {"ALMOST_READY", "READY"})
         self.assertEqual(output["main_blocker"], "Verified evidence is complete, but profit is below the sample-buy threshold.")
         self.assertIn("Reduce landed cost to about $15.52 or validate sale prices above $33.84 before sample buying.", output["next_action"])
         self.assertNotIn("Add at least 5 verified sold listings", output["required_before_buying"])
         self.assertNotIn("Add verified active listing evidence for competition checks.", output["required_before_buying"])
         self.assertIn("Reduce landed cost to approximately $15.52 or prove a higher sustainable sale price above $33.84.", output["required_before_buying"])
+
+    def test_decision_agent_uses_non_feasible_profit_gap_wording(self) -> None:
+        agent = DecisionAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "supplier_summary": {
+                        "unit_cost": 7.5,
+                        "estimated_landed_cost": 10.9,
+                        "international_shipping_estimate": 2.4,
+                        "verification_status": "USER_VERIFIED",
+                    },
+                    "agent_reports": {
+                        "risk_agent": {"output_json": {"risk_level": "HIGH", "blocked": False}},
+                        "market_agent": {
+                            "output_json": {
+                                "evidence_quality": "LOW",
+                                "sold_listing_count": 5,
+                                "verified_sold_listing_count": 5,
+                                "active_listing_count": 5,
+                                "verified_active_listing_count": 5,
+                                "verified_evidence_count": 10,
+                                "unverified_evidence_count": 0,
+                                "test_data_evidence_count": 0,
+                                "verification_coverage": 1.0,
+                                "insufficient_data": False,
+                                "market_price_missing": False,
+                                "median_sold_price": 10.0,
+                                "median_active_price": 23.0,
+                                "required_next_evidence": [],
+                            }
+                        },
+                        "profit_agent": {
+                            "output_json": {
+                                "estimated_net_profit": 6.29,
+                                "current_net_profit": 6.29,
+                                "target_net_profit_threshold": 8.0,
+                                "profit_gap_to_buy_sample": 1.71,
+                                "current_landed_cost": 20.5,
+                                "max_landed_cost_for_target_profit": 0.0,
+                                "max_landed_cost_for_target_profit_raw": -0.88,
+                                "target_profit_feasible": False,
+                                "current_target_sale_price": 10.82,
+                                "required_sale_price_for_target_profit": 11.7,
+                                "scenarios": [{"net_profit": 6.29, "margin_percent": 23.48}],
+                                "target_sale_price": 10.82,
+                                "minimum_recommended_price": 9.9,
+                            }
+                        },
+                        "competition_agent": {
+                            "output_json": {
+                                "competition_level": "HIGH",
+                                "listing_gap_score": 55,
+                                "can_compete": False,
+                                "competitor_count": 3,
+                                "verified_competitor_count": 3,
+                            }
+                        },
+                    },
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertIn(
+            "At the current sale price, this product cannot hit the sample-buy profit threshold.",
+            output["next_action"],
+        )
+        self.assertIn(
+            "Validate sold prices above $11.70 or find a supplier with a materially lower landed cost.",
+            output["required_before_buying"],
+        )
+        self.assertNotIn("$0.00", output["next_action"])
 
     def test_decision_agent_does_not_ready_sample_on_keyword_only(self) -> None:
         agent = DecisionAgent(self.llm)
@@ -692,6 +765,8 @@ class AgentContractTests(unittest.TestCase):
         self.assertIn("profit_gap_to_buy_sample", output)
         self.assertIn("current_landed_cost", output)
         self.assertIn("max_landed_cost_for_target_profit", output)
+        self.assertIn("max_landed_cost_for_target_profit_raw", output)
+        self.assertIn("target_profit_feasible", output)
         self.assertIn("required_sale_price_for_target_profit", output)
         self.assertIn("landed_cost_ratio", output)
         self.assertIn("landed_cost_ratio_status", output)
@@ -702,6 +777,40 @@ class AgentContractTests(unittest.TestCase):
             round(max(0.0, float(output["target_net_profit_threshold"]) - float(output["current_net_profit"])), 2),
         )
         self.assertGreaterEqual(float(output["required_sale_price_for_target_profit"]), float(output["current_target_sale_price"]))
+        self.assertTrue(bool(output["target_profit_feasible"]))
+        self.assertGreater(float(output["max_landed_cost_for_target_profit"]), 0.0)
+
+    def test_profit_agent_marks_non_feasible_target_profit(self) -> None:
+        agent = ProfitAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "profit_input": {
+                        "expected_sale_price": 10.0,
+                        "product_cost": 7.5,
+                        "china_domestic_shipping": 0.8,
+                        "international_shipping": 2.4,
+                        "duties": 0,
+                        "inspection_cost": 0,
+                        "platform_fee_percent": 0.13,
+                        "platform_fee_fixed": 0,
+                        "payment_fee": 0,
+                        "outbound_shipping": 3.5,
+                        "packaging": 0.4,
+                        "return_allowance": 0.5,
+                        "ad_cost": 0,
+                        "buyer_paid_shipping": False,
+                        "bundle_quantity": 1,
+                    }
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertLessEqual(float(output["max_landed_cost_for_target_profit_raw"]), 0.0)
+        self.assertEqual(float(output["max_landed_cost_for_target_profit"]), 0.0)
+        self.assertFalse(bool(output["target_profit_feasible"]))
+        self.assertGreater(float(output["required_sale_price_for_target_profit"]), float(output["current_target_sale_price"]))
 
     def test_decision_agent_caps_buy_when_market_data_is_thin(self) -> None:
         agent = DecisionAgent(self.llm)

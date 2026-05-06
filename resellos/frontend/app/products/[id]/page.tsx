@@ -179,6 +179,8 @@ export default function ProductDetailPage() {
   const profitGapToBuySample = Number(decision.profit_gap_to_buy_sample ?? profitData?.profit_gap_to_buy_sample ?? Math.max(0, targetNetProfitThreshold - currentNetProfit));
   const currentLandedCost = Number(decision.current_landed_cost ?? profitData?.current_landed_cost ?? profitRows[0]?.landed_cost ?? 0);
   const maxLandedCostForTargetProfit = Number(decision.max_landed_cost_for_target_profit ?? profitData?.max_landed_cost_for_target_profit ?? 0);
+  const maxLandedCostForTargetProfitRaw = Number(decision.max_landed_cost_for_target_profit_raw ?? profitData?.max_landed_cost_for_target_profit_raw ?? maxLandedCostForTargetProfit);
+  const targetProfitFeasible = Boolean(decision.target_profit_feasible ?? profitData?.target_profit_feasible ?? maxLandedCostForTargetProfitRaw > 0);
   const currentTargetSalePrice = Number(decision.current_target_sale_price ?? profitData?.current_target_sale_price ?? targetSalePrice ?? 0);
   const requiredSalePriceForTargetProfit = Number(decision.required_sale_price_for_target_profit ?? profitData?.required_sale_price_for_target_profit ?? 0);
   const totalTestDataCount = [...evidenceRows, ...competitorRows, ...supplierSources].filter((row) => 'verification_status' in row && (row as { verification_status?: string }).verification_status === 'TEST_DATA').length;
@@ -585,7 +587,10 @@ export default function ProductDetailPage() {
                   <StatRow label="Required profit" value={money(targetNetProfitThreshold)} />
                   <StatRow label="Profit gap" value={money(profitGapToBuySample)} />
                   <StatRow label="Current landed cost" value={money(currentLandedCost)} />
-                  <StatRow label="Max landed cost" value={money(maxLandedCostForTargetProfit)} />
+                  <StatRow
+                    label="Max landed cost"
+                    value={targetProfitFeasible ? money(maxLandedCostForTargetProfit) : 'Not feasible at current sale price'}
+                  />
                   <StatRow label="Current target sale price" value={money(currentTargetSalePrice)} />
                   <StatRow label="Required sale price" value={money(requiredSalePriceForTargetProfit)} />
                 </div>

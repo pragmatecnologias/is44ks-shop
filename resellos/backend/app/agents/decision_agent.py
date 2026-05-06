@@ -49,6 +49,10 @@ class DecisionAgent(BaseAgent):
         )
         current_landed_cost = float(profit.get("current_landed_cost", profit.get("break_even_price", 0)) or 0)
         max_landed_cost_for_target_profit = float(profit.get("max_landed_cost_for_target_profit", 0) or 0)
+        max_landed_cost_for_target_profit_raw = float(
+            profit.get("max_landed_cost_for_target_profit_raw", max_landed_cost_for_target_profit) or max_landed_cost_for_target_profit
+        )
+        target_profit_feasible = bool(profit.get("target_profit_feasible", max_landed_cost_for_target_profit_raw > 0))
         evidence_quality = str(market.get("evidence_quality", "LOW")).upper()
         insufficient_data = bool(market.get("insufficient_data", True))
         sold_listing_count = int(market.get("sold_listing_count", 0) or 0)
@@ -85,6 +89,7 @@ class DecisionAgent(BaseAgent):
         target_sale_price = float(profit.get("target_sale_price") or 0)
         current_target_sale_price = float(profit.get("current_target_sale_price", target_sale_price) or target_sale_price)
         required_sale_price_for_target_profit = float(profit.get("required_sale_price_for_target_profit", 0) or 0)
+        required_sale_price_label = f"${required_sale_price_for_target_profit:.2f}"
         research_completeness_score = 0
         research_completeness_score += min(25, verified_sold * 5)
         research_completeness_score += min(20, verified_active * 2)
@@ -381,7 +386,11 @@ class DecisionAgent(BaseAgent):
                 )
 
             required_before_buying = [item for item in required_before_buying if not _is_evidence_request(item)]
-            if current_net_profit < target_net_profit_threshold:
+            if not target_profit_feasible:
+                required_before_buying.append(
+                    f"Validate sold prices above {required_sale_price_label} or find a supplier with a materially lower landed cost."
+                )
+            elif current_net_profit < target_net_profit_threshold:
                 required_before_buying.append(
                     f"Reduce landed cost to approximately ${max_landed_cost_for_target_profit:.2f} or prove a higher sustainable sale price above ${required_sale_price_for_target_profit:.2f}."
                 )
@@ -395,7 +404,12 @@ class DecisionAgent(BaseAgent):
                 required_before_buying.append("Validate an evergreen trend before sample buying.")
 
         if evidence_gates_complete and not blocked and buy_readiness_status != "READY":
-            if current_net_profit < target_net_profit_threshold:
+            if not target_profit_feasible:
+                next_action = (
+                    "At the current sale price, this product cannot hit the sample-buy profit threshold. "
+                    "Validate a higher sustainable sale price or find a materially cheaper supplier."
+                )
+            elif current_net_profit < target_net_profit_threshold:
                 next_action = (
                     f"Verified evidence gates are complete. Reduce landed cost to about ${max_landed_cost_for_target_profit:.2f} "
                     f"or validate sale prices above ${required_sale_price_for_target_profit:.2f} before sample buying."
@@ -427,6 +441,8 @@ class DecisionAgent(BaseAgent):
         elif buy_readiness_status != "READY":
             if research_verdict in {"WEAK_IDEA", "REJECT"}:
                 main_blocker = "Weak economics or too much uncertainty."
+            elif evidence_gates_complete and not target_profit_feasible:
+                main_blocker = "Verified evidence is complete, but the current sale price cannot reach the sample-buy profit threshold."
             elif evidence_gates_complete and current_net_profit < target_net_profit_threshold:
                 main_blocker = "Verified evidence is complete, but profit is below the sample-buy threshold."
             elif evidence_gates_complete and landed_cost_ratio is not None and float(landed_cost_ratio) > settings.VALIDATION_MAX_ACCEPTABLE_LANDED_COST_RATIO:

@@ -153,6 +153,8 @@ class ProfitAgentOutput(BaseModel):
     profit_gap_to_buy_sample: float = 0.0
     current_landed_cost: float = 0.0
     max_landed_cost_for_target_profit: float = 0.0
+    max_landed_cost_for_target_profit_raw: float = 0.0
+    target_profit_feasible: bool = True
     current_target_sale_price: float = 0.0
     required_sale_price_for_target_profit: float = 0.0
     landed_cost_ratio: float | None = None

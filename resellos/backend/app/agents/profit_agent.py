@@ -149,10 +149,12 @@ class ProfitAgent(BaseAgent):
             gross_margin_status = "WEAK"
         else:
             gross_margin_status = "BAD"
-        max_landed_cost_for_target_profit = max(
-            0.0,
-            round(float(best["sale_price"]) + float(best["shipping_revenue"]) - float(best["selling_cost"]) - target_net_profit_threshold, 2),
+        max_landed_cost_for_target_profit_raw = round(
+            float(best["sale_price"]) + float(best["shipping_revenue"]) - float(best["selling_cost"]) - target_net_profit_threshold,
+            2,
         )
+        max_landed_cost_for_target_profit = max(0.0, max_landed_cost_for_target_profit_raw)
+        target_profit_feasible = max_landed_cost_for_target_profit_raw > 0
         required_sale_price_for_target_profit = max(
             0.0,
             round(float(best["landed_cost"]) + float(best["selling_cost"]) + target_net_profit_threshold - float(best["shipping_revenue"]), 2),
@@ -168,6 +170,8 @@ class ProfitAgent(BaseAgent):
                 "profit_gap_to_buy_sample": profit_gap_to_buy_sample,
                 "current_landed_cost": current_landed_cost,
                 "max_landed_cost_for_target_profit": max_landed_cost_for_target_profit,
+                "max_landed_cost_for_target_profit_raw": max_landed_cost_for_target_profit_raw,
+                "target_profit_feasible": target_profit_feasible,
                 "current_target_sale_price": round(target_sale_price, 2),
                 "required_sale_price_for_target_profit": required_sale_price_for_target_profit,
                 "landed_cost_ratio": landed_cost_ratio,

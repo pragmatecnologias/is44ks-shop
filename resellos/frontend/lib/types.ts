@@ -448,6 +448,8 @@ export interface DecisionSummary {
   profit_gap_to_buy_sample?: number;
   current_landed_cost?: number;
   max_landed_cost_for_target_profit?: number;
+  max_landed_cost_for_target_profit_raw?: number;
+  target_profit_feasible?: boolean;
   current_target_sale_price?: number;
   required_sale_price_for_target_profit?: number;
   required_before_buying?: string[];
