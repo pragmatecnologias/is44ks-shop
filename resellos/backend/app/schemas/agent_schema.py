@@ -103,6 +103,35 @@ class CompetitionAgentOutput(BaseModel):
     evidence_refs: list[str] = Field(default_factory=list)
 
 
+class DemandAgentOutput(BaseModel):
+    monthly_search_volume: int | None = None
+    best_keyword: str | None = None
+    related_keywords: list[dict[str, Any]] = Field(default_factory=list)
+    keyword_specificity_score: int = 0
+    buyer_intent_score: int = 0
+    demand_score: int = 0
+    demand_status: Literal["STRONG", "MODERATE", "WEAK", "UNKNOWN"] = "UNKNOWN"
+    main_demand_blocker: str | None = None
+    next_action: str = ""
+    confidence: ConfidenceLevel = "LOW"
+    warnings: list[str] = Field(default_factory=list)
+    evidence_refs: list[str] = Field(default_factory=list)
+
+
+class TrendAgentOutput(BaseModel):
+    trend_direction: str = "UNKNOWN"
+    seasonality_risk: str = "UNKNOWN"
+    evergreen_score: int = 0
+    trend_stability_score: int = 0
+    spike_risk_score: int = 0
+    trend_status: Literal["EVERGREEN", "SEASONAL", "SPIKY", "DECLINING", "UNKNOWN"] = "UNKNOWN"
+    main_trend_blocker: str | None = None
+    next_action: str = ""
+    confidence: ConfidenceLevel = "LOW"
+    warnings: list[str] = Field(default_factory=list)
+    evidence_refs: list[str] = Field(default_factory=list)
+
+
 class ProfitScenario(BaseModel):
     name: str
     sale_price: float
@@ -126,6 +155,10 @@ class ProfitAgentOutput(BaseModel):
     max_landed_cost_for_target_profit: float = 0.0
     current_target_sale_price: float = 0.0
     required_sale_price_for_target_profit: float = 0.0
+    landed_cost_ratio: float | None = None
+    landed_cost_ratio_status: Literal["EXCELLENT", "GOOD", "WEAK", "BAD", "UNKNOWN"] = "UNKNOWN"
+    gross_margin_percent: float | None = None
+    gross_margin_status: Literal["EXCELLENT", "GOOD", "WEAK", "BAD", "UNKNOWN"] = "UNKNOWN"
     break_even_price: float = 0.0
     minimum_recommended_price: float = 0.0
     target_sale_price: float = 0.0

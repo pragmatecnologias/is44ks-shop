@@ -19,6 +19,7 @@ from app.models.supplier import (
     Sale,
     ProductSource,
 )
+from app.models.product_validation import ProductDemandResearch, ProductTrendResearch
 from app.services.agent_utils import agent_data
 
 
@@ -29,6 +30,8 @@ class ResearchPipelineContext:
     marketplace_research: list[MarketplaceResearch]
     competitor_listings: list[CompetitorListing]
     marketplace_evidence: list[MarketplaceEvidence]
+    demand_research: list[ProductDemandResearch]
+    trend_research: list[ProductTrendResearch]
     inventory_items: list[InventoryItem]
     sales: list[Sale]
 
@@ -52,6 +55,8 @@ class ResearchPipelineService:
         research_rows = self.db.query(MarketplaceResearch).filter(MarketplaceResearch.product_id == product_id).all()
         competitor_rows = self.db.query(CompetitorListing).filter(CompetitorListing.product_id == product_id).all()
         evidence_rows = self.db.query(MarketplaceEvidence).filter(MarketplaceEvidence.product_id == product_id).all()
+        demand_rows = self.db.query(ProductDemandResearch).filter(ProductDemandResearch.product_id == product_id).all()
+        trend_rows = self.db.query(ProductTrendResearch).filter(ProductTrendResearch.product_id == product_id).all()
         inventory_rows = self.db.query(InventoryItem).filter(InventoryItem.product_id == product_id).all()
         sales_rows = self.db.query(Sale).filter(Sale.product_id == product_id).all()
         primary_source = self._primary_source(sources)
@@ -62,6 +67,8 @@ class ResearchPipelineService:
             marketplace_research=research_rows,
             competitor_listings=competitor_rows,
             marketplace_evidence=evidence_rows,
+            demand_research=demand_rows,
+            trend_research=trend_rows,
             inventory_items=inventory_rows,
             sales=sales_rows,
         )
@@ -110,6 +117,28 @@ class ResearchPipelineService:
             market_result = await market_agent.run(market_input)
             results["market_agent"] = market_result
             self._save_agent_report(product_id, "market_agent", market_input, market_result)
+
+        demand_agent = self.agents.get("demand")
+        demand_result = None
+        if demand_agent:
+            demand_input = {
+                "product": self._serialize_product(product),
+                "demand_research": [self._serialize_demand_research(row) for row in demand_rows],
+            }
+            demand_result = await demand_agent.run(demand_input)
+            results["demand_agent"] = demand_result
+            self._save_agent_report(product_id, "demand_agent", demand_input, demand_result)
+
+        trend_agent = self.agents.get("trend")
+        trend_result = None
+        if trend_agent:
+            trend_input = {
+                "product": self._serialize_product(product),
+                "trend_research": [self._serialize_trend_research(row) for row in trend_rows],
+            }
+            trend_result = await trend_agent.run(trend_input)
+            results["trend_agent"] = trend_result
+            self._save_agent_report(product_id, "trend_agent", trend_input, trend_result)
 
         competition_agent = self.agents.get("competition")
         competition_result = None
@@ -253,6 +282,66 @@ class ResearchPipelineService:
             "median_active_price": float(row.median_active_price) if row.median_active_price is not None else None,
             "median_sold_price": float(row.median_sold_price) if row.median_sold_price is not None else None,
             "evidence_quality": row.evidence_quality,
+        }
+
+    def _serialize_demand_research(self, row: ProductDemandResearch) -> dict[str, Any]:
+        return {
+            "id": str(row.id),
+            "product_id": str(row.product_id) if row.product_id else None,
+            "idea_id": str(row.idea_id) if row.idea_id else None,
+            "campaign_id": str(row.campaign_id) if row.campaign_id else None,
+            "keyword": row.keyword,
+            "source": row.source,
+            "target_country": row.target_country,
+            "target_language": row.target_language,
+            "monthly_search_volume": row.monthly_search_volume,
+            "monthly_search_volume_min": row.monthly_search_volume_min,
+            "monthly_search_volume_max": row.monthly_search_volume_max,
+            "competition_level": row.competition_level,
+            "cpc_low": float(row.cpc_low) if row.cpc_low is not None else None,
+            "cpc_high": float(row.cpc_high) if row.cpc_high is not None else None,
+            "currency": row.currency,
+            "buyer_intent_score": row.buyer_intent_score,
+            "keyword_specificity_score": row.keyword_specificity_score,
+            "demand_score": row.demand_score,
+            "related_keywords_json": row.related_keywords_json or [],
+            "raw_json": row.raw_json or {},
+            "verification_status": row.verification_status,
+            "source_url": row.source_url,
+            "screenshot_url": row.screenshot_url,
+            "verification_notes": row.verification_notes,
+            "created_by": row.created_by,
+            "created_at": row.created_at,
+            "updated_at": row.updated_at,
+        }
+
+    def _serialize_trend_research(self, row: ProductTrendResearch) -> dict[str, Any]:
+        return {
+            "id": str(row.id),
+            "product_id": str(row.product_id) if row.product_id else None,
+            "idea_id": str(row.idea_id) if row.idea_id else None,
+            "campaign_id": str(row.campaign_id) if row.campaign_id else None,
+            "keyword": row.keyword,
+            "source": row.source,
+            "geo": row.geo,
+            "timeframe": row.timeframe,
+            "trend_direction": row.trend_direction,
+            "seasonality_risk": row.seasonality_risk,
+            "evergreen_score": row.evergreen_score,
+            "trend_stability_score": row.trend_stability_score,
+            "spike_risk_score": row.spike_risk_score,
+            "average_interest": float(row.average_interest) if row.average_interest is not None else None,
+            "peak_interest": float(row.peak_interest) if row.peak_interest is not None else None,
+            "low_interest": float(row.low_interest) if row.low_interest is not None else None,
+            "trend_points_json": row.trend_points_json or [],
+            "raw_json": row.raw_json or {},
+            "verification_status": row.verification_status,
+            "source_url": row.source_url,
+            "screenshot_url": row.screenshot_url,
+            "verification_notes": row.verification_notes,
+            "created_by": row.created_by,
+            "created_at": row.created_at,
+            "updated_at": row.updated_at,
         }
 
     def _serialize_competitor(self, row: CompetitorListing) -> dict[str, Any]:

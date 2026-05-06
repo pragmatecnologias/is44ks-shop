@@ -7,8 +7,15 @@ import json
 from app.db import get_db
 from app.services.agent_service import AgentService
 from app.models.product import Product
+from app.models.product_validation import ProductDemandResearch, ProductTrendResearch
+from app.models.supplier import MarketplaceEvidence
+from app.services.agent_factory import build_agents
 
 router = APIRouter(prefix="/api/agents", tags=["agents"])
+
+
+def _serialize_row(row):
+    return {column: getattr(row, column) for column in row.__table__.columns.keys()}
 
 
 @router.get("/reports/{product_id}")
@@ -29,35 +36,36 @@ def get_report(report_id: uuid.UUID, db: Session = Depends(get_db)):
 @router.post("/run/{product_id}")
 async def run_agent(product_id: uuid.UUID, agent_type: str, db: Session = Depends(get_db)):
     """Run a specific agent for a product and return results."""
-    from app.llm import get_llm_provider
-    from app.agents import RiskAgent, MarketAgent, CompetitionAgent, ProfitAgent, ReorderAgent, ListingAgent, DecisionAgent
-
     product = db.query(Product).filter(Product.id == product_id).first()
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
 
-    llm = get_llm_provider()
+    agent_map = build_agents()
 
-    agent_map = {
-        "risk": RiskAgent,
-        "market": MarketAgent,
-        "competition": CompetitionAgent,
-        "profit": ProfitAgent,
-        "reorder": ReorderAgent,
-        "listing": ListingAgent,
-        "decision": DecisionAgent,
-    }
-
-    agent_cls = agent_map.get(agent_type)
-    if not agent_cls:
+    agent = agent_map.get(agent_type)
+    if not agent:
         raise HTTPException(status_code=400, detail=f"Unknown agent type: {agent_type}")
-
-    agent = agent_cls(llm)
 
     if agent_type == "risk":
         context = {"product": {"name": product.name, "category": product.category, "description": product.description}}
     elif agent_type == "market":
-        context = {"product": {"name": product.name, "category": product.category}}
+        evidence_rows = db.query(MarketplaceEvidence).filter(MarketplaceEvidence.product_id == product_id).all()
+        context = {
+            "product": {"name": product.name, "category": product.category},
+            "marketplace_evidence": [_serialize_row(row) for row in evidence_rows],
+        }
+    elif agent_type == "demand":
+        demand_rows = db.query(ProductDemandResearch).filter(ProductDemandResearch.product_id == product_id).all()
+        context = {
+            "product": {"name": product.name, "category": product.category},
+            "demand_research": [_serialize_row(row) for row in demand_rows],
+        }
+    elif agent_type == "trend":
+        trend_rows = db.query(ProductTrendResearch).filter(ProductTrendResearch.product_id == product_id).all()
+        context = {
+            "product": {"name": product.name, "category": product.category},
+            "trend_research": [_serialize_row(row) for row in trend_rows],
+        }
     elif agent_type == "competition":
         context = {"product": {"name": product.name, "category": product.category}, "competitor_listings": []}
     elif agent_type == "profit":

@@ -32,6 +32,8 @@ class DiscoveryCampaign(Base):
     tasks = relationship("DiscoveryCampaignTask", back_populates="campaign", cascade="all, delete-orphan")
     research_jobs = relationship("ExternalResearchJob", back_populates="campaign", cascade="all, delete-orphan")
     evidence_candidates = relationship("EvidenceCandidate", back_populates="campaign", cascade="all, delete-orphan")
+    demand_research = relationship("ProductDemandResearch", back_populates="campaign", cascade="all, delete-orphan")
+    trend_research = relationship("ProductTrendResearch", back_populates="campaign", cascade="all, delete-orphan")
 
 
 class DiscoveryCampaignTask(Base):

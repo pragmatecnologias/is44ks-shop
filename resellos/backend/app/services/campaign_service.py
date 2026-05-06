@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from app.models.campaign import DiscoveryCampaign, DiscoveryCampaignTask
 from app.models.external_research import EvidenceCandidate, ExternalResearchJob
 from app.models.product import Product
+from app.models.product_validation import ProductDemandResearch, ProductTrendResearch, ProductValidationSummary
 from app.models.supplier import AgentReport, ProductIdea
 from app.schemas.campaign_schema import (
     DiscoveryCampaignCreate,
@@ -239,8 +240,23 @@ class CampaignService:
     def _next_action_for_idea(self, idea_payload: dict[str, Any]) -> str:
         idea_name = str(idea_payload.get("idea_name") or "idea")
         verdict = str(idea_payload.get("quick_scan_verdict") or "").upper()
+        idea_id = idea_payload.get("id")
+        demand_rows = []
+        trend_rows = []
+        if idea_id:
+            try:
+                idea_uuid = uuid.UUID(str(idea_id))
+                demand_rows = self.db.query(ProductDemandResearch).filter(ProductDemandResearch.idea_id == idea_uuid).all()
+                trend_rows = self.db.query(ProductTrendResearch).filter(ProductTrendResearch.idea_id == idea_uuid).all()
+            except Exception:
+                demand_rows = []
+                trend_rows = []
         if idea_payload.get("promoted_product_id"):
             return f"Review product cockpit for {idea_name}."
+        if not demand_rows:
+            return f"Collect keyword demand for {idea_name} before promotion."
+        if not trend_rows:
+            return f"Collect Google Trends / evergreen signal for {idea_name} before promotion."
         if verdict == "REJECT":
             return f"Skip {idea_name} unless new evidence appears."
         if verdict == "PROMISING_FOR_RESEARCH":
@@ -256,6 +272,11 @@ class CampaignService:
         products = self._campaign_products(campaign.id)
         jobs = self._campaign_jobs(campaign.id)
         candidates = self._campaign_candidates(campaign.id)
+        idea_ids = [idea.id for idea in ideas]
+        product_ids = [product.id for product in products]
+        demand_rows = self.db.query(ProductDemandResearch).filter(ProductDemandResearch.idea_id.in_(idea_ids) if idea_ids else False).all() if idea_ids else []
+        trend_rows = self.db.query(ProductTrendResearch).filter(ProductTrendResearch.idea_id.in_(idea_ids) if idea_ids else False).all() if idea_ids else []
+        product_validation_rows = self.db.query(ProductValidationSummary).filter(ProductValidationSummary.product_id.in_(product_ids) if product_ids else False).all() if product_ids else []
         total_ideas = len(ideas)
         rejected_ideas = sum(1 for idea in ideas if (idea.quick_scan_verdict or "").upper() == "REJECT" or (idea.status or "").upper() == "REJECTED")
         promising_ideas = sum(1 for idea in ideas if (idea.quick_scan_verdict or "").upper() == "PROMISING_FOR_RESEARCH")
@@ -269,6 +290,25 @@ class CampaignService:
         for idea in ideas:
             verdict = str(idea.quick_scan_verdict or "UNSCANNED").upper()
             ideas_by_verdict[verdict] = ideas_by_verdict.get(verdict, 0) + 1
+
+        ideas_with_keyword_demand = len({str(row.idea_id) for row in demand_rows if row.idea_id})
+        ideas_with_trend_research = len({str(row.idea_id) for row in trend_rows if row.idea_id})
+        products_with_keyword_demand = len({str(row.product_id) for row in demand_rows if row.product_id})
+        products_with_trend_research = len({str(row.product_id) for row in trend_rows if row.product_id})
+        products_with_evergreen_trend = len(
+            {
+                str(row.product_id)
+                for row in trend_rows
+                if row.product_id and (row.trend_stability_score or 0) >= 70 and str(row.trend_direction or "").upper() in {"RISING", "STABLE"}
+            }
+        )
+        products_with_weak_landed_cost_ratio = len(
+            {
+                str(row.product_id)
+                for row in product_validation_rows
+                if row.product_id and (str(row.supplier_economics_status or "").upper() in {"FAIL", "WARNING"} or (row.supplier_economics_score or 0) < 65)
+            }
+        )
 
         products_by_decision: dict[str, int] = {}
         watchlist_products: list[dict[str, Any]] = []
@@ -361,8 +401,14 @@ class CampaignService:
                 next_actions.append(self._next_action_for_idea(idea))
         else:
             next_actions.append("Create discovery ideas for this campaign.")
+        if ideas_with_keyword_demand < total_ideas and ideas:
+            next_actions.insert(0, f"Collect keyword demand for {idea_summaries[0].get('idea_name', 'the top idea')} before promotion.")
+        elif ideas_with_trend_research < total_ideas and ideas:
+            next_actions.insert(0, f"Collect Google Trends / evergreen signal for {idea_summaries[0].get('idea_name', 'the top idea')} before promotion.")
         if spend_estimate > 0 and spend_estimate < float(campaign.budget_limit_usd or 0):
             next_actions.append("Review DataForSEO candidates and keep budget within limits.")
+        if products_with_weak_landed_cost_ratio > 0:
+            next_actions.append("Improve supplier economics for the weakest product before promoting more ideas.")
         if external_jobs_pending_count > 0:
             next_actions.append(f"Poll {external_jobs_pending_count} pending external research job(s).")
         next_best_task = next_actions[0] if next_actions else None
@@ -380,6 +426,12 @@ class CampaignService:
             "ideas_by_verdict": ideas_by_verdict,
             "products_by_decision": products_by_decision,
             "candidate_count_by_status": candidate_count_by_status,
+            "ideas_with_keyword_demand": ideas_with_keyword_demand,
+            "ideas_with_trend_research": ideas_with_trend_research,
+            "products_with_keyword_demand": products_with_keyword_demand,
+            "products_with_trend_research": products_with_trend_research,
+            "products_with_evergreen_trend": products_with_evergreen_trend,
+            "products_with_weak_landed_cost_ratio": products_with_weak_landed_cost_ratio,
             "external_jobs_total": external_jobs_total,
             "external_jobs_pending_count": external_jobs_pending_count,
             "external_jobs_imported_count": external_jobs_imported,

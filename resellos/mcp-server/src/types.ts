@@ -93,6 +93,76 @@ export interface ManualCaptureInput {
   notes?: string | null;
 }
 
+export interface ProductDemandResearchInput {
+  product_id?: string | null;
+  idea_id?: string | null;
+  campaign_id?: string | null;
+  task_id?: string | null;
+  keyword: string;
+  source?: string;
+  target_country?: string;
+  target_language?: string;
+  monthly_search_volume?: number | null;
+  monthly_search_volume_min?: number | null;
+  monthly_search_volume_max?: number | null;
+  competition_level?: string | null;
+  cpc_low?: number | null;
+  cpc_high?: number | null;
+  currency?: string;
+  buyer_intent_score?: number;
+  keyword_specificity_score?: number;
+  demand_score?: number;
+  related_keywords?: Array<Record<string, unknown>>;
+  raw_json?: Record<string, unknown>;
+  verification_status?: string;
+  source_url?: string | null;
+  screenshot_url?: string | null;
+  verification_notes?: string | null;
+  created_by?: string | null;
+}
+
+export interface ProductDemandResearchVerifyInput {
+  verification_status: 'USER_VERIFIED' | 'USER_CAPTURED_UNVERIFIED';
+  source_url?: string | null;
+  screenshot_url?: string | null;
+  verification_notes?: string | null;
+  confirm?: boolean | null;
+}
+
+export interface ProductTrendResearchInput {
+  product_id?: string | null;
+  idea_id?: string | null;
+  campaign_id?: string | null;
+  task_id?: string | null;
+  keyword: string;
+  source?: string;
+  geo?: string;
+  timeframe?: string;
+  trend_direction?: string | null;
+  seasonality_risk?: string | null;
+  evergreen_score?: number;
+  trend_stability_score?: number;
+  spike_risk_score?: number;
+  average_interest?: number | null;
+  peak_interest?: number | null;
+  low_interest?: number | null;
+  trend_points?: Array<Record<string, unknown>>;
+  raw_json?: Record<string, unknown>;
+  verification_status?: string;
+  source_url?: string | null;
+  screenshot_url?: string | null;
+  verification_notes?: string | null;
+  created_by?: string | null;
+}
+
+export interface ProductTrendResearchVerifyInput {
+  verification_status: 'USER_VERIFIED' | 'USER_CAPTURED_UNVERIFIED';
+  source_url?: string | null;
+  screenshot_url?: string | null;
+  verification_notes?: string | null;
+  confirm?: boolean | null;
+}
+
 export interface VerifyInput {
   id: string;
   verification_status: 'USER_VERIFIED';

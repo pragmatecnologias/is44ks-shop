@@ -247,6 +247,12 @@ export default function DiscoveryCampaignDetailPage() {
             <SummaryBox title="Products by decision" value={formatCounts(report.products_by_decision)} />
             <SummaryBox title="Candidate status" value={formatCounts(report.candidate_count_by_status)} />
           </div>
+          <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <Metric label="Keyword demand ideas" value={String(report.ideas_with_keyword_demand ?? 0)} />
+            <Metric label="Trend research ideas" value={String(report.ideas_with_trend_research ?? 0)} />
+            <Metric label="Evergreen trend products" value={String(report.products_with_evergreen_trend ?? 0)} />
+            <Metric label="Weak landed cost ratio" value={String(report.products_with_weak_landed_cost_ratio ?? 0)} />
+          </div>
 
           {(report.external_jobs_total ?? 0) > 0 ? (
             <section className="mt-4 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">

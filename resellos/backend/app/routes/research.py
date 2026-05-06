@@ -8,8 +8,7 @@ from app.config import settings
 from app.db import get_db
 from app.schemas.product_schema import ResearchRunResponse, ResearchCockpitResponse
 from app.services.research_pipeline_service import ProductResearchService
-from app.llm import get_llm_provider
-from app.agents import RiskAgent, MarketAgent, CompetitionAgent, ProfitAgent, ReorderAgent, ListingAgent, DecisionAgent
+from app.services.agent_factory import build_agents
 from app.models.supplier import MarketplaceResearch, CompetitorListing, MarketplaceEvidence, ProductSource, ProfitAnalysis, AgentReport, InventoryItem, Sale
 
 
@@ -18,16 +17,7 @@ router = APIRouter(prefix="/api/products", tags=["research"])
 
 def _get_agents() -> dict:
     """Get all available agents with LLM provider."""
-    llm = get_llm_provider()
-    return {
-        "risk": RiskAgent(llm),
-        "market": MarketAgent(llm),
-        "competition": CompetitionAgent(llm),
-        "profit": ProfitAgent(llm),
-        "reorder": ReorderAgent(llm),
-        "listing": ListingAgent(llm),
-        "decision": DecisionAgent(llm),
-    }
+    return build_agents()
 
 
 @router.post("/{product_id}/research/run", response_model=ResearchRunResponse)

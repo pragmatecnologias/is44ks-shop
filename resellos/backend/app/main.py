@@ -12,6 +12,7 @@ from app.routes import (
     agents_router,
     discovery_router,
     campaigns_router,
+    validation_router,
     research_router,
     vision_router,
     external_research_router,
@@ -40,6 +41,7 @@ app.include_router(profit_router)
 app.include_router(agents_router)
 app.include_router(discovery_router)
 app.include_router(campaigns_router)
+app.include_router(validation_router)
 app.include_router(research_router)
 app.include_router(vision_router)
 app.include_router(external_research_router)

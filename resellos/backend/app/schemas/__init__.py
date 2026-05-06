@@ -35,6 +35,17 @@ from app.schemas.campaign_schema import (
     DiscoveryCampaignReportResponse,
     DiscoveryCampaignDetailResponse,
 )
+from app.schemas.validation_schema import (
+    ProductDemandResearchCreate,
+    ProductDemandResearchResponse,
+    ProductDemandResearchVerifyRequest,
+    ProductTrendResearchCreate,
+    ProductTrendResearchResponse,
+    ProductTrendResearchVerifyRequest,
+    ValidationCheck,
+    ProductValidationSummaryResponse,
+    ValidationChecklistResponse,
+)
 
 __all__ = [
     "ProductCreate",
@@ -68,4 +79,13 @@ __all__ = [
     "DiscoveryCampaignProductSummary",
     "DiscoveryCampaignReportResponse",
     "DiscoveryCampaignDetailResponse",
+    "ProductDemandResearchCreate",
+    "ProductDemandResearchResponse",
+    "ProductDemandResearchVerifyRequest",
+    "ProductTrendResearchCreate",
+    "ProductTrendResearchResponse",
+    "ProductTrendResearchVerifyRequest",
+    "ValidationCheck",
+    "ProductValidationSummaryResponse",
+    "ValidationChecklistResponse",
 ]

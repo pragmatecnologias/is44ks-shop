@@ -34,6 +34,13 @@ import type {
   ResearchCockpit,
   ResearchRunResponse,
   SupplierInput,
+  ProductDemandResearch,
+  ProductDemandResearchInput,
+  ProductDemandResearchVerifyInput,
+  ProductTrendResearch,
+  ProductTrendResearchInput,
+  ProductTrendResearchVerifyInput,
+  ValidationChecklistResponse,
 } from './types';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
@@ -470,6 +477,74 @@ export async function getProduct(id: string): Promise<Product | null> {
 
 export async function getProductCockpit(id: string): Promise<ResearchCockpit | null> {
   return getMaybe(`/api/products/${id}/research/cockpit`, demoCockpit(id));
+}
+
+export async function getProductValidationChecklist(productId: string): Promise<ValidationChecklistResponse | null> {
+  return getMaybe(`/api/validation/products/${productId}/checklist`, null);
+}
+
+export async function runProductValidation(productId: string): Promise<ValidationChecklistResponse> {
+  return requestJson<ValidationChecklistResponse>(`/api/validation/products/${productId}/run`, {
+    method: 'POST',
+  });
+}
+
+export async function listKeywordDemand(filters?: {
+  product_id?: string;
+  idea_id?: string;
+  campaign_id?: string;
+  verification_status?: string;
+}): Promise<ProductDemandResearch[]> {
+  const query = asQuery({
+    product_id: filters?.product_id,
+    idea_id: filters?.idea_id,
+    campaign_id: filters?.campaign_id,
+    verification_status: filters?.verification_status,
+  });
+  return getMaybe(`/api/validation/demand${query ? `?${query}` : ''}`, []);
+}
+
+export async function createKeywordDemand(payload: ProductDemandResearchInput): Promise<ProductDemandResearch> {
+  return requestJson<ProductDemandResearch>('/api/validation/demand', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function verifyKeywordDemand(researchId: string, payload: ProductDemandResearchVerifyInput): Promise<ProductDemandResearch> {
+  return requestJson<ProductDemandResearch>(`/api/validation/demand/${researchId}/verify`, {
+    method: 'PATCH',
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function listTrendResearch(filters?: {
+  product_id?: string;
+  idea_id?: string;
+  campaign_id?: string;
+  verification_status?: string;
+}): Promise<ProductTrendResearch[]> {
+  const query = asQuery({
+    product_id: filters?.product_id,
+    idea_id: filters?.idea_id,
+    campaign_id: filters?.campaign_id,
+    verification_status: filters?.verification_status,
+  });
+  return getMaybe(`/api/validation/trends${query ? `?${query}` : ''}`, []);
+}
+
+export async function createTrendResearch(payload: ProductTrendResearchInput): Promise<ProductTrendResearch> {
+  return requestJson<ProductTrendResearch>('/api/validation/trends', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function verifyTrendResearch(researchId: string, payload: ProductTrendResearchVerifyInput): Promise<ProductTrendResearch> {
+  return requestJson<ProductTrendResearch>(`/api/validation/trends/${researchId}/verify`, {
+    method: 'PATCH',
+    body: JSON.stringify(payload),
+  });
 }
 
 export async function listDiscoveryIdeas(): Promise<DiscoveryIdea[]> {

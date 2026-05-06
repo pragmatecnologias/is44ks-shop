@@ -1,5 +1,7 @@
 from app.agents.risk_agent import RiskAgent
 from app.agents.market_agent import MarketAgent
+from app.agents.demand_agent import DemandAgent
+from app.agents.trend_agent import TrendAgent
 from app.agents.competition_agent import CompetitionAgent
 from app.agents.profit_agent import ProfitAgent
 from app.agents.reorder_agent import ReorderAgent
@@ -10,6 +12,8 @@ from app.agents.quick_scan_agent import QuickScanAgent
 __all__ = [
     "RiskAgent",
     "MarketAgent",
+    "DemandAgent",
+    "TrendAgent",
     "CompetitionAgent",
     "ProfitAgent",
     "ReorderAgent",

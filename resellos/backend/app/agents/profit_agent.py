@@ -127,6 +127,28 @@ class ProfitAgent(BaseAgent):
         target_sale_price = sale_price if sale_price > 0 else 0
         current_net_profit = float(best["net_profit"])
         current_landed_cost = float(best["landed_cost"])
+        landed_cost_ratio = round(current_landed_cost / target_sale_price, 4) if target_sale_price > 0 else None
+        if landed_cost_ratio is None:
+            landed_cost_ratio_status = "UNKNOWN"
+        elif landed_cost_ratio <= 0.25:
+            landed_cost_ratio_status = "EXCELLENT"
+        elif landed_cost_ratio <= 0.40:
+            landed_cost_ratio_status = "GOOD"
+        elif landed_cost_ratio <= 0.60:
+            landed_cost_ratio_status = "WEAK"
+        else:
+            landed_cost_ratio_status = "BAD"
+        gross_margin_percent = round(((target_sale_price - current_landed_cost) / target_sale_price) * 100, 2) if target_sale_price > 0 else None
+        if gross_margin_percent is None:
+            gross_margin_status = "UNKNOWN"
+        elif gross_margin_percent >= 60:
+            gross_margin_status = "EXCELLENT"
+        elif gross_margin_percent >= 40:
+            gross_margin_status = "GOOD"
+        elif gross_margin_percent >= 25:
+            gross_margin_status = "WEAK"
+        else:
+            gross_margin_status = "BAD"
         max_landed_cost_for_target_profit = max(
             0.0,
             round(float(best["sale_price"]) + float(best["shipping_revenue"]) - float(best["selling_cost"]) - target_net_profit_threshold, 2),
@@ -148,6 +170,10 @@ class ProfitAgent(BaseAgent):
                 "max_landed_cost_for_target_profit": max_landed_cost_for_target_profit,
                 "current_target_sale_price": round(target_sale_price, 2),
                 "required_sale_price_for_target_profit": required_sale_price_for_target_profit,
+                "landed_cost_ratio": landed_cost_ratio,
+                "landed_cost_ratio_status": landed_cost_ratio_status,
+                "gross_margin_percent": gross_margin_percent,
+                "gross_margin_status": gross_margin_status,
                 "break_even_price": round(break_even, 2),
                 "minimum_recommended_price": minimum_recommended_price,
                 "target_sale_price": round(target_sale_price, 2),

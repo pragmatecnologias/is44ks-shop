@@ -28,14 +28,22 @@ import { RiskBadge } from '@/components/shared/RiskBadge';
 import { VerificationBadge } from '@/components/shared/VerificationBadge';
 import {
   createMarketplaceEvidence,
+  createKeywordDemand,
   createProductSource,
+  createTrendResearch,
   deleteMarketplaceEvidence,
   deleteProductSource,
   getProductCockpit,
+  getProductValidationChecklist,
   runProductResearch,
+  verifyKeywordDemand,
   verifyEvidenceItem,
   verifyCompetitor,
+  verifyTrendResearch,
   verifySource,
+  listKeywordDemand,
+  listTrendResearch,
+  runProductValidation,
 } from '@/lib/api';
 import type {
   MarketplaceEvidenceInput,
@@ -43,6 +51,11 @@ import type {
   ResearchCockpit,
   DecisionSummary,
   SupplierInput,
+  ValidationChecklistResponse,
+  ProductDemandResearch,
+  ProductTrendResearch,
+  ProductDemandResearchInput,
+  ProductTrendResearchInput,
 } from '@/lib/types';
 
 const emptyEvidenceForm: MarketplaceEvidenceInput = {
@@ -56,6 +69,23 @@ const emptySupplierForm: SupplierInput = {
   is_primary: false,
 };
 
+const emptyDemandForm: ProductDemandResearchInput = {
+  keyword: '',
+  source: 'MANUAL_CAPTURE',
+  target_country: 'US',
+  target_language: 'en',
+  currency: 'USD',
+  related_keywords: [],
+};
+
+const emptyTrendForm: ProductTrendResearchInput = {
+  keyword: '',
+  source: 'MANUAL_CAPTURE',
+  geo: 'US',
+  timeframe: 'past_5_years',
+  trend_points: [],
+};
+
 export default function ProductDetailPage() {
   const params = useParams();
   const productId = params.id as string;
@@ -67,16 +97,33 @@ export default function ProductDetailPage() {
   const [error, setError] = useState<string | null>(null);
   const [evidenceForm, setEvidenceForm] = useState<MarketplaceEvidenceInput>(emptyEvidenceForm);
   const [supplierForm, setSupplierForm] = useState<SupplierInput>(emptySupplierForm);
+  const [validationChecklist, setValidationChecklist] = useState<ValidationChecklistResponse | null>(null);
+  const [demandRows, setDemandRows] = useState<ProductDemandResearch[]>([]);
+  const [trendRows, setTrendRows] = useState<ProductTrendResearch[]>([]);
+  const [demandForm, setDemandForm] = useState<ProductDemandResearchInput>(emptyDemandForm);
+  const [trendForm, setTrendForm] = useState<ProductTrendResearchInput>(emptyTrendForm);
+  const [savingValidation, setSavingValidation] = useState(false);
 
   async function loadCockpit() {
     setLoading(true);
     setError(null);
     try {
-      const data = await getProductCockpit(productId);
+      const [data, checklist, demand, trend] = await Promise.all([
+        getProductCockpit(productId),
+        getProductValidationChecklist(productId).catch(() => null),
+        listKeywordDemand({ product_id: productId }).catch(() => []),
+        listTrendResearch({ product_id: productId }).catch(() => []),
+      ]);
       setCockpit(data);
+      setValidationChecklist(checklist);
+      setDemandRows(demand);
+      setTrendRows(trend);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load product cockpit');
       setCockpit(null);
+      setValidationChecklist(null);
+      setDemandRows([]);
+      setTrendRows([]);
     } finally {
       setLoading(false);
     }
@@ -164,6 +211,17 @@ export default function ProductDetailPage() {
   const readinessScore = Math.round((readinessChecks.filter((check) => check.ok).length / readinessChecks.length) * 100);
   const mainBlocker = decision.main_blocker || readinessChecks.find((check) => !check.ok)?.label || 'None';
   const showProfitGapCard = evidenceGatesComplete && buyReadinessStatus !== 'READY' && profitGapToBuySample > 0;
+  const validationCheckItems = validationChecklist
+    ? [
+        { key: 'market_presence', label: 'Market Presence', check: validationChecklist.market_presence },
+        { key: 'search_demand', label: 'Search Demand', check: validationChecklist.search_demand },
+        { key: 'sold_demand', label: 'Sold Demand', check: validationChecklist.sold_demand },
+        { key: 'trend_stability', label: 'Trend Stability', check: validationChecklist.trend_stability },
+        { key: 'supplier_economics', label: 'Supplier Economics', check: validationChecklist.supplier_economics },
+        { key: 'competition_gap', label: 'Competition Gap', check: validationChecklist.competition_gap },
+        { key: 'risk', label: 'Risk', check: validationChecklist.risk },
+      ]
+    : [];
 
   const decisionAccent =
     finalDecision === 'BLOCKED'
@@ -262,6 +320,94 @@ export default function ProductDetailPage() {
       await loadCockpit();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not delete supplier');
+    }
+  }
+
+  async function handleAddDemand() {
+    if (!product || !demandForm.keyword.trim()) return;
+    setSavingValidation(true);
+    setError(null);
+    try {
+      await createKeywordDemand({
+        ...demandForm,
+        product_id: product.id,
+      });
+      setDemandForm(emptyDemandForm);
+      await loadCockpit();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not save keyword demand');
+    } finally {
+      setSavingValidation(false);
+    }
+  }
+
+  async function handleAddTrend() {
+    if (!product || !trendForm.keyword.trim()) return;
+    setSavingValidation(true);
+    setError(null);
+    try {
+      await createTrendResearch({
+        ...trendForm,
+        product_id: product.id,
+      });
+      setTrendForm(emptyTrendForm);
+      await loadCockpit();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not save trend research');
+    } finally {
+      setSavingValidation(false);
+    }
+  }
+
+  async function handleRunValidation() {
+    if (!product) return;
+    setSavingValidation(true);
+    setError(null);
+    try {
+      await runProductValidation(product.id);
+      await loadCockpit();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not run validation checklist');
+    } finally {
+      setSavingValidation(false);
+    }
+  }
+
+  async function handleVerifyDemand(researchId: string, sourceUrl?: string | null, screenshotUrl?: string | null, notes?: string | null) {
+    setSavingValidation(true);
+    setError(null);
+    try {
+      await verifyKeywordDemand(researchId, {
+        verification_status: 'USER_VERIFIED',
+        source_url: sourceUrl ?? undefined,
+        screenshot_url: screenshotUrl ?? undefined,
+        verification_notes: notes ?? undefined,
+        confirm: true,
+      });
+      await loadCockpit();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not verify keyword demand');
+    } finally {
+      setSavingValidation(false);
+    }
+  }
+
+  async function handleVerifyTrend(researchId: string, sourceUrl?: string | null, screenshotUrl?: string | null, notes?: string | null) {
+    setSavingValidation(true);
+    setError(null);
+    try {
+      await verifyTrendResearch(researchId, {
+        verification_status: 'USER_VERIFIED',
+        source_url: sourceUrl ?? undefined,
+        screenshot_url: screenshotUrl ?? undefined,
+        verification_notes: notes ?? undefined,
+        confirm: true,
+      });
+      await loadCockpit();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not verify trend research');
+    } finally {
+      setSavingValidation(false);
     }
   }
 
@@ -494,6 +640,203 @@ export default function ProductDetailPage() {
             </div>
           </Panel>
         </div>
+
+        <Panel title="Validation Checklist" icon={ClipboardCheck}>
+          <div className="space-y-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Validation readiness</div>
+                <div className="mt-1 text-lg font-semibold text-white">
+                  {validationChecklist?.final_readiness?.replace(/_/g, ' ') ?? 'INCOMPLETE'}
+                </div>
+                <div className="mt-1 text-sm text-zinc-400">
+                  Score {validationChecklist?.overall_validation_score ?? 0}/100
+                </div>
+                {validationChecklist?.main_blocker ? (
+                  <div className="mt-2 text-sm text-zinc-300">Blocker: {validationChecklist.main_blocker}</div>
+                ) : null}
+                {validationChecklist?.next_action ? (
+                  <div className="mt-1 text-sm text-zinc-400">Next: {validationChecklist.next_action}</div>
+                ) : null}
+              </div>
+              <button
+                type="button"
+                onClick={handleRunValidation}
+                disabled={savingValidation}
+                className="inline-flex items-center gap-2 rounded-xl border border-indigo-500/30 bg-indigo-500/10 px-4 py-2 text-sm font-medium text-indigo-200 transition hover:bg-indigo-500/20 disabled:opacity-70"
+              >
+                {savingValidation ? <Loader2 className="h-4 w-4 animate-spin" /> : <ClipboardCheck className="h-4 w-4" />}
+                Run Validation
+              </button>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              {validationCheckItems.length ? (
+                validationCheckItems.map(({ key, label, check }) => (
+                  <div key={key} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="text-sm font-medium text-white">{label}</div>
+                      <div className={`text-xs font-semibold ${check.status === 'PASS' ? 'text-emerald-400' : check.status === 'WARNING' ? 'text-yellow-400' : check.status === 'FAIL' ? 'text-red-400' : 'text-zinc-400'}`}>
+                        {check.status}
+                      </div>
+                    </div>
+                    <div className="mt-2 text-2xl font-semibold text-white">{check.score}</div>
+                    <div className="mt-2 text-sm text-zinc-300">{check.summary}</div>
+                    {check.next_action ? <div className="mt-2 text-xs text-zinc-500">Next: {check.next_action}</div> : null}
+                  </div>
+                ))
+              ) : (
+                <div className="md:col-span-2 xl:col-span-4">
+                  <EmptyState title="No validation checklist yet" description="Run validation to populate demand, trend, margin, and competition checks." />
+                </div>
+              )}
+            </div>
+
+            <div className="grid gap-6 xl:grid-cols-2">
+              <form
+                className="space-y-3 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleAddDemand();
+                }}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <div className="text-sm font-medium text-white">Keyword Demand</div>
+                    <div className="text-xs text-zinc-500">Search volume and buyer intent signal.</div>
+                  </div>
+                  <button type="submit" disabled={savingValidation} className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 hover:border-zinc-600 disabled:opacity-70">
+                    Add Demand
+                  </button>
+                </div>
+                <div className="grid gap-3 md:grid-cols-2">
+                  <Input label="Keyword" value={demandForm.keyword || ''} onChange={(value) => setDemandForm((s) => ({ ...s, keyword: value }))} />
+                  <Input label="Monthly Volume" type="number" value={demandForm.monthly_search_volume?.toString() ?? ''} onChange={(value) => setDemandForm((s) => ({ ...s, monthly_search_volume: value ? Number(value) : undefined }))} />
+                  <Input label="Country" value={demandForm.target_country || 'US'} onChange={(value) => setDemandForm((s) => ({ ...s, target_country: value }))} />
+                  <Input label="Source" value={demandForm.source || 'MANUAL_CAPTURE'} onChange={(value) => setDemandForm((s) => ({ ...s, source: value }))} />
+                  <Input label="CPC Low" type="number" step="0.01" value={demandForm.cpc_low?.toString() ?? ''} onChange={(value) => setDemandForm((s) => ({ ...s, cpc_low: value ? Number(value) : undefined }))} />
+                  <Input label="CPC High" type="number" step="0.01" value={demandForm.cpc_high?.toString() ?? ''} onChange={(value) => setDemandForm((s) => ({ ...s, cpc_high: value ? Number(value) : undefined }))} />
+                </div>
+                <Textarea label="Verification Notes" value={demandForm.verification_notes || ''} onChange={(value) => setDemandForm((s) => ({ ...s, verification_notes: value }))} />
+              </form>
+
+              <form
+                className="space-y-3 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleAddTrend();
+                }}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <div className="text-sm font-medium text-white">Trend Research</div>
+                    <div className="text-xs text-zinc-500">Evergreen / seasonal signal.</div>
+                  </div>
+                  <button type="submit" disabled={savingValidation} className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 hover:border-zinc-600 disabled:opacity-70">
+                    Add Trend
+                  </button>
+                </div>
+                <div className="grid gap-3 md:grid-cols-2">
+                  <Input label="Keyword" value={trendForm.keyword || ''} onChange={(value) => setTrendForm((s) => ({ ...s, keyword: value }))} />
+                  <Input label="Geo" value={trendForm.geo || 'US'} onChange={(value) => setTrendForm((s) => ({ ...s, geo: value }))} />
+                  <Input label="Timeframe" value={trendForm.timeframe || 'past_5_years'} onChange={(value) => setTrendForm((s) => ({ ...s, timeframe: value }))} />
+                  <Input label="Source" value={trendForm.source || 'MANUAL_CAPTURE'} onChange={(value) => setTrendForm((s) => ({ ...s, source: value }))} />
+                  <Input label="Direction" value={trendForm.trend_direction || ''} onChange={(value) => setTrendForm((s) => ({ ...s, trend_direction: value }))} />
+                  <Input label="Seasonality Risk" value={trendForm.seasonality_risk || ''} onChange={(value) => setTrendForm((s) => ({ ...s, seasonality_risk: value }))} />
+                </div>
+                <Textarea label="Verification Notes" value={trendForm.verification_notes || ''} onChange={(value) => setTrendForm((s) => ({ ...s, verification_notes: value }))} />
+              </form>
+            </div>
+
+            <div className="grid gap-6 xl:grid-cols-2">
+              <div className="space-y-3">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Captured keyword demand</div>
+                {demandRows.length ? (
+                  demandRows.map((row) => (
+                    <div key={row.id} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <div>
+                          <div className="text-sm font-medium text-white">{row.keyword}</div>
+                          <div className="text-xs text-zinc-500">
+                            {row.source} · {row.target_country} · {row.monthly_search_volume ?? '—'} searches
+                          </div>
+                        </div>
+                        <VerificationBadge status={row.verification_status} />
+                      </div>
+                      <div className="mt-2 grid gap-2 text-sm text-zinc-300 md:grid-cols-2">
+                        <StatRow label="Intent" value={String(row.buyer_intent_score)} />
+                        <StatRow label="Specificity" value={String(row.keyword_specificity_score)} />
+                        <StatRow label="Demand score" value={String(row.demand_score)} />
+                        <StatRow label="Competition" value={row.competition_level || 'UNKNOWN'} />
+                      </div>
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
+                        {row.source_url ? (
+                          <a href={row.source_url} className="text-xs text-indigo-400 hover:text-indigo-300" target="_blank" rel="noreferrer">
+                            <ExternalLink className="h-3.5 w-3.5" />
+                          </a>
+                        ) : null}
+                        {(row.source_url || row.screenshot_url || row.verification_notes) && row.verification_status !== 'USER_VERIFIED' ? (
+                          <button
+                            type="button"
+                            onClick={() => handleVerifyDemand(row.id, row.source_url, row.screenshot_url, row.verification_notes)}
+                            className="rounded-lg border border-green-500/30 bg-green-500/10 px-2 py-1 text-xs text-green-400 hover:bg-green-500/20"
+                          >
+                            Verify
+                          </button>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <EmptyState title="No keyword demand yet" description="Add a manual keyword demand capture to score search demand." />
+                )}
+              </div>
+
+              <div className="space-y-3">
+                <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">Captured trend research</div>
+                {trendRows.length ? (
+                  trendRows.map((row) => (
+                    <div key={row.id} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <div>
+                          <div className="text-sm font-medium text-white">{row.keyword}</div>
+                          <div className="text-xs text-zinc-500">
+                            {row.source} · {row.geo} · {row.timeframe}
+                          </div>
+                        </div>
+                        <VerificationBadge status={row.verification_status} />
+                      </div>
+                      <div className="mt-2 grid gap-2 text-sm text-zinc-300 md:grid-cols-2">
+                        <StatRow label="Direction" value={row.trend_direction || 'UNKNOWN'} />
+                        <StatRow label="Seasonality" value={row.seasonality_risk || 'UNKNOWN'} />
+                        <StatRow label="Evergreen" value={String(row.evergreen_score)} />
+                        <StatRow label="Stability" value={String(row.trend_stability_score)} />
+                      </div>
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
+                        {row.source_url ? (
+                          <a href={row.source_url} className="text-xs text-indigo-400 hover:text-indigo-300" target="_blank" rel="noreferrer">
+                            <ExternalLink className="h-3.5 w-3.5" />
+                          </a>
+                        ) : null}
+                        {(row.source_url || row.screenshot_url || row.verification_notes) && row.verification_status !== 'USER_VERIFIED' ? (
+                          <button
+                            type="button"
+                            onClick={() => handleVerifyTrend(row.id, row.source_url, row.screenshot_url, row.verification_notes)}
+                            className="rounded-lg border border-green-500/30 bg-green-500/10 px-2 py-1 text-xs text-green-400 hover:bg-green-500/20"
+                          >
+                            Verify
+                          </button>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <EmptyState title="No trend research yet" description="Add a manual Google Trends capture to judge stability and seasonality." />
+                )}
+              </div>
+            </div>
+          </div>
+        </Panel>
 
         <div className="grid gap-6 xl:grid-cols-2">
           <Panel title="Marketplace Evidence" icon={Users} panelId="marketplace-evidence">

@@ -9,9 +9,10 @@ import { createDiscoveryIdea, getDiscoveryBoard, runQuickScan } from './tools/di
 import { createDiscoveryCampaign, listDiscoveryCampaigns, getDiscoveryCampaign, createCampaignTask, updateCampaignTask, getCampaignReport, generateCampaignNextTasks, addIdeaToCampaign, getCampaignNextTask, completeCampaignTask, blockCampaignTask } from './tools/campaignTools.js';
 import { runDataForSeoGoogleShopping, pollExternalResearchJob } from './tools/externalResearchTools.js';
 import { listEvidenceCandidates, approveCandidate, rejectCandidate, captureManualEvidence } from './tools/candidateTools.js';
+import { addKeywordDemand, listKeywordDemand, verifyKeywordDemand, addTrendResearch, listTrendResearch, verifyTrendResearch, getProductValidationChecklist, runProductValidation } from './tools/validationTools.js';
 import { getProductCockpit, runProductResearch, getNextResearchAction, generateProductResearchReport } from './tools/productTools.js';
 import { verifyMarketplaceEvidence, verifySupplierSource, verifyCompetitorListing } from './tools/verificationTools.js';
-import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema, getCampaignNextTaskSchema, completeCampaignTaskSchema, blockCampaignTaskSchema } from './toolRegistry.js';
+import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema, getCampaignNextTaskSchema, completeCampaignTaskSchema, blockCampaignTaskSchema, addKeywordDemandSchema, listKeywordDemandSchema, verifyKeywordDemandSchema, addTrendResearchSchema, listTrendResearchSchema, verifyTrendResearchSchema, productValidationChecklistSchema, runProductValidationSchema } from './toolRegistry.js';
 import { guardWriteEnabled } from './guards/approvalGuards.js';
 import type { ToolResult } from './types.js';
 import type { z } from 'zod';
@@ -160,6 +161,38 @@ async function invokeTool(name: string, args: Record<string, unknown>, config: A
     case 'resellos_generate_product_research_report': {
       const input = productReportSchema.parse(args);
       return generateProductResearchReport(client, input.product_id, config);
+    }
+    case 'resellos_add_keyword_demand': {
+      const input = addKeywordDemandSchema.parse(args);
+      return addKeywordDemand(client, input, config);
+    }
+    case 'resellos_list_keyword_demand': {
+      const input = listKeywordDemandSchema.parse(args);
+      return listKeywordDemand(client, input, config);
+    }
+    case 'resellos_verify_keyword_demand': {
+      const input = verifyKeywordDemandSchema.parse(args);
+      return verifyKeywordDemand(client, input, config);
+    }
+    case 'resellos_add_trend_research': {
+      const input = addTrendResearchSchema.parse(args);
+      return addTrendResearch(client, input, config);
+    }
+    case 'resellos_list_trend_research': {
+      const input = listTrendResearchSchema.parse(args);
+      return listTrendResearch(client, input, config);
+    }
+    case 'resellos_verify_trend_research': {
+      const input = verifyTrendResearchSchema.parse(args);
+      return verifyTrendResearch(client, input, config);
+    }
+    case 'resellos_get_product_validation_checklist': {
+      const input = productValidationChecklistSchema.parse(args);
+      return getProductValidationChecklist(client, input.product_id, config);
+    }
+    case 'resellos_run_product_validation': {
+      const input = runProductValidationSchema.parse(args);
+      return runProductValidation(client, input.product_id, config);
     }
     case 'resellos_get_campaign_next_task': {
       const input = getCampaignNextTaskSchema.parse(args);

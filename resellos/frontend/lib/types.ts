@@ -248,6 +248,183 @@ export interface ProfitAnalysis {
   verdict?: string;
 }
 
+export interface ValidationCheck {
+  status: 'PASS' | 'FAIL' | 'WARNING' | 'UNKNOWN';
+  score: number;
+  summary: string;
+  next_action?: string | null;
+}
+
+export interface ProductDemandResearch {
+  id: string;
+  product_id?: string | null;
+  idea_id?: string | null;
+  campaign_id?: string | null;
+  task_id?: string | null;
+  keyword: string;
+  source: string;
+  target_country: string;
+  target_language: string;
+  monthly_search_volume?: number | null;
+  monthly_search_volume_min?: number | null;
+  monthly_search_volume_max?: number | null;
+  competition_level?: string | null;
+  cpc_low?: number | null;
+  cpc_high?: number | null;
+  currency: string;
+  buyer_intent_score: number;
+  keyword_specificity_score: number;
+  demand_score: number;
+  related_keywords: Array<Record<string, unknown>>;
+  raw_json: Record<string, unknown>;
+  verification_status: string;
+  source_url?: string | null;
+  screenshot_url?: string | null;
+  verification_notes?: string | null;
+  created_by?: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProductDemandResearchInput {
+  product_id?: string | null;
+  idea_id?: string | null;
+  campaign_id?: string | null;
+  task_id?: string | null;
+  keyword: string;
+  source?: string;
+  target_country?: string;
+  target_language?: string;
+  monthly_search_volume?: number | null;
+  monthly_search_volume_min?: number | null;
+  monthly_search_volume_max?: number | null;
+  competition_level?: string | null;
+  cpc_low?: number | null;
+  cpc_high?: number | null;
+  currency?: string;
+  buyer_intent_score?: number;
+  keyword_specificity_score?: number;
+  demand_score?: number;
+  related_keywords?: Array<Record<string, unknown>>;
+  raw_json?: Record<string, unknown>;
+  verification_status?: string;
+  source_url?: string | null;
+  screenshot_url?: string | null;
+  verification_notes?: string | null;
+  created_by?: string | null;
+}
+
+export interface ProductDemandResearchVerifyInput {
+  verification_status: 'USER_VERIFIED' | 'USER_CAPTURED_UNVERIFIED';
+  source_url?: string | null;
+  screenshot_url?: string | null;
+  verification_notes?: string | null;
+  confirm?: boolean | null;
+}
+
+export interface ProductTrendResearch {
+  id: string;
+  product_id?: string | null;
+  idea_id?: string | null;
+  campaign_id?: string | null;
+  task_id?: string | null;
+  keyword: string;
+  source: string;
+  geo: string;
+  timeframe: string;
+  trend_direction?: string | null;
+  seasonality_risk?: string | null;
+  evergreen_score: number;
+  trend_stability_score: number;
+  spike_risk_score: number;
+  average_interest?: number | null;
+  peak_interest?: number | null;
+  low_interest?: number | null;
+  trend_points: Array<Record<string, unknown>>;
+  raw_json: Record<string, unknown>;
+  verification_status: string;
+  source_url?: string | null;
+  screenshot_url?: string | null;
+  verification_notes?: string | null;
+  created_by?: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProductTrendResearchInput {
+  product_id?: string | null;
+  idea_id?: string | null;
+  campaign_id?: string | null;
+  task_id?: string | null;
+  keyword: string;
+  source?: string;
+  geo?: string;
+  timeframe?: string;
+  trend_direction?: string | null;
+  seasonality_risk?: string | null;
+  evergreen_score?: number;
+  trend_stability_score?: number;
+  spike_risk_score?: number;
+  average_interest?: number | null;
+  peak_interest?: number | null;
+  low_interest?: number | null;
+  trend_points?: Array<Record<string, unknown>>;
+  raw_json?: Record<string, unknown>;
+  verification_status?: string;
+  source_url?: string | null;
+  screenshot_url?: string | null;
+  verification_notes?: string | null;
+  created_by?: string | null;
+}
+
+export interface ProductTrendResearchVerifyInput {
+  verification_status: 'USER_VERIFIED' | 'USER_CAPTURED_UNVERIFIED';
+  source_url?: string | null;
+  screenshot_url?: string | null;
+  verification_notes?: string | null;
+  confirm?: boolean | null;
+}
+
+export interface ProductValidationSummary {
+  id: string;
+  product_id: string;
+  market_presence_status?: string | null;
+  search_demand_status?: string | null;
+  sold_demand_status?: string | null;
+  trend_status?: string | null;
+  supplier_economics_status?: string | null;
+  competition_status?: string | null;
+  risk_status?: string | null;
+  market_presence_score: number;
+  search_demand_score: number;
+  sold_demand_score: number;
+  trend_score: number;
+  supplier_economics_score: number;
+  competition_score: number;
+  risk_score: number;
+  overall_validation_score: number;
+  validation_readiness: 'INCOMPLETE' | 'WEAK' | 'WATCHLIST' | 'READY_FOR_SAMPLE';
+  main_validation_blocker?: string | null;
+  next_validation_action?: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ValidationChecklistResponse {
+  product_id: string;
+  market_presence: ValidationCheck;
+  search_demand: ValidationCheck;
+  sold_demand: ValidationCheck;
+  trend_stability: ValidationCheck;
+  supplier_economics: ValidationCheck;
+  competition_gap: ValidationCheck;
+  risk: ValidationCheck;
+  final_readiness: 'INCOMPLETE' | 'WEAK' | 'WATCHLIST' | 'READY_FOR_SAMPLE';
+  main_blocker?: string | null;
+  next_action?: string | null;
+  overall_validation_score: number;
+}
+
 export interface DecisionSummary {
   recommendation?: FinalDecision;
   research_verdict?: 'REJECT' | 'WEAK_IDEA' | 'NEEDS_MORE_RESEARCH' | 'PROMISING_RESEARCH' | 'READY_FOR_SAMPLE';
@@ -645,6 +822,12 @@ export interface DiscoveryCampaignReport {
   ideas_by_verdict?: Record<string, number>;
   products_by_decision?: Record<string, number>;
   candidate_count_by_status?: Record<string, number>;
+  ideas_with_keyword_demand?: number;
+  ideas_with_trend_research?: number;
+  products_with_keyword_demand?: number;
+  products_with_trend_research?: number;
+  products_with_evergreen_trend?: number;
+  products_with_weak_landed_cost_ratio?: number;
   external_jobs_total?: number;
   external_jobs_pending_count?: number;
   external_jobs_imported_count?: number;

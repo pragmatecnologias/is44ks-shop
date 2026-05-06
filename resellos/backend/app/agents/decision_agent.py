@@ -32,6 +32,8 @@ class DecisionAgent(BaseAgent):
 
         risk = agent_data(reports, "risk_agent")
         market = agent_data(reports, "market_agent")
+        demand = agent_data(reports, "demand_agent")
+        trend = agent_data(reports, "trend_agent")
         competition = agent_data(reports, "competition_agent")
         profit = agent_data(reports, "profit_agent")
         product = context.get("product", {})
@@ -58,6 +60,12 @@ class DecisionAgent(BaseAgent):
         listing_gap_score = int(competition.get("listing_gap_score", 0) or 0)
         can_compete = bool(competition.get("can_compete", True))
         verified_competitor_count = int(competition.get("verified_competitor_count", 0) or 0)
+        demand_status = str(demand.get("demand_status", "UNKNOWN")).upper()
+        demand_score = int(demand.get("demand_score", 0) or 0)
+        trend_status = str(trend.get("trend_status", "UNKNOWN")).upper()
+        trend_stability_score = int(trend.get("trend_stability_score", 0) or 0)
+        landed_cost_ratio = profit.get("landed_cost_ratio")
+        landed_cost_ratio_status = str(profit.get("landed_cost_ratio_status", "UNKNOWN")).upper()
         market_price_missing = bool(
             market.get(
                 "market_price_missing",
@@ -85,6 +93,8 @@ class DecisionAgent(BaseAgent):
         research_completeness_score += 10 if not market_price_missing else 0
         research_completeness_score += 10 if profit.get("scenarios") else 0
         research_completeness_score += 10 if competition.get("competitor_count", 0) > 0 else 0
+        research_completeness_score += 10 if demand else 0
+        research_completeness_score += 10 if trend else 0
         research_completeness_score += 10 if target_sale_price > 0 else 0
         if supplier_verified and verified_competitor_count >= 3 and verification_coverage >= 1.0:
             research_completeness_score = max(research_completeness_score, int(market.get("research_completeness_score", 0) or 0))
@@ -128,6 +138,31 @@ class DecisionAgent(BaseAgent):
             score += 5
         elif not can_compete or competition_level == "HIGH":
             score -= 10
+
+        if demand_status == "STRONG" or demand_score >= 75:
+            score += 10
+        elif demand_status == "MODERATE" or demand_score >= 50:
+            score += 5
+        elif demand_status == "WEAK" and demand:
+            score -= 5
+
+        if trend_status == "EVERGREEN" or trend_stability_score >= 75:
+            score += 10
+        elif trend_status == "SEASONAL":
+            score -= 5
+        elif trend_status in {"SPIKY", "DECLINING"}:
+            score -= 10
+
+        if landed_cost_ratio is not None:
+            ratio = float(landed_cost_ratio)
+            if ratio <= settings.VALIDATION_TARGET_LANDED_COST_RATIO:
+                score += 10
+            elif ratio <= settings.VALIDATION_MAX_ACCEPTABLE_LANDED_COST_RATIO:
+                score += 5
+            elif ratio <= settings.VALIDATION_HIGH_RISK_LANDED_COST_RATIO:
+                score -= 5
+            else:
+                score -= 15
 
         score = max(0, min(100, score))
 
@@ -350,6 +385,14 @@ class DecisionAgent(BaseAgent):
                 required_before_buying.append(
                     f"Reduce landed cost to approximately ${max_landed_cost_for_target_profit:.2f} or prove a higher sustainable sale price above ${required_sale_price_for_target_profit:.2f}."
                 )
+            elif landed_cost_ratio is not None and float(landed_cost_ratio) > settings.VALIDATION_MAX_ACCEPTABLE_LANDED_COST_RATIO:
+                required_before_buying.append(
+                    f"Reduce landed cost to around ${max_landed_cost_for_target_profit:.2f} or improve margins until landed cost ratio is below {settings.VALIDATION_MAX_ACCEPTABLE_LANDED_COST_RATIO:.0%}."
+                )
+            elif demand_status in {"WEAK", "UNKNOWN"}:
+                required_before_buying.append("Strengthen keyword demand before sample buying.")
+            elif trend_status in {"SEASONAL", "SPIKY", "DECLINING", "UNKNOWN"}:
+                required_before_buying.append("Validate an evergreen trend before sample buying.")
 
         if evidence_gates_complete and not blocked and buy_readiness_status != "READY":
             if current_net_profit < target_net_profit_threshold:
@@ -357,6 +400,15 @@ class DecisionAgent(BaseAgent):
                     f"Verified evidence gates are complete. Reduce landed cost to about ${max_landed_cost_for_target_profit:.2f} "
                     f"or validate sale prices above ${required_sale_price_for_target_profit:.2f} before sample buying."
                 )
+            elif landed_cost_ratio is not None and float(landed_cost_ratio) > settings.VALIDATION_MAX_ACCEPTABLE_LANDED_COST_RATIO:
+                next_action = (
+                    f"Verified evidence gates are complete. Reduce landed cost to about ${max_landed_cost_for_target_profit:.2f} "
+                    f"or improve margins until landed cost ratio is below {settings.VALIDATION_MAX_ACCEPTABLE_LANDED_COST_RATIO:.0%}."
+                )
+            elif demand_status in {"WEAK", "UNKNOWN"}:
+                next_action = "Verified evidence gates are complete. Collect stronger keyword demand before sample buying."
+            elif trend_status in {"SEASONAL", "SPIKY", "DECLINING", "UNKNOWN"}:
+                next_action = "Verified evidence gates are complete. Validate an evergreen trend before sample buying."
             elif research_verdict in {"NEEDS_MORE_RESEARCH", "PROMISING_RESEARCH"}:
                 next_action = "Verified evidence gates are complete. Improve supplier landed cost, validate the active price signal, and sharpen the competitor angle before sample buying."
             elif research_verdict in {"WEAK_IDEA", "REJECT"}:
@@ -377,6 +429,12 @@ class DecisionAgent(BaseAgent):
                 main_blocker = "Weak economics or too much uncertainty."
             elif evidence_gates_complete and current_net_profit < target_net_profit_threshold:
                 main_blocker = "Verified evidence is complete, but profit is below the sample-buy threshold."
+            elif evidence_gates_complete and landed_cost_ratio is not None and float(landed_cost_ratio) > settings.VALIDATION_MAX_ACCEPTABLE_LANDED_COST_RATIO:
+                main_blocker = f"Verified evidence is complete, but landed cost ratio is too high at {float(landed_cost_ratio):.0%}."
+            elif evidence_gates_complete and demand_status in {"WEAK", "UNKNOWN"}:
+                main_blocker = "Verified evidence is complete, but keyword demand is too weak."
+            elif evidence_gates_complete and trend_status in {"SEASONAL", "SPIKY", "DECLINING", "UNKNOWN"}:
+                main_blocker = "Verified evidence is complete, but trend stability is weak."
             elif research_verdict == "NEEDS_MORE_RESEARCH":
                 main_blocker = "Verified evidence is complete, but the opportunity score is still below the sample-buy threshold."
             elif not supplier_verified:

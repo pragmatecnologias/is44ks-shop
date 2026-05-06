@@ -26,6 +26,14 @@ export type ToolName =
   | 'resellos_verify_supplier_source'
   | 'resellos_verify_competitor_listing'
   | 'resellos_generate_product_research_report'
+  | 'resellos_add_keyword_demand'
+  | 'resellos_list_keyword_demand'
+  | 'resellos_verify_keyword_demand'
+  | 'resellos_add_trend_research'
+  | 'resellos_list_trend_research'
+  | 'resellos_verify_trend_research'
+  | 'resellos_get_product_validation_checklist'
+  | 'resellos_run_product_validation'
   | 'resellos_get_campaign_next_task'
   | 'resellos_complete_campaign_task'
   | 'resellos_block_campaign_task';
@@ -190,6 +198,100 @@ export const productReportSchema = z.object({
   include_agent_outputs: z.boolean().default(true),
 });
 
+const proofSchema = z.object({
+  verification_status: z.literal('USER_VERIFIED').default('USER_VERIFIED'),
+  source_url: z.string().optional(),
+  screenshot_url: z.string().optional(),
+  verification_notes: z.string().min(1),
+  confirm: z.boolean().optional(),
+});
+
+export const addKeywordDemandSchema = z.object({
+  product_id: z.string().uuid().optional(),
+  idea_id: z.string().uuid().optional(),
+  campaign_id: z.string().uuid().optional(),
+  task_id: z.string().uuid().optional(),
+  keyword: z.string().min(1),
+  source: z.string().default('MANUAL_CAPTURE'),
+  target_country: z.string().default('US'),
+  target_language: z.string().default('en'),
+  monthly_search_volume: z.number().int().nullable().optional(),
+  monthly_search_volume_min: z.number().int().nullable().optional(),
+  monthly_search_volume_max: z.number().int().nullable().optional(),
+  competition_level: z.string().nullable().optional(),
+  cpc_low: z.number().nullable().optional(),
+  cpc_high: z.number().nullable().optional(),
+  currency: z.string().default('USD'),
+  buyer_intent_score: z.number().int().default(0),
+  keyword_specificity_score: z.number().int().default(0),
+  demand_score: z.number().int().default(0),
+  related_keywords: z.array(z.record(z.string(), z.unknown())).default([]),
+  raw_json: z.record(z.string(), z.unknown()).default({}),
+  verification_status: z.enum(['USER_CAPTURED_UNVERIFIED', 'USER_VERIFIED']).default('USER_CAPTURED_UNVERIFIED'),
+  source_url: z.string().optional(),
+  screenshot_url: z.string().optional(),
+  verification_notes: z.string().optional(),
+  created_by: z.string().optional(),
+});
+
+export const listKeywordDemandSchema = z.object({
+  product_id: z.string().uuid().optional(),
+  idea_id: z.string().uuid().optional(),
+  campaign_id: z.string().uuid().optional(),
+  verification_status: z.string().optional(),
+});
+
+export const verifyKeywordDemandSchema = z.object({
+  id: z.string().uuid(),
+  ...proofSchema.shape,
+});
+
+export const addTrendResearchSchema = z.object({
+  product_id: z.string().uuid().optional(),
+  idea_id: z.string().uuid().optional(),
+  campaign_id: z.string().uuid().optional(),
+  task_id: z.string().uuid().optional(),
+  keyword: z.string().min(1),
+  source: z.string().default('MANUAL_CAPTURE'),
+  geo: z.string().default('US'),
+  timeframe: z.string().default('past_5_years'),
+  trend_direction: z.string().optional(),
+  seasonality_risk: z.string().optional(),
+  evergreen_score: z.number().int().default(0),
+  trend_stability_score: z.number().int().default(0),
+  spike_risk_score: z.number().int().default(0),
+  average_interest: z.number().nullable().optional(),
+  peak_interest: z.number().nullable().optional(),
+  low_interest: z.number().nullable().optional(),
+  trend_points: z.array(z.record(z.string(), z.unknown())).default([]),
+  raw_json: z.record(z.string(), z.unknown()).default({}),
+  verification_status: z.enum(['USER_CAPTURED_UNVERIFIED', 'USER_VERIFIED']).default('USER_CAPTURED_UNVERIFIED'),
+  source_url: z.string().optional(),
+  screenshot_url: z.string().optional(),
+  verification_notes: z.string().optional(),
+  created_by: z.string().optional(),
+});
+
+export const listTrendResearchSchema = z.object({
+  product_id: z.string().uuid().optional(),
+  idea_id: z.string().uuid().optional(),
+  campaign_id: z.string().uuid().optional(),
+  verification_status: z.string().optional(),
+});
+
+export const verifyTrendResearchSchema = z.object({
+  id: z.string().uuid(),
+  ...proofSchema.shape,
+});
+
+export const productValidationChecklistSchema = z.object({
+  product_id: z.string().uuid(),
+});
+
+export const runProductValidationSchema = z.object({
+  product_id: z.string().uuid(),
+});
+
 export const getCampaignNextTaskSchema = z.object({
   campaign_id: z.string().uuid(),
 });
@@ -243,6 +345,14 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   { name: 'resellos_verify_supplier_source', description: 'Verify a supplier source with proof.', inputSchema: verifySupplierSchema, jsonSchema: z.toJSONSchema(verifySupplierSchema) as Record<string, unknown> },
   { name: 'resellos_verify_competitor_listing', description: 'Verify a competitor listing with proof.', inputSchema: verifyCompetitorSchema, jsonSchema: z.toJSONSchema(verifyCompetitorSchema) as Record<string, unknown> },
   { name: 'resellos_generate_product_research_report', description: 'Generate a markdown research report for a product.', inputSchema: productReportSchema, jsonSchema: z.toJSONSchema(productReportSchema) as Record<string, unknown> },
+  { name: 'resellos_add_keyword_demand', description: 'Add a keyword demand research row.', inputSchema: addKeywordDemandSchema, jsonSchema: z.toJSONSchema(addKeywordDemandSchema) as Record<string, unknown> },
+  { name: 'resellos_list_keyword_demand', description: 'List keyword demand research rows.', inputSchema: listKeywordDemandSchema, jsonSchema: z.toJSONSchema(listKeywordDemandSchema) as Record<string, unknown> },
+  { name: 'resellos_verify_keyword_demand', description: 'Verify a keyword demand research row with proof.', inputSchema: verifyKeywordDemandSchema, jsonSchema: z.toJSONSchema(verifyKeywordDemandSchema) as Record<string, unknown> },
+  { name: 'resellos_add_trend_research', description: 'Add a trend research row.', inputSchema: addTrendResearchSchema, jsonSchema: z.toJSONSchema(addTrendResearchSchema) as Record<string, unknown> },
+  { name: 'resellos_list_trend_research', description: 'List trend research rows.', inputSchema: listTrendResearchSchema, jsonSchema: z.toJSONSchema(listTrendResearchSchema) as Record<string, unknown> },
+  { name: 'resellos_verify_trend_research', description: 'Verify a trend research row with proof.', inputSchema: verifyTrendResearchSchema, jsonSchema: z.toJSONSchema(verifyTrendResearchSchema) as Record<string, unknown> },
+  { name: 'resellos_get_product_validation_checklist', description: 'Read the validation checklist for a product.', inputSchema: productValidationChecklistSchema, jsonSchema: z.toJSONSchema(productValidationChecklistSchema) as Record<string, unknown> },
+  { name: 'resellos_run_product_validation', description: 'Run the validation pipeline for a product.', inputSchema: runProductValidationSchema, jsonSchema: z.toJSONSchema(runProductValidationSchema) as Record<string, unknown> },
   { name: 'resellos_get_campaign_next_task', description: 'Get the next pending task for a campaign.', inputSchema: getCampaignNextTaskSchema, jsonSchema: z.toJSONSchema(getCampaignNextTaskSchema) as Record<string, unknown> },
   { name: 'resellos_complete_campaign_task', description: 'Mark a campaign task as complete with results.', inputSchema: completeCampaignTaskSchema, jsonSchema: z.toJSONSchema(completeCampaignTaskSchema) as Record<string, unknown> },
   { name: 'resellos_block_campaign_task', description: 'Block a campaign task with an error message.', inputSchema: blockCampaignTaskSchema, jsonSchema: z.toJSONSchema(blockCampaignTaskSchema) as Record<string, unknown> },

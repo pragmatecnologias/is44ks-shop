@@ -35,3 +35,6 @@ class Product(Base):
     files = relationship("ProductFile", back_populates="product", cascade="all, delete-orphan")
     vision_reports = relationship("VisionAnalysisReport", back_populates="product", cascade="all, delete-orphan")
     external_research_jobs = relationship("ExternalResearchJob", back_populates="product", cascade="all, delete-orphan")
+    demand_research = relationship("ProductDemandResearch", back_populates="product", cascade="all, delete-orphan")
+    trend_research = relationship("ProductTrendResearch", back_populates="product", cascade="all, delete-orphan")
+    validation_summary = relationship("ProductValidationSummary", back_populates="product", cascade="all, delete-orphan", uselist=False)

@@ -1,6 +1,7 @@
 from app.db import Base
 from app.models.product import Product
 from app.models.campaign import DiscoveryCampaign, DiscoveryCampaignTask
+from app.models.product_validation import ProductDemandResearch, ProductTrendResearch, ProductValidationSummary
 from app.models.supplier import (
     ProductSource,
     MarketplaceResearch,
@@ -26,6 +27,9 @@ __all__ = [
     "Product",
     "DiscoveryCampaign",
     "DiscoveryCampaignTask",
+    "ProductDemandResearch",
+    "ProductTrendResearch",
+    "ProductValidationSummary",
     "ProductSource",
     "MarketplaceResearch",
     "CompetitorListing",

@@ -9,17 +9,20 @@ from sqlalchemy.pool import StaticPool
 
 from app.agents.decision_agent import DecisionAgent
 from app.agents.competition_agent import CompetitionAgent
+from app.agents.demand_agent import DemandAgent
 from app.agents.market_agent import MarketAgent
 from app.agents.profit_agent import ProfitAgent
 from app.agents.quick_scan_agent import QuickScanAgent
 from app.agents.reorder_agent import ReorderAgent
 from app.agents.risk_agent import RiskAgent
+from app.agents.trend_agent import TrendAgent
 from app.db import Base
 from app.llm.base import LLMProvider, Message
 from app.models.product import Product
 from app.models.supplier import AgentReport, CompetitorListing, DiscoveryTask, MarketplaceEvidence, ProfitAnalysis, ProductIdea, ProductSource
 from app.services.agent_utils import agent_data
 from app.services.discovery_service import DiscoveryService
+from app.services.validation_checklist_service import ValidationChecklistService
 from app.services.risk_rules import evaluate_risk_rules
 from app.schemas.product_schema import ResearchTaskUpdate
 
@@ -295,6 +298,42 @@ class AgentContractTests(unittest.TestCase):
         self.assertNotIn("Add verified active listing evidence for competition checks.", output["required_before_buying"])
         self.assertIn("Reduce landed cost to approximately $15.52 or prove a higher sustainable sale price above $33.84.", output["required_before_buying"])
 
+    def test_decision_agent_does_not_ready_sample_on_keyword_only(self) -> None:
+        agent = DecisionAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "supplier_summary": {"unit_cost": 4.15, "estimated_landed_cost": 5.70, "international_shipping_estimate": 1.2, "verification_status": "USER_VERIFIED"},
+                    "agent_reports": {
+                        "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
+                        "market_agent": {
+                            "output_json": {
+                                "evidence_quality": "LOW",
+                                "sold_listing_count": 0,
+                                "verified_sold_listing_count": 0,
+                                "active_listing_count": 0,
+                                "verified_active_listing_count": 0,
+                                "verified_evidence_count": 0,
+                                "unverified_evidence_count": 0,
+                                "test_data_evidence_count": 0,
+                                "verification_coverage": 0.0,
+                                "insufficient_data": True,
+                                "market_price_missing": True,
+                            }
+                        },
+                        "demand_agent": {"output_json": {"demand_status": "STRONG", "demand_score": 95, "next_action": "Validate trend stability."}},
+                        "profit_agent": {"output_json": {"estimated_net_profit": 0.0, "scenarios": []}},
+                        "competition_agent": {"output_json": {"competition_level": "LOW", "listing_gap_score": 0, "can_compete": False, "competitor_count": 0, "verified_competitor_count": 0}},
+                    },
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertEqual(output["recommendation"], "SKIP")
+        self.assertEqual(output["research_verdict"], "WEAK_IDEA")
+        self.assertIn("Verified sold listings missing", output["missing_evidence"])
+
     def test_research_cockpit_counts_verified_sold_only(self) -> None:
         from types import SimpleNamespace
 
@@ -319,6 +358,45 @@ class AgentContractTests(unittest.TestCase):
         self.assertEqual(buy_readiness["verified_active_evidence_count"], 2)
         self.assertNotIn("Sold listings missing", missing_evidence)
         self.assertEqual(hard_blockers, [])
+
+    def test_demand_agent_unknown_without_data(self) -> None:
+        agent = DemandAgent(self.llm)
+        result = asyncio.run(agent.run({"product": {"name": "Cat tunnel toy", "category": "Pet accessories"}, "demand_research": []}))
+        output = result["output_json"]
+        self.assertEqual(output["demand_status"], "UNKNOWN")
+        self.assertEqual(output["monthly_search_volume"], None)
+        self.assertIn("No keyword demand research captured yet.", output["main_demand_blocker"])
+
+    def test_trend_agent_unknown_without_data(self) -> None:
+        agent = TrendAgent(self.llm)
+        result = asyncio.run(agent.run({"product": {"name": "Cat tunnel toy", "category": "Pet accessories"}, "trend_research": []}))
+        output = result["output_json"]
+        self.assertEqual(output["trend_status"], "UNKNOWN")
+        self.assertEqual(output["trend_direction"], "UNKNOWN")
+        self.assertIn("No trend research captured yet.", output["main_trend_blocker"])
+
+    def test_validation_checklist_unknown_without_validation_rows(self) -> None:
+        from app.services.validation_checklist_service import ValidationChecklistService
+
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(sku="RS-VAL-001", name="Cat tunnel toy", category="Pet accessories", status="RESEARCHING")
+            session.add(product)
+            session.commit()
+            checklist = ValidationChecklistService(session).get_checklist(product.id)
+            self.assertEqual(checklist["search_demand"]["status"], "UNKNOWN")
+            self.assertEqual(checklist["trend_stability"]["status"], "UNKNOWN")
+            self.assertEqual(checklist["final_readiness"], "INCOMPLETE")
+        finally:
+            session.close()
+            Base.metadata.drop_all(engine)
 
     def test_profit_agent_returns_profit_gap_fields(self) -> None:
         agent = ProfitAgent(self.llm)
@@ -353,6 +431,10 @@ class AgentContractTests(unittest.TestCase):
         self.assertIn("current_landed_cost", output)
         self.assertIn("max_landed_cost_for_target_profit", output)
         self.assertIn("required_sale_price_for_target_profit", output)
+        self.assertIn("landed_cost_ratio", output)
+        self.assertIn("landed_cost_ratio_status", output)
+        self.assertIn("gross_margin_percent", output)
+        self.assertIn("gross_margin_status", output)
         self.assertAlmostEqual(
             output["profit_gap_to_buy_sample"],
             round(max(0.0, float(output["target_net_profit_threshold"]) - float(output["current_net_profit"])), 2),

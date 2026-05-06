@@ -13,10 +13,13 @@ import app.models  # noqa: F401 - register SQLAlchemy models
 from app.models.external_research import ExternalResearchJob
 from app.db import Base
 from app.schemas.campaign_schema import DiscoveryCampaignCreate, DiscoveryCampaignTaskCreate, DiscoveryCampaignTaskUpdate
+from app.schemas.validation_schema import ProductDemandResearchCreate, ProductTrendResearchCreate, ProductDemandResearchVerifyRequest, ProductTrendResearchVerifyRequest
 from app.schemas.product_schema import ProductIdeaCreate
 from app.services.campaign_service import CampaignService
 from app.services.capture_service import CaptureService
 from app.services.discovery_service import DiscoveryService
+from app.services.demand_research_service import DemandResearchService
+from app.services.trend_research_service import TrendResearchService
 
 
 class CampaignServiceTests(unittest.TestCase):
@@ -124,6 +127,12 @@ class CampaignServiceTests(unittest.TestCase):
         self.assertIn("ideas_by_verdict", report.model_dump())
         self.assertIn("products_by_decision", report.model_dump())
         self.assertIn("candidate_count_by_status", report.model_dump())
+        self.assertIn("ideas_with_keyword_demand", report.model_dump())
+        self.assertIn("ideas_with_trend_research", report.model_dump())
+        self.assertIn("products_with_keyword_demand", report.model_dump())
+        self.assertIn("products_with_trend_research", report.model_dump())
+        self.assertIn("products_with_evergreen_trend", report.model_dump())
+        self.assertIn("products_with_weak_landed_cost_ratio", report.model_dump())
         self.assertIn("next_best_task", report.model_dump())
 
     def test_campaign_next_best_task_does_not_suggest_promotion_without_evidence(self) -> None:
@@ -150,7 +159,7 @@ class CampaignServiceTests(unittest.TestCase):
         discovery = DiscoveryService(self.session)
         discovery.quick_scan_existing(idea.id)
         report = service.get_report(campaign.id)
-        self.assertIn("Run market presence research for Pet blanket hair remover", report.next_best_task or "")
+        self.assertIn("Collect keyword demand for Pet blanket hair remover before promotion.", report.next_best_task or "")
         self.assertNotIn("promote", (report.next_best_task or "").lower())
 
     def test_campaign_promotion_limit_blocks_extra_product(self) -> None:
@@ -279,6 +288,68 @@ class CampaignServiceTests(unittest.TestCase):
             )
         )
         self.assertEqual(candidate.campaign_id, campaign.id)
+
+    def test_demand_and_trend_research_inherit_campaign_and_require_proof(self) -> None:
+        service = CampaignService(self.session)
+        campaign = service.create_campaign(DiscoveryCampaignCreate(name="Pet accessories discovery", category="Pet accessories"))
+        idea = service.add_idea_to_campaign(
+            campaign.id,
+            ProductIdeaCreate(
+                idea_name="Cat tunnel toy",
+                category="Pet accessories",
+                campaign_id=campaign.id,
+                source_platform="Manual",
+                why_interesting="Reusable pet accessory.",
+            ),
+        )
+        task = service.create_task(
+            campaign.id,
+            DiscoveryCampaignTaskCreate(
+                task_type="SCOUTING",
+                title="Add validation signals",
+                description="Collect keyword demand and trend research.",
+                related_idea_id=idea.id,
+            ),
+        )
+
+        demand_service = DemandResearchService(self.session)
+        trend_service = TrendResearchService(self.session)
+        demand = demand_service.create_research(
+            ProductDemandResearchCreate(
+                idea_id=idea.id,
+                task_id=task.id,
+                keyword="cat tunnel toy",
+                monthly_search_volume=1200,
+                source="MANUAL_CAPTURE",
+            )
+        )
+        trend = trend_service.create_research(
+            ProductTrendResearchCreate(
+                idea_id=idea.id,
+                task_id=task.id,
+                keyword="cat tunnel toy",
+                trend_direction="STABLE",
+                seasonality_risk="LOW",
+                source="MANUAL_CAPTURE",
+            )
+        )
+
+        self.assertEqual(demand.campaign_id, campaign.id)
+        self.assertEqual(trend.campaign_id, campaign.id)
+        self.assertEqual(demand.task_id, task.id)
+        self.assertEqual(trend.task_id, task.id)
+
+        with self.assertRaises(HTTPException):
+            demand_service.verify_research(
+                demand.id,
+                ProductDemandResearchVerifyRequest(verification_status="USER_VERIFIED"),
+            )
+
+        with self.assertRaises(HTTPException):
+            trend_service.verify_research(
+                trend.id,
+                ProductTrendResearchVerifyRequest(verification_status="USER_VERIFIED"),
+            )
 
     def test_quick_scan_existing_idea_updates_same_record(self) -> None:
         service = CampaignService(self.session)
