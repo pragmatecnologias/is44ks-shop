@@ -334,6 +334,71 @@ class AgentContractTests(unittest.TestCase):
         self.assertEqual(output["research_verdict"], "WEAK_IDEA")
         self.assertIn("Verified sold listings missing", output["missing_evidence"])
 
+    def test_decision_agent_ignores_unknown_demand_and_trend_for_completeness(self) -> None:
+        agent = DecisionAgent(self.llm)
+        base_context = {
+            "supplier_summary": {
+                "unit_cost": 4.15,
+                "estimated_landed_cost": 5.70,
+                "international_shipping_estimate": 1.2,
+                "verification_status": "USER_VERIFIED",
+            },
+            "agent_reports": {
+                "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
+                "market_agent": {
+                    "output_json": {
+                        "evidence_quality": "HIGH",
+                        "sold_listing_count": 5,
+                        "verified_sold_listing_count": 5,
+                        "active_listing_count": 5,
+                        "verified_active_listing_count": 5,
+                        "verified_evidence_count": 10,
+                        "unverified_evidence_count": 0,
+                        "test_data_evidence_count": 0,
+                        "verification_coverage": 1.0,
+                        "insufficient_data": False,
+                        "market_price_missing": False,
+                        "median_sold_price": 18.99,
+                        "median_active_price": 19.99,
+                        "required_next_evidence": [],
+                    }
+                },
+                "profit_agent": {
+                    "output_json": {
+                        "estimated_net_profit": 8.0,
+                        "scenarios": [{"net_profit": 8.0, "margin_percent": 31.0}],
+                        "target_sale_price": 18.99,
+                        "minimum_recommended_price": 20.99,
+                    }
+                },
+                "competition_agent": {
+                    "output_json": {
+                        "competition_level": "LOW",
+                        "listing_gap_score": 72,
+                        "can_compete": True,
+                        "competitor_count": 3,
+                        "verified_competitor_count": 3,
+                    }
+                },
+            },
+        }
+
+        without_validation = asyncio.run(agent.run(base_context))
+        with_unknown_validation = asyncio.run(
+            agent.run(
+                {
+                    **base_context,
+                    "agent_reports": {
+                        **base_context["agent_reports"],
+                        "demand_agent": {"output_json": {"demand_status": "UNKNOWN", "demand_score": 0}},
+                        "trend_agent": {"output_json": {"trend_status": "UNKNOWN", "trend_stability_score": 0}},
+                    },
+                }
+            )
+        )
+
+        self.assertEqual(with_unknown_validation["output_json"]["research_completeness_score"], without_validation["output_json"]["research_completeness_score"])
+
     def test_research_cockpit_counts_verified_sold_only(self) -> None:
         from types import SimpleNamespace
 
@@ -367,6 +432,28 @@ class AgentContractTests(unittest.TestCase):
         self.assertEqual(output["monthly_search_volume"], None)
         self.assertIn("No keyword demand research captured yet.", output["main_demand_blocker"])
 
+    def test_demand_agent_broad_keyword_does_not_overstate_strength(self) -> None:
+        agent = DemandAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "product": {"name": "Cat tunnel toy", "category": "Pet accessories"},
+                    "demand_research": [
+                        {
+                            "keyword": "pet toy",
+                            "monthly_search_volume": 50000,
+                            "buyer_intent_score": 20,
+                            "keyword_specificity_score": 20,
+                            "competition_level": "HIGH",
+                        }
+                    ],
+                }
+            )
+        )
+        output = result["output_json"]
+        self.assertNotEqual(output["demand_status"], "STRONG")
+        self.assertIn(output["demand_status"], {"MODERATE", "WEAK", "UNKNOWN"})
+
     def test_trend_agent_unknown_without_data(self) -> None:
         agent = TrendAgent(self.llm)
         result = asyncio.run(agent.run({"product": {"name": "Cat tunnel toy", "category": "Pet accessories"}, "trend_research": []}))
@@ -374,6 +461,29 @@ class AgentContractTests(unittest.TestCase):
         self.assertEqual(output["trend_status"], "UNKNOWN")
         self.assertEqual(output["trend_direction"], "UNKNOWN")
         self.assertIn("No trend research captured yet.", output["main_trend_blocker"])
+
+    def test_trend_agent_unknown_seasonality_is_not_evergreen(self) -> None:
+        agent = TrendAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "product": {"name": "Cat tunnel toy", "category": "Pet accessories"},
+                    "trend_research": [
+                        {
+                            "keyword": "cat tunnel toy",
+                            "trend_direction": "STABLE",
+                            "seasonality_risk": "UNKNOWN",
+                            "trend_stability_score": 80,
+                            "evergreen_score": 80,
+                            "spike_risk_score": 10,
+                        }
+                    ],
+                }
+            )
+        )
+        output = result["output_json"]
+        self.assertNotEqual(output["trend_status"], "EVERGREEN")
+        self.assertEqual(output["trend_status"], "UNKNOWN")
 
     def test_validation_checklist_unknown_without_validation_rows(self) -> None:
         from app.services.validation_checklist_service import ValidationChecklistService
@@ -394,6 +504,60 @@ class AgentContractTests(unittest.TestCase):
             self.assertEqual(checklist["search_demand"]["status"], "UNKNOWN")
             self.assertEqual(checklist["trend_stability"]["status"], "UNKNOWN")
             self.assertEqual(checklist["final_readiness"], "INCOMPLETE")
+        finally:
+            session.close()
+            Base.metadata.drop_all(engine)
+
+    def test_validation_checklist_does_not_promote_on_demand_trend_only(self) -> None:
+        from app.services.validation_checklist_service import ValidationChecklistService
+
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(sku="RS-VAL-002", name="Cat tunnel toy", category="Pet accessories", status="RESEARCHING")
+            session.add(product)
+            session.flush()
+            session.add(
+                AgentReport(
+                    product_id=product.id,
+                    agent_name="decision_agent",
+                    report_type="decision_agent",
+                    output_json='{"recommendation":"WATCHLIST","research_verdict":"PROMISING_RESEARCH","buy_readiness_status":"NOT_READY","next_action":"Keep researching economics."}',
+                    summary="Decision summary",
+                    confidence="MEDIUM",
+                )
+            )
+            session.add(
+                AgentReport(
+                    product_id=product.id,
+                    agent_name="demand_agent",
+                    report_type="demand_agent",
+                    output_json='{"demand_status":"STRONG","demand_score":95,"next_action":"Validate trend stability."}',
+                    summary="Demand summary",
+                    confidence="HIGH",
+                )
+            )
+            session.add(
+                AgentReport(
+                    product_id=product.id,
+                    agent_name="trend_agent",
+                    report_type="trend_agent",
+                    output_json='{"trend_status":"EVERGREEN","trend_stability_score":90,"next_action":"Keep researching economics."}',
+                    summary="Trend summary",
+                    confidence="HIGH",
+                )
+            )
+            session.commit()
+
+            checklist = ValidationChecklistService(session).get_checklist(product.id)
+            self.assertNotEqual(checklist["final_readiness"], "READY_FOR_SAMPLE")
+            self.assertIn(checklist["final_readiness"], {"INCOMPLETE", "WEAK", "WATCHLIST"})
         finally:
             session.close()
             Base.metadata.drop_all(engine)

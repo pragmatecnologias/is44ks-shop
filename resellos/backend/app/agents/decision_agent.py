@@ -93,8 +93,8 @@ class DecisionAgent(BaseAgent):
         research_completeness_score += 10 if not market_price_missing else 0
         research_completeness_score += 10 if profit.get("scenarios") else 0
         research_completeness_score += 10 if competition.get("competitor_count", 0) > 0 else 0
-        research_completeness_score += 10 if demand else 0
-        research_completeness_score += 10 if trend else 0
+        research_completeness_score += 10 if demand_status != "UNKNOWN" else 0
+        research_completeness_score += 10 if trend_status != "UNKNOWN" else 0
         research_completeness_score += 10 if target_sale_price > 0 else 0
         if supplier_verified and verified_competitor_count >= 3 and verification_coverage >= 1.0:
             research_completeness_score = max(research_completeness_score, int(market.get("research_completeness_score", 0) or 0))

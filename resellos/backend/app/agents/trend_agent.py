@@ -86,8 +86,10 @@ class TrendAgent(BaseAgent):
             stability = best["trend_stability_score"]
             evergreen = best["evergreen_score"]
             spike_risk = best["spike_risk_score"]
-            if direction in {"RISING", "STABLE"} and seasonality in {"LOW", "UNKNOWN"} and stability >= 70:
+            if direction in {"RISING", "STABLE"} and seasonality == "LOW" and stability >= 70:
                 trend_status = "EVERGREEN"
+            elif direction in {"RISING", "STABLE"} and seasonality == "UNKNOWN" and stability >= 70:
+                trend_status = "UNKNOWN"
             elif seasonality == "HIGH" or direction == "SEASONAL":
                 trend_status = "SEASONAL"
             elif direction == "SPIKY" or spike_risk >= 70:

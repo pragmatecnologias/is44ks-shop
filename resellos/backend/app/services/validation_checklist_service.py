@@ -291,7 +291,10 @@ class ValidationChecklistService:
             and float(market.get("verification_coverage") or 0) >= 1.0
         )
 
-        if str(decision.get("buy_readiness_status") or "").upper() == "READY" or str(decision.get("research_verdict") or "").upper() == "READY_FOR_SAMPLE":
+        decision_buy_status = str(decision.get("buy_readiness_status") or "").upper()
+        decision_recommendation = str(decision.get("recommendation") or "").upper()
+        decision_research_verdict = str(decision.get("research_verdict") or "").upper()
+        if decision_recommendation == "BUY_SAMPLE" or decision_buy_status in {"READY", "READY_FOR_SAMPLE"} or decision_research_verdict == "READY_FOR_SAMPLE":
             validation_readiness = "READY_FOR_SAMPLE"
         elif evidence_complete:
             validation_readiness = "WATCHLIST" if overall_validation_score >= 55 else "WEAK"

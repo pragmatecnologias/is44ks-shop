@@ -40,6 +40,12 @@ def _score_row(row: dict[str, Any], product_name: str | None, category: str | No
         demand_score -= 5
     elif competition == "LOW":
         demand_score += 5
+    if specificity < 35:
+        demand_score -= 20
+    elif specificity < 55:
+        demand_score -= 5
+    if intent < 35:
+        demand_score -= 10
     return {
         "keyword": keyword,
         "volume": volume,
@@ -88,7 +94,7 @@ class DemandAgent(BaseAgent):
             demand_score = best["demand_score"]
             if volume is None:
                 demand_status = "UNKNOWN"
-            elif demand_score >= 75 and volume >= 1000:
+            elif demand_score >= 75 and volume >= 1000 and best["specificity"] >= 55 and best["intent"] >= 35:
                 demand_status = "STRONG"
             elif demand_score >= 50 or volume >= 300:
                 demand_status = "MODERATE"
