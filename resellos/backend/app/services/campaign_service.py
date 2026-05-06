@@ -119,6 +119,18 @@ class CampaignService:
         self.db.refresh(task)
         return task
 
+    def get_next_task(self, campaign_id: uuid.UUID) -> DiscoveryCampaignTask | None:
+        """Return the highest-priority pending task for a campaign (oldest TODO by created_at)."""
+        return (
+            self.db.query(DiscoveryCampaignTask)
+            .filter(
+                DiscoveryCampaignTask.campaign_id == campaign_id,
+                DiscoveryCampaignTask.status == "TODO",
+            )
+            .order_by(DiscoveryCampaignTask.created_at.asc())
+            .first()
+        )
+
     def add_idea_to_campaign(self, campaign_id: uuid.UUID, idea_data: ProductIdeaCreate) -> ProductIdea:
         campaign = self.get_campaign(campaign_id)
         if not campaign:
@@ -278,6 +290,30 @@ class CampaignService:
             status = str(candidate.review_status or "PENDING").upper()
             candidate_count_by_status[status] = candidate_count_by_status.get(status, 0) + 1
 
+        # External research job status tracking
+        PENDING_JOB_STATUSES = {"QUEUED", "SUBMITTED", "PENDING", "TASK_IN_QUEUE"}
+        external_jobs_total = len(jobs)
+        external_jobs_pending = []
+        external_jobs_imported = 0
+        external_jobs_failed = 0
+        for job in jobs:
+            js = str(job.status or "").upper()
+            if js in PENDING_JOB_STATUSES:
+                external_jobs_pending.append(job)
+            elif js == "IMPORTED":
+                external_jobs_imported += 1
+            elif js == "FAILED":
+                external_jobs_failed += 1
+        external_jobs_pending_count = len(external_jobs_pending)
+        latest_pending_job = external_jobs_pending[0] if external_jobs_pending else None
+        latest_pending_job_id = str(latest_pending_job.id) if latest_pending_job else None
+        latest_pending_job_query = latest_pending_job.query if latest_pending_job else None
+        latest_pending_job_status = str(latest_pending_job.status) if latest_pending_job else None
+        if latest_pending_job:
+            external_research_next_action = f"Poll external research job {latest_pending_job_id[:8]}... later."
+        else:
+            external_research_next_action = None
+
         idea_payloads = [self.discovery._serialize_idea(idea) for idea in ideas]
         idea_payloads.sort(
             key=lambda payload: (
@@ -321,6 +357,8 @@ class CampaignService:
             next_actions.append("Create discovery ideas for this campaign.")
         if spend_estimate > 0 and spend_estimate < float(campaign.budget_limit_usd or 0):
             next_actions.append("Review DataForSEO candidates and keep budget within limits.")
+        if external_jobs_pending_count > 0:
+            next_actions.append(f"Poll {external_jobs_pending_count} pending external research job(s).")
         next_best_task = next_actions[0] if next_actions else None
 
         return {
@@ -335,10 +373,18 @@ class CampaignService:
             "budget_used_percent": budget_used_percent,
             "ideas_by_verdict": ideas_by_verdict,
             "products_by_decision": products_by_decision,
+            "candidate_count_by_status": candidate_count_by_status,
+            "external_jobs_total": external_jobs_total,
+            "external_jobs_pending_count": external_jobs_pending_count,
+            "external_jobs_imported_count": external_jobs_imported,
+            "external_jobs_failed_count": external_jobs_failed,
+            "latest_pending_job_id": latest_pending_job_id,
+            "latest_pending_job_query": latest_pending_job_query,
+            "latest_pending_job_status": latest_pending_job_status,
+            "external_research_next_action": external_research_next_action,
             "watchlist_products": watchlist_products,
             "skip_products": skip_products,
             "ready_for_sample_products": ready_for_sample_products,
-            "candidate_count_by_status": candidate_count_by_status,
             "next_best_task": next_best_task,
             "top_ranked_ideas": idea_summaries,
             "top_products": product_summaries,

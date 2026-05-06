@@ -598,19 +598,49 @@ class DiscoveryService:
             competitor_rows = self.db.query(CompetitorListing).filter(CompetitorListing.product_id == product.id).all()
             agent_rows = self.db.query(AgentReport).filter(AgentReport.product_id == product.id).order_by(AgentReport.created_at.desc()).all()
 
+            # Verification-aware filtering
+            VERIFIED_SOLD = {"USER_VERIFIED"}
+            VERIFIED_ACTIVE = {"USER_VERIFIED", "API_IMPORTED"}
+            TEST_STATUSES = {"TEST_DATA", "REJECTED"}
+            UNVERIFIED_STATUSES = {"AI_EXTRACTED_UNVERIFIED", "USER_CAPTURED_UNVERIFIED"}
+
+            def _vstatus(row):
+                return (row.verification_status or "").upper()
+
             sold_count = sum(1 for row in evidence_rows if row.evidence_type == "SOLD_LISTING")
             active_count = sum(1 for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING")
+            verified_sold_count = sum(1 for row in evidence_rows if row.evidence_type == "SOLD_LISTING" and _vstatus(row) in VERIFIED_SOLD)
+            verified_active_count = sum(1 for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING" and _vstatus(row) in VERIFIED_ACTIVE)
+            test_data_count = sum(1 for row in evidence_rows if _vstatus(row) in TEST_STATUSES)
+            unverified_count = sum(1 for row in evidence_rows if _vstatus(row) in UNVERIFIED_STATUSES)
             screenshot_count = sum(1 for row in evidence_rows if row.evidence_type == "SCREENSHOT")
             manual_note_count = sum(1 for row in evidence_rows if row.evidence_type == "MANUAL_NOTE")
-            sold_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "SOLD_LISTING" and row.price is not None]
-            active_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING" and row.price is not None]
-            median_sold_price = _median_or_none(sold_prices)
-            median_active_price = _median_or_none(active_prices)
-            sold_shipping = [float(row.shipping_price) for row in evidence_rows if row.evidence_type == "SOLD_LISTING" and row.shipping_price is not None]
-            active_shipping = [float(row.shipping_price) for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING" and row.shipping_price is not None]
-            median_sold_shipping = _median_or_none(sold_shipping)
-            median_active_shipping = _median_or_none(active_shipping)
-            median_shipping = _median_or_none([value for value in sold_shipping + active_shipping if value is not None])
+
+            # Verified-only prices for main board values
+            verified_sold_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "SOLD_LISTING" and _vstatus(row) in VERIFIED_SOLD and row.price is not None]
+            verified_active_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING" and _vstatus(row) in VERIFIED_ACTIVE and row.price is not None]
+            median_sold_price = _median_or_none(verified_sold_prices)
+            median_active_price = _median_or_none(verified_active_prices)
+
+            # Total prices for debug/display context
+            total_sold_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "SOLD_LISTING" and row.price is not None]
+            total_active_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING" and row.price is not None]
+            median_sold_price_total = _median_or_none(total_sold_prices)
+            median_active_price_total = _median_or_none(total_active_prices)
+
+            # Price ranges
+            sold_price_range = sorted([round(p, 2) for p in verified_sold_prices]) if verified_sold_prices else []
+            sold_price_range_total = sorted([round(p, 2) for p in total_sold_prices]) if total_sold_prices else []
+            active_price_range = sorted([round(p, 2) for p in verified_active_prices]) if verified_active_prices else []
+            active_price_range_total = sorted([round(p, 2) for p in total_active_prices]) if total_active_prices else []
+
+            # Shipping from verified evidence only
+            verified_sold_shipping = [float(row.shipping_price) for row in evidence_rows if row.evidence_type == "SOLD_LISTING" and _vstatus(row) in VERIFIED_SOLD and row.shipping_price is not None]
+            verified_active_shipping = [float(row.shipping_price) for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING" and _vstatus(row) in VERIFIED_ACTIVE and row.shipping_price is not None]
+            median_sold_shipping = _median_or_none(verified_sold_shipping)
+            median_active_shipping = _median_or_none(verified_active_shipping)
+            median_shipping = _median_or_none([value for value in verified_sold_shipping + verified_active_shipping if value is not None])
+
             best_scenario = None
             if profit_rows:
                 top_profit = max(profit_rows, key=lambda row: float(row.estimated_net_profit or 0))
@@ -622,8 +652,8 @@ class DiscoveryService:
             if competition_gap_score is None:
                 competition_gap_score = _competition_gap_from_listings(competitor_rows)
             completeness = 0
-            completeness += min(30, sold_count * 6)
-            completeness += min(20, active_count * 4)
+            completeness += min(30, verified_sold_count * 6)
+            completeness += min(20, verified_active_count * 4)
             completeness += min(10, (screenshot_count + manual_note_count) * 2)
             completeness += min(20, len(sources) * 10)
             completeness += min(15, len(profit_rows) * 5)
@@ -641,8 +671,18 @@ class DiscoveryService:
                     "risk_level": product.risk_level,
                     "sold_evidence_count": sold_count,
                     "active_evidence_count": active_count,
+                    "sold_evidence_count_verified": verified_sold_count,
+                    "active_evidence_count_verified": verified_active_count,
+                    "test_data_count": test_data_count,
+                    "unverified_evidence_count": unverified_count,
                     "median_sold_price": median_sold_price,
                     "median_active_price": median_active_price,
+                    "median_sold_price_total": median_sold_price_total,
+                    "median_active_price_total": median_active_price_total,
+                    "sold_price_range": sold_price_range,
+                    "sold_price_range_total": sold_price_range_total,
+                    "active_price_range": active_price_range,
+                    "active_price_range_total": active_price_range_total,
                     "median_sold_shipping": median_sold_shipping,
                     "median_active_shipping": median_active_shipping,
                     "median_shipping": median_shipping,

@@ -88,3 +88,12 @@ def generate_next_tasks(campaign_id: uuid.UUID, db: Session = Depends(get_db)):
     service = CampaignService(db)
     tasks = service.generate_next_tasks(campaign_id)
     return [service._serialize_task(task) for task in tasks]
+
+
+@router.get("/{campaign_id}/next-task")
+def get_next_task(campaign_id: uuid.UUID, db: Session = Depends(get_db)):
+    service = CampaignService(db)
+    task = service.get_next_task(campaign_id)
+    if not task:
+        return {"message": "No campaign tasks pending."}
+    return service._serialize_task(task)

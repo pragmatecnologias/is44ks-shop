@@ -506,13 +506,13 @@ class AgentContractTests(unittest.TestCase):
             )
             session.add_all(
                 [
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=10.0, shipping_price=2.0),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=12.0, shipping_price=2.5),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=14.0, shipping_price=3.0),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=16.0, shipping_price=3.0),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=18.0, shipping_price=3.5),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=19.0, shipping_price=4.0),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=20.0, shipping_price=4.0),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=10.0, shipping_price=2.0, verification_status="USER_VERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=12.0, shipping_price=2.5, verification_status="USER_VERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=14.0, shipping_price=3.0, verification_status="USER_VERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=16.0, shipping_price=3.0, verification_status="USER_VERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=18.0, shipping_price=3.5, verification_status="USER_VERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=19.0, shipping_price=4.0, verification_status="USER_VERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=20.0, shipping_price=4.0, verification_status="API_IMPORTED"),
                 ]
             )
             session.add_all(
@@ -579,6 +579,9 @@ class AgentContractTests(unittest.TestCase):
 
             self.assertEqual(product_row["sold_evidence_count"], 5)
             self.assertEqual(product_row["active_evidence_count"], 2)
+            self.assertEqual(product_row["sold_evidence_count_verified"], 5)
+            self.assertEqual(product_row["active_evidence_count_verified"], 2)
+            self.assertEqual(product_row["test_data_count"], 0)
             self.assertEqual(product_row["median_sold_price"], 14.0)
             self.assertEqual(product_row["median_active_price"], 19.5)
             self.assertEqual(product_row["median_shipping"], 3.0)
@@ -586,6 +589,187 @@ class AgentContractTests(unittest.TestCase):
             self.assertEqual(product_row["competition_gap_score"], 84)
             self.assertEqual(product_row["best_profit_scenario"], "eBay buyer-paid shipping")
             self.assertEqual(product_row["next_action"], "Add 5 sold listings")
+        finally:
+            session.close()
+
+    def test_opportunity_board_test_data_ignored_for_verified_medians(self) -> None:
+        """TEST_DATA sold rows must not affect board median_sold_price."""
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(sku="RS-TEST-VB1", name="Verified board test", category="Test", status="RESEARCHING")
+            session.add(product)
+            session.flush()
+
+            # 3 TEST_DATA sold listings (should NOT count)
+            session.add_all(
+                [
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=5.0, verification_status="TEST_DATA"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=6.0, verification_status="TEST_DATA"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=7.0, verification_status="TEST_DATA"),
+                ]
+            )
+            # 1 USER_VERIFIED sold listing (should count)
+            session.add(MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=20.0, verification_status="USER_VERIFIED"))
+            session.commit()
+
+            board = DiscoveryService(session).opportunity_board()
+            row = next(r for r in board if r["entity_type"] == "product")
+
+            self.assertEqual(row["sold_evidence_count"], 4)
+            self.assertEqual(row["sold_evidence_count_verified"], 1)
+            self.assertEqual(row["test_data_count"], 3)
+            # Verified median should be 20.0 (only verified sold)
+            self.assertEqual(row["median_sold_price"], 20.0)
+            # Total median should be 5.5 (all sold including test data)
+            self.assertAlmostEqual(row["median_sold_price_total"], 6.5, places=1)
+        finally:
+            session.close()
+
+    def test_opportunity_board_unverified_sold_not_counted(self) -> None:
+        """USER_CAPTURED_UNVERIFIED sold rows must not affect board median_sold_price."""
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(sku="RS-TEST-VB2", name="Unverified board test", category="Test", status="RESEARCHING")
+            session.add(product)
+            session.flush()
+
+            session.add_all(
+                [
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=8.0, verification_status="USER_CAPTURED_UNVERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=9.0, verification_status="AI_EXTRACTED_UNVERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=15.0, verification_status="USER_VERIFIED"),
+                ]
+            )
+            session.commit()
+
+            board = DiscoveryService(session).opportunity_board()
+            row = next(r for r in board if r["entity_type"] == "product")
+
+            self.assertEqual(row["sold_evidence_count"], 3)
+            self.assertEqual(row["sold_evidence_count_verified"], 1)
+            self.assertEqual(row["unverified_evidence_count"], 2)
+            self.assertEqual(row["median_sold_price"], 15.0)
+            self.assertAlmostEqual(row["median_sold_price_total"], 9.0, places=1)
+        finally:
+            session.close()
+
+    def test_opportunity_board_api_imported_sold_not_verified(self) -> None:
+        """API_IMPORTED SOLD_LISTING does not count as verified sold."""
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(sku="RS-TEST-VB3", name="API imported sold test", category="Test", status="RESEARCHING")
+            session.add(product)
+            session.flush()
+
+            session.add(MarketplaceEvidence(product_id=product.id, marketplace="Google Shopping", evidence_type="SOLD_LISTING", price=12.0, verification_status="API_IMPORTED"))
+            session.add(MarketplaceEvidence(product_id=product.id, marketplace="Google Shopping", evidence_type="ACTIVE_LISTING", price=15.0, verification_status="API_IMPORTED"))
+            session.commit()
+
+            board = DiscoveryService(session).opportunity_board()
+            row = next(r for r in board if r["entity_type"] == "product")
+
+            # API_IMPORTED sold is NOT verified sold (verified sold requires USER_VERIFIED)
+            self.assertEqual(row["sold_evidence_count_verified"], 0)
+            # API_IMPORTED active IS verified active
+            self.assertEqual(row["active_evidence_count_verified"], 1)
+            self.assertIsNone(row["median_sold_price"])
+            self.assertEqual(row["median_active_price"], 15.0)
+        finally:
+            session.close()
+
+    def test_opportunity_board_api_imported_active_counts(self) -> None:
+        """API_IMPORTED ACTIVE_LISTING counts as active market presence."""
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(sku="RS-TEST-VB4", name="API active test", category="Test", status="RESEARCHING")
+            session.add(product)
+            session.flush()
+
+            session.add_all(
+                [
+                    MarketplaceEvidence(product_id=product.id, marketplace="Google Shopping", evidence_type="ACTIVE_LISTING", price=10.0, verification_status="API_IMPORTED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="Google Shopping", evidence_type="ACTIVE_LISTING", price=12.0, verification_status="API_IMPORTED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="Google Shopping", evidence_type="ACTIVE_LISTING", price=14.0, verification_status="USER_VERIFIED"),
+                ]
+            )
+            session.commit()
+
+            board = DiscoveryService(session).opportunity_board()
+            row = next(r for r in board if r["entity_type"] == "product")
+
+            self.assertEqual(row["active_evidence_count"], 3)
+            self.assertEqual(row["active_evidence_count_verified"], 3)  # both API_IMPORTED and USER_VERIFIED
+            self.assertEqual(row["median_active_price"], 12.0)
+        finally:
+            session.close()
+
+    def test_opportunity_board_returns_total_and_verified_separately(self) -> None:
+        """Board returns total/debug medians separately from verified medians."""
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(sku="RS-TEST-VB5", name="Separate medians test", category="Test", status="RESEARCHING")
+            session.add(product)
+            session.flush()
+
+            session.add_all(
+                [
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=5.0, verification_status="TEST_DATA"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=25.0, verification_status="USER_VERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=8.0, verification_status="TEST_DATA"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=30.0, verification_status="USER_VERIFIED"),
+                ]
+            )
+            session.commit()
+
+            board = DiscoveryService(session).opportunity_board()
+            row = next(r for r in board if r["entity_type"] == "product")
+
+            # Main board values use verified only
+            self.assertEqual(row["median_sold_price"], 25.0)
+            self.assertEqual(row["median_active_price"], 30.0)
+            # Total medians exist separately
+            self.assertEqual(row["median_sold_price_total"], 15.0)
+            self.assertEqual(row["median_active_price_total"], 19.0)
+            # Price ranges also separated
+            self.assertEqual(row["sold_price_range"], [25.0])
+            self.assertEqual(row["sold_price_range_total"], [5.0, 25.0])
+            self.assertEqual(row["active_price_range"], [30.0])
+            self.assertEqual(row["active_price_range_total"], [8.0, 30.0])
         finally:
             session.close()
 

@@ -99,21 +99,53 @@ export default function OpportunitiesPage() {
                       </div>
                     </td>
                     <td className="px-4 py-3 text-zinc-300">{row.research_verdict || row.status || '—'}</td>
-                    <td className="px-4 py-3 text-zinc-300">{row.sold_evidence_count} sold / {row.active_evidence_count} active</td>
                     <td className="px-4 py-3 text-zinc-300">
-                      <div>{row.median_sold_price != null ? `Sold ${money(row.median_sold_price)}` : 'Sold —'}</div>
-                      <div className="text-xs text-zinc-500">
-                        {row.median_active_price != null ? `Active ${money(row.median_active_price)}` : 'Active —'}
-                      </div>
-                      <div className="text-xs text-zinc-500">
-                        {row.median_shipping != null
-                          ? `Ship ${money(row.median_shipping)}`
-                          : row.median_sold_shipping != null
-                            ? `Ship ${money(row.median_sold_shipping)}`
-                            : row.median_active_shipping != null
-                              ? `Ship ${money(row.median_active_shipping)}`
-                              : 'Ship —'}
-                      </div>
+                      {row.entity_type === 'product' ? (
+                        <div>
+                          <div>{row.sold_evidence_count_verified ?? row.sold_evidence_count} sold / {row.active_evidence_count_verified ?? row.active_evidence_count} active verified</div>
+                          {(row.sold_evidence_count !== row.sold_evidence_count_verified || row.active_evidence_count !== row.active_evidence_count_verified) ? (
+                            <div className="text-xs text-zinc-500">{row.sold_evidence_count} sold / {row.active_evidence_count} active total</div>
+                          ) : null}
+                          {(row.test_data_count ?? 0) > 0 ? (
+                            <div className="text-xs text-red-400">{row.test_data_count} test data item{((row.test_data_count ?? 0) > 1) ? 's' : ''}</div>
+                          ) : null}
+                          {(row.unverified_evidence_count ?? 0) > 0 && (row.test_data_count ?? 0) === 0 ? (
+                            <div className="text-xs text-yellow-400">{row.unverified_evidence_count} unverified — does not count toward readiness</div>
+                          ) : null}
+                        </div>
+                      ) : (
+                        <div>0 sold / 0 active</div>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-zinc-300">
+                      {row.entity_type === 'product' ? (
+                        <div>
+                          <div>{row.median_sold_price != null ? `Sold ${money(row.median_sold_price)}` : 'Sold —'}</div>
+                          <div className="text-xs text-zinc-500">
+                            {row.median_active_price != null ? `Active ${money(row.median_active_price)}` : 'Active —'}
+                          </div>
+                          {(row.median_sold_price_total != null && row.median_sold_price != null && row.median_sold_price_total !== row.median_sold_price) ? (
+                            <div className="text-xs text-zinc-500">Sold total: {money(row.median_sold_price_total)}</div>
+                          ) : null}
+                          {(row.median_active_price_total != null && row.median_active_price != null && row.median_active_price_total !== row.median_active_price) ? (
+                            <div className="text-xs text-zinc-500">Active total: {money(row.median_active_price_total)}</div>
+                          ) : null}
+                          <div className="text-xs text-zinc-500">
+                            {row.median_shipping != null
+                              ? `Ship ${money(row.median_shipping)}`
+                              : row.median_sold_shipping != null
+                                ? `Ship ${money(row.median_sold_shipping)}`
+                                : row.median_active_shipping != null
+                                  ? `Ship ${money(row.median_active_shipping)}`
+                                  : 'Ship —'}
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div>Sold —</div>
+                          <div className="text-xs text-zinc-500">Active —</div>
+                        </div>
+                      )}
                     </td>
                     <td className="px-4 py-3 text-zinc-300">
                       {row.competition_gap_score != null ? `${row.competition_gap_score}/100` : '—'}

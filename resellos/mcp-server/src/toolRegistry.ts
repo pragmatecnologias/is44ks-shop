@@ -25,7 +25,10 @@ export type ToolName =
   | 'resellos_verify_marketplace_evidence'
   | 'resellos_verify_supplier_source'
   | 'resellos_verify_competitor_listing'
-  | 'resellos_generate_product_research_report';
+  | 'resellos_generate_product_research_report'
+  | 'resellos_get_campaign_next_task'
+  | 'resellos_complete_campaign_task'
+  | 'resellos_block_campaign_task';
 
 export interface ToolDefinition {
   name: ToolName;
@@ -187,6 +190,23 @@ export const productReportSchema = z.object({
   include_agent_outputs: z.boolean().default(true),
 });
 
+export const getCampaignNextTaskSchema = z.object({
+  campaign_id: z.string().uuid(),
+});
+
+export const completeCampaignTaskSchema = z.object({
+  campaign_id: z.string().uuid(),
+  task_id: z.string().uuid(),
+  result_json: z.record(z.string(), z.unknown()).optional(),
+  notes: z.string().optional(),
+});
+
+export const blockCampaignTaskSchema = z.object({
+  campaign_id: z.string().uuid(),
+  task_id: z.string().uuid(),
+  error_message: z.string().min(1),
+});
+
 export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     name: 'resellos_get_discovery_board',
@@ -223,4 +243,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   { name: 'resellos_verify_supplier_source', description: 'Verify a supplier source with proof.', inputSchema: verifySupplierSchema, jsonSchema: z.toJSONSchema(verifySupplierSchema) as Record<string, unknown> },
   { name: 'resellos_verify_competitor_listing', description: 'Verify a competitor listing with proof.', inputSchema: verifyCompetitorSchema, jsonSchema: z.toJSONSchema(verifyCompetitorSchema) as Record<string, unknown> },
   { name: 'resellos_generate_product_research_report', description: 'Generate a markdown research report for a product.', inputSchema: productReportSchema, jsonSchema: z.toJSONSchema(productReportSchema) as Record<string, unknown> },
+  { name: 'resellos_get_campaign_next_task', description: 'Get the next pending task for a campaign.', inputSchema: getCampaignNextTaskSchema, jsonSchema: z.toJSONSchema(getCampaignNextTaskSchema) as Record<string, unknown> },
+  { name: 'resellos_complete_campaign_task', description: 'Mark a campaign task as complete with results.', inputSchema: completeCampaignTaskSchema, jsonSchema: z.toJSONSchema(completeCampaignTaskSchema) as Record<string, unknown> },
+  { name: 'resellos_block_campaign_task', description: 'Block a campaign task with an error message.', inputSchema: blockCampaignTaskSchema, jsonSchema: z.toJSONSchema(blockCampaignTaskSchema) as Record<string, unknown> },
 ];

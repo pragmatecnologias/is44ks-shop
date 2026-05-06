@@ -545,10 +545,25 @@ export default function DiscoveryPage() {
                       </div>
                     </td>
                     <td className="px-4 py-3 text-zinc-300">
-                      {row.sold_evidence_count} sold / {row.active_evidence_count} active
+                      {row.entity_type === 'product' ? (
+                        <div>
+                          <div>{row.sold_evidence_count_verified ?? row.sold_evidence_count} sold / {row.active_evidence_count_verified ?? row.active_evidence_count} active verified</div>
+                          {(row.sold_evidence_count !== row.sold_evidence_count_verified || row.active_evidence_count !== row.active_evidence_count_verified) ? (
+                            <div className="text-xs text-zinc-500">{row.sold_evidence_count} sold / {row.active_evidence_count} active total</div>
+                          ) : null}
+                          {(row.test_data_count ?? 0) > 0 ? (
+                            <div className="text-xs text-red-400">{row.test_data_count} test data</div>
+                          ) : null}
+                        </div>
+                      ) : (
+                        <div>0 sold / 0 active</div>
+                      )}
                     </td>
                     <td className="px-4 py-3 text-zinc-300">
                       {row.median_sold_price != null ? money(row.median_sold_price) : '—'}
+                      {(row.median_sold_price_total != null && row.median_sold_price != null && row.median_sold_price_total !== row.median_sold_price) ? (
+                        <div className="text-xs text-zinc-500">total: {money(row.median_sold_price_total)}</div>
+                      ) : null}
                     </td>
                     <td className="px-4 py-3 text-zinc-300">
                       {money(row.best_landed_cost)}

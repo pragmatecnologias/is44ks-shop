@@ -144,6 +144,14 @@ class DiscoveryCampaignReportResponse(BaseModel):
     ideas_by_verdict: dict[str, int] = Field(default_factory=dict)
     products_by_decision: dict[str, int] = Field(default_factory=dict)
     candidate_count_by_status: dict[str, int] = Field(default_factory=dict)
+    external_jobs_total: int = 0
+    external_jobs_pending_count: int = 0
+    external_jobs_imported_count: int = 0
+    external_jobs_failed_count: int = 0
+    latest_pending_job_id: str | None = None
+    latest_pending_job_query: str | None = None
+    latest_pending_job_status: str | None = None
+    external_research_next_action: str | None = None
     watchlist_products: list[DiscoveryCampaignProductSummary] = Field(default_factory=list)
     skip_products: list[DiscoveryCampaignProductSummary] = Field(default_factory=list)
     ready_for_sample_products: list[DiscoveryCampaignProductSummary] = Field(default_factory=list)

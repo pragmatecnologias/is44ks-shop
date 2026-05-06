@@ -200,3 +200,40 @@ export async function addIdeaToCampaign(
   const idea = await client.post<any>(`/api/discovery/campaigns/${input.campaign_id}/ideas`, payload);
   return wrap('resellos_add_idea_to_campaign', config, payload, idea, `Added idea "${idea.idea_name ?? payload.idea_name}" to campaign.`, 'resellos_run_quick_scan');
 }
+
+export async function getCampaignNextTask(client: ResellOSClient, campaignId: string, config: AppConfig): Promise<ToolResult> {
+  const result = await client.get<any>(`/api/discovery/campaigns/${campaignId}/next-task`);
+  const summary = result.message
+    ? 'No pending campaign tasks.'
+    : `Next task: "${result.title ?? result.id}" (${result.status ?? 'TODO'})`;
+  return {
+    ok: true,
+    data: result,
+    summary,
+    warnings: [],
+    next_recommended_tool: result.message ? null : 'resellos_complete_campaign_task',
+    audit: buildAudit('resellos_get_campaign_next_task', config.actor, { campaign_id: campaignId }),
+  };
+}
+
+export async function completeCampaignTask(
+  client: ResellOSClient,
+  input: { campaign_id: string; task_id: string; result_json?: Record<string, unknown>; notes?: string },
+  config: AppConfig,
+): Promise<ToolResult> {
+  guardWriteEnabled(config);
+  const payload = { status: 'DONE', result_json: input.result_json ?? {}, error_message: input.notes ?? undefined };
+  const task = await client.patch<any>(`/api/discovery/campaigns/${input.campaign_id}/tasks/${input.task_id}`, payload);
+  return wrap('resellos_complete_campaign_task', config, { ...payload, campaign_id: input.campaign_id, task_id: input.task_id }, task, `Completed campaign task "${task.title ?? input.task_id}".`, 'resellos_get_campaign_next_task');
+}
+
+export async function blockCampaignTask(
+  client: ResellOSClient,
+  input: { campaign_id: string; task_id: string; error_message: string },
+  config: AppConfig,
+): Promise<ToolResult> {
+  guardWriteEnabled(config);
+  const payload = { status: 'BLOCKED', error_message: input.error_message };
+  const task = await client.patch<any>(`/api/discovery/campaigns/${input.campaign_id}/tasks/${input.task_id}`, payload);
+  return wrap('resellos_block_campaign_task', config, { ...payload, campaign_id: input.campaign_id, task_id: input.task_id }, task, `Blocked campaign task "${task.title ?? input.task_id}" — ${input.error_message}.`, 'resellos_get_campaign_next_task');
+}

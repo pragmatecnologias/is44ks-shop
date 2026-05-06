@@ -415,8 +415,18 @@ class OpportunityBoardRow(BaseModel):
     risk_level: Optional[str] = None
     sold_evidence_count: int = 0
     active_evidence_count: int = 0
+    sold_evidence_count_verified: int = 0
+    active_evidence_count_verified: int = 0
+    test_data_count: int = 0
+    unverified_evidence_count: int = 0
     median_sold_price: Optional[float] = None
     median_active_price: Optional[float] = None
+    median_sold_price_total: Optional[float] = None
+    median_active_price_total: Optional[float] = None
+    sold_price_range: list[float] = Field(default_factory=list)
+    sold_price_range_total: list[float] = Field(default_factory=list)
+    active_price_range: list[float] = Field(default_factory=list)
+    active_price_range_total: list[float] = Field(default_factory=list)
     median_sold_shipping: Optional[float] = None
     median_active_shipping: Optional[float] = None
     median_shipping: Optional[float] = None

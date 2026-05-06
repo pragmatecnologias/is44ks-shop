@@ -79,6 +79,17 @@ async function requestFormData<T>(path: string, formData: FormData): Promise<T> 
   return response.json() as Promise<T>;
 }
 
+// Module-level flag to track if API fallback to demo data occurred
+let _isOffline = false;
+
+export function isOfflineMode(): boolean {
+  return _isOffline;
+}
+
+export function setOfflineMode(value: boolean): void {
+  _isOffline = value;
+}
+
 function asQuery(params: Record<string, string | undefined>) {
   const search = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
@@ -95,15 +106,15 @@ const DEMO_PRODUCTS: Product[] = [
     category: 'Automotive',
     subcategory: 'Accessories',
     description: 'A simple high-intent car accessory for testing the end-to-end research flow.',
-    status: 'BUY_SAMPLE',
+    status: 'WATCHLIST',
     risk_level: 'LOW',
     final_score: 78,
-    final_decision: 'BUY_SAMPLE',
+    final_decision: 'WATCHLIST',
     target_sale_price: 18.99,
     expected_profit: 7.42,
     confidence: 'MEDIUM',
-    next_action: 'Add 10 sold examples before ordering.',
-    missing_evidence: ['Sold listings missing', 'Supplier comparison missing'],
+    next_action: 'Backend offline — demo data shown.',
+    missing_evidence: ['Demo data — real evidence not available'],
     created_at: '2026-05-01T10:00:00Z',
     updated_at: '2026-05-04T14:30:00Z',
     sources: [],
@@ -310,7 +321,7 @@ function demoCockpit(productId: string): ResearchCockpit {
         product_id: productId,
         agent_name: 'decision_agent',
         report_type: 'decision_agent',
-        summary: 'BUY_SAMPLE with medium confidence.',
+        summary: 'WATCHLIST — demo data, backend offline.',
         confidence: 'MEDIUM',
         evidence_refs: ['evidence-demo-1'],
         created_at: new Date().toISOString(),
@@ -344,10 +355,10 @@ function demoCockpit(productId: string): ResearchCockpit {
       },
     ],
     decision: {
-      recommendation: 'BUY_SAMPLE',
+      recommendation: 'WATCHLIST',
       total_score: 78,
-      research_verdict: 'READY_FOR_SAMPLE',
-      buy_readiness_status: 'READY',
+      research_verdict: 'NEEDS_MORE_RESEARCH',
+      buy_readiness_status: 'NOT_READY',
       research_completeness_score: 82,
       opportunity_score: 78,
       main_blocker: 'None',
@@ -399,10 +410,10 @@ function demoCockpit(productId: string): ResearchCockpit {
         notes: 'Demo sale',
       },
     ],
-    missing_evidence: ['Sold listings missing', 'Supplier comparison missing'],
-    next_action: 'Add 10 sold examples before ordering.',
+    missing_evidence: ['Demo data — backend offline'],
+    next_action: 'Connect backend to see real data.',
     confidence: 'MEDIUM',
-    current_status: 'BUY_SAMPLE',
+    current_status: 'WATCHLIST',
     discovery_context: {
       idea_id: 'idea-demo-1',
       idea_name: 'Car trash bag holder',
@@ -426,8 +437,11 @@ function demoCockpit(productId: string): ResearchCockpit {
 
 async function getMaybe<T>(path: string, fallback: T): Promise<T> {
   try {
-    return await requestJson<T>(path);
+    const result = await requestJson<T>(path);
+    _isOffline = false;
+    return result;
   } catch {
+    _isOffline = true;
     return fallback;
   }
 }

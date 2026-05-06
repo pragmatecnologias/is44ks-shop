@@ -9,7 +9,8 @@ from fastapi import HTTPException, UploadFile
 from sqlalchemy.orm import Session
 
 from app.config import settings
-from app.models.supplier import AgentReport, DiscoveryTask, ProductIdea
+from app.models.supplier import AgentReport, ProductIdea
+from app.models.campaign import DiscoveryCampaignTask
 from app.models.product import Product
 from app.models.external_research import EvidenceCandidate
 from app.schemas.vision_schema import VisionAnalysisType
@@ -146,13 +147,13 @@ class CaptureService:
     def _campaign_id_for_task(self, task_id: uuid.UUID | None) -> uuid.UUID | None:
         if not task_id:
             return None
-        task = self.db.query(DiscoveryTask).filter(DiscoveryTask.id == task_id).first()
+        task = self.db.query(DiscoveryCampaignTask).filter(DiscoveryCampaignTask.id == task_id).first()
         if not task:
             return None
-        if task.idea and task.idea.campaign_id:
-            return task.idea.campaign_id
-        if task.linked_product_id:
-            return self._campaign_id_for_product(task.linked_product_id)
+        if task.related_idea and task.related_idea.campaign_id:
+            return task.related_idea.campaign_id
+        if task.related_product_id:
+            return self._campaign_id_for_product(task.related_product_id)
         return None
 
     def _resolve_campaign_id(

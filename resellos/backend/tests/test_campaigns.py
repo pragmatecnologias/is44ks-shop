@@ -10,6 +10,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 import app.models  # noqa: F401 - register SQLAlchemy models
+from app.models.external_research import ExternalResearchJob
 from app.db import Base
 from app.schemas.campaign_schema import DiscoveryCampaignCreate, DiscoveryCampaignTaskCreate, DiscoveryCampaignTaskUpdate
 from app.schemas.product_schema import ProductIdeaCreate
@@ -215,6 +216,70 @@ class CampaignServiceTests(unittest.TestCase):
         )
         self.assertEqual(candidate.campaign_id, campaign.id)
 
+    def test_manual_capture_inherits_campaign_id_from_task(self) -> None:
+        """When capture_manual is called with only task_id, campaign_id is traced via task.idea.campaign_id."""
+        service = CampaignService(self.session)
+        discovery = DiscoveryService(self.session)
+        campaign = service.create_campaign(DiscoveryCampaignCreate(name="Pet accessories discovery"))
+        idea = service.add_idea_to_campaign(
+            campaign.id,
+            ProductIdeaCreate(
+                idea_name="Pet grooming brush",
+                category="Pet accessories",
+                campaign_id=campaign.id,
+                source_platform="Manual",
+                why_interesting="Pet accessory.",
+            ),
+        )
+        task = service.create_task(
+            campaign.id,
+            DiscoveryCampaignTaskCreate(
+                task_type="SCOUTING",
+                title="Scout pet grooming brush",
+                description="Research this product.",
+                related_idea_id=idea.id,
+            ),
+        )
+        capture = CaptureService(self.session)
+        candidate, _ = asyncio.run(
+            capture.capture_manual(
+                task_id=task.id,
+                capture_type="MARKETPLACE_SCREENSHOT",
+                pasted_text="Pet grooming brush\nSold price: $12.99",
+                notes="Task-linked capture",
+            )
+        )
+        self.assertEqual(candidate.campaign_id, campaign.id)
+
+    def test_manual_capture_inherits_campaign_id_from_product(self) -> None:
+        """When capture_manual is called with only product_id, campaign_id is traced via discovery_context AgentReport."""
+        service = CampaignService(self.session)
+        discovery = DiscoveryService(self.session)
+        campaign = service.create_campaign(DiscoveryCampaignCreate(name="Pet accessories discovery", category="Pet accessories"))
+        idea = service.add_idea_to_campaign(
+            campaign.id,
+            ProductIdeaCreate(
+                idea_name="Pet hair remover brush",
+                category="Pet accessories",
+                campaign_id=campaign.id,
+                source_platform="Manual",
+                why_interesting="Pet accessory.",
+            ),
+        )
+        # Promote idea to product - this creates discovery_context AgentReport
+        promoted = discovery.promote_to_product(idea.id)
+        self.assertIsNotNone(promoted)
+        capture = CaptureService(self.session)
+        candidate, _ = asyncio.run(
+            capture.capture_manual(
+                product_id=promoted.id,
+                capture_type="MARKETPLACE_SCREENSHOT",
+                pasted_text="Pet hair remover brush\nSold price: $18.99",
+                notes="Product-linked capture",
+            )
+        )
+        self.assertEqual(candidate.campaign_id, campaign.id)
+
     def test_quick_scan_existing_idea_updates_same_record(self) -> None:
         service = CampaignService(self.session)
         discovery = DiscoveryService(self.session)
@@ -238,6 +303,89 @@ class CampaignServiceTests(unittest.TestCase):
         self.assertIsNotNone(scanned.quick_scan_verdict)
         self.assertEqual(scanned.campaign_id, campaign.id)
         self.assertGreaterEqual(len(result["tasks"]), 1)
+
+    def test_campaign_report_includes_pending_external_jobs_count(self) -> None:
+        """Campaign report includes pending_external_jobs_count."""
+        service = CampaignService(self.session)
+        campaign = service.create_campaign(DiscoveryCampaignCreate(name="Job visibility test", category="Test"))
+        self.session.add(ExternalResearchJob(
+            campaign_id=campaign.id,
+            provider="DATAFORSEO",
+            api_area="google_shopping",
+            query="pet grooming glove",
+            queue="standard",
+            status="QUEUED",
+            cost_estimate=0.05,
+        ))
+        self.session.commit()
+
+        report = service.get_report(campaign.id)
+        self.assertEqual(report.external_jobs_total, 1)
+        self.assertEqual(report.external_jobs_pending_count, 1)
+        self.assertEqual(report.external_jobs_imported_count, 0)
+        self.assertEqual(report.external_jobs_failed_count, 0)
+
+    def test_campaign_report_includes_latest_pending_job_id(self) -> None:
+        """Campaign report includes latest_pending_job_id."""
+        service = CampaignService(self.session)
+        campaign = service.create_campaign(DiscoveryCampaignCreate(name="Pending job id test", category="Test"))
+        job = ExternalResearchJob(
+            campaign_id=campaign.id,
+            provider="DATAFORSEO",
+            api_area="google_shopping",
+            query="pet bowl",
+            queue="standard",
+            status="SUBMITTED",
+            cost_estimate=0.05,
+        )
+        self.session.add(job)
+        self.session.flush()
+
+        report = service.get_report(campaign.id)
+        self.assertEqual(report.latest_pending_job_id, str(job.id))
+        self.assertEqual(report.latest_pending_job_query, "pet bowl")
+        self.assertEqual(report.latest_pending_job_status, "SUBMITTED")
+
+    def test_campaign_report_next_action_says_poll_when_queued(self) -> None:
+        """Campaign report next action says to poll when job is queued."""
+        service = CampaignService(self.session)
+        campaign = service.create_campaign(DiscoveryCampaignCreate(name="Poll action test", category="Test"))
+        self.session.add(ExternalResearchJob(
+            campaign_id=campaign.id,
+            provider="DATAFORSEO",
+            api_area="google_shopping",
+            query="pet toy",
+            queue="standard",
+            status="QUEUED",
+            cost_estimate=0.05,
+        ))
+        self.session.commit()
+
+        report = service.get_report(campaign.id)
+        self.assertIsNotNone(report.external_research_next_action)
+        self.assertIn("Poll", report.external_research_next_action)
+
+    def test_campaign_report_zero_candidates_queued_not_failure(self) -> None:
+        """Zero candidates with queued provider status is not treated as failure."""
+        service = CampaignService(self.session)
+        campaign = service.create_campaign(DiscoveryCampaignCreate(name="Zero candidates test", category="Test"))
+        self.session.add(ExternalResearchJob(
+            campaign_id=campaign.id,
+            provider="DATAFORSEO",
+            api_area="google_shopping",
+            query="pet leash",
+            queue="standard",
+            status="QUEUED",
+            result_count=0,
+            cost_estimate=0.05,
+        ))
+        self.session.commit()
+
+        report = service.get_report(campaign.id)
+        self.assertEqual(report.external_jobs_pending_count, 1)
+        self.assertEqual(report.external_jobs_failed_count, 0)
+        # The report should suggest polling, not report failure
+        self.assertIsNotNone(report.external_research_next_action)
 
 
 if __name__ == "__main__":

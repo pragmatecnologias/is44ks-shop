@@ -6,12 +6,12 @@ import { ResellOSClient } from './resellosClient.js';
 import { TOOL_DEFINITIONS } from './toolRegistry.js';
 import { toErrorPayload } from './utils/errors.js';
 import { createDiscoveryIdea, getDiscoveryBoard, runQuickScan } from './tools/discoveryTools.js';
-import { createDiscoveryCampaign, listDiscoveryCampaigns, getDiscoveryCampaign, createCampaignTask, updateCampaignTask, getCampaignReport, generateCampaignNextTasks, addIdeaToCampaign } from './tools/campaignTools.js';
+import { createDiscoveryCampaign, listDiscoveryCampaigns, getDiscoveryCampaign, createCampaignTask, updateCampaignTask, getCampaignReport, generateCampaignNextTasks, addIdeaToCampaign, getCampaignNextTask, completeCampaignTask, blockCampaignTask } from './tools/campaignTools.js';
 import { runDataForSeoGoogleShopping, pollExternalResearchJob } from './tools/externalResearchTools.js';
 import { listEvidenceCandidates, approveCandidate, rejectCandidate, captureManualEvidence } from './tools/candidateTools.js';
 import { getProductCockpit, runProductResearch, getNextResearchAction, generateProductResearchReport } from './tools/productTools.js';
 import { verifyMarketplaceEvidence, verifySupplierSource, verifyCompetitorListing } from './tools/verificationTools.js';
-import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema } from './toolRegistry.js';
+import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema, getCampaignNextTaskSchema, completeCampaignTaskSchema, blockCampaignTaskSchema } from './toolRegistry.js';
 import { guardWriteEnabled } from './guards/approvalGuards.js';
 import type { ToolResult } from './types.js';
 import type { z } from 'zod';
@@ -160,6 +160,18 @@ async function invokeTool(name: string, args: Record<string, unknown>, config: A
     case 'resellos_generate_product_research_report': {
       const input = productReportSchema.parse(args);
       return generateProductResearchReport(client, input.product_id, config);
+    }
+    case 'resellos_get_campaign_next_task': {
+      const input = getCampaignNextTaskSchema.parse(args);
+      return getCampaignNextTask(client, input.campaign_id, config);
+    }
+    case 'resellos_complete_campaign_task': {
+      const input = completeCampaignTaskSchema.parse(args);
+      return completeCampaignTask(client, input, config);
+    }
+    case 'resellos_block_campaign_task': {
+      const input = blockCampaignTaskSchema.parse(args);
+      return blockCampaignTask(client, input, config);
     }
     default:
       throw new Error(`Unknown tool: ${name}`);

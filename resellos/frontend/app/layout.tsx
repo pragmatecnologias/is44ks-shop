@@ -13,6 +13,7 @@ import {
   ChevronRight,
   Zap,
 } from 'lucide-react';
+import OfflineBanner from '@/components/shared/OfflineBanner';
 
 export const metadata: Metadata = {
   title: 'ResellOS',
@@ -39,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <OfflineBanner />
         <div className="flex min-h-screen bg-[#0a0a0a]">
           {/* Sidebar */}
           <aside className="w-64 shrink-0 flex flex-col border-r border-[#1a1a1a] bg-[#0d0d0d]">

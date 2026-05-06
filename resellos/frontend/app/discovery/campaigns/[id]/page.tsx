@@ -247,6 +247,46 @@ export default function DiscoveryCampaignDetailPage() {
             <SummaryBox title="Products by decision" value={formatCounts(report.products_by_decision)} />
             <SummaryBox title="Candidate status" value={formatCounts(report.candidate_count_by_status)} />
           </div>
+
+          {(report.external_jobs_total ?? 0) > 0 ? (
+            <section className="mt-4 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+              <div className="text-xs uppercase tracking-[0.16em] text-zinc-500 mb-3">External research</div>
+              <div className="grid gap-3 text-sm text-zinc-300 md:grid-cols-4">
+                <div>
+                  <div className="text-xs text-zinc-500">Total jobs</div>
+                  <div className="font-medium text-white">{report.external_jobs_total ?? 0}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-zinc-500">Pending jobs</div>
+                  <div className={`font-medium ${(report.external_jobs_pending_count ?? 0) > 0 ? 'text-yellow-400' : 'text-white'}`}>
+                    {report.external_jobs_pending_count ?? 0}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs text-zinc-500">Imported</div>
+                  <div className="font-medium text-white">{report.external_jobs_imported_count ?? 0}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-zinc-500">Failed</div>
+                  <div className={`font-medium ${(report.external_jobs_failed_count ?? 0) > 0 ? 'text-red-400' : 'text-white'}`}>
+                    {report.external_jobs_failed_count ?? 0}
+                  </div>
+                </div>
+              </div>
+              {report.latest_pending_job_id ? (
+                <div className="mt-3 border-t border-zinc-800 pt-3 text-xs text-zinc-400">
+                  <div>Latest pending job: <span className="font-mono text-zinc-300">{report.latest_pending_job_id.slice(0, 8)}...</span></div>
+                  <div>Query: {report.latest_pending_job_query || '—'}</div>
+                  <div>Status: {report.latest_pending_job_status || '—'}</div>
+                </div>
+              ) : null}
+              {report.external_research_next_action ? (
+                <div className="mt-2 text-xs text-yellow-300">
+                  Next action: {report.external_research_next_action}
+                </div>
+              ) : null}
+            </section>
+          ) : null}
           <div className="mt-4 grid gap-3 md:grid-cols-3">
             <ListBox title="Watchlist products" items={(report.watchlist_products || []).map((product) => `${product.name} · ${product.next_action || product.main_blocker || 'No blocker recorded.'}`)} />
             <ListBox title="Skip products" items={(report.skip_products || []).map((product) => `${product.name} · ${product.main_blocker || 'Skipped by the pipeline.'}`)} />
