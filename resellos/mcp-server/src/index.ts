@@ -5,7 +5,7 @@ import { loadConfig } from './config.js';
 import { ResellOSClient } from './resellosClient.js';
 import { TOOL_DEFINITIONS } from './toolRegistry.js';
 import { toErrorPayload } from './utils/errors.js';
-import { createDiscoveryIdea, getDiscoveryBoard } from './tools/discoveryTools.js';
+import { createDiscoveryIdea, getDiscoveryBoard, runQuickScan } from './tools/discoveryTools.js';
 import { runDataForSeoGoogleShopping, pollExternalResearchJob } from './tools/externalResearchTools.js';
 import { listEvidenceCandidates, approveCandidate, rejectCandidate, captureManualEvidence } from './tools/candidateTools.js';
 import { getProductCockpit, runProductResearch, getNextResearchAction, generateProductResearchReport } from './tools/productTools.js';
@@ -70,8 +70,7 @@ async function invokeTool(name: string, args: Record<string, unknown>, config: A
     }
     case 'resellos_run_quick_scan': {
       const input = quickScanSchema.parse(args);
-      const response = await client.post<any>('/api/discovery/quick-scan', input);
-      return wrap('resellos_run_quick_scan', config, input, response, `Quick scan complete for ${input.idea_id}.`, 'resellos_generate_research_tasks');
+      return runQuickScan(client, input, config);
     }
     case 'resellos_generate_research_tasks': {
       const input = researchTasksSchema.parse(args);
