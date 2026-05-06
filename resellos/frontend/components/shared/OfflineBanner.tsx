@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { WifiOff } from 'lucide-react';
+import { API_BASE } from '@/lib/api';
 
 export default function OfflineBanner() {
   const [isOffline, setIsOffline] = useState(false);
@@ -10,7 +11,7 @@ export default function OfflineBanner() {
     // Check status on mount and periodically
     const checkStatus = async () => {
       try {
-        const res = await fetch('/api/health', { cache: 'no-store' });
+        const res = await fetch(`${API_BASE}/health`, { cache: 'no-store' });
         setIsOffline(!res.ok);
       } catch {
         setIsOffline(true);
