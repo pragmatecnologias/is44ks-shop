@@ -56,7 +56,7 @@ class MarketAgent(BaseAgent):
         supporting_rows = [row for row in evidence_rows if str(row.get("evidence_type", "")).upper() in {"SCREENSHOT", "MANUAL_NOTE"}]
 
         # Verification-aware filtering
-        VERIFIED_SOLD = {"USER_VERIFIED"}
+        VERIFIED_SOLD = {"USER_VERIFIED", "API_IMPORTED"}
         VERIFIED_ACTIVE = {"USER_VERIFIED", "API_IMPORTED"}
         TEST = {"TEST_DATA", "REJECTED"}
 
