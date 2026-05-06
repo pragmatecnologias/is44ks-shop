@@ -35,6 +35,7 @@ import {
   runProductResearch,
   verifyEvidenceItem,
   verifyCompetitor,
+  verifySource,
 } from '@/lib/api';
 import type {
   MarketplaceEvidenceInput,
@@ -112,17 +113,18 @@ export default function ProductDetailPage() {
   const targetSalePrice = decision.target_sale_price ?? product?.target_sale_price ?? 0;
   const soldEvidenceCount = evidenceRows.filter((row) => row.evidence_type === 'SOLD_LISTING').length;
   const activeEvidenceCount = evidenceRows.filter((row) => row.evidence_type === 'ACTIVE_LISTING').length;
-  const VERIFIED_STATUSES = ['USER_VERIFIED', 'API_IMPORTED'];
-  const verifiedSoldCount = evidenceRows.filter((row) => row.evidence_type === 'SOLD_LISTING' && row.verification_status && VERIFIED_STATUSES.includes(row.verification_status)).length;
-  const verifiedActiveCount = evidenceRows.filter((row) => row.evidence_type === 'ACTIVE_LISTING' && row.verification_status && VERIFIED_STATUSES.includes(row.verification_status)).length;
-  const testDataCount = evidenceRows.filter((row) => row.verification_status === 'TEST_DATA').length;
-  const totalTestDataCount = [...evidenceRows, ...competitorRows, ...supplierSources].filter((row) => 'verification_status' in row && (row as { verification_status?: string }).verification_status === 'TEST_DATA').length;
-  const supplierCostPresent = supplierSources.some((source) => source.unit_cost != null || source.estimated_landed_cost != null);
-  const internationalShippingPresent = supplierSources.some((source) => source.international_shipping_estimate != null);
+  const VERIFIED_SOLD_STATUSES = ['USER_VERIFIED'];
+  const VERIFIED_ACTIVE_STATUSES = ['USER_VERIFIED', 'API_IMPORTED'];
   const primarySupplierSource = supplierSources.find((source) => source.is_primary) ?? supplierSources[0] ?? null;
   const primarySupplierHasCost = Boolean(primarySupplierSource && (primarySupplierSource.unit_cost != null || primarySupplierSource.estimated_landed_cost != null));
   const primarySupplierVerified = primarySupplierSource?.verification_status === 'USER_VERIFIED';
   const shouldShowSupplierVerificationWarning = primarySupplierHasCost && !primarySupplierVerified;
+  const verifiedSoldCount = evidenceRows.filter((row) => row.evidence_type === 'SOLD_LISTING' && row.verification_status && VERIFIED_SOLD_STATUSES.includes(row.verification_status)).length;
+  const verifiedActiveCount = evidenceRows.filter((row) => row.evidence_type === 'ACTIVE_LISTING' && row.verification_status && VERIFIED_ACTIVE_STATUSES.includes(row.verification_status)).length;
+  const testDataCount = evidenceRows.filter((row) => row.verification_status === 'TEST_DATA').length;
+  const totalTestDataCount = [...evidenceRows, ...competitorRows, ...supplierSources].filter((row) => 'verification_status' in row && (row as { verification_status?: string }).verification_status === 'TEST_DATA').length;
+  const supplierCostPresent = supplierSources.some((source) => source.unit_cost != null || source.estimated_landed_cost != null);
+  const internationalShippingPresent = supplierSources.some((source) => source.international_shipping_estimate != null);
   const profitScenariosPresent = profitRows.length > 0;
   const riskPassed = product?.risk_level !== 'BLOCKED' && decision.blocked !== true;
   const targetPricePresent = Boolean(targetSalePrice && targetSalePrice > 0);
@@ -136,6 +138,11 @@ export default function ProductDetailPage() {
     { label: 'Sold evidence (verified)', ok: verifiedSoldCount >= 5, detail: `${verifiedSoldCount}/5+ verified sold listings (${soldEvidenceCount} total)` },
     { label: 'Active evidence (verified)', ok: verifiedActiveCount >= 5, detail: `${verifiedActiveCount}/5+ verified active listings (${activeEvidenceCount} total)` },
     { label: 'No test data', ok: testDataCount === 0, detail: testDataCount > 0 ? `${testDataCount} test data items present` : 'All evidence is real' },
+    {
+      label: 'Supplier verified',
+      ok: primarySupplierVerified,
+      detail: primarySupplierVerified ? 'Verified supplier source' : primarySupplierHasCost ? 'Supplier cost exists but is not verified' : 'Missing supplier source',
+    },
     { label: 'Supplier cost', ok: supplierCostPresent, detail: supplierCostPresent ? 'Entered' : 'Missing' },
     { label: 'International shipping', ok: internationalShippingPresent, detail: internationalShippingPresent ? 'Entered' : 'Missing' },
     { label: 'Profit scenarios', ok: profitScenariosPresent, detail: profitScenariosPresent ? `${profitRows.length} generated` : 'Missing' },
@@ -647,7 +654,7 @@ export default function ProductDetailPage() {
               </form>
 
               <div className="space-y-3">
-                {supplierSources.length === 0 ? (
+              {supplierSources.length === 0 ? (
                   <EmptyState title="No supplier comparison yet" description="Add 2-3 suppliers so landed cost can be compared." />
                 ) : (
                   supplierSources.map((source) => (
@@ -662,9 +669,27 @@ export default function ProductDetailPage() {
                             <SupplierVerificationBadge status={source.verification_status} />
                           </div>
                         </div>
-                        <button type="button" onClick={() => handleDeleteSupplier(source.id)} className="text-zinc-500 hover:text-red-400">
-                          <Trash2 className="h-4 w-4" />
-                        </button>
+                        <div className="flex items-center gap-2">
+                          {source.verification_status !== 'USER_VERIFIED' ? (
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                try {
+                                  await verifySource(source.id, 'USER_VERIFIED');
+                                  await loadCockpit();
+                                } catch (err) {
+                                  setError(err instanceof Error ? err.message : 'Failed to verify supplier');
+                                }
+                              }}
+                              className="rounded-xl border border-indigo-500/30 bg-indigo-500/10 px-3 py-1.5 text-xs font-medium text-indigo-200 transition hover:bg-indigo-500/20"
+                            >
+                              Verify
+                            </button>
+                          ) : null}
+                          <button type="button" onClick={() => handleDeleteSupplier(source.id)} className="text-zinc-500 hover:text-red-400">
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        </div>
                       </div>
                       <div className="mt-3 grid gap-2 text-sm text-zinc-300 md:grid-cols-2">
                         <StatRow label="Unit cost" value={money(source.unit_cost)} />
