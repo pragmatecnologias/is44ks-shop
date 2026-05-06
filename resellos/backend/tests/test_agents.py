@@ -562,6 +562,104 @@ class AgentContractTests(unittest.TestCase):
             session.close()
             Base.metadata.drop_all(engine)
 
+    def test_validation_checklist_uses_latest_agent_reports(self) -> None:
+        from app.services.validation_checklist_service import ValidationChecklistService
+
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(sku="RS-VAL-003", name="Reusable pet hair remover roller", category="Pet accessories", status="RESEARCHING")
+            session.add(product)
+            session.flush()
+            session.add(
+                AgentReport(
+                    product_id=product.id,
+                    agent_name="market_agent",
+                    report_type="market_agent",
+                    output_json='{"sold_listing_count":5,"verified_sold_listing_count":1,"active_listing_count":5,"verified_active_listing_count":0,"test_data_evidence_count":0,"verification_coverage":0.1,"insufficient_data":true,"market_price_missing":false,"evidence_quality":"LOW"}',
+                    summary="Old market snapshot",
+                    confidence="LOW",
+                )
+            )
+            session.add(
+                AgentReport(
+                    product_id=product.id,
+                    agent_name="market_agent",
+                    report_type="market_agent",
+                    output_json='{"sold_listing_count":5,"verified_sold_listing_count":5,"active_listing_count":5,"verified_active_listing_count":5,"test_data_evidence_count":0,"verification_coverage":1.0,"insufficient_data":false,"market_price_missing":false,"evidence_quality":"MEDIUM"}',
+                    summary="Latest market snapshot",
+                    confidence="MEDIUM",
+                )
+            )
+            session.add(
+                ProductSource(
+                    product_id=product.id,
+                    supplier_name="Supplier A",
+                    supplier_platform="Alibaba",
+                    unit_cost=0.82,
+                    estimated_landed_cost=0.82,
+                    is_primary=True,
+                    verification_status="USER_VERIFIED",
+                )
+            )
+            session.commit()
+
+            checklist = ValidationChecklistService(session).get_checklist(product.id)
+            self.assertEqual(checklist["sold_demand"]["status"], "PASS")
+            self.assertEqual(checklist["sold_demand"]["summary"], "5 verified sold listings.")
+            self.assertEqual(checklist["market_presence"]["status"], "WARNING")
+        finally:
+            session.close()
+            Base.metadata.drop_all(engine)
+
+    def test_agent_service_get_reports_returns_newest_first(self) -> None:
+        from app.services.agent_service import AgentService
+
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(sku="RS-REP-001", name="Report ordering test", category="Pet accessories", status="RESEARCHING")
+            session.add(product)
+            session.flush()
+            first = AgentReport(
+                product_id=product.id,
+                agent_name="market_agent",
+                report_type="market_agent",
+                output_json='{"verified_sold_listing_count":1}',
+                summary="Old report",
+                confidence="LOW",
+            )
+            second = AgentReport(
+                product_id=product.id,
+                agent_name="market_agent",
+                report_type="market_agent",
+                output_json='{"verified_sold_listing_count":5}',
+                summary="New report",
+                confidence="HIGH",
+            )
+            session.add_all([first, second])
+            session.commit()
+
+            reports = AgentService(session).get_reports(product.id)
+            self.assertGreaterEqual(len(reports), 2)
+            self.assertEqual(reports[0].summary, "New report")
+            self.assertEqual(reports[1].summary, "Old report")
+        finally:
+            session.close()
+            Base.metadata.drop_all(engine)
+
     def test_profit_agent_returns_profit_gap_fields(self) -> None:
         agent = ProfitAgent(self.llm)
         result = asyncio.run(

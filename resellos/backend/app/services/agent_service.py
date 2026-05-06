@@ -27,7 +27,12 @@ class AgentService:
         return report
 
     def get_reports(self, product_id: uuid.UUID) -> list[AgentReport]:
-        return self.db.query(AgentReport).filter(AgentReport.product_id == product_id).all()
+        return (
+            self.db.query(AgentReport)
+            .filter(AgentReport.product_id == product_id)
+            .order_by(AgentReport.created_at.desc(), AgentReport.id.desc())
+            .all()
+        )
 
     def get_report(self, report_id: uuid.UUID) -> Optional[AgentReport]:
         return self.db.query(AgentReport).filter(AgentReport.id == report_id).first()

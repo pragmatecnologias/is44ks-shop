@@ -47,7 +47,7 @@ class ValidationChecklistService:
         report = (
             self.db.query(AgentReport)
             .filter(AgentReport.product_id == product_id, AgentReport.agent_name == agent_name)
-            .order_by(AgentReport.created_at.desc())
+            .order_by(AgentReport.created_at.desc(), AgentReport.id.desc())
             .first()
         )
         if not report or not report.output_json:
@@ -129,12 +129,10 @@ class ValidationChecklistService:
     def _score_sold(self, market: dict[str, Any]) -> dict[str, Any]:
         verified_sold = int(market.get("verified_sold_listing_count") or 0)
         score = min(100, verified_sold * 10)
-        if verified_sold >= 10:
+        if verified_sold >= 5:
             status = "PASS"
-        elif verified_sold >= 5:
-            status = "WARNING"
         elif verified_sold > 0:
-            status = "FAIL"
+            status = "WARNING"
         else:
             status = "UNKNOWN"
         summary = f"{verified_sold} verified sold listings."
@@ -229,10 +227,13 @@ class ValidationChecklistService:
         agent_rows = (
             self.db.query(AgentReport)
             .filter(AgentReport.product_id == product_id)
-            .order_by(AgentReport.created_at.desc())
+            .order_by(AgentReport.created_at.desc(), AgentReport.id.desc())
             .all()
         )
-        reports = {row.agent_name: {"output_json": _json_load(row.output_json, {})} for row in agent_rows}
+        reports: dict[str, dict[str, Any]] = {}
+        for row in agent_rows:
+            if row.agent_name not in reports:
+                reports[row.agent_name] = {"output_json": _json_load(row.output_json, {})}
         market = agent_data(reports, "market_agent")
         demand_agent = agent_data(reports, "demand_agent")
         trend_agent = agent_data(reports, "trend_agent")
