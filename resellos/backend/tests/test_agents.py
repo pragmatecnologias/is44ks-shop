@@ -85,17 +85,21 @@ class AgentContractTests(unittest.TestCase):
         result = asyncio.run(
             agent.run(
                 {
-                    "supplier_summary": {"unit_cost": 4.15, "international_shipping_estimate": 1.2},
+                    "supplier_summary": {"unit_cost": 4.15, "international_shipping_estimate": 1.2, "verification_status": "API_IMPORTED"},
                     "agent_reports": {
                         "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
                         "market_agent": {
                             "output_json": {
                                 "evidence_quality": "MEDIUM",
                                 "sold_listing_count": 4,
+                                "verified_sold_listing_count": 4,
                                 "active_listing_count": 12,
+                                "verified_active_listing_count": 12,
                                 "insufficient_data": False,
+                                "market_price_missing": False,
                                 "median_sold_price": 18.99,
                                 "median_active_price": 21.99,
+                                "verification_coverage": 1.0,
                             }
                         },
                         "profit_agent": {"output_json": {"estimated_net_profit": 7.42, "scenarios": [{}]}},
@@ -109,6 +113,43 @@ class AgentContractTests(unittest.TestCase):
         self.assertIn(result["output_json"]["buy_readiness_status"], {"NOT_READY", "ALMOST_READY", "READY"})
         self.assertIn(result["output_json"]["main_blocker"], {"None", "Sold listings missing", "Active listings missing", "Marketplace evidence is insufficient for a buy decision.", "Supplier cost is missing.", "Competition gap is too small to compete reliably.", "Competition listings missing"})
         self.assertGreater(result["output_json"]["total_score"], 0)
+
+    def test_decision_agent_blocks_unverified_evidence(self) -> None:
+        agent = DecisionAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "supplier_summary": {"unit_cost": 4.15, "estimated_landed_cost": 5.70, "international_shipping_estimate": 1.2},
+                    "agent_reports": {
+                        "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
+                        "market_agent": {
+                            "output_json": {
+                                "evidence_quality": "MEDIUM",
+                                "sold_listing_count": 5,
+                                "verified_sold_listing_count": 0,
+                                "active_listing_count": 12,
+                                "verified_active_listing_count": 0,
+                                "verified_evidence_count": 0,
+                                "unverified_evidence_count": 12,
+                                "test_data_evidence_count": 0,
+                                "verification_coverage": 0.0,
+                                "insufficient_data": True,
+                                "market_price_missing": True,
+                                "required_next_evidence": ["Verify evidence before sample buying."],
+                            }
+                        },
+                        "profit_agent": {"output_json": {"estimated_net_profit": 7.42, "scenarios": [{"net_profit": 7.42, "margin_percent": 31.0}]}},
+                        "competition_agent": {"output_json": {"competition_level": "LOW", "listing_gap_score": 72, "can_compete": True, "competitor_count": 3, "verified_competitor_count": 3}},
+                    }
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertEqual(output["buy_readiness_status"], "NOT_READY")
+        self.assertEqual(output["research_verdict"], "NEEDS_MORE_RESEARCH")
+        self.assertIn("Evidence is not verified.", output["hard_blockers"])
+        self.assertEqual(output["main_blocker"], "Evidence is not verified.")
 
     def test_decision_agent_caps_buy_when_market_data_is_thin(self) -> None:
         agent = DecisionAgent(self.llm)
@@ -166,6 +207,7 @@ class AgentContractTests(unittest.TestCase):
         scenarios = result["output_json"]["scenarios"]
         self.assertEqual(len(scenarios), 3)
         self.assertGreater(result["output_json"]["estimated_net_profit"], 0)
+        self.assertFalse(result["output_json"]["best_scenario"].lower().endswith("bundle"))
 
     def test_market_agent_uses_evidence_rows(self) -> None:
         agent = MarketAgent(self.llm)
@@ -174,13 +216,13 @@ class AgentContractTests(unittest.TestCase):
                 {
                     "product": {"name": "Test product"},
                     "marketplace_evidence": [
-                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 10.0, "shipping_price": 2.0},
-                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 12.0, "shipping_price": 2.5},
-                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 14.0, "shipping_price": 3.0},
-                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 16.0, "shipping_price": 3.0},
-                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 18.0, "shipping_price": 3.5},
-                        {"marketplace": "eBay", "evidence_type": "ACTIVE_LISTING", "price": 19.0, "shipping_price": 4.0},
-                        {"marketplace": "eBay", "evidence_type": "ACTIVE_LISTING", "price": 20.0, "shipping_price": 4.0},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 10.0, "shipping_price": 2.0, "verification_status": "USER_VERIFIED"},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 12.0, "shipping_price": 2.5, "verification_status": "USER_VERIFIED"},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 14.0, "shipping_price": 3.0, "verification_status": "USER_VERIFIED"},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 16.0, "shipping_price": 3.0, "verification_status": "USER_VERIFIED"},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 18.0, "shipping_price": 3.5, "verification_status": "USER_VERIFIED"},
+                        {"marketplace": "eBay", "evidence_type": "ACTIVE_LISTING", "price": 19.0, "shipping_price": 4.0, "verification_status": "API_IMPORTED"},
+                        {"marketplace": "eBay", "evidence_type": "ACTIVE_LISTING", "price": 20.0, "shipping_price": 4.0, "verification_status": "API_IMPORTED"},
                     ],
                 }
             )
@@ -188,12 +230,37 @@ class AgentContractTests(unittest.TestCase):
 
         output = result["output_json"]
         self.assertEqual(output["sold_listing_count"], 5)
+        self.assertEqual(output["verified_sold_listing_count"], 5)
         self.assertEqual(output["active_listing_count"], 2)
+        self.assertEqual(output["verified_active_listing_count"], 2)
         self.assertEqual(output["median_sold_price"], 14.0)
         self.assertIn("research_completeness_score", output)
         self.assertIn("demand_evidence_quality", output)
         self.assertIn("market_presence_quality", output)
         self.assertFalse(output["insufficient_data"])
+
+    def test_market_agent_ignores_unverified_rows_for_price_signals(self) -> None:
+        agent = MarketAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "product": {"name": "Test product"},
+                    "marketplace_evidence": [
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 100.0, "shipping_price": 10.0, "verification_status": "USER_CAPTURED_UNVERIFIED"},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 110.0, "shipping_price": 11.0, "verification_status": "TEST_DATA"},
+                        {"marketplace": "eBay", "evidence_type": "ACTIVE_LISTING", "price": 120.0, "shipping_price": 12.0, "verification_status": "USER_CAPTURED_UNVERIFIED"},
+                    ],
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertEqual(output["sold_listing_count"], 2)
+        self.assertEqual(output["verified_sold_listing_count"], 0)
+        self.assertEqual(output["verified_active_listing_count"], 0)
+        self.assertIsNone(output["median_sold_price"])
+        self.assertIsNone(output["median_active_price"])
+        self.assertTrue(output["insufficient_data"])
 
     def test_competition_agent_reads_competitor_listings(self) -> None:
         agent = CompetitionAgent(self.llm)
@@ -203,9 +270,9 @@ class AgentContractTests(unittest.TestCase):
                     "product": {"name": "Car seat gap organizer", "category": "Automotive"},
                     "market_summary": {"median_sold_price": 18.99},
                     "competitor_listings": [
-                        {"price": 19.99, "sold": False, "photo_score": 45, "title_score": 55, "description_score": 50},
-                        {"price": 18.49, "sold": True, "photo_score": 52, "title_score": 58, "description_score": 40},
-                        {"price": 17.99, "sold": False, "photo_score": 48, "title_score": 60, "description_score": 45},
+                        {"price": 19.99, "sold": False, "photo_score": 45, "title_score": 55, "description_score": 50, "verification_status": "USER_VERIFIED"},
+                        {"price": 18.49, "sold": True, "photo_score": 52, "title_score": 58, "description_score": 40, "verification_status": "USER_VERIFIED"},
+                        {"price": 17.99, "sold": False, "photo_score": 48, "title_score": 60, "description_score": 45, "verification_status": "API_IMPORTED"},
                     ],
                 }
             )
@@ -214,6 +281,7 @@ class AgentContractTests(unittest.TestCase):
         output = result["output_json"]
         self.assertIn(output["competition_level"], {"LOW", "MEDIUM", "HIGH", "UNKNOWN"})
         self.assertGreater(output["listing_gap_score"], 0)
+        self.assertEqual(output["verified_competitor_count"], 3)
         self.assertTrue(output["weaknesses"])
         self.assertTrue(output["recommended_angle"])
 

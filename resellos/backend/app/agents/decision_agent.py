@@ -50,13 +50,19 @@ class DecisionAgent(BaseAgent):
         competition_level = str(competition.get("competition_level", "UNKNOWN")).upper()
         listing_gap_score = int(competition.get("listing_gap_score", 0) or 0)
         can_compete = bool(competition.get("can_compete", True))
+        verified_competitor_count = int(competition.get("verified_competitor_count", 0) or 0)
         market_price_missing = bool(
             market.get(
                 "market_price_missing",
                 float(market.get("median_sold_price") or market.get("median_active_price") or 0) <= 0,
             )
         )
+        verification_coverage = float(market.get("verification_coverage", 0) or 0)
+        verified_evidence_count = int(market.get("verified_evidence_count", 0) or 0)
+        unverified_evidence_count = int(market.get("unverified_evidence_count", 0) or 0)
         has_supplier_cost = bool(supplier_summary.get("unit_cost") is not None or supplier_summary.get("estimated_landed_cost") is not None)
+        supplier_verification_status = str(supplier_summary.get("verification_status") or "").upper()
+        supplier_verified = supplier_verification_status in {"USER_VERIFIED", "API_IMPORTED"}
         product_cost = float(supplier_summary.get("unit_cost") or 0)
         domestic_shipping = float(supplier_summary.get("domestic_shipping") or 0)
         international_shipping = float(supplier_summary.get("international_shipping_estimate") or 0)
@@ -66,6 +72,7 @@ class DecisionAgent(BaseAgent):
         research_completeness_score += min(25, verified_sold * 5)
         research_completeness_score += min(20, verified_active * 2)
         research_completeness_score += 15 if has_supplier_cost else 0
+        research_completeness_score += 10 if supplier_verified else 0
         research_completeness_score += 10 if not market_price_missing else 0
         research_completeness_score += 10 if profit.get("scenarios") else 0
         research_completeness_score += 10 if competition.get("competitor_count", 0) > 0 else 0
@@ -136,6 +143,12 @@ class DecisionAgent(BaseAgent):
         if competition.get("competitor_count", 0) == 0:
             missing_evidence.append("Competition listings missing")
             required_before_buying.append("Add competitor listings to understand the market gap.")
+        if verified_competitor_count == 0:
+            missing_evidence.append("Verified competitor evidence missing")
+            required_before_buying.append("Add verified competitor listings before buying.")
+        if not supplier_verified:
+            missing_evidence.append("Verified supplier source missing")
+            required_before_buying.append("Verify supplier source before buying.")
         required_before_buying.extend(market.get("required_next_evidence", []))
 
         assumptions = []
@@ -149,14 +162,18 @@ class DecisionAgent(BaseAgent):
             and risk_level != "BLOCKED"
             and verified_sold >= 5
             and verified_active >= 5
+            and unverified_evidence_count == 0
             and test_data_count == 0
+            and verification_coverage >= 1.0
             and has_supplier_cost
+            and supplier_verified
             and not market_price_missing
             and target_sale_price > 0
             and net_profit >= min_profit
             and best_margin >= min_margin
             and score >= 70
             and competition.get("can_compete", True)
+            and verified_competitor_count >= 1
         )
 
         if blocked or risk_level == "BLOCKED":
@@ -228,6 +245,26 @@ class DecisionAgent(BaseAgent):
             if research_verdict == "READY_FOR_SAMPLE":
                 research_verdict = "NEEDS_MORE_RESEARCH"
 
+        if not supplier_verified:
+            if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
+                recommendation = "WATCHLIST"
+            hard_blockers.append("Supplier source is not verified.")
+            required_before_buying.append("Verify supplier source before buying.")
+            if research_verdict == "READY_FOR_SAMPLE":
+                research_verdict = "NEEDS_MORE_RESEARCH"
+
+        if unverified_evidence_count > 0 or test_data_count > 0 or verification_coverage < 1.0:
+            verification_blocker = "Evidence is not verified."
+            if verification_blocker not in hard_blockers:
+                hard_blockers.append(verification_blocker)
+            required_before_buying.append("Verify evidence before sample buying.")
+            if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
+                recommendation = "WATCHLIST"
+            if research_verdict == "READY_FOR_SAMPLE":
+                research_verdict = "NEEDS_MORE_RESEARCH"
+        else:
+            verification_blocker = ""
+
         if target_sale_price <= 0:
             required_before_buying.append("Record a real target sale price from market evidence.")
 
@@ -236,7 +273,7 @@ class DecisionAgent(BaseAgent):
         else:
             buy_readiness = "NOT_READY"
 
-        buy_readiness_status = "READY" if ready_for_sample else "ALMOST_READY" if score >= 60 and not blocked and not market_price_missing else "NOT_READY"
+        buy_readiness_status = "READY" if ready_for_sample else "ALMOST_READY" if score >= 60 and not blocked and not market_price_missing and not verification_blocker else "NOT_READY"
 
         max_quantity_to_buy = 0
         if recommendation == "BUY_SAMPLE":
@@ -247,7 +284,7 @@ class DecisionAgent(BaseAgent):
         missing_evidence = list(dict.fromkeys(missing_evidence))
         required_before_buying = list(dict.fromkeys(required_before_buying))
         hard_blockers = list(dict.fromkeys(hard_blockers))
-        main_blocker = hard_blockers[0] if hard_blockers else (missing_evidence[0] if missing_evidence else "None")
+        main_blocker = verification_blocker or (hard_blockers[0] if hard_blockers else (missing_evidence[0] if missing_evidence else "None"))
 
         output = DecisionAgentOutput.model_validate(
             {

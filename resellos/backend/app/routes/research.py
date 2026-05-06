@@ -127,6 +127,11 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
         "profit_scenarios_present": bool(profit_rows),
         "risk_passed": (decision_output or {}).get("blocked") is False if decision_output else product.status != "BLOCKED",
         "target_price_present": product.target_sale_price is not None and float(product.target_sale_price or 0) > 0,
+        "verification_coverage": (
+            sum(1 for row in evidence_rows if row.verification_status in {"USER_VERIFIED", "API_IMPORTED"}) / len(evidence_rows)
+            if evidence_rows
+            else 0.0
+        ),
     }
     hard_blockers = list(dict.fromkeys((decision_output or {}).get("hard_blockers", []))) if decision_output else []
 

@@ -259,6 +259,7 @@ class ResearchPipelineService:
         return {
             "marketplace": row.marketplace,
             "title": row.title,
+            "url": row.url,
             "price": float(row.price) if row.price is not None else None,
             "shipping_price": float(row.shipping_price) if row.shipping_price is not None else None,
             "sold": row.sold,
@@ -327,6 +328,10 @@ class ResearchPipelineService:
     def _primary_source(self, sources: list[ProductSource]) -> ProductSource | None:
         if not sources:
             return None
+        verified_statuses = {"USER_VERIFIED", "API_IMPORTED"}
+        verified_sources = [source for source in sources if str(source.verification_status or "").upper() in verified_statuses]
+        if verified_sources:
+            return next((source for source in verified_sources if source.is_primary), verified_sources[0])
         return next((source for source in sources if source.is_primary), sources[0])
 
     def _marketplace_notes(self, research_rows: list[MarketplaceResearch], evidence_rows: list[MarketplaceEvidence]) -> str:

@@ -46,17 +46,27 @@ class CompetitionAgent(BaseAgent):
             result = {}
 
         listings = competitor_listings if isinstance(competitor_listings, list) else []
-        prices = [float(row.get("price")) for row in listings if row.get("price") is not None]
-        photo_scores = [float(row.get("photo_score")) for row in listings if row.get("photo_score") is not None]
-        title_scores = [float(row.get("title_score")) for row in listings if row.get("title_score") is not None]
-        description_scores = [float(row.get("description_score")) for row in listings if row.get("description_score") is not None]
+        VERIFIED = {"USER_VERIFIED", "API_IMPORTED"}
+
+        def _status(row: dict[str, Any]) -> str:
+            return str(row.get("verification_status") or "").upper()
+
+        verified_listings = [row for row in listings if _status(row) in VERIFIED]
+        unverified_listings = [row for row in listings if row not in verified_listings]
+        verified_prices = [float(row.get("price")) for row in verified_listings if row.get("price") is not None]
+        verified_photo_scores = [float(row.get("photo_score")) for row in verified_listings if row.get("photo_score") is not None]
+        verified_title_scores = [float(row.get("title_score")) for row in verified_listings if row.get("title_score") is not None]
+        verified_description_scores = [float(row.get("description_score")) for row in verified_listings if row.get("description_score") is not None]
+        verified_sold_count = sum(1 for row in verified_listings if bool(row.get("sold")))
+        verified_active_count = len(verified_listings) - verified_sold_count
         sold_count = sum(1 for row in listings if bool(row.get("sold")))
         active_count = len(listings) - sold_count
 
-        avg_photo_score = _avg(photo_scores)
-        avg_title_score = _avg(title_scores)
-        avg_description_score = _avg(description_scores)
-        median_price = round(median(prices), 2) if prices else None
+        avg_photo_score = _avg(verified_photo_scores)
+        avg_title_score = _avg(verified_title_scores)
+        avg_description_score = _avg(verified_description_scores)
+        median_price = round(median(verified_prices), 2) if verified_prices else None
+        verification_coverage = (len(verified_listings) / len(listings)) if listings else 0.0
 
         weakness_list: list[str] = []
         gap_score = 50
@@ -64,17 +74,20 @@ class CompetitionAgent(BaseAgent):
         if not listings:
             weakness_list.append("No competitor listings captured yet.")
             gap_score = 30
+        elif not verified_listings:
+            weakness_list.append("Competitor listings are not verified yet.")
+            gap_score = 25
         else:
-            if active_count >= 10:
+            if verified_active_count >= 10:
                 gap_score -= 15
-            elif active_count >= 5:
+            elif verified_active_count >= 5:
                 gap_score -= 8
-            elif active_count == 0:
+            elif verified_active_count == 0:
                 gap_score += 8
 
-            if sold_count > active_count:
+            if verified_sold_count > verified_active_count:
                 gap_score += 10
-            elif active_count > sold_count * 2 and active_count >= 5:
+            elif verified_active_count > verified_sold_count * 2 and verified_active_count >= 5:
                 weakness_list.append("Many active listings but fewer sold comps, suggesting tough sell-through.")
                 gap_score -= 8
 
@@ -104,8 +117,8 @@ class CompetitionAgent(BaseAgent):
 
         gap_score = max(0, min(100, gap_score))
 
-        competition_level = "HIGH" if active_count >= 10 else "MEDIUM" if active_count >= 4 else "LOW"
-        can_compete = gap_score >= 55
+        competition_level = "HIGH" if verified_active_count >= 10 else "MEDIUM" if verified_active_count >= 4 else "LOW"
+        can_compete = gap_score >= 55 and bool(verified_listings)
 
         category = str(product.get("category", "")).lower()
         if "car" in category:
@@ -123,19 +136,24 @@ class CompetitionAgent(BaseAgent):
                 "listing_gap_score": gap_score,
                 "can_compete": can_compete,
                 "competitor_count": len(listings),
+                "verified_competitor_count": len(verified_listings),
+                "unverified_competitor_count": len(unverified_listings),
                 "active_competitor_count": active_count,
                 "sold_competitor_count": sold_count,
+                "verified_active_competitor_count": verified_active_count,
+                "verified_sold_competitor_count": verified_sold_count,
                 "median_competitor_price": median_price,
                 "avg_photo_score": avg_photo_score,
                 "avg_title_score": avg_title_score,
                 "avg_description_score": avg_description_score,
+                "verification_coverage": round(verification_coverage, 2),
                 "weaknesses": weakness_list or ["No obvious weakness captured yet."],
                 "recommended_angle": result.get("recommended_angle", recommended_angle),
                 "summary": result.get(
                     "summary",
                     "Competition analysis completed from captured competitor listings.",
                 ),
-                "confidence": "HIGH" if listings and gap_score >= 55 else "MEDIUM" if listings else "LOW",
+                "confidence": "HIGH" if verified_listings and gap_score >= 55 else "MEDIUM" if verified_listings else "LOW",
                 "warnings": result.get("warnings", []),
                 "evidence_refs": result.get("evidence_refs", []),
             }

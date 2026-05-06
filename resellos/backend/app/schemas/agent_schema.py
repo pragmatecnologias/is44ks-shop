@@ -78,12 +78,17 @@ class CompetitionAgentOutput(BaseModel):
     listing_gap_score: int = 0
     can_compete: bool = False
     competitor_count: int = 0
+    verified_competitor_count: int = 0
+    unverified_competitor_count: int = 0
     active_competitor_count: int = 0
     sold_competitor_count: int = 0
+    verified_active_competitor_count: int = 0
+    verified_sold_competitor_count: int = 0
     median_competitor_price: float | None = None
     avg_photo_score: float | None = None
     avg_title_score: float | None = None
     avg_description_score: float | None = None
+    verification_coverage: float = 0.0
     weaknesses: list[str] = Field(default_factory=list)
     recommended_angle: str = ""
     summary: str = ""

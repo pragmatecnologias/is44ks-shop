@@ -68,31 +68,22 @@ class MarketAgent(BaseAgent):
         verified_evidence_count = sum(1 for row in evidence_rows if _status(row) in VERIFIED)
         unverified_evidence_count = sum(1 for row in evidence_rows if _status(row) not in VERIFIED and _status(row) not in TEST and _status(row) != "")
 
-        active_prices = [float(row.get("price")) for row in active_rows if row.get("price") is not None]
-        sold_prices = [float(row.get("price")) for row in sold_rows if row.get("price") is not None]
-        active_shipping_prices = [float(row.get("shipping_price")) for row in active_rows if row.get("shipping_price") is not None]
-        sold_shipping_prices = [float(row.get("shipping_price")) for row in sold_rows if row.get("shipping_price") is not None]
-
-        if not active_prices and isinstance(marketplace_research, list):
-            active_prices = [float(row.get("median_active_price")) for row in marketplace_research if row.get("median_active_price") is not None]
-        if not sold_prices and isinstance(marketplace_research, list):
-            sold_prices = [float(row.get("median_sold_price")) for row in marketplace_research if row.get("median_sold_price") is not None]
-        if not active_shipping_prices and isinstance(marketplace_research, list):
-            active_shipping_prices = [float(row.get("shipping_median")) for row in marketplace_research if row.get("shipping_median") is not None]
-        if not sold_shipping_prices and isinstance(marketplace_research, list):
-            sold_shipping_prices = [float(row.get("shipping_median")) for row in marketplace_research if row.get("shipping_median") is not None]
-
         active_listing_count = len(active_rows)
         sold_listing_count = len(sold_rows)
         verified_sold_count = len(verified_sold_rows)
         verified_active_count = len(verified_active_rows)
 
-        active_price_range = [round(min(active_prices), 2), round(max(active_prices), 2)] if active_prices else []
-        sold_price_range = [round(min(sold_prices), 2), round(max(sold_prices), 2)] if sold_prices else []
-        median_active_price = _median(active_prices)
-        median_sold_price = _median(sold_prices)
-        median_active_shipping = _median(active_shipping_prices)
-        median_sold_shipping = _median(sold_shipping_prices)
+        verified_active_prices = [float(row.get("price")) for row in verified_active_rows if row.get("price") is not None]
+        verified_sold_prices = [float(row.get("price")) for row in verified_sold_rows if row.get("price") is not None]
+        verified_active_shipping_prices = [float(row.get("shipping_price")) for row in verified_active_rows if row.get("shipping_price") is not None]
+        verified_sold_shipping_prices = [float(row.get("shipping_price")) for row in verified_sold_rows if row.get("shipping_price") is not None]
+
+        active_price_range = [round(min(verified_active_prices), 2), round(max(verified_active_prices), 2)] if verified_active_prices else []
+        sold_price_range = [round(min(verified_sold_prices), 2), round(max(verified_sold_prices), 2)] if verified_sold_prices else []
+        median_active_price = _median(verified_active_prices)
+        median_sold_price = _median(verified_sold_prices)
+        median_active_shipping = _median(verified_active_shipping_prices)
+        median_sold_shipping = _median(verified_sold_shipping_prices)
         shipping_values = [value for value in [median_active_shipping, median_sold_shipping] if value is not None]
         median_shipping = _median([float(value) for value in shipping_values]) if shipping_values else None
         marketplace_coverage = sorted(

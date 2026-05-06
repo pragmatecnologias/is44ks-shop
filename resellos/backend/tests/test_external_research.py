@@ -22,7 +22,7 @@ class FakeMerchantClient:
     def __init__(self):
         self.submitted = []
 
-    def submit_google_shopping_products_task(self, *, keyword, location_code, language_code, priority=1, tag=None):
+    def submit_google_shopping_products_task(self, *, keyword, location_code, language_code, priority=1, tag=None, depth=None, **kwargs):
         self.submitted.append(keyword)
         return {
             "tasks": [
@@ -185,4 +185,3 @@ class ExternalResearchTests(unittest.TestCase):
         candidates = service.list_candidates(job_id=job_id)
         self.assertEqual(len(candidates), 1)
         self.assertEqual(candidates[0].candidate_type, "MARKETPLACE_EVIDENCE")
-
