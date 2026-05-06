@@ -1,0 +1,10 @@
+# Local database backups and artifacts
+backups/
+resellos/backups/
+*.db
+*.sqlite
+*.sqlite3
+resellos/backend/*.db
+resellos/backend/*.sqlite
+resellos/backend/*.sqlite3
+resellos/backend/resellos.local.db

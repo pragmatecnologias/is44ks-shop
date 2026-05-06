@@ -89,7 +89,17 @@ class ValidationChecklistService:
     def _score_trend(self, trend_rows: list[ProductTrendResearch], trend_agent: dict[str, Any]) -> dict[str, Any]:
         if trend_agent:
             score = int(trend_agent.get("trend_stability_score") or 0)
-            status = str(trend_agent.get("trend_status") or "UNKNOWN").upper()
+            raw_status = str(trend_agent.get("trend_status") or "UNKNOWN").upper()
+            if raw_status == "EVERGREEN":
+                status = "PASS"
+            elif raw_status == "SEASONAL":
+                status = "WARNING"
+            elif raw_status in {"SPIKY", "DECLINING"}:
+                status = "FAIL"
+            elif raw_status in {"PASS", "FAIL", "WARNING", "UNKNOWN"}:
+                status = raw_status
+            else:
+                status = "UNKNOWN"
             summary = f"{trend_agent.get('trend_direction') or 'Trend'} · {trend_agent.get('main_trend_blocker') or 'Trend signal captured.'}"
             next_action = str(trend_agent.get("next_action") or "")
         elif trend_rows:
