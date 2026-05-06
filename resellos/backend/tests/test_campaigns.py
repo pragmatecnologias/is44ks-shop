@@ -346,6 +346,33 @@ class CampaignServiceTests(unittest.TestCase):
         self.assertEqual(report.latest_pending_job_query, "pet bowl")
         self.assertEqual(report.latest_pending_job_status, "SUBMITTED")
 
+    def test_campaign_report_imported_zero_result_task_in_queue_is_pending(self) -> None:
+        """IMPORTED job with zero results and 'Task In Queue' raw response is treated as pending."""
+        service = CampaignService(self.session)
+        campaign = service.create_campaign(DiscoveryCampaignCreate(name="Imported pending test", category="Test"))
+        self.session.add(ExternalResearchJob(
+            campaign_id=campaign.id,
+            provider="DATAFORSEO",
+            api_area="google_shopping",
+            query="pet blanket",
+            queue="standard",
+            status="IMPORTED",
+            result_count=0,
+            cost_estimate=0.05,
+            raw_response={
+                "tasks": [{"id": "abc123", "status_message": "Task In Queue.", "result_count": 0}],
+            },
+        ))
+        self.session.commit()
+
+        report = service.get_report(campaign.id)
+        self.assertEqual(report.external_jobs_total, 1)
+        self.assertEqual(report.external_jobs_pending_count, 1)
+        self.assertEqual(report.external_jobs_imported_count, 0)
+        self.assertEqual(report.external_jobs_failed_count, 0)
+        self.assertIsNotNone(report.external_research_next_action)
+        self.assertIn("Poll external research job", report.external_research_next_action)
+
     def test_campaign_report_next_action_says_poll_when_queued(self) -> None:
         """Campaign report next action says to poll when job is queued."""
         service = CampaignService(self.session)

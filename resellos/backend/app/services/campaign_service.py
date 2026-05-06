@@ -298,7 +298,13 @@ class CampaignService:
         external_jobs_failed = 0
         for job in jobs:
             js = str(job.status or "").upper()
-            if js in PENDING_JOB_STATUSES:
+            raw_resp = job.raw_response or {}
+            tasks = raw_resp.get("tasks") if isinstance(raw_resp, dict) else None
+            first_task_msg = str(tasks[0].get("status_message", "") if tasks else "")
+            # IMPORTED with zero results and "Task In Queue" in raw response means it is still pending
+            if js == "IMPORTED" and job.result_count == 0 and "task in queue" in first_task_msg.lower():
+                external_jobs_pending.append(job)
+            elif js in PENDING_JOB_STATUSES:
                 external_jobs_pending.append(job)
             elif js == "IMPORTED":
                 external_jobs_imported += 1
