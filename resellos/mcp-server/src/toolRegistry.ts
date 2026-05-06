@@ -1,0 +1,169 @@
+import { z } from 'zod';
+
+export type ToolName =
+  | 'resellos_get_discovery_board'
+  | 'resellos_create_discovery_idea'
+  | 'resellos_run_quick_scan'
+  | 'resellos_generate_research_tasks'
+  | 'resellos_run_dataforseo_google_shopping'
+  | 'resellos_poll_external_research_job'
+  | 'resellos_list_evidence_candidates'
+  | 'resellos_approve_candidate'
+  | 'resellos_reject_candidate'
+  | 'resellos_capture_manual_evidence'
+  | 'resellos_get_product_cockpit'
+  | 'resellos_run_product_research'
+  | 'resellos_get_next_research_action'
+  | 'resellos_verify_marketplace_evidence'
+  | 'resellos_verify_supplier_source'
+  | 'resellos_verify_competitor_listing'
+  | 'resellos_generate_product_research_report';
+
+export interface ToolDefinition {
+  name: ToolName;
+  description: string;
+  inputSchema: z.ZodTypeAny;
+  jsonSchema: Record<string, unknown>;
+}
+
+export const discoveryBoardSchema = z.object({
+  include_archived: z.boolean().default(false),
+  category: z.string().trim().min(1).optional(),
+});
+
+export const createDiscoveryIdeaSchema = z.object({
+  idea_name: z.string().min(1),
+  category: z.string().optional(),
+  source_platform: z.string().optional(),
+  source_url: z.string().optional(),
+  rough_supplier_cost: z.number().nullable().optional(),
+  estimated_landed_cost: z.number().nullable().optional(),
+  why_interesting: z.string().optional(),
+  marketplace_observation: z.string().optional(),
+  notes: z.string().optional(),
+});
+
+export const quickScanSchema = z.object({
+  idea_id: z.string().uuid(),
+});
+
+export const researchTasksSchema = z.object({
+  idea_id: z.string().uuid(),
+});
+
+export const dataForSeoSchema = z.object({
+  idea_id: z.string().uuid().optional(),
+  product_id: z.string().uuid().optional(),
+  query: z.string().min(1),
+  max_results: z.number().int().positive().max(10).default(10),
+  confirm: z.boolean().optional(),
+});
+
+export const pollJobSchema = z.object({
+  job_id: z.string().uuid(),
+});
+
+export const listCandidatesSchema = z.object({
+  idea_id: z.string().uuid().optional(),
+  product_id: z.string().uuid().optional(),
+  job_id: z.string().uuid().optional(),
+  review_status: z.enum(['PENDING', 'APPROVED', 'REJECTED', 'IGNORED']).optional(),
+});
+
+export const approveCandidateSchema = z.object({
+  candidate_id: z.string().uuid(),
+  approve_as: z.enum(['MARKETPLACE_EVIDENCE', 'COMPETITOR_LISTING', 'SUPPLIER_SOURCE']),
+  task_id: z.string().uuid().optional(),
+  product_id: z.string().uuid().optional(),
+  notes: z.string().optional(),
+  confirm: z.boolean().optional(),
+});
+
+export const rejectCandidateSchema = z.object({
+  candidate_id: z.string().uuid(),
+  reason: z.string().optional(),
+});
+
+export const captureManualEvidenceSchema = z.object({
+  idea_id: z.string().uuid().optional(),
+  product_id: z.string().uuid().optional(),
+  capture_type: z.enum(['MARKETPLACE_SCREENSHOT', 'SUPPLIER_SCREENSHOT', 'COMPETITOR_SCREENSHOT', 'VISUAL_RISK']),
+  url: z.string().optional(),
+  pasted_text: z.string().optional(),
+  notes: z.string().optional(),
+});
+
+export const productCockpitSchema = z.object({
+  product_id: z.string().uuid(),
+});
+
+export const productResearchSchema = z.object({
+  product_id: z.string().uuid(),
+});
+
+export const nextActionSchema = z.object({
+  product_id: z.string().uuid(),
+});
+
+export const verifyEvidenceSchema = z.object({
+  id: z.string().uuid(),
+  verification_status: z.literal('USER_VERIFIED'),
+  source_url: z.string().optional(),
+  screenshot_url: z.string().optional(),
+  verification_notes: z.string().min(1),
+  confirm: z.boolean().optional(),
+});
+
+export const verifySupplierSchema = z.object({
+  id: z.string().uuid(),
+  verification_status: z.literal('USER_VERIFIED'),
+  source_url: z.string().optional(),
+  screenshot_url: z.string().optional(),
+  verification_notes: z.string().min(1),
+  confirm: z.boolean().optional(),
+});
+
+export const verifyCompetitorSchema = z.object({
+  id: z.string().uuid(),
+  verification_status: z.literal('USER_VERIFIED'),
+  source_url: z.string().optional(),
+  screenshot_url: z.string().optional(),
+  verification_notes: z.string().min(1),
+  confirm: z.boolean().optional(),
+});
+
+export const productReportSchema = z.object({
+  product_id: z.string().uuid(),
+  format: z.enum(['markdown']).default('markdown'),
+  include_agent_outputs: z.boolean().default(true),
+});
+
+export const TOOL_DEFINITIONS: ToolDefinition[] = [
+  {
+    name: 'resellos_get_discovery_board',
+    description: 'Read the current discovery ideas, opportunity board, and research queue.',
+    inputSchema: discoveryBoardSchema,
+    jsonSchema: z.toJSONSchema(discoveryBoardSchema) as Record<string, unknown>,
+  },
+  {
+    name: 'resellos_create_discovery_idea',
+    description: 'Create a new discovery idea through ResellOS.',
+    inputSchema: createDiscoveryIdeaSchema,
+    jsonSchema: z.toJSONSchema(createDiscoveryIdeaSchema) as Record<string, unknown>,
+  },
+  { name: 'resellos_run_quick_scan', description: 'Run a quick scan for a discovery idea.', inputSchema: quickScanSchema, jsonSchema: z.toJSONSchema(quickScanSchema) as Record<string, unknown> },
+  { name: 'resellos_generate_research_tasks', description: 'Generate category-specific research tasks for an idea.', inputSchema: researchTasksSchema, jsonSchema: z.toJSONSchema(researchTasksSchema) as Record<string, unknown> },
+  { name: 'resellos_run_dataforseo_google_shopping', description: 'Run one controlled Google Shopping DataForSEO query.', inputSchema: dataForSeoSchema, jsonSchema: z.toJSONSchema(dataForSeoSchema) as Record<string, unknown> },
+  { name: 'resellos_poll_external_research_job', description: 'Poll a DataForSEO job and import candidates when ready.', inputSchema: pollJobSchema, jsonSchema: z.toJSONSchema(pollJobSchema) as Record<string, unknown> },
+  { name: 'resellos_list_evidence_candidates', description: 'List pending or filtered evidence candidates.', inputSchema: listCandidatesSchema, jsonSchema: z.toJSONSchema(listCandidatesSchema) as Record<string, unknown> },
+  { name: 'resellos_approve_candidate', description: 'Approve an evidence candidate into a real app record.', inputSchema: approveCandidateSchema, jsonSchema: z.toJSONSchema(approveCandidateSchema) as Record<string, unknown> },
+  { name: 'resellos_reject_candidate', description: 'Reject an evidence candidate.', inputSchema: rejectCandidateSchema, jsonSchema: z.toJSONSchema(rejectCandidateSchema) as Record<string, unknown> },
+  { name: 'resellos_capture_manual_evidence', description: 'Capture manual evidence as a candidate.', inputSchema: captureManualEvidenceSchema, jsonSchema: z.toJSONSchema(captureManualEvidenceSchema) as Record<string, unknown> },
+  { name: 'resellos_get_product_cockpit', description: 'Read the product cockpit and current research state.', inputSchema: productCockpitSchema, jsonSchema: z.toJSONSchema(productCockpitSchema) as Record<string, unknown> },
+  { name: 'resellos_run_product_research', description: 'Run the product research pipeline.', inputSchema: productResearchSchema, jsonSchema: z.toJSONSchema(productResearchSchema) as Record<string, unknown> },
+  { name: 'resellos_get_next_research_action', description: 'Return the next research action for a product.', inputSchema: nextActionSchema, jsonSchema: z.toJSONSchema(nextActionSchema) as Record<string, unknown> },
+  { name: 'resellos_verify_marketplace_evidence', description: 'Verify marketplace evidence with proof.', inputSchema: verifyEvidenceSchema, jsonSchema: z.toJSONSchema(verifyEvidenceSchema) as Record<string, unknown> },
+  { name: 'resellos_verify_supplier_source', description: 'Verify a supplier source with proof.', inputSchema: verifySupplierSchema, jsonSchema: z.toJSONSchema(verifySupplierSchema) as Record<string, unknown> },
+  { name: 'resellos_verify_competitor_listing', description: 'Verify a competitor listing with proof.', inputSchema: verifyCompetitorSchema, jsonSchema: z.toJSONSchema(verifyCompetitorSchema) as Record<string, unknown> },
+  { name: 'resellos_generate_product_research_report', description: 'Generate a markdown research report for a product.', inputSchema: productReportSchema, jsonSchema: z.toJSONSchema(productReportSchema) as Record<string, unknown> },
+];

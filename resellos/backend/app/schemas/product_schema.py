@@ -73,6 +73,7 @@ class SupplierResponse(BaseModel):
     supplier_rating: Optional[str] = None
     notes: Optional[str] = None
     is_primary: bool
+    verification_status: Optional[str] = None
     created_at: datetime
 
     class Config:
