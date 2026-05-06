@@ -229,3 +229,111 @@ class ExternalResearchTests(unittest.TestCase):
         self.assertEqual(ctx.exception.status_code, 400)
         self.assertIn("Campaign DataForSEO budget reached", ctx.exception.detail)
         self.assertEqual(service._dataforseo_client.submitted, [])
+
+    def test_candidate_import_respects_max_cap(self) -> None:
+        """When raw response has more items than DATAFORSEO_MAX_CANDIDATES_PER_JOB, only cap is imported."""
+        idea = ProductIdea(
+            idea_name="Pet hair remover",
+            category="Pet accessories",
+            status="IDEA",
+        )
+        self.session.add(idea)
+        self.session.commit()
+
+        service = ExternalResearchService(self.session)
+        service._dataforseo_client = FakeMerchantClientWithManyItems(count=69)
+
+        run_result = service.run_google_shopping_for_idea(
+            ExternalResearchRunRequest(
+                idea_id=idea.id,
+                queries=["pet hair remover"],
+                max_results=20,
+                queue="standard",
+            )
+        )
+
+        job_id = run_result.jobs[0].id
+        polled = service.poll_job(job_id)
+
+        # result_count_raw tracks all items DataForSEO returned
+        self.assertEqual(polled.result_count_raw, 69)
+        # result_count tracks only candidates actually imported
+        self.assertEqual(polled.result_count, 20)
+        # candidate_count mirrors result_count
+        self.assertEqual(polled.candidate_count, 20)
+        candidates = service.list_candidates(job_id=job_id)
+        self.assertEqual(len(candidates), 20)
+
+    def test_candidate_import_no_cap_applied_when_under_limit(self) -> None:
+        """When raw response has fewer items than cap, all are imported."""
+        idea = ProductIdea(
+            idea_name="Pet brush",
+            category="Pet accessories",
+            status="IDEA",
+        )
+        self.session.add(idea)
+        self.session.commit()
+
+        service = ExternalResearchService(self.session)
+        service._dataforseo_client = FakeMerchantClientWithManyItems(count=5)
+
+        run_result = service.run_google_shopping_for_idea(
+            ExternalResearchRunRequest(
+                idea_id=idea.id,
+                queries=["pet brush"],
+                max_results=20,
+                queue="standard",
+            )
+        )
+
+        job_id = run_result.jobs[0].id
+        polled = service.poll_job(job_id)
+
+        self.assertEqual(polled.result_count_raw, 5)
+        self.assertEqual(polled.result_count, 5)
+        self.assertEqual(polled.candidate_count, 5)
+        candidates = service.list_candidates(job_id=job_id)
+        self.assertEqual(len(candidates), 5)
+
+
+class FakeMerchantClientWithManyItems:
+    def __init__(self, count: int = 69):
+        self.count = count
+        self.submitted = []
+
+    def submit_google_shopping_products_task(self, *, keyword, location_code, language_code, priority=1, tag=None, depth=None, **kwargs):
+        self.submitted.append(keyword)
+        return {
+            "tasks": [
+                {
+                    "id": str(uuid.uuid4()),
+                    "status_code": 20100,
+                    "status_message": "Task Created.",
+                    "data": {"keyword": keyword},
+                }
+            ]
+        }
+
+    def get_google_shopping_products_result(self, task_id):
+        items = []
+        for i in range(self.count):
+            items.append(
+                {
+                    "type": "google_shopping_serp",
+                    "title": f"Product item {i+1}",
+                    "price": 10.00 + i,
+                    "shopping_url": f"https://example.com/item{i}",
+                    "seller": f"Seller {i}",
+                    "reviews_count": 50 + i,
+                    "product_images": [f"https://example.com/image{i}.jpg"],
+                }
+            )
+        return {
+            "tasks": [
+                {
+                    "id": task_id,
+                    "status_code": 20000,
+                    "result": [{"items": items}],
+                }
+            ]
+        }

@@ -25,6 +25,8 @@ class ExternalResearchJob(Base):
     provider_task_id = Column(String(120), nullable=True)
     cost_estimate = Column(Numeric(10, 4), nullable=True)
     result_count = Column(Integer, default=0)
+    result_count_raw = Column(Integer, default=0)
+    candidate_count = Column(Integer, default=0)
     raw_request = Column(JSON, nullable=True)
     raw_response = Column(JSON, nullable=True)
     last_error = Column(Text, nullable=True)

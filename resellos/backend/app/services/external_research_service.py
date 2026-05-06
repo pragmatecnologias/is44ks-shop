@@ -146,10 +146,12 @@ class ExternalResearchService:
             "provider_task_id": job.provider_task_id,
             "cost_estimate": float(job.cost_estimate) if job.cost_estimate is not None else None,
             "result_count": int(job.result_count or 0),
+            "result_count_raw": int(job.result_count_raw or 0),
+            "candidate_count": int(job.candidate_count or 0),
             "raw_request": _json_load(job.raw_request, {}),
             "raw_response": _json_load(job.raw_response, {}),
             "last_error": job.last_error,
-            "candidate_count": len(job.candidates),
+            "candidate_count": int(job.candidate_count or 0),
             "created_at": job.created_at or datetime.utcnow(),
             "updated_at": job.updated_at or datetime.utcnow(),
         }
@@ -420,19 +422,25 @@ class ExternalResearchService:
             self.db.commit()
             self.db.refresh(job)
             return job
-        candidates = self.create_candidates_from_job(job, response)
+        candidates, item_count = self.create_candidates_from_job(job, response)
+        job.result_count_raw = item_count
         job.result_count = len(candidates)
+        job.candidate_count = len(candidates)
         job.status = "IMPORTED"
         self.db.commit()
         self.db.refresh(job)
         return job
 
-    def create_candidates_from_job(self, job: ExternalResearchJob, response: dict[str, Any]) -> list[EvidenceCandidate]:
+    def create_candidates_from_job(self, job: ExternalResearchJob, response: dict[str, Any]) -> tuple[list[EvidenceCandidate], int]:
         if job.candidates:
-            return list(job.candidates)
+            return list(job.candidates), job.candidate_count or 0
         candidates: list[EvidenceCandidate] = []
         item_sources = list(iter_google_shopping_items(response))
-        for item in item_sources:
+        max_candidates = settings.DATAFORSEO_MAX_CANDIDATES_PER_JOB
+        capped = len(item_sources) > max_candidates
+        for i, item in enumerate(item_sources):
+            if i >= max_candidates:
+                break
             candidate_payload = map_google_shopping_item_to_candidate(item, source_job={"job_id": str(job.id), "query": job.query})
             raw_json = {
                 "job": {
@@ -441,6 +449,8 @@ class ExternalResearchService:
                     "provider_task_id": job.provider_task_id,
                 },
                 "item": item,
+                "_cap_applied": capped,
+                "_total_items": len(item_sources),
             }
             candidate = EvidenceCandidate(
                 job_id=job.id,
@@ -466,7 +476,7 @@ class ExternalResearchService:
             self.db.add(candidate)
             candidates.append(candidate)
         self.db.flush()
-        return candidates
+        return candidates, len(item_sources)
 
     def _keyword_fallbacks(self, suggested_keywords: Any) -> list[str]:
         if isinstance(suggested_keywords, dict):
