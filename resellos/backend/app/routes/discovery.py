@@ -40,6 +40,15 @@ def quick_scan(data: ProductIdeaQuickScanRequest, db: Session = Depends(get_db))
     return service.quick_scan(data)
 
 
+@router.post("/{idea_id}/quick-scan", response_model=ProductIdeaQuickScanResponse)
+def quick_scan_existing(idea_id: uuid.UUID, db: Session = Depends(get_db)):
+    service = DiscoveryService(db)
+    try:
+        return service.quick_scan_existing(idea_id)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Discovery idea not found")
+
+
 @router.get("/opportunity-board", response_model=list[OpportunityBoardRow])
 def opportunity_board(db: Session = Depends(get_db)):
     service = DiscoveryService(db)

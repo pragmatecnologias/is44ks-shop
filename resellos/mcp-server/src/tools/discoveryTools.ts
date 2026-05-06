@@ -49,18 +49,7 @@ export async function createDiscoveryIdea(client: ResellOSClient, input: Discove
 }
 
 export async function runQuickScan(client: ResellOSClient, input: { idea_id: string }, config: AppConfig): Promise<ToolResult> {
-  const idea = await client.get<any>(`/api/discovery/${input.idea_id}`);
-  const response = await client.post<any>('/api/discovery/quick-scan', {
-    idea_name: idea.idea_name,
-    category: idea.category ?? undefined,
-    source_platform: idea.source_platform ?? undefined,
-    source_url: idea.source_url ?? undefined,
-    rough_supplier_cost: idea.rough_supplier_cost ?? undefined,
-    estimated_landed_cost: idea.estimated_landed_cost ?? undefined,
-    why_interesting: idea.why_interesting ?? undefined,
-    notes: idea.notes ?? undefined,
-    marketplace_observation: undefined,
-  });
+  const response = await client.post<any>(`/api/discovery/${input.idea_id}/quick-scan`, {});
   return {
     ok: true,
     data: {

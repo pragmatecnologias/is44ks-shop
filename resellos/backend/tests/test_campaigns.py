@@ -188,6 +188,30 @@ class CampaignServiceTests(unittest.TestCase):
         )
         self.assertEqual(candidate.campaign_id, campaign.id)
 
+    def test_quick_scan_existing_idea_updates_same_record(self) -> None:
+        service = CampaignService(self.session)
+        discovery = DiscoveryService(self.session)
+        campaign = service.create_campaign(DiscoveryCampaignCreate(name="Pet accessories discovery", category="Pet accessories"))
+        idea = service.add_idea_to_campaign(
+            campaign.id,
+            ProductIdeaCreate(
+                idea_name="Reusable pet hair remover roller",
+                category="Pet accessories",
+                campaign_id=campaign.id,
+                source_platform="Manual",
+                why_interesting="Reusable pet accessory.",
+            ),
+        )
+        self.assertEqual(self.session.query(type(idea)).count(), 1)
+        result = discovery.quick_scan_existing(idea.id)
+        self.assertEqual(result["idea"]["id"], str(idea.id))
+        self.assertEqual(self.session.query(type(idea)).count(), 1)
+        scanned = discovery.get_idea(idea.id)
+        self.assertIsNotNone(scanned)
+        self.assertIsNotNone(scanned.quick_scan_verdict)
+        self.assertEqual(scanned.campaign_id, campaign.id)
+        self.assertGreaterEqual(len(result["tasks"]), 1)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -184,6 +184,50 @@ class DiscoveryService:
         return idea
 
     def quick_scan(self, data: ProductIdeaQuickScanRequest) -> dict[str, Any]:
+        return self._quick_scan_new_idea(data)
+
+    def quick_scan_existing(self, idea_id: uuid.UUID) -> dict[str, Any]:
+        idea = self.get_idea(idea_id)
+        if not idea:
+            raise ValueError("Discovery idea not found")
+        request = ProductIdeaQuickScanRequest(
+            idea_name=idea.idea_name,
+            category=idea.category,
+            campaign_id=idea.campaign_id,
+            source_platform=idea.source_platform,
+            source_url=idea.source_url,
+            rough_supplier_cost=idea.rough_supplier_cost,
+            estimated_landed_cost=idea.estimated_landed_cost,
+            why_interesting=idea.why_interesting,
+            notes=idea.notes,
+            marketplace_observation=None,
+        )
+        return self._apply_quick_scan_to_existing_idea(idea, request)
+
+    def _quick_scan_new_idea(self, data: ProductIdeaQuickScanRequest) -> dict[str, Any]:
+        idea = self.create_idea(
+            ProductIdeaCreate(
+                idea_name=data.idea_name,
+                category=data.category,
+                campaign_id=data.campaign_id,
+                source_platform=data.source_platform,
+                source_url=data.source_url,
+                rough_supplier_cost=data.rough_supplier_cost,
+                estimated_landed_cost=data.estimated_landed_cost,
+                why_interesting=data.why_interesting,
+                notes=data.notes,
+                marketplace_observation=data.marketplace_observation,
+                status="NEW_IDEA",
+            )
+        )
+
+        return self._apply_quick_scan_to_existing_idea(idea, data)
+
+    def _apply_quick_scan_to_existing_idea(
+        self,
+        idea: ProductIdea,
+        data: ProductIdeaQuickScanRequest,
+    ) -> dict[str, Any]:
         agent = QuickScanAgent()
         scan = agent.run(data.model_dump())
         template = CATEGORY_TEMPLATES.get(_norm_category(data.category), {})
@@ -215,22 +259,6 @@ class DiscoveryService:
         score = int(scan_output.get("research_completeness_score", 0) or 0)
         suggested_keywords = scan_output.get("suggested_keywords", suggested_keywords)
         required_evidence = scan_output.get("required_next_evidence", required_evidence)
-
-        idea = self.create_idea(
-            ProductIdeaCreate(
-                idea_name=data.idea_name,
-                category=data.category,
-                campaign_id=data.campaign_id,
-                source_platform=data.source_platform,
-                source_url=data.source_url,
-                rough_supplier_cost=data.rough_supplier_cost,
-                estimated_landed_cost=data.estimated_landed_cost,
-                why_interesting=data.why_interesting,
-                notes=data.notes,
-                marketplace_observation=data.marketplace_observation,
-                status="QUICK_SCAN_COMPLETE" if verdict != "REJECT" else "REJECTED",
-            )
-        )
 
         self._apply_scan_result(
             idea,
