@@ -289,6 +289,24 @@ class DecisionAgent(BaseAgent):
             else "NOT_READY"
         )
 
+        evidence_gates_complete = (
+            verified_sold >= 5
+            and verified_active >= 5
+            and test_data_count == 0
+            and unverified_evidence_count == 0
+            and verification_coverage >= 1.0
+            and has_supplier_cost
+            and supplier_verified
+            and verified_competitor_count >= 3
+            and not market_price_missing
+        )
+
+        if buy_readiness_status != "READY" and score < 70:
+            if evidence_gates_complete:
+                required_before_buying.append("Improve supplier landed cost, validate the active price signal, and sharpen the competitor angle before sample buying.")
+            else:
+                required_before_buying.append("Improve economics or competition enough to reach the sample-buy threshold.")
+
         max_quantity_to_buy = 0
         if recommendation == "BUY_SAMPLE":
             max_quantity_to_buy = 5
@@ -298,7 +316,64 @@ class DecisionAgent(BaseAgent):
         missing_evidence = list(dict.fromkeys(missing_evidence))
         required_before_buying = list(dict.fromkeys(required_before_buying))
         hard_blockers = list(dict.fromkeys(hard_blockers))
-        main_blocker = verification_blocker or (hard_blockers[0] if hard_blockers else (missing_evidence[0] if missing_evidence else "None"))
+
+        if evidence_gates_complete:
+            def _is_evidence_request(item: str) -> bool:
+                lowered = item.lower()
+                return any(
+                    phrase in lowered
+                    for phrase in [
+                        "verified sold listings",
+                        "verified active listings",
+                        "verified competitor listings",
+                        "supplier source before buying",
+                        "supplier unit cost and shipping",
+                        "verify evidence before sample buying",
+                        "real sold listings",
+                        "market price",
+                        "competition checks",
+                        "market gap",
+                    ]
+                )
+
+            required_before_buying = [item for item in required_before_buying if not _is_evidence_request(item)]
+
+        if evidence_gates_complete and not blocked and buy_readiness_status != "READY":
+            if research_verdict in {"NEEDS_MORE_RESEARCH", "PROMISING_RESEARCH"}:
+                next_action = "Verified evidence gates are complete. Improve supplier landed cost, validate the active price signal, and sharpen the competitor angle before sample buying."
+            elif research_verdict in {"WEAK_IDEA", "REJECT"}:
+                next_action = "Verified evidence is complete, but the economics are too weak. Pause or look for a better supplier and stronger market gap."
+
+        final_next_action = llm_result.get("next_action") or next_action
+        if evidence_gates_complete and not blocked and buy_readiness_status != "READY":
+            final_next_action = next_action
+
+        if verification_blocker:
+            main_blocker = verification_blocker
+        elif hard_blockers:
+            main_blocker = hard_blockers[0]
+        elif missing_evidence:
+            main_blocker = missing_evidence[0]
+        elif buy_readiness_status != "READY":
+            if research_verdict in {"WEAK_IDEA", "REJECT"}:
+                main_blocker = "Weak economics or too much uncertainty."
+            elif research_verdict == "NEEDS_MORE_RESEARCH":
+                main_blocker = "Verified evidence is complete, but the opportunity score is still below the sample-buy threshold."
+            elif not supplier_verified:
+                main_blocker = "Supplier cost is not verified."
+            elif verified_competitor_count < 3:
+                main_blocker = "Verify at least 3 competitor listings."
+            elif market_price_missing:
+                main_blocker = "Market price is missing."
+            elif score < 70:
+                main_blocker = "Opportunity score is still below the sample-buy threshold."
+            else:
+                main_blocker = reason or "Product is not ready for sample buying yet."
+        else:
+            main_blocker = "None"
+
+        if main_blocker in {None, "", "None"} and buy_readiness_status != "READY":
+            main_blocker = reason or "Product is not ready for sample buying yet."
 
         output = DecisionAgentOutput.model_validate(
             {
@@ -312,7 +387,7 @@ class DecisionAgent(BaseAgent):
                 "main_blocker": main_blocker,
                 "confidence": "HIGH" if score >= 75 else "MEDIUM" if score >= 55 else "LOW",
                 "reason": llm_result.get("reason") or reason,
-                "next_action": llm_result.get("next_action") or next_action,
+                "next_action": final_next_action,
                 "missing_evidence": missing_evidence,
                 "assumptions": assumptions,
                 "hard_blockers": hard_blockers,

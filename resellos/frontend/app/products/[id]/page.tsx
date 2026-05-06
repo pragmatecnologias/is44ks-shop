@@ -119,6 +119,10 @@ export default function ProductDetailPage() {
   const totalTestDataCount = [...evidenceRows, ...competitorRows, ...supplierSources].filter((row) => 'verification_status' in row && (row as { verification_status?: string }).verification_status === 'TEST_DATA').length;
   const supplierCostPresent = supplierSources.some((source) => source.unit_cost != null || source.estimated_landed_cost != null);
   const internationalShippingPresent = supplierSources.some((source) => source.international_shipping_estimate != null);
+  const primarySupplierSource = supplierSources.find((source) => source.is_primary) ?? supplierSources[0] ?? null;
+  const primarySupplierHasCost = Boolean(primarySupplierSource && (primarySupplierSource.unit_cost != null || primarySupplierSource.estimated_landed_cost != null));
+  const primarySupplierVerified = primarySupplierSource?.verification_status === 'USER_VERIFIED';
+  const shouldShowSupplierVerificationWarning = primarySupplierHasCost && !primarySupplierVerified;
   const profitScenariosPresent = profitRows.length > 0;
   const riskPassed = product?.risk_level !== 'BLOCKED' && decision.blocked !== true;
   const targetPricePresent = Boolean(targetSalePrice && targetSalePrice > 0);
@@ -609,6 +613,11 @@ export default function ProductDetailPage() {
 
           <Panel title="Supplier Comparison" icon={Truck} panelId="supplier-comparison">
             <div className="space-y-4">
+              {shouldShowSupplierVerificationWarning ? (
+                <div className="rounded-2xl border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-100">
+                  Supplier cost exists but is not verified. This cannot unlock sample readiness.
+                </div>
+              ) : null}
               <form
                 className="grid gap-3 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4"
                 onSubmit={(e) => {
@@ -648,6 +657,9 @@ export default function ProductDetailPage() {
                           <div className="text-sm font-medium text-white">{source.supplier_name || 'Unnamed supplier'}</div>
                           <div className="text-xs text-zinc-500">
                             {source.supplier_platform || 'Platform unknown'} · MOQ {source.moq ?? '—'}
+                          </div>
+                          <div className="mt-2">
+                            <SupplierVerificationBadge status={source.verification_status} />
                           </div>
                         </div>
                         <button type="button" onClick={() => handleDeleteSupplier(source.id)} className="text-zinc-500 hover:text-red-400">
@@ -856,6 +868,28 @@ function EmptyState({ title, description }: { title: string; description: string
 
 function Pill({ label }: { label: string }) {
   return <span className="inline-flex items-center rounded-full border border-zinc-800 bg-zinc-950/60 px-3 py-1.5 text-xs text-zinc-300">{label}</span>;
+}
+
+function SupplierVerificationBadge({ status }: { status?: string | null }) {
+  const { label, className } = getSupplierVerificationMeta(status);
+  return <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${className}`}>{label}</span>;
+}
+
+function getSupplierVerificationMeta(status?: string | null) {
+  switch (status) {
+    case 'USER_VERIFIED':
+      return { label: 'Verified', className: 'border-green-500/30 bg-green-500/20 text-green-300' };
+    case 'API_IMPORTED':
+      return { label: 'API imported', className: 'border-blue-500/30 bg-blue-500/20 text-blue-300' };
+    case 'USER_CAPTURED_UNVERIFIED':
+      return { label: 'Unverified', className: 'border-amber-500/30 bg-amber-500/20 text-amber-300' };
+    case 'AI_EXTRACTED_UNVERIFIED':
+      return { label: 'AI extracted', className: 'border-amber-500/30 bg-amber-500/20 text-amber-300' };
+    case 'TEST_DATA':
+      return { label: 'Test data', className: 'border-red-500/30 bg-red-500/20 text-red-300' };
+    default:
+      return { label: 'Unknown', className: 'border-zinc-700 bg-zinc-900 text-zinc-400' };
+  }
 }
 
 function money(value?: number | null) {
