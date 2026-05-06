@@ -44,6 +44,13 @@ class MarketAgentOutput(BaseModel):
     supporting_evidence_count: int = 0
     active_listing_count: int = 0
     sold_listing_count: int = 0
+    verified_sold_listing_count: int = 0
+    verified_active_listing_count: int = 0
+    total_evidence_count: int = 0
+    verified_evidence_count: int = 0
+    unverified_evidence_count: int = 0
+    test_data_evidence_count: int = 0
+    verification_coverage: float = 0.0
     research_completeness_score: int = 0
     demand_signal: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"
     demand_evidence_quality: Literal["LOW", "MEDIUM", "HIGH", "UNKNOWN"] = "UNKNOWN"

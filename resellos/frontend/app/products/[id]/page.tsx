@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { StatusBadge } from '@/components/shared/StatusBadge';
 import { RiskBadge } from '@/components/shared/RiskBadge';
+import { VerificationBadge } from '@/components/shared/VerificationBadge';
 import {
   createMarketplaceEvidence,
   createProductSource,
@@ -32,6 +33,8 @@ import {
   deleteProductSource,
   getProductCockpit,
   runProductResearch,
+  verifyEvidenceItem,
+  verifyCompetitor,
 } from '@/lib/api';
 import type {
   MarketplaceEvidenceInput,
@@ -109,6 +112,11 @@ export default function ProductDetailPage() {
   const targetSalePrice = decision.target_sale_price ?? product?.target_sale_price ?? 0;
   const soldEvidenceCount = evidenceRows.filter((row) => row.evidence_type === 'SOLD_LISTING').length;
   const activeEvidenceCount = evidenceRows.filter((row) => row.evidence_type === 'ACTIVE_LISTING').length;
+  const VERIFIED_STATUSES = ['USER_VERIFIED', 'API_IMPORTED'];
+  const verifiedSoldCount = evidenceRows.filter((row) => row.evidence_type === 'SOLD_LISTING' && row.verification_status && VERIFIED_STATUSES.includes(row.verification_status)).length;
+  const verifiedActiveCount = evidenceRows.filter((row) => row.evidence_type === 'ACTIVE_LISTING' && row.verification_status && VERIFIED_STATUSES.includes(row.verification_status)).length;
+  const testDataCount = evidenceRows.filter((row) => row.verification_status === 'TEST_DATA').length;
+  const totalTestDataCount = [...evidenceRows, ...competitorRows, ...supplierSources].filter((row) => 'verification_status' in row && (row as { verification_status?: string }).verification_status === 'TEST_DATA').length;
   const supplierCostPresent = supplierSources.some((source) => source.unit_cost != null || source.estimated_landed_cost != null);
   const internationalShippingPresent = supplierSources.some((source) => source.international_shipping_estimate != null);
   const profitScenariosPresent = profitRows.length > 0;
@@ -121,8 +129,9 @@ export default function ProductDetailPage() {
   const reorderRecommendation = inventoryRows.length > 0 || salesRows.length > 0 ? reorder?.reorder_recommendation ?? 'DO_NOT_REORDER' : null;
 
   const readinessChecks = [
-    { label: 'Sold evidence', ok: soldEvidenceCount >= 5, detail: `${soldEvidenceCount}/5+ sold listings` },
-    { label: 'Active evidence', ok: activeEvidenceCount >= 5, detail: `${activeEvidenceCount}/5+ active listings` },
+    { label: 'Sold evidence (verified)', ok: verifiedSoldCount >= 5, detail: `${verifiedSoldCount}/5+ verified sold listings (${soldEvidenceCount} total)` },
+    { label: 'Active evidence (verified)', ok: verifiedActiveCount >= 5, detail: `${verifiedActiveCount}/5+ verified active listings (${activeEvidenceCount} total)` },
+    { label: 'No test data', ok: testDataCount === 0, detail: testDataCount > 0 ? `${testDataCount} test data items present` : 'All evidence is real' },
     { label: 'Supplier cost', ok: supplierCostPresent, detail: supplierCostPresent ? 'Entered' : 'Missing' },
     { label: 'International shipping', ok: internationalShippingPresent, detail: internationalShippingPresent ? 'Entered' : 'Missing' },
     { label: 'Profit scenarios', ok: profitScenariosPresent, detail: profitScenariosPresent ? `${profitRows.length} generated` : 'Missing' },
@@ -303,6 +312,18 @@ export default function ProductDetailPage() {
               {error}
             </div>
           ) : null}
+
+          {totalTestDataCount > 0 ? (
+            <div className="mt-4 rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-200">
+              <div className="flex items-center gap-2 font-medium text-red-100">
+                <ShieldAlert className="h-4 w-4" />
+                {totalTestDataCount} test/synthetic data item{totalTestDataCount > 1 ? 's' : ''} detected
+              </div>
+              <p className="mt-1 text-xs text-red-300">
+                This product&apos;s evidence contains test data that was manually enriched for QA purposes. Test data does not count toward research readiness gates. Replace with real verified evidence before making buy decisions.
+              </p>
+            </div>
+          ) : null}
         </header>
 
         <div className="grid gap-6 xl:grid-cols-4">
@@ -358,8 +379,10 @@ export default function ProductDetailPage() {
             <div className="space-y-3">
               <StatRow label="Evidence quality" value={(marketData?.evidence_quality as string) || 'LOW'} />
               <StatRow label="Sell-through" value={(marketData?.sell_through_signal as string) || 'UNKNOWN'} />
-              <StatRow label="Sold listings" value={marketData?.sold_listing_count != null ? String(marketData.sold_listing_count) : String(soldEvidenceCount)} />
-              <StatRow label="Active listings" value={marketData?.active_listing_count != null ? String(marketData.active_listing_count) : String(activeEvidenceCount)} />
+              <StatRow label="Sold listings" value={`${verifiedSoldCount} verified / ${soldEvidenceCount} total`} />
+              <StatRow label="Active listings" value={`${verifiedActiveCount} verified / ${activeEvidenceCount} total`} />
+              <StatRow label="Test data items" value={String(testDataCount)} />
+              <StatRow label="Verification coverage" value={marketData?.verification_coverage != null ? `${Math.round(marketData.verification_coverage * 100)}%` : soldEvidenceCount + activeEvidenceCount > 0 ? '0%' : '—'} />
               <StatRow label="Median sold" value={money((marketData?.median_sold_price as number) ?? null)} />
               <StatRow label="Median active" value={money((marketData?.median_active_price as number) ?? null)} />
               <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-300">
@@ -464,7 +487,10 @@ export default function ProductDetailPage() {
                     <div key={row.id} id={`evidence-${row.id}`} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-sm font-medium text-white">{row.title || row.marketplace}</div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm font-medium text-white">{row.title || row.marketplace}</span>
+                            <VerificationBadge status={row.verification_status} />
+                          </div>
                           <div className="text-xs text-zinc-500">
                             {row.marketplace} · {row.evidence_type.replace(/_/g, ' ')} · {row.confidence ?? 'LOW'}
                           </div>
@@ -474,6 +500,15 @@ export default function ProductDetailPage() {
                             <a href={row.url} className="text-xs text-indigo-400 hover:text-indigo-300" target="_blank" rel="noreferrer">
                               <ExternalLink className="h-3.5 w-3.5" />
                             </a>
+                          ) : null}
+                          {row.verification_status && row.verification_status !== 'USER_VERIFIED' && row.verification_status !== 'API_IMPORTED' ? (
+                            <button
+                              type="button"
+                              onClick={async () => { await verifyEvidenceItem(row.id, 'USER_VERIFIED'); await loadCockpit(); }}
+                              className="rounded-lg border border-green-500/30 bg-green-500/10 px-2 py-1 text-xs text-green-400 hover:bg-green-500/20"
+                            >
+                              Verify
+                            </button>
                           ) : null}
                           <button type="button" onClick={() => handleDeleteEvidence(row.id)} className="text-zinc-500 hover:text-red-400">
                             <Trash2 className="h-4 w-4" />
@@ -516,7 +551,10 @@ export default function ProductDetailPage() {
                     <div key={row.id} id={`competitor-${row.id}`} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-sm font-medium text-white">{row.title || 'Competitor listing'}</div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm font-medium text-white">{row.title || 'Competitor listing'}</span>
+                            <VerificationBadge status={row.verification_status} />
+                          </div>
                           <div className="text-xs text-zinc-500">
                             {row.marketplace || 'Marketplace unknown'} · {row.sold ? 'Sold' : 'Active'}
                           </div>

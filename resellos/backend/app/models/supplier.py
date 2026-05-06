@@ -22,6 +22,7 @@ class ProductSource(Base):
     supplier_rating = Column(String(50))
     notes = Column(Text)
     is_primary = Column(Boolean, default=False)
+    verification_status = Column(String(50))
     created_at = Column(DateTime, default=datetime.utcnow)
 
     product = relationship("Product", back_populates="sources")
@@ -68,6 +69,7 @@ class CompetitorListing(Base):
     condition = Column(String(50))
     seller_name = Column(String(200))
     sold = Column(Boolean, default=False)
+    verification_status = Column(String(50))
     photo_score = Column(Numeric(5, 2))
     title_score = Column(Numeric(5, 2))
     description_score = Column(Numeric(5, 2))
@@ -133,6 +135,7 @@ class MarketplaceEvidence(Base):
     condition = Column(String(100))
     seller_name = Column(String(200))
     source_method = Column(String(50))
+    verification_status = Column(String(50))
     raw_text = Column(Text)
     screenshot_url = Column(Text)
     confidence = Column(String(50))

@@ -83,6 +83,14 @@ class MarketplaceService:
     def get_competitor_listings(self, product_id: uuid.UUID) -> list[CompetitorListing]:
         return self.db.query(CompetitorListing).filter(CompetitorListing.product_id == product_id).all()
 
+    def delete_competitor_listing(self, competitor_id: uuid.UUID) -> bool:
+        listing = self.db.query(CompetitorListing).filter(CompetitorListing.id == competitor_id).first()
+        if not listing:
+            return False
+        self.db.delete(listing)
+        self.db.commit()
+        return True
+
     def create_evidence(self, product_id: uuid.UUID, data: MarketplaceEvidenceCreate) -> MarketplaceEvidence:
         evidence = MarketplaceEvidence(
             product_id=product_id,
@@ -130,3 +138,86 @@ class MarketplaceService:
         self.db.delete(evidence)
         self.db.commit()
         return True
+
+    def verify_evidence(self, evidence_id: uuid.UUID, status: str) -> Optional[MarketplaceEvidence]:
+        evidence = self.get_evidence_item(evidence_id)
+        if not evidence:
+            return None
+        evidence.verification_status = status
+        self.db.commit()
+        self.db.refresh(evidence)
+        return evidence
+
+    def verify_competitor(self, competitor_id: uuid.UUID, status: str) -> Optional[CompetitorListing]:
+        listing = self.db.query(CompetitorListing).filter(CompetitorListing.id == competitor_id).first()
+        if not listing:
+            return None
+        listing.verification_status = status
+        self.db.commit()
+        self.db.refresh(listing)
+        return listing
+
+    def verify_source(self, source_id: uuid.UUID, status: str):
+        from app.models.supplier import ProductSource
+        source = self.db.query(ProductSource).filter(ProductSource.id == source_id).first()
+        if not source:
+            return None
+        source.verification_status = status
+        self.db.commit()
+        self.db.refresh(source)
+        return source
+
+    def cleanup_evidence(
+        self,
+        product_id: uuid.UUID | None = None,
+        verification_status: str | None = None,
+        dry_run: bool = True,
+    ) -> dict:
+        from app.models.supplier import MarketplaceEvidence, CompetitorListing, ProductSource
+
+        affected: dict[str, int] = {"evidence": 0, "competitors": 0, "sources": 0}
+        actions: list[dict] = []
+
+        # Evidence
+        q = self.db.query(MarketplaceEvidence)
+        if product_id:
+            q = q.filter(MarketplaceEvidence.product_id == product_id)
+        if verification_status:
+            q = q.filter(MarketplaceEvidence.verification_status == verification_status)
+        evidence_rows = q.all()
+        affected["evidence"] = len(evidence_rows)
+        for row in evidence_rows:
+            actions.append({"type": "evidence", "id": str(row.id), "marketplace": row.marketplace, "status": row.verification_status})
+            if not dry_run:
+                self.db.delete(row)
+
+        # Competitors
+        qc = self.db.query(CompetitorListing)
+        if product_id:
+            qc = qc.filter(CompetitorListing.product_id == product_id)
+        if verification_status:
+            qc = qc.filter(CompetitorListing.verification_status == verification_status)
+        comp_rows = qc.all()
+        affected["competitors"] = len(comp_rows)
+        for row in comp_rows:
+            actions.append({"type": "competitor", "id": str(row.id), "marketplace": row.marketplace, "status": row.verification_status})
+            if not dry_run:
+                self.db.delete(row)
+
+        # Sources
+        qs = self.db.query(ProductSource)
+        if product_id:
+            qs = qs.filter(ProductSource.product_id == product_id)
+        if verification_status:
+            qs = qs.filter(ProductSource.verification_status == verification_status)
+        src_rows = qs.all()
+        affected["sources"] = len(src_rows)
+        for row in src_rows:
+            actions.append({"type": "source", "id": str(row.id), "supplier": row.supplier_name, "status": row.verification_status})
+            if not dry_run:
+                self.db.delete(row)
+
+        if not dry_run:
+            self.db.commit()
+
+        return {"dry_run": dry_run, "affected_counts": affected, "actions": actions}

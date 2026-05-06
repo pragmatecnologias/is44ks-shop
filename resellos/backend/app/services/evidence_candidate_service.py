@@ -121,6 +121,15 @@ class EvidenceCandidateService:
         created_object_type: str | None = None
         created_object_id: uuid.UUID | None = None
 
+        # Map candidate source to initial verification status
+        _source = str(candidate.source or "").upper()
+        if _source == "DATAFORSEO":
+            initial_verification = "API_IMPORTED"
+        elif _source in {"MANUAL_CAPTURE", "VISION"}:
+            initial_verification = "USER_CAPTURED_UNVERIFIED"
+        else:
+            initial_verification = "AI_EXTRACTED_UNVERIFIED"
+
         if data.approve_as == "MARKETPLACE_EVIDENCE":
             created = MarketplaceEvidence(
                 product_id=product_id,
@@ -133,6 +142,7 @@ class EvidenceCandidateService:
                 condition=_json_load(candidate.raw_json, {}).get("condition"),
                 seller_name=candidate.seller,
                 source_method=candidate.source,
+                verification_status=initial_verification,
                 raw_text=json.dumps(_json_load(candidate.raw_json, {}), ensure_ascii=False, default=str),
                 screenshot_url=candidate.image_url,
                 confidence=candidate.confidence,
@@ -153,6 +163,7 @@ class EvidenceCandidateService:
                 condition=_json_load(candidate.raw_json, {}).get("condition"),
                 seller_name=candidate.seller,
                 sold=candidate.evidence_type == "SOLD_LISTING",
+                verification_status=initial_verification,
                 notes=data.notes or candidate.source,
             )
             self.db.add(created)
@@ -169,6 +180,7 @@ class EvidenceCandidateService:
                 unit_cost=candidate.price,
                 estimated_landed_cost=raw.get("estimated_landed_cost"),
                 moq=raw.get("moq"),
+                verification_status=initial_verification,
                 notes=data.notes or raw.get("shipping_notes"),
                 is_primary=False,
             )

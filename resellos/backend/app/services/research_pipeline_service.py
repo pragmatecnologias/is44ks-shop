@@ -262,6 +262,7 @@ class ResearchPipelineService:
             "price": float(row.price) if row.price is not None else None,
             "shipping_price": float(row.shipping_price) if row.shipping_price is not None else None,
             "sold": row.sold,
+            "verification_status": row.verification_status,
             "notes": row.notes,
         }
 
@@ -274,6 +275,7 @@ class ResearchPipelineService:
             "price": float(row.price) if row.price is not None else None,
             "shipping_price": float(row.shipping_price) if row.shipping_price is not None else None,
             "source_method": row.source_method,
+            "verification_status": row.verification_status,
             "raw_text": row.raw_text,
             "confidence": row.confidence,
         }
@@ -319,6 +321,7 @@ class ResearchPipelineService:
             "supplier_rating": source.supplier_rating,
             "notes": source.notes,
             "is_primary": source.is_primary,
+            "verification_status": source.verification_status,
         }
 
     def _primary_source(self, sources: list[ProductSource]) -> ProductSource | None:

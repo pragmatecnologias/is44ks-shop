@@ -108,6 +108,15 @@ def get_research_cockpit(product_id: uuid.UUID, db: Session = Depends(get_db)):
     buy_readiness = {
         "sold_evidence_count": sum(1 for row in evidence_rows if row.evidence_type == "SOLD_LISTING"),
         "active_evidence_count": sum(1 for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING"),
+        "verified_sold_evidence_count": sum(
+            1 for row in evidence_rows
+            if row.evidence_type == "SOLD_LISTING" and row.verification_status in {"USER_VERIFIED", "API_IMPORTED"}
+        ),
+        "verified_active_evidence_count": sum(
+            1 for row in evidence_rows
+            if row.evidence_type == "ACTIVE_LISTING" and row.verification_status in {"USER_VERIFIED", "API_IMPORTED"}
+        ),
+        "test_data_evidence_count": sum(1 for row in evidence_rows if row.verification_status == "TEST_DATA"),
         "supplier_cost_present": any(
             source.unit_cost is not None or source.estimated_landed_cost is not None for source in sources
         ),

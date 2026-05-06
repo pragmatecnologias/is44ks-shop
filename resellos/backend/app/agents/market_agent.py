@@ -55,6 +55,19 @@ class MarketAgent(BaseAgent):
         sold_rows = [row for row in evidence_rows if str(row.get("evidence_type", "")).upper() == "SOLD_LISTING"]
         supporting_rows = [row for row in evidence_rows if str(row.get("evidence_type", "")).upper() in {"SCREENSHOT", "MANUAL_NOTE"}]
 
+        # Verification-aware filtering
+        VERIFIED = {"USER_VERIFIED", "API_IMPORTED"}
+        TEST = {"TEST_DATA", "REJECTED"}
+
+        def _status(row: dict) -> str:
+            return str(row.get("verification_status") or "").upper()
+
+        verified_sold_rows = [row for row in sold_rows if _status(row) in VERIFIED]
+        verified_active_rows = [row for row in active_rows if _status(row) in VERIFIED]
+        test_data_count = sum(1 for row in evidence_rows if _status(row) == "TEST_DATA")
+        verified_evidence_count = sum(1 for row in evidence_rows if _status(row) in VERIFIED)
+        unverified_evidence_count = sum(1 for row in evidence_rows if _status(row) not in VERIFIED and _status(row) not in TEST and _status(row) != "")
+
         active_prices = [float(row.get("price")) for row in active_rows if row.get("price") is not None]
         sold_prices = [float(row.get("price")) for row in sold_rows if row.get("price") is not None]
         active_shipping_prices = [float(row.get("shipping_price")) for row in active_rows if row.get("shipping_price") is not None]
@@ -71,6 +84,8 @@ class MarketAgent(BaseAgent):
 
         active_listing_count = len(active_rows)
         sold_listing_count = len(sold_rows)
+        verified_sold_count = len(verified_sold_rows)
+        verified_active_count = len(verified_active_rows)
 
         active_price_range = [round(min(active_prices), 2), round(max(active_prices), 2)] if active_prices else []
         sold_price_range = [round(min(sold_prices), 2), round(max(sold_prices), 2)] if sold_prices else []
@@ -90,41 +105,46 @@ class MarketAgent(BaseAgent):
 
         market_price_missing = median_sold_price is None and median_active_price is None
         supporting_evidence_count = len(supporting_rows)
-        insufficient_data = sold_listing_count < 5 or market_price_missing
+        verification_coverage = (verified_evidence_count / len(evidence_rows)) if evidence_rows else 0.0
+        insufficient_data = verified_sold_count < 5 or market_price_missing
 
-        if sold_listing_count >= 10 and active_listing_count >= 10 and median_sold_price is not None:
+        if verified_sold_count >= 10 and verified_active_count >= 10 and median_sold_price is not None:
             evidence_quality = "HIGH"
-        elif sold_listing_count >= 5 and median_sold_price is not None:
+        elif verified_sold_count >= 5 and median_sold_price is not None:
             evidence_quality = "MEDIUM"
-        elif active_listing_count >= 5 or marketplace_coverage:
+        elif verified_active_count >= 5 or marketplace_coverage:
             evidence_quality = "LOW"
         else:
             evidence_quality = "LOW"
 
-        if sold_listing_count >= 10:
+        if verified_sold_count >= 10:
             sell_through_signal = "HIGH"
-        elif sold_listing_count >= 5:
+        elif verified_sold_count >= 5:
             sell_through_signal = "MEDIUM"
-        elif sold_listing_count > 0:
+        elif verified_sold_count > 0:
             sell_through_signal = "LOW"
         else:
             sell_through_signal = "UNKNOWN"
 
         required_next_evidence = []
-        if sold_listing_count < 5:
-            required_next_evidence.append("Add at least 5 sold listings.")
-        if active_listing_count < 5:
-            required_next_evidence.append("Add at least 5 active listings.")
+        if verified_sold_count < 5:
+            required_next_evidence.append(f"Add at least 5 verified sold listings (currently {verified_sold_count} verified of {sold_listing_count} total).")
+        if verified_active_count < 5:
+            required_next_evidence.append(f"Add at least 5 verified active listings (currently {verified_active_count} verified of {active_listing_count} total).")
         if median_active_shipping is None and median_sold_shipping is None:
             required_next_evidence.append("Capture shipping examples.")
         if supporting_evidence_count == 0:
             required_next_evidence.append("Add screenshots or manual notes for support.")
+        if test_data_count > 0:
+            required_next_evidence.append(f"Replace {test_data_count} test/synthetic evidence items with real verified data.")
+        if unverified_evidence_count > 0:
+            required_next_evidence.append(f"Verify {unverified_evidence_count} unverified evidence items.")
 
-        demand_evidence_quality = "HIGH" if sold_listing_count >= 10 else "MEDIUM" if sold_listing_count >= 5 else "LOW"
-        market_presence_quality = "HIGH" if active_listing_count >= 10 else "MEDIUM" if active_listing_count >= 5 else "LOW"
+        demand_evidence_quality = "HIGH" if verified_sold_count >= 10 else "MEDIUM" if verified_sold_count >= 5 else "LOW"
+        market_presence_quality = "HIGH" if verified_active_count >= 10 else "MEDIUM" if verified_active_count >= 5 else "LOW"
         research_completeness_score = 0
-        research_completeness_score += min(30, sold_listing_count * 4)
-        research_completeness_score += min(20, active_listing_count * 2)
+        research_completeness_score += min(30, verified_sold_count * 4)
+        research_completeness_score += min(20, verified_active_count * 2)
         research_completeness_score += 15 if median_sold_price is not None else 0
         research_completeness_score += 10 if median_active_price is not None else 0
         research_completeness_score += 10 if median_shipping is not None else 0
@@ -134,10 +154,10 @@ class MarketAgent(BaseAgent):
 
         if evidence_quality == "HIGH":
             recommended_research_action = "Proceed to profit and competition analysis."
-        elif sold_listing_count < 5:
-            recommended_research_action = "Add 2 more sold listings to improve confidence."
-        elif active_listing_count < 5:
-            recommended_research_action = "Add more active listings to compare competition."
+        elif verified_sold_count < 5:
+            recommended_research_action = f"Add {5 - verified_sold_count} more verified sold listings to improve confidence."
+        elif verified_active_count < 5:
+            recommended_research_action = f"Add {5 - verified_active_count} more verified active listings to compare competition."
         else:
             recommended_research_action = "Collect a few more evidence points before buying."
 
@@ -149,11 +169,18 @@ class MarketAgent(BaseAgent):
                 "supporting_evidence_count": supporting_evidence_count,
                 "active_listing_count": active_listing_count,
                 "sold_listing_count": sold_listing_count,
+                "verified_sold_listing_count": verified_sold_count,
+                "verified_active_listing_count": verified_active_count,
+                "total_evidence_count": len(evidence_rows),
+                "verified_evidence_count": verified_evidence_count,
+                "unverified_evidence_count": unverified_evidence_count,
+                "test_data_evidence_count": test_data_count,
+                "verification_coverage": round(verification_coverage, 2),
                 "research_completeness_score": research_completeness_score,
-                "demand_signal": "HIGH" if sold_listing_count >= 10 else "MEDIUM" if sold_listing_count > 0 else "UNKNOWN",
+                "demand_signal": "HIGH" if verified_sold_count >= 10 else "MEDIUM" if verified_sold_count > 0 else "UNKNOWN",
                 "demand_evidence_quality": demand_evidence_quality,
                 "market_presence_quality": market_presence_quality,
-                "competition_level": "HIGH" if active_listing_count >= 10 else "MEDIUM" if active_listing_count > 0 else "UNKNOWN",
+                "competition_level": "HIGH" if verified_active_count >= 10 else "MEDIUM" if verified_active_count > 0 else "UNKNOWN",
                 "median_active_price": median_active_price,
                 "median_sold_price": median_sold_price,
                 "median_active_shipping": median_active_shipping,

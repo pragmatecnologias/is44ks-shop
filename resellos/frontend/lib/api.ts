@@ -678,3 +678,39 @@ export async function updateMarketplaceEvidence(evidenceId: string, data: Partia
 export async function deleteMarketplaceEvidence(evidenceId: string): Promise<void> {
   await requestJson<void>(`/api/marketplace/evidence/detail/${evidenceId}`, { method: 'DELETE' });
 }
+
+export async function verifyEvidenceItem(evidenceId: string, status: string) {
+  return requestJson(`/api/marketplace/evidence/detail/${evidenceId}/verify`, {
+    method: 'PATCH',
+    body: JSON.stringify({ verification_status: status }),
+  });
+}
+
+export async function verifyCompetitor(competitorId: string, status: string) {
+  return requestJson(`/api/marketplace/competitors/detail/${competitorId}/verify`, {
+    method: 'PATCH',
+    body: JSON.stringify({ verification_status: status }),
+  });
+}
+
+export async function verifySource(sourceId: string, status: string) {
+  return requestJson(`/api/marketplace/sources/detail/${sourceId}/verify`, {
+    method: 'PATCH',
+    body: JSON.stringify({ verification_status: status }),
+  });
+}
+
+export async function cleanupEvidence(data: {
+  product_id?: string;
+  verification_status?: string;
+  dry_run?: boolean;
+}) {
+  return requestJson<{
+    dry_run: boolean;
+    affected_counts: Record<string, number>;
+    actions: Array<Record<string, unknown>>;
+  }>('/api/marketplace/evidence/cleanup', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}

@@ -52,6 +52,20 @@ RISK_RULES: tuple[RiskRule, ...] = (
         reason="Pet ingestible or medicine requires compliance review.",
     ),
     RiskRule(
+        id="pet_chemical_treatment",
+        severity="HIGH",
+        match_fields=("name", "description", "category", "supplier_title", "marketplace_notes"),
+        patterns=("flea", "tick", "flea treatment", "tick treatment", "flea collar", "tick collar"),
+        reason="Flea/tick products are chemical treatments requiring EPA/FDA compliance review.",
+    ),
+    RiskRule(
+        id="electric_pet_product",
+        severity="MEDIUM",
+        match_fields=("name", "description", "category", "supplier_title", "marketplace_notes"),
+        patterns=("electric pet", "shock collar", "static collar", "vibration collar", "electric fence", "pet shock"),
+        reason="Electric/shock pet products may have safety and compliance requirements.",
+    ),
+    RiskRule(
         id="pet_accessory",
         severity="ALLOW",
         match_fields=("name", "description", "category", "supplier_title", "marketplace_notes"),

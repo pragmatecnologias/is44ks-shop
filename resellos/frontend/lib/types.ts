@@ -66,6 +66,32 @@ export const RISK_COLORS: Record<RiskLevel, string> = {
   BLOCKED: 'bg-red-500/20 text-red-400 border-red-500/30',
 };
 
+export type VerificationStatus =
+  | 'TEST_DATA'
+  | 'AI_EXTRACTED_UNVERIFIED'
+  | 'USER_CAPTURED_UNVERIFIED'
+  | 'USER_VERIFIED'
+  | 'API_IMPORTED'
+  | 'REJECTED';
+
+export const VERIFICATION_LABELS: Record<VerificationStatus, string> = {
+  TEST_DATA: 'Test Data',
+  AI_EXTRACTED_UNVERIFIED: 'AI Extracted',
+  USER_CAPTURED_UNVERIFIED: 'User Captured',
+  USER_VERIFIED: 'Verified',
+  API_IMPORTED: 'API Import',
+  REJECTED: 'Rejected',
+};
+
+export const VERIFICATION_COLORS: Record<VerificationStatus, string> = {
+  TEST_DATA: 'bg-red-500/20 text-red-400 border-red-500/30',
+  AI_EXTRACTED_UNVERIFIED: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
+  USER_CAPTURED_UNVERIFIED: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
+  USER_VERIFIED: 'bg-green-500/20 text-green-400 border-green-500/30',
+  API_IMPORTED: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+  REJECTED: 'bg-red-500/20 text-red-400 border-red-500/30',
+};
+
 export type FinalDecision =
   | 'BLOCKED'
   | 'SKIP'
@@ -119,6 +145,7 @@ export interface ProductSource {
   moq?: number;
   supplier_rating?: string;
   is_primary?: boolean;
+  verification_status?: string;
 }
 
 export interface MarketplaceResearch {
@@ -147,6 +174,7 @@ export interface MarketplaceEvidence {
   condition?: string;
   seller_name?: string;
   source_method?: string;
+  verification_status?: string;
   raw_text?: string;
   screenshot_url?: string;
   confidence?: string;
@@ -164,6 +192,7 @@ export interface MarketplaceEvidenceInput {
   condition?: string;
   seller_name?: string;
   source_method?: string;
+  verification_status?: string;
   raw_text?: string;
   screenshot_url?: string;
   confidence?: string;
@@ -196,6 +225,7 @@ export interface CompetitorListing {
   seller_name?: string;
   sold?: boolean;
   photo_score?: number;
+  verification_status?: string;
   title_patterns?: string[];
   weaknesses?: string[];
   differentiation_ideas?: string[];
@@ -238,6 +268,9 @@ export interface DecisionSummary {
   target_sale_price?: number;
   required_before_buying?: string[];
   blocked?: boolean;
+  verified_sold_listing_count?: number;
+  verified_active_listing_count?: number;
+  test_data_evidence_count?: number;
 }
 
 export interface CompetitionInsight {

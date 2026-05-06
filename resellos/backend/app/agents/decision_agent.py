@@ -44,6 +44,9 @@ class DecisionAgent(BaseAgent):
         insufficient_data = bool(market.get("insufficient_data", True))
         sold_listing_count = int(market.get("sold_listing_count", 0) or 0)
         active_listing_count = int(market.get("active_listing_count", 0) or 0)
+        verified_sold = int(market.get("verified_sold_listing_count", 0) or 0)
+        verified_active = int(market.get("verified_active_listing_count", 0) or 0)
+        test_data_count = int(market.get("test_data_evidence_count", 0) or 0)
         competition_level = str(competition.get("competition_level", "UNKNOWN")).upper()
         listing_gap_score = int(competition.get("listing_gap_score", 0) or 0)
         can_compete = bool(competition.get("can_compete", True))
@@ -60,8 +63,8 @@ class DecisionAgent(BaseAgent):
         max_landed_cost = float(supplier_summary.get("estimated_landed_cost") or (product_cost + domestic_shipping + international_shipping))
         target_sale_price = float(profit.get("target_sale_price") or 0)
         research_completeness_score = 0
-        research_completeness_score += min(25, sold_listing_count * 5)
-        research_completeness_score += min(20, active_listing_count * 2)
+        research_completeness_score += min(25, verified_sold * 5)
+        research_completeness_score += min(20, verified_active * 2)
         research_completeness_score += 15 if has_supplier_cost else 0
         research_completeness_score += 10 if not market_price_missing else 0
         research_completeness_score += 10 if profit.get("scenarios") else 0
@@ -112,12 +115,12 @@ class DecisionAgent(BaseAgent):
         score = max(0, min(100, score))
 
         missing_evidence = []
-        if sold_listing_count == 0:
-            missing_evidence.append("Sold listings missing")
-            required_before_buying.append("Add at least 5 sold listings with prices.")
-        if active_listing_count == 0:
-            missing_evidence.append("Active listings missing")
-            required_before_buying.append("Add active listing evidence for competition checks.")
+        if verified_sold == 0:
+            missing_evidence.append("Verified sold listings missing")
+            required_before_buying.append("Add at least 5 verified sold listings with prices.")
+        if verified_active == 0:
+            missing_evidence.append("Verified active listings missing")
+            required_before_buying.append("Add verified active listing evidence for competition checks.")
         if insufficient_data:
             missing_evidence.append("Marketplace evidence quality is low")
             required_before_buying.append("Reach at least medium marketplace evidence quality.")
@@ -144,8 +147,9 @@ class DecisionAgent(BaseAgent):
         ready_for_sample = (
             not blocked
             and risk_level != "BLOCKED"
-            and sold_listing_count >= 5
-            and active_listing_count >= 5
+            and verified_sold >= 5
+            and verified_active >= 5
+            and test_data_count == 0
             and has_supplier_cost
             and not market_price_missing
             and target_sale_price > 0
@@ -197,6 +201,14 @@ class DecisionAgent(BaseAgent):
                 recommendation = "WATCHLIST"
             hard_blockers.append("Market evidence is insufficient for a buy decision.")
             required_before_buying.append("Add real sold listings and a market price.")
+            if research_verdict == "READY_FOR_SAMPLE":
+                research_verdict = "NEEDS_MORE_RESEARCH"
+
+        if test_data_count > 0:
+            if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
+                recommendation = "WATCHLIST"
+            hard_blockers.append(f"{test_data_count} evidence items are test data — not real market evidence.")
+            required_before_buying.append("Replace test/synthetic evidence with real verified data.")
             if research_verdict == "READY_FOR_SAMPLE":
                 research_verdict = "NEEDS_MORE_RESEARCH"
 

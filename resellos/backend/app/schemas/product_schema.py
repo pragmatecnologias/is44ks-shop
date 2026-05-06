@@ -111,6 +111,7 @@ class MarketplaceEvidenceCreate(BaseModel):
     condition: Optional[str] = None
     seller_name: Optional[str] = None
     source_method: Optional[str] = None
+    verification_status: Optional[str] = None
     raw_text: Optional[str] = None
     screenshot_url: Optional[str] = None
     confidence: Optional[str] = None
@@ -128,10 +129,27 @@ class MarketplaceEvidenceUpdate(BaseModel):
     condition: Optional[str] = None
     seller_name: Optional[str] = None
     source_method: Optional[str] = None
+    verification_status: Optional[str] = None
     raw_text: Optional[str] = None
     screenshot_url: Optional[str] = None
     confidence: Optional[str] = None
     notes: Optional[str] = None
+
+
+class EvidenceVerificationRequest(BaseModel):
+    verification_status: str
+
+
+class CleanupRequest(BaseModel):
+    product_id: Optional[uuid.UUID] = None
+    verification_status: Optional[str] = None
+    dry_run: bool = True
+
+
+class CleanupResponse(BaseModel):
+    dry_run: bool
+    affected_counts: dict
+    actions: list
 
 
 class ProfitAnalysisCreate(BaseModel):

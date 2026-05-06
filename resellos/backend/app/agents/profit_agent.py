@@ -116,7 +116,10 @@ class ProfitAgent(BaseAgent):
         )
 
         scenarios = [buyer_paid, free_ship, bundle]
-        best = max(scenarios, key=lambda item: float(item["net_profit"]))
+        # Prefer single-unit scenarios for the primary estimated_net_profit.
+        # Bundle scenarios inflate profit because shipping doesn't scale.
+        single_unit_scenarios = [s for s in scenarios if "bundle" not in s["name"].lower()]
+        best = max(single_unit_scenarios or scenarios, key=lambda item: float(item["net_profit"]))
         break_even = float(best["landed_cost"]) + float(best["selling_cost"])
         minimum_recommended_price = round(break_even * 1.1, 2)
         market_reference_price = sale_price if sale_price > 0 else 0
