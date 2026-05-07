@@ -599,6 +599,11 @@ export default function ProductDetailPage() {
               <StatRow label="Verification coverage" value={marketData?.verification_coverage != null ? `${Math.round(marketData.verification_coverage * 100)}%` : soldEvidenceCount + activeEvidenceCount > 0 ? '0%' : '—'} />
               <StatRow label="Median sold" value={money((marketData?.median_sold_price as number) ?? null)} />
               <StatRow label="Median active" value={money((marketData?.median_active_price as number) ?? null)} />
+              {marketData?.verified_sold_price_missing ? (
+                <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-100">
+                  Verified sold evidence exists, but verified sold price data is missing.
+                </div>
+              ) : null}
               <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-300">
                 {marketData?.recommended_research_action || 'Add sold and active listings to get a market action.'}
               </div>

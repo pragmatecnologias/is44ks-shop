@@ -369,7 +369,17 @@ class ResearchPipelineService:
             "raw_text": row.raw_text,
             "confidence": row.confidence,
             "price_total_price": float(row.price_total_price) if row.price_total_price is not None else None,
+            "estimated_market_price": float(row.estimated_market_price) if getattr(row, "estimated_market_price", None) is not None else None,
+            "price_estimation_method": row.price_estimation_method,
             "price_verified": row.price_verified,
+            "price_verified_at": row.price_verified_at,
+            "price_verified_by_source": row.price_verified_by_source,
+            "price_manual_verification_note": row.price_manual_verification_note,
+            "price_confidence_level": row.price_confidence_level,
+            "discovery_source": row.discovery_source,
+            "proof_level": row.proof_level,
+            "original_search_intent": row.original_search_intent,
+            "notes": row.notes,
         }
 
     def _serialize_inventory(self, row: InventoryItem) -> dict[str, Any]:

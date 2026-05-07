@@ -192,6 +192,46 @@ class AgentContractTests(unittest.TestCase):
         self.assertIn("Supplier cost is not verified.", output["hard_blockers"])
         self.assertEqual(output["main_blocker"], "Supplier cost is not verified.")
 
+    def test_decision_agent_blocks_missing_verified_sold_price(self) -> None:
+        agent = DecisionAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "supplier_summary": {"unit_cost": 4.15, "estimated_landed_cost": 5.70, "international_shipping_estimate": 1.2, "verification_status": "USER_VERIFIED"},
+                    "agent_reports": {
+                        "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
+                        "market_agent": {
+                            "output_json": {
+                                "evidence_quality": "LOW",
+                                "sold_listing_count": 5,
+                                "verified_sold_listing_count": 5,
+                                "verified_sold_price_count": 0,
+                                "verified_sold_price_missing": True,
+                                "active_listing_count": 5,
+                                "verified_active_listing_count": 5,
+                                "verified_evidence_count": 10,
+                                "unverified_evidence_count": 0,
+                                "test_data_evidence_count": 0,
+                                "verification_coverage": 1.0,
+                                "insufficient_data": True,
+                                "market_price_missing": True,
+                                "median_sold_price": None,
+                                "median_active_price": 19.99,
+                                "required_next_evidence": ["Verified sold evidence exists, but verified sold price data is missing."],
+                            }
+                        },
+                        "profit_agent": {"output_json": {"estimated_net_profit": 8.0, "current_net_profit": 8.0, "target_net_profit_threshold": 8.0, "profit_gap_to_buy_sample": 0.0, "scenarios": [{"net_profit": 8.0, "margin_percent": 31.0}], "target_sale_price": 19.99, "minimum_recommended_price": 20.99}},
+                        "competition_agent": {"output_json": {"competition_level": "LOW", "listing_gap_score": 72, "can_compete": True, "competitor_count": 3, "verified_competitor_count": 3}},
+                    }
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertEqual(output["buy_readiness_status"], "NOT_READY")
+        self.assertEqual(output["main_blocker"], "Verified sold evidence exists, but verified sold price data is missing.")
+        self.assertIn("Verified sold evidence exists, but verified sold price data is missing.", output["required_before_buying"])
+
     def test_decision_agent_requires_verified_competitors(self) -> None:
         agent = DecisionAgent(self.llm)
         result = asyncio.run(
@@ -655,7 +695,7 @@ class AgentContractTests(unittest.TestCase):
                     product_id=product.id,
                     agent_name="market_agent",
                     report_type="market_agent",
-                    output_json='{"sold_listing_count":5,"verified_sold_listing_count":1,"active_listing_count":5,"verified_active_listing_count":0,"test_data_evidence_count":0,"verification_coverage":0.1,"insufficient_data":true,"market_price_missing":false,"evidence_quality":"LOW"}',
+                    output_json='{"sold_listing_count":5,"verified_sold_listing_count":1,"verified_sold_price_count":1,"verified_sold_price_missing":false,"active_listing_count":5,"verified_active_listing_count":0,"test_data_evidence_count":0,"verification_coverage":0.1,"insufficient_data":true,"market_price_missing":false,"evidence_quality":"LOW"}',
                     summary="Old market snapshot",
                     confidence="LOW",
                 )
@@ -665,7 +705,7 @@ class AgentContractTests(unittest.TestCase):
                     product_id=product.id,
                     agent_name="market_agent",
                     report_type="market_agent",
-                    output_json='{"sold_listing_count":5,"verified_sold_listing_count":5,"active_listing_count":5,"verified_active_listing_count":5,"test_data_evidence_count":0,"verification_coverage":1.0,"insufficient_data":false,"market_price_missing":false,"evidence_quality":"MEDIUM"}',
+                    output_json='{"sold_listing_count":5,"verified_sold_listing_count":5,"verified_sold_price_count":5,"verified_sold_price_missing":false,"active_listing_count":5,"verified_active_listing_count":5,"test_data_evidence_count":0,"verification_coverage":1.0,"insufficient_data":false,"market_price_missing":false,"evidence_quality":"MEDIUM"}',
                     summary="Latest market snapshot",
                     confidence="MEDIUM",
                 )
@@ -685,8 +725,64 @@ class AgentContractTests(unittest.TestCase):
 
             checklist = ValidationChecklistService(session).get_checklist(product.id)
             self.assertEqual(checklist["sold_demand"]["status"], "PASS")
-            self.assertEqual(checklist["sold_demand"]["summary"], "5 verified sold listings.")
+            self.assertEqual(checklist["sold_demand"]["summary"], "5 verified sold prices.")
             self.assertEqual(checklist["market_presence"]["status"], "WARNING")
+        finally:
+            session.close()
+            Base.metadata.drop_all(engine)
+
+    def test_validation_checklist_flags_missing_verified_sold_prices(self) -> None:
+        from app.services.validation_checklist_service import ValidationChecklistService
+
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(sku="RS-VAL-004", name="Sold price missing test", category="Test", status="RESEARCHING")
+            session.add(product)
+            session.flush()
+            session.add(
+                AgentReport(
+                    product_id=product.id,
+                    agent_name="market_agent",
+                    report_type="market_agent",
+                    output_json='{"sold_listing_count":5,"verified_sold_listing_count":5,"verified_sold_price_count":0,"verified_sold_price_missing":true,"active_listing_count":5,"verified_active_listing_count":5,"test_data_evidence_count":0,"verification_coverage":1.0,"insufficient_data":true,"market_price_missing":true,"evidence_quality":"LOW","warnings":["Verified sold evidence exists, but verified sold price data is missing."]}',
+                    summary="Market snapshot",
+                    confidence="LOW",
+                )
+            )
+            session.add(
+                AgentReport(
+                    product_id=product.id,
+                    agent_name="decision_agent",
+                    report_type="decision_agent",
+                    output_json='{"recommendation":"WATCHLIST","research_verdict":"PROMISING_RESEARCH","buy_readiness_status":"NOT_READY","next_action":"Capture verified sold prices from completed-sale proof."}',
+                    summary="Decision summary",
+                    confidence="MEDIUM",
+                )
+            )
+            session.add(
+                ProductSource(
+                    product_id=product.id,
+                    supplier_name="Supplier A",
+                    supplier_platform="Alibaba",
+                    unit_cost=4.15,
+                    estimated_landed_cost=5.70,
+                    is_primary=True,
+                    verification_status="USER_VERIFIED",
+                )
+            )
+            session.commit()
+
+            checklist = ValidationChecklistService(session).get_checklist(product.id)
+            self.assertEqual(checklist["sold_demand"]["status"], "WARNING")
+            self.assertEqual(checklist["sold_demand"]["summary"], "Verified sold evidence exists, but verified sold price data is missing.")
+            self.assertEqual(checklist["sold_demand"]["next_action"], "Capture verified sold prices from completed-sale proof.")
         finally:
             session.close()
             Base.metadata.drop_all(engine)
@@ -877,11 +973,11 @@ class AgentContractTests(unittest.TestCase):
                 {
                     "product": {"name": "Test product"},
                     "marketplace_evidence": [
-                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 10.0, "shipping_price": 2.0, "verification_status": "USER_VERIFIED"},
-                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 12.0, "shipping_price": 2.5, "verification_status": "USER_VERIFIED"},
-                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 14.0, "shipping_price": 3.0, "verification_status": "USER_VERIFIED"},
-                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 16.0, "shipping_price": 3.0, "verification_status": "USER_VERIFIED"},
-                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 18.0, "shipping_price": 3.5, "verification_status": "USER_VERIFIED"},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 10.0, "shipping_price": 2.0, "verification_status": "USER_VERIFIED", "price_verified": True},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 12.0, "shipping_price": 2.5, "verification_status": "USER_VERIFIED", "price_verified": True},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 14.0, "shipping_price": 3.0, "verification_status": "USER_VERIFIED", "price_verified": True},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 16.0, "shipping_price": 3.0, "verification_status": "USER_VERIFIED", "price_verified": True},
+                        {"marketplace": "eBay", "evidence_type": "SOLD_LISTING", "price": 18.0, "shipping_price": 3.5, "verification_status": "USER_VERIFIED", "price_verified": True},
                         {"marketplace": "eBay", "evidence_type": "ACTIVE_LISTING", "price": 19.0, "shipping_price": 4.0, "verification_status": "API_IMPORTED"},
                         {"marketplace": "eBay", "evidence_type": "ACTIVE_LISTING", "price": 20.0, "shipping_price": 4.0, "verification_status": "API_IMPORTED"},
                     ],
@@ -947,6 +1043,44 @@ class AgentContractTests(unittest.TestCase):
         self.assertEqual(output["verified_active_listing_count"], 1)
         self.assertIsNone(output["median_sold_price"])
         self.assertIsNotNone(output["median_active_price"])
+
+    def test_market_agent_requires_verified_price_for_sold_median(self) -> None:
+        agent = MarketAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "product": {"name": "Test product"},
+                    "marketplace_evidence": [
+                        {
+                            "marketplace": "eBay",
+                            "evidence_type": "SOLD_LISTING",
+                            "price": 24.0,
+                            "shipping_price": 4.0,
+                            "verification_status": "USER_VERIFIED",
+                            "price_verified": False,
+                            "estimated_market_price": 24.0,
+                            "price_estimation_method": "ACTIVE_MARKET_COMPARABLE",
+                        },
+                        {
+                            "marketplace": "eBay",
+                            "evidence_type": "ACTIVE_LISTING",
+                            "price": 29.0,
+                            "shipping_price": 4.0,
+                            "verification_status": "USER_VERIFIED",
+                            "price_verified": True,
+                        },
+                    ],
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertEqual(output["verified_sold_listing_count"], 1)
+        self.assertEqual(output["verified_sold_price_count"], 0)
+        self.assertTrue(output["verified_sold_price_missing"])
+        self.assertIsNone(output["median_sold_price"])
+        self.assertEqual(output["median_active_price"], 29.0)
+        self.assertIn("Verified sold evidence exists, but verified sold price data is missing.", output["warnings"])
 
     def test_competition_agent_reads_competitor_listings(self) -> None:
         agent = CompetitionAgent(self.llm)
@@ -1031,11 +1165,11 @@ class AgentContractTests(unittest.TestCase):
             )
             session.add_all(
                 [
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=10.0, shipping_price=2.0, verification_status="USER_VERIFIED"),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=12.0, shipping_price=2.5, verification_status="USER_VERIFIED"),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=14.0, shipping_price=3.0, verification_status="USER_VERIFIED"),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=16.0, shipping_price=3.0, verification_status="USER_VERIFIED"),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=18.0, shipping_price=3.5, verification_status="USER_VERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=10.0, shipping_price=2.0, verification_status="USER_VERIFIED", price_verified=True),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=12.0, shipping_price=2.5, verification_status="USER_VERIFIED", price_verified=True),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=14.0, shipping_price=3.0, verification_status="USER_VERIFIED", price_verified=True),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=16.0, shipping_price=3.0, verification_status="USER_VERIFIED", price_verified=True),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=18.0, shipping_price=3.5, verification_status="USER_VERIFIED", price_verified=True),
                     MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=19.0, shipping_price=4.0, verification_status="USER_VERIFIED"),
                     MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=20.0, shipping_price=4.0, verification_status="API_IMPORTED"),
                 ]
@@ -1141,7 +1275,7 @@ class AgentContractTests(unittest.TestCase):
                 ]
             )
             # 1 USER_VERIFIED sold listing (should count)
-            session.add(MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=20.0, verification_status="USER_VERIFIED"))
+            session.add(MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=20.0, verification_status="USER_VERIFIED", price_verified=True))
             session.commit()
 
             board = DiscoveryService(session).opportunity_board()
@@ -1176,7 +1310,7 @@ class AgentContractTests(unittest.TestCase):
                 [
                     MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=8.0, verification_status="USER_CAPTURED_UNVERIFIED"),
                     MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=9.0, verification_status="AI_EXTRACTED_UNVERIFIED"),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=15.0, verification_status="USER_VERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=15.0, verification_status="USER_VERIFIED", price_verified=True),
                 ]
             )
             session.commit()
@@ -1274,7 +1408,7 @@ class AgentContractTests(unittest.TestCase):
             session.add_all(
                 [
                     MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=5.0, verification_status="TEST_DATA"),
-                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=25.0, verification_status="USER_VERIFIED"),
+                    MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="SOLD_LISTING", price=25.0, verification_status="USER_VERIFIED", price_verified=True),
                     MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=8.0, verification_status="TEST_DATA"),
                     MarketplaceEvidence(product_id=product.id, marketplace="eBay", evidence_type="ACTIVE_LISTING", price=30.0, verification_status="USER_VERIFIED"),
                 ]

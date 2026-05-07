@@ -138,15 +138,25 @@ class ValidationChecklistService:
 
     def _score_sold(self, market: dict[str, Any]) -> dict[str, Any]:
         verified_sold = int(market.get("verified_sold_listing_count") or 0)
-        score = min(100, verified_sold * 10)
-        if verified_sold >= 5:
+        verified_sold_price_count = int(market.get("verified_sold_price_count") or 0)
+        verified_sold_price_missing = bool(market.get("verified_sold_price_missing", verified_sold > 0 and verified_sold_price_count == 0))
+        score = min(100, verified_sold_price_count * 10)
+        if verified_sold_price_missing:
+            status = "WARNING"
+            summary = "Verified sold evidence exists, but verified sold price data is missing."
+            next_action = "Capture verified sold prices from completed-sale proof."
+        elif verified_sold_price_count >= 5:
             status = "PASS"
+            summary = f"{verified_sold_price_count} verified sold prices."
+            next_action = "Review profitability."
         elif verified_sold > 0:
             status = "WARNING"
+            summary = f"{verified_sold} verified sold listings."
+            next_action = "Add verified sold evidence."
         else:
             status = "UNKNOWN"
-        summary = f"{verified_sold} verified sold listings."
-        next_action = "Add verified sold evidence." if verified_sold < 5 else "Review profitability."
+            summary = "No sold evidence captured yet."
+            next_action = "Add verified sold evidence."
         return {"status": status, "score": score, "summary": summary, "next_action": next_action}
 
     def _score_supplier(self, product_id: uuid.UUID, decision: dict[str, Any], profit: dict[str, Any]) -> dict[str, Any]:

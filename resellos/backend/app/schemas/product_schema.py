@@ -153,6 +153,8 @@ class MarketplaceEvidenceCreate(BaseModel):
     discovery_source: Optional[str] = None
     proof_level: Optional[str] = None
     original_search_intent: Optional[str] = None
+    estimated_market_price: Optional[float] = None
+    price_estimation_method: Optional[str] = None
 
 
 class MarketplaceEvidenceUpdate(BaseModel):
@@ -174,6 +176,8 @@ class MarketplaceEvidenceUpdate(BaseModel):
     price_currency: Optional[str] = None
     price_quantity_basis: Optional[str] = None
     price_total_price: Optional[float] = None
+    estimated_market_price: Optional[float] = None
+    price_estimation_method: Optional[str] = None
     price_proof_text: Optional[str] = None
     price_manual_verification_note: Optional[str] = None
     price_proof_screenshot_path: Optional[str] = None
@@ -188,6 +192,8 @@ class MarketplaceEvidencePricingUpdate(BaseModel):
     currency: str = Field(default="USD", max_length=10)
     shipping_cost: Optional[float] = Field(default=None, ge=0)
     total_price: Optional[float] = Field(default=None, gt=0)
+    estimated_market_price: Optional[float] = Field(default=None, gt=0)
+    price_estimation_method: Optional[str] = Field(default=None, max_length=50)
     quantity_basis: Optional[str] = Field(default=None, max_length=100)
     proof_text: Optional[str] = Field(default=None, max_length=2000)
     manual_verification_note: Optional[str] = Field(default=None, max_length=2000)
@@ -197,8 +203,13 @@ class MarketplaceEvidencePricingUpdate(BaseModel):
 
     @model_validator(mode="after")
     def _require_proof(self) -> "MarketplaceEvidencePricingUpdate":
-        if not self.proof_text and not self.manual_verification_note and not self.proof_screenshot_path:
-            raise ValueError("Either proof_text, manual_verification_note, or proof_screenshot_path is required")
+        if (
+            not self.proof_text
+            and not self.manual_verification_note
+            and not self.proof_screenshot_path
+            and not self.price_estimation_method
+        ):
+            raise ValueError("Either proof_text, manual_verification_note, proof_screenshot_path, or price_estimation_method is required")
         return self
 
 
@@ -208,6 +219,19 @@ class EvidenceVerificationRequest(BaseModel):
     proof_screenshot_path: Optional[str] = None
     proof_text: Optional[str] = None
     manual_verification_note: Optional[str] = None
+
+
+class CompetitorPricingUpdate(BaseModel):
+    price: float = Field(..., gt=0)
+    currency: str = Field(default="USD", max_length=10)
+    shipping_cost: Optional[float] = Field(default=None, ge=0)
+    total_price: Optional[float] = Field(default=None, gt=0)
+    quantity_basis: Optional[str] = Field(default=None, max_length=100)
+    proof_text: Optional[str] = Field(default=None, max_length=2000)
+    manual_verification_note: Optional[str] = Field(default=None, max_length=2000)
+    proof_screenshot_path: Optional[str] = None
+    confidence_level: str = Field(default="MEDIUM")
+    verified_by_source: str = Field(default="MANUAL_ENTRY")
 
 
 class CleanupRequest(BaseModel):

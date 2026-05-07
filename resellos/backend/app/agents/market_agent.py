@@ -64,6 +64,7 @@ class MarketAgent(BaseAgent):
             return str(row.get("verification_status") or "").upper()
 
         verified_sold_rows = [row for row in sold_rows if _status(row) in VERIFIED_SOLD]
+        verified_sold_price_rows = [row for row in sold_rows if _status(row) in VERIFIED_SOLD and bool(row.get("price_verified"))]
         verified_active_rows = [row for row in active_rows if _status(row) in VERIFIED_ACTIVE]
         test_data_count = sum(1 for row in evidence_rows if _status(row) == "TEST_DATA")
         verified_evidence_count = sum(1 for row in evidence_rows if _status(row) in VERIFIED_SOLD or _status(row) in VERIFIED_ACTIVE)
@@ -72,15 +73,24 @@ class MarketAgent(BaseAgent):
         active_listing_count = len(active_rows)
         sold_listing_count = len(sold_rows)
         verified_sold_count = len(verified_sold_rows)
+        verified_sold_price_count = len(verified_sold_price_rows)
         verified_active_count = len(verified_active_rows)
 
         active_prices_total = [float(row.get("price_total_price") or row.get("price")) for row in active_rows if row.get("price_total_price") or row.get("price") is not None]
-        sold_prices_total = [float(row.get("price_total_price") or row.get("price")) for row in sold_rows if row.get("price_total_price") or row.get("price") is not None]
+        sold_prices_total = [
+            float(row.get("price_total_price") or row.get("estimated_market_price") or row.get("price"))
+            for row in sold_rows
+            if row.get("price_total_price") is not None or row.get("estimated_market_price") is not None or row.get("price") is not None
+        ]
         active_shipping_prices_total = [float(row.get("shipping_price")) for row in active_rows if row.get("shipping_price") is not None]
         sold_shipping_prices_total = [float(row.get("shipping_price")) for row in sold_rows if row.get("shipping_price") is not None]
 
         verified_active_prices = [float(row.get("price_total_price") or row.get("price")) for row in verified_active_rows if row.get("price_total_price") or row.get("price") is not None]
-        verified_sold_prices = [float(row.get("price_total_price") or row.get("price")) for row in verified_sold_rows if row.get("price_total_price") or row.get("price") is not None]
+        verified_sold_prices = [
+            float(row.get("price_total_price") or row.get("estimated_market_price") or row.get("price"))
+            for row in verified_sold_price_rows
+            if row.get("price_total_price") is not None or row.get("estimated_market_price") is not None or row.get("price") is not None
+        ]
         verified_active_shipping_prices = [float(row.get("shipping_price")) for row in verified_active_rows if row.get("shipping_price") is not None]
         verified_sold_shipping_prices = [float(row.get("shipping_price")) for row in verified_sold_rows if row.get("shipping_price") is not None]
 
@@ -106,7 +116,8 @@ class MarketAgent(BaseAgent):
             }
         )
 
-        market_price_missing = median_sold_price is None and median_active_price is None
+        verified_sold_price_missing = verified_sold_count > 0 and verified_sold_price_count == 0
+        market_price_missing = verified_sold_price_missing or (median_sold_price is None and median_active_price is None)
         supporting_evidence_count = len(supporting_rows)
         verification_coverage = (verified_evidence_count / len(evidence_rows)) if evidence_rows else 0.0
         insufficient_data = verified_sold_count < 5 or market_price_missing
@@ -132,6 +143,8 @@ class MarketAgent(BaseAgent):
         required_next_evidence = []
         if verified_sold_count < 5:
             required_next_evidence.append(f"Add at least 5 verified sold listings (currently {verified_sold_count} verified of {sold_listing_count} total).")
+        if verified_sold_price_missing:
+            required_next_evidence.append("Capture verified sold prices from completed-sale proof.")
         if verified_active_count < 5:
             required_next_evidence.append(f"Add at least 5 verified active listings (currently {verified_active_count} verified of {active_listing_count} total).")
         if median_active_shipping is None and median_sold_shipping is None:
@@ -159,6 +172,8 @@ class MarketAgent(BaseAgent):
             recommended_research_action = "Proceed to profit and competition analysis."
         elif verified_sold_count < 5:
             recommended_research_action = f"Add {5 - verified_sold_count} more verified sold listings to improve confidence."
+        elif verified_sold_price_missing:
+            recommended_research_action = "Verified sold evidence exists, but verified sold price data is missing."
         elif verified_active_count < 5:
             recommended_research_action = f"Add {5 - verified_active_count} more verified active listings to compare competition."
         else:
@@ -173,6 +188,8 @@ class MarketAgent(BaseAgent):
                 "active_listing_count": active_listing_count,
                 "sold_listing_count": sold_listing_count,
                 "verified_sold_listing_count": verified_sold_count,
+                "verified_sold_price_count": verified_sold_price_count,
+                "verified_sold_price_missing": verified_sold_price_missing,
                 "verified_active_listing_count": verified_active_count,
                 "total_evidence_count": len(evidence_rows),
                 "verified_evidence_count": verified_evidence_count,
@@ -203,7 +220,7 @@ class MarketAgent(BaseAgent):
                 "required_next_evidence": required_next_evidence,
                 "summary": result.get("summary", f"Marketplace evidence analyzed from {len(marketplace_coverage)} marketplaces."),
                 "confidence": "LOW" if insufficient_data else "MEDIUM",
-                "warnings": result.get("warnings", []),
+                "warnings": list(result.get("warnings", [])) + (["Verified sold evidence exists, but verified sold price data is missing."] if verified_sold_price_missing else []),
                 "evidence_refs": result.get("evidence_refs", []),
             }
         )

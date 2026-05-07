@@ -634,13 +634,26 @@ class DiscoveryService:
             manual_note_count = sum(1 for row in evidence_rows if row.evidence_type == "MANUAL_NOTE")
 
             # Verified-only prices for main board values
-            verified_sold_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "SOLD_LISTING" and _vstatus(row) in VERIFIED_SOLD and row.price is not None]
+            verified_sold_price_rows = [
+                row
+                for row in evidence_rows
+                if row.evidence_type == "SOLD_LISTING" and _vstatus(row) in VERIFIED_SOLD and bool(getattr(row, "price_verified", False))
+            ]
+            verified_sold_prices = [
+                float(row.price_total_price or row.estimated_market_price or row.price)
+                for row in verified_sold_price_rows
+                if row.price_total_price is not None or getattr(row, "estimated_market_price", None) is not None or row.price is not None
+            ]
             verified_active_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING" and _vstatus(row) in VERIFIED_ACTIVE and row.price is not None]
             median_sold_price = _median_or_none(verified_sold_prices)
             median_active_price = _median_or_none(verified_active_prices)
 
             # Total prices for debug/display context
-            total_sold_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "SOLD_LISTING" and row.price is not None]
+            total_sold_prices = [
+                float(row.price_total_price or row.estimated_market_price or row.price)
+                for row in evidence_rows
+                if row.evidence_type == "SOLD_LISTING" and (row.price_total_price is not None or getattr(row, "estimated_market_price", None) is not None or row.price is not None)
+            ]
             total_active_prices = [float(row.price) for row in evidence_rows if row.evidence_type == "ACTIVE_LISTING" and row.price is not None]
             median_sold_price_total = _median_or_none(total_sold_prices)
             median_active_price_total = _median_or_none(total_active_prices)

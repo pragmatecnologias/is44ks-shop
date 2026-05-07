@@ -8,7 +8,7 @@ from app.schemas.product_schema import (
     MarketplaceResearchCreate, CompetitorListingCreate,
     MarketplaceEvidenceCreate, MarketplaceEvidenceUpdate,
     EvidenceVerificationRequest, CleanupRequest,
-    MarketplaceEvidencePricingUpdate,
+    MarketplaceEvidencePricingUpdate, CompetitorPricingUpdate,
 )
 from app.services.marketplace_service import MarketplaceService
 
@@ -130,6 +130,28 @@ def update_evidence_pricing(evidence_id: uuid.UUID, data: MarketplaceEvidencePri
 def verify_competitor(competitor_id: uuid.UUID, data: EvidenceVerificationRequest, db: Session = Depends(get_db)):
     service = MarketplaceService(db)
     result = service.verify_competitor(competitor_id, data.verification_status)
+    if not result:
+        raise HTTPException(status_code=404, detail="Competitor not found")
+    return result
+
+
+@router.patch("/competitors/detail/{competitor_id}/pricing")
+def update_competitor_pricing(competitor_id: uuid.UUID, data: CompetitorPricingUpdate, db: Session = Depends(get_db)):
+    """Add or update pricing data for a competitor listing row."""
+    service = MarketplaceService(db)
+    result = service.update_competitor_pricing(
+        competitor_id,
+        price=data.price,
+        currency=data.currency,
+        shipping_cost=data.shipping_cost,
+        total_price=data.total_price,
+        quantity_basis=data.quantity_basis,
+        proof_text=data.proof_text,
+        manual_verification_note=data.manual_verification_note,
+        proof_screenshot_path=data.proof_screenshot_path,
+        confidence_level=data.confidence_level,
+        verified_by_source=data.verified_by_source,
+    )
     if not result:
         raise HTTPException(status_code=404, detail="Competitor not found")
     return result

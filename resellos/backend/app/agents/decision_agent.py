@@ -58,6 +58,12 @@ class DecisionAgent(BaseAgent):
         sold_listing_count = int(market.get("sold_listing_count", 0) or 0)
         active_listing_count = int(market.get("active_listing_count", 0) or 0)
         verified_sold = int(market.get("verified_sold_listing_count", 0) or 0)
+        verified_sold_price_count_raw = market.get("verified_sold_price_count")
+        if verified_sold_price_count_raw is None:
+            verified_sold_price_count = verified_sold if market.get("median_sold_price") is not None else 0
+        else:
+            verified_sold_price_count = int(verified_sold_price_count_raw or 0)
+        verified_sold_price_missing = bool(market.get("verified_sold_price_missing", verified_sold > 0 and verified_sold_price_count == 0))
         verified_active = int(market.get("verified_active_listing_count", 0) or 0)
         test_data_count = int(market.get("test_data_evidence_count", 0) or 0)
         competition_level = str(competition.get("competition_level", "UNKNOWN")).upper()
@@ -76,6 +82,8 @@ class DecisionAgent(BaseAgent):
                 float(market.get("median_sold_price") or market.get("median_active_price") or 0) <= 0,
             )
         )
+        if verified_sold_price_missing:
+            market_price_missing = True
         verification_coverage = float(market.get("verification_coverage", 0) or 0)
         verified_evidence_count = int(market.get("verified_evidence_count", 0) or 0)
         unverified_evidence_count = int(market.get("unverified_evidence_count", 0) or 0)
@@ -183,7 +191,14 @@ class DecisionAgent(BaseAgent):
             required_before_buying.append("Reach at least medium marketplace evidence quality.")
         if market_price_missing:
             missing_evidence.append("Sold or active market price missing")
-            required_before_buying.append("Record a real sold or active market price.")
+            if verified_sold_price_missing:
+                missing_evidence.append("Verified sold evidence exists, but verified sold price data is missing.")
+                verification_blocker = "Verified sold evidence exists, but verified sold price data is missing."
+                if verification_blocker not in hard_blockers:
+                    hard_blockers.append(verification_blocker)
+                required_before_buying.append("Verified sold evidence exists, but verified sold price data is missing.")
+            else:
+                required_before_buying.append("Record a real sold or active market price.")
         if not profit.get("scenarios"):
             missing_evidence.append("Profit scenarios missing")
             required_before_buying.append("Generate profit scenarios before buying.")
@@ -312,11 +327,14 @@ class DecisionAgent(BaseAgent):
             if research_verdict == "READY_FOR_SAMPLE":
                 research_verdict = "NEEDS_MORE_RESEARCH"
         elif unverified_evidence_count > 0:
-            verification_blocker = "Some evidence is not yet verified (unverified rows present)."
+            verification_blocker = "Evidence is not verified."
             if verification_blocker not in hard_blockers:
                 hard_blockers.append(verification_blocker)
             required_before_buying.append("Verify remaining unverified evidence for full confidence.")
-            # Don't downgrade recommendation — unverified rows are normal during research
+            if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
+                recommendation = "WATCHLIST"
+            if research_verdict == "READY_FOR_SAMPLE":
+                research_verdict = "NEEDS_MORE_RESEARCH"
         elif verification_coverage < 1.0:
             verification_blocker = "Verification coverage is incomplete."
             if verification_blocker not in hard_blockers:
@@ -466,12 +484,13 @@ class DecisionAgent(BaseAgent):
                 main_blocker = "Supplier cost is not verified."
             elif verified_competitor_count < 3:
                 main_blocker = "Verify at least 3 competitor listings."
-            elif market_price_missing:
-                main_blocker = "Market price is missing."
-            elif score < 70:
-                main_blocker = "Opportunity score is still below the sample-buy threshold."
+        elif market_price_missing:
+            if verified_sold_price_missing:
+                main_blocker = "Verified sold evidence exists, but verified sold price data is missing."
             else:
-                main_blocker = reason or "Product is not ready for sample buying yet."
+                main_blocker = "Market price is missing."
+        elif score < 70:
+            main_blocker = "Opportunity score is still below the sample-buy threshold."
         else:
             main_blocker = "None"
 

@@ -10,6 +10,60 @@ class MarketplaceService:
     def __init__(self, db: Session):
         self.db = db
 
+    @staticmethod
+    def _append_note(existing: Optional[str], addition: str) -> str:
+        existing_text = (existing or "").strip()
+        addition_text = addition.strip()
+        if not existing_text:
+            return addition_text
+        if addition_text.lower() in existing_text.lower():
+            return existing_text
+        return f"{existing_text} {addition_text}".strip()
+
+    @staticmethod
+    def _has_price_proof(proof_text: Optional[str], manual_note: Optional[str], proof_screenshot_path: Optional[str]) -> bool:
+        return bool((proof_text or "").strip() or (manual_note or "").strip() or (proof_screenshot_path or "").strip())
+
+    def _mark_estimated_price(
+        self,
+        evidence: MarketplaceEvidence,
+        *,
+        estimated_market_price: float | None,
+        price_estimation_method: str | None,
+        note: str | None = None,
+    ) -> None:
+        evidence.estimated_market_price = estimated_market_price
+        evidence.price_estimation_method = price_estimation_method
+        evidence.price_verified = False
+        evidence.price_verified_at = None
+        evidence.price_verified_by_source = None
+        if note:
+            evidence.price_manual_verification_note = self._append_note(evidence.price_manual_verification_note, note)
+
+    def _apply_price_verification_rules(
+        self,
+        evidence: MarketplaceEvidence,
+        *,
+        price_estimation_method: str | None = None,
+        proof_text: str | None = None,
+        manual_verification_note: str | None = None,
+        proof_screenshot_path: str | None = None,
+    ) -> None:
+        estimate_method = (price_estimation_method or "").strip().upper()
+        has_proof = self._has_price_proof(proof_text, manual_verification_note, proof_screenshot_path)
+        if estimate_method in {"ACTIVE_MARKET_COMPARABLE", "COMPETITOR_COMPARABLE"}:
+            evidence.price_verified = False
+            evidence.price_verified_at = None
+            evidence.price_verified_by_source = None
+            return
+        if evidence.evidence_type == "SOLD_LISTING":
+            evidence.price_verified = has_proof
+            if not has_proof:
+                evidence.price_verified_at = None
+                evidence.price_verified_by_source = None
+        elif evidence.price_verified is None:
+            evidence.price_verified = bool(has_proof or evidence.evidence_type in {"ACTIVE_LISTING", "COMPETITOR_LISTING"})
+
     def create_research(self, product_id: uuid.UUID, data: MarketplaceResearchCreate) -> MarketplaceResearch:
         research = MarketplaceResearch(
             product_id=product_id,
@@ -111,6 +165,12 @@ class MarketplaceService:
             discovery_source=getattr(data, "discovery_source", None),
             proof_level=getattr(data, "proof_level", None),
             original_search_intent=getattr(data, "original_search_intent", None),
+            estimated_market_price=getattr(data, "estimated_market_price", None),
+            price_estimation_method=getattr(data, "price_estimation_method", None),
+        )
+        self._apply_price_verification_rules(
+            evidence,
+            price_estimation_method=getattr(data, "price_estimation_method", None),
         )
         self.db.add(evidence)
         self.db.commit()
@@ -130,6 +190,13 @@ class MarketplaceService:
         update = data.model_dump(exclude_unset=True)
         for key, value in update.items():
             setattr(evidence, key, value)
+        self._apply_price_verification_rules(
+            evidence,
+            price_estimation_method=update.get("price_estimation_method"),
+            proof_text=update.get("price_proof_text"),
+            manual_verification_note=update.get("price_manual_verification_note"),
+            proof_screenshot_path=update.get("price_proof_screenshot_path"),
+        )
         self.db.commit()
         self.db.refresh(evidence)
         return evidence
@@ -155,14 +222,44 @@ class MarketplaceService:
         evidence.shipping_price = data.shipping_cost
         evidence.price_total_price = data.total_price or (data.price + (data.shipping_cost or 0))
         evidence.price_quantity_basis = data.quantity_basis
+        evidence.estimated_market_price = data.estimated_market_price
+        evidence.price_estimation_method = data.price_estimation_method
         evidence.price_proof_text = data.proof_text
         evidence.price_manual_verification_note = data.manual_verification_note
         evidence.price_proof_screenshot_path = data.proof_screenshot_path
         evidence.price_confidence_level = data.confidence_level
         evidence.price_verified_by_source = data.verified_by_source
-        evidence.price_verified = True
-        evidence.price_verified_at = datetime.utcnow()
+        estimate_method = (data.price_estimation_method or "").strip().upper()
+        has_proof = self._has_price_proof(data.proof_text, data.manual_verification_note, data.proof_screenshot_path)
+        if estimate_method in {"ACTIVE_MARKET_COMPARABLE", "COMPETITOR_COMPARABLE"}:
+            evidence.price_verified = False
+            evidence.price_verified_at = None
+            evidence.price_verified_by_source = None
+        else:
+            evidence.price_verified = has_proof or evidence.evidence_type in {"ACTIVE_LISTING", "COMPETITOR_LISTING"}
+            evidence.price_verified_at = datetime.utcnow() if evidence.price_verified else None
 
+        self.db.commit()
+        self.db.refresh(evidence)
+        return evidence
+
+    def downgrade_price_verification_to_estimate(
+        self,
+        evidence_id: uuid.UUID,
+        *,
+        estimated_market_price: float | None = None,
+        price_estimation_method: str = "ACTIVE_MARKET_COMPARABLE",
+        note: str = "Price estimate derived from active-market comparable, not actual completed-sale proof.",
+    ) -> Optional[MarketplaceEvidence]:
+        evidence = self.get_evidence_item(evidence_id)
+        if not evidence:
+            return None
+        self._mark_estimated_price(
+            evidence,
+            estimated_market_price=estimated_market_price if estimated_market_price is not None else float(evidence.price_total_price or evidence.price or 0),
+            price_estimation_method=price_estimation_method,
+            note=note,
+        )
         self.db.commit()
         self.db.refresh(evidence)
         return evidence
@@ -226,6 +323,33 @@ class MarketplaceService:
         if not listing:
             return None
         listing.verification_status = status
+        self.db.commit()
+        self.db.refresh(listing)
+        return listing
+
+    def update_competitor_pricing(
+        self, competitor_id: uuid.UUID, price: float, currency: str = "USD",
+        shipping_cost: Optional[float] = None, total_price: Optional[float] = None,
+        quantity_basis: Optional[str] = None, proof_text: Optional[str] = None,
+        manual_verification_note: Optional[str] = None, proof_screenshot_path: Optional[str] = None,
+        confidence_level: str = "MEDIUM", verified_by_source: str = "MANUAL_ENTRY"
+    ) -> Optional[CompetitorListing]:
+        from datetime import datetime
+        listing = self.db.query(CompetitorListing).filter(CompetitorListing.id == competitor_id).first()
+        if not listing:
+            return None
+        listing.price = price
+        listing.price_currency = currency
+        listing.shipping_price = shipping_cost if shipping_cost is not None else listing.shipping_price
+        listing.price_total_price = total_price or (price + (shipping_cost or 0))
+        listing.price_quantity_basis = quantity_basis
+        listing.price_proof_text = proof_text
+        listing.price_manual_verification_note = manual_verification_note
+        listing.price_proof_screenshot_path = proof_screenshot_path
+        listing.price_confidence_level = confidence_level
+        listing.price_verified_by_source = verified_by_source
+        listing.price_verified = True
+        listing.price_verified_at = datetime.utcnow()
         self.db.commit()
         self.db.refresh(listing)
         return listing

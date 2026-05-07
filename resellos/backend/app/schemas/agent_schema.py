@@ -45,6 +45,8 @@ class MarketAgentOutput(BaseModel):
     active_listing_count: int = 0
     sold_listing_count: int = 0
     verified_sold_listing_count: int = 0
+    verified_sold_price_count: int = 0
+    verified_sold_price_missing: bool = False
     verified_active_listing_count: int = 0
     total_evidence_count: int = 0
     verified_evidence_count: int = 0

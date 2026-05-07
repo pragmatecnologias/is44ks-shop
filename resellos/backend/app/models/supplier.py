@@ -154,6 +154,8 @@ class MarketplaceEvidence(Base):
     price_currency = Column(String(10))
     price_quantity_basis = Column(Text)
     price_total_price = Column(Numeric(10, 2))
+    estimated_market_price = Column(Numeric(10, 2))
+    price_estimation_method = Column(String(50))
     price_proof_text = Column(Text)
     price_manual_verification_note = Column(Text)
     price_proof_screenshot_path = Column(Text)
