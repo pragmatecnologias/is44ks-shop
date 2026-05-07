@@ -77,3 +77,29 @@ class SupplierService:
         self.db.commit()
         self.db.refresh(source)
         return source
+
+    def update_economics_for_product(
+        self, product_id: uuid.UUID, source_id: uuid.UUID, data: SupplierEconomicsUpdate
+    ) -> Optional[ProductSource]:
+        """Update economics only if source belongs to the given product_id."""
+        source = self.get_source(source_id)
+        if not source:
+            return None
+        if source.product_id != product_id:
+            return None
+        source.unit_cost = data.unit_cost
+        source.currency = data.currency
+        source.moq = data.moq
+        source.domestic_shipping = data.shipping_cost
+        source.estimated_landed_cost = data.estimated_landed_cost
+        source.quantity_basis = data.quantity_basis
+        source.proof_text = data.proof_text
+        source.manual_verification_note = data.manual_verification_note
+        source.confidence_level = data.confidence_level
+        source.verified_by_source = data.verified_by_source
+        source.economics_verified = True
+        source.verified_at = datetime.utcnow()
+        source.verification_status = "USER_VERIFIED"
+        self.db.commit()
+        self.db.refresh(source)
+        return source

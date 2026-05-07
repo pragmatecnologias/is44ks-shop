@@ -151,6 +151,16 @@ class MarketplaceEvidence(Base):
     discovery_source = Column(String(50))  # SEARXNG, OPENSERP, DATAFORSEO, MANUAL_BROWSER, USER_PROOF
     proof_level = Column(String(50))  # SEARCH_RESULT_ONLY, PAGE_CAPTURED, SCREENSHOT_PROVIDED, MANUAL_PROOF_VERIFIED
     original_search_intent = Column(String(50))  # SOLD_EVIDENCE, ACTIVE_LISTING, etc.
+    price_currency = Column(String(10))
+    price_quantity_basis = Column(Text)
+    price_total_price = Column(Numeric(10, 2))
+    price_proof_text = Column(Text)
+    price_manual_verification_note = Column(Text)
+    price_proof_screenshot_path = Column(Text)
+    price_verified = Column(Boolean, default=False)
+    price_verified_at = Column(DateTime)
+    price_verified_by_source = Column(String(50))
+    price_confidence_level = Column(String(20))
     created_at = Column(DateTime, default=datetime.utcnow)
 
     product = relationship("Product", back_populates="marketplace_evidence")

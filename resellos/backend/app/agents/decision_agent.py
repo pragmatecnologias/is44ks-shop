@@ -101,7 +101,7 @@ class DecisionAgent(BaseAgent):
         research_completeness_score += 10 if demand_status != "UNKNOWN" else 0
         research_completeness_score += 10 if trend_status != "UNKNOWN" else 0
         research_completeness_score += 10 if target_sale_price > 0 else 0
-        if supplier_verified and verified_competitor_count >= 3 and verification_coverage >= 1.0:
+        if supplier_verified and verified_competitor_count >= 3 and verification_coverage >= 0.5:
             research_completeness_score = max(research_completeness_score, int(market.get("research_completeness_score", 0) or 0))
         research_completeness_score = max(0, min(100, research_completeness_score))
         best_margin = max(
@@ -212,9 +212,8 @@ class DecisionAgent(BaseAgent):
             and risk_level != "BLOCKED"
             and verified_sold >= 5
             and verified_active >= 5
-            and unverified_evidence_count == 0
             and test_data_count == 0
-            and verification_coverage >= 1.0
+            and verification_coverage >= 0.5
             and has_supplier_cost
             and supplier_verified
             and not market_price_missing
@@ -303,15 +302,26 @@ class DecisionAgent(BaseAgent):
             if research_verdict == "READY_FOR_SAMPLE":
                 research_verdict = "NEEDS_MORE_RESEARCH"
 
-        if unverified_evidence_count > 0 or test_data_count > 0 or verification_coverage < 1.0:
-            verification_blocker = "Evidence is not verified."
+        if test_data_count > 0:
+            verification_blocker = f"{test_data_count} evidence row(s) are test/synthetic data."
             if verification_blocker not in hard_blockers:
                 hard_blockers.append(verification_blocker)
-            required_before_buying.append("Verify evidence before sample buying.")
+            required_before_buying.append("Replace test/synthetic evidence with real verified data.")
             if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
                 recommendation = "WATCHLIST"
             if research_verdict == "READY_FOR_SAMPLE":
                 research_verdict = "NEEDS_MORE_RESEARCH"
+        elif unverified_evidence_count > 0:
+            verification_blocker = "Some evidence is not yet verified (unverified rows present)."
+            if verification_blocker not in hard_blockers:
+                hard_blockers.append(verification_blocker)
+            required_before_buying.append("Verify remaining unverified evidence for full confidence.")
+            # Don't downgrade recommendation — unverified rows are normal during research
+        elif verification_coverage < 1.0:
+            verification_blocker = "Verification coverage is incomplete."
+            if verification_blocker not in hard_blockers:
+                hard_blockers.append(verification_blocker)
+            required_before_buying.append("Increase verified evidence ratio.")
         else:
             verification_blocker = ""
 
@@ -334,7 +344,7 @@ class DecisionAgent(BaseAgent):
             and supplier_verified
             and verified_competitor_count >= 3
             and test_data_count == 0
-            and verification_coverage >= 1.0
+            and verification_coverage >= 0.5
             else "NOT_READY"
         )
 
@@ -342,8 +352,7 @@ class DecisionAgent(BaseAgent):
             verified_sold >= 5
             and verified_active >= 5
             and test_data_count == 0
-            and unverified_evidence_count == 0
-            and verification_coverage >= 1.0
+            and verification_coverage >= 0.5
             and has_supplier_cost
             and supplier_verified
             and verified_competitor_count >= 3

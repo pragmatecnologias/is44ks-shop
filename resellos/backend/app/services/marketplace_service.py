@@ -134,6 +134,39 @@ class MarketplaceService:
         self.db.refresh(evidence)
         return evidence
 
+    def update_evidence_pricing(
+        self,
+        evidence_id: uuid.UUID,
+        data: "MarketplaceEvidencePricingUpdate",
+    ) -> Optional[MarketplaceEvidence]:
+        """Update pricing-related fields on a marketplace evidence row.
+
+        Does NOT change evidence_type. Does NOT change verification_status.
+        Sets price and proof fields for profit analysis.
+        """
+        from datetime import datetime
+
+        evidence = self.get_evidence_item(evidence_id)
+        if not evidence:
+            return None
+
+        evidence.price = data.price
+        evidence.price_currency = data.currency
+        evidence.shipping_price = data.shipping_cost
+        evidence.price_total_price = data.total_price or (data.price + (data.shipping_cost or 0))
+        evidence.price_quantity_basis = data.quantity_basis
+        evidence.price_proof_text = data.proof_text
+        evidence.price_manual_verification_note = data.manual_verification_note
+        evidence.price_proof_screenshot_path = data.proof_screenshot_path
+        evidence.price_confidence_level = data.confidence_level
+        evidence.price_verified_by_source = data.verified_by_source
+        evidence.price_verified = True
+        evidence.price_verified_at = datetime.utcnow()
+
+        self.db.commit()
+        self.db.refresh(evidence)
+        return evidence
+
     def delete_evidence(self, evidence_id: uuid.UUID) -> bool:
         evidence = self.get_evidence_item(evidence_id)
         if not evidence:

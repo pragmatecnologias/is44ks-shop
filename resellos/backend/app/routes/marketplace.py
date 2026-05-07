@@ -4,7 +4,12 @@ from typing import List
 import uuid
 
 from app.db import get_db
-from app.schemas.product_schema import MarketplaceResearchCreate, CompetitorListingCreate, MarketplaceEvidenceCreate, MarketplaceEvidenceUpdate, EvidenceVerificationRequest, CleanupRequest
+from app.schemas.product_schema import (
+    MarketplaceResearchCreate, CompetitorListingCreate,
+    MarketplaceEvidenceCreate, MarketplaceEvidenceUpdate,
+    EvidenceVerificationRequest, CleanupRequest,
+    MarketplaceEvidencePricingUpdate,
+)
 from app.services.marketplace_service import MarketplaceService
 
 router = APIRouter(prefix="/api/marketplace", tags=["marketplace"])
@@ -102,6 +107,20 @@ def verify_evidence(evidence_id: uuid.UUID, data: EvidenceVerificationRequest, d
         result = service.verify_evidence(evidence_id, data.verification_status, proof=data.model_dump())
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
+    if not result:
+        raise HTTPException(status_code=404, detail="Evidence not found")
+    return result
+
+
+@router.patch("/evidence/detail/{evidence_id}/pricing")
+def update_evidence_pricing(evidence_id: uuid.UUID, data: MarketplaceEvidencePricingUpdate, db: Session = Depends(get_db)):
+    """Add or update pricing data for a marketplace evidence row.
+
+    Does NOT change evidence_type, does NOT mark evidence as USER_VERIFIED.
+    Only updates price-related and proof fields.
+    """
+    service = MarketplaceService(db)
+    result = service.update_evidence_pricing(evidence_id, data)
     if not result:
         raise HTTPException(status_code=404, detail="Evidence not found")
     return result

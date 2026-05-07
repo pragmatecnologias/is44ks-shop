@@ -368,6 +368,8 @@ class ResearchPipelineService:
             "verification_status": row.verification_status,
             "raw_text": row.raw_text,
             "confidence": row.confidence,
+            "price_total_price": float(row.price_total_price) if row.price_total_price is not None else None,
+            "price_verified": row.price_verified,
         }
 
     def _serialize_inventory(self, row: InventoryItem) -> dict[str, Any]:

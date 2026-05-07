@@ -74,13 +74,13 @@ class MarketAgent(BaseAgent):
         verified_sold_count = len(verified_sold_rows)
         verified_active_count = len(verified_active_rows)
 
-        active_prices_total = [float(row.get("price")) for row in active_rows if row.get("price") is not None]
-        sold_prices_total = [float(row.get("price")) for row in sold_rows if row.get("price") is not None]
+        active_prices_total = [float(row.get("price_total_price") or row.get("price")) for row in active_rows if row.get("price_total_price") or row.get("price") is not None]
+        sold_prices_total = [float(row.get("price_total_price") or row.get("price")) for row in sold_rows if row.get("price_total_price") or row.get("price") is not None]
         active_shipping_prices_total = [float(row.get("shipping_price")) for row in active_rows if row.get("shipping_price") is not None]
         sold_shipping_prices_total = [float(row.get("shipping_price")) for row in sold_rows if row.get("shipping_price") is not None]
 
-        verified_active_prices = [float(row.get("price")) for row in verified_active_rows if row.get("price") is not None]
-        verified_sold_prices = [float(row.get("price")) for row in verified_sold_rows if row.get("price") is not None]
+        verified_active_prices = [float(row.get("price_total_price") or row.get("price")) for row in verified_active_rows if row.get("price_total_price") or row.get("price") is not None]
+        verified_sold_prices = [float(row.get("price_total_price") or row.get("price")) for row in verified_sold_rows if row.get("price_total_price") or row.get("price") is not None]
         verified_active_shipping_prices = [float(row.get("shipping_price")) for row in verified_active_rows if row.get("shipping_price") is not None]
         verified_sold_shipping_prices = [float(row.get("shipping_price")) for row in verified_sold_rows if row.get("shipping_price") is not None]
 

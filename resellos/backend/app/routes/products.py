@@ -93,7 +93,7 @@ def update_supplier_economics(
     db: Session = Depends(get_db),
 ):
     service = SupplierService(db)
-    result = service.update_economics(source_id, data)
+    result = service.update_economics_for_product(product_id, source_id, data)
     if not result:
-        raise HTTPException(status_code=404, detail="Source not found")
+        raise HTTPException(status_code=404, detail="Source not found or does not belong to this product")
     return result
