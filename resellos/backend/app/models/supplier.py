@@ -140,6 +140,9 @@ class MarketplaceEvidence(Base):
     screenshot_url = Column(Text)
     confidence = Column(String(50))
     notes = Column(Text)
+    discovery_source = Column(String(50))  # SEARXNG, OPENSERP, DATAFORSEO, MANUAL_BROWSER, USER_PROOF
+    proof_level = Column(String(50))  # SEARCH_RESULT_ONLY, PAGE_CAPTURED, SCREENSHOT_PROVIDED, MANUAL_PROOF_VERIFIED
+    original_search_intent = Column(String(50))  # SOLD_EVIDENCE, ACTIVE_LISTING, etc.
     created_at = Column(DateTime, default=datetime.utcnow)
 
     product = relationship("Product", back_populates="marketplace_evidence")

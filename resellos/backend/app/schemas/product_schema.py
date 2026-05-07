@@ -123,6 +123,9 @@ class MarketplaceEvidenceCreate(BaseModel):
     screenshot_url: Optional[str] = None
     confidence: Optional[str] = None
     notes: Optional[str] = None
+    discovery_source: Optional[str] = None
+    proof_level: Optional[str] = None
+    original_search_intent: Optional[str] = None
 
 
 class MarketplaceEvidenceUpdate(BaseModel):
@@ -145,6 +148,10 @@ class MarketplaceEvidenceUpdate(BaseModel):
 
 class EvidenceVerificationRequest(BaseModel):
     verification_status: str
+    proof_url: Optional[str] = None
+    proof_screenshot_path: Optional[str] = None
+    proof_text: Optional[str] = None
+    manual_verification_note: Optional[str] = None
 
 
 class CleanupRequest(BaseModel):

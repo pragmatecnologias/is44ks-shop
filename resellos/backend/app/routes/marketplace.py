@@ -98,7 +98,10 @@ def delete_evidence(evidence_id: uuid.UUID, db: Session = Depends(get_db)):
 @router.patch("/evidence/detail/{evidence_id}/verify")
 def verify_evidence(evidence_id: uuid.UUID, data: EvidenceVerificationRequest, db: Session = Depends(get_db)):
     service = MarketplaceService(db)
-    result = service.verify_evidence(evidence_id, data.verification_status)
+    try:
+        result = service.verify_evidence(evidence_id, data.verification_status, proof=data.model_dump())
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     if not result:
         raise HTTPException(status_code=404, detail="Evidence not found")
     return result

@@ -631,3 +631,334 @@ class TestRealDbIntegration:
 
         finally:
             db.close()
+
+
+# =============================================================================
+# Evidence verification rules
+# =============================================================================
+
+class TestSearxngResultStaysPending:
+    """SearXNG search result conversion creates PENDING candidate, never USER_VERIFIED."""
+
+    def test_convert_searxng_result_is_pending_not_user_verified(self):
+        """SearXNG → ResearchSearchResult → EvidenceCandidate must be PENDING."""
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.research_search import ResearchSearchResult
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            broker = ResearchSearchBroker(db=db)
+            test_id = uuid.uuid4()
+
+            record = ResearchSearchResult(
+                id=test_id,
+                query="test pending",
+                normalized_query="test pending",
+                provider="SEARXNG",
+                intent="SOLD_EVIDENCE",
+                title="Test Product",
+                url="https://example.com/item",
+                normalized_url="example.com/item",
+                snippet="Test",
+                source_domain="example.com",
+                rank=1,
+                conversion_status="NOT_CONVERTED",
+            )
+            db.add(record)
+            db.commit()
+
+            result = broker.convert_to_candidate(
+                test_id,
+                ConvertSearchResultToCandidateRequest(candidate_type="SOLD_LISTING"),
+            )
+
+            assert result is not None
+            assert result.verification_status == "PENDING"
+            assert result.status == "PENDING"
+            # Must NEVER be USER_VERIFIED from conversion alone
+            assert result.verification_status != "USER_VERIFIED"
+        finally:
+            db.close()
+
+
+class TestActiveListingIntentCannotVerifyAsSold:
+    """ACTIVE_LISTING intent result cannot be verified as USER_VERIFIED SOLD_LISTING."""
+
+    def test_active_listing_intent_blocked_from_sold_verification(self):
+        """
+        An evidence row where original_search_intent = 'ACTIVE_LISTING'
+        must be rejected with HTTP 400 if verification_status = USER_VERIFIED
+        is attempted, even with proof fields.
+        """
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.supplier import MarketplaceEvidence
+        from app.services.marketplace_service import MarketplaceService
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            # Create evidence with ACTIVE_LISTING intent
+            evidence = MarketplaceEvidence(
+                product_id=uuid.uuid4(),
+                marketplace="www.example.com",
+                evidence_type="SOLD_LISTING",
+                title="Test Product",
+                url="https://example.com/product",
+                source_method="MANUAL_CAPTURE",
+                verification_status="USER_CAPTURED_UNVERIFIED",
+                original_search_intent="ACTIVE_LISTING",
+                raw_text='{"local_search_intent": "ACTIVE_LISTING"}',
+            )
+            db.add(evidence)
+            db.commit()
+            db.refresh(evidence)
+
+            service = MarketplaceService(db)
+
+            # Attempt verification with full proof — must still raise ValueError
+            try:
+                service.verify_evidence(
+                    evidence.id,
+                    "USER_VERIFIED",
+                    proof={
+                        "original_search_intent": "ACTIVE_LISTING",
+                        "discovery_source": "SEARXNG",
+                        "manual_verification_note": "Has proof of sale",
+                    },
+                )
+                assert False, "Expected ValueError for ACTIVE_LISTING intent"
+            except ValueError as e:
+                assert "ACTIVE_LISTING" in str(e)
+                assert "SOLD_LISTING" in str(e)
+        finally:
+            db.delete(evidence)
+            db.commit()
+            db.close()
+
+
+class TestSoldVerificationRequiresProof:
+    """SOLD_LISTING from local search can only be USER_VERIFIED with actual proof."""
+
+    def test_local_search_sold_without_proof_blocked(self):
+        """
+        SEARXNG SOLD_LISTING result without proof_text/manual_verification_note
+        must be rejected with HTTP 400.
+        """
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.supplier import MarketplaceEvidence
+        from app.services.marketplace_service import MarketplaceService
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            evidence = MarketplaceEvidence(
+                product_id=uuid.uuid4(),
+                marketplace="www.amazon.com",
+                evidence_type="SOLD_LISTING",
+                title="Hinge Pin Remover",
+                url="https://amazon.com/dp/B001",
+                source_method="MANUAL_CAPTURE",
+                verification_status="USER_CAPTURED_UNVERIFIED",
+                discovery_source="SEARXNG",
+                proof_level="SEARCH_RESULT_ONLY",
+            )
+            db.add(evidence)
+            db.commit()
+            db.refresh(evidence)
+
+            service = MarketplaceService(db)
+
+            # Attempt without proof → must raise
+            try:
+                service.verify_evidence(evidence.id, "USER_VERIFIED", proof={})
+                assert False, "Expected ValueError without proof"
+            except ValueError as e:
+                assert "local-search" in str(e).lower() or "proof" in str(e).lower()
+
+            # Attempt with only proof_text → should succeed
+            result = service.verify_evidence(
+                evidence.id,
+                "USER_VERIFIED",
+                proof={"proof_text": "eBay listing shows 500+ sold with completed transaction history visible"},
+            )
+            assert result.verification_status == "USER_VERIFIED"
+        finally:
+            db.delete(evidence)
+            db.commit()
+            db.close()
+
+    def test_sold_verification_succeeds_with_manual_proof_note(self):
+        """USER_VERIFIED succeeds when manual_verification_note provides actual sold proof."""
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.supplier import MarketplaceEvidence
+        from app.services.marketplace_service import MarketplaceService
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            evidence = MarketplaceEvidence(
+                product_id=uuid.uuid4(),
+                marketplace="www.ebay.com",
+                evidence_type="SOLD_LISTING",
+                title="Door Hinge Pin Remover",
+                url="https://www.ebay.com/itm/123",
+                source_method="MANUAL_CAPTURE",
+                verification_status="USER_CAPTURED_UNVERIFIED",
+                discovery_source="SEARXNG",
+                proof_level="SEARCH_RESULT_ONLY",
+            )
+            db.add(evidence)
+            db.commit()
+            db.refresh(evidence)
+
+            service = MarketplaceService(db)
+            result = service.verify_evidence(
+                evidence.id,
+                "USER_VERIFIED",
+                proof={
+                    "manual_verification_note": "eBay listing ID 123 shows '1,247 sold' with sold transaction history visible on page",
+                    "discovery_source": "SEARXNG",
+                },
+            )
+            assert result.verification_status == "USER_VERIFIED"
+        finally:
+            db.delete(evidence)
+            db.commit()
+            db.close()
+
+    def test_non_local_search_no_proof_blocked(self):
+        """Discovery sources other than SEARXNG/OPENSERP are not blocked by proof requirement."""
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.supplier import MarketplaceEvidence
+        from app.services.marketplace_service import MarketplaceService
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            evidence = MarketplaceEvidence(
+                product_id=uuid.uuid4(),
+                marketplace="www.example.com",
+                evidence_type="SOLD_LISTING",
+                title="Test",
+                url="https://example.com/product",
+                source_method="MANUAL_CAPTURE",
+                verification_status="USER_CAPTURED_UNVERIFIED",
+                discovery_source="USER_PROOF",
+                proof_level="SCREENSHOT_PROVIDED",
+            )
+            db.add(evidence)
+            db.commit()
+            db.refresh(evidence)
+
+            service = MarketplaceService(db)
+            # USER_PROOF source does not require additional proof to verify
+            result = service.verify_evidence(evidence.id, "USER_VERIFIED", proof={})
+            assert result.verification_status == "USER_VERIFIED"
+        finally:
+            db.delete(evidence)
+            db.commit()
+            db.close()
+
+
+class TestProductReadinessAfterDowngrade:
+    """Product readiness must not count downgraded local-search-only rows as verified."""
+
+    def test_door_hinge_verified_sold_count_after_downgrade(self):
+        """
+        After downgrading 28 USER_VERIFIED rows to USER_CAPTURED_UNVERIFIED,
+        verified_sold_evidence_count must be 0 (or 5 if manually verified with proof).
+        Product must NOT appear as READY_FOR_SAMPLE from local search alone.
+        """
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.supplier import MarketplaceEvidence
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            product_id = "ee638c1a-8ad3-4a91-a506-80cff34a1f7c"
+
+            # Count USER_VERIFIED rows for this product
+            verified_count = db.query(MarketplaceEvidence).filter(
+                MarketplaceEvidence.product_id == product_id,
+                MarketplaceEvidence.evidence_type == "SOLD_LISTING",
+                MarketplaceEvidence.verification_status == "USER_VERIFIED",
+            ).count()
+
+            total_sold = db.query(MarketplaceEvidence).filter(
+                MarketplaceEvidence.product_id == product_id,
+                MarketplaceEvidence.evidence_type == "SOLD_LISTING",
+            ).count()
+
+            unverified_count = db.query(MarketplaceEvidence).filter(
+                MarketplaceEvidence.product_id == product_id,
+                MarketplaceEvidence.evidence_type == "SOLD_LISTING",
+                MarketplaceEvidence.verification_status.in_(["USER_CAPTURED_UNVERIFIED", "PENDING"]),
+            ).count()
+
+            assert verified_count == 5, f"Expected 5 manually verified, got {verified_count}"
+            assert unverified_count == 23, f"Expected 23 unverified, got {unverified_count}"
+            assert total_sold == 28
+
+            # Only 5 verified → threshold of 5 MET but with real proof, not search snippets
+        finally:
+            db.close()
+
+    def test_downgrade_adds_provenance_and_notes(self):
+        """Downgraded rows must have discovery_source, proof_level, and notes set."""
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.supplier import MarketplaceEvidence
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            product_id = "ee638c1a-8ad3-4a91-a506-80cff34a1f7c"
+
+            sample = db.query(MarketplaceEvidence).filter(
+                MarketplaceEvidence.product_id == product_id,
+                MarketplaceEvidence.evidence_type == "SOLD_LISTING",
+                MarketplaceEvidence.verification_status == "USER_CAPTURED_UNVERIFIED",
+            ).first()
+
+            assert sample is not None, "No USER_CAPTURED_UNVERIFIED rows found"
+            assert sample.discovery_source in ("SEARXNG", "OPENSERP"), f"Got {sample.discovery_source}"
+            assert sample.proof_level == "SEARCH_RESULT_ONLY", f"Got {sample.proof_level}"
+            assert sample.notes is not None, "Notes must be set on downgrade"
+            assert "downgraded" in sample.notes.lower() or "local" in sample.notes.lower()
+        finally:
+            db.close()

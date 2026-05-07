@@ -139,10 +139,37 @@ class MarketplaceService:
         self.db.commit()
         return True
 
-    def verify_evidence(self, evidence_id: uuid.UUID, status: str) -> Optional[MarketplaceEvidence]:
+    def verify_evidence(self, evidence_id: uuid.UUID, status: str, proof: dict | None = None) -> Optional[MarketplaceEvidence]:
         evidence = self.get_evidence_item(evidence_id)
         if not evidence:
             return None
+
+        # Block USER_VERIFIED for SOLD_LISTING from local search without actual proof
+        if status == "USER_VERIFIED" and evidence.evidence_type == "SOLD_LISTING":
+            discovery_source = (proof or {}).get("discovery_source") or getattr(evidence, "discovery_source", None)
+            proof_text = (proof or {}).get("proof_text") or ""
+            manual_note = (proof or {}).get("manual_verification_note") or ""
+            proof_url = (proof or {}).get("proof_url") or ""
+            screenshot_path = (proof or {}).get("proof_screenshot_path") or ""
+            original_intent = (proof or {}).get("original_search_intent") or getattr(evidence, "original_search_intent", None)
+
+            is_local_search = discovery_source in ("SEARXNG", "OPENSERP")
+
+            # Rule: ACTIVE_LISTING intent cannot become USER_VERIFIED SOLD_LISTING
+            if original_intent == "ACTIVE_LISTING":
+                raise ValueError(
+                    "Cannot mark ACTIVE_LISTING intent result as USER_VERIFIED SOLD_LISTING. "
+                    "This evidence was gathered with ACTIVE_LISTING intent, not sold/completed proof."
+                )
+
+            if is_local_search:
+                has_proof = bool(proof_text.strip() or manual_note.strip() or proof_url or screenshot_path)
+                if not has_proof:
+                    raise ValueError(
+                        "Cannot mark local-search result as USER_VERIFIED without sold/completed proof. "
+                        "Provide proof_text, manual_verification_note, proof_url, or proof_screenshot_path."
+                    )
+
         evidence.verification_status = status
         self.db.commit()
         self.db.refresh(evidence)
