@@ -21,6 +21,8 @@ services:
       - "8000:8000"
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/resellos
+      - SEARXNG_BASE_URL=http://host.docker.internal:8888
+      - OPENSERP_BASE_URL=http://host.docker.internal:7000
       - LLM_PROVIDER=${LLM_PROVIDER:-minimax}
       - TEXT_LLM_PROVIDER=${TEXT_LLM_PROVIDER:-minimax}
       - TEXT_LLM_MODEL=${TEXT_LLM_MODEL:-MiniMax-Text-01}
