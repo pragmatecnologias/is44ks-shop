@@ -108,6 +108,9 @@ class MarketplaceService:
             screenshot_url=data.screenshot_url,
             confidence=data.confidence,
             notes=data.notes,
+            discovery_source=getattr(data, "discovery_source", None),
+            proof_level=getattr(data, "proof_level", None),
+            original_search_intent=getattr(data, "original_search_intent", None),
         )
         self.db.add(evidence)
         self.db.commit()
@@ -168,6 +171,16 @@ class MarketplaceService:
                     raise ValueError(
                         "Cannot mark local-search result as USER_VERIFIED without sold/completed proof. "
                         "Provide proof_text, manual_verification_note, proof_url, or proof_screenshot_path."
+                    )
+
+            # Rule: DATAFORSEO sold results also need explicit sold/completed proof
+            if discovery_source == "DATAFORSEO":
+                has_proof = bool(proof_text.strip() or manual_note.strip() or proof_url or screenshot_path)
+                if not has_proof:
+                    raise ValueError(
+                        "DATAFORSEO active-market results cannot be verified as sold evidence without "
+                        "sold/completed proof. Provide proof_text, manual_verification_note, "
+                        "proof_url, or proof_screenshot_path."
                     )
 
         evidence.verification_status = status

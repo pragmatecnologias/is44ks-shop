@@ -187,6 +187,7 @@ class EvidenceCandidateService:
             initial_verification = "AI_EXTRACTED_UNVERIFIED"
 
         if data.approve_as == "MARKETPLACE_EVIDENCE":
+            raw = _json_load(candidate.raw_json, {})
             created = MarketplaceEvidence(
                 product_id=product_id,
                 marketplace=candidate.marketplace or "Google Shopping",
@@ -195,14 +196,17 @@ class EvidenceCandidateService:
                 url=candidate.url,
                 price=candidate.price,
                 shipping_price=candidate.shipping_price,
-                condition=_json_load(candidate.raw_json, {}).get("condition"),
+                condition=raw.get("condition"),
                 seller_name=candidate.seller,
                 source_method=candidate.source,
                 verification_status=initial_verification,
-                raw_text=json.dumps(_json_load(candidate.raw_json, {}), ensure_ascii=False, default=str),
+                raw_text=json.dumps(raw, ensure_ascii=False, default=str),
                 screenshot_url=candidate.image_url,
                 confidence=candidate.confidence,
                 notes=data.notes,
+                discovery_source=raw.get("provider") or None,
+                proof_level="SEARCH_RESULT_ONLY",
+                original_search_intent=raw.get("local_search_intent") or None,
             )
             self.db.add(created)
             self.db.flush()

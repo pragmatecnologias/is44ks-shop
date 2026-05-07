@@ -962,3 +962,181 @@ class TestProductReadinessAfterDowngrade:
             assert "downgraded" in sample.notes.lower() or "local" in sample.notes.lower()
         finally:
             db.close()
+
+
+# =============================================================================
+# DataForSEO sold evidence proof requirement
+# =============================================================================
+
+class TestDataforeseoSoldEvidenceRequiresProof:
+    """DATAFORSEO sold results require explicit sold/completed proof to verify."""
+
+    def test_dataforeseo_active_listing_can_be_verified_as_active(self):
+        """
+        DATAFORSEO ACTIVE_LISTING evidence type can be verified as ACTIVE_LISTING USER_VERIFIED
+        without proof requirement (the proof block only applies to SOLD_LISTING).
+        """
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.supplier import MarketplaceEvidence
+        from app.services.marketplace_service import MarketplaceService
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            evidence = MarketplaceEvidence(
+                product_id=uuid.uuid4(),
+                marketplace="google.com",
+                evidence_type="ACTIVE_LISTING",
+                title="Test Product",
+                url="https://www.google.com/shopping/product/123",
+                source_method="DATAFORSEO",
+                verification_status="API_IMPORTED",
+                discovery_source="DATAFORSEO",
+                proof_level="SEARCH_RESULT_ONLY",
+            )
+            db.add(evidence)
+            db.commit()
+            db.refresh(evidence)
+
+            service = MarketplaceService(db)
+            result = service.verify_evidence(evidence.id, "USER_VERIFIED", proof={})
+            assert result.verification_status == "USER_VERIFIED"
+        finally:
+            db.delete(evidence)
+            db.commit()
+            db.close()
+
+    def test_dataforeseo_sold_listing_without_proof_blocked(self):
+        """
+        DATAFORSEO SOLD_LISTING without sold/completed proof must be rejected.
+        """
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.supplier import MarketplaceEvidence
+        from app.services.marketplace_service import MarketplaceService
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            evidence = MarketplaceEvidence(
+                product_id=uuid.uuid4(),
+                marketplace="google.com",
+                evidence_type="SOLD_LISTING",
+                title="Hinge Pin Remover on Google Shopping",
+                url="https://www.google.com/shopping/product/123",
+                source_method="DATAFORSEO",
+                verification_status="API_IMPORTED",
+                discovery_source="DATAFORSEO",
+                proof_level="SEARCH_RESULT_ONLY",
+            )
+            db.add(evidence)
+            db.commit()
+            db.refresh(evidence)
+
+            service = MarketplaceService(db)
+            try:
+                service.verify_evidence(evidence.id, "USER_VERIFIED", proof={})
+                assert False, "Expected ValueError for DATAFORSEO SOLD_LISTING without proof"
+            except ValueError as e:
+                assert "DATAFORSEO" in str(e)
+                assert "sold" in str(e).lower()
+        finally:
+            db.delete(evidence)
+            db.commit()
+            db.close()
+
+    def test_dataforeseo_sold_listing_with_manual_note_verified(self):
+        """
+        DATAFORSEO SOLD_LISTING with manual_verification_note can become USER_VERIFIED.
+        """
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.supplier import MarketplaceEvidence
+        from app.services.marketplace_service import MarketplaceService
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            evidence = MarketplaceEvidence(
+                product_id=uuid.uuid4(),
+                marketplace="google.com",
+                evidence_type="SOLD_LISTING",
+                title="Hinge Pin Remover",
+                url="https://www.google.com/shopping/product/123",
+                source_method="DATAFORSEO",
+                verification_status="API_IMPORTED",
+                discovery_source="DATAFORSEO",
+                proof_level="SEARCH_RESULT_ONLY",
+            )
+            db.add(evidence)
+            db.commit()
+            db.refresh(evidence)
+
+            service = MarketplaceService(db)
+            result = service.verify_evidence(
+                evidence.id,
+                "USER_VERIFIED",
+                proof={
+                    "manual_verification_note": "Google Shopping listing shows 'Sold 847 times' with completed transaction history visible"
+                },
+            )
+            assert result.verification_status == "USER_VERIFIED"
+        finally:
+            db.delete(evidence)
+            db.commit()
+            db.close()
+
+    def test_dataforeseo_sold_listing_with_proof_text_verified(self):
+        """
+        DATAFORSEO SOLD_LISTING with proof_text containing sold evidence can become USER_VERIFIED.
+        """
+        import os
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from app.models.supplier import MarketplaceEvidence
+        from app.services.marketplace_service import MarketplaceService
+
+        db_url = os.environ.get("DATABASE_URL", "postgresql://resellos:resellos@localhost:5432/resellos")
+        engine = create_engine(db_url)
+        Session = sessionmaker(bind=engine)
+        db = Session()
+
+        try:
+            evidence = MarketplaceEvidence(
+                product_id=uuid.uuid4(),
+                marketplace="google.com",
+                evidence_type="SOLD_LISTING",
+                title="Test",
+                url="https://google.com/shopping/product",
+                source_method="DATAFORSEO",
+                verification_status="API_IMPORTED",
+                discovery_source="DATAFORSEO",
+            )
+            db.add(evidence)
+            db.commit()
+            db.refresh(evidence)
+
+            service = MarketplaceService(db)
+            result = service.verify_evidence(
+                evidence.id,
+                "USER_VERIFIED",
+                proof={"proof_text": "Listing shows 500+ sold with price $18.99 and multiple completed transactions visible"},
+            )
+            assert result.verification_status == "USER_VERIFIED"
+        finally:
+            db.delete(evidence)
+            db.commit()
+            db.close()
