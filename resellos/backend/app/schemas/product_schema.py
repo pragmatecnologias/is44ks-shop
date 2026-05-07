@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 from typing import Optional, List
 from datetime import datetime
 import uuid
@@ -65,6 +65,25 @@ class SupplierCreate(BaseModel):
     is_primary: bool = False
 
 
+class SupplierEconomicsUpdate(BaseModel):
+    unit_cost: float = Field(..., gt=0)
+    currency: str = Field(default="USD", max_length=10)
+    moq: Optional[int] = Field(default=None, ge=1)
+    shipping_cost: Optional[float] = Field(default=None, ge=0)
+    estimated_landed_cost: float = Field(..., gt=0)
+    quantity_basis: Optional[str] = Field(default=None, max_length=200)
+    proof_text: Optional[str] = Field(default=None, max_length=2000)
+    manual_verification_note: Optional[str] = Field(default=None, max_length=2000)
+    confidence_level: str = Field(default="MEDIUM")
+    verified_by_source: str = Field(default="MANUAL_ENTRY")
+
+    @model_validator(mode="after")
+    def _require_proof_or_note(self) -> "SupplierEconomicsUpdate":
+        if not self.proof_text and not self.manual_verification_note:
+            raise ValueError("Either proof_text or manual_verification_note is required")
+        return self
+
+
 class SupplierResponse(BaseModel):
     id: uuid.UUID
     product_id: uuid.UUID
@@ -80,6 +99,14 @@ class SupplierResponse(BaseModel):
     notes: Optional[str] = None
     is_primary: bool
     verification_status: Optional[str] = None
+    currency: Optional[str] = None
+    quantity_basis: Optional[str] = None
+    proof_text: Optional[str] = None
+    manual_verification_note: Optional[str] = None
+    confidence_level: Optional[str] = None
+    economics_verified: bool = False
+    verified_at: Optional[datetime] = None
+    verified_by_source: Optional[str] = None
     created_at: datetime
 
     class Config:

@@ -1,10 +1,11 @@
+from datetime import datetime
 from sqlalchemy.orm import Session
 import uuid
 from typing import Optional
 
 from app.models.product import Product
 from app.models.supplier import ProductSource
-from app.schemas.product_schema import SupplierCreate
+from app.schemas.product_schema import SupplierCreate, SupplierEconomicsUpdate
 
 
 class SupplierService:
@@ -55,3 +56,24 @@ class SupplierService:
         self.db.delete(source)
         self.db.commit()
         return True
+
+    def update_economics(self, source_id: uuid.UUID, data: SupplierEconomicsUpdate) -> Optional[ProductSource]:
+        source = self.get_source(source_id)
+        if not source:
+            return None
+        source.unit_cost = data.unit_cost
+        source.currency = data.currency
+        source.moq = data.moq
+        source.domestic_shipping = data.shipping_cost
+        source.estimated_landed_cost = data.estimated_landed_cost
+        source.quantity_basis = data.quantity_basis
+        source.proof_text = data.proof_text
+        source.manual_verification_note = data.manual_verification_note
+        source.confidence_level = data.confidence_level
+        source.verified_by_source = data.verified_by_source
+        source.economics_verified = True
+        source.verified_at = datetime.utcnow()
+        source.verification_status = "USER_VERIFIED"
+        self.db.commit()
+        self.db.refresh(source)
+        return source

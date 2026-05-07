@@ -6,7 +6,7 @@ import uuid
 from app.db import get_db
 from app.schemas.product_schema import (
     ProductCreate, ProductResponse, ProductUpdate,
-    SupplierCreate, SupplierResponse,
+    SupplierCreate, SupplierResponse, SupplierEconomicsUpdate,
 )
 from app.services.product_service import ProductService
 from app.services.supplier_service import SupplierService
@@ -83,3 +83,17 @@ def delete_source(product_id: uuid.UUID, source_id: uuid.UUID, db: Session = Dep
     service = SupplierService(db)
     if not service.delete_source(source_id):
         raise HTTPException(status_code=404, detail="Source not found")
+
+
+@supplier_router.patch("/{source_id}/economics")
+def update_supplier_economics(
+    product_id: uuid.UUID,
+    source_id: uuid.UUID,
+    data: SupplierEconomicsUpdate,
+    db: Session = Depends(get_db),
+):
+    service = SupplierService(db)
+    result = service.update_economics(source_id, data)
+    if not result:
+        raise HTTPException(status_code=404, detail="Source not found")
+    return result
