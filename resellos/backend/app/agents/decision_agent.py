@@ -64,6 +64,8 @@ class DecisionAgent(BaseAgent):
         else:
             verified_sold_price_count = int(verified_sold_price_count_raw or 0)
         verified_sold_price_missing = bool(market.get("verified_sold_price_missing", verified_sold > 0 and verified_sold_price_count == 0))
+        verified_sold_price_required = 5
+        verified_sold_price_short = verified_sold > 0 and verified_sold_price_count < verified_sold_price_required
         verified_active = int(market.get("verified_active_listing_count", 0) or 0)
         test_data_count = int(market.get("test_data_evidence_count", 0) or 0)
         competition_level = str(competition.get("competition_level", "UNKNOWN")).upper()
@@ -87,6 +89,12 @@ class DecisionAgent(BaseAgent):
         verification_coverage = float(market.get("verification_coverage", 0) or 0)
         verified_evidence_count = int(market.get("verified_evidence_count", 0) or 0)
         unverified_evidence_count = int(market.get("unverified_evidence_count", 0) or 0)
+        market_warnings = list(market.get("warnings", []) or [])
+        runtime_warnings = list(llm_result.get("warnings", [])) + market_warnings
+        if unverified_evidence_count > 0:
+            runtime_warnings.append(f"{unverified_evidence_count} unverified evidence rows were ignored.")
+        if verification_coverage < 1.0:
+            runtime_warnings.append("Verification coverage is incomplete, but required verified gates are met.")
         has_supplier_cost = bool(supplier_summary.get("unit_cost") is not None or supplier_summary.get("estimated_landed_cost") is not None)
         supplier_verification_status = str(supplier_summary.get("verification_status") or "").upper()
         supplier_verified = supplier_verification_status == "USER_VERIFIED"
@@ -199,6 +207,14 @@ class DecisionAgent(BaseAgent):
                 required_before_buying.append("Verified sold evidence exists, but verified sold price data is missing.")
             else:
                 required_before_buying.append("Record a real sold or active market price.")
+        if verified_sold_price_short and not verified_sold_price_missing:
+            short_blocker = f"Verified sold prices below minimum ({verified_sold_price_count}/{verified_sold_price_required})."
+            missing_evidence.append(short_blocker)
+            if short_blocker not in hard_blockers:
+                hard_blockers.append(short_blocker)
+            required_before_buying.append(
+                f"Capture at least {verified_sold_price_required} verified sold prices from completed-sale proof."
+            )
         if not profit.get("scenarios"):
             missing_evidence.append("Profit scenarios missing")
             required_before_buying.append("Generate profit scenarios before buying.")
@@ -226,9 +242,9 @@ class DecisionAgent(BaseAgent):
             not blocked
             and risk_level != "BLOCKED"
             and verified_sold >= 5
+            and verified_sold_price_count >= verified_sold_price_required
             and verified_active >= 5
             and test_data_count == 0
-            and verification_coverage >= 0.5
             and has_supplier_cost
             and supplier_verified
             and not market_price_missing
@@ -326,20 +342,6 @@ class DecisionAgent(BaseAgent):
                 recommendation = "WATCHLIST"
             if research_verdict == "READY_FOR_SAMPLE":
                 research_verdict = "NEEDS_MORE_RESEARCH"
-        elif unverified_evidence_count > 0:
-            verification_blocker = "Evidence is not verified."
-            if verification_blocker not in hard_blockers:
-                hard_blockers.append(verification_blocker)
-            required_before_buying.append("Verify remaining unverified evidence for full confidence.")
-            if recommendation in {"BUY_SAMPLE", "BUY_SMALL_BATCH", "REORDER", "SCALE"}:
-                recommendation = "WATCHLIST"
-            if research_verdict == "READY_FOR_SAMPLE":
-                research_verdict = "NEEDS_MORE_RESEARCH"
-        elif verification_coverage < 1.0:
-            verification_blocker = "Verification coverage is incomplete."
-            if verification_blocker not in hard_blockers:
-                hard_blockers.append(verification_blocker)
-            required_before_buying.append("Increase verified evidence ratio.")
         else:
             verification_blocker = ""
 
@@ -525,7 +527,7 @@ class DecisionAgent(BaseAgent):
                 "required_sale_price_for_target_profit": required_sale_price_for_target_profit,
                 "required_before_buying": required_before_buying,
                 "blocked": blocked,
-                "warnings": llm_result.get("warnings", []),
+                "warnings": list(dict.fromkeys(runtime_warnings)),
                 "evidence_refs": llm_result.get("evidence_refs", []),
             }
         )

@@ -94,8 +94,10 @@ class AgentContractTests(unittest.TestCase):
                         "market_agent": {
                             "output_json": {
                                 "evidence_quality": "MEDIUM",
-                                "sold_listing_count": 4,
-                                "verified_sold_listing_count": 4,
+                                "sold_listing_count": 5,
+                                "verified_sold_listing_count": 5,
+                                "verified_sold_price_count": 5,
+                                "verified_sold_price_missing": False,
                                 "active_listing_count": 12,
                                 "verified_active_listing_count": 12,
                                 "insufficient_data": False,
@@ -122,12 +124,12 @@ class AgentContractTests(unittest.TestCase):
         result = asyncio.run(
             agent.run(
                 {
-                    "supplier_summary": {"unit_cost": 4.15, "estimated_landed_cost": 5.70, "international_shipping_estimate": 1.2},
+                    "supplier_summary": {"unit_cost": 4.15, "estimated_landed_cost": 5.70, "international_shipping_estimate": 1.2, "verification_status": "USER_VERIFIED"},
                     "agent_reports": {
                         "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
                         "market_agent": {
                             "output_json": {
-                                "evidence_quality": "MEDIUM",
+                                "evidence_quality": "LOW",
                                 "sold_listing_count": 5,
                                 "verified_sold_listing_count": 0,
                                 "active_listing_count": 12,
@@ -151,8 +153,93 @@ class AgentContractTests(unittest.TestCase):
         output = result["output_json"]
         self.assertEqual(output["buy_readiness_status"], "NOT_READY")
         self.assertEqual(output["research_verdict"], "NEEDS_MORE_RESEARCH")
-        self.assertIn("Evidence is not verified.", output["hard_blockers"])
-        self.assertEqual(output["main_blocker"], "Evidence is not verified.")
+        self.assertNotIn("Evidence is not verified.", output["hard_blockers"])
+        self.assertEqual(output["main_blocker"], "Market evidence is insufficient for a buy decision.")
+        self.assertIn("12 unverified evidence rows were ignored.", output["warnings"])
+        self.assertIn("Verification coverage is incomplete, but required verified gates are met.", output["warnings"])
+
+    def test_decision_agent_allows_ready_with_unverified_extras(self) -> None:
+        agent = DecisionAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "supplier_summary": {"unit_cost": 4.15, "estimated_landed_cost": 5.70, "international_shipping_estimate": 1.2, "verification_status": "USER_VERIFIED"},
+                    "agent_reports": {
+                        "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
+                        "market_agent": {
+                            "output_json": {
+                                "evidence_quality": "MEDIUM",
+                                "sold_listing_count": 25,
+                                "verified_sold_listing_count": 5,
+                                "verified_sold_price_count": 5,
+                                "verified_sold_price_missing": False,
+                                "active_listing_count": 25,
+                                "verified_active_listing_count": 5,
+                                "verified_evidence_count": 10,
+                                "unverified_evidence_count": 20,
+                                "test_data_evidence_count": 0,
+                                "verification_coverage": 0.33,
+                                "insufficient_data": False,
+                                "market_price_missing": False,
+                                "median_sold_price": 19.99,
+                                "median_active_price": 21.99,
+                                "required_next_evidence": [],
+                            }
+                        },
+                        "profit_agent": {"output_json": {"estimated_net_profit": 8.0, "current_net_profit": 8.0, "target_net_profit_threshold": 8.0, "profit_gap_to_buy_sample": 0.0, "scenarios": [{"net_profit": 8.0, "margin_percent": 31.0}], "target_sale_price": 19.99, "minimum_recommended_price": 20.99}},
+                        "competition_agent": {"output_json": {"competition_level": "LOW", "listing_gap_score": 72, "can_compete": True, "competitor_count": 3, "verified_competitor_count": 3}},
+                    }
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertEqual(output["buy_readiness_status"], "READY")
+        self.assertEqual(output["research_verdict"], "READY_FOR_SAMPLE")
+        self.assertEqual(output["recommendation"], "BUY_SAMPLE")
+        self.assertEqual(output["main_blocker"], "None")
+        self.assertIn("20 unverified evidence rows were ignored.", output["warnings"])
+        self.assertIn("Verification coverage is incomplete, but required verified gates are met.", output["warnings"])
+
+    def test_decision_agent_blocks_test_data(self) -> None:
+        agent = DecisionAgent(self.llm)
+        result = asyncio.run(
+            agent.run(
+                {
+                    "supplier_summary": {"unit_cost": 4.15, "estimated_landed_cost": 5.70, "international_shipping_estimate": 1.2, "verification_status": "USER_VERIFIED"},
+                    "agent_reports": {
+                        "risk_agent": {"output_json": {"risk_level": "LOW", "blocked": False}},
+                        "market_agent": {
+                            "output_json": {
+                                "evidence_quality": "MEDIUM",
+                                "sold_listing_count": 5,
+                                "verified_sold_listing_count": 5,
+                                "verified_sold_price_count": 5,
+                                "verified_sold_price_missing": False,
+                                "active_listing_count": 5,
+                                "verified_active_listing_count": 5,
+                                "verified_evidence_count": 10,
+                                "unverified_evidence_count": 0,
+                                "test_data_evidence_count": 1,
+                                "verification_coverage": 1.0,
+                                "insufficient_data": False,
+                                "market_price_missing": False,
+                                "median_sold_price": 18.99,
+                                "median_active_price": 19.99,
+                                "required_next_evidence": [],
+                            }
+                        },
+                        "profit_agent": {"output_json": {"estimated_net_profit": 8.0, "current_net_profit": 8.0, "target_net_profit_threshold": 8.0, "profit_gap_to_buy_sample": 0.0, "scenarios": [{"net_profit": 8.0, "margin_percent": 31.0}], "target_sale_price": 18.99, "minimum_recommended_price": 20.99}},
+                        "competition_agent": {"output_json": {"competition_level": "LOW", "listing_gap_score": 72, "can_compete": True, "competitor_count": 3, "verified_competitor_count": 3}},
+                    }
+                }
+            )
+        )
+
+        output = result["output_json"]
+        self.assertEqual(output["buy_readiness_status"], "NOT_READY")
+        self.assertIn("test/synthetic data", " ".join(output["hard_blockers"]))
+        self.assertEqual(output["main_blocker"], "1 evidence row(s) are test/synthetic data.")
 
     def test_decision_agent_blocks_unverified_supplier_cost(self) -> None:
         agent = DecisionAgent(self.llm)

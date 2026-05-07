@@ -121,6 +121,11 @@ class MarketAgent(BaseAgent):
         supporting_evidence_count = len(supporting_rows)
         verification_coverage = (verified_evidence_count / len(evidence_rows)) if evidence_rows else 0.0
         insufficient_data = verified_sold_count < 5 or market_price_missing
+        warnings = list(result.get("warnings", []))
+        if unverified_evidence_count > 0:
+            warnings.append(f"{unverified_evidence_count} unverified evidence rows were ignored.")
+        if verification_coverage < 1.0:
+            warnings.append("Verification coverage is incomplete, but required verified gates are met.")
 
         if verified_sold_count >= 10 and verified_active_count >= 10 and median_sold_price is not None:
             evidence_quality = "HIGH"
@@ -153,8 +158,6 @@ class MarketAgent(BaseAgent):
             required_next_evidence.append("Add screenshots or manual notes for support.")
         if test_data_count > 0:
             required_next_evidence.append(f"Replace {test_data_count} test/synthetic evidence items with real verified data.")
-        if unverified_evidence_count > 0:
-            required_next_evidence.append(f"Verify {unverified_evidence_count} unverified evidence items.")
 
         demand_evidence_quality = "HIGH" if verified_sold_count >= 10 else "MEDIUM" if verified_sold_count >= 5 else "LOW"
         market_presence_quality = "HIGH" if verified_active_count >= 10 else "MEDIUM" if verified_active_count >= 5 else "LOW"
@@ -220,7 +223,7 @@ class MarketAgent(BaseAgent):
                 "required_next_evidence": required_next_evidence,
                 "summary": result.get("summary", f"Marketplace evidence analyzed from {len(marketplace_coverage)} marketplaces."),
                 "confidence": "LOW" if insufficient_data else "MEDIUM",
-                "warnings": list(result.get("warnings", [])) + (["Verified sold evidence exists, but verified sold price data is missing."] if verified_sold_price_missing else []),
+                "warnings": warnings + (["Verified sold evidence exists, but verified sold price data is missing."] if verified_sold_price_missing else []),
                 "evidence_refs": result.get("evidence_refs", []),
             }
         )
