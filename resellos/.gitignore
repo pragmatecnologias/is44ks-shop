@@ -27,3 +27,13 @@ next-env.d.ts
 
 # Local Codex workspace notes
 CLAUDE.local.md
+
+# Local DB files
+*.db
+*.sqlite
+*.sqlite3
+*.local.db
+
+# Node modules (mcp-server)
+mcp-server/node_modules/
+mcp-server/dist/

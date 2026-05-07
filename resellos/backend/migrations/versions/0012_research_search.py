@@ -29,6 +29,7 @@ def upgrade() -> None:
         sa.Column("intent", sa.String(50), nullable=False),
         sa.Column("title", sa.Text, nullable=True),
         sa.Column("url", sa.Text, nullable=False),
+        sa.Column("normalized_url", sa.Text, nullable=True),
         sa.Column("snippet", sa.Text, nullable=True),
         sa.Column("source_domain", sa.String(255), nullable=True),
         sa.Column("rank", sa.Integer, nullable=True),
@@ -47,6 +48,7 @@ def upgrade() -> None:
     )
 
     op.create_index("ix_research_search_url", "research_search_results", ["url"])
+    op.create_index("ix_research_search_normalized_url", "research_search_results", ["normalized_url"])
     op.create_index("ix_research_search_query", "research_search_results", ["query"])
     op.create_index("ix_research_search_provider", "research_search_results", ["provider"])
     op.create_index("ix_research_search_intent", "research_search_results", ["intent"])
@@ -66,5 +68,6 @@ def downgrade() -> None:
     op.drop_index("ix_research_search_intent", table_name="research_search_results")
     op.drop_index("ix_research_search_provider", table_name="research_search_results")
     op.drop_index("ix_research_search_query", table_name="research_search_results")
+    op.drop_index("ix_research_search_normalized_url", table_name="research_search_results")
     op.drop_index("ix_research_search_url", table_name="research_search_results")
     op.drop_table("research_search_results")

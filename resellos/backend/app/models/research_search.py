@@ -19,6 +19,7 @@ class ResearchSearchResult(Base):
     intent = Column(String(50), nullable=False)
     title = Column(Text, nullable=True)
     url = Column(Text, nullable=False)
+    normalized_url = Column(Text, nullable=True)
     snippet = Column(Text, nullable=True)
     source_domain = Column(String(255), nullable=True)
     rank = Column(Integer, nullable=True)

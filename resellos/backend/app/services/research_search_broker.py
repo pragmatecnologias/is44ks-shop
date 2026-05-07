@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import json
 import logging
-import re
+import urllib.parse
 import uuid
 from datetime import datetime
 from typing import Any
@@ -13,11 +12,9 @@ from sqlalchemy.orm import Session
 from app.config import settings
 from app.models.research_search import ResearchSearchResult
 from app.schemas.research_search_schema import (
-    ConversionStatus,
     ConvertSearchResultToCandidateRequest,
     ConvertSearchResultToCandidateResponse,
     ProviderStatus,
-    ProviderStatusCode,
     ResearchSearchRequest,
     ResearchSearchResponse,
     ResearchSearchResultResponse,
@@ -27,22 +24,43 @@ from app.schemas.research_search_schema import (
 
 logger = logging.getLogger(__name__)
 
-# URL normalization: strip common tracking params
-_TRACKING_PARAMS = re.compile(
-    r"(utm_source|utm_medium|utm_campaign|utm_content|utm_term|fbclid|gclid|msclkid|"
-    r"ref|affiliate|partner|source|campaign|adid|creative_id|placement|"
-    r"matchtype|device|cadillac_id)="
-)
-_FRAGMENT_RE = re.compile(r"#.*$")
+# Keys to strip from URL query strings (tracking params)
+_TRACKING_QUERY_KEYS = frozenset({
+    "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term",
+    "fbclid", "gclid", "msclkid", "ref", "affiliate", "partner", "source",
+    "campaign", "adid", "creative_id", "placement", "matchtype", "device",
+    "cadillac_id",
+})
 
 
 def _normalize_url(raw_url: str) -> str:
+    """
+    Normalize URL for deduplication:
+    - Strip scheme and leading www
+    - Strip tracking query params (utm_*, fbclid, etc.)
+    - Strip fragment
+    - Lowercase
+    - Strip trailing slash
+    """
     if not raw_url:
         return ""
-    url = raw_url.strip().lower()
-    url = _FRAGMENT_RE.sub("", url)
-    url = re.sub(r"https?://(www\.)?", "", url)
-    url = _TRACKING_PARAMS.sub("", url)
+    # Strip fragment
+    url = raw_url.split("#")[0]
+    # Strip scheme and www
+    url = url.lower()
+    url = url.replace("https://", "").replace("http://", "")
+    url = url.replace("www.", "")
+    # Parse query string and filter tracking params
+    if "?" in url:
+        path_part, query_part = url.split("?", 1)
+        parsed_qs = urllib.parse.parse_qsl(query_part, keep_blank_values=True)
+        cleaned_qs = [(k, v) for k, v in parsed_qs if k not in _TRACKING_QUERY_KEYS]
+        query_part = urllib.parse.urlencode(cleaned_qs)
+        if query_part:
+            url = f"{path_part}?{query_part}"
+        else:
+            url = path_part
+    # Strip trailing slash
     url = url.rstrip("/")
     return url
 
@@ -80,11 +98,14 @@ class NormalizedSearchResult:
         self.normalized_url = _normalize_url(url)
 
 
+# Types that can be converted to actual evidence candidates
+SUPPORTED_CANDIDATE_TYPES = {"SOLD_LISTING", "ACTIVE_LISTING", "SUPPLIER_SOURCE", "COMPETITOR_LISTING"}
+
+
 class ResearchSearchBroker:
     def __init__(self, db: Session):
         self.db = db
         self.request_timeout = getattr(settings, "LOCAL_SEARCH_REQUEST_TIMEOUT_SECONDS", 15)
-        self.max_results_default = getattr(settings, "LOCAL_SEARCH_DEFAULT_MAX_RESULTS", 10)
         self.searxng_base = getattr(settings, "SEARXNG_BASE_URL", "http://localhost:8888")
         self.openserp_base = getattr(settings, "OPENSERP_BASE_URL", "http://localhost:7000")
         self.enable_searxng = getattr(settings, "ENABLE_SEARXNG_PROVIDER", True)
@@ -104,7 +125,11 @@ class ResearchSearchBroker:
             all_results.extend(results)
             provider_statuses.append(status)
 
+        raw_count = len(all_results)
         deduped = self._dedupe_results(all_results)
+        unique_count = len(deduped)
+        deduped_count = raw_count - unique_count
+
         stored = 0
         if request.store_results:
             stored = self._store_results(deduped, request)
@@ -136,9 +161,9 @@ class ResearchSearchBroker:
             intent=request.intent,
             requested_providers=request.providers,
             provider_statuses=provider_statuses,
-            result_count=len(deduped),
+            result_count=unique_count,
             stored_count=stored,
-            deduped_count=len(deduped) - stored if stored else 0,
+            deduped_count=deduped_count,
             results=response_results,
         )
 
@@ -165,9 +190,11 @@ class ResearchSearchBroker:
 
     def search_searxng(self, query: str, max_results: int) -> tuple[list[NormalizedSearchResult], ProviderStatus]:
         try:
-            url = f"{self.searxng_base}/search?q={query}&format=json"
             with httpx.Client(timeout=self.request_timeout) as client:
-                response = client.get(url)
+                response = client.get(
+                    f"{self.searxng_base}/search",
+                    params={"q": query, "format": "json"},
+                )
                 response.raise_for_status()
                 data = response.json()
 
@@ -194,9 +221,11 @@ class ResearchSearchBroker:
 
     def search_openserp(self, query: str, max_results: int) -> tuple[list[NormalizedSearchResult], ProviderStatus]:
         try:
-            url = f"{self.openserp_base}/search?q={query}&limit={max_results}"
             with httpx.Client(timeout=self.request_timeout) as client:
-                response = client.get(url)
+                response = client.get(
+                    f"{self.openserp_base}/search",
+                    params={"q": query, "limit": max_results},
+                )
                 response.raise_for_status()
                 data = response.json()
 
@@ -226,12 +255,14 @@ class ResearchSearchBroker:
         return [], ProviderStatus(provider="PLAYWRIGHT", status="DISABLED", message="Playwright capture not enabled", result_count=0)
 
     def _dedupe_results(self, results: list[NormalizedSearchResult]) -> list[NormalizedSearchResult]:
+        """Deduplicate by normalized_url, keeping first occurrence's richer data."""
         seen: dict[str, NormalizedSearchResult] = {}
         for r in results:
             key = r.normalized_url
             if key not in seen:
                 seen[key] = r
             else:
+                # Keep richer data from first occurrence
                 if r.title and not seen[key].title:
                     seen[key].title = r.title
                 if r.snippet and not seen[key].snippet:
@@ -245,8 +276,9 @@ class ResearchSearchBroker:
     ) -> int:
         stored = 0
         for r in results:
+            # Use normalized_url for dedup check — same URL with different tracking params = duplicate
             exists = self.db.query(ResearchSearchResult).filter(
-                ResearchSearchResult.url == r.url,
+                ResearchSearchResult.normalized_url == r.normalized_url,
                 ResearchSearchResult.product_id == request.product_id,
                 ResearchSearchResult.idea_id == request.idea_id,
                 ResearchSearchResult.campaign_id == request.campaign_id,
@@ -261,6 +293,7 @@ class ResearchSearchBroker:
                 intent=request.intent,
                 title=r.title,
                 url=r.url,
+                normalized_url=r.normalized_url,
                 snippet=r.snippet,
                 source_domain=_extract_domain(r.url),
                 rank=r.rank,
@@ -316,12 +349,37 @@ class ResearchSearchBroker:
         return record
 
     def convert_to_candidate(self, result_id: uuid.UUID, request: ConvertSearchResultToCandidateRequest) -> ConvertSearchResultToCandidateResponse | None:
-        from app.models.external_research import EvidenceCandidate
+        """
+        Convert a search result to an evidence candidate.
+
+        Only SOLD_LISTING, ACTIVE_LISTING, SUPPLIER_SOURCE, COMPETITOR_LISTING are supported.
+        COMPLAINT_NOTE and KEYWORD_DEMAND_NOTE are rejected with a clear error.
+        Converted candidates are always PENDING — never USER_VERIFIED.
+        """
+        from fastapi import HTTPException
 
         record = self.get_result(result_id)
         if not record:
             return None
 
+        # Strict conversion: reject unsupported types explicitly
+        if request.candidate_type not in SUPPORTED_CANDIDATE_TYPES:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Candidate type '{request.candidate_type}' is not supported. "
+                        f"Supported types: {sorted(SUPPORTED_CANDIDATE_TYPES)}. "
+                        f"COMPLAINT_NOTE and KEYWORD_DEMAND_NOTE require a different storage path.",
+            )
+
+        from app.models.external_research import EvidenceCandidate
+
+        # Map to EvidenceCandidate candidate_type — only these four are valid here
+        candidate_type_map: dict[str, str] = {
+            "SOLD_LISTING": "MARKETPLACE_EVIDENCE",
+            "ACTIVE_LISTING": "MARKETPLACE_EVIDENCE",
+            "SUPPLIER_SOURCE": "SUPPLIER_SOURCE",
+            "COMPETITOR_LISTING": "COMPETITOR_LISTING",
+        }
         evidence_type_map: dict[str, str] = {
             "SOLD_LISTING": "SOLD_LISTING",
             "ACTIVE_LISTING": "ACTIVE_LISTING",
@@ -334,9 +392,9 @@ class ResearchSearchBroker:
             product_id=request.product_id or record.product_id,
             campaign_id=request.campaign_id or record.campaign_id,
             source="MANUAL_CAPTURE",
-            candidate_type=evidence_type_map.get(request.candidate_type, "MARKETPLACE_EVIDENCE"),
+            candidate_type=candidate_type_map[request.candidate_type],
             marketplace=_extract_domain(record.url) or "Unknown",
-            evidence_type=request.candidate_type.replace("_LISTING", "_LISTING").replace("_SOURCE", "_SOURCE"),
+            evidence_type=evidence_type_map[request.candidate_type],
             title=request.title_override or record.title,
             url=record.url,
             price=request.price,
@@ -351,6 +409,7 @@ class ResearchSearchBroker:
                 "source_domain": record.source_domain,
                 "created_from_local_search": True,
                 "requires_manual_verification": True,
+                "local_search_intent": record.intent,
             },
         )
         self.db.add(candidate)

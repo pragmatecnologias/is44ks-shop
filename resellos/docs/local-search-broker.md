@@ -218,7 +218,95 @@ Reject a search result so it is not converted.
 
 ---
 
-## Limitations
+## Smoke Test Commands
+
+### Prerequisites
+
+Start SearXNG and OpenSERP locally:
+```bash
+docker run -d --name searxng -p 8888:8080 searxng/searxng
+docker run -p 7000:7000 karust/openserp serve -a 0.0.0.0
+```
+
+Rebuild and start backend with fresh DB:
+```bash
+docker compose build backend
+docker compose up -d backend
+docker compose exec db psql -U postgres -d postgres -c "DROP DATABASE IF EXISTS resellos; CREATE DATABASE resellos;"
+docker compose exec backend alembic upgrade head
+```
+
+### Smoke Test Sequence
+
+**1. Health check:**
+```bash
+curl -s http://localhost:8000/health
+```
+
+**2. Run a search (expected: partial results, providers may be online or offline):**
+```bash
+curl -s -X POST http://localhost:8000/api/research/search \
+  -H "Content-Type: application/json" \
+  -d '{"query":"door hinge pin removal tool","intent":"SOLD_EVIDENCE","max_results":5}' | \
+  python3 -m json.tool
+```
+
+Expected: `"result_count": N` where N ≥ 0, `"provider_statuses"` shows each provider as OK/ERROR/TIMEOUT.
+
+**3. List stored results:**
+```bash
+curl -s "http://localhost:8000/api/research/search-results?intent=SOLD_EVIDENCE&limit=5" | \
+  python3 -m json.tool
+```
+
+**4. Convert one result to candidate (if results exist):**
+
+Get the first result ID from step 3, then:
+```bash
+curl -s -X POST "http://localhost:8000/api/research/search-results/{result_id}/candidate" \
+  -H "Content-Type: application/json" \
+  -d '{"candidate_type":"SOLD_LISTING","product_id":"00000000-0000-0000-0000-000000000001"}'
+```
+
+Verify: `"verification_status": "PENDING"`, `"status": "PENDING"`.
+
+**5. Confirm candidate is PENDING (not verified):**
+```bash
+curl -s "http://localhost:8000/api/evidence-candidates?review_status=PENDING" | \
+  python3 -m json.tool
+```
+
+**6. Reject unsupported types (must return 400):**
+```bash
+# COMPLAINT_NOTE not supported — must be rejected
+curl -s -X POST "http://localhost:8000/api/research/search-results/{result_id}/candidate" \
+  -H "Content-Type: application/json" \
+  -d '{"candidate_type":"COMPLAINT_NOTE"}' | \
+  python3 -m json.tool
+# Expected: {"detail": "Candidate type 'COMPLAINT_NOTE' is not supported..."}
+
+# KEYWORD_DEMAND_NOTE not supported — must be rejected
+curl -s -X POST "http://localhost:8000/api/research/search-results/{result_id}/candidate" \
+  -H "Content-Type: application/json" \
+  -d '{"candidate_type":"KEYWORD_DEMAND_NOTE"}' | \
+  python3 -m json.tool
+# Expected: {"detail": "Candidate type 'KEYWORD_DEMAND_NOTE' is not supported..."}
+```
+
+**7. Reject a result:**
+```bash
+curl -s -X PATCH "http://localhost:8000/api/research/search-results/{result_id}/reject" \
+  -H "Content-Type: application/json" \
+  -d '{"reject_reason":"Not relevant to product"}' | \
+  python3 -m json.tool
+# Expected: {"id":"...","conversion_status":"REJECTED","reject_reason":"Not relevant to product"}
+```
+
+### Testing Without Running Providers
+
+SearXNG and OpenSERP are not required to be running for the smoke test to work. The API returns partial results from available providers. Providers that are offline return ERROR status in `provider_statuses[]`. The route still returns 200 and stores whatever was retrieved.
+
+To simulate a result without providers, directly insert a `ResearchSearchResult` row in the database, then convert it.
 
 - Local search may still be blocked by upstream search engines (Google, Bing) that SearXNG proxies
 - Local search results are **not** sold-proof verification
