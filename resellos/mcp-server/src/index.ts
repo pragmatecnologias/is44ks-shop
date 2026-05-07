@@ -10,10 +10,11 @@ import { createDiscoveryCampaign, listDiscoveryCampaigns, getDiscoveryCampaign, 
 import { createShopConcept, listShopConcepts, getShopConcept, updateShopConcept, createProductCollection, updateProductCollection, addPortfolioItem, updatePortfolioItem, getShopPortfolioReport } from './tools/portfolioTools.js';
 import { runDataForSeoGoogleShopping, pollExternalResearchJob } from './tools/externalResearchTools.js';
 import { listEvidenceCandidates, approveCandidate, rejectCandidate, captureManualEvidence } from './tools/candidateTools.js';
+import { searchWebLocal, listResearchSearchResults, convertSearchResultToCandidate, rejectSearchResult } from './tools/researchSearchTools.js';
 import { addKeywordDemand, listKeywordDemand, verifyKeywordDemand, addTrendResearch, listTrendResearch, verifyTrendResearch, getProductValidationChecklist, runProductValidation } from './tools/validationTools.js';
 import { getProductCockpit, runProductResearch, getNextResearchAction, generateProductResearchReport } from './tools/productTools.js';
 import { verifyMarketplaceEvidence, verifySupplierSource, verifyCompetitorListing } from './tools/verificationTools.js';
-import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema, getCampaignNextTaskSchema, completeCampaignTaskSchema, blockCampaignTaskSchema, addKeywordDemandSchema, listKeywordDemandSchema, verifyKeywordDemandSchema, addTrendResearchSchema, listTrendResearchSchema, verifyTrendResearchSchema, productValidationChecklistSchema, runProductValidationSchema, shopConceptSchema, getShopConceptSchema, updateShopConceptSchema, productCollectionSchema, updateProductCollectionSchema, portfolioItemSchema, updatePortfolioItemSchema, shopPortfolioReportSchema } from './toolRegistry.js';
+import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema, getCampaignNextTaskSchema, completeCampaignTaskSchema, blockCampaignTaskSchema, addKeywordDemandSchema, listKeywordDemandSchema, verifyKeywordDemandSchema, addTrendResearchSchema, listTrendResearchSchema, verifyTrendResearchSchema, productValidationChecklistSchema, runProductValidationSchema, shopConceptSchema, getShopConceptSchema, updateShopConceptSchema, productCollectionSchema, updateProductCollectionSchema, portfolioItemSchema, updatePortfolioItemSchema, shopPortfolioReportSchema, localSearchSchema, listResearchSearchResultsSchema, convertSearchResultSchema, rejectSearchResultSchema } from './toolRegistry.js';
 import { guardWriteEnabled } from './guards/approvalGuards.js';
 import type { ToolResult } from './types.js';
 import type { z } from 'zod';
@@ -241,6 +242,22 @@ async function invokeTool(name: string, args: Record<string, unknown>, config: A
     case 'resellos_block_campaign_task': {
       const input = blockCampaignTaskSchema.parse(args);
       return blockCampaignTask(client, input, config);
+    }
+    case 'resellos_search_web_local': {
+      const input = localSearchSchema.parse(args);
+      return searchWebLocal(client, input as any, config);
+    }
+    case 'resellos_list_research_search_results': {
+      const input = listResearchSearchResultsSchema.parse(args);
+      return listResearchSearchResults(client, input as any, config);
+    }
+    case 'resellos_convert_search_result_to_candidate': {
+      const input = convertSearchResultSchema.parse(args);
+      return convertSearchResultToCandidate(client, input as any, config);
+    }
+    case 'resellos_reject_search_result': {
+      const input = rejectSearchResultSchema.parse(args);
+      return rejectSearchResult(client, input as any, config);
     }
     default:
       throw new Error(`Unknown tool: ${name}`);

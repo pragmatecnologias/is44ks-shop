@@ -17,6 +17,7 @@ from app.routes.capture import router as capture_router
 from app.routes.listings import router as listings_router
 from app.routes.inventory import router as inventory_router
 from app.routes.sales import router as sales_router
+from app.routes.research_search import router as research_search_router
 
 __all__ = [
     "products_router",
@@ -37,4 +38,5 @@ __all__ = [
     "listings_router",
     "inventory_router",
     "sales_router",
+    "research_search_router",
 ]

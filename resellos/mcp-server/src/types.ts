@@ -298,3 +298,40 @@ export interface VerifyInput {
   verification_notes?: string | null;
   confirm?: boolean | null;
 }
+
+// Local Search Broker types
+export interface LocalSearchInput {
+  query: string;
+  intent: 'SOLD_EVIDENCE' | 'ACTIVE_LISTING' | 'SUPPLIER' | 'COMPETITOR' | 'COMPLAINT_RESEARCH' | 'KEYWORD_DEMAND' | 'GENERAL_RESEARCH';
+  providers?: ('SEARXNG' | 'OPENSERP')[];
+  max_results?: number;
+  product_id?: string | null;
+  idea_id?: string | null;
+  campaign_id?: string | null;
+}
+
+export interface ListResearchSearchResultsInput {
+  product_id?: string | null;
+  idea_id?: string | null;
+  campaign_id?: string | null;
+  intent?: string | null;
+  provider?: string | null;
+  limit?: number;
+  offset?: number;
+}
+
+export interface ConvertSearchResultInput {
+  search_result_id: string;
+  candidate_type: 'SOLD_LISTING' | 'ACTIVE_LISTING' | 'SUPPLIER_SOURCE' | 'COMPETITOR_LISTING' | 'COMPLAINT_NOTE' | 'KEYWORD_DEMAND_NOTE';
+  product_id?: string | null;
+  idea_id?: string | null;
+  campaign_id?: string | null;
+  notes?: string | null;
+  price?: number | null;
+  title_override?: string | null;
+}
+
+export interface RejectSearchResultInput {
+  search_result_id: string;
+  reject_reason: string;
+}

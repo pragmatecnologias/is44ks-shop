@@ -46,6 +46,16 @@ class Settings(BaseSettings):
     VALIDATION_REQUIRE_TREND_FOR_READY_SAMPLE: bool = False
     VALIDATION_REQUIRE_KEYWORD_DEMAND_FOR_READY_SAMPLE: bool = False
     ALLOWED_ORIGINS: str = "http://localhost:3000"
+    # Local Search Broker
+    ENABLE_LOCAL_SEARCH_BROKER: bool = True
+    SEARXNG_BASE_URL: str = "http://localhost:8888"
+    OPENSERP_BASE_URL: str = "http://localhost:7000"
+    ENABLE_SEARXNG_PROVIDER: bool = True
+    ENABLE_OPENSERP_PROVIDER: bool = True
+    ENABLE_PLAYWRIGHT_CAPTURE: bool = False
+    LOCAL_SEARCH_DEFAULT_MAX_RESULTS: int = 10
+    LOCAL_SEARCH_REQUEST_TIMEOUT_SECONDS: int = 15
+    LOCAL_SEARCH_STORE_RAW_JSON: bool = True
 
     class Config:
         env_file = ".env"

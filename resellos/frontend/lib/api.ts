@@ -1015,3 +1015,123 @@ export async function cleanupEvidence(data: {
     body: JSON.stringify(data),
   });
 }
+
+// --- Local Search Broker ---
+
+export type SearchProvider = 'SEARXNG' | 'OPENSERP' | 'PLAYWRIGHT' | 'DATAFORSEO' | 'MANUAL';
+export type SearchIntent = 'SOLD_EVIDENCE' | 'ACTIVE_LISTING' | 'SUPPLIER' | 'COMPETITOR' | 'COMPLAINT_RESEARCH' | 'KEYWORD_DEMAND' | 'GENERAL_RESEARCH';
+export type ConversionStatus = 'NOT_CONVERTED' | 'CONVERTED_TO_CANDIDATE' | 'REJECTED';
+export type ProviderStatusCode = 'OK' | 'ERROR' | 'DISABLED' | 'TIMEOUT';
+export type CandidateType = 'SOLD_LISTING' | 'ACTIVE_LISTING' | 'SUPPLIER_SOURCE' | 'COMPETITOR_LISTING' | 'COMPLAINT_NOTE' | 'KEYWORD_DEMAND_NOTE';
+
+export interface ProviderStatus {
+  provider: SearchProvider;
+  status: ProviderStatusCode;
+  message?: string;
+  result_count: number;
+}
+
+export interface ResearchSearchResult {
+  id: string;
+  query: string;
+  provider: SearchProvider;
+  intent: SearchIntent;
+  title?: string;
+  url: string;
+  snippet?: string;
+  source_domain?: string;
+  rank?: number;
+  price_text?: string;
+  currency?: string;
+  fetched_at?: string;
+  product_id?: string;
+  idea_id?: string;
+  campaign_id?: string;
+  conversion_status: ConversionStatus;
+  converted_candidate_id?: string;
+}
+
+export interface ResearchSearchResponse {
+  query: string;
+  intent: SearchIntent;
+  requested_providers: SearchProvider[];
+  provider_statuses: ProviderStatus[];
+  result_count: number;
+  stored_count: number;
+  deduped_count: number;
+  results: ResearchSearchResult[];
+}
+
+export interface ResearchSearchRequest {
+  query: string;
+  intent: SearchIntent;
+  providers?: SearchProvider[];
+  max_results?: number;
+  product_id?: string;
+  idea_id?: string;
+  campaign_id?: string;
+  store_results?: boolean;
+}
+
+export interface ConvertSearchResultRequest {
+  search_result_id: string;
+  candidate_type: CandidateType;
+  product_id?: string;
+  idea_id?: string;
+  campaign_id?: string;
+  notes?: string;
+  price?: number;
+  title_override?: string;
+}
+
+export interface ConvertSearchResultResponse {
+  search_result_id: string;
+  candidate_id: string;
+  verification_status: string;
+  status: string;
+}
+
+export async function searchResearch(request: ResearchSearchRequest): Promise<ResearchSearchResponse> {
+  return requestJson<ResearchSearchResponse>('/api/research/search', {
+    method: 'POST',
+    body: JSON.stringify(request),
+  });
+}
+
+export async function listResearchSearchResults(filters?: {
+  product_id?: string;
+  idea_id?: string;
+  campaign_id?: string;
+  intent?: string;
+  provider?: string;
+  limit?: number;
+  offset?: number;
+}): Promise<ResearchSearchResult[]> {
+  const params: Record<string, string | undefined> = {};
+  if (filters?.product_id) params.product_id = filters.product_id;
+  if (filters?.idea_id) params.idea_id = filters.idea_id;
+  if (filters?.campaign_id) params.campaign_id = filters.campaign_id;
+  if (filters?.intent) params.intent = filters.intent;
+  if (filters?.provider) params.provider = filters.provider;
+  if (filters?.limit !== undefined) params.limit = String(filters.limit);
+  if (filters?.offset !== undefined) params.offset = String(filters.offset);
+  const query = asQuery(params);
+  return getMaybe(`/api/research/search-results${query ? `?${query}` : ''}`, []);
+}
+
+export async function convertSearchResultToCandidate(request: ConvertSearchResultRequest): Promise<ConvertSearchResultResponse> {
+  return requestJson<ConvertSearchResultResponse>(
+    `/api/research/search-results/${request.search_result_id}/candidate`,
+    { method: 'POST', body: JSON.stringify(request) },
+  );
+}
+
+export async function rejectResearchSearchResult(
+  searchResultId: string,
+  rejectReason: string,
+): Promise<{ id: string; conversion_status: 'REJECTED'; reject_reason: string }> {
+  return requestJson(`/api/research/search-results/${searchResultId}/reject`, {
+    method: 'PATCH',
+    body: JSON.stringify({ reject_reason: rejectReason }),
+  });
+}

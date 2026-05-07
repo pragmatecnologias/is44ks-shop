@@ -45,7 +45,11 @@ export type ToolName =
   | 'resellos_run_product_validation'
   | 'resellos_get_campaign_next_task'
   | 'resellos_complete_campaign_task'
-  | 'resellos_block_campaign_task';
+  | 'resellos_block_campaign_task'
+  | 'resellos_search_web_local'
+  | 'resellos_list_research_search_results'
+  | 'resellos_convert_search_result_to_candidate'
+  | 'resellos_reject_search_result';
 
 export interface ToolDefinition {
   name: ToolName;
@@ -399,6 +403,44 @@ export const blockCampaignTaskSchema = z.object({
   error_message: z.string().min(1),
 });
 
+// --- Local Search Broker Schemas ---
+
+export const localSearchSchema = z.object({
+  query: z.string().min(1),
+  intent: z.enum(['SOLD_EVIDENCE', 'ACTIVE_LISTING', 'SUPPLIER', 'COMPETITOR', 'COMPLAINT_RESEARCH', 'KEYWORD_DEMAND', 'GENERAL_RESEARCH']),
+  providers: z.array(z.enum(['SEARXNG', 'OPENSERP'])).default(['SEARXNG', 'OPENSERP']),
+  max_results: z.number().int().positive().max(25).default(10),
+  product_id: z.string().uuid().optional(),
+  idea_id: z.string().uuid().optional(),
+  campaign_id: z.string().uuid().optional(),
+});
+
+export const listResearchSearchResultsSchema = z.object({
+  product_id: z.string().uuid().optional(),
+  idea_id: z.string().uuid().optional(),
+  campaign_id: z.string().uuid().optional(),
+  intent: z.string().optional(),
+  provider: z.string().optional(),
+  limit: z.number().int().positive().max(200).default(50),
+  offset: z.number().int().min(0).default(0),
+});
+
+export const convertSearchResultSchema = z.object({
+  search_result_id: z.string().uuid(),
+  candidate_type: z.enum(['SOLD_LISTING', 'ACTIVE_LISTING', 'SUPPLIER_SOURCE', 'COMPETITOR_LISTING', 'COMPLAINT_NOTE', 'KEYWORD_DEMAND_NOTE']),
+  product_id: z.string().uuid().optional(),
+  idea_id: z.string().uuid().optional(),
+  campaign_id: z.string().uuid().optional(),
+  notes: z.string().optional(),
+  price: z.number().nullable().optional(),
+  title_override: z.string().optional(),
+});
+
+export const rejectSearchResultSchema = z.object({
+  search_result_id: z.string().uuid(),
+  reject_reason: z.string().min(1),
+});
+
 export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     name: 'resellos_get_discovery_board',
@@ -455,4 +497,8 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   { name: 'resellos_get_campaign_next_task', description: 'Get the next pending task for a campaign.', inputSchema: getCampaignNextTaskSchema, jsonSchema: z.toJSONSchema(getCampaignNextTaskSchema) as Record<string, unknown> },
   { name: 'resellos_complete_campaign_task', description: 'Mark a campaign task as complete with results.', inputSchema: completeCampaignTaskSchema, jsonSchema: z.toJSONSchema(completeCampaignTaskSchema) as Record<string, unknown> },
   { name: 'resellos_block_campaign_task', description: 'Block a campaign task with an error message.', inputSchema: blockCampaignTaskSchema, jsonSchema: z.toJSONSchema(blockCampaignTaskSchema) as Record<string, unknown> },
+  { name: 'resellos_search_web_local', description: 'Search the web via ResellOS local search broker (SearXNG/OpenSERP). Local results are NOT verified evidence and cannot make a product READY_FOR_SAMPLE. Convert results to candidates for manual review before any verification.', inputSchema: localSearchSchema, jsonSchema: z.toJSONSchema(localSearchSchema) as Record<string, unknown> },
+  { name: 'resellos_list_research_search_results', description: 'List stored local search results for a product, idea, or campaign.', inputSchema: listResearchSearchResultsSchema, jsonSchema: z.toJSONSchema(listResearchSearchResultsSchema) as Record<string, unknown> },
+  { name: 'resellos_convert_search_result_to_candidate', description: 'Convert a local search result to an evidence candidate. The candidate will be PENDING and requires manual review. This does NOT verify evidence or change product readiness.', inputSchema: convertSearchResultSchema, jsonSchema: z.toJSONSchema(convertSearchResultSchema) as Record<string, unknown> },
+  { name: 'resellos_reject_search_result', description: 'Reject a local search result so it is not converted to a candidate.', inputSchema: rejectSearchResultSchema, jsonSchema: z.toJSONSchema(rejectSearchResultSchema) as Record<string, unknown> },
 ];
