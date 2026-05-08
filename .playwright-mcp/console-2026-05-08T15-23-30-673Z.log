@@ -1,0 +1,25 @@
+[    2203ms] [WARNING] Setting secure=true because sameSite=None requires secure cookies @ https://assets.alicdn.com/g/lzd_sec/LWSC-G/index.js:0
+[    2204ms] [WARNING] A parser-blocking, cross site (i.e. different eTLD+1) script, https://assets.alicdn.com/g/??/AWSC/AWSC/awsc.js,/sd/baxia-entry/baxiaCommon.js, is invoked via document.write. The network request for this script MAY be blocked by the browser in this or a future page load due to poor network connectivity. If blocked in this page load, it will be confirmed in a subsequent console message. See https://www.chromestatus.com/feature/5718547946799104 for more details. @ https://assets.alicdn.com/g/lzd_sec/LWSC-G/index.js:0
+[    2204ms] [WARNING] A parser-blocking, cross site (i.e. different eTLD+1) script, https://assets.alicdn.com/g/??/AWSC/AWSC/awsc.js,/sd/baxia-entry/baxiaCommon.js, is invoked via document.write. The network request for this script MAY be blocked by the browser in this or a future page load due to poor network connectivity. If blocked in this page load, it will be confirmed in a subsequent console message. See https://www.chromestatus.com/feature/5718547946799104 for more details. @ https://assets.alicdn.com/g/lzd_sec/LWSC-G/index.js:0
+[    2464ms] [LOG] Fri May 08 2026 11:23:33 GMT-0400 (Eastern Daylight Time) @ https://assets.aliexpress-media.com/g/AWSC/et/1.83.41/et_f.js:1
+[    2529ms] [WARNING] twitter share title is empty @ https://assets.aliexpress-media.com/g/ae-dida/search-pc/0.0.194/fixed-bar.js:0
+[    2677ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2693ms] [LOG] [poplayer-web-container] init {positionSign: PC_Search_Ui_Product_List} @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/pop-layer.js:0
+[    2832ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2832ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2832ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2832ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2833ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2833ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2833ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2833ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2833ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2833ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2833ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2833ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    2935ms] [LOG] load css succ @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/index.js:0
+[    3019ms] [LOG] load succ @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/index.js:0
+[    3458ms] [WARNING] 'et' should been 'EXP','CLK','SLD','INPUT','SYS', 'OTHER' @ https://assets.aliexpress-media.com/g/ae-fe/cosmos/0.0.427/pc/gep-sdk.js:0
+[    3467ms] [WARNING] [GSI_LOGGER]: Your client application uses one of the Google One Tap prompt UI status methods that may stop functioning when FedCM becomes mandatory. Refer to the migration guide to update your code accordingly and opt-in to FedCM to test your changes. Learn more: https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment and https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#skipped_moment @ https://accounts.google.com/gsi/client:84
+[    3468ms] [ERROR] Not signed in with the identity provider. @ https://www.aliexpress.com/w/wholesale-sliding-door-track-cleaning-brush-set-wholesale.html:0
+[   11324ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token. @ https://accounts.google.com/gsi/client:85

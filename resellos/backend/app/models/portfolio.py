@@ -32,6 +32,7 @@ class ShopConcept(Base):
     ideas = relationship("ProductIdea", back_populates="shop_concept")
     products = relationship("Product", back_populates="shop_concept")
     portfolio_items = relationship("PortfolioItem", back_populates="shop_concept", cascade="all, delete-orphan")
+    production_campaigns = relationship("ProductionCampaign", back_populates="shop_concept")
 
 
 class ProductCollection(Base):

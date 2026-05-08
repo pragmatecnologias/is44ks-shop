@@ -1,0 +1,7 @@
+[    1210ms] [LOG] joinUs() at %ce%cb%ca%cy%c! font-weight:bold;color:#e53238; font-weight:bold;color:#0064d2 font-weight:bold;color:#f5af02 font-weight:bold;color:#86b817 color:black @ https://ir.ebaystatic.com/rs/c/srpnweb/common-CuXTgrKJ.js:1
+[    1601ms] [WARNING] [GPT] PubAdsService.collapseEmptyDivs is deprecated, use googletag.setConfig({collapseDiv: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605050101/pubads_impl.js?cb=31098334:18
+[    1615ms] [WARNING] [GPT] Slot.setTargeting is deprecated, use Slot.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#171 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605050101/pubads_impl.js?cb=31098334:18
+[    1938ms] [LOG] done @ https://www.ebay.com/sch/i.html?_nkw=garbage+disposal+brush&LH_Sold=1&_sop=12:4
+[    3046ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0

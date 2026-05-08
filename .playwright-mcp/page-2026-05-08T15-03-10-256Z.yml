@@ -1,0 +1,1108 @@
+- generic [active] [ref=e1]:
+  - img
+  - img
+  - img
+  - img
+  - generic [ref=e3]:
+    - banner [ref=e7]:
+      - link "Skip to main content" [ref=e9] [cursor=pointer]:
+        - /url: "#mainContent"
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e13]:
+            - text: Hi!
+            - link "Sign in" [ref=e14] [cursor=pointer]:
+              - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&sgfl=gh&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F366343132941
+            - generic [ref=e15]:
+              - text: or
+              - link "register" [ref=e16] [cursor=pointer]:
+                - /url: https://signup.ebay.com/pa/crte?ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F366343132941
+          - link "Deals" [ref=e18] [cursor=pointer]:
+            - /url: https://www.ebay.com/deals
+          - link "Brand Outlet" [ref=e20] [cursor=pointer]:
+            - /url: https://www.ebay.com/b/Brand-Outlet/bn_7115532402
+          - link "Gift Cards" [ref=e22] [cursor=pointer]:
+            - /url: https://www.ebay.com/giftcards
+          - link "Help & Contact" [ref=e24] [cursor=pointer]:
+            - /url: https://www.ebay.com/help/home
+        - generic [ref=e25]:
+          - link "Sell" [ref=e28] [cursor=pointer]:
+            - /url: https://www.ebay.com/sl/sell
+          - generic [ref=e29]:
+            - link "Watchlist" [ref=e30] [cursor=pointer]:
+              - /url: https://www.ebay.com/mye/myebay/watchlist
+              - generic [ref=e31]: Watchlist
+              - img
+            - button "Expand Watch List" [ref=e32]
+          - generic [ref=e33]:
+            - link "My eBay" [ref=e34] [cursor=pointer]:
+              - /url: https://www.ebay.com/mys/home?source=GBH
+              - generic [ref=e35]: My eBay
+              - img
+            - button "Expand My eBay" [ref=e36]
+          - button "Notifications" [ref=e39] [cursor=pointer]:
+            - img
+            - generic [ref=e40]: Notifications
+          - generic [ref=e42]:
+            - link "Your shopping cart contains 0 items" [ref=e43] [cursor=pointer]:
+              - /url: https://cart.ebay.com
+              - generic "Your shopping cart contains 0 items" [ref=e44]:
+                - img
+            - button "Expand Cart" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - link "eBay Home" [ref=e48] [cursor=pointer]:
+            - /url: https://www.ebay.com
+            - img "eBay Home" [ref=e49]
+          - button "Shop by category" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: Shop by category
+            - img
+        - generic [ref=e59]:
+          - status [ref=e60]
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - combobox "Search for anything" [ref=e64]
+              - img
+            - combobox "Select a category for search" [ref=e65]:
+              - option "All Categories" [selected]
+              - option "Antiques"
+              - option "Art"
+              - option "Baby"
+              - option "Books"
+              - option "Business & Industrial"
+              - option "Cameras & Photo"
+              - option "Cell Phones & Accessories"
+              - option "Clothing, Shoes & Accessories"
+              - option "Coins & Paper Money"
+              - option "Collectibles"
+              - option "Computers/Tablets & Networking"
+              - option "Consumer Electronics"
+              - option "Crafts"
+              - option "Dolls & Bears"
+              - option "Movies & TV"
+              - option "eBay Motors"
+              - option "Entertainment Memorabilia"
+              - option "Gift Cards & Coupons"
+              - option "Health & Beauty"
+              - option "Home & Garden"
+              - option "Jewelry & Watches"
+              - option "Music"
+              - option "Musical Instruments & Gear"
+              - option "Pet Supplies"
+              - option "Pottery & Glass"
+              - option "Real Estate"
+              - option "Specialty Services"
+              - option "Sporting Goods"
+              - option "Sports Mem, Cards & Fan Shop"
+              - option "Stamps"
+              - option "Tickets & Experiences"
+              - option "Toys & Hobbies"
+              - option "Travel"
+              - option "Video Games & Consoles"
+              - option "Everything Else"
+          - generic [ref=e66]:
+            - button "Search" [ref=e67] [cursor=pointer]:
+              - generic [ref=e68]: Search
+            - link "Advanced" [ref=e69] [cursor=pointer]:
+              - /url: https://www.ebay.com/sch/ebayadvsearch
+    - main [ref=e70]:
+      - generic [ref=e72]:
+        - generic [ref=e75]:
+          - generic [ref=e81]:
+            - link [ref=e82] [cursor=pointer]:
+              - /url: https://www.ebay.com/str/hypocleanse?_sacat=259621&promoted_items=327066195969%2C327055477774%2C326442548830%2C327066179691%2C326695744712&itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnr8DtcfrBgj4YNzPFdfTrrS%2Bs2r5BwmT2a2FFBC5Lli35FYUrxOaVJDTr3zjiCzvZfNHcq4eOmyDnEZE0rGte31jZJHiSkGeDmzGdxpdWt3aAgfNcaFKRK77NHyk3vBM4Q%2BHP6t3vmmZPyaxK9zCUsI%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+            - generic [ref=e83]:
+              - link "Find similar items from" [ref=e86] [cursor=pointer]:
+                - /url: https://www.ebay.com/str/hypocleanse?_sacat=259621&promoted_items=327066195969%2C327055477774%2C326442548830%2C327066179691%2C326695744712&itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnr8DtcfrBgj4YNzPFdfTrrS%2Bs2r5BwmT2a2FFBC5Lli35FYUrxOaVJDTr3zjiCzvZfNHcq4eOmyDnEZE0rGte31jZJHiSkGeDmzGdxpdWt3aAgfNcaFKRK77NHyk3vBM4Q%2BHP6t3vmmZPyaxK9zCUsI%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+              - generic [ref=e87]:
+                - link "The HypoCleanse Store" [ref=e90] [cursor=pointer]:
+                  - /url: https://www.ebay.com/str/hypocleanse?_sacat=259621&promoted_items=327066195969%2C327055477774%2C326442548830%2C327066179691%2C326695744712&itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnr8DtcfrBgj4YNzPFdfTrrS%2Bs2r5BwmT2a2FFBC5Lli35FYUrxOaVJDTr3zjiCzvZfNHcq4eOmyDnEZE0rGte31jZJHiSkGeDmzGdxpdWt3aAgfNcaFKRK77NHyk3vBM4Q%2BHP6t3vmmZPyaxK9zCUsI%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+                  - img "The HypoCleanse Store" [ref=e91]
+                - link "The HypoCleanse Store" [ref=e94] [cursor=pointer]:
+                  - /url: https://www.ebay.com/str/hypocleanse?_sacat=259621&promoted_items=327066195969%2C327055477774%2C326442548830%2C327066179691%2C326695744712&itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnr8DtcfrBgj4YNzPFdfTrrS%2Bs2r5BwmT2a2FFBC5Lli35FYUrxOaVJDTr3zjiCzvZfNHcq4eOmyDnEZE0rGte31jZJHiSkGeDmzGdxpdWt3aAgfNcaFKRK77NHyk3vBM4Q%2BHP6t3vmmZPyaxK9zCUsI%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+                  - generic [ref=e95]: The HypoCleanse Store
+                - generic [ref=e96]:
+                  - text: (
+                  - link "99.7% positive" [ref=e98] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/hypocleanse?_sacat=259621&promoted_items=327066195969%2C327055477774%2C326442548830%2C327066179691%2C326695744712&itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnr8DtcfrBgj4YNzPFdfTrrS%2Bs2r5BwmT2a2FFBC5Lli35FYUrxOaVJDTr3zjiCzvZfNHcq4eOmyDnEZE0rGte31jZJHiSkGeDmzGdxpdWt3aAgfNcaFKRK77NHyk3vBM4Q%2BHP6t3vmmZPyaxK9zCUsI%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+                    - generic [ref=e100]: 99.7% positive
+                  - text: )
+              - link "30% Concentrated Vinegar 1 Gallon Industrial Strength Cleaning Vinegar Acetic Ac" [ref=e103] [cursor=pointer]:
+                - /url: https://www.ebay.com/itm/327066195969?itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnvOd9n90J0MLiR65huxBhksK8xIGtt0xIIalTfvX0J63POIJIQiPbz7WriHwgg9MOC0tvqXRC2NMogGUp17OOVOiz2Vj7dlz7k6AluBbEzs0j1SlvA3yYCOdZKvjfPNe7%2B3AlkdNhFvdYQ6NJrcnfe4%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+                - img "30% Concentrated Vinegar 1 Gallon Industrial Strength Cleaning Vinegar Acetic Ac" [ref=e104]
+              - link "10lb Pure Citric Acid Powder - 100% Pure– Bulk -Heavy Cleaning -Non-Food Grade -" [ref=e107] [cursor=pointer]:
+                - /url: https://www.ebay.com/itm/327055477774?itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnvOd9n90J0MLiR65huxBhksK8xIGtt0xIIalTfvX0J63POIJIQiPbz7WriHwgg9MOC0tvqXRC2NMogGUp17OOVOiz2Vj7dlz7k6AluBbEzs0j1SlvA3yYCOdZKvjfPNe7%2B3AlkdNhFvdYQ6NJrcnfe4%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+                - img "10lb Pure Citric Acid Powder - 100% Pure– Bulk -Heavy Cleaning -Non-Food Grade -" [ref=e108]
+              - link "30% Vinegar - 1 Gallon - Concentrated Acetic Acid - Cleaner Vinegar" [ref=e111] [cursor=pointer]:
+                - /url: https://www.ebay.com/itm/326442548830?itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnvOd9n90J0MLiR65huxBhksK8xIGtt0xIIalTfvX0J63POIJIQiPbz7WriHwgg9MOC0tvqXRC2NMogGUp17OOVOiz2Vj7dlz7k6AluBbEzs0j1SlvA3yYCOdZKvjfPNe7%2B3AlkdNhFvdYQ6NJrcnfe4%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+                - img "30% Vinegar - 1 Gallon - Concentrated Acetic Acid - Cleaner Vinegar" [ref=e112]
+              - link "100% Pure Citric Acid Powder 5lb – Industrial -Heavy Cleaning -Non Food Grade -" [ref=e115] [cursor=pointer]:
+                - /url: https://www.ebay.com/itm/327066179691?itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnvOd9n90J0MLiR65huxBhksK8xIGtt0xIIalTfvX0J63POIJIQiPbz7WriHwgg9MOC0tvqXRC2NMogGUp17OOVOiz2Vj7dlz7k6AluBbEzs0j1SlvA3yYCOdZKvjfPNe7%2B3AlkdNhFvdYQ6NJrcnfe4%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+                - img "100% Pure Citric Acid Powder 5lb – Industrial -Heavy Cleaning -Non Food Grade -" [ref=e116]
+              - link "75% Vinegar - Concentrated Acetic Acid - All Natural Cleaning Vinegar - 4 Gal" [ref=e119] [cursor=pointer]:
+                - /url: https://www.ebay.com/itm/326695744712?itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnvOd9n90J0MLiR65huxBhksK8xIGtt0xIIalTfvX0J63POIJIQiPbz7WriHwgg9MOC0tvqXRC2NMogGUp17OOVOiz2Vj7dlz7k6AluBbEzs0j1SlvA3yYCOdZKvjfPNe7%2B3AlkdNhFvdYQ6NJrcnfe4%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+                - img "75% Vinegar - Concentrated Acetic Acid - All Natural Cleaning Vinegar - 4 Gal" [ref=e120]
+              - link "Shop store" [ref=e122] [cursor=pointer]:
+                - /url: https://www.ebay.com/str/hypocleanse?_sacat=259621&promoted_items=327066195969%2C327055477774%2C326442548830%2C327066179691%2C326695744712&itmprp=encpd%3AAQALAAACILb7rm440GEnYh5HAbhjejPp7PR%2FTnIpZKzE55ukSAv0vFoeTJKBLXp4bbcdrEliUeOiCO8fGzozgtZZjcSRgdCBt8GAeyLVg23a109NJxbGLdGjcP8dEEIaMFmtKzAzC3vhccWNKwbUXI0yQ8QyloP8gL7WD47ccOlWBhJIguRPfkn2U8oo2kKOT%2BWts6mlGwJ1yXzZcvCTQpexvjIEx3JQuJX%2BVk59K7lFSmu1r8kurz4YoayVyi5M8Co73hzjE7YQvR7%2BgmTXW18XJBAYHlqqbatFY%2Bk8f4oc65%2F2dYWe7gyPstMaxLzWJnpawoXKeFEHZ%2Fv7L8HmVo3TDwBltJz%2BDEx32axQ7yzps0Wb8o9iLHKBS7YhKRSoUdbVnyCGbR5rHQKaPv%2FuuY%2B%2Fe2D%2FQQ3TTtCfrjhSuBPDGoqyo76p80fKnpVtAYxVwVnVG0Wq%2BFTPbO4Ou7hOfvPkF59kOeFKJcn2eVgtFeEr1oN4TPk6xukvzYluJnVDLCAqWJmW0F%2F6%2By7FdjQmJXbl6Ee66394YxfJEDusuLtpvjpq5lEPKJKQw1uL2UtUd4heR3hFnr8DtcfrBgj4YNzPFdfTrrS%2Bs2r5BwmT2a2FFBC5Lli35FYUrxOaVJDTr3zjiCzvZfNHcq4eOmyDnEZE0rGte31jZJHiSkGeDmzGdxpdWt3aAgfNcaFKRK77NHyk3vBM4Q%2BHP6t3vmmZPyaxK9zCUsI%3D&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFUOVlHQ1dONUtITktCMFMyRDc4RTQwMUtSNDFUOU4zS0pUQ05DMzhFN0NYUEVaOL6%2BDA%3D%3D
+            - generic [ref=e132]: Sponsored
+          - generic [ref=e141]:
+            - heading "People who viewed this item also viewed" [level=2] [ref=e148]
+            - group [ref=e150]:
+              - list [ref=e153]:
+                - listitem [ref=e154]:
+                  - generic [ref=e156]:
+                    - generic [ref=e162]:
+                      - heading "Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brushes (" [level=3] [ref=e163]
+                      - generic [ref=e165]: $9.69
+                      - generic [ref=e167]: Free delivery
+                      - generic [ref=e169]: Sponsored
+                    - link "Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brushes (" [ref=e170] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/366343133098?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEMa%2FMxPGwr5mcB9OhisZaeM%3D%26itm%3D366343133098%26noa%3D0%26plcampt%3D0%3A163562046017%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D3%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D46099e12ab8649d0bfaf6a560f508437%26pg%3D2332490&_trksid=p2332490.c101224.m-1&itmprp=cksum%3A36634313309846099e12ab8649d0bfaf6a560f508437%7Cenc%3AAQALAAAA4HU%252FGPBKMoWrH2cpzpvK9FDC5c4FxwFIV%252Bq0okjrJ6w9cB%252BqWqTCByXEsJeNzj%252BLPZ6Y%252Bcb%252BSNENjzLG3DpJu0kukYJDuzJ9hCcrW6S2DT%252Fh4hNDFmnusP2koujx9OBNO35cQcDdzdVq5hMpKuXPaxcA5ot5X7dw9zdGkGIMvqQaihjXDb%252Fw47ZO%252BVKeFN%252Fe7Yb6%252B1Ishz2HRySs827qvC%252FdBN%252FkglQxU%252BnYRgun1jJg0uMduBXb3sDrYXQN6fjnz6z3w8gCrhUplVyAND1vTT3SznpcGUwpcqzZ46dpZJci%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA6XN9CJQ9BR8J5QN2Q7
+                - listitem [ref=e171]:
+                  - generic [ref=e173]:
+                    - generic [ref=e179]:
+                      - heading "Hand-held Groove Gap Cleaning Tools Door Window Tra Kitchen" [level=3] [ref=e180]
+                      - generic [ref=e182]: $7.75
+                      - generic [ref=e184]: Free delivery
+                    - link "Hand-held Groove Gap Cleaning Tools Door Window Tra Kitchen" [ref=e185] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/366371867200?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEBWhaV3snarI43kO4Eo2Rgo%3D%26itm%3D366371867200%26noa%3D1%26plcampt%3D0%3A160914556016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D1%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D46099e12ab8649d0bfaf6a560f508437%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                - listitem [ref=e186]:
+                  - generic [ref=e188]:
+                    - generic [ref=e194]:
+                      - heading "2pcs Hand-held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus" [level=3] [ref=e195]
+                      - generic [ref=e197]: $9.36
+                      - generic [ref=e199]: Free delivery
+                    - link "2pcs Hand-held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus" [ref=e200] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/157833326918?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAECfZc4JSgqDRod8hv%2BMoQQo%3D%26itm%3D157833326918%26noa%3D1%26plcampt%3D0%3A153321962019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D2%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D46099e12ab8649d0bfaf6a560f508437%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                - listitem [ref=e201]:
+                  - generic [ref=e203]:
+                    - generic [ref=e209]:
+                      - heading "2pcs Hand-held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning" [level=3] [ref=e210]
+                      - generic [ref=e212]: $8.48
+                      - generic [ref=e214]:
+                        - generic [ref=e215]: previous price
+                        - text: $9.12
+                      - generic [ref=e217]: Free delivery
+                    - link "2pcs Hand-held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning" [ref=e218] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/406734090510?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEDDdlMYeBhE775p3EEHlh3o%3D%26itm%3D406734090510%26noa%3D1%26plcampt%3D0%3A160288868013%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D20200818143230%26ao%3D1%26rk%3D4%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D46099e12ab8649d0bfaf6a560f508437%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+        - generic [ref=e221]:
+          - generic [ref=e222]:
+            - generic [ref=e224]:
+              - generic [ref=e226]:
+                - generic [ref=e227]:
+                  - button "Previous image - Item images thumbnails" [disabled] [ref=e228] [cursor=pointer]:
+                    - img
+                  - generic [ref=e229]:
+                    - button "Picture 1 of 12" [ref=e230] [cursor=pointer]:
+                      - img "Picture 1 of 12" [ref=e231]
+                    - button "Picture 2 of 12" [ref=e232] [cursor=pointer]:
+                      - img "Picture 2 of 12" [ref=e233]
+                    - button "Picture 3 of 12" [ref=e234] [cursor=pointer]:
+                      - img "Picture 3 of 12" [ref=e235]
+                    - button "Picture 4 of 12" [ref=e236] [cursor=pointer]:
+                      - img "Picture 4 of 12" [ref=e237]
+                    - button "Picture 5 of 12" [ref=e238] [cursor=pointer]:
+                      - img "Picture 5 of 12" [ref=e239]
+                    - button "Picture 6 of 12" [ref=e240] [cursor=pointer]:
+                      - img "Picture 6 of 12" [ref=e241]
+                    - button "Picture 7 of 12" [ref=e242] [cursor=pointer]
+                    - button "Picture 8 of 12" [ref=e243] [cursor=pointer]
+                    - button "Picture 9 of 12" [ref=e244] [cursor=pointer]
+                    - button "Picture 10 of 12" [ref=e245] [cursor=pointer]
+                    - button "Picture 11 of 12" [ref=e246] [cursor=pointer]
+                    - button "Picture 12 of 12" [ref=e247] [cursor=pointer]
+                  - button "Next image - Item images thumbnails" [ref=e248] [cursor=pointer]:
+                    - img
+                - generic [ref=e249]:
+                  - heading "Picture 1 of 12" [level=2] [ref=e250]
+                  - button "Previous image - Item images thumbnails" [ref=e252] [cursor=pointer]:
+                    - img
+                  - region "Opens image gallery dialog 2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 1 of 12" [ref=e253]:
+                    - group "1 of 12" [ref=e254]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 1 of 12" [ref=e255]
+                    - group "2 of 12" [ref=e256]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 2 of 12" [ref=e257]
+                    - group "3 of 12" [ref=e258]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 3 of 12" [ref=e259]
+                    - group "4 of 12" [ref=e260]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 4 of 12" [ref=e261]
+                    - group "5 of 12" [ref=e262]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 5 of 12" [ref=e263]
+                    - group "6 of 12" [ref=e264]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 6 of 12" [ref=e265]
+                    - group "7 of 12" [ref=e266]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 7 of 12" [ref=e267]
+                    - group "8 of 12" [ref=e268]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 8 of 12" [ref=e269]
+                    - group "9 of 12" [ref=e270]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 9 of 12" [ref=e271]
+                    - group "10 of 12" [ref=e272]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 10 of 12" [ref=e273]
+                    - group "11 of 12" [ref=e274]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 11 of 12" [ref=e275]
+                    - group "12 of 12" [ref=e276]:
+                      - img "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus - Picture 12 of 12" [ref=e277]
+                  - generic [ref=e278]:
+                    - button "Opens image gallery" [ref=e279] [cursor=pointer]:
+                      - img
+                    - button "Add to watchlist" [ref=e281] [cursor=pointer]:
+                      - img
+                  - button "Next image - Item images thumbnails" [ref=e283] [cursor=pointer]:
+                    - img
+              - generic [ref=e288]:
+                - generic [ref=e289]: Have one to sell?
+                - link "Sell one like this" [ref=e291] [cursor=pointer]:
+                  - /url: https://www.ebay.com/sl/list?mode=SellLikeItem&itemId=366343132941&rt=nc&_trksid=p4429486.m117039.l2567
+                  - generic [ref=e292]: Sell one like this
+                - link "Sell something else" [ref=e294] [cursor=pointer]:
+                  - /url: https://www.ebay.com/sl/prelist/suggest
+                  - generic [ref=e295]: Sell something else
+              - button "Share" [ref=e301] [cursor=pointer]:
+                - img
+                - generic [ref=e302]: Share
+            - generic [ref=e313]:
+              - generic [ref=e316]:
+                - generic [ref=e318]:
+                  - heading "Similar Items" [level=2] [ref=e320]
+                  - generic [ref=e323]:
+                    - generic [ref=e324]: S
+                    - generic [ref=e325]: 06cbf76b-46bb-4a6f-84e5-826e0f602918
+                    - generic [ref=e326]: p
+                    - generic [ref=e327]: dac09c81-a88d-4392-abe2-40654a8b4cf0
+                    - generic [ref=e328]: o
+                    - generic [ref=e329]: 87c2b5cb-b16b-4958-a501-d9b4b528ed4b
+                    - generic [ref=e330]: 7c59990c-89c4-4be3-a46c-a1032bc1615f
+                    - generic [ref=e331]: 8b6523cc-c54f-450e-b867-e2ddef57b100
+                    - generic [ref=e332]: "n"
+                    - generic [ref=e333]: 81e4562b-8b65-476e-861b-0c3f39f9da0f
+                    - generic [ref=e334]: s
+                    - generic [ref=e335]: 6ecde59a-8ede-4ef5-ab41-137d5f18166f
+                    - generic [ref=e337]: 77aaff97-469d-437a-b4b3-c0bb118330d8
+                    - generic [ref=e338]: 6fc039ef-22e2-4583-892e-8266fa429fc8
+                    - generic [ref=e339]: 5cf2e889-d118-4b9d-b0c8-f15ef6fa0c4d
+                    - generic [ref=e340]: o
+                    - generic [ref=e341]: 068a50e6-be2a-4c11-9aba-c8a213e934cb
+                    - generic [ref=e342]: r
+                    - generic [ref=e343]: cd219957-89ab-4cf8-81d8-550ca1358385
+                    - generic [ref=e344]: e
+                    - generic [ref=e345]: a2f9f3c5-ca2a-4604-8cc1-7fddb7de1110
+                    - generic [ref=e346]: d
+                    - generic [ref=e347]: 4c44c25a-e4b3-4f4b-9742-f1cb9f8f56ee
+                    - generic [ref=e349]: 8154397c-eece-4469-825a-6e5bbf8ad029
+                    - generic [ref=e350]: 416ba619-7c7d-4d62-b985-2c27095cff52
+                    - generic [ref=e351]: 3030392c-de1a-4a44-b656-317124e2f93b
+                    - generic [ref=e352]: ecd23f16-0ca7-47ec-80bc-5af92884389d
+                    - generic [ref=e353]: 01c593a2-f68e-452d-9799-9062bceb2b9e
+                    - generic [ref=e355]: 5d1ab705-bbe0-411b-abc2-0f0cdc2d35fd
+                    - generic [ref=e356]: 3a745d7d-b456-4458-a7f8-1deb5f3d06d3
+                    - generic [ref=e357]: 5b325a82-eca1-4064-838b-1cc2f569a7d7
+                    - generic [ref=e358]: f1c1f161-71e8-4dfd-b3b4-0f6ed7923879
+                    - generic [ref=e359]: ba7b9893-0b43-41c1-a4e6-1ddcf3e22a47
+                    - generic [ref=e361]: a9124e81-f30b-4ce9-9ee6-e6ae05d19395
+                    - generic [ref=e362]: 12c50b35-0322-4966-9bd0-796db08dbbfd
+                    - generic [ref=e363]: 566fee63-8e89-4bac-a204-3bec55984893
+                    - generic [ref=e364]: 234c483f-1197-4989-9d81-1581075fa950
+                - link "See all" [ref=e367] [cursor=pointer]:
+                  - /url: https://www.ebay.com/recs?component=recs-below-hero-carousel&placement_title=i18n.Tag_SIs&sourceModuleId=101875&item_id=366343132941&algos=HOMESPLICE.SIM.SimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco&placement_subTitle=i18n.ModuleSubTitle_Sponsored&homespliceOverrideConfig=%7Bsplice.cpc-config-dweb.cpc-expansion-slot-ids%3D%5B1%2C+3%2C+5%2C+7%2C+9%2C+11%5D%2Csplice.cpc-config-dweb.smart-price-parmas.undere-threshold%3D4%2Csplice.cpc-config-dweb.smart-price-parmas.enable-overe%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-roas-calibration-by-l2%3Dfalse%2Csplice.cpc-config-dweb.smart-price-parmas.enable-undere%3Dtrue%2Csplice.cpc-config-dweb.max-cpc-slots-num%3D6%2Csplice.cpc-config-dweb.blend-reserve-price-config.reserve-price-strategy%3D2%2Csplice.cpc-config-dweb.enable-low-roas-filter%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-cvr-calibration-by-l2%3Dtrue%2Csplice.cpc-config-dweb.blend-reserve-price-config.cpa-cpm-multiplier.-1%3D15%2Csplice.cpc-config-dweb.cpc-low-roas-dimension%3D%5BblacklistLeaf%2C+version01%5D%2Csplice.cpc-config-dweb.smart-price-parmas.overe-threshold%3D4%7D
+                  - generic [ref=e368]: See all
+              - group [ref=e370]:
+                - generic [ref=e371]:
+                  - button "Go to the previous slide, Similar Items" [disabled] [ref=e372]:
+                    - img
+                  - list [ref=e374]:
+                    - listitem [ref=e375]:
+                      - generic [ref=e377]:
+                        - generic [ref=e383]:
+                          - generic [ref=e384]: LAST ONE
+                          - heading "15 Pcs Window Groove Cleaning Brush Tool, Door Window Track Cleaner Groove Ga..." [level=3] [ref=e385]
+                          - generic [ref=e386]:
+                            - generic [ref=e388]: New
+                            - generic [ref=e389]: $23.19
+                          - generic [ref=e391]: Free delivery
+                          - generic [ref=e393]: Seller with 100% positive feedback
+                        - link "15 Pcs Window Groove Cleaning Brush Tool, Door Window Track Cleaner Groove Ga..." [ref=e394] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/397849933599?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEOZoNZCw9nRsreP7nwpeBLQ%3D%26itm%3D397849933599%26noa%3D0%26plcampt%3D0%3A157051012018%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D1%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A397849933599d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbb4C477%252B%252Fa26DB%252B1g5CFwSXLTnaBJlZYBgViAe%252F3hpMoBIKyPGmfQ%252BVV%252FrtyLEGc1hpNq0Ia6W%252Fi9M%252F5zNO%252BnBSZUxUxhFIEAPFhA%252Bh1fWX4BKBTHw2%252B5UOE7WJG%252BuUp7Kmxu%252FmmetOtyBAY64vf2z1zH81dwJmWRVDx913ic0OnW6MBWeW33nRwBG2Ynt6ZIsDzvNihY80FxbdFRVqogWZpElXk3LHfT70fUKpC4TpDZBRI9epDwnQxytQdFPOm3XQVXlUEGO3mXzjSfWz3YJdSEmZet5ECw%252FkWQGJzNJ2k%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA6X7WEGCKR5KJRK9HXD
+                        - button "Add 15 Pcs Window Groove Cleaning Brush Tool, Door Window Track Cleaner Groove Ga... to your watch list" [ref=e397] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e398]:
+                      - generic [ref=e400]:
+                        - generic [ref=e406]:
+                          - heading "15 Pcs Window Groove Cleaning Brush Tool, Door Window Track Cleaner Groove Ga..." [level=3] [ref=e407]
+                          - generic [ref=e408]:
+                            - generic [ref=e410]: New
+                            - generic [ref=e411]: $23.19
+                          - generic [ref=e413]: Free delivery
+                          - generic [ref=e415]: Seller 99.3% positive
+                        - link "15 Pcs Window Groove Cleaning Brush Tool, Door Window Track Cleaner Groove Ga..." [ref=e416] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/406877919878?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEHWLcXnHdn%2Fd2RSw0qScWkI%3D%26itm%3D406877919878%26noa%3D0%26plcampt%3D0%3A149440416010%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D2%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A406877919878d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbn6BbFZnQ3RoIVJAbZbGioWqvwlU9TQClDE547LM9Wg48JyuwiP%252FvLihZfsi3%252FU1RaOq2s85OVULXg8nrVbdUuHRWwTGQVBT6pj7xC8y4YhtYX4A5KoQq8DAoXgbPRfb4C43vVljuDMXTX60apBxxv18K60RiWbrm5QWx%252FERVEOiPpg9xyOimJ5YRdNR9c6mNgOvdirWnh%252BcFIZ%252BBw54SDF%252BPOqOkFrWgQKzIaETD%252BY5cSLogs1o5Jv3HI5arMv1mYAXwOvtPftBh49OlwhtSzj9p%252B9jW51sjZFbwhH%252Fgx7k%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA85FWWNWFHHAQDZ9NKK
+                        - button "Add 15 Pcs Window Groove Cleaning Brush Tool, Door Window Track Cleaner Groove Ga... to your watch list" [ref=e419] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e420]:
+                      - generic [ref=e422]:
+                        - generic [ref=e428]:
+                          - heading "Hand-held Groove Gap Cleaning Tools Door Window Tra Kitchen" [level=3] [ref=e429]
+                          - generic [ref=e430]:
+                            - generic [ref=e432]: New
+                            - generic [ref=e433]: $7.75
+                          - generic [ref=e435]: Free delivery
+                          - generic [ref=e437]: Seller with 100% positive feedback
+                        - link "Hand-held Groove Gap Cleaning Tools Door Window Tra Kitchen" [ref=e438] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/366371867200?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEBWhaV3snarI43kO4Eo2Rgo%3D%26itm%3D366371867200%26noa%3D0%26plcampt%3D0%3A160914556016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D3%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A366371867200d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbseufIK%252B%252Boo7v%252FJtlOci4GIQ7McnyFWnGd%252BdKWid0iycEHQA3clMHaxI5Okw12dMXCTAKAHeIh1FlceaX66ij1HWEebCSTz5zhN5bSjiB5ZE44Q4c4tFO1%252BJs3wUatgRJNhbLpUSDOftlBFdkGnZbJnNTaftYyFMziM4ffC1EQe90hDpQ%252BfKGZ%252FuqGH1dpr1v6U27RL%252ByGYANvCUDp%252BfJIjsBckp4e1LTcOWCXY%252BKV%252F%252BGkSW6CVXyW67HQHViCHlDdVA0r%252FeGtPQ5axQr856VxJX9lNx%252F%252BIlyjkhEjPih8aE%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA89D7G1QH9JK7E71D54
+                    - listitem [ref=e439]:
+                      - generic [ref=e441]:
+                        - generic [ref=e447]:
+                          - heading [level=3] [ref=e448]: Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brushes (
+                          - generic [ref=e449]:
+                            - generic [ref=e451]: New
+                            - generic [ref=e452]: $9.69
+                          - generic [ref=e454]: Free delivery
+                          - generic [ref=e456]: Seller with 100% positive feedback
+                        - link [ref=e457] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/366343133098?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEMa%2FMxPGwr5mcB9OhisZaeM%3D%26itm%3D366343133098%26noa%3D0%26plcampt%3D0%3A163562046017%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D4%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A366343133098d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbKj1C6xedPCaGD5QIIL1fV0A%252FQ7tvXitTA2%252FlWU1SK3RYzRI3xwdbeJa6ta3Rxh2%252FzH9Pm5KwKaCqDdSeRHlkljieQMiVaW1eIlIuI3lq9k5P2aGrERI0s3jTXnNLJdEJwhY3CPR0dv7TsHYslPVAikVL16nkFjglOBYhU7jgbWE%252BG12Bpv4W9A7qS6q8FBSj5S6DDLFcvouWhoNsTEu%252FD67PV%252BpWLAejoWxZfxp7kcVKbWT3z1sdkWR4d3JcogY7zvY9grh%252FSW%252B7fO08eCA9XgrqvmfOJ1%252Bn%252BlYG9Eg7wFg%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA8DJ2NNM5DTT0W5M9ZA
+                        - button [ref=e460] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e461]:
+                      - generic [ref=e463]:
+                        - generic [ref=e469]:
+                          - heading [level=3] [ref=e470]: Portable Windshield Cleaner Tool with Extended Long Handle & 4 Microfiber Pads
+                          - generic [ref=e471]:
+                            - generic [ref=e473]: New
+                            - generic [ref=e474]: $14.27
+                          - generic [ref=e476]:
+                            - generic [ref=e477]: previous price
+                            - text: $16.99 16% off
+                          - generic [ref=e479]: Free delivery
+                          - generic [ref=e481]: Seller 99.2% positive
+                        - link [ref=e482] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/397588601410?var=665955340194&_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEMoInyiYT3f3EHhh0E%2FfF1I%3D%26itm%3D397588601410%26noa%3D1%26plcampt%3D0%3A159325970015%2C5%3AAG7515237865%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D5%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A397588601410d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABENcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbSklc13DKyMOtUGIF5gfjU2eS6RTGdIq%252F3bhxPrBb4OYXzxBpRPBMEfAXb%252BUMHKk1RQeqgSW2SHsqYz%252ButxzORppOjKZ4tqzRAnD5ArcO96aHja4SA5yi97dimFHlIMOaVaX0vd1oyHzzWj26ovHomAas9FoXlayfWPa1zG6NkaWD4Ydgwaw5ROuhbZ4N5HnD4l3xt1OSUNvZi55fTQOigLmf%252Fn%252FZAkvOkZleGr%252BROfNPnH%252FOCq%252Bgbn9ngF%252BSgz3f%7Campid%3APLP_CLK%7Cclp%3A2332490&itmmeta=01KR41TA8HRV99ZW8MEZM36SSR
+                        - button [ref=e485] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e486]:
+                      - generic [ref=e488]:
+                        - generic [ref=e494]:
+                          - heading [level=3] [ref=e495]: 2pcs Hand-held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning B...
+                          - generic [ref=e496]:
+                            - generic [ref=e498]: New
+                            - generic [ref=e499]: $9.89
+                          - generic [ref=e501]:
+                            - generic [ref=e502]: previous price
+                            - text: $10.99 10% off
+                          - generic [ref=e504]: Free 2-4 day delivery
+                          - generic [ref=e506]: Seller 99.3% positive
+                        - link [ref=e507] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/318253875024?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEIoxb4eSzMH1EnT7tountTk%3D%26itm%3D318253875024%26noa%3D0%26plcampt%3D0%3A163033319011%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D6%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A318253875024d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mb5MteV8HYnIfYwix5oPGOtEcroEhxffP66jKCEYjTz4hCWvnc9NRZ6%252BwI%252B6Y4OZA4%252FwqKk5dh10beFLWFQ%252FcmVe4DqzY4rKk54lAiFHM7a60sV8G1OedRNFjk9ZdFlNchr96VG6zK02k9cuTlpLGRK2YP5pmzRVqjjYHa6PODsTAkbEBj1mCX9SwShth1VF%252B1%252FrVjfA5Sv4jYpKxgL3cdPbrzCL0r1fbmNc%252FcyQr7yCLtFy1jBqovaXKj%252FJCQG2XM4SC7raN7d8IlfvkZNl%252Bq%252Bimzi85fxct5zYHrhu3cX90%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA8MFZQ833PEJ0ASWSBC
+                        - button [ref=e510] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e511]:
+                      - generic [ref=e513]:
+                        - generic [ref=e519]:
+                          - heading [level=3] [ref=e520]: Hand-held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brushes (
+                          - generic [ref=e521]:
+                            - generic [ref=e523]: New
+                            - generic [ref=e524]: $9.87
+                          - generic [ref=e526]: Free delivery
+                          - generic [ref=e528]: Seller with 100% positive feedback
+                        - link [ref=e529] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/318051192976?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAENTXaZOurIogPHxYobpdXbI%3D%26itm%3D318051192976%26noa%3D0%26plcampt%3D0%3A149185063014%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D7%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A318051192976d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbhp%252Bo9yOLuw3PRA9B9QJWBKWCjL25ip4e%252BRnVzkwxWN5xn3KXtUtTYHUnNj%252BRBIgMwJOlU%252F3EqgydoPUwspekAKgt%252BSBJUmcPlSnkg7UxwsBSLl1BwRm%252BEaoi1ekd%252BD1OFxQwS93mtEBfFtT5xgACaRaJSkGrLmafjWc8jRb4NoHakMo3KTSTiOhauGsACJViRjvwOD2FeOvVgMLFMvc%252Bk%252FbJhNHu9qvC3Dq0QBzX4ud1pnHMnM%252BAvSUmwcDKtGVqd81YVTQ09xGXUJXaSp59ikTzCB9yBR05eRKXW6gxQSo%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA8R8Z6ARWEDZT7WMMT2
+                        - button [ref=e532] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e533]:
+                      - generic [ref=e535]:
+                        - generic [ref=e541]:
+                          - heading [level=3] [ref=e542]: 2pcs Hand-held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning
+                          - generic [ref=e543]:
+                            - generic [ref=e545]: New
+                            - generic [ref=e546]: $8.48
+                          - generic [ref=e548]:
+                            - generic [ref=e549]: previous price
+                            - text: $9.12 7% off
+                          - generic [ref=e551]: Free delivery
+                        - link [ref=e552] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/406734090510?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEDDdlMYeBhE775p3EEHlh3o%3D%26itm%3D406734090510%26noa%3D0%26plcampt%3D0%3A160288868013%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D8%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A406734090510d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbWn6YayL1e70q%252FAhj1jQtgAiAdL%252FaTTZG6aPDxMAETe6edaB3b8QmtAKlPr%252BidceZLPdsZHXEzTxF5RcwvnpSnTX%252F21SUVd4J1eXTO%252Biu3Xsb7yBpZLqwNCz5OtRlFol%252FK1aya4AobRUA6W2fmsieFYtPqoiiWTCEnv02WeAATqiPV%252BVwS%252BdppPdEgYt1oxk%252FwS0yXdsEO%252BGF6mYRYTFi2L9VkF%252BtudV4CsSnssOC6QP%252FcgBqDaPFCqhFcs1Xpp%252Bm8p1c7LnSlsKxR1ripm4tOPCIgyqjfDUNN8z2CuspZsw%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA8WBSX5WYJQPDGJZNWF
+                        - button [ref=e555] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e556]:
+                      - generic [ref=e558]:
+                        - generic [ref=e564]:
+                          - heading [level=3] [ref=e565]: Dual Gap Cleaning Brushes, Window Door Track Scraper, Kitchen Use, Green
+                          - generic [ref=e566]:
+                            - generic [ref=e568]: New
+                            - generic [ref=e569]: $10.96
+                          - generic [ref=e571]: Free delivery
+                          - generic [ref=e573]: Seller with 100% positive feedback
+                        - link [ref=e574] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/366074283983?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEHE%2BMvWZs%2Fj0jnijHBbLB2I%3D%26itm%3D366074283983%26noa%3D0%26plcampt%3D0%3A163827074014%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D9%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A366074283983d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbYjwpvH5L%252BzIvN2wedNpMY6%252F7wrB4ZRvdke6JFRXtwWd3ZRV8hPAiwTQmxRuXsJGCj3A61djsrc%252FGPK12q7OSrzx1FXz--WeiaYCNcKgpd305TJTSfVkqHrB6sLnBQdGp90dohzAMDl0VgBTaZJA7YJjl%252BdGxwfQRB2r1uJn4lXk%252ByhVrJcunr817aLw6e92s2rumBxMEwmKr21YUHi1I7RNyCklYsYsOgN3vP3AKlixr%252F8OZdnpsbQ0M9GqQPSUnFUoKNdXwx%252BeZ%252Bq%252FQasRp%252BaR3cyDa3D4Mw5v6taL1Qys%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA90P3MW1H953QRKD3KE
+                        - button [ref=e577] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e578]:
+                      - generic [ref=e580]:
+                        - generic [ref=e586]:
+                          - heading [level=3] [ref=e587]: 13pcs Household Cleaning Tools 2 in 1 Groove Cleaning Brush Window Track Clea...
+                          - generic [ref=e588]:
+                            - generic [ref=e590]: New
+                            - generic [ref=e591]: $21.59
+                          - generic [ref=e593]: Free delivery
+                          - generic [ref=e595]: Seller 99.6% positive
+                        - link [ref=e596] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/127775185761?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEPJOmX2jp%2BGSxzQviyD%2FxWg%3D%26itm%3D127775185761%26noa%3D0%26plcampt%3D0%3A57340180011%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D10%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A127775185761d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mblt8JAtEbwcvoHtb6gnv%252F52AWqobWACI%252FG%252FY60W1StWWdDsspWslAg1HxJw2AIMpyIfRvWBniyTVAYdkkL6D0hqH3UjzG96MRr7W5DxFMDI9vw99a4CpbjK98aDX1sEURtrLRfs6vfxgThWHqZOrK5jo36LYhTQdDS2AChHgS8wsxFdzjDJlJ2j4jUgR8pI%252Fncu9i1nDqGhlOD%252FVpcd9GGcNzViqe14VwsT02bzcO3DK%252F5xmqUGmtYMpuGqYZ44Nice7ERm1msN%252FIPzU6eMCvzwO8Lxbu%252Bui8AN4u4NwYVLA%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA93GPM21SPTQGRSEPBF
+                        - button [ref=e599] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e600]:
+                      - generic [ref=e602]:
+                        - generic [ref=e608]:
+                          - heading [level=3] [ref=e609]: Windshield Cleaning Tool Kit Car Window Glass Wiper Cleaner Brush Pad + Squeegee
+                          - generic [ref=e610]:
+                            - generic [ref=e612]: New
+                            - generic [ref=e613]: $15.19
+                          - generic [ref=e615]: Free delivery
+                          - generic [ref=e616]:
+                            - generic [ref=e617]:
+                              - img
+                            - generic [ref=e618]: Top Rated Plus
+                          - generic [ref=e621]: Seller 99.8% positive
+                        - link [ref=e622] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/406687683531?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAEHqfRF5f%2FDbRvhVCUYQXoHs%3D%26itm%3D406687683531%26noa%3D1%26plcampt%3D5%3AAG7777910153%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D11%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A406687683531d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABANcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbTzb0QLIe7lkWOsVXa0NUNZQQ%252BTkGO4Lps8hoQ8FnAIlELzCgG925JkIskktpKna6GhymeEgTDpy%252Fs9hsde%252FLgyFxBTZWx%252BtsZq1ibW3rxwwTew1Yf6%252BlbaSy3sgiccsijjfHvO8BVnJd3pQzcKXXE3mLYPBMDtk5sGUzJ%252BmRftyKMIivRHLgBuYghabIOyM8DXX40WKHSnoK62kvsy7FBrMrHi57DTBvPaomnnngDS4%253D%7Campid%3APLP_CLK%7Cclp%3A2332490&itmmeta=01KR41TA9720ZXN5HXM7YTBCY1
+                        - button [ref=e625] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e626]:
+                      - generic [ref=e628]:
+                        - generic [ref=e634]:
+                          - heading [level=3] [ref=e635]: 3 Pack Window Windshield Cleaning Tool Microfiber Car Wiper Cleaner Glass Brush
+                          - generic [ref=e636]:
+                            - generic [ref=e638]: New
+                            - generic [ref=e639]: $7.89
+                          - generic [ref=e641]: Free delivery
+                          - generic [ref=e643]: 5199 sold
+                        - link [ref=e644] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/275075094096?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D366343132941%26sid%3DAQALAAAAED1iUagDiAj0fExXv%2BZFA1U%3D%26itm%3D275075094096%26noa%3D0%26plcampt%3D0%3A10834692017%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D12%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dd53863b249bb46feb32430cb7b2cb9ea%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A275075094096d53863b249bb46feb32430cb7b2cb9ea%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbzHUmNO%252Bhbq7jeJ%252Fjxd6gFL%252FRyvKbTRrp9P219CZ1%252FdSOfJqt7Cqor0MHlosXU38aDQGgTVG3iiysT5QvRSc09g57hH0rt23nxbynENSDg9P3P36joVzrH0kWxUnIzGi1yoOYGMJepvLpgYrAq7tNQvI0gK6JqlBEbJUFno4QzpMimqCt%252BDqQ0O0K4XljEPr3gNaPfOSM9ZaGxutRqvCK6FG9w4wlC93TCbfo%252FC7pC%252BEWNtRzFPf4VWa%252Bef6Cfzr8%252BMg5bZeYkEP24SJhcmHvMA%252FSlOhv%252BmUciBmt2xb0SFc%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41TA9B3Q07AWQ089VQE6N7
+                        - button [ref=e647] [cursor=pointer]:
+                          - img
+                  - button "Go to the next slide, Similar Items" [ref=e648]:
+                    - img
+          - generic [ref=e651]:
+            - heading "2Pcs Hand-Held Groove Gap Cleaning Tools Door Window Track Kitchen Cleaning Brus" [level=1] [ref=e653]
+            - generic [ref=e655] [cursor=pointer]:
+              - generic [ref=e657]:
+                - link [ref=e659]:
+                  - /url: https://www.ebay.com/str/daconqu0?_trksid=p4429486.m3561.l161210
+                  - img [ref=e661]: D
+                - generic [ref=e662]:
+                  - generic [ref=e663]:
+                    - link "daconqu-0" [ref=e664]:
+                      - /url: https://www.ebay.com/str/daconqu0?_trksid=p4429486.m3561.l161211
+                    - generic [ref=e666]: (71)
+                  - generic [ref=e667]:
+                    - button "100% positive" [ref=e669]
+                    - link "Seller's other items" [ref=e671]:
+                      - /url: https://www.ebay.com/str/daconqu0?_trksid=p4429486.m3561.l170197
+                      - generic [ref=e672]: Seller's other items
+                      - generic [ref=e673]: Seller's other items
+                    - button "Message seller" [ref=e675]:
+                      - generic [ref=e676]: Message seller
+                      - generic [ref=e677]: Message seller
+              - button "See more about this seller" [ref=e679]:
+                - img
+            - generic [ref=e683]: US $9.73
+            - generic [ref=e684]:
+              - generic [ref=e685]: "Condition:"
+              - generic [ref=e687]:
+                - generic [ref=e688]:
+                  - generic [ref=e689]: New
+                  - generic [ref=e690]: New
+                - button "More information - About this item condition" [ref=e691] [cursor=pointer]:
+                  - generic [ref=e692]:
+                    - img "More information - About this item condition"
+            - list [ref=e694]:
+              - listitem [ref=e695]:
+                - button "Buy It Now" [ref=e697] [cursor=pointer]:
+                  - generic [ref=e698]: Buy It Now
+              - listitem [ref=e699]:
+                - button "Add to cart" [ref=e701] [cursor=pointer]:
+                  - generic [ref=e702]: Add to cart
+              - listitem [ref=e703]:
+                - generic [ref=e705]:
+                  - status [ref=e706]: Add to Watchlist
+                  - link "Add to Watchlist" [ref=e711] [cursor=pointer]:
+                    - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F366343132941
+                    - generic [ref=e712]:
+                      - img
+                      - text: Add to Watchlist
+            - generic [ref=e716]:
+              - generic [ref=e717]:
+                - img
+              - generic [ref=e719]: Breathe easy. Free shipping and returns.
+            - generic [ref=e722]:
+              - heading "Shipping, returns, and payments" [level=2] [ref=e725]:
+                - generic [ref=e726]: Shipping, returns, and payments
+              - generic [ref=e728]:
+                - generic [ref=e731]:
+                  - generic [ref=e734]: "Shipping:"
+                  - generic [ref=e736]:
+                    - generic [ref=e737]:
+                      - text: Free Standard Shipping.
+                      - button "See details for shipping" [ref=e738] [cursor=pointer]:
+                        - generic [ref=e739]:
+                          - text: See details
+                          - generic [ref=e740]: for shipping
+                    - generic [ref=e741]: "Located in: Denver, Colorado, United States"
+                - generic [ref=e745]:
+                  - generic [ref=e748]: "Delivery:"
+                  - generic [ref=e751]:
+                    - text: Estimated between Mon, May 11 and Thu, May 14 to 30339
+                    - button "Information - Estimated delivery date - opens a layer" [ref=e757]:
+                      - img
+            - generic [ref=e764]:
+              - generic [ref=e767]: "Returns:"
+              - generic [ref=e770]:
+                - text: 30 days returns. Seller pays for return shipping.
+                - button "See details - for more information about returns" [ref=e771] [cursor=pointer]:
+                  - generic [ref=e772]:
+                    - text: See details
+                    - generic [ref=e773]: "- for more information about returns"
+            - generic [ref=e776]:
+              - generic [ref=e780]:
+                - generic [ref=e783]: "Payments:"
+                - generic [ref=e786]:
+                  - img "PayPal" [ref=e787]
+                  - img "Venmo" [ref=e789]
+                  - img "Google Pay" [ref=e791]
+                  - img "Visa" [ref=e793]
+                  - img "Master Card" [ref=e795]
+                  - img "Discover" [ref=e797]
+                  - img "Diners Club" [ref=e800]
+              - generic [ref=e808]:
+                - img "Paypal Credit" [ref=e810]
+                - generic [ref=e811]:
+                  - text: Special financing available.
+                  - link "Learn more - for PayPal Credit, opens in a new window or tab" [ref=e812] [cursor=pointer]:
+                    - /url: https://www.billmelater.com/cm/paypal/landers/15ebayPPCNB.html
+                    - generic [ref=e813]:
+                      - text: Learn more
+                      - generic [ref=e814]: "- for PayPal Credit, opens in a new window or tab"
+            - generic [ref=e817]:
+              - heading "Shop with confidence" [level=2] [ref=e820]
+              - generic [ref=e821]:
+                - generic [ref=e823]:
+                  - img
+                - generic [ref=e824]:
+                  - generic [ref=e825]: eBay Money Back Guarantee
+                  - generic [ref=e826]:
+                    - text: Get the item you ordered or your money back.
+                    - link "Learn more eBay Money Back Guarantee - opens new window or tab" [ref=e827] [cursor=pointer]:
+                      - /url: https://www.ebay.com/ebay-money-back-guarantee/
+                      - generic [ref=e828]:
+                        - text: Learn more
+                        - generic [ref=e829]: eBay Money Back Guarantee - opens new window or tab
+        - generic [ref=e830]:
+          - generic [ref=e835]:
+            - tablist [ref=e836]:
+              - tab "About this item" [selected] [ref=e837] [cursor=pointer]:
+                - generic [ref=e838]: About this item
+            - tabpanel "About this item" [ref=e840]:
+              - generic [ref=e843]:
+                - generic [ref=e846]:
+                  - generic [ref=e850]: Seller assumes all responsibility for this listing.
+                  - generic [ref=e854]: eBay item number:366343132941
+                  - generic [ref=e858]:
+                    - text: Last updated on Apr 14, 2026 18:09:03 PDT
+                    - link "View all revisions View all revisions" [ref=e859] [cursor=pointer]:
+                      - /url: https://www.ebay.com/rvh/366343132941?rt=nc&_trksid=p4429486.m148105.l48144
+                      - generic [ref=e860]:
+                        - text: View all revisions
+                        - generic [ref=e861]: View all revisions
+                - generic [ref=e864]:
+                  - heading "Item specifics" [level=2] [ref=e867]:
+                    - generic [ref=e868]: Item specifics
+                  - generic [ref=e870]:
+                    - generic [ref=e871]:
+                      - generic [ref=e873]:
+                        - term [ref=e874]:
+                          - generic [ref=e876]: Condition
+                        - definition [ref=e877]:
+                          - generic [ref=e880]:
+                            - generic [ref=e881]: "New: A brand-new, unused, unopened, undamaged item in its original packaging (where packaging is ..."
+                            - button "Read more about the condition" [ref=e883]:
+                              - generic [ref=e884]:
+                                - text: Read more
+                                - generic [ref=e885]: about the condition
+                      - generic [ref=e887]:
+                        - term [ref=e888]:
+                          - generic [ref=e890]: Brand
+                        - definition [ref=e891]:
+                          - generic [ref=e893]: Does not apply
+                    - generic [ref=e894]:
+                      - generic [ref=e896]:
+                        - term [ref=e897]:
+                          - generic [ref=e899]: Type
+                        - definition [ref=e900]:
+                          - generic [ref=e902]: Does not apply
+                      - generic [ref=e904]:
+                        - term [ref=e905]:
+                          - generic [ref=e907]: Color
+                        - definition [ref=e908]:
+                          - generic [ref=e910]: Green
+                    - generic [ref=e911]:
+                      - generic [ref=e913]:
+                        - term [ref=e914]:
+                          - generic [ref=e916]: Product Dimensions
+                        - definition [ref=e917]:
+                          - generic [ref=e919]: 7.5"L x 0.4"W x 3.1"H
+                      - generic [ref=e921]:
+                        - term [ref=e922]:
+                          - generic [ref=e924]: Handle Material
+                        - definition [ref=e925]:
+                          - generic [ref=e927]: Plastic
+                    - generic [ref=e928]:
+                      - generic [ref=e930]:
+                        - term [ref=e931]:
+                          - generic [ref=e933]: Material
+                        - definition [ref=e934]:
+                          - generic [ref=e936]: Nylon
+                      - generic [ref=e938]:
+                        - term [ref=e939]:
+                          - generic [ref=e941]: UPC
+                        - definition [ref=e942]:
+                          - generic [ref=e944]: "7445016958939"
+                - generic [ref=e945]:
+                  - generic [ref=e946]: Category
+                  - navigation "breadcrumb" [ref=e949]:
+                    - heading "breadcrumb" [level=2] [ref=e950]
+                    - list [ref=e951]:
+                      - listitem [ref=e952]:
+                        - link "Home & Garden" [ref=e953] [cursor=pointer]:
+                          - /url: https://www.ebay.com/b/Home-Garden/11700/bn_1853126
+                        - img
+                      - listitem [ref=e954]:
+                        - link "Household Supplies & Cleaning" [ref=e955] [cursor=pointer]:
+                          - /url: https://www.ebay.com/b/Household-Cleaning-Supplies/299/bn_1857080
+                        - img
+                      - listitem [ref=e956]:
+                        - link "Cleaning Products" [ref=e957] [cursor=pointer]:
+                          - /url: https://www.ebay.com/b/Household-Cleaning-Products/259621/bn_2310931
+                - generic [ref=e958]:
+                  - heading "Item description from the seller" [level=2] [ref=e961]
+                  - iframe [ref=e962]:
+                    - generic [ref=f1122e2]:
+                      - list [ref=f1122e3]:
+                        - listitem [ref=f1122e4]: Narrow tufted brush on one end to sweep away loose dirt. Scraper on the opposite end to dislodge debris trapped in corners.
+                        - listitem [ref=f1122e5]: This cleaning brush tool was designed to clean windows track, sliding doors and shower door tracks easily and quickly.
+                        - listitem [ref=f1122e6]: The elevated Curved Handle, Has Built-In Finger Grips For a comfortable Hold.
+                        - listitem [ref=f1122e7]: This gap cleaning brush has hanging hole can hang up and occupy less space.
+                        - listitem [ref=f1122e8]: "This magic window cleaning brush was 7.75 inches long; Color: Green; Qty: 2 Pack."
+                      - paragraph [ref=f1122e10]:
+                        - generic [ref=f1122e11]:
+                          - text: "Window Track Cleaning Brush is a two-in-one tool that makes quick work of a tedious task! Product Features:"
+                          - text: "- Material: PP Handle + Nylon Bristles"
+                          - text: "- Overall Size: 3.5x8.3 inches(8.8cm*21cm)"
+                          - text: "- Brush Size: 1.6x2.8 inches(4cm*7cm)"
+                          - text: "- Ultra-Thin Brush Effortlessly Fits Into and Cleans Window, Shower, and Sliding Door Tracks, and All The Other Teeny Crevices Where Dust and Dirt Accumulate."
+                          - text: "- The Scraper End Loosens and Removes Caked On Grime and Soap Residue."
+                          - text: "- It has a narrow tufted brush on one end to sweep away loose dirt and a scraper on the opposite end to dislodge debris trapped in corners."
+                          - text: "- The elevated ergonomic handle with molded finger grips keeps your hand out of the way to prevent injury and gives you an unobstructed view. You'll wonder how you ever cleaned without it!"
+                          - text: Package Included:2 x Window Track Cleaning Brush(Green)
+          - generic [ref=e965]:
+            - generic [ref=e966]:
+              - generic [ref=e967]:
+                - heading "About this seller" [level=2] [ref=e968]:
+                  - generic [ref=e970]: About this seller
+                - generic [ref=e971]:
+                  - link [ref=e973] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/daconqu0?_trksid=p4429486.m145687.l149266
+                    - img [ref=e975]: D
+                  - generic [ref=e976]:
+                    - heading "daconqu-0" [level=3] [ref=e977]:
+                      - link "daconqu-0" [ref=e978] [cursor=pointer]:
+                        - /url: https://www.ebay.com/str/daconqu0?_trksid=p4429486.m145687.l149267
+                    - paragraph [ref=e979]: 100% positive feedback•158 items sold
+                - generic [ref=e982]:
+                  - generic [ref=e984]:
+                    - generic [ref=e985]:
+                      - img
+                    - generic [ref=e986]: Joined Dec 2025
+                  - generic [ref=e988]:
+                    - generic [ref=e989]:
+                      - img
+                    - generic [ref=e990]: Usually responds within 24 hours
+                - generic [ref=e991]:
+                  - link "Visit store" [ref=e992] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/daconqu0?_trksid=p4429486.m145687.l149086
+                    - generic [ref=e993]: Visit store
+                  - button "Message seller - opens in a new dialog" [ref=e994] [cursor=pointer]:
+                    - generic [ref=e995]:
+                      - text: Message seller
+                      - generic [ref=e996]: "- opens in a new dialog"
+                  - button "Save seller - Save this seller daconqu-0" [ref=e998] [cursor=pointer]:
+                    - generic [ref=e999]:
+                      - img
+                    - generic [ref=e1000]: Save seller
+              - generic [ref=e1002]:
+                - heading "Detailed seller ratings" [level=3] [ref=e1003]
+                - generic [ref=e1004]:
+                  - generic [ref=e1005]: Average for the last 12 months
+                  - generic [ref=e1006]:
+                    - generic [ref=e1007]:
+                      - generic [ref=e1008]: Accurate description
+                      - progressbar [ref=e1009]
+                      - generic [ref=e1010]: "4.8"
+                    - generic [ref=e1011]:
+                      - generic [ref=e1012]: Reasonable shipping cost
+                      - progressbar [ref=e1013]
+                      - generic [ref=e1014]: "5.0"
+                    - generic [ref=e1015]:
+                      - generic [ref=e1016]: Shipping speed
+                      - progressbar [ref=e1017]
+                      - generic [ref=e1018]: "5.0"
+                    - generic [ref=e1019]:
+                      - generic [ref=e1020]: Communication
+                      - progressbar [ref=e1021]
+                      - generic [ref=e1022]: "5.0"
+              - generic [ref=e1023]:
+                - generic [ref=e1024]:
+                  - heading "Popular categories from this store" [level=3] [ref=e1025]
+                  - link "See all categories" [ref=e1027] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=daconqu-0&store_name=daconqu0&_oac=1
+                    - generic [ref=e1028]:
+                      - text: See all
+                      - generic [ref=e1029]: categories
+                - link "Dolls & Bears" [ref=e1032] [cursor=pointer]:
+                  - /url: https://www.ebay.com/str/daconqu0/Dolls-Bears/_i.html?_sacat=237
+            - generic [ref=e1035]:
+              - heading "Seller feedback (74)" [level=2] [ref=e1036]
+              - 'button "Filter: All ratings" [ref=e1039] [cursor=pointer]':
+                - generic [ref=e1040]:
+                  - generic [ref=e1041]: "Filter:"
+                  - generic [ref=e1042]: All ratings
+                  - img
+              - list [ref=e1043]:
+                - listitem [ref=e1044]:
+                  - generic [ref=e1045]:
+                    - generic [ref=e1047]:
+                      - generic [ref=e1048]:
+                        - img "Positive feedback rating"
+                      - generic [ref=e1049]:
+                        - text: k***r (148)
+                        - generic [ref=e1050]: "- Feedback left by buyer."
+                      - generic [ref=e1053]: Past month
+                      - generic [ref=e1054]: Verified purchase
+                    - generic [ref=e1055]:
+                      - generic [ref=e1056]: The item arrived within a week, and packed in hard envelope. This product was received in good condition, and deemed new, despite it was not sealed plastic wrapped.
+                      - button "Item photo(s) from verified buyer" [ref=e1057] [cursor=pointer]:
+                        - img "Item photo(s) from verified buyer" [ref=e1058]
+                    - link "St. Joseph Sunday Missal Prayerbook and Hymnal for 2026 [Paperback] Catholic Boo (#366343106970)" [ref=e1060] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/366343106970
+                      - generic [ref=e1061]: St. Joseph Sunday Missal Prayerbook and Hymnal for 2026 [Paperback] Catholic Boo (#366343106970)
+                - listitem [ref=e1062]:
+                  - generic [ref=e1063]:
+                    - generic [ref=e1065]:
+                      - generic [ref=e1066]:
+                        - img "Neutral feedback rating"
+                      - generic [ref=e1067]:
+                        - text: l***i (43)
+                        - generic [ref=e1068]: "- Feedback left by buyer."
+                      - generic [ref=e1071]: Past month
+                      - generic [ref=e1072]: Verified purchase
+                    - generic [ref=e1074]: The item came on time and exactly what I ordered. However, it appears the seller simply placed their own order through Amazon and then had it sent directly to me (it arrived in an Amazon bubble package). I am on eBay because I'm trying to get away from ordering things from Amazon and I'm willing to pay a little bit more. However, this seller appears to have marked up the price, then ordered from Amazon to ship directly to me instead of providing it themselves.
+                    - link "Fitness Equipment Wipes - EWG Verified - 50 Ct Original Natural Plant Based Gym (#366343113008)" [ref=e1076] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/366343113008
+                      - generic [ref=e1077]: Fitness Equipment Wipes - EWG Verified - 50 Ct Original Natural Plant Based Gym (#366343113008)
+                - listitem [ref=e1078]:
+                  - generic [ref=e1079]:
+                    - generic [ref=e1081]:
+                      - generic [ref=e1082]:
+                        - img "Positive feedback rating"
+                      - generic [ref=e1083]:
+                        - text: t***e (1025)
+                        - generic [ref=e1084]: "- Feedback left by buyer."
+                      - generic [ref=e1087]: Past month
+                      - generic [ref=e1088]: Verified purchase
+                    - generic [ref=e1090]: Item as described, fast shipping, excellent seller!
+                    - link "Refill Kit – 1 Lb Crystal Powder Exterior Window Cleaner for Glass and Screens, (#366343138391)" [ref=e1092] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/366343138391
+                      - generic [ref=e1093]: Refill Kit – 1 Lb Crystal Powder Exterior Window Cleaner for Glass and Screens, (#366343138391)
+                - listitem [ref=e1094]:
+                  - generic [ref=e1095]:
+                    - generic [ref=e1097]:
+                      - generic [ref=e1098]:
+                        - img "Positive feedback rating"
+                      - generic [ref=e1099]:
+                        - text: e***e (1069)
+                        - generic [ref=e1100]: "- Feedback left by buyer."
+                      - generic [ref=e1103]: Past month
+                      - generic [ref=e1104]: Verified purchase
+                    - generic [ref=e1106]: Super fast delivery great value great quality I would recommend this seller again and I would buy from them again
+                    - link "8 Rolls Floral Tape 1/2Inch Flower Tape, Green Floral Tape for Fresh Flowers, 30 (#366342346939)" [ref=e1108] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/366342346939
+                      - generic [ref=e1109]: 8 Rolls Floral Tape 1/2Inch Flower Tape, Green Floral Tape for Fresh Flowers, 30 (#366342346939)
+                - listitem [ref=e1110]:
+                  - generic [ref=e1111]:
+                    - generic [ref=e1113]:
+                      - generic [ref=e1114]:
+                        - img "Positive feedback rating"
+                      - generic [ref=e1115]:
+                        - text: u***u (180)
+                        - generic [ref=e1116]: "- Feedback left by buyer."
+                      - generic [ref=e1119]: Past month
+                      - generic [ref=e1120]: Verified purchase
+                    - generic [ref=e1122]: Packaged well and recieved quickly and very happy.
+                    - link "Dish Brush, Long Handle, White, Dish Scrub Brush for Cleaning, Pots/Pans/Kitchen (#366343138349)" [ref=e1124] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/366343138349
+                      - generic [ref=e1125]: Dish Brush, Long Handle, White, Dish Scrub Brush for Cleaning, Pots/Pans/Kitchen (#366343138349)
+                - listitem [ref=e1126]:
+                  - generic [ref=e1127]:
+                    - generic [ref=e1129]:
+                      - generic [ref=e1130]:
+                        - img "Positive feedback rating"
+                      - generic [ref=e1131]:
+                        - text: n***9 (97)
+                        - generic [ref=e1132]: "- Feedback left by buyer."
+                      - generic [ref=e1135]: Past month
+                      - generic [ref=e1136]: Verified purchase
+                    - generic [ref=e1138]: Good seller. Fast shipping.
+                    - link "Facial Reflexology Tools Ox Horn, Dual-Ended Gua Sha Scraper Massage Pen, Fascia (#366343123616)" [ref=e1140] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/366343123616
+                      - generic [ref=e1141]: Facial Reflexology Tools Ox Horn, Dual-Ended Gua Sha Scraper Massage Pen, Fascia (#366343123616)
+                - listitem [ref=e1142]:
+                  - generic [ref=e1143]:
+                    - generic [ref=e1145]:
+                      - generic [ref=e1146]:
+                        - img "Positive feedback rating"
+                      - generic [ref=e1147]:
+                        - text: 5***3 (13)
+                        - generic [ref=e1148]: "- Feedback left by buyer."
+                      - generic [ref=e1151]: Past month
+                      - generic [ref=e1152]: Verified purchase
+                    - generic [ref=e1154]: FAST SHIPPING . GREAT PRICE
+                    - link "Facial Reflexology Tools Ox Horn, Dual-Ended Gua Sha Scraper Massage Pen, Fascia (#366343123616)" [ref=e1156] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/366343123616
+                      - generic [ref=e1157]: Facial Reflexology Tools Ox Horn, Dual-Ended Gua Sha Scraper Massage Pen, Fascia (#366343123616)
+                - listitem [ref=e1158]:
+                  - generic [ref=e1159]:
+                    - generic [ref=e1161]:
+                      - generic [ref=e1162]:
+                        - img "Positive feedback rating"
+                      - generic [ref=e1163]:
+                        - text: 8***8 (1422)
+                        - generic [ref=e1164]: "- Feedback left by buyer."
+                      - generic [ref=e1167]: Past month
+                      - generic [ref=e1168]: Verified purchase
+                    - generic [ref=e1170]: Excellent! Fast Shipping, great price! A++++++
+                    - link "God, the Science, the Evidence (#366343109505)" [ref=e1172] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/366343109505
+                      - generic [ref=e1173]: God, the Science, the Evidence (#366343109505)
+              - link "See all feedback. Opens in a new tab" [ref=e1175] [cursor=pointer]:
+                - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=366343132941&username=daconqu-0&filter=feedback_page%3ARECEIVED_AS_SELLER&sort=RELEVANCEV2
+                - text: See all feedback
+          - generic [ref=e1177]:
+            - navigation "Quick Links" [ref=e1178]:
+              - link "Back to previous page" [ref=e1179] [cursor=pointer]:
+                - /url: https://www.ebay.com/splashui/challenge?ap=1&appName=orch&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F204125986633&iid=3f656a9e-4355-42d9-8256-e5cd02285f8f&iim=ROTcuMjX&iia=rkI3LjE1Op&iiz=YiaNC4xMw**jfd
+              - button "Return to top" [ref=e1180] [cursor=pointer]
+            - generic [ref=e1182]:
+              - heading "More to explore :" [level=2] [ref=e1185]
+              - list [ref=e1187]:
+                - listitem [ref=e1188]:
+                  - link "Cleaning Brushes Other Hand Tools," [ref=e1189] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Cleaning-Brushes-Other-Hand-Tools/303/bn_7116590346
+                - listitem [ref=e1190]:
+                  - link "Mr. Clean Household Cleaning Tools," [ref=e1191] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Mr-Clean-Household-Cleaning-Tools/259338/bn_7115674187
+                - listitem [ref=e1192]:
+                  - link "Household Cleaning Tools," [ref=e1193] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Household-Cleaning-Tools/259338/bn_7115562496
+                - listitem [ref=e1194]:
+                  - link "Pool Cleaning Tools," [ref=e1195] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Pool-Cleaning-Tools/181061/bn_7479910
+                - listitem [ref=e1196]:
+                  - link "Portable Window Cleaning Robots Cleaning," [ref=e1197] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Portable-Window-Cleaning-Robots-Cleaning/112579/bn_7116840336
+                - listitem [ref=e1198]:
+                  - link "Kitchen Household Cleaning Products," [ref=e1199] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Kitchen-Household-Cleaning-Products/259621/bn_7115664155
+                - listitem [ref=e1200]:
+                  - link "Window Cleaning Poles," [ref=e1201] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Window-Cleaning-Poles/112579/bn_7116073111
+                - listitem [ref=e1202]:
+                  - link "Squeegees & Window Cleaning," [ref=e1203] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Squeegees-Window-Cleaning/112579/bn_7115660163
+                - listitem [ref=e1204]:
+                  - link "Mainstays Pool Cleaning Tools," [ref=e1205] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Mainstays-Pool-Cleaning-Tools/181061/bn_107594177
+                - listitem [ref=e1206]:
+                  - link "Cleaning Brushes Barbecue Tools" [ref=e1207] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Cleaning-Brushes-Barbecue-Tools/20725/bn_55111899
+            - generic [ref=e1209]:
+              - heading "Shop Top Sellers and Highly Rated Products in Cleaning Products" [level=2] [ref=e1210]
+              - generic [ref=e1211]:
+                - generic [ref=e1212]:
+                  - heading "Best Sellers" [level=3] [ref=e1213]
+                  - list [ref=e1214]:
+                    - listitem [ref=e1215]:
+                      - link "Sprayway SW050-12 Glass Cleaner, 19oz - 12 Pack" [ref=e1216] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/540972441
+                        - generic [ref=e1217]: Sprayway SW050-12 Glass Cleaner, 19oz - 12 Pack
+                    - listitem [ref=e1218]:
+                      - link "Sprayway Glass Cleaner 19 Ounce Pack of 4 Streak Shine -" [ref=e1219] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/26057853831
+                        - generic [ref=e1220]: Sprayway Glass Cleaner 19 Ounce Pack of 4 Streak Shine -
+                    - listitem [ref=e1221]:
+                      - link "Dawn Manual Pan and Pot Detergent - 5gal" [ref=e1222] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/15021270056
+                        - generic [ref=e1223]: Dawn Manual Pan and Pot Detergent - 5gal
+                    - listitem [ref=e1224]:
+                      - link "Wet & Forget 801064 Shower Cleaner - 64oz" [ref=e1225] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/28026727706
+                        - generic [ref=e1226]: Wet & Forget 801064 Shower Cleaner - 64oz
+                    - listitem [ref=e1227]:
+                      - link "303 Products Marine and Recreation Aerospace Protectant - 1 Gallon" [ref=e1228] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/2083251259
+                        - generic [ref=e1229]: 303 Products Marine and Recreation Aerospace Protectant - 1 Gallon
+                - generic [ref=e1230]:
+                  - heading "Top Rated" [level=3] [ref=e1231]
+                  - list [ref=e1232]:
+                    - listitem [ref=e1233]:
+                      - link "Brasso 26600-89334 Polish - 8oz" [ref=e1234] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/23016778953
+                        - generic [ref=e1235]: Brasso 26600-89334 Polish - 8oz
+                    - listitem [ref=e1236]:
+                      - link "Wright's 8oz Silver Polishing Cream for Jewelry (014)" [ref=e1237] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/1887124266
+                        - generic [ref=e1238]: Wright's 8oz Silver Polishing Cream for Jewelry (014)
+                    - listitem [ref=e1239]:
+                      - link "Eagle One 1035605 Never-dull Wadding Polish - 5 Oz Single" [ref=e1240] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/691303763
+                        - generic [ref=e1241]: Eagle One 1035605 Never-dull Wadding Polish - 5 Oz Single
+                    - listitem [ref=e1242]:
+                      - link "Permatex Fast Orange Pumice Lotion Hand Cleaner - 1gal" [ref=e1243] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/14006424647
+                        - generic [ref=e1244]: Permatex Fast Orange Pumice Lotion Hand Cleaner - 1gal
+                    - listitem [ref=e1245]:
+                      - link "affresh Washing Machine Cleaner - 6 Tablets (W10501250)" [ref=e1246] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/11015192025
+                        - generic [ref=e1247]: affresh Washing Machine Cleaner - 6 Tablets (W10501250)
+            - generic [ref=e1249]:
+              - heading "Related searches" [level=2] [ref=e1250]
+              - list [ref=e1251]:
+                - listitem [ref=e1252]:
+                  - link "Gutter Cleaning Brush" [ref=e1253] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/gutter-cleaning-brush?_nkw=gutter+cleaning+brush
+                    - generic [ref=e1254]: Gutter Cleaning Brush
+                - listitem [ref=e1255]:
+                  - link "Window Track" [ref=e1256] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/window-track?_nkw=window+track
+                    - generic [ref=e1257]: Window Track
+                - listitem [ref=e1258]:
+                  - link "Door Sweep Brush" [ref=e1259] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/door-sweep-brush?_nkw=door+sweep+brush
+                    - generic [ref=e1260]: Door Sweep Brush
+                - listitem [ref=e1261]:
+                  - link "Professional Window Cleaning Tools" [ref=e1262] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/professional-window-cleaning-tools?_nkw=professional+window+cleaning+tools
+                    - generic [ref=e1263]: Professional Window Cleaning Tools
+                - listitem [ref=e1264]:
+                  - link "Paving Cleaning Brush" [ref=e1265] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/paving-cleaning-brush?_nkw=paving+cleaning+brush
+                    - generic [ref=e1266]: Paving Cleaning Brush
+                - listitem [ref=e1267]:
+                  - link "Gutter Cleaning Tools" [ref=e1268] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/gutter-cleaning-tools?_nkw=gutter+cleaning+tools
+                    - generic [ref=e1269]: Gutter Cleaning Tools
+                - listitem [ref=e1270]:
+                  - link "Window Cleaning Device" [ref=e1271] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/window-cleaning-device?_nkw=window+cleaning+device
+                    - generic [ref=e1272]: Window Cleaning Device
+                - listitem [ref=e1273]:
+                  - link "Glass Cleaning Brush" [ref=e1274] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/glass-cleaning-brush?_nkw=glass+cleaning+brush
+                    - generic [ref=e1275]: Glass Cleaning Brush
+                - listitem [ref=e1276]:
+                  - link "Plastic Grab Handle" [ref=e1277] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/plastic-grab-handle?_nkw=plastic+grab+handle
+                    - generic [ref=e1278]: Plastic Grab Handle
+                - listitem [ref=e1279]:
+                  - link "Window Cleaning Equipment" [ref=e1280] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/window-cleaning-equipment?_nkw=window+cleaning+equipment
+                    - generic [ref=e1281]: Window Cleaning Equipment
+                - listitem [ref=e1282]:
+                  - link "Telescoping Gutter Cleaning Wand" [ref=e1283] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/telescoping-gutter-cleaning-wand?_nkw=telescoping+gutter+cleaning+wand
+                    - generic [ref=e1284]: Telescoping Gutter Cleaning Wand
+                - listitem [ref=e1285]:
+                  - link "Cleaning Brush with Handle" [ref=e1286] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/cleaning-brush-with-handle?_nkw=cleaning+brush+with+handle
+                    - generic [ref=e1287]: Cleaning Brush with Handle
+                - listitem [ref=e1288]:
+                  - link "Garage Door Track" [ref=e1289] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/garage-door-track?_nkw=garage+door+track
+                    - generic [ref=e1290]: Garage Door Track
+                - listitem [ref=e1291]:
+                  - link "Window Track Clips" [ref=e1292] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/window-track-clips?_nkw=window+track+clips
+                    - generic [ref=e1293]: Window Track Clips
+                - listitem [ref=e1294]:
+                  - link "Window Cleaner Tool" [ref=e1295] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/window-cleaner-tool?_nkw=window+cleaner+tool
+                    - generic [ref=e1296]: Window Cleaner Tool
+  - contentinfo [ref=e1305]:
+    - list [ref=e1306]:
+      - listitem [ref=e1307]:
+        - link "About eBay" [ref=e1308] [cursor=pointer]:
+          - /url: https://www.ebayinc.com
+      - listitem [ref=e1309]:
+        - link "Announcements" [ref=e1310] [cursor=pointer]:
+          - /url: https://community.ebay.com/t5/Announcements/bg-p/Announcements
+      - listitem [ref=e1311]:
+        - link "Community" [ref=e1312] [cursor=pointer]:
+          - /url: https://community.ebay.com
+      - listitem [ref=e1313]:
+        - link "Security Center" [ref=e1314] [cursor=pointer]:
+          - /url: https://pages.ebay.com/securitycenter/index.html
+      - listitem [ref=e1315]:
+        - link "Seller Center" [ref=e1316] [cursor=pointer]:
+          - /url: https://www.ebay.com/sellercenter
+      - listitem [ref=e1317]:
+        - link "Policies" [ref=e1318] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/policies/default/ebays-rules-policies?id=4205
+      - listitem [ref=e1319]:
+        - link "Affiliates" [ref=e1320] [cursor=pointer]:
+          - /url: https://partnernetwork.ebay.com/
+      - listitem [ref=e1321]:
+        - link "Product Safety Tips" [ref=e1322] [cursor=pointer]:
+          - /url: https://pages.ebay.com/safetytips
+      - listitem [ref=e1323]:
+        - link "Help & Contact" [ref=e1324] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/home
+      - listitem [ref=e1325]:
+        - link "Site Map" [ref=e1326] [cursor=pointer]:
+          - /url: https://pages.ebay.com/sitemap.html
+    - generic [ref=e1327]:
+      - text: Copyright © 1995-2026 eBay Inc. All Rights Reserved.
+      - link "Accessibility" [ref=e1328] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/accessibility/
+      - text: ","
+      - link "User Agreement" [ref=e1329] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259
+      - text: ","
+      - link "Privacy" [ref=e1330] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260
+      - text: ","
+      - link "Consumer Health Data" [ref=e1331] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/consumer-health-data-privacy-policy/
+      - text: ","
+      - link "Payments Terms of Use" [ref=e1332] [cursor=pointer]:
+        - /url: https://pages.ebay.com/payment/2.0/terms.html
+      - text: ","
+      - link "Cookies" [ref=e1333] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/ebay-cookie-notice?id=4267
+      - text: ","
+      - link "CA Privacy Notice" [ref=e1334] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/state-privacy-disclosures/#california
+      - text: ","
+      - link "Your Privacy Choices" [ref=e1335] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice/ccpa
+      - text: and
+      - link "AdChoice" [ref=e1336] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice
+        - text: AdChoice
+        - img
+  - img
+  - img [ref=e1338]

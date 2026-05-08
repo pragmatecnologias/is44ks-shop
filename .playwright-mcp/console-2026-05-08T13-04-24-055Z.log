@@ -1,0 +1,11 @@
+[     146ms] [ERROR] [NoriLogger] [WARN] DSPClientStrategy No events to send to endpoint @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:10
+[     147ms] [ERROR] [NoriLogger] [WARN] DSPClientStrategy No events to send to endpoint @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:10
+[    1335ms] [ERROR] Failed to load resource: net::ERR_TRUST_TOKEN_OPERATION_FAILED @ https://www.amazon.com/tt/i:0
+[    1608ms] [LOG] [NoriLogger] Initialized successfully @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:26
+[    1624ms] [WARNING] [NoriLogger] Logger, campaignElement, or campaignID not available for performance tracking @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:26
+[    1624ms] [WARNING] [NoriLogger] Logger, campaignElement, or campaignID not available for performance tracking @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:26
+[    1628ms] [LOG] [NoriLogger] Initialized successfully @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:26
+[    1644ms] [LOG] [NoriLogger] Initialized successfully @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:26
+[    1648ms] [ERROR] [NoriLogger] [WARN] DSPClientStrategy NoriLogger: Timer for asinImageRender already exists. @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:10
+[    1704ms] [ERROR] [NoriLogger] [WARN] DSPClientStrategy NoriLogger: Timer for asinImageRender already exists. @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:10
+[    1704ms] [ERROR] [NoriLogger] [WARN] DSPClientStrategy NoriLogger: Timer for asinImageRender already exists. @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:10

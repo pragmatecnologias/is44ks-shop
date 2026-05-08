@@ -12,6 +12,9 @@
 
 | ID | Time | T | Title | Read |
 |----|------|---|-------|------|
+| #8516 | 10:19 PM | 🔴 | Fixed missing playwright import in eBay scraper | ~178 |
+| #8515 | " | 🟣 | Python eBay scraper created to capture sold listings | ~312 |
+| #8513 | 10:18 PM | 🔵 | Playwright module not installed locally in project | ~219 |
 | #8298 | 2:53 PM | 🔵 | Complete product state: zero pricing across all layers, final verdict is SKIP | ~458 |
 | #8297 | 2:51 PM | 🔵 | Playwright provider also fails to capture pricing from AliExpress pages | ~344 |
 | #8296 | " | 🔵 | Cross-product supplier data found: $3.85–$4.50/unit at MOQ 3–5 | ~414 |

@@ -1,0 +1,338 @@
+- generic [active] [ref=e1]:
+  - img
+  - img
+  - img
+  - generic [ref=e3]:
+    - banner [ref=e7]:
+      - link "Skip to main content" [ref=e9] [cursor=pointer]:
+        - /url: "#mainContent"
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e13]:
+            - text: Hi!
+            - link "Sign in" [ref=e14] [cursor=pointer]:
+              - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&sgfl=gh&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F266892301404
+            - generic [ref=e15]:
+              - text: or
+              - link "register" [ref=e16] [cursor=pointer]:
+                - /url: https://signup.ebay.com/pa/crte?ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F266892301404
+          - link "Deals" [ref=e18] [cursor=pointer]:
+            - /url: https://www.ebay.com/deals
+          - link "Brand Outlet" [ref=e20] [cursor=pointer]:
+            - /url: https://www.ebay.com/b/Brand-Outlet/bn_7115532402
+          - link "Gift Cards" [ref=e22] [cursor=pointer]:
+            - /url: https://www.ebay.com/giftcards
+          - link "Help & Contact" [ref=e24] [cursor=pointer]:
+            - /url: https://www.ebay.com/help/home
+        - generic [ref=e25]:
+          - link "Sell" [ref=e28] [cursor=pointer]:
+            - /url: https://www.ebay.com/sl/sell
+          - generic [ref=e29]:
+            - link "Watchlist" [ref=e30] [cursor=pointer]:
+              - /url: https://www.ebay.com/mye/myebay/watchlist
+              - generic [ref=e31]: Watchlist
+              - img
+            - button "Expand Watch List" [ref=e32]
+          - generic [ref=e33]:
+            - link "My eBay" [ref=e34] [cursor=pointer]:
+              - /url: https://www.ebay.com/mys/home?source=GBH
+              - generic [ref=e35]: My eBay
+              - img
+            - button "Expand My eBay" [ref=e36]
+          - button "Notifications" [ref=e39] [cursor=pointer]:
+            - img
+            - generic [ref=e40]: Notifications
+          - generic [ref=e42]:
+            - link "Your shopping cart contains 0 items" [ref=e43] [cursor=pointer]:
+              - /url: https://cart.ebay.com
+              - generic "Your shopping cart contains 0 items" [ref=e44]:
+                - img
+            - button "Expand Cart" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - link "eBay Home" [ref=e48] [cursor=pointer]:
+            - /url: https://www.ebay.com
+            - img "eBay Home" [ref=e49]
+          - button "Shop by category" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: Shop by category
+            - img
+        - generic [ref=e59]:
+          - status [ref=e60]
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - combobox "Search for anything" [ref=e64]
+              - img
+            - combobox "Select a category for search" [ref=e65]:
+              - option "All Categories" [selected]
+              - option "Antiques"
+              - option "Art"
+              - option "Baby"
+              - option "Books"
+              - option "Business & Industrial"
+              - option "Cameras & Photo"
+              - option "Cell Phones & Accessories"
+              - option "Clothing, Shoes & Accessories"
+              - option "Coins & Paper Money"
+              - option "Collectibles"
+              - option "Computers/Tablets & Networking"
+              - option "Consumer Electronics"
+              - option "Crafts"
+              - option "Dolls & Bears"
+              - option "Movies & TV"
+              - option "eBay Motors"
+              - option "Entertainment Memorabilia"
+              - option "Gift Cards & Coupons"
+              - option "Health & Beauty"
+              - option "Home & Garden"
+              - option "Jewelry & Watches"
+              - option "Music"
+              - option "Musical Instruments & Gear"
+              - option "Pet Supplies"
+              - option "Pottery & Glass"
+              - option "Real Estate"
+              - option "Specialty Services"
+              - option "Sporting Goods"
+              - option "Sports Mem, Cards & Fan Shop"
+              - option "Stamps"
+              - option "Tickets & Experiences"
+              - option "Toys & Hobbies"
+              - option "Travel"
+              - option "Video Games & Consoles"
+              - option "Everything Else"
+          - generic [ref=e66]:
+            - button "Search" [ref=e67] [cursor=pointer]:
+              - generic [ref=e68]: Search
+            - link "Advanced" [ref=e69] [cursor=pointer]:
+              - /url: https://www.ebay.com/sch/ebayadvsearch
+    - main [ref=e70]:
+      - generic [ref=e72]:
+        - generic [ref=e75]:
+          - generic [ref=e84]:
+            - heading "People who viewed this item also viewed" [level=2] [ref=e91]
+            - group [ref=e93]:
+              - list [ref=e96]:
+                - listitem [ref=e97]:
+                  - generic [ref=e99]:
+                    - generic [ref=e105]:
+                      - heading "Pneumatici 195/45 r16 84V XL CEAT SECURADRIVE Gomma estiva nuova" [level=3] [ref=e106]
+                      - generic [ref=e108]: $106.98
+                      - generic [ref=e110]: + $234.52 delivery
+                    - link "Pneumatici 195/45 r16 84V XL CEAT SECURADRIVE Gomma estiva nuova" [ref=e111] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/147213134870?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D266892301404%26sid%3DAQALAAAAENldZNS%2BobhE9vkNHN2QtdQ%3D%26itm%3D147213134870%26noa%3D1%26plcampt%3D0%3A153509698011%26algo%3DHOMESPLICE.SIM%26brand%3DCEAT%26asc%3D20200818143230%26ao%3D1%26rk%3D2%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D101%26meid%3D427ae4ad715241ae84ec2b6bdf5334f7%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                - listitem [ref=e112]:
+                  - generic [ref=e114]:
+                    - generic [ref=e120]:
+                      - heading "Pneumatici 195/45 r16 84V M+S XL HIFLY HF805 Gomma estiva nuova" [level=3] [ref=e121]
+                      - generic [ref=e123]: $84.51
+                      - generic [ref=e125]: + $234.52 delivery
+                    - link "Pneumatici 195/45 r16 84V M+S XL HIFLY HF805 Gomma estiva nuova" [ref=e126] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/168360116230?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D266892301404%26sid%3DAQALAAAAENldZNS%2BobhE9vkNHN2QtdQ%3D%26itm%3D168360116230%26noa%3D1%26plcampt%3D0%3A153509698011%26algo%3DHOMESPLICE.SIM%26brand%3DHifly%26asc%3D20200818143230%26ao%3D1%26rk%3D1%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D101%26meid%3D427ae4ad715241ae84ec2b6bdf5334f7%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                - listitem [ref=e127]:
+                  - generic [ref=e129]:
+                    - generic [ref=e135]:
+                      - heading "Pneumatici 195/45 r16 84V XL SUNFULL SF-888 Gomma estiva nuova" [level=3] [ref=e136]
+                      - generic [ref=e138]: $82.28
+                      - generic [ref=e140]: + $234.52 delivery
+                    - link "Pneumatici 195/45 r16 84V XL SUNFULL SF-888 Gomma estiva nuova" [ref=e141] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/136566956670?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D266892301404%26sid%3DAQALAAAAENldZNS%2BobhE9vkNHN2QtdQ%3D%26itm%3D136566956670%26noa%3D1%26plcampt%3D0%3A153509698011%26algo%3DHOMESPLICE.SIM%26brand%3DSunfull%26asc%3D20200818143230%26ao%3D1%26rk%3D3%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D101%26meid%3D427ae4ad715241ae84ec2b6bdf5334f7%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                - listitem [ref=e142]:
+                  - generic [ref=e144]:
+                    - generic [ref=e150]:
+                      - heading "Pneumatici 195/45 r16 84V XL TAURUS SUMMER 3 Gomma estiva nuova" [level=3] [ref=e151]
+                      - generic [ref=e153]: $82.93
+                      - generic [ref=e155]: + $234.52 delivery
+                    - link "Pneumatici 195/45 r16 84V XL TAURUS SUMMER 3 Gomma estiva nuova" [ref=e156] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/168230020050?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D266892301404%26sid%3DAQALAAAAENldZNS%2BobhE9vkNHN2QtdQ%3D%26itm%3D168230020050%26noa%3D1%26plcampt%3D0%3A153509698011%26algo%3DHOMESPLICE.SIM%26brand%3DTaurus%26asc%3D20200818143230%26ao%3D1%26rk%3D4%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D101%26meid%3D427ae4ad715241ae84ec2b6bdf5334f7%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+          - generic [ref=e161]:
+            - generic [ref=e162]:
+              - img "GOMMA ESTIVO SUPERIA ECOBLUE UHP XL 195 45 R 16 84 V" [ref=e165]
+              - generic [ref=e166]:
+                - generic [ref=e169]: Ended
+                - generic [ref=e170]:
+                  - generic [ref=e171]: GOMMA ESTIVO SUPERIA ECOBLUE UHP XL 195 45 R 16 84 V
+                  - generic [ref=e172]: GOMMA ESTIVO SUPERIA ECOBLUE UHP XL 195 45 R 16 84 V
+                - generic [ref=e174]:
+                  - text: EUR 58.28
+                  - generic [ref=e175]: EUR 58.28
+                - generic [ref=e177]:
+                  - text: Wed, Mar 05, 02:27 PM
+                  - generic [ref=e178]: Wed, Mar 05, 02:27 PM
+            - link "Seller's other items" [ref=e183] [cursor=pointer]:
+              - /url: https://www.ebay.com/sch/i.html?sid=iwheel&_pgn=1&isRefine=true&_trksid=p4429486.m2548.l49496
+              - generic [ref=e184]: Seller's other items
+        - generic [ref=e185]:
+          - generic [ref=e196]:
+            - generic [ref=e199]:
+              - generic [ref=e201]:
+                - heading "Similar Items" [level=2] [ref=e203]
+                - generic [ref=e206]:
+                  - generic [ref=e207]: S
+                  - generic [ref=e208]: 8976e573-b04f-488b-b2b3-df91a330681d
+                  - generic [ref=e209]: 6e90de69-05ef-46fd-bd60-28f745c92108
+                  - generic [ref=e210]: b3806c31-2287-4c3f-8382-7f022e3a5600
+                  - generic [ref=e212]: 7ef0dfb3-bf24-42ad-9180-5ce318086ac0
+                  - generic [ref=e213]: 852e2fee-dee4-460b-8636-93e02303e18e
+                  - generic [ref=e214]: a7752103-9c55-4c9a-8fd8-4feb484efbf2
+                  - generic [ref=e215]: p
+                  - generic [ref=e216]: c6fcdec2-4906-4c88-b249-cf2fc5c535b9
+                  - generic [ref=e217]: o
+                  - generic [ref=e218]: 2971a735-3d4f-497c-8ba6-465126a51910
+                  - generic [ref=e220]: 13fc1787-ccad-47c5-8622-3dacffaa3208
+                  - generic [ref=e221]: 2e53bba1-da29-45df-8ab5-ab75c4b5ae53
+                  - generic [ref=e222]: eb973766-5f9f-4c48-991d-c5c0598918ee
+                  - generic [ref=e223]: "n"
+                  - generic [ref=e224]: 79ed9b72-59c5-4e71-97e4-7f52db6aed3b
+                  - generic [ref=e225]: s
+                  - generic [ref=e226]: 4e166069-904b-49b8-a747-bb111b544c45
+                  - generic [ref=e228]: 90fde7b7-bf5e-449b-8c38-4668b299a4f6
+                  - generic [ref=e229]: 7895e1fe-bdc8-4d3c-bb86-45d7a7a8eccb
+                  - generic [ref=e230]: o
+                  - generic [ref=e231]: c72a375f-12bb-4456-a2fa-595bd9e34390
+                  - generic [ref=e232]: b7773251-6b22-42c5-80da-93bf71751dbf
+                  - generic [ref=e234]: 1f1856a9-4e0f-4972-a4a2-7399848b049c
+                  - generic [ref=e235]: r
+                  - generic [ref=e236]: 10fc1743-4849-422f-af8e-30935c91f624
+                  - generic [ref=e237]: 60d20e63-3153-4edd-802f-989a5ae521f4
+                  - generic [ref=e238]: 64d956d1-2d6a-48c8-aaa4-492842d9b248
+                  - generic [ref=e239]: e
+                  - generic [ref=e240]: 12a2ea8f-4212-4f1d-8d08-ff51171821bc
+                  - generic [ref=e241]: d
+                  - generic [ref=e242]: 388fae30-6492-4eae-92ee-b106e0ddd09c
+                  - generic [ref=e244]: 4598aee5-4299-4cea-8a42-c3c86c234cf2
+                  - generic [ref=e245]: 9e836054-9ba7-4f52-8504-ec20ba244fc1
+                  - generic [ref=e246]: 8d2c6c7f-3421-46af-adcc-9c18b8689a10
+                  - generic [ref=e248]: cd3a5f3e-b922-4156-8acd-56a2f52ac475
+                  - generic [ref=e249]: d1a1d6d8-bb6a-4349-bcf2-be33dd1545ed
+              - link "See all" [ref=e252] [cursor=pointer]:
+                - /url: https://www.ebay.com/recs?component=recs-below-hero&placement_title=i18n.Tag_SIs&sourceModuleId=101875&item_id=266892301404&algos=HOMESPLICE.SIM.SimplAMLv11PairwiseFitmentPromotionV2WithCassiniQueryEmbRecallKatRecoCpcRecall&placement_subTitle=i18n.ModuleSubTitle_Sponsored&homespliceOverrideConfig=%7Bsplice.cpc-config-dweb.enable-low-roas-filter%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-cvr-calibration-by-l2%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.undere-threshold%3D4%2Csplice.cpc-config-dweb.smart-price-parmas.enable-overe%3Dtrue%2Csplice.cpc-config-dweb.cpc-low-roas-dimension%3D%5BblacklistLeaf%2C+version01%5D%2Csplice.cpc-config-dweb.smart-price-parmas.enable-roas-calibration-by-l2%3Dfalse%2Csplice.cpc-config-dweb.smart-price-parmas.overe-threshold%3D4%2Csplice.cpc-config-dweb.smart-price-parmas.enable-undere%3Dtrue%7D
+                - generic [ref=e253]: See all
+            - generic [ref=e254]:
+              - generic [ref=e256]:
+                - generic [ref=e262]:
+                  - heading "4 NEW 285/45R22 XL Venom Ragnarok GTS 285 45 22 UHP High Performance 2854522 R22" [level=3] [ref=e263]
+                  - generic [ref=e264]:
+                    - generic [ref=e266]: New
+                    - generic [ref=e267]: $700.00
+                  - generic [ref=e269]: Free 4 day delivery
+                  - generic [ref=e271]: 75 sold
+                - link "4 NEW 285/45R22 XL Venom Ragnarok GTS 285 45 22 UHP High Performance 2854522 R22" [ref=e272] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/266538956776?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D4%26asc%3D305797,306635%26mech%3D1%26algv%3DSimplAMLv11PairwiseFitmentPromotionV2WithCassiniQueryEmbRecallKatRecoCpcRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D266892301404%26sid%3DAQALAAAAELtN9Y68Tp2EcHH0TfToA5s%3D%26itm%3D266538956776%26noa%3D0%26plcampt%3D0%3A13961335013%2C5%3AAG7568008653%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D1%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D100%26meid%3D4cb254d9340841108d0aaebf513700b6%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2665389567764cb254d9340841108d0aaebf513700b6%7Cenc%3AAQALAAABMPz1TPr0HWFnlcVOSr5ki%252BmdHRGZMkQO69UwD%252FvZ%252BhzZekwesFH7FaqmLN5MRH4n9oocjuUgubMt99VoZgLTEbmwTbyVnmRfOi6r5wy0zFmqnZZR1RwwkVw0N31SMf5u%252FF6fYaiigwJIkk64mZhobrlvrSLWMbEbG%252BhElcvfyYWaF7l0HO%252FRbU5OgFR8eMU0FhyDz3mihHF5cz2zgaTqHEofsz324CasErGC2sbL2UtVh4VvhDYY9W%252BnYiCYnnAWYKQ8DhyWh2MAg5DqeAAK4mpwz5dOJmFubAs00L0cMDS3xdaWIOnrpDspp4Hm%252BN2z9J%252BaxmZPISE39PXOs3ZJMyO8juAI9CuMZDbr2GlGznJGphUu0%252BluZIqEuoUBt1wfBcui3%252FUh4ZUdW66TN0KTqEc%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3YYEADZ1NBFB1CYBF35VH1
+                - button "Add 4 NEW 285/45R22 XL Venom Ragnarok GTS 285 45 22 UHP High Performance 2854522 R22 to your watch list" [ref=e275] [cursor=pointer]:
+                  - img
+              - generic [ref=e277]:
+                - generic [ref=e283]:
+                  - heading "Tire Atlas Force UHP A/S 265/40R22 106V XL High Performance All Season" [level=3] [ref=e284]
+                  - generic [ref=e285]:
+                    - generic [ref=e287]: New
+                    - generic [ref=e288]: $127.64
+                  - generic [ref=e290]:
+                    - generic [ref=e291]: previous price
+                    - text: $170.75 25% off
+                  - generic [ref=e293]: Free 4 day delivery
+                  - generic [ref=e295]: 111 sold
+                - link "Tire Atlas Force UHP A/S 265/40R22 106V XL High Performance All Season" [ref=e296] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/352818194792?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D4%26mech%3D1%26algv%3DSimplAMLv11PairwiseFitmentPromotionV2WithCassiniQueryEmbRecallKatRecoCpcRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D266892301404%26sid%3DAQALAAAAELbdfFDC6PJ%2Bpcg6chdVoEw%3D%26itm%3D352818194792%26noa%3D0%26plcampt%3D0%3A58842147016%2C5%3AAG6900744486%7CAG6900744586%7CAG6900756886%7CAG5698639086%26algo%3DHOMESPLICE.SIM%26brand%3DAtlas%26asc%3D305797,306635%26ao%3D1%26rk%3D2%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D100%26meid%3D4cb254d9340841108d0aaebf513700b6%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3528181947924cb254d9340841108d0aaebf513700b6%7Cenc%3AAQALAAABQPz1TPr0HWFnlcVOSr5ki%252BmdHRGZMkQO69UwD%252FvZ%252BhzZekwesFH7FaqmLN5MRH4n9oocjuUgubMt99VoZgLTEbmwTbyVnmRfOi6r5wy0zFmqnZZR1RwwkVw0N31SMf5u%252FN3eRJISLqIXlh7IAoy8V8GIvCexJP7GS2RDuEEhhjnHzsiYTFXlymqsKiv%252FUcn283%252F6aslYjN7flbZ0UoHwm%252Fjl0rpAQrNoB2w1yTGQ7XJzpDWGTOE7gCOpsg4U1VazOmsk0JE0jYZhK%252FVyc8seP5F5j2TvyY9lhz7R37RSJIBPaA4bPRBXTJQNjw%252FTMz4EWKClt9iP7ofyRQPCi0inSVRtbz9l2YjaqgrKllO8jaOE3eTdLXU4QbnX1R0GgnaIyMZnZmgnGiR7XVGzvQ4iLF8twUCTIcLQKGxjbdX%252FOUaB%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3YYEB995JYK0VWFK23CRE9
+                - button "Add Tire Atlas Force UHP A/S 265/40R22 106V XL High Performance All Season to your watch list" [ref=e299] [cursor=pointer]:
+                  - img
+              - generic [ref=e301]:
+                - generic [ref=e307]:
+                  - heading "2 Tires Atlas Force UHP 265/35R22 102V XL A/S Performance" [level=3] [ref=e308]
+                  - generic [ref=e309]:
+                    - generic [ref=e311]: New
+                    - generic [ref=e312]: $234.93
+                  - generic [ref=e314]:
+                    - generic [ref=e315]: previous price
+                    - text: $313.75 25% off
+                  - generic [ref=e317]: Free 4 day delivery
+                  - generic [ref=e319]: 72 sold
+                - link "2 Tires Atlas Force UHP 265/35R22 102V XL A/S Performance" [ref=e320] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/305527390030?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D4%26mech%3D1%26algv%3DSimplAMLv11PairwiseFitmentPromotionV2WithCassiniQueryEmbRecallKatRecoCpcRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D266892301404%26sid%3DAQALAAAAELbdfFDC6PJ%2Bpcg6chdVoEw%3D%26itm%3D305527390030%26noa%3D0%26plcampt%3D0%3A58842147016%2C5%3AAG6900744186%7CAG6900744086%7CAG6900756186%7CAG5698639086%26algo%3DHOMESPLICE.SIM%26brand%3DAtlas%26asc%3D305797,306635%26ao%3D1%26rk%3D3%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D100%26meid%3D4cb254d9340841108d0aaebf513700b6%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3055273900304cb254d9340841108d0aaebf513700b6%7Cenc%3AAQALAAABQPz1TPr0HWFnlcVOSr5ki%252BmdHRGZMkQO69UwD%252FvZ%252BhzZekwesFH7FaqmLN5MRH4n9oocjuUgubMt99VoZgLTEbmwTbyVnmRfOi6r5wy0zFmqnZZR1RwwkVw0N31SMf5u%252FHeY3%252FY7%252FbxdpqG8yk45xjPfdb6jyyNl1fyBQzGfH3ZTTbpoIMkjoel1M3yeM%252FmrYaKnC7PVgjhk3xiz0m44JH27Hrpy8EEMtowZdzIM1i5JbTFLnDKw9GX3g%252BtwOQ0r1pzMqBrwiCVj5%252FldSAI4n%252BZTtSAiLNb6YD9U5Er4hAhHN486yjWh7FnybZ0q7QLiwdrJmddpKSDjR0j590F9JXcVuqIELutCyAcG2V5SihBgC1YuEPzHngNr91MHddaUsVZtY0YiBgJVFSLvShkKYqMAn8j8L%252B%252FfWzvfZR13vy7h%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3YYEBFN06JBT6TWJQM3R42
+                - button "Add 2 Tires Atlas Force UHP 265/35R22 102V XL A/S Performance to your watch list" [ref=e323] [cursor=pointer]:
+                  - img
+              - generic [ref=e325]:
+                - generic [ref=e331]:
+                  - heading "4 Tires Atlander Xsport-86 195/55R16 87V Performance" [level=3] [ref=e332]
+                  - generic [ref=e333]:
+                    - generic [ref=e335]: New
+                    - generic [ref=e336]: $212.93
+                  - generic [ref=e338]:
+                    - generic [ref=e339]: previous price
+                    - text: $283.75 25% off
+                  - generic [ref=e341]: Free 4 day delivery
+                  - generic [ref=e342]:
+                    - generic [ref=e343]:
+                      - img
+                    - generic [ref=e344]: Top Rated Plus
+                  - generic [ref=e347]: 32 sold
+                - link "4 Tires Atlander Xsport-86 195/55R16 87V Performance" [ref=e348] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/305876208606?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D4%26mech%3D1%26algv%3DSimplAMLv11PairwiseFitmentPromotionV2WithCassiniQueryEmbRecallKatRecoCpcRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D266892301404%26sid%3DAQALAAAAELbdfFDC6PJ%2Bpcg6chdVoEw%3D%26itm%3D305876208606%26noa%3D0%26plcampt%3D0%3A58834587016%2C5%3AAG7225688786%7CAG7225688686%7CAG5698595486%26algo%3DHOMESPLICE.SIM%26brand%3DAtlander%26asc%3D305797,306635%26ao%3D1%26rk%3D4%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D100%26meid%3D4cb254d9340841108d0aaebf513700b6%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3058762086064cb254d9340841108d0aaebf513700b6%7Cenc%3AAQALAAABQPz1TPr0HWFnlcVOSr5ki%252BmdHRGZMkQO69UwD%252FvZ%252BhzZekwesFH7FaqmLN5MRH4n9oocjuUgubMt99VoZgLTEbmwTbyVnmRfOi6r5wy0zFmqnZZR1RwwkVw0N31SMf5u%252FDeYeY2vD9mWvgnmI40scrbYpfNc7EFFjGxUAyjvpeoLd%252FViU5WSSt%252FJRVa3eWL4pQ%252BZHoGeBGEq5QVMGjyWyksxPkGIna0Hb6PYGg9%252FxhJLT0y4f%252BpN6b337oU38e258Y8E%252FJN2j5yuV4W8YUIN2NNRJBLkqcYdIaUIM014irEfsHgfBKpCuUQV1DjRGMKDZU6253sdrR%252B3ddXjGw9yXgwt0MZRvAiMLTLYx3Agq6nqopDKW1W0y2tzE0oo5pDl%252FMgkQSUrjhHVBYQQwiS0h%252FiMyp5efN0of%252FPHiYNhdjHd%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3YYEBMN1W5K751VXYKQCSM
+                - button "Add 4 Tires Atlander Xsport-86 195/55R16 87V Performance to your watch list" [ref=e351] [cursor=pointer]:
+                  - img
+          - navigation "Quick Links" [ref=e354]:
+            - link "Back to home page" [ref=e355] [cursor=pointer]:
+              - /url: https://www.ebay.com
+            - button "Return to top" [ref=e356] [cursor=pointer]
+  - contentinfo [ref=e365]:
+    - list [ref=e366]:
+      - listitem [ref=e367]:
+        - link "About eBay" [ref=e368] [cursor=pointer]:
+          - /url: https://www.ebayinc.com
+      - listitem [ref=e369]:
+        - link "Announcements" [ref=e370] [cursor=pointer]:
+          - /url: https://community.ebay.com/t5/Announcements/bg-p/Announcements
+      - listitem [ref=e371]:
+        - link "Community" [ref=e372] [cursor=pointer]:
+          - /url: https://community.ebay.com
+      - listitem [ref=e373]:
+        - link "Security Center" [ref=e374] [cursor=pointer]:
+          - /url: https://pages.ebay.com/securitycenter/index.html
+      - listitem [ref=e375]:
+        - link "Seller Center" [ref=e376] [cursor=pointer]:
+          - /url: https://www.ebay.com/sellercenter
+      - listitem [ref=e377]:
+        - link "Policies" [ref=e378] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/policies/default/ebays-rules-policies?id=4205
+      - listitem [ref=e379]:
+        - link "Affiliates" [ref=e380] [cursor=pointer]:
+          - /url: https://partnernetwork.ebay.com/
+      - listitem [ref=e381]:
+        - link "Product Safety Tips" [ref=e382] [cursor=pointer]:
+          - /url: https://pages.ebay.com/safetytips
+      - listitem [ref=e383]:
+        - link "Help & Contact" [ref=e384] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/home
+      - listitem [ref=e385]:
+        - link "Site Map" [ref=e386] [cursor=pointer]:
+          - /url: https://pages.ebay.com/sitemap.html
+    - generic [ref=e387]:
+      - text: Copyright © 1995-2026 eBay Inc. All Rights Reserved.
+      - link "Accessibility" [ref=e388] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/accessibility/
+      - text: ","
+      - link "User Agreement" [ref=e389] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259
+      - text: ","
+      - link "Privacy" [ref=e390] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260
+      - text: ","
+      - link "Consumer Health Data" [ref=e391] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/consumer-health-data-privacy-policy/
+      - text: ","
+      - link "Payments Terms of Use" [ref=e392] [cursor=pointer]:
+        - /url: https://pages.ebay.com/payment/2.0/terms.html
+      - text: ","
+      - link "Cookies" [ref=e393] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/ebay-cookie-notice?id=4267
+      - text: ","
+      - link "CA Privacy Notice" [ref=e394] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/state-privacy-disclosures/#california
+      - text: ","
+      - link "Your Privacy Choices" [ref=e395] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice/ccpa
+      - text: and
+      - link "AdChoice" [ref=e396] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice
+        - text: AdChoice
+        - img
+  - img
+  - img [ref=e398]

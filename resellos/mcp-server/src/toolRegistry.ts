@@ -49,7 +49,22 @@ export type ToolName =
   | 'resellos_search_web_local'
   | 'resellos_list_research_search_results'
   | 'resellos_convert_search_result_to_candidate'
-  | 'resellos_reject_search_result';
+  | 'resellos_reject_search_result'
+  | 'resellos_create_production_campaign'
+  | 'resellos_list_production_campaigns'
+  | 'resellos_get_production_campaign'
+  | 'resellos_add_machine_candidate'
+  | 'resellos_get_machine_cockpit'
+  | 'resellos_update_machine_candidate'
+  | 'resellos_add_machine_evidence'
+  | 'resellos_verify_machine_evidence'
+  | 'resellos_reject_machine_evidence'
+  | 'resellos_add_machine_product_family'
+  | 'resellos_update_machine_product_family'
+  | 'resellos_promote_machine_product_family'
+  | 'resellos_add_cost_scenario'
+  | 'resellos_run_machine_decision'
+  | 'resellos_get_machine_next_action';
 
 export interface ToolDefinition {
   name: ToolName;
@@ -441,6 +456,120 @@ export const rejectSearchResultSchema = z.object({
   reject_reason: z.string().min(1),
 });
 
+// --- Production Capability Schemas ---
+
+export const createProductionCampaignSchema = z.object({
+  name: z.string().min(1),
+  goal: z.string().optional(),
+  workspace_type: z.string().optional(),
+  budget_limit_usd: z.number().positive().optional(),
+});
+
+export const productionCampaignIdSchema = z.object({
+  campaign_id: z.string().min(1),
+});
+
+export const machineIdSchema = z.object({
+  machine_id: z.string().min(1),
+});
+
+export const addMachineCandidateSchema = z.object({
+  campaign_id: z.string().min(1),
+  name: z.string().min(1),
+  brand: z.string().optional(),
+  model: z.string().optional(),
+  category: z.string().optional(),
+  description: z.string().optional(),
+  url: z.string().optional(),
+  price_new: z.number().positive().optional(),
+  condition: z.string().optional(),
+  power_requirements: z.string().optional(),
+  workspace_needed: z.string().optional(),
+  safety_notes: z.string().optional(),
+});
+
+export const updateMachineCandidateSchema = z.object({
+  machine_id: z.string().min(1),
+  name: z.string().optional(),
+  brand: z.string().optional(),
+  model: z.string().optional(),
+  status: z.string().optional(),
+  price_new: z.number().positive().optional(),
+  notes: z.string().optional(),
+});
+
+export const addMachineEvidenceSchema = z.object({
+  machine_id: z.string().min(1),
+  evidence_type: z.string().min(1),
+  title: z.string().optional(),
+  url: z.string().optional(),
+  price: z.number().positive().optional(),
+  source: z.string().optional(),
+  seller: z.string().optional(),
+  condition: z.string().optional(),
+  pros: z.string().optional(),
+  cons: z.string().optional(),
+  notes: z.string().optional(),
+});
+
+export const verifyMachineEvidenceSchema = z.object({
+  machine_id: z.string().min(1),
+  evidence_id: z.string().min(1),
+  status: z.string().default('USER_VERIFIED'),
+});
+
+export const rejectMachineEvidenceSchema = z.object({
+  machine_id: z.string().min(1),
+  evidence_id: z.string().min(1),
+  reason: z.string().optional(),
+});
+
+export const addMachineProductFamilySchema = z.object({
+  machine_id: z.string().min(1),
+  name: z.string().min(1),
+  description: z.string().optional(),
+  material_cost_per_unit: z.number().positive().optional(),
+  estimated_sale_price: z.number().positive().optional(),
+  estimated_demand: z.string().optional(),
+  notes: z.string().optional(),
+});
+
+export const updateMachineProductFamilySchema = z.object({
+  machine_id: z.string().min(1),
+  family_id: z.string().min(1),
+  name: z.string().optional(),
+  description: z.string().optional(),
+  material_cost_per_unit: z.number().positive().optional(),
+  estimated_sale_price: z.number().positive().optional(),
+  estimated_demand: z.string().optional(),
+  status: z.string().optional(),
+  notes: z.string().optional(),
+});
+
+export const promoteMachineProductFamilySchema = z.object({
+  machine_id: z.string().min(1),
+  family_id: z.string().min(1),
+});
+
+export const addCostScenarioSchema = z.object({
+  family_id: z.string().min(1),
+  scenario_name: z.string().min(1),
+  material_cost: z.number().positive().optional(),
+  labor_cost: z.number().positive().optional(),
+  sale_price: z.number().positive().optional(),
+  units_per_month: z.number().int().positive().optional(),
+  machine_purchase_price: z.number().positive().optional(),
+  notes: z.string().optional(),
+});
+
+export const runMachineDecisionSchema = z.object({
+  machine_id: z.string().min(1),
+});
+
+export const getMachineNextActionSchema = z.object({
+  machine_id: z.string().min(1),
+});
+
 export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     name: 'resellos_get_discovery_board',
@@ -501,4 +630,20 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   { name: 'resellos_list_research_search_results', description: 'List stored local search results for a product, idea, or campaign.', inputSchema: listResearchSearchResultsSchema, jsonSchema: z.toJSONSchema(listResearchSearchResultsSchema) as Record<string, unknown> },
   { name: 'resellos_convert_search_result_to_candidate', description: 'Convert a local search result to an evidence candidate. The candidate will be PENDING and requires manual review. This does NOT verify evidence or change product readiness.', inputSchema: convertSearchResultSchema, jsonSchema: z.toJSONSchema(convertSearchResultSchema) as Record<string, unknown> },
   { name: 'resellos_reject_search_result', description: 'Reject a local search result so it is not converted to a candidate.', inputSchema: rejectSearchResultSchema, jsonSchema: z.toJSONSchema(rejectSearchResultSchema) as Record<string, unknown> },
+  // --- Production Capability Tools ---
+  { name: 'resellos_create_production_campaign', description: 'Create a production capability campaign to evaluate machines for manufacturing products.', inputSchema: createProductionCampaignSchema, jsonSchema: z.toJSONSchema(createProductionCampaignSchema) as Record<string, unknown> },
+  { name: 'resellos_list_production_campaigns', description: 'List all production campaigns.', inputSchema: z.object({}).strict(), jsonSchema: z.toJSONSchema(z.object({}).strict()) as Record<string, unknown> },
+  { name: 'resellos_get_production_campaign', description: 'Get a production campaign with its machines and capabilities.', inputSchema: productionCampaignIdSchema, jsonSchema: z.toJSONSchema(productionCampaignIdSchema) as Record<string, unknown> },
+  { name: 'resellos_add_machine_candidate', description: 'Add a machine candidate to a production campaign for evaluation.', inputSchema: addMachineCandidateSchema, jsonSchema: z.toJSONSchema(addMachineCandidateSchema) as Record<string, unknown> },
+  { name: 'resellos_get_machine_cockpit', description: 'Get the full machine cockpit view with evidence, families, cost scenarios, and decision.', inputSchema: machineIdSchema, jsonSchema: z.toJSONSchema(machineIdSchema) as Record<string, unknown> },
+  { name: 'resellos_update_machine_candidate', description: 'Update a machine candidate (name, brand, status, price, notes).', inputSchema: updateMachineCandidateSchema, jsonSchema: z.toJSONSchema(updateMachineCandidateSchema) as Record<string, unknown> },
+  { name: 'resellos_add_machine_evidence', description: 'Add evidence about a machine (listings, specs, reviews, forum posts).', inputSchema: addMachineEvidenceSchema, jsonSchema: z.toJSONSchema(addMachineEvidenceSchema) as Record<string, unknown> },
+  { name: 'resellos_verify_machine_evidence', description: 'Verify a machine evidence item as user-verified.', inputSchema: verifyMachineEvidenceSchema, jsonSchema: z.toJSONSchema(verifyMachineEvidenceSchema) as Record<string, unknown> },
+  { name: 'resellos_reject_machine_evidence', description: 'Reject a machine evidence item.', inputSchema: rejectMachineEvidenceSchema, jsonSchema: z.toJSONSchema(rejectMachineEvidenceSchema) as Record<string, unknown> },
+  { name: 'resellos_add_machine_product_family', description: 'Add a product family that the machine can produce.', inputSchema: addMachineProductFamilySchema, jsonSchema: z.toJSONSchema(addMachineProductFamilySchema) as Record<string, unknown> },
+  { name: 'resellos_update_machine_product_family', description: 'Update a product family for a machine.', inputSchema: updateMachineProductFamilySchema, jsonSchema: z.toJSONSchema(updateMachineProductFamilySchema) as Record<string, unknown> },
+  { name: 'resellos_promote_machine_product_family', description: 'Promote a product family to the existing product research pipeline.', inputSchema: promoteMachineProductFamilySchema, jsonSchema: z.toJSONSchema(promoteMachineProductFamilySchema) as Record<string, unknown> },
+  { name: 'resellos_add_cost_scenario', description: 'Add a cost scenario with unit economics and payback calculation for a product family.', inputSchema: addCostScenarioSchema, jsonSchema: z.toJSONSchema(addCostScenarioSchema) as Record<string, unknown> },
+  { name: 'resellos_run_machine_decision', description: 'Run the machine decision agent to get a BUY/WAIT/OUTSOURCE/REJECT recommendation.', inputSchema: runMachineDecisionSchema, jsonSchema: z.toJSONSchema(runMachineDecisionSchema) as Record<string, unknown> },
+  { name: 'resellos_get_machine_next_action', description: 'Get the next recommended action for a machine candidate.', inputSchema: getMachineNextActionSchema, jsonSchema: z.toJSONSchema(getMachineNextActionSchema) as Record<string, unknown> },
 ];

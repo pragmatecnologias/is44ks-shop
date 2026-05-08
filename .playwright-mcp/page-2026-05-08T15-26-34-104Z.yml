@@ -1,0 +1,750 @@
+- main [ref=e2]:
+  - banner "Main navigation" [ref=e5]:
+    - generic [ref=e6]:
+      - complementary
+      - generic [ref=e7]:
+        - generic [ref=e13]:
+          - generic [ref=e15]:
+            - generic [ref=e16]: What are you looking for?
+            - textbox "Search Alibaba" [ref=e17]:
+              - /placeholder: ""
+          - generic [ref=e18]:
+            - button "Image search" [ref=e20] [cursor=pointer]:
+              - generic [ref=e21]:
+                - img [ref=e22]
+                - img [ref=e29]
+            - button "Search" [ref=e33] [cursor=pointer]:
+              - img "Search icon" [ref=e34]
+              - generic [ref=e35]: Search
+        - generic [ref=e36]:
+          - generic [ref=e38] [cursor=pointer]:
+            - generic [ref=e39]: "Deliver to:"
+            - generic [ref=e40]:
+              - img "country flag" [ref=e41]
+              - generic [ref=e42]: US
+          - img [ref=e46] [cursor=pointer]
+          - generic [ref=e48] [cursor=pointer]:
+            - link "cart" [ref=e52]:
+              - /url: https://carp.alibaba.com/purchaseList
+              - img [ref=e53]
+            - img [ref=e56]
+            - generic [ref=e58]: Create account
+    - generic [ref=e60]:
+      - generic [ref=e61]:
+        - generic [ref=e63] [cursor=pointer]:
+          - img [ref=e64]
+          - text: All categories
+        - generic [ref=e67] [cursor=pointer]: Verified manufacturers
+        - generic [ref=e69] [cursor=pointer]: Order protections
+      - generic [ref=e70]:
+        - generic [ref=e72] [cursor=pointer]: Accio Work
+        - generic [ref=e74] [cursor=pointer]: Tax exemption
+        - generic [ref=e76] [cursor=pointer]: Buyer Central
+        - generic [ref=e78] [cursor=pointer]: App & extension
+        - generic [ref=e80] [cursor=pointer]: Sell on Alibaba.com
+  - generic [ref=e83]:
+    - img "404" [ref=e85]
+    - generic [ref=e86]:
+      - heading "An error occurred" [level=1] [ref=e87]
+      - paragraph [ref=e88]: The page you're looking for is currently unavailable
+      - generic [ref=e89]:
+        - generic [ref=e90] [cursor=pointer]: Back
+        - generic [ref=e91] [cursor=pointer]: Go to homepage
+  - generic [ref=e94]: Explore our top deals
+  - generic [ref=e97]:
+    - generic [ref=e102]:
+      - generic [ref=e104]:
+        - generic "All" [ref=e106] [cursor=pointer]:
+          - generic [ref=e107]: All
+        - generic "Jewelry, Eyewear, Watches & Accessories" [ref=e109] [cursor=pointer]:
+          - generic [ref=e110]: Jewelry, Eyewear, Watches & Accessories
+        - generic "School & Office Supplies" [ref=e112] [cursor=pointer]:
+          - generic [ref=e113]: School & Office Supplies
+        - generic "Beauty" [ref=e115] [cursor=pointer]:
+          - generic [ref=e116]: Beauty
+        - generic "Packaging & Printing" [ref=e118] [cursor=pointer]:
+          - generic [ref=e119]: Packaging & Printing
+        - generic "Mother, Kids & Toys" [ref=e121] [cursor=pointer]:
+          - generic [ref=e122]: Mother, Kids & Toys
+        - generic "Home & Garden" [ref=e124] [cursor=pointer]:
+          - generic [ref=e125]: Home & Garden
+        - generic "Apparel & Accessories" [ref=e127] [cursor=pointer]:
+          - generic [ref=e128]: Apparel & Accessories
+        - generic "Gifts & Crafts" [ref=e130] [cursor=pointer]:
+          - generic [ref=e131]: Gifts & Crafts
+        - generic "Security" [ref=e133] [cursor=pointer]:
+          - generic [ref=e134]: Security
+        - generic "Shoes & Accessories" [ref=e136] [cursor=pointer]:
+          - generic [ref=e137]: Shoes & Accessories
+        - generic "Consumer Electronics" [ref=e139] [cursor=pointer]:
+          - generic [ref=e140]: Consumer Electronics
+        - generic "Vehicle Parts & Accessories" [ref=e142] [cursor=pointer]:
+          - generic [ref=e143]: Vehicle Parts & Accessories
+        - generic "Sports & Entertainment" [ref=e145] [cursor=pointer]:
+          - generic [ref=e146]: Sports & Entertainment
+        - generic "Vehicle Accessories, Electronics & Tools" [ref=e148] [cursor=pointer]:
+          - generic [ref=e149]: Vehicle Accessories, Electronics & Tools
+        - generic "Lights & Lighting" [ref=e151] [cursor=pointer]:
+          - generic [ref=e152]: Lights & Lighting
+        - generic "Luggage, Bags & Cases" [ref=e154] [cursor=pointer]:
+          - generic [ref=e155]: Luggage, Bags & Cases
+        - generic "Commercial Equipment & Machinery" [ref=e157] [cursor=pointer]:
+          - generic [ref=e158]: Commercial Equipment & Machinery
+        - generic "Electronic Components, Accessories & Telecommunications" [ref=e160] [cursor=pointer]:
+          - generic [ref=e161]: Electronic Components, Accessories & Telecommunications
+        - generic "Electrical Equipment & Supplies" [ref=e163] [cursor=pointer]:
+          - generic [ref=e164]: Electrical Equipment & Supplies
+        - generic "Tools & Hardware" [ref=e166] [cursor=pointer]:
+          - generic [ref=e167]: Tools & Hardware
+        - generic "Industrial Machinery" [ref=e169] [cursor=pointer]:
+          - generic [ref=e170]: Industrial Machinery
+        - generic "Construction & Real Estate" [ref=e172] [cursor=pointer]:
+          - generic [ref=e173]: Construction & Real Estate
+        - generic "Personal Care & Household Cleaning" [ref=e175] [cursor=pointer]:
+          - generic [ref=e176]: Personal Care & Household Cleaning
+        - generic "Pet Supplies" [ref=e178] [cursor=pointer]:
+          - generic [ref=e179]: Pet Supplies
+        - generic "Sportswear & Outdoor Apparel" [ref=e181] [cursor=pointer]:
+          - generic [ref=e182]: Sportswear & Outdoor Apparel
+        - generic "Home Appliances" [ref=e184] [cursor=pointer]:
+          - generic [ref=e185]: Home Appliances
+        - generic "Health Care" [ref=e187] [cursor=pointer]:
+          - generic [ref=e188]: Health Care
+        - generic "Testing Instrument & Equipment" [ref=e190] [cursor=pointer]:
+          - generic [ref=e191]: Testing Instrument & Equipment
+        - generic "Furniture" [ref=e193] [cursor=pointer]:
+          - generic [ref=e194]: Furniture
+        - generic "Power Transmission" [ref=e196] [cursor=pointer]:
+          - generic [ref=e197]: Power Transmission
+        - generic "Fabric & Textile Raw Material" [ref=e199] [cursor=pointer]:
+          - generic [ref=e200]: Fabric & Textile Raw Material
+        - generic "Construction & Building Machinery" [ref=e202] [cursor=pointer]:
+          - generic [ref=e203]: Construction & Building Machinery
+        - generic "Safety" [ref=e205] [cursor=pointer]:
+          - generic [ref=e206]: Safety
+        - generic "Renewable Energy" [ref=e208] [cursor=pointer]:
+          - generic [ref=e209]: Renewable Energy
+        - generic "Metals & Alloys" [ref=e211] [cursor=pointer]:
+          - generic [ref=e212]: Metals & Alloys
+        - generic "Rubber & Plastics" [ref=e214] [cursor=pointer]:
+          - generic [ref=e215]: Rubber & Plastics
+        - generic "Fabrication Services" [ref=e217] [cursor=pointer]:
+          - generic [ref=e218]: Fabrication Services
+        - generic "Material Handling" [ref=e220] [cursor=pointer]:
+          - generic [ref=e221]: Material Handling
+        - generic "Medical devices & Supplies" [ref=e223] [cursor=pointer]:
+          - generic [ref=e224]: Medical devices & Supplies
+      - img [ref=e230] [cursor=pointer]
+    - generic [ref=e235]:
+      - 'link "Metal Smart Mini Wall-Mounted Vending Machine 24 Hours Online SDK Function for Tobacco Burning Vapesatm Cigarette Dispenser Metal Smart Mini Wall-Mounted Vending Machine 24 Hours Online SDK Function for Tobacco Burning Vapesatm Cigarette Dispenser $548-639 MOQ: 1 4.8 130+ views" [ref=e237] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Metal-Smart-Mini-Wall-Mounted-Vending_1601756845904.html
+        - img "Metal Smart Mini Wall-Mounted Vending Machine 24 Hours Online SDK Function for Tobacco Burning Vapesatm Cigarette Dispenser" [ref=e240]
+        - generic [ref=e242]:
+          - generic [ref=e244]: Metal Smart Mini Wall-Mounted Vending Machine 24 Hours Online SDK Function for Tobacco Burning Vapesatm Cigarette Dispenser
+          - generic [ref=e247]:
+            - generic [ref=e248]: $548-639
+            - generic [ref=e249]: "MOQ: 1"
+          - generic [ref=e250]:
+            - generic [ref=e251]:
+              - img [ref=e252]
+              - generic [ref=e253]: "4.8"
+            - generic [ref=e255]: 130+ views
+      - 'link "ERON New MT5 ULTRA Meta Style AI Smart Glasses 8MP Camera with Charging Case WiFi6 BT Calling AI Translation Voice Control ERON New MT5 ULTRA Meta Style AI Smart Glasses 8MP Camera with Charging Case WiFi6 BT Calling AI Translation Voice Control $39-44.60 MOQ: 10 5.0 1.2K+ views" [ref=e257] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/ERON-New-MT5-ULTRA-Meta-Style_1601746528172.html
+        - img "ERON New MT5 ULTRA Meta Style AI Smart Glasses 8MP Camera with Charging Case WiFi6 BT Calling AI Translation Voice Control" [ref=e260]
+        - generic [ref=e262]:
+          - generic [ref=e264]: ERON New MT5 ULTRA Meta Style AI Smart Glasses 8MP Camera with Charging Case WiFi6 BT Calling AI Translation Voice Control
+          - generic [ref=e267]:
+            - generic [ref=e268]: $39-44.60
+            - generic [ref=e269]: "MOQ: 10"
+          - generic [ref=e270]:
+            - generic [ref=e271]:
+              - img [ref=e272]
+              - generic [ref=e273]: "5.0"
+            - generic [ref=e275]: 1.2K+ views
+      - 'link "TP-Link OMADA AC1200 Dual Band PoE Access Point Outdoor EAP225 0796896 Industrial Computer & Accessories in Stock TP-Link OMADA AC1200 Dual Band PoE Access Point Outdoor EAP225 0796896 Industrial Computer & Accessories in Stock $76 MOQ: 40 210+ views" [ref=e277] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/TP-Link-OMADA-AC1200-Dual-Band_12000002297452.html
+        - img "TP-Link OMADA AC1200 Dual Band PoE Access Point Outdoor EAP225 0796896 Industrial Computer & Accessories in Stock" [ref=e280]
+        - generic [ref=e282]:
+          - generic [ref=e284]: TP-Link OMADA AC1200 Dual Band PoE Access Point Outdoor EAP225 0796896 Industrial Computer & Accessories in Stock
+          - generic [ref=e287]:
+            - generic [ref=e288]: $76
+            - generic [ref=e289]: "MOQ: 40"
+          - generic [ref=e292]: 210+ views
+      - 'link "Grade a Used I Pad Pro 256GB Original Tablet Electronics Second Hand Tablet Grade a Used I Pad Pro 256GB Original Tablet Electronics Second Hand Tablet $125-156 MOQ: 5 4.7 570+ views" [ref=e294] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Grade-a-Used-I-Pad-Pro_1601725685064.html
+        - img "Grade a Used I Pad Pro 256GB Original Tablet Electronics Second Hand Tablet" [ref=e297]
+        - generic [ref=e299]:
+          - generic [ref=e301]: Grade a Used I Pad Pro 256GB Original Tablet Electronics Second Hand Tablet
+          - generic [ref=e304]:
+            - generic [ref=e305]: $125-156
+            - generic [ref=e306]: "MOQ: 5"
+          - generic [ref=e307]:
+            - generic [ref=e308]:
+              - img [ref=e309]
+              - generic [ref=e310]: "4.7"
+            - generic [ref=e312]: 570+ views
+      - 'link "100% Original for Sandisk Ultra A1 Memory Card TF Card 16GB 32GB 64GB 128GB 256GB 512GB Memory TF SD Card for Phone Camera 100% Original for Sandisk Ultra A1 Memory Card TF Card 16GB 32GB 64GB 128GB 256GB 512GB Memory TF SD Card for Phone Camera $2.85-15.50 MOQ: 10 5.0 60+ sold" [ref=e314] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/100-Original-for-Sandisk-Ultra-A1_1601719657822.html
+        - img "100% Original for Sandisk Ultra A1 Memory Card TF Card 16GB 32GB 64GB 128GB 256GB 512GB Memory TF SD Card for Phone Camera" [ref=e317]
+        - generic [ref=e319]:
+          - generic [ref=e321]: 100% Original for Sandisk Ultra A1 Memory Card TF Card 16GB 32GB 64GB 128GB 256GB 512GB Memory TF SD Card for Phone Camera
+          - generic [ref=e324]:
+            - generic [ref=e325]: $2.85-15.50
+            - generic [ref=e326]: "MOQ: 10"
+          - generic [ref=e327]:
+            - generic [ref=e328]:
+              - img [ref=e329]
+              - generic [ref=e330]: "5.0"
+            - generic [ref=e332]: 60+ sold
+      - 'link "Customize 2025 Los Angeles Dodgers Baseball World Championship Ring High School Baseball Tournament Ring Alloy Natural Stone Customize 2025 Los Angeles Dodgers Baseball World Championship Ring High School Baseball Tournament Ring Alloy Natural Stone $2.99-5.99 MOQ: 10 5.0 140+ sold" [ref=e334] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Customize-2025-Los-Angeles-Dodgers-Baseball_1601728782246.html
+        - img "Customize 2025 Los Angeles Dodgers Baseball World Championship Ring High School Baseball Tournament Ring Alloy Natural Stone" [ref=e337]
+        - generic [ref=e339]:
+          - generic [ref=e341]: Customize 2025 Los Angeles Dodgers Baseball World Championship Ring High School Baseball Tournament Ring Alloy Natural Stone
+          - generic [ref=e344]:
+            - generic [ref=e345]: $2.99-5.99
+            - generic [ref=e346]: "MOQ: 10"
+          - generic [ref=e347]:
+            - generic [ref=e348]:
+              - img [ref=e349]
+              - generic [ref=e350]: "5.0"
+            - generic [ref=e352]: 140+ sold
+      - 'link "Wholesale Bulk Used Women''s Long Dresses Bales Free Size Summer Polyester/Cotton Fashion Design Cheap Price Wholesale Bulk Used Women''s Long Dresses Bales Free Size Summer Polyester/Cotton Fashion Design Cheap Price $0.10-0.99 MOQ: 1 Lower priced than similar 5.0 60+ sold" [ref=e354] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Wholesale-Bulk-Used-Women-s-Long_1601735139320.html
+        - img "Wholesale Bulk Used Women's Long Dresses Bales Free Size Summer Polyester/Cotton Fashion Design Cheap Price" [ref=e357]
+        - generic [ref=e359]:
+          - generic [ref=e361]: Wholesale Bulk Used Women's Long Dresses Bales Free Size Summer Polyester/Cotton Fashion Design Cheap Price
+          - generic [ref=e364]:
+            - generic [ref=e365]: $0.10-0.99
+            - generic [ref=e366]: "MOQ: 1"
+          - generic [ref=e370]:
+            - img [ref=e371]
+            - generic [ref=e372]: Lower priced than similar
+          - generic [ref=e373]:
+            - generic [ref=e374]:
+              - img [ref=e375]
+              - generic [ref=e376]: "5.0"
+            - generic [ref=e378]: 60+ sold
+      - 'link "Imported for GS1200 Waterbird Off-Road Street Motorcycle Long-Distance Cruise Touring Rally Prince Big Boat Pedal Motorcycle Imported for GS1200 Waterbird Off-Road Street Motorcycle Long-Distance Cruise Touring Rally Prince Big Boat Pedal Motorcycle $1,200 MOQ: 1 940+ views" [ref=e380] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Imported-for-GS1200-Waterbird-Off-Road_1601755573836.html
+        - img "Imported for GS1200 Waterbird Off-Road Street Motorcycle Long-Distance Cruise Touring Rally Prince Big Boat Pedal Motorcycle" [ref=e383]
+        - generic [ref=e385]:
+          - generic [ref=e387]: Imported for GS1200 Waterbird Off-Road Street Motorcycle Long-Distance Cruise Touring Rally Prince Big Boat Pedal Motorcycle
+          - generic [ref=e390]:
+            - generic [ref=e391]: $1,200
+            - generic [ref=e392]: "MOQ: 1"
+          - generic [ref=e395]: 940+ views
+      - 'link "Modern Curved Sectional Sofa with Solid Wood Frame Upholstered Leather L-Shape Sofa Set for Living Room Modern Curved Sectional Sofa with Solid Wood Frame Upholstered Leather L-Shape Sofa Set for Living Room $350-1,197 MOQ: 1 4.8 330+ views" [ref=e397] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Modern-Curved-Sectional-Sofa-with-Solid_1601715202828.html
+        - img "Modern Curved Sectional Sofa with Solid Wood Frame Upholstered Leather L-Shape Sofa Set for Living Room" [ref=e400]
+        - generic [ref=e402]:
+          - generic [ref=e404]: Modern Curved Sectional Sofa with Solid Wood Frame Upholstered Leather L-Shape Sofa Set for Living Room
+          - generic [ref=e407]:
+            - generic [ref=e408]: $350-1,197
+            - generic [ref=e409]: "MOQ: 1"
+          - generic [ref=e410]:
+            - generic [ref=e411]:
+              - img [ref=e412]
+              - generic [ref=e413]: "4.8"
+            - generic [ref=e415]: 330+ views
+      - 'link "Gym Supplements ISO 100 Protein Powder with 25g Hydrolyzed 100% Whey Isolate Proteine Musculation Whey Protein Creatine Gym Supplements ISO 100 Protein Powder with 25g Hydrolyzed 100% Whey Isolate Proteine Musculation Whey Protein Creatine $3.50-9.50 MOQ: 10 5.0 280+ sold" [ref=e417] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Gym-Supplements-ISO-100-Protein-Powder_1601719744410.html
+        - img "Gym Supplements ISO 100 Protein Powder with 25g Hydrolyzed 100% Whey Isolate Proteine Musculation Whey Protein Creatine" [ref=e420]
+        - generic [ref=e422]:
+          - generic [ref=e424]: Gym Supplements ISO 100 Protein Powder with 25g Hydrolyzed 100% Whey Isolate Proteine Musculation Whey Protein Creatine
+          - generic [ref=e427]:
+            - generic [ref=e428]: $3.50-9.50
+            - generic [ref=e429]: "MOQ: 10"
+          - generic [ref=e430]:
+            - generic [ref=e431]:
+              - img [ref=e432]
+              - generic [ref=e433]: "5.0"
+            - generic [ref=e435]: 280+ sold
+      - 'link "Sur-Ron Light Bee X 6061 E-Bike Frame, Reinforced Off-Road Upgrade Sur-Ron Light Bee X 6061 E-Bike Frame, Reinforced Off-Road Upgrade $480-500 MOQ: 1 100+ views" [ref=e437] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Sur-Ron-Light-Bee-X-6061_1601763610329.html
+        - img "Sur-Ron Light Bee X 6061 E-Bike Frame, Reinforced Off-Road Upgrade" [ref=e440]
+        - generic [ref=e442]:
+          - generic [ref=e444]: Sur-Ron Light Bee X 6061 E-Bike Frame, Reinforced Off-Road Upgrade
+          - generic [ref=e447]:
+            - generic [ref=e448]: $480-500
+            - generic [ref=e449]: "MOQ: 1"
+          - generic [ref=e452]: 100+ views
+      - 'link "Hand Towel Cartoon Printed Home Use Cute Hand-washing Hanging Double-layer Thickened Quick-dry Absorbent Soft Coral Fleece Towel Hand Towel Cartoon Printed Home Use Cute Hand-washing Hanging Double-layer Thickened Quick-dry Absorbent Soft Coral Fleece Towel $0.75-0.80 MOQ: 20 5.0 220+ sold" [ref=e454] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Hand-Towel-Cartoon-Printed-Home-Use_1601721989140.html
+        - img "Hand Towel Cartoon Printed Home Use Cute Hand-washing Hanging Double-layer Thickened Quick-dry Absorbent Soft Coral Fleece Towel" [ref=e457]
+        - generic [ref=e459]:
+          - generic [ref=e461]: Hand Towel Cartoon Printed Home Use Cute Hand-washing Hanging Double-layer Thickened Quick-dry Absorbent Soft Coral Fleece Towel
+          - generic [ref=e464]:
+            - generic [ref=e465]: $0.75-0.80
+            - generic [ref=e466]: "MOQ: 20"
+          - generic [ref=e467]:
+            - generic [ref=e468]:
+              - img [ref=e469]
+              - generic [ref=e470]: "5.0"
+            - generic [ref=e472]: 220+ sold
+      - 'link "A Pack of 4 Pairs of High-quality OEM Socks Suitable for Outdoor Sports, Trendy and Sustainable.New ArrivalCustom Sports Socks A Pack of 4 Pairs of High-quality OEM Socks Suitable for Outdoor Sports, Trendy and Sustainable.New ArrivalCustom Sports Socks $0.40-1.80 MOQ: 8 100+ sold" [ref=e474] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/A-Pack-of-4-Pairs-of_1601754425708.html
+        - img "A Pack of 4 Pairs of High-quality OEM Socks Suitable for Outdoor Sports, Trendy and Sustainable.New ArrivalCustom Sports Socks" [ref=e477]
+        - generic [ref=e479]:
+          - generic [ref=e481]: A Pack of 4 Pairs of High-quality OEM Socks Suitable for Outdoor Sports, Trendy and Sustainable.New ArrivalCustom Sports Socks
+          - generic [ref=e484]:
+            - generic [ref=e485]: $0.40-1.80
+            - generic [ref=e486]: "MOQ: 8"
+          - generic [ref=e489]: 100+ sold
+      - 'link "Factory Custom Scrubs With Logo Jumpsuit Medical Scrubs Set Women Custom Private Label One Piece Scrub Jumpsuit for Women Men Factory Custom Scrubs With Logo Jumpsuit Medical Scrubs Set Women Custom Private Label One Piece Scrub Jumpsuit for Women Men $8-8.90 MOQ: 2 4.5 30+ sold" [ref=e491] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Factory-Custom-Scrubs-With-Logo-Jumpsuit_1601730457459.html
+        - img "Factory Custom Scrubs With Logo Jumpsuit Medical Scrubs Set Women Custom Private Label One Piece Scrub Jumpsuit for Women Men" [ref=e494]
+        - generic [ref=e496]:
+          - generic [ref=e498]: Factory Custom Scrubs With Logo Jumpsuit Medical Scrubs Set Women Custom Private Label One Piece Scrub Jumpsuit for Women Men
+          - generic [ref=e501]:
+            - generic [ref=e502]: $8-8.90
+            - generic [ref=e503]: "MOQ: 2"
+          - generic [ref=e504]:
+            - generic [ref=e505]:
+              - img [ref=e506]
+              - generic [ref=e507]: "4.5"
+            - generic [ref=e509]: 30+ sold
+      - 'link "Original Humo iPhone case 30k USB Rechargeable Type-c 680mah 5pcs Per Pack Phone case for IPHONE 15&14&16&13 Original Humo iPhone case 30k USB Rechargeable Type-c 680mah 5pcs Per Pack Phone case for IPHONE 15&14&16&13 $2.50-2.70 MOQ: 50 50+ views" [ref=e511] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Original-Humo-iPhone-case-30k-USB_1601767786589.html
+        - img "Original Humo iPhone case 30k USB Rechargeable Type-c 680mah 5pcs Per Pack Phone case for IPHONE 15&14&16&13" [ref=e514]
+        - generic [ref=e516]:
+          - generic [ref=e518]: Original Humo iPhone case 30k USB Rechargeable Type-c 680mah 5pcs Per Pack Phone case for IPHONE 15&14&16&13
+          - generic [ref=e521]:
+            - generic [ref=e522]: $2.50-2.70
+            - generic [ref=e523]: "MOQ: 50"
+          - generic [ref=e526]: 50+ views
+      - 'link "Second-hand Imported Yamaha R1 Sports Car R6 Road Race Four-Cylinder 1000cc Kawasaki H2 Heavy Locomotive Small Ninja Motorcycle Second-hand Imported Yamaha R1 Sports Car R6 Road Race Four-Cylinder 1000cc Kawasaki H2 Heavy Locomotive Small Ninja Motorcycle $406 MOQ: 1 1K+ views" [ref=e528] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Second-hand-Imported-Yamaha-R1-Sports_1601755702317.html
+        - img "Second-hand Imported Yamaha R1 Sports Car R6 Road Race Four-Cylinder 1000cc Kawasaki H2 Heavy Locomotive Small Ninja Motorcycle" [ref=e531]
+        - generic [ref=e533]:
+          - generic [ref=e535]: Second-hand Imported Yamaha R1 Sports Car R6 Road Race Four-Cylinder 1000cc Kawasaki H2 Heavy Locomotive Small Ninja Motorcycle
+          - generic [ref=e538]:
+            - generic [ref=e539]: $406
+            - generic [ref=e540]: "MOQ: 1"
+          - generic [ref=e543]: 1K+ views
+      - 'link "0.005mm Tolerance High Precision CNC Machining Custom Stainless Steel Aluminum Optical Components with Wire EDM & Broaching 0.005mm Tolerance High Precision CNC Machining Custom Stainless Steel Aluminum Optical Components with Wire EDM & Broaching $1.58-12 MOQ: 15 4.8 350+ views" [ref=e545] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/0-005mm-Tolerance-High-Precision-CNC_1601700087307.html
+        - img "0.005mm Tolerance High Precision CNC Machining Custom Stainless Steel Aluminum Optical Components with Wire EDM & Broaching" [ref=e548]
+        - generic [ref=e550]:
+          - generic [ref=e552]: 0.005mm Tolerance High Precision CNC Machining Custom Stainless Steel Aluminum Optical Components with Wire EDM & Broaching
+          - generic [ref=e555]:
+            - generic [ref=e556]: $1.58-12
+            - generic [ref=e557]: "MOQ: 15"
+          - generic [ref=e558]:
+            - generic [ref=e559]:
+              - img [ref=e560]
+              - generic [ref=e561]: "4.8"
+            - generic [ref=e563]: 350+ views
+      - 'link "MERIT Brother Stellaire Innovis XE2 Embroidery Machine MERIT Brother Stellaire Innovis XE2 Embroidery Machine $200-300 MOQ: 1 630+ views" [ref=e565] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/MERIT-Brother-Stellaire-Innovis-XE2-Embroidery_11000034028111.html
+        - img "MERIT Brother Stellaire Innovis XE2 Embroidery Machine" [ref=e568]
+        - generic [ref=e570]:
+          - generic [ref=e572]: MERIT Brother Stellaire Innovis XE2 Embroidery Machine
+          - generic [ref=e575]:
+            - generic [ref=e576]: $200-300
+            - generic [ref=e577]: "MOQ: 1"
+          - generic [ref=e580]: 630+ views
+      - 'link "New Genius Server Starlink Mini V5 Internet Kit Tri-Band Wi-Fi Router for Remote Areas Mobile Use Dish Wi-Fi 6 Router + Extra New Genius Server Starlink Mini V5 Internet Kit Tri-Band Wi-Fi Router for Remote Areas Mobile Use Dish Wi-Fi 6 Router + Extra $70-85 MOQ: 5 2.8K+ views" [ref=e582] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/New-Genius-Server-Starlink-Mini-V5_11000033435209.html
+        - img "New Genius Server Starlink Mini V5 Internet Kit Tri-Band Wi-Fi Router for Remote Areas Mobile Use Dish Wi-Fi 6 Router + Extra" [ref=e585]
+        - generic [ref=e587]:
+          - generic [ref=e589]: New Genius Server Starlink Mini V5 Internet Kit Tri-Band Wi-Fi Router for Remote Areas Mobile Use Dish Wi-Fi 6 Router + Extra
+          - generic [ref=e592]:
+            - generic [ref=e593]: $70-85
+            - generic [ref=e594]: "MOQ: 5"
+          - generic [ref=e597]: 2.8K+ views
+      - 'link "Adults 10 Inch Two-Wheel Off-Road Electric Scooter Foldable Full Suspension Waterproof App Control 150kg Max Load ZWHEEL ZSB1 Adults 10 Inch Two-Wheel Off-Road Electric Scooter Foldable Full Suspension Waterproof App Control 150kg Max Load ZWHEEL ZSB1 $259-306 MOQ: 50 4.7 950+ views" [ref=e599] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Adults-10-Inch-Two-Wheel-Off_1601696437526.html
+        - img "Adults 10 Inch Two-Wheel Off-Road Electric Scooter Foldable Full Suspension Waterproof App Control 150kg Max Load ZWHEEL ZSB1" [ref=e602]
+        - generic [ref=e604]:
+          - generic [ref=e606]: Adults 10 Inch Two-Wheel Off-Road Electric Scooter Foldable Full Suspension Waterproof App Control 150kg Max Load ZWHEEL ZSB1
+          - generic [ref=e609]:
+            - generic [ref=e610]: $259-306
+            - generic [ref=e611]: "MOQ: 50"
+          - generic [ref=e612]:
+            - generic [ref=e613]:
+              - img [ref=e614]
+              - generic [ref=e615]: "4.7"
+            - generic [ref=e617]: 950+ views
+      - 'link "GHK-Cu Copper Peptide Lyophilized Powder Skin Care Repair GHK-Cu Peptide High Quality GHK-Cu Copper Peptide Lyophilized Powder Skin Care Repair GHK-Cu Peptide High Quality $4-8 MOQ: 10 230+ sold" [ref=e619] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/GHK-Cu-Copper-Peptide-Lyophilized-Powder_10000041866781.html
+        - img "GHK-Cu Copper Peptide Lyophilized Powder Skin Care Repair GHK-Cu Peptide High Quality" [ref=e622]
+        - generic [ref=e624]:
+          - generic [ref=e626]: GHK-Cu Copper Peptide Lyophilized Powder Skin Care Repair GHK-Cu Peptide High Quality
+          - generic [ref=e629]:
+            - generic [ref=e630]: $4-8
+            - generic [ref=e631]: "MOQ: 10"
+          - generic [ref=e634]: 230+ sold
+      - 'link "Customized New Mobile Electric Piaggio Ape 50 Wedding Wine Bar Beer Truck with Built-In Power Rust Resistant Features for Sale Customized New Mobile Electric Piaggio Ape 50 Wedding Wine Bar Beer Truck with Built-In Power Rust Resistant Features for Sale $1,620-1,910 MOQ: 1 310+ views" [ref=e636] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Customized-New-Mobile-Electric-Piaggio-Ape_1601714382395.html
+        - img "Customized New Mobile Electric Piaggio Ape 50 Wedding Wine Bar Beer Truck with Built-In Power Rust Resistant Features for Sale" [ref=e639]
+        - generic [ref=e641]:
+          - generic [ref=e643]: Customized New Mobile Electric Piaggio Ape 50 Wedding Wine Bar Beer Truck with Built-In Power Rust Resistant Features for Sale
+          - generic [ref=e646]:
+            - generic [ref=e647]: $1,620-1,910
+            - generic [ref=e648]: "MOQ: 1"
+          - generic [ref=e651]: 310+ views
+      - 'link "Hot Selling Wholesale Original Switch 2 Oled Model Wi-Fi Enabled 4000mAh Battery Touch Screen Gaming Console White Fast Hot Selling Wholesale Original Switch 2 Oled Model Wi-Fi Enabled 4000mAh Battery Touch Screen Gaming Console White Fast $215 MOQ: 1 380+ views" [ref=e653] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Hot-Selling-Wholesale-Original-Switch-2_1601763912310.html
+        - img "Hot Selling Wholesale Original Switch 2 Oled Model Wi-Fi Enabled 4000mAh Battery Touch Screen Gaming Console White Fast" [ref=e656]
+        - generic [ref=e658]:
+          - generic [ref=e660]: Hot Selling Wholesale Original Switch 2 Oled Model Wi-Fi Enabled 4000mAh Battery Touch Screen Gaming Console White Fast
+          - generic [ref=e663]:
+            - generic [ref=e664]: $215
+            - generic [ref=e665]: "MOQ: 1"
+          - generic [ref=e668]: 380+ views
+      - 'link "Factory New Chinese-made ZheXing High-speed Mini Microcar 4-seater Lithium Battery Electric Vehicle Eec 101~200km Range AWD SUV Factory New Chinese-made ZheXing High-speed Mini Microcar 4-seater Lithium Battery Electric Vehicle Eec 101~200km Range AWD SUV $2,500-2,660 MOQ: 1 530+ views" [ref=e670] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Factory-New-Chinese-made-ZheXing-High_1601721781258.html
+        - img "Factory New Chinese-made ZheXing High-speed Mini Microcar 4-seater Lithium Battery Electric Vehicle Eec 101~200km Range AWD SUV" [ref=e673]
+        - generic [ref=e675]:
+          - generic [ref=e677]: Factory New Chinese-made ZheXing High-speed Mini Microcar 4-seater Lithium Battery Electric Vehicle Eec 101~200km Range AWD SUV
+          - generic [ref=e680]:
+            - generic [ref=e681]: $2,500-2,660
+            - generic [ref=e682]: "MOQ: 1"
+          - generic [ref=e685]: 530+ views
+      - 'link "Hbada X7 Smart Ergonomic Office Chair with Fully Automated Lumbar Tracking 720° Adjustable Armrests Ventilated Seat Cushion Hbada X7 Smart Ergonomic Office Chair with Fully Automated Lumbar Tracking 720° Adjustable Armrests Ventilated Seat Cushion $680-749 MOQ: 1 4.9 260+ views" [ref=e687] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Hbada-X7-Smart-Ergonomic-Office-Chair_1601722867654.html
+        - img "Hbada X7 Smart Ergonomic Office Chair with Fully Automated Lumbar Tracking 720° Adjustable Armrests Ventilated Seat Cushion" [ref=e690]
+        - generic [ref=e692]:
+          - generic [ref=e694]: Hbada X7 Smart Ergonomic Office Chair with Fully Automated Lumbar Tracking 720° Adjustable Armrests Ventilated Seat Cushion
+          - generic [ref=e697]:
+            - generic [ref=e698]: $680-749
+            - generic [ref=e699]: "MOQ: 1"
+          - generic [ref=e700]:
+            - generic [ref=e701]:
+              - img [ref=e702]
+              - generic [ref=e703]: "4.9"
+            - generic [ref=e705]: 260+ views
+      - 'link "Portable Handheld High-Speed Turbo Fan 5 Gear Wind USB Rechargeable Mini Hand Fan for Outdoor Activities, Traveling Portable Handheld High-Speed Turbo Fan 5 Gear Wind USB Rechargeable Mini Hand Fan for Outdoor Activities, Traveling $1.60-2 MOQ: 2 50+ sold" [ref=e707] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Portable-Handheld-High-Speed-Turbo-Fan_11000033707695.html
+        - img "Portable Handheld High-Speed Turbo Fan 5 Gear Wind USB Rechargeable Mini Hand Fan for Outdoor Activities, Traveling" [ref=e710]
+        - generic [ref=e712]:
+          - generic [ref=e714]: Portable Handheld High-Speed Turbo Fan 5 Gear Wind USB Rechargeable Mini Hand Fan for Outdoor Activities, Traveling
+          - generic [ref=e717]:
+            - generic [ref=e718]: $1.60-2
+            - generic [ref=e719]: "MOQ: 2"
+          - generic [ref=e722]: 50+ sold
+      - 'link "Stainless Steel Multi-function Vegetable Cutter & Peeling Knife for Green Onion Squid Flower Cutting-Manual Operation Stainless Steel Multi-function Vegetable Cutter & Peeling Knife for Green Onion Squid Flower Cutting-Manual Operation $0.45-0.50 MOQ: 2 5.0 210+ sold" [ref=e724] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Stainless-Steel-Multi-function-Vegetable-Cutter_1601748440869.html
+        - img "Stainless Steel Multi-function Vegetable Cutter & Peeling Knife for Green Onion Squid Flower Cutting-Manual Operation" [ref=e727]
+        - generic [ref=e729]:
+          - generic [ref=e731]: Stainless Steel Multi-function Vegetable Cutter & Peeling Knife for Green Onion Squid Flower Cutting-Manual Operation
+          - generic [ref=e734]:
+            - generic [ref=e735]: $0.45-0.50
+            - generic [ref=e736]: "MOQ: 2"
+          - generic [ref=e737]:
+            - generic [ref=e738]:
+              - img [ref=e739]
+              - generic [ref=e740]: "5.0"
+            - generic [ref=e742]: 210+ sold
+      - 'link "New Space X Starlink Standard Kit V4 Gen 3 Digital Satellite Kit with Plastic Components New Space X Starlink Standard Kit V4 Gen 3 Digital Satellite Kit with Plastic Components $220 MOQ: 5 650+ views" [ref=e744] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/New-Space-X-Starlink-Standard-Kit_11000033569611.html
+        - img "New Space X Starlink Standard Kit V4 Gen 3 Digital Satellite Kit with Plastic Components" [ref=e747]
+        - generic [ref=e749]:
+          - generic [ref=e751]: New Space X Starlink Standard Kit V4 Gen 3 Digital Satellite Kit with Plastic Components
+          - generic [ref=e754]:
+            - generic [ref=e755]: $220
+            - generic [ref=e756]: "MOQ: 5"
+          - generic [ref=e759]: 650+ views
+      - 'link "TWG RTS Collagen Night Wrapping Facial Mask 75ml Anti-aging Moisturizing Face Mask Peel Off Kojic Acid Turmeric & Collagen Mask TWG RTS Collagen Night Wrapping Facial Mask 75ml Anti-aging Moisturizing Face Mask Peel Off Kojic Acid Turmeric & Collagen Mask $0.58 MOQ: 50 $20 off shipping 4.8 6.7K+ sold" [ref=e761] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/TWG-RTS-Collagen-Night-Wrapping-Facial_1601708521405.html
+        - img "TWG RTS Collagen Night Wrapping Facial Mask 75ml Anti-aging Moisturizing Face Mask Peel Off Kojic Acid Turmeric & Collagen Mask" [ref=e764]
+        - generic [ref=e766]:
+          - generic [ref=e768]: TWG RTS Collagen Night Wrapping Facial Mask 75ml Anti-aging Moisturizing Face Mask Peel Off Kojic Acid Turmeric & Collagen Mask
+          - generic [ref=e771]:
+            - generic [ref=e772]: $0.58
+            - generic [ref=e773]: "MOQ: 50"
+          - generic [ref=e778]: $20 off shipping
+          - generic [ref=e779]:
+            - generic [ref=e780]:
+              - img [ref=e781]
+              - generic [ref=e782]: "4.8"
+            - generic [ref=e784]: 6.7K+ sold
+      - 'link "Original Carbon Bucket Seats for BMW M2 M3 M4 M5 M6 G14 G15 G16 G17 G20 G22 G23 G24 G26 G29 G30 G32 G70 G80 G82 G87 G90 F90 Original Carbon Bucket Seats for BMW M2 M3 M4 M5 M6 G14 G15 G16 G17 G20 G22 G23 G24 G26 G29 G30 G32 G70 G80 G82 G87 G90 F90 $700-1,000 MOQ: 1 4.2 50+ views" [ref=e786] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Original-Carbon-Bucket-Seats-for-BMW_1601740344130.html
+        - img "Original Carbon Bucket Seats for BMW M2 M3 M4 M5 M6 G14 G15 G16 G17 G20 G22 G23 G24 G26 G29 G30 G32 G70 G80 G82 G87 G90 F90" [ref=e789]
+        - generic [ref=e791]:
+          - generic [ref=e793]: Original Carbon Bucket Seats for BMW M2 M3 M4 M5 M6 G14 G15 G16 G17 G20 G22 G23 G24 G26 G29 G30 G32 G70 G80 G82 G87 G90 F90
+          - generic [ref=e796]:
+            - generic [ref=e797]: $700-1,000
+            - generic [ref=e798]: "MOQ: 1"
+          - generic [ref=e799]:
+            - generic [ref=e800]:
+              - img [ref=e801]
+              - generic [ref=e802]: "4.2"
+            - generic [ref=e804]: 50+ views
+      - 'link "Brand New Original Used 1TB for PS5 Console Ready to Ship In Stock With Blu-ray Disc/Digital Version Video Games Brand New Original Used 1TB for PS5 Console Ready to Ship In Stock With Blu-ray Disc/Digital Version Video Games $144 MOQ: 1 1.3K+ views" [ref=e806] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Brand-New-Original-Used-1TB-for_1601766626503.html
+        - img "Brand New Original Used 1TB for PS5 Console Ready to Ship In Stock With Blu-ray Disc/Digital Version Video Games" [ref=e809]
+        - generic [ref=e811]:
+          - generic [ref=e813]: Brand New Original Used 1TB for PS5 Console Ready to Ship In Stock With Blu-ray Disc/Digital Version Video Games
+          - generic [ref=e816]:
+            - generic [ref=e817]: $144
+            - generic [ref=e818]: "MOQ: 1"
+          - generic [ref=e821]: 1.3K+ views
+      - 'link "Air Transport China to Luanda Angola Air Freight Shipping Agent Freight Forwarder Logistics Guangzhou Shenzhen Shanghai Air Transport China to Luanda Angola Air Freight Shipping Agent Freight Forwarder Logistics Guangzhou Shenzhen Shanghai $2.50-5.50 MOQ: 1 610+ views" [ref=e823] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Air-Transport-China-to-Luanda-Angola_1601709084779.html
+        - img "Air Transport China to Luanda Angola Air Freight Shipping Agent Freight Forwarder Logistics Guangzhou Shenzhen Shanghai" [ref=e826]
+        - generic [ref=e828]:
+          - generic [ref=e830]: Air Transport China to Luanda Angola Air Freight Shipping Agent Freight Forwarder Logistics Guangzhou Shenzhen Shanghai
+          - generic [ref=e833]:
+            - generic [ref=e834]: $2.50-5.50
+            - generic [ref=e835]: "MOQ: 1"
+          - generic [ref=e838]: 610+ views
+      - 'link "Available Ready to Ship New Milw 18V Cordless Power with 5ah Lithium-Ion Combo Kit Waukeess Power Drill Wrench Grinder Tools Set Available Ready to Ship New Milw 18V Cordless Power with 5ah Lithium-Ion Combo Kit Waukeess Power Drill Wrench Grinder Tools Set $200-283 MOQ: 1 4.1 10+ sold" [ref=e840] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Available-Ready-to-Ship-New-Milw_1601701875669.html
+        - img "Available Ready to Ship New Milw 18V Cordless Power with 5ah Lithium-Ion Combo Kit Waukeess Power Drill Wrench Grinder Tools Set" [ref=e843]
+        - generic [ref=e845]:
+          - generic [ref=e847]: Available Ready to Ship New Milw 18V Cordless Power with 5ah Lithium-Ion Combo Kit Waukeess Power Drill Wrench Grinder Tools Set
+          - generic [ref=e850]:
+            - generic [ref=e851]: $200-283
+            - generic [ref=e852]: "MOQ: 1"
+          - generic [ref=e853]:
+            - generic [ref=e854]:
+              - img [ref=e855]
+              - generic [ref=e856]: "4.1"
+            - generic [ref=e858]: 10+ sold
+      - 'link "Reed Diffuser 130ml Liquid Glass Bottle Lasting Fragrance Air Freshener with Custom Color & Logo Reed Diffuser 130ml Liquid Glass Bottle Lasting Fragrance Air Freshener with Custom Color & Logo $0.80-0.90 MOQ: 600 4.8 70+ views" [ref=e860] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/Reed-Diffuser-130ml-Liquid-Glass-Bottle_1601762973717.html
+        - img "Reed Diffuser 130ml Liquid Glass Bottle Lasting Fragrance Air Freshener with Custom Color & Logo" [ref=e863]
+        - generic [ref=e865]:
+          - generic [ref=e867]: Reed Diffuser 130ml Liquid Glass Bottle Lasting Fragrance Air Freshener with Custom Color & Logo
+          - generic [ref=e870]:
+            - generic [ref=e871]: $0.80-0.90
+            - generic [ref=e872]: "MOQ: 600"
+          - generic [ref=e873]:
+            - generic [ref=e874]:
+              - img [ref=e875]
+              - generic [ref=e876]: "4.8"
+            - generic [ref=e878]: 70+ views
+      - 'link "New Back Embroidery Trendy Loose Fitting Men''s and Women''s Hooded Sup Sweatshirt and Pants Set New Back Embroidery Trendy Loose Fitting Men''s and Women''s Hooded Sup Sweatshirt and Pants Set $33.89-34.89 MOQ: 2 10+ sold" [ref=e880] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/New-Back-Embroidery-Trendy-Loose-Fitting_1601757420533.html
+        - img "New Back Embroidery Trendy Loose Fitting Men's and Women's Hooded Sup Sweatshirt and Pants Set" [ref=e883]
+        - generic [ref=e885]:
+          - generic [ref=e887]: New Back Embroidery Trendy Loose Fitting Men's and Women's Hooded Sup Sweatshirt and Pants Set
+          - generic [ref=e890]:
+            - generic [ref=e891]: $33.89-34.89
+            - generic [ref=e892]: "MOQ: 2"
+          - generic [ref=e895]: 10+ sold
+      - 'link "72V Adult Electric Motorcycle Outdoor Lithium Battery Motor Off-Road Electric Dirt Bike All Terrain Ebike 72V Adult Electric Motorcycle Outdoor Lithium Battery Motor Off-Road Electric Dirt Bike All Terrain Ebike $868-948 MOQ: 1 4.7 700+ views" [ref=e897] [cursor=pointer]':
+        - /url: https://www.alibaba.com/product-detail/72V-Adult-Electric-Motorcycle-Outdoor-Lithium_1601739279772.html
+        - img "72V Adult Electric Motorcycle Outdoor Lithium Battery Motor Off-Road Electric Dirt Bike All Terrain Ebike" [ref=e900]
+        - generic [ref=e902]:
+          - generic [ref=e904]: 72V Adult Electric Motorcycle Outdoor Lithium Battery Motor Off-Road Electric Dirt Bike All Terrain Ebike
+          - generic [ref=e907]:
+            - generic [ref=e908]: $868-948
+            - generic [ref=e909]: "MOQ: 1"
+          - generic [ref=e910]:
+            - generic [ref=e911]:
+              - img [ref=e912]
+              - generic [ref=e913]: "4.7"
+            - generic [ref=e915]: 700+ views
+  - generic [ref=e918]:
+    - generic [ref=e919]:
+      - generic [ref=e920]:
+        - generic [ref=e921]:
+          - heading "Get support" [level=3] [ref=e922]
+          - list [ref=e923]:
+            - listitem [ref=e924]:
+              - link "Help Center" [ref=e925] [cursor=pointer]:
+                - /url: https://so.alibaba.com/s/buyer/
+            - listitem [ref=e926]:
+              - link "Live chat" [ref=e927] [cursor=pointer]:
+                - /url: https://ai.alimebot.alibaba.com/intl/index.htm?from=qB7A60vABX&_lang=en_US
+            - listitem [ref=e928]:
+              - link "Check order status" [ref=e929] [cursor=pointer]:
+                - /url: https://i.alibaba.com/globalBuyerIndex.htm
+            - listitem [ref=e930]:
+              - link "Refunds" [ref=e931] [cursor=pointer]:
+                - /url: https://biz.alibaba.com/order/list.htm?spm=a2700.7756200.b50006.d50006.7bd87ead9tGlwA&role=buyer&tradelog=from_orderlist_menu&menuCode=order_management_all_order_leaf_buyer
+            - listitem [ref=e932]:
+              - link "Report abuse" [ref=e933] [cursor=pointer]:
+                - /url: https://my-health.alibaba.com/helpCenter/prompt.htm
+        - generic [ref=e934]:
+          - heading "Payments and protections" [level=3] [ref=e935]
+          - list [ref=e936]:
+            - listitem [ref=e937]:
+              - link "Safe and easy payments" [ref=e938] [cursor=pointer]:
+                - /url: https://tradeassurance.alibaba.com/ta/Payment.htm
+            - listitem [ref=e939]:
+              - link "Money-back policy" [ref=e940] [cursor=pointer]:
+                - /url: https://tradeassurance.alibaba.com/ta/MoneyBackPolicy.htm
+            - listitem [ref=e941]:
+              - link "On-time shipping" [ref=e942] [cursor=pointer]:
+                - /url: https://tradeassurance.alibaba.com/ta/ShippingAndLogistics.htm
+            - listitem [ref=e943]:
+              - link "After-sales protections" [ref=e944] [cursor=pointer]:
+                - /url: https://tradeassurance.alibaba.com/ta/AfterSales.htm
+            - listitem [ref=e945]:
+              - link "Product monitoring services" [ref=e946] [cursor=pointer]:
+                - /url: https://inspection.alibaba.com/?spm=a2700.product_home_l0.0.0.2ce267afAadJmR&tracelog=footer_inspection
+        - generic [ref=e947]:
+          - heading "Source on Alibaba.com" [level=3] [ref=e948]
+          - list [ref=e949]:
+            - listitem [ref=e950]:
+              - link "Request for Quotation" [ref=e951] [cursor=pointer]:
+                - /url: https://rfq.alibaba.com/rfq/exhibition.htm?spm=a2700.product_home_l0.0.0.2ce267afzgonXG&tracelog=footer_rfq
+            - listitem [ref=e952]:
+              - link "Membership program" [ref=e953] [cursor=pointer]:
+                - /url: https://sale.alibaba.com/p/dd4pt71ef/index.html?wx_screen_direc=portrait&wx_navbar_transparent=true&path=/p/dd4pt71ef/index.html&ncms_spm=a27aq.25843503&prefetchKey=met&wx_screen_direc=portrait&wx_navbar_transparent=true%3Fspm%3Da27aq.28224311.scGlobalHomeHeader.425.4f8a6c40lq6V8C&tracelog=pc_header#/
+            - listitem [ref=e954]:
+              - link "Sales tax and VAT" [ref=e955] [cursor=pointer]:
+                - /url: https://sale.alibaba.com/p/ddhcqxncs?wx_navbar_transparent=true&path=/p/ddhcqxncs&ncms_spm=a27aq.28348692&prefetchKey=met&wx_xpage=true
+            - listitem [ref=e956]:
+              - link "Alibaba.com Reads" [ref=e957] [cursor=pointer]:
+                - /url: https://baba-blog.com/?spm=a2700.product_home_l0.0.0.2ce267afzgonXG&tracelog=footer_alibabablog
+        - generic [ref=e958]:
+          - heading "Sell on Alibaba.com" [level=3] [ref=e959]
+          - list [ref=e960]:
+            - listitem [ref=e961]:
+              - link "Start selling" [ref=e962] [cursor=pointer]:
+                - /url: https://seller.alibaba.com/how-to-sell?spm=a2700.product_home_l0.0.0.2ce267afzgonXG&tracelog=footer_sell_train&language=en_US&tenantId=US
+            - listitem [ref=e963]:
+              - link "Seller Central" [ref=e964] [cursor=pointer]:
+                - /url: https://i.alibaba.com/globalSellerIndex.htm?spm=a2700.7756200.icbumamenu.dswitchb.7bd87eadEPUmPX
+            - listitem [ref=e965]:
+              - link "Become a Verified Supplier" [ref=e966] [cursor=pointer]:
+                - /url: https://seller.alibaba.com/verified_supplier
+            - listitem [ref=e967]:
+              - link "Partnerships" [ref=e968] [cursor=pointer]:
+                - /url: https://partner.alibaba.com/
+            - listitem [ref=e969]:
+              - link "Download the app for suppliers" [ref=e970] [cursor=pointer]:
+                - /url: https://activity.alibaba.com/page/SupplierAPP_download.html
+        - generic [ref=e971]:
+          - heading "Get to know us" [level=3] [ref=e972]
+          - list [ref=e973]:
+            - listitem [ref=e974]:
+              - link "About Alibaba.com" [ref=e975] [cursor=pointer]:
+                - /url: https://www.alibaba.com/?homeType=newUser
+            - listitem [ref=e976]:
+              - link "Corporate responsibility" [ref=e977] [cursor=pointer]:
+                - /url: https://www.alibabagroup.com/en-US/esg
+            - listitem [ref=e978]:
+              - link "News center" [ref=e979] [cursor=pointer]:
+                - /url: https://baba-blog.com/
+            - listitem [ref=e980]:
+              - link "Careers" [ref=e981] [cursor=pointer]:
+                - /url: https://talent.alibaba.com/en/home
+            - listitem [ref=e982]:
+              - heading "Stay Connected" [level=3] [ref=e983]
+              - generic [ref=e984]:
+                - link "Visit Alibaba.com on Facebook" [ref=e985] [cursor=pointer]:
+                  - /url: https://www.facebook.com/Alibaba.comGlobal?file=Alibaba.comGlobal
+                  - img "Facebook social media icon" [ref=e986]
+                - link "Visit Alibaba.com on LinkedIn" [ref=e987] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/alibaba-com
+                  - img "LinkedIn social media icon" [ref=e988]
+                - link "Visit Alibaba.com on Twitter" [ref=e989] [cursor=pointer]:
+                  - /url: https://twitter.com/AlibabaB2B?
+                  - img "Twitter social media icon" [ref=e990]
+                - link "Visit Alibaba.com on Instagram" [ref=e991] [cursor=pointer]:
+                  - /url: https://www.instagram.com/alibaba.com_official
+                  - img "Instagram social media icon" [ref=e992]
+                - link "Visit Alibaba.com on YouTube" [ref=e993] [cursor=pointer]:
+                  - /url: https://www.youtube.com/channel/UCSoIxtP6J6oNo_d1njSluxw?
+                  - img "YouTube social media icon" [ref=e994]
+                - link "Visit Alibaba.com on TikTok" [ref=e995] [cursor=pointer]:
+                  - /url: https://www.tiktok.com/@alibaba.com_buyercentral
+                  - img "TikTok social media icon" [ref=e996]
+      - generic [ref=e997]:
+        - list "Payment methods" [ref=e998]:
+          - listitem [ref=e999]:
+            - img "ID Check" [ref=e1000]
+          - listitem [ref=e1001]:
+            - img "PCI DSS" [ref=e1002]
+          - listitem [ref=e1003]:
+            - img "SSL" [ref=e1004]
+          - listitem [ref=e1005]:
+            - img "VERISIGN" [ref=e1006]
+          - listitem [ref=e1007]:
+            - img "VISA SECURE" [ref=e1008]
+        - list "Security certifications" [ref=e1009]:
+          - listitem [ref=e1010]:
+            - img "VISA" [ref=e1011]
+          - listitem [ref=e1012]:
+            - img "MasterCard" [ref=e1013]
+          - listitem [ref=e1014]:
+            - img "TT" [ref=e1015]
+      - generic [ref=e1016]:
+        - generic [ref=e1018]:
+          - generic [ref=e1019]:
+            - text: Add
+            - link "Add Alibaba Lens To Chrome" [ref=e1020] [cursor=pointer]:
+              - /url: https://chromewebstore.google.com/detail/alibaba-lens-official-ali/jjpbbahenfdgofabbgcnnfejgcigadpd?hl=zh-CN&utm_source=alibaba_footer&utm_medium=a2700_product_home_fy25
+              - text: Alibaba Lens
+            - text: to Chrome
+          - link "Add Alibaba Lens To Chrome" [ref=e1021] [cursor=pointer]:
+            - /url: https://chromewebstore.google.com/detail/alibaba-lens-official-ali/jjpbbahenfdgofabbgcnnfejgcigadpd?hl=zh-CN&utm_source=alibaba_footer&utm_medium=a2700_product_home_fy25
+            - img "Alibaba Lens Icon" [ref=e1022]
+        - generic [ref=e1023]:
+          - generic [ref=e1024]: Trade on the go with the Alibaba.com app
+          - link "Download Alibaba.com app from App Store" [ref=e1025] [cursor=pointer]:
+            - /url: https://apps.apple.com/us/app/alibaba-for-iphone/id503451073?spm=a2700.product_home_l3.home_header.42.2ce267afj7vdoC
+            - img "Download from App Store" [ref=e1026]
+          - link "Download Alibaba.com app from Google Play" [ref=e1027] [cursor=pointer]:
+            - /url: https://play.google.com/store/apps/details?spm=a2700.product_home_l3.home_header.43.2ce267afj7vdoC&id=com.alibaba.intl.android.apps.poseidon&referrer=pcmaindownload
+            - img "Download from Google Play" [ref=e1028]
+    - generic [ref=e1029]:
+      - generic [ref=e1030]:
+        - link "Visit AliExpress" [ref=e1031] [cursor=pointer]:
+          - /url: https://www.aliexpress.com/
+          - text: AliExpress
+        - link "Visit 1688.com" [ref=e1032] [cursor=pointer]:
+          - /url: https://www.1688.com/
+          - text: "|1688.com"
+        - link "Visit Tmall Taobao World" [ref=e1033] [cursor=pointer]:
+          - /url: https://g-sellercenter.taobao.com/mail
+          - text: "|Tmall Taobao World"
+        - link "Visit Alipay" [ref=e1034] [cursor=pointer]:
+          - /url: https://global.alipay.com/platform/site/ihome
+          - text: "|Alipay"
+        - link "Visit Lazada" [ref=e1035] [cursor=pointer]:
+          - /url: https://www.lazada.com/en/
+          - text: "|Lazada"
+        - link "Visit Taobao Global" [ref=e1036] [cursor=pointer]:
+          - /url: https://world.taobao.com/
+          - text: "|Taobao Global"
+        - link "Visit TAO" [ref=e1037] [cursor=pointer]:
+          - /url: https://jp.tao.co/
+          - text: "|TAO"
+        - link "|Trendyol" [ref=e1038] [cursor=pointer]:
+          - /url: https://www.trendyol.com
+        - link "|Europages" [ref=e1039] [cursor=pointer]:
+          - /url: https://www.europages.co.uk
+      - generic [ref=e1040]:
+        - link "Read more about Policies and rules" [ref=e1041] [cursor=pointer]:
+          - /url: https://rulechannel.alibaba.com/icbu#/
+          - text: Policies and rules
+        - link "Read more about Legal Notice" [ref=e1042] [cursor=pointer]:
+          - /url: https://rulechannel.alibaba.com/icbu?spm=a2700.product_home_l0.0.0.2ce267afC1wZlo&type=detail&ruleId=20002006&cId=147#/rule/detail?ruleId=20002006&cId=147
+          - text: ·Legal Notice
+        - link "Read more about Product Listing Policy" [ref=e1043] [cursor=pointer]:
+          - /url: https://rulechannel.alibaba.com/icbu?type=detail&ruleId=2047&cId=1396#/rule/detail?cId=1396&ruleId=2047
+          - text: ·Product Listing Policy
+        - link "Read more about Intellectual Property Protection" [ref=e1044] [cursor=pointer]:
+          - /url: https://ipp.aidcgroup.net/#/ippHome
+          - text: ·Intellectual Property Protection
+        - link "Read more about Privacy Policy" [ref=e1045] [cursor=pointer]:
+          - /url: https://rulechannel.alibaba.com/icbu?spm=a2700.product_home_fy25.0.0.2ce267afksapsb&type=detail&ruleId=2034&cId=1306#/rule/detail?cId=1306&ruleId=2034
+          - text: ·Privacy Policy
+        - link "Read more about Terms of Use" [ref=e1046] [cursor=pointer]:
+          - /url: https://rulechannel.alibaba.com/icbu?spm=a2700.product_home_fy25.0.0.2ce267afBd24Z7&type=detail&ruleId=2041&cId=1307#/rule/detail?cId=1307&ruleId=2041
+          - text: ·Terms of Use
+        - link "Read more about Integrity Compliance" [ref=e1047] [cursor=pointer]:
+          - /url: https://aidc.jubao.alibaba.com/
+          - text: ·Integrity Compliance
+      - generic [ref=e1048]:
+        - generic [ref=e1049]: © 1999-2026 Alibaba.com。版权所有：杭州阿里巴巴海外信息技术有限公司
+        - generic [ref=e1050]: 增值电信业务经营许可证：浙B2-20241358
+        - link "View business license verification" [ref=e1051] [cursor=pointer]:
+          - /url: https://zzlz.gsxt.gov.cn/businessCheck/verifKey.do?showType=p&serial=91330108MACUEGT78K-SAIC_SHOW_10000091330108MACUEGT78K1725005320775&signData=MEQCIHmj5/76tVTLUJf9XvRrfyZRu5n5IT9//O1xw0dHqnvrAiBrY+wz63YR+yq2t7Ch6/MO3IGXROZyKAfNZMDEOHUKpg==
+          - img "Business license verification icon" [ref=e1052]
+        - img "GSXT verification icon" [ref=e1053]
+        - link "View public security record" [ref=e1054] [cursor=pointer]:
+          - /url: https://beian.mps.gov.cn/#/query/webSearch?code=33010002000366
+          - text: 浙公网安备33010002000366
+        - link "View ICP record" [ref=e1055] [cursor=pointer]:
+          - /url: http://beian.miit.gov.cn/
+          - text: 浙ICP备2024067534号-3

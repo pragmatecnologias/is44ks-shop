@@ -14,7 +14,8 @@ import { searchWebLocal, listResearchSearchResults, convertSearchResultToCandida
 import { addKeywordDemand, listKeywordDemand, verifyKeywordDemand, addTrendResearch, listTrendResearch, verifyTrendResearch, getProductValidationChecklist, runProductValidation } from './tools/validationTools.js';
 import { getProductCockpit, runProductResearch, getNextResearchAction, generateProductResearchReport } from './tools/productTools.js';
 import { verifyMarketplaceEvidence, verifySupplierSource, verifyCompetitorListing } from './tools/verificationTools.js';
-import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema, getCampaignNextTaskSchema, completeCampaignTaskSchema, blockCampaignTaskSchema, addKeywordDemandSchema, listKeywordDemandSchema, verifyKeywordDemandSchema, addTrendResearchSchema, listTrendResearchSchema, verifyTrendResearchSchema, productValidationChecklistSchema, runProductValidationSchema, shopConceptSchema, getShopConceptSchema, updateShopConceptSchema, productCollectionSchema, updateProductCollectionSchema, portfolioItemSchema, updatePortfolioItemSchema, shopPortfolioReportSchema, localSearchSchema, listResearchSearchResultsSchema, convertSearchResultSchema, rejectSearchResultSchema } from './toolRegistry.js';
+import { createProductionCampaign, listProductionCampaigns, getProductionCampaign, addMachineCandidate, getMachineCockpit, updateMachineCandidate, addMachineEvidence, verifyMachineEvidence, rejectMachineEvidence, addMachineProductFamily, updateMachineProductFamily, promoteMachineProductFamily, addCostScenario, runMachineDecision, getMachineNextAction } from './tools/productionTools.js';
+import { quickScanSchema, researchTasksSchema, dataForSeoSchema, pollJobSchema, listCandidatesSchema, approveCandidateSchema, rejectCandidateSchema, captureManualEvidenceSchema, productCockpitSchema, productResearchSchema, nextActionSchema, verifyEvidenceSchema, verifySupplierSchema, verifyCompetitorSchema, productReportSchema, createDiscoveryIdeaSchema, discoveryBoardSchema, createCampaignSchema, campaignIdSchema, createCampaignTaskSchema, updateCampaignTaskSchema, addCampaignIdeaSchema, getCampaignNextTaskSchema, completeCampaignTaskSchema, blockCampaignTaskSchema, addKeywordDemandSchema, listKeywordDemandSchema, verifyKeywordDemandSchema, addTrendResearchSchema, listTrendResearchSchema, verifyTrendResearchSchema, productValidationChecklistSchema, runProductValidationSchema, shopConceptSchema, getShopConceptSchema, updateShopConceptSchema, productCollectionSchema, updateProductCollectionSchema, portfolioItemSchema, updatePortfolioItemSchema, shopPortfolioReportSchema, localSearchSchema, listResearchSearchResultsSchema, convertSearchResultSchema, rejectSearchResultSchema, createProductionCampaignSchema, productionCampaignIdSchema, addMachineCandidateSchema, machineIdSchema, updateMachineCandidateSchema, addMachineEvidenceSchema, verifyMachineEvidenceSchema, rejectMachineEvidenceSchema, addMachineProductFamilySchema, updateMachineProductFamilySchema, promoteMachineProductFamilySchema, addCostScenarioSchema, runMachineDecisionSchema, getMachineNextActionSchema } from './toolRegistry.js';
 import { guardWriteEnabled } from './guards/approvalGuards.js';
 import type { ToolResult } from './types.js';
 import type { z } from 'zod';
@@ -258,6 +259,66 @@ async function invokeTool(name: string, args: Record<string, unknown>, config: A
     case 'resellos_reject_search_result': {
       const input = rejectSearchResultSchema.parse(args);
       return rejectSearchResult(client, input as any, config);
+    }
+    // --- Production Capability ---
+    case 'resellos_create_production_campaign': {
+      const input = createProductionCampaignSchema.parse(args);
+      return createProductionCampaign(client, input, config);
+    }
+    case 'resellos_list_production_campaigns': {
+      return listProductionCampaigns(client, config);
+    }
+    case 'resellos_get_production_campaign': {
+      const input = productionCampaignIdSchema.parse(args);
+      return getProductionCampaign(client, input.campaign_id, config);
+    }
+    case 'resellos_add_machine_candidate': {
+      const input = addMachineCandidateSchema.parse(args);
+      return addMachineCandidate(client, input, config);
+    }
+    case 'resellos_get_machine_cockpit': {
+      const input = machineIdSchema.parse(args);
+      return getMachineCockpit(client, input.machine_id, config);
+    }
+    case 'resellos_update_machine_candidate': {
+      const input = updateMachineCandidateSchema.parse(args);
+      return updateMachineCandidate(client, input, config);
+    }
+    case 'resellos_add_machine_evidence': {
+      const input = addMachineEvidenceSchema.parse(args);
+      return addMachineEvidence(client, input, config);
+    }
+    case 'resellos_verify_machine_evidence': {
+      const input = verifyMachineEvidenceSchema.parse(args);
+      return verifyMachineEvidence(client, input, config);
+    }
+    case 'resellos_reject_machine_evidence': {
+      const input = rejectMachineEvidenceSchema.parse(args);
+      return rejectMachineEvidence(client, input, config);
+    }
+    case 'resellos_add_machine_product_family': {
+      const input = addMachineProductFamilySchema.parse(args);
+      return addMachineProductFamily(client, input, config);
+    }
+    case 'resellos_update_machine_product_family': {
+      const input = updateMachineProductFamilySchema.parse(args);
+      return updateMachineProductFamily(client, input, config);
+    }
+    case 'resellos_promote_machine_product_family': {
+      const input = promoteMachineProductFamilySchema.parse(args);
+      return promoteMachineProductFamily(client, input, config);
+    }
+    case 'resellos_add_cost_scenario': {
+      const input = addCostScenarioSchema.parse(args);
+      return addCostScenario(client, input, config);
+    }
+    case 'resellos_run_machine_decision': {
+      const input = runMachineDecisionSchema.parse(args);
+      return runMachineDecision(client, input, config);
+    }
+    case 'resellos_get_machine_next_action': {
+      const input = getMachineNextActionSchema.parse(args);
+      return getMachineNextAction(client, input, config);
     }
     default:
       throw new Error(`Unknown tool: ${name}`);

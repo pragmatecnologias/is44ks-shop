@@ -1,0 +1,7 @@
+[     855ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ about:blank:0
+[    1196ms] [LOG] {h: 268, w: 1099} @ https://ir.ebaystatic.com/rs/c/r1vinode/item_evo-Mk5DlASR.js:7
+[    1760ms] [WARNING] [GPT] PubAdsService.collapseEmptyDivs is deprecated, use googletag.setConfig({collapseDiv: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605010101/pubads_impl.js?cb=31098254:18
+[    1761ms] [WARNING] [GPT] Slot.setTargeting is deprecated, use Slot.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#171 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605010101/pubads_impl.js?cb=31098254:18
+[    1880ms] [LOG] done @ https://www.ebay.com/itm/336040580403:4

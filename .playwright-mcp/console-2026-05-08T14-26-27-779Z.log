@@ -1,0 +1,7 @@
+[    1620ms] [LOG] joinUs() at %ce%cb%ca%cy%c! font-weight:bold;color:#e53238; font-weight:bold;color:#0064d2 font-weight:bold;color:#f5af02 font-weight:bold;color:#86b817 color:black @ https://ir.ebaystatic.com/rs/c/srpnweb/common-CuXTgrKJ.js:1
+[    2056ms] [WARNING] [GPT] PubAdsService.collapseEmptyDivs is deprecated, use googletag.setConfig({collapseDiv: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605010101/pubads_impl.js?cb=31098277:18
+[    2058ms] [WARNING] [GPT] Slot.setTargeting is deprecated, use Slot.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#171 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605010101/pubads_impl.js?cb=31098277:18
+[    2098ms] [LOG] done @ https://www.ebay.com/sch/i.html?_nkw=sliding+door+track+cleaning+brush:4
+[    4049ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0

@@ -1,0 +1,559 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - link "AliExpress logo" [ref=e6] [cursor=pointer]:
+        - /url: https://www.aliexpress.us
+        - text: AliExpress
+      - button "All Categories" [ref=e9]:
+        - img "All Categories" [ref=e10]
+    - generic [ref=e12]:
+      - generic [ref=e14]:
+        - searchbox "You can type an item name or keyword to search." [ref=e15]: window door track cleaning brush
+        - img [ref=e20] [cursor=pointer]
+        - button "You can click this button to search." [ref=e21] [cursor=pointer]
+      - generic [ref=e22]:
+        - button "You can scan the QR code to download the AliExpress app." [ref=e23] [cursor=pointer]:
+          - img [ref=e25]
+          - img [ref=e29]
+        - button "You can select a country, region or language for shopping on AliExpress us. The current language is English." [ref=e33] [cursor=pointer]:
+          - img [ref=e36]
+        - button "You can register, sign in or view more information about your account." [ref=e38] [cursor=pointer]:
+          - img [ref=e40]
+          - img [ref=e43]
+        - link "0 items in cart." [ref=e46] [cursor=pointer]:
+          - /url: //www.aliexpress.us/p/shoppingcart/index.html
+          - img [ref=e48]
+          - generic [ref=e50]: "0"
+  - generic [ref=e51]:
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - generic [ref=e56] [cursor=pointer]:
+            - generic [ref=e57]: Deals & discounts
+            - img [ref=e59]
+          - generic "filterCode:freeshipping" [ref=e63] [cursor=pointer]:
+            - checkbox "Free shipping" [ref=e64]
+            - generic [ref=e65]: Free shipping
+        - generic [ref=e66]:
+          - generic [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: Delivery & service
+            - img [ref=e70]
+          - generic [ref=e73]:
+            - generic "filterCode:shipfrom" [ref=e74] [cursor=pointer]:
+              - checkbox "Local+ Local+" [ref=e75]
+              - generic [ref=e77]:
+                - img "Local+" [ref=e78]
+                - generic [ref=e79]: Local+
+            - generic "filterCode:choice_atm" [ref=e80] [cursor=pointer]:
+              - checkbox "Choice" [ref=e81]
+              - generic [ref=e82]: Choice
+        - generic [ref=e83]:
+          - generic [ref=e84] [cursor=pointer]:
+            - generic [ref=e85]: Quality & trust
+            - img [ref=e87]
+          - generic "filterCode:4StarRating" [ref=e91] [cursor=pointer]:
+            - checkbox "& up & up" [ref=e92]
+            - generic [ref=e94]:
+              - img "& up" [ref=e95]
+              - generic [ref=e96]: "& up"
+        - generic [ref=e97]:
+          - generic [ref=e98] [cursor=pointer]:
+            - generic [ref=e99]: Shipping from
+            - img [ref=e101]
+          - generic [ref=e104]:
+            - generic "-1" [ref=e105] [cursor=pointer]:
+              - radio "All" [checked] [ref=e106]
+              - generic [ref=e107]: All
+            - generic "US" [ref=e108] [cursor=pointer]:
+              - radio "United States" [ref=e109]
+              - generic [ref=e113]: United States
+        - generic [ref=e114]:
+          - generic [ref=e115] [cursor=pointer]:
+            - generic [ref=e116]: Price
+            - img [ref=e118]
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - generic [ref=e125]: US $
+              - textbox "Min." [ref=e126]
+            - generic [ref=e127]: "-"
+            - generic [ref=e128]:
+              - generic [ref=e130]: US $
+              - textbox "Max." [ref=e131]
+            - generic [ref=e132] [cursor=pointer]: OK
+      - generic [ref=e133]:
+        - generic [ref=e138]:
+          - generic [ref=e139]: "Sort by:"
+          - generic [ref=e140]:
+            - generic [ref=e142] [cursor=pointer]: Best Match
+            - generic [ref=e144] [cursor=pointer]: Orders
+            - generic [ref=e145] [cursor=pointer]:
+              - generic [ref=e146]: Price
+              - generic [ref=e147]:
+                - img [ref=e149]
+                - img [ref=e152]
+        - generic [ref=e155]:
+          - link "Report fraud item Portable 2-in-1 Multifunctional Cleaning Brush Detachable Dust Shovel Cleaner for Door Window Keyboard Groove Window Rail Gap Cl $0.81 Early bird deal, only 1 left Free shipping" [ref=e159] [cursor=pointer]:
+            - /url: //www.aliexpress.us/item/3256811993465044.html?algo_pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81&algo_exp_id=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81-0&pdp_ext_f=%7B%22order%22%3A%22-1%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21USD%2110.14%210.81%21%21%2110.14%210.81%21%4021032f3717782527326601108e3e75%2112000057717492464%21sea%21US%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Ac5a0a969%3Bm03_new_user%3A-29895&curPageLogUid=YltrU9rs7A34&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005012179779796%7C_p_origin_prod%3A
+            - generic [ref=e160]:
+              - generic [ref=e164]:
+                - img [ref=e165]
+                - img [ref=e166]
+                - img [ref=e167]
+                - img [ref=e168]
+                - img [ref=e169]
+                - img [ref=e170]
+              - generic "Report fraud item" [ref=e182]
+            - generic [ref=e183]:
+              - heading "Portable 2-in-1 Multifunctional Cleaning Brush Detachable Dust Shovel Cleaner for Door Window Keyboard Groove Window Rail Gap Cl" [level=3] [ref=e184]:
+                - img [ref=e185]
+                - heading "Portable 2-in-1 Multifunctional Cleaning Brush Detachable Dust Shovel Cleaner for Door Window Keyboard Groove Window Rail Gap Cl" [level=3] [ref=e186]
+              - generic "$0.81" [ref=e187]:
+                - generic [ref=e188]: $0.81
+                - generic [ref=e189]: $10.14
+                - generic [ref=e190]: "-92%"
+              - generic [ref=e191]:
+                - generic "Early bird deal, only 1 left" [ref=e193]
+                - generic "Free shipping" [ref=e195]
+          - link "Report fraud item Window Groove Cleaning Brush, Multifunctional Gap Cleaner for Door Tracks & Window Frames, Easily Remove Dust Cleaning Tool $1.1 1 sold Early bird deal, only 1 left Free shipping" [ref=e200] [cursor=pointer]:
+            - /url: //www.aliexpress.us/item/3256811792472549.html?algo_pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81&algo_exp_id=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81-1&pdp_ext_f=%7B%22order%22%3A%221%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21USD%216.48%211.10%21%21%2143.85%217.45%21%4021032f3717782527326601108e3e75%2112000057202600060%21sea%21US%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Ac5a0a969%3Bm03_new_user%3A-29895&curPageLogUid=JdjDJVn3Znge&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005011978787301%7C_p_origin_prod%3A
+            - generic [ref=e201]:
+              - generic [ref=e205]:
+                - img [ref=e206]
+                - img [ref=e207]
+                - img [ref=e208]
+                - img [ref=e209]
+                - img [ref=e210]
+                - img [ref=e211]
+              - generic "Report fraud item" [ref=e223]
+            - generic [ref=e224]:
+              - heading "Window Groove Cleaning Brush, Multifunctional Gap Cleaner for Door Tracks & Window Frames, Easily Remove Dust Cleaning Tool" [level=3] [ref=e225]:
+                - img [ref=e226]
+                - heading "Window Groove Cleaning Brush, Multifunctional Gap Cleaner for Door Tracks & Window Frames, Easily Remove Dust Cleaning Tool" [level=3] [ref=e227]
+              - generic "$1.1" [ref=e228]:
+                - generic [ref=e229]: $1.1
+                - generic [ref=e230]: $6.48
+                - generic [ref=e231]: "-83%"
+              - generic [ref=e233]: 1 sold
+              - generic [ref=e234]:
+                - generic "Early bird deal, only 1 left" [ref=e236]
+                - generic "Free shipping" [ref=e238]
+          - link "Report fraud item Easily Clean Small Gaps And Frames With The Universal Window Track Cleaning Brush - Perfect For Kitchen Countertops And More! $0.28 Early bird deal, only 1 left Free shipping" [ref=e242] [cursor=pointer]:
+            - /url: //www.aliexpress.us/item/3256811860871688.html?algo_pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81&algo_exp_id=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81-2&pdp_ext_f=%7B%22order%22%3A%22-1%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21USD%211.64%210.28%21%21%2111.12%211.89%21%4021032f3717782527326601108e3e75%2112000057377966721%21sea%21US%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Ac5a0a969%3Bm03_new_user%3A-29895&curPageLogUid=mZvZXzzgdbm9&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005012047186440%7C_p_origin_prod%3A
+            - generic [ref=e243]:
+              - generic [ref=e247]:
+                - img [ref=e248]
+                - img [ref=e249]
+                - img [ref=e250]
+                - img [ref=e251]
+                - img [ref=e252]
+                - img [ref=e253]
+              - generic "Report fraud item" [ref=e265]
+            - generic [ref=e266]:
+              - heading "Easily Clean Small Gaps And Frames With The Universal Window Track Cleaning Brush - Perfect For Kitchen Countertops And More!" [level=3] [ref=e267]:
+                - img [ref=e268]
+                - heading "Easily Clean Small Gaps And Frames With The Universal Window Track Cleaning Brush - Perfect For Kitchen Countertops And More!" [level=3] [ref=e269]
+              - generic "$0.28" [ref=e270]:
+                - generic [ref=e271]: $0.28
+                - generic [ref=e272]: $1.64
+                - generic [ref=e273]: "-83%"
+              - generic [ref=e274]:
+                - generic "Early bird deal, only 1 left" [ref=e276]
+                - generic "Free shipping" [ref=e278]
+          - generic [ref=e282]:
+            - link "Report fraud item 20/24ft Water Fed Pole Brush with Squeegee Kit Telescopic High Reach Extension Pole Window Cleaning Tool for Solar Panel Washer $82.95 4.7 408 sold New shoppers save $2 4 × $20.74 with no interest" [ref=e283] [cursor=pointer]:
+              - /url: //www.aliexpress.us/item/3256809467834825.html?aem_p4p_detail=2026050808053215213761177087540000704816&algo_pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81&algo_exp_id=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81-3&pdp_ext_f=%7B%22order%22%3A%22408%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21USD%2184.95%2182.95%21%21%21574.74%21561.21%21%4021032f3717782527326601108e3e75%2112000049783573847%21sea%21US%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Ac5a0a969%3Bm03_new_user%3A-29895%3BpisId%3A5000000204886261&curPageLogUid=CqETtAYQujgz&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005009654149577%7C_p_origin_prod%3A&search_p4p_id=2026050808053215213761177087540000704816_1
+              - generic [ref=e284]:
+                - generic [ref=e288]:
+                  - img [ref=e289]
+                  - img [ref=e290]
+                  - img [ref=e291]
+                  - img [ref=e292]
+                  - img [ref=e293]
+                  - img [ref=e294]
+                - generic "Report fraud item" [ref=e306]
+              - generic [ref=e307]:
+                - heading "20/24ft Water Fed Pole Brush with Squeegee Kit Telescopic High Reach Extension Pole Window Cleaning Tool for Solar Panel Washer" [level=3] [ref=e308]:
+                  - heading "20/24ft Water Fed Pole Brush with Squeegee Kit Telescopic High Reach Extension Pole Window Cleaning Tool for Solar Panel Washer" [level=3] [ref=e309]
+                - generic "$82.95" [ref=e310]:
+                  - generic [ref=e311]: $82.95
+                  - generic [ref=e312]: $84.95
+                - generic [ref=e313]:
+                  - generic [ref=e315]: "4.7"
+                  - generic [ref=e316]: 408 sold
+                - generic [ref=e318]:
+                  - generic [ref=e319]:
+                    - img [ref=e320]
+                    - generic "New shoppers save $2" [ref=e321]
+                  - generic "4 × $20.74 with no interest" [ref=e323]
+            - generic [ref=e324] [cursor=pointer]: Ad
+          - 'link "Report fraud item 1Pcs Long Handle Crevice Cleaning Brush: Designed For Hard-To-Reach Spaces Like Window Tracks, Sliding Door Grooves, Sink Edges $0.21 2 Early bird deal, only 4 left Free shipping" [ref=e328] [cursor=pointer]':
+            - /url: //www.aliexpress.us/item/3256811772396816.html?algo_pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81&algo_exp_id=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81-4&pdp_ext_f=%7B%22order%22%3A%22-1%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21USD%211.03%210.21%21%21%216.96%211.39%21%4021032f3717782527326601108e3e75%2112000057143398511%21sea%21US%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Ac5a0a969%3Bm03_new_user%3A-29895&curPageLogUid=Mxo8b4vLTE0R&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005011958711568%7C_p_origin_prod%3A
+            - generic [ref=e329]:
+              - generic [ref=e333]:
+                - img [ref=e334]
+                - img [ref=e335]
+                - img [ref=e336]
+                - img [ref=e337]
+                - img [ref=e338]
+                - img [ref=e339]
+              - generic "Report fraud item" [ref=e351]
+            - generic [ref=e352]:
+              - 'heading "1Pcs Long Handle Crevice Cleaning Brush: Designed For Hard-To-Reach Spaces Like Window Tracks, Sliding Door Grooves, Sink Edges" [level=3] [ref=e353]':
+                - img [ref=e354]
+                - 'heading "1Pcs Long Handle Crevice Cleaning Brush: Designed For Hard-To-Reach Spaces Like Window Tracks, Sliding Door Grooves, Sink Edges" [level=3] [ref=e355]'
+              - generic "$0.21" [ref=e356]:
+                - generic [ref=e357]: $0.21
+                - generic [ref=e358]: $1.03
+                - generic [ref=e359]: "-80%"
+              - generic [ref=e362]: "2"
+              - generic [ref=e363]:
+                - generic "Early bird deal, only 4 left" [ref=e365]
+                - generic "Free shipping" [ref=e367]
+          - link "Report fraud item Portable Two-in-one Cleaning Brush Multifunctional Door and window Keyboard Groove Cleaner Dust Shovel Window Rail Cleaning Tool FREE with any purchase 4.6 2,000+ sold" [ref=e371] [cursor=pointer]:
+            - /url: https://www.aliexpress.com/ssr/300001493/welcomegiftspmpc?spm=pm.sr&businessCode=ug&productIds=1005003620067844&pha_manifest=ssr&source_position=app_home_moretolove_wg&_immersiveMode=true&disableNav=YES&sourceName=SEARCH&skuId=12000026543596069&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005003620067844%7C_p_origin_prod%3A&pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81
+            - generic [ref=e372]:
+              - generic [ref=e376]:
+                - img [ref=e377]
+                - img [ref=e378]
+                - img [ref=e379]
+                - img [ref=e380]
+                - img [ref=e381]
+                - img [ref=e382]
+              - generic "Report fraud item" [ref=e391]
+            - generic [ref=e392]:
+              - heading "Portable Two-in-one Cleaning Brush Multifunctional Door and window Keyboard Groove Cleaner Dust Shovel Window Rail Cleaning Tool" [level=3] [ref=e393]:
+                - img [ref=e394]
+                - heading "Portable Two-in-one Cleaning Brush Multifunctional Door and window Keyboard Groove Cleaner Dust Shovel Window Rail Cleaning Tool" [level=3] [ref=e395]
+              - generic [ref=e396]:
+                - generic [ref=e397]: FREE
+                - generic [ref=e398]: with any purchase
+                - img [ref=e400]
+              - generic [ref=e402]:
+                - generic [ref=e404]: "4.6"
+                - generic [ref=e405]: 2,000+ sold
+          - link "Report fraud item 7 Pcs Crevice Cleaning Brush Set, Professional Gap Cleaning Tool for Window Track, Sliding Door Rails, Tile Grout, Kitchen and B $13 1 sold Early bird deal, only 4 left Free shipping" [ref=e411] [cursor=pointer]:
+            - /url: //www.aliexpress.us/item/3256811975869980.html?algo_pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81&algo_exp_id=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81-6&pdp_ext_f=%7B%22order%22%3A%221%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21USD%2155.57%2113.00%21%21%21375.99%2187.95%21%4021032f3717782527326601108e3e75%2112000057665430798%21sea%21US%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Ac5a0a969%3Bm03_new_user%3A-29895%3BpisId%3A5000000206201118&curPageLogUid=JZEUpWmtgKSo&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005012162184732%7C_p_origin_prod%3A
+            - generic [ref=e412]:
+              - img [ref=e417]
+              - generic "Report fraud item" [ref=e425]
+            - generic [ref=e426]:
+              - heading "7 Pcs Crevice Cleaning Brush Set, Professional Gap Cleaning Tool for Window Track, Sliding Door Rails, Tile Grout, Kitchen and B" [level=3] [ref=e427]:
+                - img [ref=e428]
+                - heading "7 Pcs Crevice Cleaning Brush Set, Professional Gap Cleaning Tool for Window Track, Sliding Door Rails, Tile Grout, Kitchen and B" [level=3] [ref=e429]
+              - generic "$13" [ref=e430]:
+                - generic [ref=e431]: $13
+                - generic [ref=e432]: $55.57
+                - generic [ref=e433]: "-76%"
+              - generic [ref=e435]: 1 sold
+              - generic [ref=e436]:
+                - generic "Early bird deal, only 4 left" [ref=e438]
+                - generic "Free shipping" [ref=e440]
+          - generic [ref=e443]:
+            - link "Report fraud item Glass Scraping Glass Artifact Window Brush White Cloud Style Glass Cleaning Wiper Single-sided Window Cleaning Floor Squeegee $5.14 4.9 458 sold New shoppers save $9.13 Lowest price in 30 days" [ref=e444] [cursor=pointer]:
+              - /url: //www.aliexpress.us/item/3256809667571466.html?aem_p4p_detail=2026050808053215213761177087540000704816&algo_pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81&algo_exp_id=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81-7&pdp_ext_f=%7B%22order%22%3A%22458%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21USD%2114.27%215.14%21%21%2196.53%2134.73%21%4021032f3717782527326601108e3e75%2112000050376966108%21sea%21US%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Ac5a0a969%3Bm03_new_user%3A-29895%3BpisId%3A5000000204886261&curPageLogUid=2P4N23DxtbdU&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005009853886218%7C_p_origin_prod%3A&search_p4p_id=2026050808053215213761177087540000704816_2
+              - generic [ref=e445]:
+                - img [ref=e450]
+                - generic "Report fraud item" [ref=e462]
+              - generic [ref=e463]:
+                - heading "Glass Scraping Glass Artifact Window Brush White Cloud Style Glass Cleaning Wiper Single-sided Window Cleaning Floor Squeegee" [level=3] [ref=e464]:
+                  - img [ref=e465]
+                  - heading "Glass Scraping Glass Artifact Window Brush White Cloud Style Glass Cleaning Wiper Single-sided Window Cleaning Floor Squeegee" [level=3] [ref=e466]
+                - generic "$5.14" [ref=e467]:
+                  - generic [ref=e468]: $5.14
+                  - generic [ref=e469]: $14.27
+                  - generic [ref=e470]: "-64%"
+                - generic [ref=e471]:
+                  - generic [ref=e473]: "4.9"
+                  - generic [ref=e474]: 458 sold
+                - generic [ref=e476]:
+                  - generic [ref=e477]:
+                    - img [ref=e478]
+                    - generic "New shoppers save $9.13" [ref=e479]
+                  - generic "Lowest price in 30 days" [ref=e481]
+            - generic [ref=e482] [cursor=pointer]: Ad
+          - link "Report fraud item 2 in 1 Window Rail Cleaning Brush Door Groove Hair Grip Brushes Multifunction Windows Slot Sliding Household Kitchen Accessories $0.99 4.5 1,000+ sold New shoppers save $7.75" [ref=e486] [cursor=pointer]:
+            - /url: //www.aliexpress.us/item/3256808682524838.html?algo_pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81&algo_exp_id=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81-8&pdp_ext_f=%7B%22order%22%3A%221022%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21USD%218.74%210.99%21%21%2159.16%216.71%21%4021032f3717782527326601108e3e75%2112000047022083575%21sea%21US%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Ac5a0a969%3Bm03_new_user%3A-29895%3BpisId%3A5000000203537364&curPageLogUid=HiA5M4GFR7kn&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005008868839590%7C_p_origin_prod%3A
+            - generic [ref=e487]:
+              - img [ref=e492]
+              - generic "Report fraud item" [ref=e504]
+            - generic [ref=e505]:
+              - heading "2 in 1 Window Rail Cleaning Brush Door Groove Hair Grip Brushes Multifunction Windows Slot Sliding Household Kitchen Accessories" [level=3] [ref=e506]:
+                - heading "2 in 1 Window Rail Cleaning Brush Door Groove Hair Grip Brushes Multifunction Windows Slot Sliding Household Kitchen Accessories" [level=3] [ref=e507]
+              - generic "$0.99" [ref=e508]:
+                - generic [ref=e509]: $0.99
+                - generic [ref=e510]: $8.74
+                - generic [ref=e511]: "-88%"
+              - generic [ref=e512]:
+                - generic [ref=e514]: "4.5"
+                - generic [ref=e515]: 1,000+ sold
+              - generic [ref=e518]:
+                - img [ref=e519]
+                - generic "New shoppers save $7.75" [ref=e520]
+          - link "Report fraud item Groove Cleaning Gap Brush Floor Slot Tool Window Frame Door Brush Sliding Door Track Cleaning Tools Hand-held Window Cleaning FREE with any purchase 4.7 700+ sold" [ref=e525] [cursor=pointer]:
+            - /url: https://www.aliexpress.com/ssr/300001493/welcomegiftspmpc?spm=pm.sr&businessCode=ug&productIds=1005006592139290&pha_manifest=ssr&source_position=app_home_moretolove_wg&_immersiveMode=true&disableNav=YES&sourceName=SEARCH&skuId=12000037751572123&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005006592139290%7C_p_origin_prod%3A&pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81
+            - generic [ref=e526]:
+              - img [ref=e531]
+              - generic "Report fraud item" [ref=e540]
+            - generic [ref=e541]:
+              - heading "Groove Cleaning Gap Brush Floor Slot Tool Window Frame Door Brush Sliding Door Track Cleaning Tools Hand-held Window Cleaning" [level=3] [ref=e542]:
+                - img [ref=e543]
+                - heading "Groove Cleaning Gap Brush Floor Slot Tool Window Frame Door Brush Sliding Door Track Cleaning Tools Hand-held Window Cleaning" [level=3] [ref=e544]
+              - generic [ref=e545]:
+                - generic [ref=e546]: FREE
+                - generic [ref=e547]: with any purchase
+                - img [ref=e549]
+              - generic [ref=e551]:
+                - generic [ref=e553]: "4.7"
+                - generic [ref=e554]: 700+ sold
+          - 'link "Report fraud item Hard Bristle Brush for Kitchen Bathroom Floor Gap Corner Cleaning Window Door Track Cleaner Scrubber for Durable Use $2.56 3 1 sold New shoppers save $6.74 Delivery: May 14 - 20" [ref=e560] [cursor=pointer]':
+            - /url: //www.aliexpress.us/item/3256811830381243.html?algo_pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81&algo_exp_id=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81-10&pdp_ext_f=%7B%22order%22%3A%221%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21USD%219.30%212.56%21%21%2162.91%2117.30%21%4021032f3717782527326601108e3e75%2112000057309018856%21sea%21US%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Ac5a0a969%3Bm03_new_user%3A-29895%3BpisId%3A5000000204886261&curPageLogUid=FWVbA2QeuJ7f&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005012016695995%7C_p_origin_prod%3A
+            - generic [ref=e561]:
+              - img [ref=e566]
+              - generic "Report fraud item" [ref=e578]
+            - generic [ref=e579]:
+              - heading "Hard Bristle Brush for Kitchen Bathroom Floor Gap Corner Cleaning Window Door Track Cleaner Scrubber for Durable Use" [level=3] [ref=e580]:
+                - img [ref=e581]
+                - heading "Hard Bristle Brush for Kitchen Bathroom Floor Gap Corner Cleaning Window Door Track Cleaner Scrubber for Durable Use" [level=3] [ref=e582]
+              - generic "$2.56" [ref=e583]:
+                - generic [ref=e584]: $2.56
+                - generic [ref=e585]: ($1.28/pc)
+                - generic [ref=e586]: "-72%"
+              - generic [ref=e587]:
+                - generic [ref=e589]: "3"
+                - generic [ref=e590]: 1 sold
+              - generic [ref=e592]:
+                - generic [ref=e593]:
+                  - img [ref=e594]
+                  - generic "New shoppers save $6.74" [ref=e595]
+                - 'generic "Delivery: May 14 - 20" [ref=e597]'
+          - generic [ref=e600]:
+            - 'link "Report fraud item Window Cleaner Electric Glass Handheld Cordless Window Cleaning Tools Multifunctional Wireless USB Rechargeable Vacuum Cleaner $35.99 3.9 83 sold New shoppers save $41.55 Delivery: May 14 - 20" [ref=e601] [cursor=pointer]':
+              - /url: //www.aliexpress.us/item/3256810529676292.html?aem_p4p_detail=2026050808053215213761177087540000704816&algo_pvid=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81&algo_exp_id=88c0cd06-fe4a-4a64-99b2-89f0a7c3db81-11&pdp_ext_f=%7B%22order%22%3A%2283%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21USD%2177.54%2135.99%21%21%21524.64%21243.54%21%4021032f3717782527326601108e3e75%2112000053283932515%21sea%21US%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Ac5a0a969%3Bm03_new_user%3A-29895%3BpisId%3A5000000204886261&curPageLogUid=7Xfmlswk1ss0&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005010715991044%7C_p_origin_prod%3A&search_p4p_id=2026050808053215213761177087540000704816_3
+              - generic [ref=e602]:
+                - img [ref=e607]
+                - generic "Report fraud item" [ref=e619]
+              - generic [ref=e620]:
+                - heading "Window Cleaner Electric Glass Handheld Cordless Window Cleaning Tools Multifunctional Wireless USB Rechargeable Vacuum Cleaner" [level=3] [ref=e621]:
+                  - img [ref=e622]
+                  - heading "Window Cleaner Electric Glass Handheld Cordless Window Cleaning Tools Multifunctional Wireless USB Rechargeable Vacuum Cleaner" [level=3] [ref=e623]
+                - generic "$35.99" [ref=e624]:
+                  - generic [ref=e625]: $35.99
+                  - generic [ref=e626]: $77.54
+                  - generic [ref=e627]: "-53%"
+                - generic [ref=e628]:
+                  - generic [ref=e630]: "3.9"
+                  - generic [ref=e631]: 83 sold
+                - generic [ref=e633]:
+                  - generic [ref=e634]:
+                    - img [ref=e635]
+                    - generic "New shoppers save $41.55" [ref=e636]
+                  - 'generic "Delivery: May 14 - 20" [ref=e638]'
+            - generic [ref=e639] [cursor=pointer]: Ad
+    - generic [ref=e690]:
+      - generic [ref=e691]:
+        - link "facebook" [ref=e693] [cursor=pointer]:
+          - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.aliexpress.us%2Fw%2Fwholesale-window-door-track-cleaning-brush.html%3Fchannel%3Dfacebook
+        - link "pinterest" [ref=e695] [cursor=pointer]:
+          - /url: https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.aliexpress.us%2Fw%2Fwholesale-window-door-track-cleaning-brush.html%3Fchannel%3Dpinterest&media=https%3A&description=
+      - link "feedback" [ref=e698] [cursor=pointer]:
+        - /url: javascript:void(0);
+  - contentinfo [ref=e701]:
+    - generic [ref=e703]:
+      - generic [ref=e704]:
+        - generic [ref=e706]:
+          - term [ref=e707]:
+            - heading "Help" [level=5] [ref=e708]
+          - definition [ref=e709]:
+            - link "Help Center" [ref=e710] [cursor=pointer]:
+              - /url: //so.aliexpress.com/s/ByrCmn?language=en_US
+            - text: ","
+            - link "Disputes & Reports" [ref=e711] [cursor=pointer]:
+              - /url: //report.aliexpress.com
+            - text: ","
+            - link "Return&refund policy" [ref=e712] [cursor=pointer]:
+              - /url: https://www.aliexpress.com/ssr/300000437/PinKTaDpEb?disableNav=YES&pha_manifest=ssr&_immersiveMode=true
+            - text: ","
+            - link "Report IPR infringement" [ref=e713] [cursor=pointer]:
+              - /url: https://ipp.aidcgroup.net/#/ippHome
+            - text: ","
+            - link "DSA/OSA Information" [ref=e714] [cursor=pointer]:
+              - /url: https://www.aliexpress.com/p/transparencycenter/dsa.html
+            - text: ","
+            - link "Integrity Compliance" [ref=e715] [cursor=pointer]:
+              - /url: https://aidc.jubao.alibaba.com
+            - text: ","
+            - link "Transparency Center" [ref=e716] [cursor=pointer]:
+              - /url: https://www.aliexpress.com/p/transparencycenter/index.html
+            - text: ","
+            - link "Submit report (non-registered users)" [ref=e717] [cursor=pointer]:
+              - /url: https://m.aliexpress.com/p/complaint-center/index.html#/complaint/report
+            - text: ","
+            - link "Recalls," [ref=e718] [cursor=pointer]:
+              - /url: https://helpcenter.aliexpress.com/s/BuyerHelp/knowledge?categoryId=1000110454&language=en_US&m_station=BuyerHelp&questionId=1061297473&regulation=US-product-recall
+            - link "Return Policy" [ref=e719] [cursor=pointer]:
+              - /url: https://www.aliexpress.com/ssr/300000437/G7ZED4yXte?disableNav=YES&pha_manifest=ssr&_immersiveMode=true
+        - generic [ref=e721]:
+          - term [ref=e722]:
+            - heading "AliExpress Multi-Language Sites" [level=5] [ref=e723]
+          - definition [ref=e724]:
+            - link "Russian" [ref=e725] [cursor=pointer]:
+              - /url: //ru.aliexpress.com
+            - text: ","
+            - link "Portuguese" [ref=e726] [cursor=pointer]:
+              - /url: //pt.aliexpress.com
+            - text: ","
+            - link "Spanish" [ref=e727] [cursor=pointer]:
+              - /url: //es.aliexpress.com
+            - text: ","
+            - link "French" [ref=e728] [cursor=pointer]:
+              - /url: //fr.aliexpress.com
+            - text: ","
+            - link "German" [ref=e729] [cursor=pointer]:
+              - /url: //de.aliexpress.com
+            - text: ","
+            - link "Italian" [ref=e730] [cursor=pointer]:
+              - /url: //it.aliexpress.com
+            - text: ","
+            - link "Dutch" [ref=e731] [cursor=pointer]:
+              - /url: //nl.aliexpress.com
+            - text: ","
+            - link "Turkish" [ref=e732] [cursor=pointer]:
+              - /url: //tr.aliexpress.com
+            - text: ","
+            - link "Japanese" [ref=e733] [cursor=pointer]:
+              - /url: //ja.aliexpress.com
+            - text: ","
+            - link "Korean" [ref=e734] [cursor=pointer]:
+              - /url: //ko.aliexpress.com
+            - text: ","
+            - link "Thai" [ref=e735] [cursor=pointer]:
+              - /url: //th.aliexpress.com
+            - text: ","
+            - link "Arabic" [ref=e736] [cursor=pointer]:
+              - /url: //ar.aliexpress.com
+            - text: ","
+            - link "Hebrew" [ref=e737] [cursor=pointer]:
+              - /url: //he.aliexpress.com
+            - text: ","
+            - link "Polish" [ref=e738] [cursor=pointer]:
+              - /url: //pl.aliexpress.com
+      - generic [ref=e740]:
+        - term [ref=e741]:
+          - heading "Browse by Category" [level=5] [ref=e742]
+        - definition [ref=e743]:
+          - generic [ref=e744]:
+            - link "All Popular" [ref=e745] [cursor=pointer]:
+              - /url: //www.aliexpress.com/popular.html
+            - text: ","
+            - link "Product" [ref=e746] [cursor=pointer]:
+              - /url: //www.aliexpress.com/wholesale.html
+            - text: ","
+            - link "Promotion" [ref=e747] [cursor=pointer]:
+              - /url: //www.aliexpress.com/promotion.html
+            - text: ","
+            - link "Low Price" [ref=e748] [cursor=pointer]:
+              - /url: //www.aliexpress.com/price.html
+            - text: ","
+            - link "Great Value" [ref=e749] [cursor=pointer]:
+              - /url: //www.aliexpress.com/cheap.html
+            - text: ","
+            - link "Reviews" [ref=e750] [cursor=pointer]:
+              - /url: //www.aliexpress.com/reviews.html
+            - text: ","
+            - link "Wiki" [ref=e751] [cursor=pointer]:
+              - /url: https://www.aliexpress.com/p/wiki/home.html
+            - text: ","
+            - link "Blog" [ref=e752] [cursor=pointer]:
+              - /url: https://www.aliexpress.com/p/blog/home.html
+            - text: ","
+            - link "Video" [ref=e753] [cursor=pointer]:
+              - /url: https://www.aliexpress.com/p/video/home.html
+      - generic [ref=e755]:
+        - term [ref=e756]:
+          - heading "Alibaba Group" [level=5] [ref=e757]
+        - definition [ref=e758]:
+          - link "Alibaba Group Website" [ref=e759] [cursor=pointer]:
+            - /url: http://www.alibabagroup.com/en/global/home
+          - text: ","
+          - link "AliExpress" [ref=e760] [cursor=pointer]:
+            - /url: //www.aliexpress.com/
+          - text: ","
+          - link "Alimama" [ref=e761] [cursor=pointer]:
+            - /url: http://www.alimama.com/
+          - text: ","
+          - link "Alipay" [ref=e762] [cursor=pointer]:
+            - /url: https://intl.alipay.com/index.htm
+          - text: ","
+          - link "Fliggy" [ref=e763] [cursor=pointer]:
+            - /url: http://www.fliggy.com/
+          - text: ","
+          - link "Alibaba Cloud" [ref=e764] [cursor=pointer]:
+            - /url: http://www.alibabacloud.com
+          - text: ","
+          - link "Alibaba International" [ref=e765] [cursor=pointer]:
+            - /url: http://www.alibaba.com/
+          - text: ","
+          - link "AliTelecom" [ref=e766] [cursor=pointer]:
+            - /url: http://aliqin.tmall.com/
+          - text: ","
+          - link "DingTalk" [ref=e767] [cursor=pointer]:
+            - /url: http://www.dingtalk.com/
+          - text: ","
+          - link "Juhuasuan" [ref=e768] [cursor=pointer]:
+            - /url: http://ju.taobao.com/
+          - text: ","
+          - link "Taobao Marketplace" [ref=e769] [cursor=pointer]:
+            - /url: http://www.taobao.com/
+          - text: ","
+          - link "Tmall" [ref=e770] [cursor=pointer]:
+            - /url: http://www.tmall.com/
+          - text: ","
+          - link "Taobao Global" [ref=e771] [cursor=pointer]:
+            - /url: https://world.taobao.com/
+          - text: ","
+          - link "AliOS" [ref=e772] [cursor=pointer]:
+            - /url: http://www.alios.cn/
+          - text: ","
+          - link "1688" [ref=e773] [cursor=pointer]:
+            - /url: http://www.1688.com/
+    - generic [ref=e775]:
+      - link "Intellectual Property Protection" [ref=e776] [cursor=pointer]:
+        - /url: https://ipp.aidcgroup.net/#/ippHome
+      - text: "-"
+      - link "Privacy Policy" [ref=e777] [cursor=pointer]:
+        - /url: https://campaign.aliexpress.com/wow/gcp/app-redirect-terms/index
+      - text: "-"
+      - generic [ref=e778]:
+        - link "Cookie Preferences" [ref=e779] [cursor=pointer]:
+          - /url: //www.aliexpress.com/p/cookie-setting/index.html
+        - text: "-"
+      - link "Sitemap" [ref=e780] [cursor=pointer]:
+        - /url: https://www.aliexpress.com/sitemap.html
+      - text: "-"
+      - link "Terms of Use" [ref=e781] [cursor=pointer]:
+        - /url: https://terms.alicdn.com/legal-agreement/terms/suit_bu1_aliexpress/suit_bu1_aliexpress202204182115_66077.html
+      - text: "-"
+      - link "Information for EU consumers" [ref=e782] [cursor=pointer]:
+        - /url: https://cdn.contract.alibaba.com/terms/c_platform_service_agreement/20260106183827470/20260106183827470.html?lng=en
+      - text: "-"
+      - link "Legal Information / Imprint" [ref=e784] [cursor=pointer]:
+        - /url: https://terms.alicdn.com/legal-agreement/terms/c_end_product_protocol/20230928165112460/20230928165112460.html
+      - text: "-"
+      - link "Transaction Services Agreement for non-EU/UK Consumers" [ref=e785] [cursor=pointer]:
+        - /url: https://rulechannel.alibaba.com/icbu?type=detail&ruleId=2054&cId=1304#/rule/detail?cId=1304&ruleId=2054
+      - text: "-"
+      - link "Terms and Conditions for EU/EEA/UK Consumers" [ref=e786] [cursor=pointer]:
+        - /url: https://campaign.aliexpress.com/wow/gcp-plus/ae/tupr?_immersiveMode=true&pha_manifest=upr&disableNav=YES&wh_pid=300000414/pt8AMcBikk
+      - text: "-"
+      - link "User Information Legal Enquiry Guide" [ref=e787] [cursor=pointer]:
+        - /url: https://terms.alicdn.com/legal-agreement/terms/data_processing_agreement_others/20231101174825691/20231101174825691.html
+      - text: ©️2010-2025 AliExpress.com. All rights reserved.
+      - link "增值电信业务经营许可证" [ref=e788] [cursor=pointer]:
+        - /url: http://idinfo.zjamr.zj.gov.cn//bscx.do?spm=5261.11333555.006.4.6fd42fe0LrlYeu&method=lzxx&id=3301083301080000022169
+        - img "增值电信业务经营许可证" [ref=e789]
+      - link "增值电信业务经营许可证 浙B2-20120091-8" [ref=e790] [cursor=pointer]:
+        - /url: https://beian.miit.gov.cn/
+      - link "浙公网安备 浙公网安备 33010802002248号" [ref=e791] [cursor=pointer]:
+        - /url: http://www.beian.gov.cn/portal/registerSystemInfo?spm=a260k.dacugeneral.home2019footer.32.6633436c8h108e&recordcode=33010802002248
+        - img "浙公网安备" [ref=e792]
+        - text: 浙公网安备 33010802002248号

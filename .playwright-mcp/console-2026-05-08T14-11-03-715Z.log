@@ -1,0 +1,4 @@
+[     823ms] [LOG] Meter provider shut down successfully @ https://ir.ebaystatic.com/cr/ebay-rum/cdn-assets/metrics.ebb041e86c5338dbe8f6.bundle.js:0
+[     828ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.ebay.com/itm/405185869528:0
+[     998ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ about:blank:0
+[    1688ms] [LOG] done @ https://www.ebay.com/itm/405185869528:4

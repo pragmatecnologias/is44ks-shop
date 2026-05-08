@@ -19,6 +19,16 @@ from app.models.supplier import (
 )
 from app.models.external_research import ExternalResearchJob, EvidenceCandidate
 from app.models.vision import VisionAnalysisReport
+from app.models.production import (
+    ProductionCampaign,
+    ProductionCapability,
+    MachineCandidate,
+    MachineEvidence,
+    MachineProductFamily,
+    ProductionCostScenario,
+    MachineDecision,
+    machine_capabilities,
+)
 
 # Aliases for backwards compatibility - avoid duplicate class definitions
 from app.models.supplier import MarketplaceResearch as MR, CompetitorListing as CL
@@ -49,4 +59,12 @@ __all__ = [
     "ExternalResearchJob",
     "EvidenceCandidate",
     "VisionAnalysisReport",
+    "ProductionCampaign",
+    "ProductionCapability",
+    "MachineCandidate",
+    "MachineEvidence",
+    "MachineProductFamily",
+    "ProductionCostScenario",
+    "MachineDecision",
+    "machine_capabilities",
 ]

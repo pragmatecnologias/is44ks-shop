@@ -1,0 +1,1027 @@
+- generic [active] [ref=e1]:
+  - img
+  - img
+  - img
+  - img
+  - generic [ref=e3]:
+    - banner [ref=e7]:
+      - link "Skip to main content" [ref=e9] [cursor=pointer]:
+        - /url: "#mainContent"
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e13]:
+            - text: Hi!
+            - link "Sign in" [ref=e14] [cursor=pointer]:
+              - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&sgfl=gh&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F205911006744
+            - generic [ref=e15]:
+              - text: or
+              - link "register" [ref=e16] [cursor=pointer]:
+                - /url: https://signup.ebay.com/pa/crte?ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F205911006744
+          - link "Deals" [ref=e18] [cursor=pointer]:
+            - /url: https://www.ebay.com/deals
+          - link "Brand Outlet" [ref=e20] [cursor=pointer]:
+            - /url: https://www.ebay.com/b/Brand-Outlet/bn_7115532402
+          - link "Gift Cards" [ref=e22] [cursor=pointer]:
+            - /url: https://www.ebay.com/giftcards
+          - link "Help & Contact" [ref=e24] [cursor=pointer]:
+            - /url: https://www.ebay.com/help/home
+        - generic [ref=e25]:
+          - link "Sell" [ref=e28] [cursor=pointer]:
+            - /url: https://www.ebay.com/sl/sell
+          - generic [ref=e29]:
+            - link "Watchlist" [ref=e30] [cursor=pointer]:
+              - /url: https://www.ebay.com/mye/myebay/watchlist
+              - generic [ref=e31]: Watchlist
+              - img
+            - button "Expand Watch List" [ref=e32]
+          - generic [ref=e33]:
+            - link "My eBay" [ref=e34] [cursor=pointer]:
+              - /url: https://www.ebay.com/mys/home?source=GBH
+              - generic [ref=e35]: My eBay
+              - img
+            - button "Expand My eBay" [ref=e36]
+          - button "Notifications" [ref=e39] [cursor=pointer]:
+            - img
+            - generic [ref=e40]: Notifications
+          - generic [ref=e42]:
+            - link "Your shopping cart contains 0 items" [ref=e43] [cursor=pointer]:
+              - /url: https://cart.ebay.com
+              - generic "Your shopping cart contains 0 items" [ref=e44]:
+                - img
+            - button "Expand Cart" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - link "eBay Home" [ref=e48] [cursor=pointer]:
+            - /url: https://www.ebay.com
+            - img "eBay Home" [ref=e49]
+          - button "Shop by category" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: Shop by category
+            - img
+        - generic [ref=e59]:
+          - status [ref=e60]
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - combobox "Search for anything" [ref=e64]
+              - img
+            - combobox "Select a category for search" [ref=e65]:
+              - option "All Categories" [selected]
+              - option "Antiques"
+              - option "Art"
+              - option "Baby"
+              - option "Books"
+              - option "Business & Industrial"
+              - option "Cameras & Photo"
+              - option "Cell Phones & Accessories"
+              - option "Clothing, Shoes & Accessories"
+              - option "Coins & Paper Money"
+              - option "Collectibles"
+              - option "Computers/Tablets & Networking"
+              - option "Consumer Electronics"
+              - option "Crafts"
+              - option "Dolls & Bears"
+              - option "Movies & TV"
+              - option "eBay Motors"
+              - option "Entertainment Memorabilia"
+              - option "Gift Cards & Coupons"
+              - option "Health & Beauty"
+              - option "Home & Garden"
+              - option "Jewelry & Watches"
+              - option "Music"
+              - option "Musical Instruments & Gear"
+              - option "Pet Supplies"
+              - option "Pottery & Glass"
+              - option "Real Estate"
+              - option "Specialty Services"
+              - option "Sporting Goods"
+              - option "Sports Mem, Cards & Fan Shop"
+              - option "Stamps"
+              - option "Tickets & Experiences"
+              - option "Toys & Hobbies"
+              - option "Travel"
+              - option "Video Games & Consoles"
+              - option "Everything Else"
+          - generic [ref=e66]:
+            - button "Search" [ref=e67] [cursor=pointer]:
+              - generic [ref=e68]: Search
+            - link "Advanced" [ref=e69] [cursor=pointer]:
+              - /url: https://www.ebay.com/sch/ebayadvsearch
+    - main [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - generic [ref=e75]:
+            - generic [ref=e81]:
+              - link [ref=e82] [cursor=pointer]:
+                - /url: https://www.ebay.com/str/partsdepotincorporated?_sacat=92301&promoted_items=186905232367%2C185973368927%2C186856844925%2C186710676871%2C188263693611&itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfDXXN1oNNZof7Nhm8yjLd5fL5avwLHZ4DjHnfSMdK9WbSuEYxOaSRTwrIRxD4jrvV%2Bh6Vg60VsqIxL8zxNnBlHO72Yeg7Po%2BBwQF9yEb89wbEA2F6z6BI10PhVe%2FjbTzbrpvWDB6pantITyDGJ6Xs%2F&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+              - generic [ref=e83]:
+                - link "Find similar items from" [ref=e86] [cursor=pointer]:
+                  - /url: https://www.ebay.com/str/partsdepotincorporated?_sacat=92301&promoted_items=186905232367%2C185973368927%2C186856844925%2C186710676871%2C188263693611&itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfDXXN1oNNZof7Nhm8yjLd5fL5avwLHZ4DjHnfSMdK9WbSuEYxOaSRTwrIRxD4jrvV%2Bh6Vg60VsqIxL8zxNnBlHO72Yeg7Po%2BBwQF9yEb89wbEA2F6z6BI10PhVe%2FjbTzbrpvWDB6pantITyDGJ6Xs%2F&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+                - generic [ref=e87]:
+                  - link "Parts Depot Inc" [ref=e90] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/partsdepotincorporated?_sacat=92301&promoted_items=186905232367%2C185973368927%2C186856844925%2C186710676871%2C188263693611&itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfDXXN1oNNZof7Nhm8yjLd5fL5avwLHZ4DjHnfSMdK9WbSuEYxOaSRTwrIRxD4jrvV%2Bh6Vg60VsqIxL8zxNnBlHO72Yeg7Po%2BBwQF9yEb89wbEA2F6z6BI10PhVe%2FjbTzbrpvWDB6pantITyDGJ6Xs%2F&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+                    - img "Parts Depot Inc" [ref=e91]
+                  - link "Parts Depot Inc" [ref=e94] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/partsdepotincorporated?_sacat=92301&promoted_items=186905232367%2C185973368927%2C186856844925%2C186710676871%2C188263693611&itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfDXXN1oNNZof7Nhm8yjLd5fL5avwLHZ4DjHnfSMdK9WbSuEYxOaSRTwrIRxD4jrvV%2Bh6Vg60VsqIxL8zxNnBlHO72Yeg7Po%2BBwQF9yEb89wbEA2F6z6BI10PhVe%2FjbTzbrpvWDB6pantITyDGJ6Xs%2F&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+                    - generic [ref=e95]: Parts Depot Inc
+                  - generic [ref=e96]:
+                    - text: (
+                    - link "33K items sold" [ref=e98] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/partsdepotincorporated?_sacat=92301&promoted_items=186905232367%2C185973368927%2C186856844925%2C186710676871%2C188263693611&itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfDXXN1oNNZof7Nhm8yjLd5fL5avwLHZ4DjHnfSMdK9WbSuEYxOaSRTwrIRxD4jrvV%2Bh6Vg60VsqIxL8zxNnBlHO72Yeg7Po%2BBwQF9yEb89wbEA2F6z6BI10PhVe%2FjbTzbrpvWDB6pantITyDGJ6Xs%2F&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+                      - generic [ref=e100]: 33K items sold
+                    - text: )
+                - link "410840-2 hilimit vulcan / 419670-2" [ref=e103] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/186905232367?itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfXlgxlMvEyX%2BxfIr2Z0Um3P624zmdN9yiw2f31Nxl%2BxiztOxsRa4E4REAIQ6ZRyz30YHH99lCBmVkyLDzNprJBeg%2BxEz%2BhHFOi5sNwG1GV3ksNe52pE36LpJsO0TyZ2Tezh%2FKrTQ0y52GMPn25jQ0z&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+                  - img "410840-2 hilimit vulcan / 419670-2" [ref=e104]
+                - link "P8902-34 - 36 \" TCOUPLE" [ref=e107] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/185973368927?itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfXlgxlMvEyX%2BxfIr2Z0Um3P624zmdN9yiw2f31Nxl%2BxiztOxsRa4E4REAIQ6ZRyz30YHH99lCBmVkyLDzNprJBeg%2BxEz%2BhHFOi5sNwG1GV3ksNe52pE36LpJsO0TyZ2Tezh%2FKrTQ0y52GMPn25jQ0z&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+                  - img "P8902-34 - 36 \" TCOUPLE" [ref=e108]
+                - link "1830-010 - pilot" [ref=e111] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/186856844925?itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfXlgxlMvEyX%2BxfIr2Z0Um3P624zmdN9yiw2f31Nxl%2BxiztOxsRa4E4REAIQ6ZRyz30YHH99lCBmVkyLDzNprJBeg%2BxEz%2BhHFOi5sNwG1GV3ksNe52pE36LpJsO0TyZ2Tezh%2FKrTQ0y52GMPn25jQ0z&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+                  - img "1830-010 - pilot" [ref=e112]
+                - link "K075a - orifice" [ref=e115] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/186710676871?itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfXlgxlMvEyX%2BxfIr2Z0Um3P624zmdN9yiw2f31Nxl%2BxiztOxsRa4E4REAIQ6ZRyz30YHH99lCBmVkyLDzNprJBeg%2BxEz%2BhHFOi5sNwG1GV3ksNe52pE36LpJsO0TyZ2Tezh%2FKrTQ0y52GMPn25jQ0z&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+                  - img "K075a - orifice" [ref=e116]
+                - link "DUKERS VALVE -" [ref=e119] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/188263693611?itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfXlgxlMvEyX%2BxfIr2Z0Um3P624zmdN9yiw2f31Nxl%2BxiztOxsRa4E4REAIQ6ZRyz30YHH99lCBmVkyLDzNprJBeg%2BxEz%2BhHFOi5sNwG1GV3ksNe52pE36LpJsO0TyZ2Tezh%2FKrTQ0y52GMPn25jQ0z&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+                  - img "DUKERS VALVE -" [ref=e120]
+                - link "Shop store" [ref=e122] [cursor=pointer]:
+                  - /url: https://www.ebay.com/str/partsdepotincorporated?_sacat=92301&promoted_items=186905232367%2C185973368927%2C186856844925%2C186710676871%2C188263693611&itmprp=encpd%3AAQALAAACMId6xh9Sz0r4bqk0%2FbCpLEE4K9ek6phWRkgd%2FrZ3Gio0cV10zVIo3NbWW5oBSyuf0rZUZZ9OzquuDKqIboEkuTqwJNoCKb1rPTwpVGyi%2Fz1FFsvh%2FOUOzRTyfQmgjS2Qhocgd7ono4wyg9A4CnhON5TNy3d29gQApfnOnyRvRbVqEQ%2FA8%2BeHKaMOJZcsvc%2BqJA7VTRb4kf3qMLU1ddB%2FKAfAfBTvYO1HwdS1bneNKXj%2FaYRhgGskmZ59FZwNHnGZhfL1EsOYz3Zm1TSDzFdJ%2B%2FGij1%2FAr51JnEEeigr1SvfpM9FEV4V7sHMS1h6EvLFWcNVVKlAHVxp9t%2BXcCxga6bZ9l0nVeteQi%2BUEg%2FMZtDFaBqq8OgKcASVvwcvsejI0Cslm5xDCvbxCCGgIJzyWYlh%2FCDz6xmf6StuIHPhBxij1eY42TPnamgMsxljBrhhKlR%2B0P9%2FV3VD7Em1TeA%2FROE0Cj5vOhP8CykBBGH08m8AGzMhhpNTE8Cq3BMTxcJiwdJzzFK%2F5CQPfQ2QaGZm93mb1iW6wg74HEWgjDffqomd1EHdKOF5l0o6nC%2BK4jH5zoFJyj7XLBov0ncUPRCSUHSfDXXN1oNNZof7Nhm8yjLd5fL5avwLHZ4DjHnfSMdK9WbSuEYxOaSRTwrIRxD4jrvV%2Bh6Vg60VsqIxL8zxNnBlHO72Yeg7Po%2BBwQF9yEb89wbEA2F6z6BI10PhVe%2FjbTzbrpvWDB6pantITyDGJ6Xs%2F&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSNDFNU1g4SEczQ0I0V1I3U1JZWlRZTTQwMUtSNDFNU004RVpKWDNKMVkxNVhDM0tFN76%2BDA%3D%3D
+              - generic [ref=e129]: Sponsored
+            - generic [ref=e138]:
+              - heading "People who viewed this item also viewed" [level=2] [ref=e145]
+              - group [ref=e147]:
+                - list [ref=e150]:
+                  - listitem [ref=e151]:
+                    - generic [ref=e153]:
+                      - generic [ref=e159]:
+                        - heading "Hard Bristle Crevice Cleaning Brush - Window Track Cleaner" [level=3] [ref=e160]
+                        - generic [ref=e162]: $17.50
+                        - generic [ref=e164]: Free delivery
+                      - link "Hard Bristle Crevice Cleaning Brush - Window Track Cleaner" [ref=e165] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/197938359624?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEGGUof6NPpAOivLZMh1wPEA%3D%26itm%3D197938359624%26noa%3D1%26plcampt%3D0%3A158067576016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D2%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D8d30955b82f54faaaa2514ab65cf68b2%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                  - listitem [ref=e166]:
+                    - generic [ref=e168]:
+                      - generic [ref=e174]:
+                        - heading "4pcs Window Venetian Blind Cleaner Duster Tool,Blind Duster for Cleaning,Microfi" [level=3] [ref=e175]
+                        - generic [ref=e177]: $15.73
+                        - generic [ref=e179]: Free delivery
+                        - generic [ref=e181]: Sponsored
+                      - link "4pcs Window Venetian Blind Cleaner Duster Tool,Blind Duster for Cleaning,Microfi" [ref=e182] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/318146209344?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEH1PoRYtdwcIFvzc%2BlBRTq4%3D%26itm%3D318146209344%26noa%3D0%26plcampt%3D0%3A150609764010%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D4%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D8d30955b82f54faaaa2514ab65cf68b2%26pg%3D2332490&_trksid=p2332490.c101224.m-1&itmprp=cksum%3A3181462093448d30955b82f54faaaa2514ab65cf68b2%7Cenc%3AAQALAAAA4HU%252FGPBKMoWrH2cpzpvK9FDC5c4FxwFIV%252Bq0okjrJ6w9cB%252BqWqTCByXEsJeNzj%252BLPZ6Y%252Bcb%252BSNENjzLG3DpJu0k%252FrTG8%252Fc%252BQmhTKiC1zVsL26sn%252FqLnAq698MYkW4rKAQfV0muPs1M8Nf4sBKtKrXcBD496FmW1PVgnZVtnG6%252FdK6Q68NVV8o%252F%252BUUz%252Bk8DQ3eRyJ0e1plMLFIchR4QR0uv6fnUCwmDJccSnrnQuhyO2Dzltf83q9cPY48pMxUNOzbI0%252BAngd1mtXxHDWTrk%252B1SAL26Evktg3I28Cv86Klnuv%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT534J1RRH7ZJ3AVNG6M
+                  - listitem [ref=e183]:
+                    - generic [ref=e185]:
+                      - generic [ref=e191]:
+                        - heading "SXhyf Crevice Cleaning Brush - Hard Bristle Tool for Window Grooves" [level=3] [ref=e192]
+                        - generic [ref=e194]: $13.36
+                        - generic [ref=e196]: Free delivery
+                      - link "SXhyf Crevice Cleaning Brush - Hard Bristle Tool for Window Grooves" [ref=e197] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/205911006701?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEGGUof6NPpAOivLZMh1wPEA%3D%26itm%3D205911006701%26noa%3D1%26plcampt%3D0%3A158067519016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D1%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D8d30955b82f54faaaa2514ab65cf68b2%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                  - listitem [ref=e198]:
+                    - generic [ref=e200]:
+                      - generic [ref=e206]:
+                        - heading "SXhyf Crevice Cleaning Brush - Grout Scrub Brush, House Cleaning Supplies" [level=3] [ref=e207]
+                        - generic [ref=e209]: $5.00
+                        - generic [ref=e211]: + $6.00 delivery
+                      - link "SXhyf Crevice Cleaning Brush - Grout Scrub Brush, House Cleaning Supplies" [ref=e212] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/127622170097?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26algo%3DHOMESPLICE.SIM%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D0%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEIK20I5rKBnAOKFyO2RtiGU%3D%26itm%3D127622170097%26noa%3D1%26ao%3D1%26rk%3D3%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D8d30955b82f54faaaa2514ab65cf68b2%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+          - generic [ref=e215]:
+            - generic [ref=e216]:
+              - generic [ref=e218]:
+                - generic [ref=e221]:
+                  - heading "Picture 1 of 1" [level=2] [ref=e222]
+                  - region "Opens image gallery dialog Crevice Cleaning Brush for Window Tracks and Sliding Door Bathroom Grooves - Picture 1 of 1" [ref=e223]:
+                    - group "1 of 1" [ref=e224]:
+                      - img "Crevice Cleaning Brush for Window Tracks and Sliding Door Bathroom Grooves - Picture 1 of 1" [ref=e225]
+                  - generic [ref=e226]:
+                    - button "Opens image gallery" [ref=e227] [cursor=pointer]:
+                      - img
+                    - button "Add to watchlist" [ref=e229] [cursor=pointer]:
+                      - img
+                - generic [ref=e234]:
+                  - generic [ref=e235]: Have one to sell?
+                  - link "Sell one like this" [ref=e237] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sl/list?mode=SellLikeItem&itemId=205911006744&rt=nc&_trksid=p4429486.m117039.l2567
+                    - generic [ref=e238]: Sell one like this
+                  - link "Sell something else" [ref=e240] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sl/prelist/suggest
+                    - generic [ref=e241]: Sell something else
+                - button "Share" [ref=e247] [cursor=pointer]:
+                  - img
+                  - generic [ref=e248]: Share
+              - generic [ref=e259]:
+                - generic [ref=e262]:
+                  - generic [ref=e264]:
+                    - heading "Similar Items" [level=2] [ref=e266]
+                    - generic [ref=e269]:
+                      - generic [ref=e270]: c64648ef-fed4-40b2-b4b8-a979322bda1f
+                      - generic [ref=e271]: 8e9f6ef3-531f-4290-85c8-17357f1598e6
+                      - generic [ref=e272]: S
+                      - generic [ref=e273]: 1fd502ef-194f-45d5-9aa3-4de47989f1ea
+                      - generic [ref=e274]: p
+                      - generic [ref=e275]: 2eb5cd9a-23c9-4feb-9099-473664b8c22a
+                      - generic [ref=e277]: a26c8747-b9a4-46e3-b75e-f40916217b21
+                      - generic [ref=e278]: o
+                      - generic [ref=e279]: d7aaa374-3661-488b-a42b-1e9d5c14a47e
+                      - generic [ref=e280]: 9e997ece-f8c8-40f2-84cd-e8b5d8e73fb0
+                      - generic [ref=e281]: "n"
+                      - generic [ref=e282]: 28c72d66-47bc-437e-98ea-2d55055c97ac
+                      - generic [ref=e283]: 9fea3a39-7d3c-4021-aca3-0965878477ed
+                      - generic [ref=e284]: s
+                      - generic [ref=e285]: cf598ce3-cdda-480a-bf48-a1a374f4dc57
+                      - generic [ref=e286]: o
+                      - generic [ref=e287]: 21b581f3-adb9-4c63-b69e-56506dc90850
+                      - generic [ref=e288]: r
+                      - generic [ref=e289]: 77bd1eed-a232-40ff-b2e9-2f35cbd0d96a
+                      - generic [ref=e291]: 73dd780e-d855-4684-8d1c-1308390cba7b
+                      - generic [ref=e292]: e
+                      - generic [ref=e293]: 115793ee-8ebc-4de7-89a0-3b0d5049fcc4
+                      - generic [ref=e294]: d
+                      - generic [ref=e295]: 9d37faa5-5beb-4354-92df-70a6283d48d9
+                      - generic [ref=e296]: b08c0adc-527b-4a92-9f3b-cb7ffb1ae8c1
+                      - generic [ref=e297]: 2143d9d3-ff80-4cfb-ae3b-0bf69d8168f9
+                      - generic [ref=e298]: ceb93dd9-505e-48ae-8add-2e0d11fafe60
+                      - generic [ref=e299]: 9c11dafd-87c0-4644-aab7-64ac59eb316e
+                      - generic [ref=e301]: 98493557-a6dd-4b1e-a8e8-c3b8a33b6ef8
+                      - generic [ref=e302]: 0222b42b-217e-4e31-a1b6-6147eb081785
+                      - generic [ref=e303]: 5e207b15-70cd-42af-b503-f75a5e459265
+                      - generic [ref=e304]: e72df73e-0e27-48c5-a953-922915bbd02d
+                      - generic [ref=e305]: b631230b-3f42-4b50-9bdc-98030aaac102
+                      - generic [ref=e306]: 554c81a0-d7b9-4e21-a9fb-8b9f483f314d
+                      - generic [ref=e307]: ce4399e0-7de5-467f-892c-b0f8c009698c
+                      - generic [ref=e309]: 42cf28ea-c579-4e9a-b836-c539a88ee893
+                      - generic [ref=e310]: 2476b5ea-298f-4067-b581-28281a9321f8
+                  - link "See all" [ref=e313] [cursor=pointer]:
+                    - /url: https://www.ebay.com/recs?component=recs-below-hero-carousel&placement_title=i18n.Tag_SIs&sourceModuleId=101875&item_id=205911006744&algos=HOMESPLICE.SIM.SimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco&placement_subTitle=i18n.ModuleSubTitle_Sponsored&homespliceOverrideConfig=%7Bsplice.cpc-config-dweb.cpc-expansion-slot-ids%3D%5B1%2C+3%2C+5%2C+7%2C+9%2C+11%5D%2Csplice.cpc-config-dweb.smart-price-parmas.undere-threshold%3D4%2Csplice.cpc-config-dweb.smart-price-parmas.enable-overe%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-roas-calibration-by-l2%3Dfalse%2Csplice.cpc-config-dweb.smart-price-parmas.enable-undere%3Dtrue%2Csplice.cpc-config-dweb.max-cpc-slots-num%3D6%2Csplice.cpc-config-dweb.blend-reserve-price-config.reserve-price-strategy%3D2%2Csplice.cpc-config-dweb.enable-low-roas-filter%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-cvr-calibration-by-l2%3Dtrue%2Csplice.cpc-config-dweb.blend-reserve-price-config.cpa-cpm-multiplier.-1%3D15%2Csplice.cpc-config-dweb.cpc-low-roas-dimension%3D%5BblacklistLeaf%2C+version01%5D%2Csplice.cpc-config-dweb.smart-price-parmas.overe-threshold%3D4%7D
+                    - generic [ref=e314]: See all
+                - group [ref=e316]:
+                  - generic [ref=e317]:
+                    - button "Go to the previous slide, Similar Items" [disabled] [ref=e318]:
+                      - img
+                    - list [ref=e320]:
+                      - listitem [ref=e321]:
+                        - generic [ref=e323]:
+                          - generic [ref=e329]:
+                            - heading "Crevice Cleaning Brush Set for Kitchen, Bathroom, and Window Tracks" [level=3] [ref=e330]
+                            - generic [ref=e331]:
+                              - generic [ref=e333]: New
+                              - generic [ref=e334]: $11.97
+                            - generic [ref=e336]: Free delivery
+                            - generic [ref=e338]: Seller with 100% positive feedback
+                          - link "Crevice Cleaning Brush Set for Kitchen, Bathroom, and Window Tracks" [ref=e339] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/376700415650?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEG8F0Itadg2GrlVmh208U2M%3D%26itm%3D376700415650%26noa%3D0%26plcampt%3D0%3A153989724019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D1%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3767004156502c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbr%252Ff%252FrmTADvXij6E%252BmtbdVyNriIYeV326XUTOSrNgxF4rCK8mPenFiZSNnaDjFKJH9jNUE%252FNibeNxhVcpRDu9titxd2AotFtUTkdCCWRstNVYcB0gGKRMoXXkh%252BP%252FNTX09eF8gOcaej4A0gBib4zUv6fyRQZtthaKkHq6sml1EkunQQ91TrbNO4Sg0mbDkI8O%252F8DpAMAl8TVS8B%252BzB3hXtE2QFnld%252Bw5foeXxRLuMG8sqTF7L3zHFX9QFWkQ7Hs%252FxvBUP68iWBUBvJB%252BIn9mxbkDmls3Sdl2AshKurSczqvc%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT51F3KNQMAH87FAMBEY
+                          - button "Add Crevice Cleaning Brush Set for Kitchen, Bathroom, and Window Tracks to your watch list" [ref=e342] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e343]:
+                        - generic [ref=e345]:
+                          - generic [ref=e351]:
+                            - heading "Hard Bristle Crevice Cleaning Brush - Window Track Cleaner" [level=3] [ref=e352]
+                            - generic [ref=e353]:
+                              - generic [ref=e355]: New
+                              - generic [ref=e356]: $17.50
+                            - generic [ref=e358]: Free delivery
+                            - generic [ref=e360]: Seller 99.3% positive
+                          - link "Hard Bristle Crevice Cleaning Brush - Window Track Cleaner" [ref=e361] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/197938359624?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEGGUof6NPpAOivLZMh1wPEA%3D%26itm%3D197938359624%26noa%3D0%26plcampt%3D0%3A158067576016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D2%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A1979383596242c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbKADd5uQiCMWu%252BOZOMUCp6RVZT3i2LOFwBm5zNNApd6iwzRqVd3P%252F1bBZ%252B8M7uOeWxzRXOUPGWVTzek4wSGkga%252BTQQqy%252F3c0DYdQsWcIZZxAtGRZrj%252Fj4rww7cxZtrQg99M0VcW09cof1yqgCsgXMRbMAqKvuXjvYs7MY8RhZK26Dam4Ac0Jlqwg0c8xy1Xp2OYNM20Xsrsamlg3OgCOaBX%252FwTiT9RAbEEAFc%252Fg1iUrJMhZgCi3kKwENBpQVzh4ZWMqHjfPoKTeu2ORR8U7j1mdCHQqv6%252BNRtQuQRo5ps05k%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT5FW0AEEXZBYSZ7YZGC
+                          - button "Add Hard Bristle Crevice Cleaning Brush - Window Track Cleaner to your watch list" [ref=e364] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e365]:
+                        - generic [ref=e367]:
+                          - generic [ref=e373]:
+                            - heading "Crevice Cleaning Brush Set for Grout, Tiles, and Narrow Gaps" [level=3] [ref=e374]
+                            - generic [ref=e375]:
+                              - generic [ref=e377]: New
+                              - generic [ref=e378]: $13.68
+                            - generic [ref=e380]: Free delivery
+                            - generic [ref=e382]: Seller with 100% positive feedback
+                          - link "Crevice Cleaning Brush Set for Grout, Tiles, and Narrow Gaps" [ref=e383] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/376700415647?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEG8F0Itadg2GrlVmh208U2M%3D%26itm%3D376700415647%26noa%3D0%26plcampt%3D0%3A153989724019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D3%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3767004156472c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbs231ijz5sRWTeqe92KLTDKVMTPYvhwcuj%252ByUYRUd3pOKFc60%252FWpHp71h1k4fe5MltBzcu0atFWPypzt0JSrxRV1WlQfp2Jp0pnYENvFkIT0atfY8wEjyUyWnAMwq3DBC3UuNrC4fCyPYjl8xIXYH1k42AHyWKCCUfjBHD50OThLQifZXUSnhGaTvbhbBz2tGgYvWCFjQfgcutEdoBDivvSWy3DgoXzUR8xr4q%252F75nJRy9ZvVQo4aM13WNUjTGZETR5PLEvY3TQkPP74siEdF7wAte5nIarK%252FZB4Z0bombxs%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT5KTS2EMV7Y2YCTQ20N
+                          - button "Add Crevice Cleaning Brush Set for Grout, Tiles, and Narrow Gaps to your watch list" [ref=e386] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e387]:
+                        - generic [ref=e389]:
+                          - generic [ref=e395]:
+                            - heading [level=3] [ref=e396]: 5 pcs Multi-Function Crevice Cleaner Brush for Kitchen & Bathroom Tile Deep
+                            - generic [ref=e397]:
+                              - generic [ref=e399]: New
+                              - generic [ref=e400]: $8.99
+                            - generic [ref=e402]: Free delivery
+                          - link [ref=e403] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/317855093236?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEFduRaBvWK3ZuRQRY3w38U4%3D%26itm%3D317855093236%26noa%3D0%26plcampt%3D0%3A159271185013%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D4%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3178550932362c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbJjJywn%252Frq47qL6oCbtTFfZp3gCFYV%252FC%252Fz5Ef2X06imd6RPHsf9TPiEVi9ojTjVJzYWD%252FnvF15HeDm%252FynfXiFufREevIrmnSwovwpgpLXp%252F1XazW2mLr78IYu6%252FbHIVE9EmlmKudq1MNfpUwD8PnTMhhvmNC2kKw%252BUYP1Zkj5Kkkj72B6dE5UzsPhe2zqXgN7XDoN2w9d9NM0HKK6JRRSAUqmBlvIqiTeVX5kAa1sBeJMDPl%252BO401LKtPTIFq8TNhvVBhlRvF9dCKN7kHhnhcJVsF5WUgsCVtPGNVB9fL3gM%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT5QHTW8GTF6224JGZ1P
+                          - button [ref=e406] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e407]:
+                        - generic [ref=e409]:
+                          - generic [ref=e415]:
+                            - heading [level=3] [ref=e416]: Crevice Cleaning Brush Set - 8 Durable Brushes for Home & Bathroom Use
+                            - generic [ref=e417]:
+                              - generic [ref=e419]: New
+                              - generic [ref=e420]: $13.48
+                            - generic [ref=e422]: Free delivery
+                            - generic [ref=e424]: Seller with 100% positive feedback
+                          - link [ref=e425] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/376700415656?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEG8F0Itadg2GrlVmh208U2M%3D%26itm%3D376700415656%26noa%3D0%26plcampt%3D0%3A153989724019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D5%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3767004156562c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mb1Wodh6X%252BuXm0xO7QJVJdmJ1tYZaSYxFMpbojmb78wqIWXpyzdoiXp3bsOR%252Fxcq9nfJH02E3q3Nq0%252FbQ8VqvSpZ8ogU6wdTWntzcpsw%252Bg3q4g44aBFkfFDN%252B263F3iBjcvo8JxE0ymQc2vqMjL9aJ6cyMfu9bGtVMB%252FSW5d5amRY36PIMHVVwKSI%252F3oxWrcms3Tl2LJMkW0X4G%252FwbUqAP%252BvRhpZP%252B4HuNwXIcsE5YPoSp7yUdtB%252FBCawrtR6Q5M7y9GPWDU%252FxUr8ABOrNnOP23t0OSsB8nql9w7MUwjLgFhk%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT5T03PPQJF0YDYJG4NZ
+                          - button [ref=e428] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e429]:
+                        - generic [ref=e431]:
+                          - generic [ref=e437]:
+                            - heading [level=3] [ref=e438]: Hard Bristle Cleaning Brush for Gaps - Ideal for Kitchen and Bathroom Use
+                            - generic [ref=e439]:
+                              - generic [ref=e441]: New
+                              - generic [ref=e442]: $18.32
+                            - generic [ref=e444]: Free delivery
+                            - generic [ref=e446]: Seller with 100% positive feedback
+                          - link [ref=e447] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/376700416438?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEG8F0Itadg2GrlVmh208U2M%3D%26itm%3D376700416438%26noa%3D0%26plcampt%3D0%3A153989724019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D6%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3767004164382c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mb9hx7zbuSO1IdcrG%252Bn1Xygj0K20UmvPfH6VT1C6MJKEcVtybRVEXFErdEyiOWeh7W1Q5QLV28FLzTNPcesI7imFLkNnUou%252Bp77JORFHRH7oAOKeP%252FynH3VXPWj0fYxLUqbJYqYdhDi%252F5WnCIDaqKxzJyfBtYmwXvtrN2NzUvj1uxQ2s4UzJTnHmlbD%252F95pavNIDecea50dKFcjN9OwksFjse0zqhfPZjX8mqgvIxSY5TAskSEUWZwh1rP9g3uDWAdQ2ibNNyEY62Sy1%252FG6nTm%252B3XZxDphRhaaBqFvf0kb%252FFY%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT5XHFY0XT70WQCTN17T
+                          - button [ref=e450] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e451]:
+                        - generic [ref=e453]:
+                          - generic [ref=e459]:
+                            - heading [level=3] [ref=e460]: Window & Groove Cleaner Set, 7-Piece Track Brush Tools for
+                            - generic [ref=e461]:
+                              - generic [ref=e463]: New
+                              - generic [ref=e464]: $24.67
+                            - generic [ref=e466]: Free delivery
+                          - link [ref=e467] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/227030588787?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEL0dga4wThMZ%2FBqqOt0gzG0%3D%26itm%3D227030588787%26noa%3D0%26plcampt%3D0%3A153393239013%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D7%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2270305887872c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbeUsopPTYPnYsCGQwlZ6OgwdEpuL0n2tMpIAjlsbfSVgXhf%252FUB8aKAjECQxLYmOeIZw%252FcYgJYb%252FtT8gn%252FMyDMgb1MZkHfwR01CFgGgCMtJmY6A8MbDbxeJ2XwsKHjElp09ELiC0FVoozsx8pvhe2olf2rEU0G1UmOdSHI8nRfdW8x6XyWd33BRDb1xGsESHKKSUmleYgQwUwmX3DOiub2yN7N%252Bw0AnDhV9tHscI9NZLg02WJGo%252Br0t8T1mcKCLkvYeB7xqENSa7KaE0amKFB%252BFYvXabf%252FfBeKyVcn0WCtvyQ%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT62F8FBKMSPZKJQ8DBW
+                          - button [ref=e470] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e471]:
+                        - generic [ref=e473]:
+                          - generic [ref=e479]:
+                            - heading [level=3] [ref=e480]: SXhyf Crevice Cleaning Brush - Hard Bristle Tool for Window Grooves
+                            - generic [ref=e481]:
+                              - generic [ref=e483]: New
+                              - generic [ref=e484]: $13.36
+                            - generic [ref=e486]: Free delivery
+                            - generic [ref=e488]: Seller 99.3% positive
+                          - link [ref=e489] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/205911006701?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEGGUof6NPpAOivLZMh1wPEA%3D%26itm%3D205911006701%26noa%3D0%26plcampt%3D0%3A158067519016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D8%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2059110067012c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbolRMn2QEA4o0avaT6aGMRWHWiO1GodqzCn3za6LBvXa%252Fs5UW2fhgjqN9NOsiAEbJsBkIuQoaEd4NQCXdZGzUdDoziZH3raIPBv7JTMWPSEMmoe2VDnuEXRB5l5MuqVP09e%252BBHit103W5%252B7JsoXt1Kw95lZUQDSgQ1nsPz%252BArOB7S0eQx5%252Bi9Gvaa7WjYxwqb9aZUjo7HbqyLuDLGB8n%252Bl0dQN3lui2UqLeuaz4LHAaxF9Y%252B3p0w7fDuWbc5L2M5HCGf05c2pdc%252BJmn%252F1bcMtUkYckaKYDYj3pfEQSZlqsMo%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT67MR6DMTYEYAW5FV8R
+                          - button [ref=e492] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e493]:
+                        - generic [ref=e495]:
+                          - generic [ref=e501]:
+                            - heading [level=3] [ref=e502]: 14 Piece Window Groove Cleaning Brushes for Sliding Doors, Sills,
+                            - generic [ref=e503]:
+                              - generic [ref=e505]: New
+                              - generic [ref=e506]: $26.48
+                            - generic [ref=e508]: Free delivery
+                          - link [ref=e509] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/227057961714?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEL0dga4wThMZ%2FBqqOt0gzG0%3D%26itm%3D227057961714%26noa%3D0%26plcampt%3D0%3A153393239013%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D9%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2270579617142c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbJmmEwLlHzA%252BVR59%252F%252Bv8%252FyB8ACX%252BkFGhnFU3IkHh%252Bga%252FsgVHcgwGQVTuyD0vF%252BxcApX%252BtAnJFaQ2f%252FnDNKzZ0s40wrsewjARAh13%252BsLEsjZFDf7YUzmULNsfqXSOGweU%252B7sovjXXuXJpaG%252BMWFxZS7KhKXI%252B5cSTgh6JRfboNcY85Ad2btpV77ouskhJ14IRJoTHlP4XPYe2MzncoOIR7bGu%252FIf0G%252F4aiU0iaG1XLrASyxdNWSyK2nvQoYRp%252Bnl52XH1mkAYOpSnYIK7McNqmVqfoJ5qpPf4RgLP9Mc5rNxY%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT6CBBWB8TSCX3SWP6QE
+                          - button [ref=e512] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e513]:
+                        - generic [ref=e515]:
+                          - generic [ref=e521]:
+                            - heading [level=3] [ref=e522]: Window Track Crevice Brushes - 8 Pcs Blind Cleaner, Shower Door, Air
+                            - generic [ref=e523]:
+                              - generic [ref=e525]: New
+                              - generic [ref=e526]: $26.48
+                            - generic [ref=e528]: Free delivery
+                          - link [ref=e529] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/227030588866?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEL0dga4wThMZ%2FBqqOt0gzG0%3D%26itm%3D227030588866%26noa%3D0%26plcampt%3D0%3A153393239013%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D10%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2270305888662c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbGdfNzl5er3f4Eem8kTTD6HlfdjkiCWUZ5NKR0M2zrzXz4dFvbAWRQjUggJ3RmFZbI0VhIBNSp%252Bt9j1Qj01TgE40A55XJvxZrORrCAUL5tSrrsp7mctia0VmarxCjLJKODp6hfjkJjM68xdhQbhRsmhYrjDlypkSa0qxdd1PtWBI%252Bbhwqi7qt84YA3G2aT4f3AUkVt689hIpbNqjQeYSFO7M3Rzif9qUiAevFwuCAI5gRVqI8OkB5GYTjMcifgYxNeC2Dakxd1RH0lWY2VFZg%252FjNoiP1TpPvtA4EHDSyv1k8%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT6HXBBSYGAZDGQR9MQQ
+                          - button [ref=e532] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e533]:
+                        - generic [ref=e535]:
+                          - generic [ref=e541]:
+                            - heading [level=3] [ref=e542]: 14Pcs Crevice Cleaning Brush Set for Kitchen, Bathroom, and Corners
+                            - generic [ref=e543]:
+                              - generic [ref=e545]: New
+                              - generic [ref=e546]: $26.48
+                            - generic [ref=e548]: Free delivery
+                            - generic [ref=e550]: Seller with 100% positive feedback
+                          - link [ref=e551] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/376700414575?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEG8F0Itadg2GrlVmh208U2M%3D%26itm%3D376700414575%26noa%3D0%26plcampt%3D0%3A153989724019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D11%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3767004145752c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbiNVS38aYzMEK9dpIs9kRFkX1BDvSr3FmNyU2yl6FecCxiYx2XpVDRKnq%252FKiw9p99Y2BWb3vgqp3pgK844vc5OqWVBquLaOyhfJBzOJ2VtTEwVBVCFz8Wt8pcwoUzGq8HHZ30uhTqp9x5EXZn%252BP3OYK6%252BKxPuEvzkGjde6gDflfE3yDzVrTLFQ1nBA71%252BZkxk%252F6XChGu8zGPAcDtsvLF0vKgbzQWcJ%252FFrqdYsovvDHT2x6wN7oWtQs68QbsURiHyXzrC7zfFNmBo04HZBmaXnPTNNJfo44c6zT3AJMWpWbGo%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT6PJQPHMPJAQKDPAB73
+                          - button [ref=e554] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e555]:
+                        - generic [ref=e557]:
+                          - generic [ref=e563]:
+                            - heading [level=3] [ref=e564]: Hard Bristle Cleaning Brush Set for Kitchen, Bathroom, and Grout
+                            - generic [ref=e565]:
+                              - generic [ref=e567]: New
+                              - generic [ref=e568]: $13.79
+                            - generic [ref=e570]: Free delivery
+                            - generic [ref=e572]: Seller with 100% positive feedback
+                          - link [ref=e573] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/376700416422?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D205911006744%26sid%3DAQALAAAAEG8F0Itadg2GrlVmh208U2M%3D%26itm%3D376700416422%26noa%3D0%26plcampt%3D0%3A153989724019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D12%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D2c23665b23824c7e9885a50c1a5b48a4%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3767004164222c23665b23824c7e9885a50c1a5b48a4%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbZkqHAlTJP4%252Bqm2AJ737jLtmrIZMxBmOAhWV8aI2LOtXcT5JkuNrX2KKU85ytM0y49W175wQ4kUU5Dsv9YiR9L1dMTDn0YB6n0t1sfBLH8bxDRzGx6oYEybLgtUXinqREqt3%252B4qX17Pv5yEgW3NMf5F1HTvciA1PN%252BCv9x%252FFHB%252FunN9EUMz8BYIqW%252BRAS1oVYhX2pK%252F9ZrIVrBbMAtLm%252F1e8rjwT9HtRJRMJwCPyr%252BHtMDljibn9uZXFuZ9mg8ptSnsaiid%252BbfIFVaVRe5lrmyXePzEJh%252BkiZHobc%252BiPA060%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR41MT6V6MZ63B3ZAQNE014C
+                          - button [ref=e576] [cursor=pointer]:
+                            - img
+                    - button "Go to the next slide, Similar Items" [ref=e577]:
+                      - img
+            - generic [ref=e580]:
+              - heading "Crevice Cleaning Brush for Window Tracks and Sliding Door Bathroom Grooves" [level=1] [ref=e582]
+              - generic [ref=e584] [cursor=pointer]:
+                - generic [ref=e586]:
+                  - link [ref=e588]:
+                    - /url: https://www.ebay.com/str/topvacuumparts?_trksid=p4429486.m3561.l161210
+                    - img [ref=e590]
+                  - generic [ref=e591]:
+                    - generic [ref=e592]:
+                      - link "topvacuumparts" [ref=e593]:
+                        - /url: https://www.ebay.com/str/topvacuumparts?_trksid=p4429486.m3561.l161211
+                      - generic [ref=e595]: (74593)
+                    - generic [ref=e596]:
+                      - button "99.3% positive" [ref=e598]
+                      - link "Seller's other items" [ref=e600]:
+                        - /url: https://www.ebay.com/str/topvacuumparts?_trksid=p4429486.m3561.l170197
+                        - generic [ref=e601]: Seller's other items
+                        - generic [ref=e602]: Seller's other items
+                      - button "Message seller" [ref=e604]:
+                        - generic [ref=e605]: Message seller
+                        - generic [ref=e606]: Message seller
+                - button "See more about this seller" [ref=e608]:
+                  - img
+              - generic [ref=e612]: US $14.75
+              - generic [ref=e613]:
+                - generic [ref=e614]: "Condition:"
+                - generic [ref=e616]:
+                  - generic [ref=e617]:
+                    - generic [ref=e618]: New
+                    - generic [ref=e619]: New
+                  - button "More information - About this item condition" [ref=e620] [cursor=pointer]:
+                    - generic [ref=e621]:
+                      - img "More information - About this item condition"
+              - generic [ref=e624]:
+                - generic [ref=e625]: "Quantity:"
+                - button [disabled] [ref=e626]:
+                  - img
+                - spinbutton "Quantity:" [ref=e627]: "1"
+                - button [ref=e628]:
+                  - img
+              - list [ref=e630]:
+                - listitem [ref=e631]:
+                  - button "Buy It Now" [ref=e633] [cursor=pointer]:
+                    - generic [ref=e634]: Buy It Now
+                - listitem [ref=e635]:
+                  - button "Add to cart" [ref=e637] [cursor=pointer]:
+                    - generic [ref=e638]: Add to cart
+                - listitem [ref=e639]:
+                  - generic [ref=e641]:
+                    - status [ref=e642]: Add to Watchlist
+                    - link "Add to Watchlist" [ref=e647] [cursor=pointer]:
+                      - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F205911006744
+                      - generic [ref=e648]:
+                        - img
+                        - text: Add to Watchlist
+              - generic [ref=e652]:
+                - generic [ref=e653]:
+                  - img
+                - generic [ref=e655]: Breathe easy. Returns accepted.
+              - generic [ref=e658]:
+                - heading "Shipping, returns, and payments" [level=2] [ref=e661]:
+                  - generic [ref=e662]: Shipping, returns, and payments
+                - generic [ref=e664]:
+                  - generic [ref=e667]:
+                    - generic [ref=e670]: "Shipping:"
+                    - generic [ref=e672]:
+                      - generic [ref=e673]:
+                        - text: Free Standard Shipping.
+                        - button "See details for shipping" [ref=e674] [cursor=pointer]:
+                          - generic [ref=e675]:
+                            - text: See details
+                            - generic [ref=e676]: for shipping
+                      - generic [ref=e677]: "Located in: Chantilly, Virginia, 22031, United States"
+                  - generic [ref=e681]:
+                    - generic [ref=e684]: "Delivery:"
+                    - generic [ref=e687]:
+                      - text: Estimated between Tue, May 12 and Sat, May 16 to 30339
+                      - button "Information - Estimated delivery date - opens a layer" [ref=e693]:
+                        - img
+              - generic [ref=e700]:
+                - generic [ref=e703]: "Returns:"
+                - generic [ref=e706]:
+                  - text: 30 days returns. Buyer pays for return shipping. If you use an eBay shipping label, it will be deducted from your refund amount.
+                  - button "See details - for more information about returns" [ref=e707] [cursor=pointer]:
+                    - generic [ref=e708]:
+                      - text: See details
+                      - generic [ref=e709]: "- for more information about returns"
+              - generic [ref=e712]:
+                - generic [ref=e716]:
+                  - generic [ref=e719]: "Payments:"
+                  - generic [ref=e722]:
+                    - img "PayPal" [ref=e723]
+                    - img "Venmo" [ref=e725]
+                    - img "Google Pay" [ref=e727]
+                    - img "Visa" [ref=e729]
+                    - img "Master Card" [ref=e731]
+                    - img "Discover" [ref=e733]
+                    - img "Diners Club" [ref=e736]
+                - generic [ref=e744]:
+                  - img "Paypal Credit" [ref=e746]
+                  - generic [ref=e747]:
+                    - text: Special financing available.
+                    - link "Learn more - for PayPal Credit, opens in a new window or tab" [ref=e748] [cursor=pointer]:
+                      - /url: https://www.billmelater.com/cm/paypal/landers/15ebayPPCNB.html
+                      - generic [ref=e749]:
+                        - text: Learn more
+                        - generic [ref=e750]: "- for PayPal Credit, opens in a new window or tab"
+              - generic [ref=e753]:
+                - heading "Shop with confidence" [level=2] [ref=e756]
+                - generic [ref=e757]:
+                  - generic [ref=e759]:
+                    - img
+                  - generic [ref=e760]:
+                    - generic [ref=e761]: eBay Money Back Guarantee
+                    - generic [ref=e762]:
+                      - text: Get the item you ordered or your money back.
+                      - link "Learn more eBay Money Back Guarantee - opens new window or tab" [ref=e763] [cursor=pointer]:
+                        - /url: https://www.ebay.com/ebay-money-back-guarantee/
+                        - generic [ref=e764]:
+                          - text: Learn more
+                          - generic [ref=e765]: eBay Money Back Guarantee - opens new window or tab
+          - generic [ref=e766]:
+            - generic [ref=e771]:
+              - tablist [ref=e772]:
+                - tab "About this item" [selected] [ref=e773] [cursor=pointer]:
+                  - generic [ref=e774]: About this item
+              - tabpanel "About this item" [ref=e776]:
+                - generic [ref=e779]:
+                  - generic [ref=e782]:
+                    - generic [ref=e786]: Seller assumes all responsibility for this listing.
+                    - generic [ref=e790]: eBay item number:205911006744
+                    - generic [ref=e794]:
+                      - text: Last updated on May 08, 2026 05:52:07 PDT
+                      - link "View all revisions View all revisions" [ref=e795] [cursor=pointer]:
+                        - /url: https://www.ebay.com/rvh/205911006744?rt=nc&_trksid=p4429486.m148105.l48144
+                        - generic [ref=e796]:
+                          - text: View all revisions
+                          - generic [ref=e797]: View all revisions
+                  - generic [ref=e800]:
+                    - heading "Item specifics" [level=2] [ref=e803]:
+                      - generic [ref=e804]: Item specifics
+                    - generic [ref=e806]:
+                      - generic [ref=e807]:
+                        - generic [ref=e809]:
+                          - term [ref=e810]:
+                            - generic [ref=e812]: Condition
+                          - definition [ref=e813]:
+                            - generic [ref=e816]:
+                              - generic [ref=e817]: "New: A brand-new, unused, unopened, undamaged item in its original packaging (where packaging is ..."
+                              - button "Read more about the condition" [ref=e819]:
+                                - generic [ref=e820]:
+                                  - text: Read more
+                                  - generic [ref=e821]: about the condition
+                        - generic [ref=e823]:
+                          - term [ref=e824]:
+                            - generic [ref=e826]: Country of Origin
+                          - definition [ref=e827]:
+                            - generic [ref=e829]: United States
+                      - generic [ref=e830]:
+                        - generic [ref=e832]:
+                          - term [ref=e833]:
+                            - generic [ref=e835]: Brand
+                          - definition [ref=e836]:
+                            - generic [ref=e838]: Top Vacuum Parts
+                        - generic [ref=e840]:
+                          - term [ref=e841]:
+                            - generic [ref=e843]: Type
+                          - definition [ref=e844]:
+                            - generic [ref=e846]: CLEANING_BRUSH
+                      - generic [ref=e847]:
+                        - generic [ref=e849]:
+                          - term [ref=e850]:
+                            - generic [ref=e852]: Item Height
+                          - definition [ref=e853]:
+                            - generic [ref=e855]: "0.1"
+                        - generic [ref=e857]:
+                          - term [ref=e858]:
+                            - generic [ref=e860]: Item length
+                          - definition [ref=e861]:
+                            - generic [ref=e863]: "9.0"
+                      - generic [ref=e864]:
+                        - generic [ref=e866]:
+                          - term [ref=e867]:
+                            - generic [ref=e869]: Item Weight
+                          - definition [ref=e870]:
+                            - generic [ref=e872]: "0.0"
+                        - generic [ref=e874]:
+                          - term [ref=e875]:
+                            - generic [ref=e877]: Item Width
+                          - definition [ref=e878]:
+                            - generic [ref=e880]: "0.8"
+                      - generic [ref=e881]:
+                        - generic [ref=e883]:
+                          - term [ref=e884]:
+                            - generic [ref=e886]: Color
+                          - definition [ref=e887]:
+                            - generic [ref=e889]: Lime
+                        - generic [ref=e891]:
+                          - term [ref=e892]:
+                            - generic [ref=e894]: Material
+                          - definition [ref=e895]:
+                            - generic [ref=e897]: "\"Plastic\""
+                      - generic [ref=e898]:
+                        - generic [ref=e900]:
+                          - term [ref=e901]:
+                            - generic [ref=e903]: Custom Bundle
+                          - definition [ref=e904]:
+                            - generic [ref=e906]: "No"
+                        - generic [ref=e908]:
+                          - term [ref=e909]:
+                            - generic [ref=e911]: UPC
+                          - definition [ref=e912]:
+                            - generic [ref=e914]: Does Not Apply
+                  - generic [ref=e915]:
+                    - generic [ref=e916]: Category
+                    - navigation "breadcrumb" [ref=e919]:
+                      - heading "breadcrumb" [level=2] [ref=e920]
+                      - list [ref=e921]:
+                        - listitem [ref=e922]:
+                          - link "Business & Industrial" [ref=e923] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Business-Industrial/12576/bn_1853744
+                          - img
+                        - listitem [ref=e924]:
+                          - link "Restaurant & Food Service" [ref=e925] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Restaurant-Food-Service/11874/bn_1865467
+                          - img
+                        - listitem [ref=e926]:
+                          - link "Commercial Kitchen Equipment" [ref=e927] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Commercial-Kitchen-Equipment/25367/bn_2309960
+                          - img
+                        - listitem [ref=e928]:
+                          - link "Other Commercial Kitchen Equipment" [ref=e929] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Other-Commercial-Kitchen-Equipment/92301/bn_16564485
+                  - generic [ref=e930]:
+                    - heading "Item description from the seller" [level=2] [ref=e933]
+                    - iframe [ref=e934]:
+                      - generic [ref=f1014e2]: Crevice Cleaning Brush，Hard-Bristled Grout Brush，2024 New Multifunctional Gap Cleaning Brush Tool，Dead Corners Brushes for Bathroom Kitchen Tiles Window Door Slots，3pcs
+            - generic [ref=e937]:
+              - generic [ref=e938]:
+                - generic [ref=e939]:
+                  - heading "About this seller" [level=2] [ref=e940]:
+                    - generic [ref=e942]: About this seller
+                  - generic [ref=e943]:
+                    - link [ref=e945] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/topvacuumparts?_trksid=p4429486.m145687.l149266
+                      - img [ref=e947]
+                    - generic [ref=e948]:
+                      - heading "topvacuumparts" [level=3] [ref=e949]:
+                        - link "topvacuumparts" [ref=e950] [cursor=pointer]:
+                          - /url: https://www.ebay.com/str/topvacuumparts?_trksid=p4429486.m145687.l149267
+                      - paragraph [ref=e951]: 99.3% positive feedback•275K items sold
+                  - generic [ref=e956]:
+                    - generic [ref=e957]:
+                      - img
+                    - generic [ref=e958]: Joined Jun 2014
+                  - generic [ref=e960]:
+                    - generic [ref=e961]: Since 2016 Topvacuumparts.LLC is the USA fast-growing leading e-commerce Marketplace with over 10 thousand vacuum cleaners products.Customer Satisfaction has our only priority.we shipped our product ...
+                    - group [ref=e963]:
+                      - generic "See more" [ref=e964]:
+                        - generic [ref=e965]: See more
+                        - generic [ref=e966]:
+                          - img
+                  - generic [ref=e967]:
+                    - link "Visit store" [ref=e968] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/topvacuumparts?_trksid=p4429486.m145687.l149086
+                      - generic [ref=e969]: Visit store
+                    - button "Message seller - opens in a new dialog" [ref=e970] [cursor=pointer]:
+                      - generic [ref=e971]:
+                        - text: Message seller
+                        - generic [ref=e972]: "- opens in a new dialog"
+                    - button "Save seller - Save this seller topvacuumparts" [ref=e974] [cursor=pointer]:
+                      - generic [ref=e975]:
+                        - img
+                      - generic [ref=e976]: Save seller
+                - generic [ref=e978]:
+                  - heading "Detailed seller ratings" [level=3] [ref=e979]
+                  - generic [ref=e980]:
+                    - generic [ref=e981]: Average for the last 12 months
+                    - generic [ref=e982]:
+                      - generic [ref=e983]:
+                        - generic [ref=e984]: Accurate description
+                        - progressbar [ref=e985]
+                        - generic [ref=e986]: "4.9"
+                      - generic [ref=e987]:
+                        - generic [ref=e988]: Reasonable shipping cost
+                        - progressbar [ref=e989]
+                        - generic [ref=e990]: "5.0"
+                      - generic [ref=e991]:
+                        - generic [ref=e992]: Shipping speed
+                        - progressbar [ref=e993]
+                        - generic [ref=e994]: "4.9"
+                      - generic [ref=e995]:
+                        - generic [ref=e996]: Communication
+                        - progressbar [ref=e997]
+                        - generic [ref=e998]: "5.0"
+                - generic [ref=e999]:
+                  - generic [ref=e1000]:
+                    - heading "Popular categories from this store" [level=3] [ref=e1001]
+                    - link "See all categories" [ref=e1003] [cursor=pointer]:
+                      - /url: https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=topvacuumparts&store_cat=0&store_name=topvacuumparts&_oac=1
+                      - generic [ref=e1004]:
+                        - text: See all
+                        - generic [ref=e1005]: categories
+                  - generic [ref=e1006]:
+                    - link "Vacuum Belts" [ref=e1008] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/topvacuumparts/Vacuum-Belts/_i.html?store_cat=36807043016
+                    - link "Vacuum Filters" [ref=e1010] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/topvacuumparts/Vacuum-Filters/_i.html?store_cat=36807044016
+                    - link "Vacuum Bags" [ref=e1012] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/topvacuumparts/Vacuum-Bags/_i.html?store_cat=36807045016
+                    - link "Vacuum Brush and Brushroll" [ref=e1014] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/topvacuumparts/Vacuum-Brush-and-Brushroll/_i.html?store_cat=36807046016
+                    - link "Vacuum Attachments" [ref=e1016] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/topvacuumparts/Vacuum-Attachments/_i.html?store_cat=36807047016
+                    - link "Other" [ref=e1018] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/topvacuumparts/Other/_i.html?store_cat=1
+              - generic [ref=e1021]:
+                - heading "Seller feedback (79,585)" [level=2] [ref=e1022]
+                - 'button "Filter: All ratings" [ref=e1025] [cursor=pointer]':
+                  - generic [ref=e1026]:
+                    - generic [ref=e1027]: "Filter:"
+                    - generic [ref=e1028]: All ratings
+                    - img
+                - list [ref=e1029]:
+                  - listitem [ref=e1030]:
+                    - generic [ref=e1031]:
+                      - generic [ref=e1033]:
+                        - generic [ref=e1034]:
+                          - img "Positive feedback rating"
+                        - generic [ref=e1035]:
+                          - text: t***e (416)
+                          - generic [ref=e1036]: "- Feedback left by buyer."
+                        - generic [ref=e1039]: Past 6 months
+                        - generic [ref=e1040]: Verified purchase
+                      - generic [ref=e1042]: Positive transaction. The package of vacuum bags were shipped fast and intact in a sealed bag. The bags were for an older vac which made it a challenge to shop for until I found this seller. The description of the product was accurate and answered the many questions I had before ordering it. I am very happy with this transaction, and this seller.
+                      - generic [ref=e1043]: 10 Fits For Proteam 103191 Vacuum Bags Model Everest Backpack Li'l Hummer 103218 (#203919065176)
+                  - listitem [ref=e1044]:
+                    - generic [ref=e1045]:
+                      - generic [ref=e1047]:
+                        - generic [ref=e1048]:
+                          - img "Positive feedback rating"
+                        - generic [ref=e1049]:
+                          - text: e***i (166)
+                          - generic [ref=e1050]: "- Feedback left by buyer."
+                        - generic [ref=e1053]: Past 6 months
+                        - generic [ref=e1054]: Verified purchase
+                      - generic [ref=e1056]: The first cover arrived in a bag with bubble wrap and had a broken leg but the seller made it right and sent a second cover which arrived unscathed. The second one was unfortunately sent in a bag again after asking for it to be sent in a small box to protect it but it at the least arrived fine the second time around. Excellent communication from the seller and a+ service.
+                      - link "Fits For kenmore Vacuum Tool Storage Cover Part - KC74PDEMZCUD (#194929631318)" [ref=e1058] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/194929631318
+                        - generic [ref=e1059]: Fits For kenmore Vacuum Tool Storage Cover Part - KC74PDEMZCUD (#194929631318)
+                  - listitem [ref=e1060]:
+                    - generic [ref=e1061]:
+                      - generic [ref=e1063]:
+                        - generic [ref=e1064]:
+                          - img "Positive feedback rating"
+                        - generic [ref=e1065]:
+                          - text: 0***p (1422)
+                          - generic [ref=e1066]: "- Feedback left by buyer."
+                        - generic [ref=e1069]: Past 6 months
+                        - generic [ref=e1070]: Verified purchase
+                      - generic [ref=e1072]: Very fast service and shipping. Packaged well. Item as described. Good communication and price. Will not hesitate to deal with again. Superb seller! AAAA++++
+                      - link "Fits For Bissell Featherweight Series 3105, 3106, 3045, Vacuum Filter 3204E (#195556296948)" [ref=e1074] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/195556296948
+                        - generic [ref=e1075]: Fits For Bissell Featherweight Series 3105, 3106, 3045, Vacuum Filter 3204E (#195556296948)
+                  - listitem [ref=e1076]:
+                    - generic [ref=e1077]:
+                      - generic [ref=e1079]:
+                        - generic [ref=e1080]:
+                          - img "Positive feedback rating"
+                        - generic [ref=e1081]:
+                          - text: c***p (920)
+                          - generic [ref=e1082]: "- Feedback left by buyer."
+                        - generic [ref=e1085]: Past 6 months
+                        - generic [ref=e1086]: Verified purchase
+                      - generic [ref=e1088]: I couldn’t be happier with my purchase! The item arrived exactly as described, in perfect condition, and well-packaged. Shipping was incredibly fast, and the seller was a pleasure to work with – communication was prompt and friendly. I highly recommend this seller and would definitely buy from them again. AAAAAAAAAA+++++++++
+                      - generic [ref=e1089]: Hose Fits For Dyson DC14 908474-01 908474-28 908474-37 Animal Total Vac (#192371825186)
+                  - listitem [ref=e1090]:
+                    - generic [ref=e1091]:
+                      - generic [ref=e1093]:
+                        - generic [ref=e1094]:
+                          - img "Positive feedback rating"
+                        - generic [ref=e1095]:
+                          - text: a***p (1537)
+                          - generic [ref=e1096]: "- Feedback left by buyer."
+                        - generic [ref=e1099]: Past 6 months
+                        - generic [ref=e1100]: Verified purchase
+                      - generic [ref=e1102]: Exactly as pictured and described by the seller! Received in excellent working condition! Product looks great and functions as intended, a great value for the money. Seller packaged the item(s) very securely, arrived with absolutely no damage. Shipping was fast. Overall very pleased with this order and would buy again! Seller recommended, A+++.
+                      - generic [ref=e1103]: "2 PK Fits For Bissell 86T3 Big Green Commercial Vacuum Geared Belt # 2037460 (#203476360116)"
+                  - listitem [ref=e1104]:
+                    - generic [ref=e1105]:
+                      - generic [ref=e1107]:
+                        - generic [ref=e1108]:
+                          - img "Positive feedback rating"
+                        - generic [ref=e1109]:
+                          - text: r***8 (14)
+                          - generic [ref=e1110]: "- Feedback left by buyer."
+                        - generic [ref=e1113]: Past 6 months
+                        - generic [ref=e1114]: Verified purchase
+                      - generic [ref=e1116]: Came a week early!!! Is absolutely beautiful. Much better than picture even. The green lace is exquisite. Was on my porch Saturday 17Jan. It was in Amazon envelope so I guess that is who delivered it. Good communication with seller.
+                      - generic [ref=e1117]: JAIJY Lace Embroidery Floral Desk Tablecloth 22 Inch Square Small Table Cover Cl (#205942069945)
+                  - listitem [ref=e1118]:
+                    - generic [ref=e1119]:
+                      - generic [ref=e1121]:
+                        - generic [ref=e1122]:
+                          - img "Positive feedback rating"
+                        - generic [ref=e1123]:
+                          - text: i***u (451)
+                          - generic [ref=e1124]: "- Feedback left by buyer."
+                        - generic [ref=e1127]: Past 6 months
+                        - generic [ref=e1128]: Verified purchase
+                      - generic [ref=e1130]: A wrong part was accidently substituted, shipped out with a right part (two orders shipped as one). Seller is a high volume dealer, mistakes once in a "blue moon" are bound to happen. After notification, I received a "no hassles" complete refund. This is why I give this seller an A+++++++ rating.
+                      - 'link "Fits For Built-In-Vac Vacuum Cleaner White Vaculine Utility Valve # 775586W (#197916959250)" [ref=e1132] [cursor=pointer]':
+                        - /url: https://www.ebay.com/itm/197916959250
+                        - generic [ref=e1133]: "Fits For Built-In-Vac Vacuum Cleaner White Vaculine Utility Valve # 775586W (#197916959250)"
+                  - listitem [ref=e1134]:
+                    - generic [ref=e1135]:
+                      - generic [ref=e1137]:
+                        - generic [ref=e1138]:
+                          - img "Positive feedback rating"
+                        - generic [ref=e1139]:
+                          - text: d***i (350)
+                          - generic [ref=e1140]: "- Feedback left by buyer."
+                        - generic [ref=e1143]: Past month
+                        - generic [ref=e1144]: Verified purchase
+                      - generic [ref=e1146]: Fast and well packaged delivery. Item received exactly as advertised. Excellent quality and value. Easy smooth transaction. I would certainly make another purchase from this seller again. Thanks for the great service.
+                      - link "Fits For Shop Vac Foam Filter Sleeve 90585 9058500, 905-85-00, 246 Fit Most Mode (#202650550901)" [ref=e1148] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/202650550901
+                        - generic [ref=e1149]: Fits For Shop Vac Foam Filter Sleeve 90585 9058500, 905-85-00, 246 Fit Most Mode (#202650550901)
+                - link "See all feedback. Opens in a new tab" [ref=e1151] [cursor=pointer]:
+                  - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=205911006744&username=topvacuumparts&filter=feedback_page%3ARECEIVED_AS_SELLER&sort=RELEVANCEV2
+                  - text: See all feedback
+            - generic [ref=e1153]:
+              - navigation "Quick Links" [ref=e1154]:
+                - link "Back to previous page" [ref=e1155] [cursor=pointer]:
+                  - /url: https://www.ebay.com/splashui/challenge?ap=1&appName=orch&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F397849933599&iid=2177dc8c-1c3c-4993-a482-96ccb1d959a3&iim=oOTcuMjo&iia=YiI3LjE1QZ&iiz=vPDNC4xMw**pVh
+                - button "Return to top" [ref=e1156] [cursor=pointer]
+              - generic [ref=e1158]:
+                - heading "More to explore :" [level=2] [ref=e1161]
+                - list [ref=e1163]:
+                  - listitem [ref=e1164]:
+                    - link "Window Cleaning Brushes," [ref=e1165] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Window-Cleaning-Brushes/183969/bn_107715379
+                  - listitem [ref=e1166]:
+                    - link "Cleaning Brushes," [ref=e1167] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Cleaning-Brushes/183969/bn_78213107
+                  - listitem [ref=e1168]:
+                    - link "Carpet Cleaning Brushes," [ref=e1169] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Carpet-Cleaning-Brushes/183969/bn_91892291
+                  - listitem [ref=e1170]:
+                    - link "Tank Cleaning Brushes," [ref=e1171] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Tank-Cleaning-Brushes/183969/bn_107715380
+                  - listitem [ref=e1172]:
+                    - link "Scrub Cleaning Brushes," [ref=e1173] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Scrub-Cleaning-Brushes/183969/bn_81057912
+                  - listitem [ref=e1174]:
+                    - link "Toilet Bowl Cleaning Brushes," [ref=e1175] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Toilet-Bowl-Cleaning-Brushes/183969/bn_81057911
+                  - listitem [ref=e1176]:
+                    - link "Groove Micrometer Metalworking Micrometers," [ref=e1177] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Groove-Micrometer-Metalworking-Micrometers/41938/bn_7116076962
+                  - listitem [ref=e1178]:
+                    - link "Crevice Tool Baggless Canister & Wet/Dry Vacuums," [ref=e1179] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Crevice-Tool-Baggless-Canister-Wet-Dry-Vacuums/66961/bn_96906750
+                  - listitem [ref=e1180]:
+                    - link "Tracks," [ref=e1181] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Tracks/259683/bn_7115838886
+                  - listitem [ref=e1182]:
+                    - link "Dry Cleaning Equipment" [ref=e1183] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Dry-Cleaning-Equipment/73177/bn_16562616
+              - generic [ref=e1185]:
+                - heading "Shop Top Sellers and Highly Rated Products in Other Commercial Kitchen Equipment" [level=2] [ref=e1186]
+                - generic [ref=e1187]:
+                  - generic [ref=e1188]:
+                    - heading "Best Sellers" [level=3] [ref=e1189]
+                    - list [ref=e1190]:
+                      - listitem [ref=e1191]:
+                        - link "WYZworks 1/4\" Inch 3-Hole Replacement Blades & Pusher for French Fry Cutter" [ref=e1192] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/842839419
+                          - generic [ref=e1193]: WYZworks 1/4" Inch 3-Hole Replacement Blades & Pusher for French Fry Cutter
+                  - generic [ref=e1194]:
+                    - heading "Top Rated" [level=3] [ref=e1195]
+                    - list [ref=e1196]:
+                      - listitem [ref=e1197]:
+                        - link "Scotsman 11-0540-21 Ice Level Control" [ref=e1198] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/691403319
+                          - generic [ref=e1199]: Scotsman 11-0540-21 Ice Level Control
+              - generic [ref=e1201]:
+                - heading "Related searches" [level=2] [ref=e1202]
+                - list [ref=e1203]:
+                  - listitem [ref=e1204]:
+                    - link "Crevice Cleaning Brush" [ref=e1205] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/crevice-cleaning-brush?_nkw=crevice+cleaning+brush
+                      - generic [ref=e1206]: Crevice Cleaning Brush
+                  - listitem [ref=e1207]:
+                    - link "Cleaning Brushes" [ref=e1208] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/cleaning-brushes?_nkw=cleaning+brushes
+                      - generic [ref=e1209]: Cleaning Brushes
+                  - listitem [ref=e1210]:
+                    - link "Door Sweep Brush" [ref=e1211] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/door-sweep-brush?_nkw=door+sweep+brush
+                      - generic [ref=e1212]: Door Sweep Brush
+                  - listitem [ref=e1213]:
+                    - link "Scrubbing Brushes" [ref=e1214] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/scrubbing-brushes?_nkw=scrubbing+brushes
+                      - generic [ref=e1215]: Scrubbing Brushes
+                  - listitem [ref=e1216]:
+                    - link "Window Cleaning Device" [ref=e1217] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/window-cleaning-device?_nkw=window+cleaning+device
+                      - generic [ref=e1218]: Window Cleaning Device
+                  - listitem [ref=e1219]:
+                    - link "Brush Door" [ref=e1220] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/brush-door?_nkw=brush+door
+                      - generic [ref=e1221]: Brush Door
+                  - listitem [ref=e1222]:
+                    - link "Cleaning Brush with Handle" [ref=e1223] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/cleaning-brush-with-handle?_nkw=cleaning+brush+with+handle
+                      - generic [ref=e1224]: Cleaning Brush with Handle
+                  - listitem [ref=e1225]:
+                    - link "Window Cleaner Tool" [ref=e1226] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/window-cleaner-tool?_nkw=window+cleaner+tool
+                      - generic [ref=e1227]: Window Cleaner Tool
+                  - listitem [ref=e1228]:
+                    - link "Bristle Brush Cleaning" [ref=e1229] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/bristle-brush-cleaning?_nkw=bristle+brush+cleaning
+                      - generic [ref=e1230]: Bristle Brush Cleaning
+                  - listitem [ref=e1231]:
+                    - link "Shower Cleaning Brush" [ref=e1232] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/shower-cleaning-brush?_nkw=shower+cleaning+brush
+                      - generic [ref=e1233]: Shower Cleaning Brush
+                  - listitem [ref=e1234]:
+                    - link "Glass Cleaning Brush" [ref=e1235] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/glass-cleaning-brush?_nkw=glass+cleaning+brush
+                      - generic [ref=e1236]: Glass Cleaning Brush
+                  - listitem [ref=e1237]:
+                    - link "Window Track" [ref=e1238] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/window-track?_nkw=window+track
+                      - generic [ref=e1239]: Window Track
+                  - listitem [ref=e1240]:
+                    - link "Wardrobe Sliding Doors Track" [ref=e1241] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/wardrobe-sliding-doors-track?_nkw=wardrobe+sliding+doors+track
+                      - generic [ref=e1242]: Wardrobe Sliding Doors Track
+                  - listitem [ref=e1243]:
+                    - link "Professional Window Cleaning Tools" [ref=e1244] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/professional-window-cleaning-tools?_nkw=professional+window+cleaning+tools
+                      - generic [ref=e1245]: Professional Window Cleaning Tools
+                  - listitem [ref=e1246]:
+                    - link "Window Scrubber" [ref=e1247] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/window-scrubber?_nkw=window+scrubber
+                      - generic [ref=e1248]: Window Scrubber
+        - img [ref=e1252]
+  - contentinfo [ref=e1258]:
+    - list [ref=e1259]:
+      - listitem [ref=e1260]:
+        - link "About eBay" [ref=e1261] [cursor=pointer]:
+          - /url: https://www.ebayinc.com
+      - listitem [ref=e1262]:
+        - link "Announcements" [ref=e1263] [cursor=pointer]:
+          - /url: https://community.ebay.com/t5/Announcements/bg-p/Announcements
+      - listitem [ref=e1264]:
+        - link "Community" [ref=e1265] [cursor=pointer]:
+          - /url: https://community.ebay.com
+      - listitem [ref=e1266]:
+        - link "Security Center" [ref=e1267] [cursor=pointer]:
+          - /url: https://pages.ebay.com/securitycenter/index.html
+      - listitem [ref=e1268]:
+        - link "Seller Center" [ref=e1269] [cursor=pointer]:
+          - /url: https://www.ebay.com/sellercenter
+      - listitem [ref=e1270]:
+        - link "Policies" [ref=e1271] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/policies/default/ebays-rules-policies?id=4205
+      - listitem [ref=e1272]:
+        - link "Affiliates" [ref=e1273] [cursor=pointer]:
+          - /url: https://partnernetwork.ebay.com/
+      - listitem [ref=e1274]:
+        - link "Product Safety Tips" [ref=e1275] [cursor=pointer]:
+          - /url: https://pages.ebay.com/safetytips
+      - listitem [ref=e1276]:
+        - link "Help & Contact" [ref=e1277] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/home
+      - listitem [ref=e1278]:
+        - link "Site Map" [ref=e1279] [cursor=pointer]:
+          - /url: https://pages.ebay.com/sitemap.html
+    - generic [ref=e1280]:
+      - text: Copyright © 1995-2026 eBay Inc. All Rights Reserved.
+      - link "Accessibility" [ref=e1281] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/accessibility/
+      - text: ","
+      - link "User Agreement" [ref=e1282] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259
+      - text: ","
+      - link "Privacy" [ref=e1283] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260
+      - text: ","
+      - link "Consumer Health Data" [ref=e1284] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/consumer-health-data-privacy-policy/
+      - text: ","
+      - link "Payments Terms of Use" [ref=e1285] [cursor=pointer]:
+        - /url: https://pages.ebay.com/payment/2.0/terms.html
+      - text: ","
+      - link "Cookies" [ref=e1286] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/ebay-cookie-notice?id=4267
+      - text: ","
+      - link "CA Privacy Notice" [ref=e1287] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/state-privacy-disclosures/#california
+      - text: ","
+      - link "Your Privacy Choices" [ref=e1288] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice/ccpa
+      - text: and
+      - link "AdChoice" [ref=e1289] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice
+        - text: AdChoice
+        - img
+  - img
+  - img [ref=e1291]

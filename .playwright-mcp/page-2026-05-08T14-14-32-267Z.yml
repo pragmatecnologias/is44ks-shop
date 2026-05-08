@@ -1,0 +1,1266 @@
+- generic [active] [ref=e1]:
+  - img
+  - img
+  - img
+  - img
+  - generic [ref=e3]:
+    - banner [ref=e7]:
+      - link "Skip to main content" [ref=e9] [cursor=pointer]:
+        - /url: "#mainContent"
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e13]:
+            - text: Hi!
+            - link "Sign in" [ref=e14] [cursor=pointer]:
+              - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&sgfl=gh&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F365979395302
+            - generic [ref=e15]:
+              - text: or
+              - link "register" [ref=e16] [cursor=pointer]:
+                - /url: https://signup.ebay.com/pa/crte?ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F365979395302
+          - link "Deals" [ref=e18] [cursor=pointer]:
+            - /url: https://www.ebay.com/deals
+          - link "Brand Outlet" [ref=e20] [cursor=pointer]:
+            - /url: https://www.ebay.com/b/Brand-Outlet/bn_7115532402
+          - link "Gift Cards" [ref=e22] [cursor=pointer]:
+            - /url: https://www.ebay.com/giftcards
+          - link "Help & Contact" [ref=e24] [cursor=pointer]:
+            - /url: https://www.ebay.com/help/home
+        - generic [ref=e25]:
+          - link "Sell" [ref=e28] [cursor=pointer]:
+            - /url: https://www.ebay.com/sl/sell
+          - generic [ref=e29]:
+            - link "Watchlist" [ref=e30] [cursor=pointer]:
+              - /url: https://www.ebay.com/mye/myebay/watchlist
+              - generic [ref=e31]: Watchlist
+              - img
+            - button "Expand Watch List" [ref=e32]
+          - generic [ref=e33]:
+            - link "My eBay" [ref=e34] [cursor=pointer]:
+              - /url: https://www.ebay.com/mys/home?source=GBH
+              - generic [ref=e35]: My eBay
+              - img
+            - button "Expand My eBay" [ref=e36]
+          - button "Notifications" [ref=e39] [cursor=pointer]:
+            - img
+            - generic [ref=e40]: Notifications
+          - generic [ref=e42]:
+            - link "Your shopping cart contains 0 items" [ref=e43] [cursor=pointer]:
+              - /url: https://cart.ebay.com
+              - generic "Your shopping cart contains 0 items" [ref=e44]:
+                - img
+            - button "Expand Cart" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - link "eBay Home" [ref=e48] [cursor=pointer]:
+            - /url: https://www.ebay.com
+            - img "eBay Home" [ref=e49]
+          - button "Shop by category" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: Shop by category
+            - img
+        - generic [ref=e59]:
+          - status [ref=e60]
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - combobox "Search for anything" [ref=e64]
+              - img
+            - combobox "Select a category for search" [ref=e65]:
+              - option "All Categories" [selected]
+              - option "Antiques"
+              - option "Art"
+              - option "Baby"
+              - option "Books"
+              - option "Business & Industrial"
+              - option "Cameras & Photo"
+              - option "Cell Phones & Accessories"
+              - option "Clothing, Shoes & Accessories"
+              - option "Coins & Paper Money"
+              - option "Collectibles"
+              - option "Computers/Tablets & Networking"
+              - option "Consumer Electronics"
+              - option "Crafts"
+              - option "Dolls & Bears"
+              - option "Movies & TV"
+              - option "eBay Motors"
+              - option "Entertainment Memorabilia"
+              - option "Gift Cards & Coupons"
+              - option "Health & Beauty"
+              - option "Home & Garden"
+              - option "Jewelry & Watches"
+              - option "Music"
+              - option "Musical Instruments & Gear"
+              - option "Pet Supplies"
+              - option "Pottery & Glass"
+              - option "Real Estate"
+              - option "Specialty Services"
+              - option "Sporting Goods"
+              - option "Sports Mem, Cards & Fan Shop"
+              - option "Stamps"
+              - option "Tickets & Experiences"
+              - option "Toys & Hobbies"
+              - option "Travel"
+              - option "Video Games & Consoles"
+              - option "Everything Else"
+          - generic [ref=e66]:
+            - button "Search" [ref=e67] [cursor=pointer]:
+              - generic [ref=e68]: Search
+            - link "Advanced" [ref=e69] [cursor=pointer]:
+              - /url: https://www.ebay.com/sch/ebayadvsearch
+    - main [ref=e70]:
+      - generic [ref=e72]:
+        - generic [ref=e75]:
+          - link "LIVE Shop live events Discover exclusive drops and deals See what’s live" [ref=e82] [cursor=pointer]:
+            - /url: https://www.ebay.com/ebaylive
+            - generic [ref=e83]:
+              - generic [ref=e84]:
+                - img
+              - generic [ref=e85]: LIVE
+            - generic [ref=e86]: Shop live events
+            - generic [ref=e87]: Discover exclusive drops and deals
+            - button "See what’s live" [ref=e88]
+          - generic [ref=e97]:
+            - heading "People who viewed this item also viewed" [level=2] [ref=e104]
+            - group [ref=e106]:
+              - list [ref=e109]:
+                - listitem [ref=e110]:
+                  - generic [ref=e112]:
+                    - generic [ref=e118]:
+                      - heading "2PCS Bathtub Drain Hair Strainer Hair Catcher Stainless Steel Floor Drain Cover" [level=3] [ref=e119]
+                      - generic [ref=e121]: $6.98
+                      - generic [ref=e123]: Free delivery
+                      - generic [ref=e125]: Sponsored
+                    - link "2PCS Bathtub Drain Hair Strainer Hair Catcher Stainless Steel Floor Drain Cover" [ref=e126] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/318139857143?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEFETiUTjsYXmI0FwEG72c1k%3D%26itm%3D318139857143%26noa%3D0%26plcampt%3D0%3A161976421018%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D20200818143230%26ao%3D1%26rk%3D5%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D330dd7dc5a9a42b28a2331c2e2cfda1a%26pg%3D2332490&_trksid=p2332490.c101224.m-1&itmprp=cksum%3A318139857143330dd7dc5a9a42b28a2331c2e2cfda1a%7Cenc%3AAQALAAAA4HU%252FGPBKMoWrH2cpzpvK9FDC5c4FxwFIV%252Bq0okjrJ6w9cB%252BqWqTCByXEsJeNzj%252BLPZ6Y%252Bcb%252BSNENjzLG3DpJu0nn%252FfwDI6A%252F0ZknNwotacIlI%252FcC%252BpnnKOyKavF97b5O66ZsvA4xLi2sQmrlD5l5js8Mw9zmLO0Vi34ywJun5JJjtdIG06i%252FIRoUEzXuYrKQo18JEiTKsXaWosvq7bEUjeaIA24WLEVLn%252BrIRgXZoZ81Z7bj%252BgWLaddrBWqCXylNyvFu9Fol7KZG9s02DOwhffphBcIzxSCEP84p0SNPH%252Bhs%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18MQ7SSM6B7CWHA9S3RK
+                - listitem [ref=e127]:
+                  - generic [ref=e129]:
+                    - generic [ref=e135]:
+                      - heading "Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket" [level=3] [ref=e136]
+                      - generic [ref=e138]: $3.99
+                      - generic [ref=e140]: Free delivery
+                    - link "Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket" [ref=e141] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/406823548872?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEDHBN0q1tadZZZ9b%2Fkew3Wk%3D%26itm%3D406823548872%26noa%3D1%26plcampt%3D0%3A156578297010%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D20200818143230%26ao%3D1%26rk%3D1%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D330dd7dc5a9a42b28a2331c2e2cfda1a%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                - listitem [ref=e142]:
+                  - generic [ref=e144]:
+                    - generic [ref=e150]:
+                      - heading "2-Pack Sink Stopper Hair Catcher Bathroom Pop Up Sink Drain Strainer Filter Plug" [level=3] [ref=e151]
+                      - generic [ref=e153]: $7.59
+                      - generic [ref=e155]:
+                        - generic [ref=e156]: previous price
+                        - text: $7.99
+                      - generic [ref=e158]: Free delivery
+                    - link "2-Pack Sink Stopper Hair Catcher Bathroom Pop Up Sink Drain Strainer Filter Plug" [ref=e159] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/317716992809?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26algo%3DHOMESPLICE.SIM%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D0%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEFPzrkbclbyYD%2FTUIScFBC4%3D%26itm%3D317716992809%26noa%3D1%26brand%3DUnbranded%26asc%3D20200818143230%26ao%3D1%26rk%3D2%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D330dd7dc5a9a42b28a2331c2e2cfda1a%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                - listitem [ref=e160]:
+                  - generic [ref=e162]:
+                    - generic [ref=e168]:
+                      - heading "10PCS Stainless Steel Sink Strainer Hair Catcher Drain Slop Filter Trap Bathroom" [level=3] [ref=e169]
+                      - generic [ref=e171]: $4.79
+                      - generic [ref=e173]: Free delivery
+                    - link "10PCS Stainless Steel Sink Strainer Hair Catcher Drain Slop Filter Trap Bathroom" [ref=e174] [cursor=pointer]:
+                      - /url: https://www.ebay.com/itm/318139746221?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEFETiUTjsYXmI0FwEG72c1k%3D%26itm%3D318139746221%26noa%3D1%26plcampt%3D0%3A161976421018%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D20200818143230%26ao%3D1%26rk%3D3%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D330dd7dc5a9a42b28a2331c2e2cfda1a%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+          - generic [ref=e175]: SAVE UP TO 14% WHEN YOU BUY MORE
+        - generic [ref=e179]:
+          - generic [ref=e180]:
+            - generic [ref=e182]:
+              - generic [ref=e184]:
+                - generic [ref=e185]:
+                  - button "Previous image - Item images thumbnails" [disabled] [ref=e186] [cursor=pointer]:
+                    - img
+                  - generic [ref=e187]:
+                    - button "Picture 1 of 9" [ref=e188] [cursor=pointer]:
+                      - img "Picture 1 of 9" [ref=e189]
+                    - button "Picture 2 of 9" [ref=e190] [cursor=pointer]:
+                      - img "Picture 2 of 9" [ref=e191]
+                    - button "Picture 3 of 9" [ref=e192] [cursor=pointer]:
+                      - img "Picture 3 of 9" [ref=e193]
+                    - button "Picture 4 of 9" [ref=e194] [cursor=pointer]:
+                      - img "Picture 4 of 9" [ref=e195]
+                    - button "Picture 5 of 9" [ref=e196] [cursor=pointer]:
+                      - img "Picture 5 of 9" [ref=e197]
+                    - button "Picture 6 of 9" [ref=e198] [cursor=pointer]:
+                      - img "Picture 6 of 9" [ref=e199]
+                    - button "Picture 7 of 9" [ref=e200] [cursor=pointer]
+                    - button "Picture 8 of 9" [ref=e201] [cursor=pointer]
+                    - button "Picture 9 of 9" [ref=e202] [cursor=pointer]
+                  - button "Next image - Item images thumbnails" [ref=e203] [cursor=pointer]:
+                    - img
+                - generic [ref=e204]:
+                  - heading "Picture 1 of 9" [level=2] [ref=e205]
+                  - generic [ref=e209]: In 6 carts
+                  - button "Previous image - Item images thumbnails" [ref=e211] [cursor=pointer]:
+                    - img
+                  - region "Opens image gallery dialog 2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\" - Picture 1 of 9" [ref=e212]:
+                    - group "1 of 9" [ref=e213]:
+                      - img "2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\" - Picture 1 of 9" [ref=e214]
+                    - group "2 of 9" [ref=e215]:
+                      - img "2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\" - Picture 2 of 9" [ref=e216]
+                    - group "3 of 9" [ref=e217]:
+                      - img "2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\" - Picture 3 of 9" [ref=e218]
+                    - group "4 of 9" [ref=e219]:
+                      - img "2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\" - Picture 4 of 9" [ref=e220]
+                    - group "5 of 9" [ref=e221]:
+                      - img "2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\" - Picture 5 of 9" [ref=e222]
+                    - group "6 of 9" [ref=e223]:
+                      - img "2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\" - Picture 6 of 9" [ref=e224]
+                    - group "7 of 9" [ref=e225]:
+                      - img "2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\" - Picture 7 of 9" [ref=e226]
+                    - group "8 of 9" [ref=e227]:
+                      - img "2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\" - Picture 8 of 9" [ref=e228]
+                    - group "9 of 9" [ref=e229]:
+                      - img "2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\" - Picture 9 of 9" [ref=e230]
+                  - generic [ref=e231]:
+                    - button "Opens image gallery" [ref=e232] [cursor=pointer]:
+                      - img
+                    - button "Add to watchlist - 45 watchers" [ref=e234] [cursor=pointer]:
+                      - generic [ref=e235]: "45"
+                      - img
+                  - button "Next image - Item images thumbnails" [ref=e237] [cursor=pointer]:
+                    - img
+              - generic [ref=e242]:
+                - generic [ref=e243]: Have one to sell?
+                - link "Sell one like this" [ref=e245] [cursor=pointer]:
+                  - /url: https://www.ebay.com/sl/list?mode=SellLikeItem&itemId=365979395302&rt=nc&_trksid=p4429486.m117039.l2567
+                  - generic [ref=e246]: Sell one like this
+                - link "Sell something else" [ref=e248] [cursor=pointer]:
+                  - /url: https://www.ebay.com/sl/prelist/suggest
+                  - generic [ref=e249]: Sell something else
+              - button "Share" [ref=e255] [cursor=pointer]:
+                - img
+                - generic [ref=e256]: Share
+            - generic [ref=e267]:
+              - generic [ref=e270]:
+                - generic [ref=e272]:
+                  - heading "Similar Items" [level=2] [ref=e274]
+                  - generic [ref=e277]:
+                    - generic [ref=e278]: aec8fca3-838a-49a1-a2b4-1f3d1456067f
+                    - generic [ref=e279]: 7516f46e-186f-4f31-bf4a-1b881d005aa3
+                    - generic [ref=e281]: ee70345a-52d9-4955-af18-666ae209363f
+                    - generic [ref=e282]: 7beb64a5-ae25-4841-8fe6-054ec2d46853
+                    - generic [ref=e283]: S
+                    - generic [ref=e284]: baf60138-94f1-49eb-a0f9-f25a13eb33be
+                    - generic [ref=e285]: d5d9c9d3-a9b0-476b-9499-be58c00f1bd3
+                    - generic [ref=e287]: 3eff14a5-acf7-465e-9fe0-4f06d68c4d8d
+                    - generic [ref=e288]: f02d2fbf-e284-4105-8d03-7869c6b31ef1
+                    - generic [ref=e289]: 2ee9c4bf-ee3b-4e97-9859-0919af60b63e
+                    - generic [ref=e290]: p
+                    - generic [ref=e291]: 2022f0b4-a3ee-44d9-936a-38bf9da0508c
+                    - generic [ref=e292]: o
+                    - generic [ref=e293]: f2c4213d-9756-4238-b496-562b245c090c
+                    - generic [ref=e295]: c417302a-fd29-4c86-add5-be08718bd4ab
+                    - generic [ref=e296]: 763bab5e-8d6a-4a22-9a9a-2374afe314c9
+                    - generic [ref=e297]: 3d015395-2364-4968-b15f-be6189d1e05c
+                    - generic [ref=e299]: 979b6ccc-5d92-4b16-a6ac-0c18639b9af7
+                    - generic [ref=e300]: 5476f613-7119-4c7f-b68f-c1577608662b
+                    - generic [ref=e301]: 0ccbc77d-bc06-4038-87df-1c545b360ae9
+                    - generic [ref=e302]: "n"
+                    - generic [ref=e303]: a118c541-d936-489a-84c8-7eb0e5823349
+                    - generic [ref=e304]: s
+                    - generic [ref=e305]: 95461653-9afa-4ec2-ab98-d9814b3faf3c
+                    - generic [ref=e306]: o
+                    - generic [ref=e307]: d21c1624-56c5-4b44-8b0c-e9044d11518d
+                    - generic [ref=e308]: r
+                    - generic [ref=e309]: 4bcd5040-6aad-4015-8097-2cc311d4876b
+                    - generic [ref=e310]: e
+                    - generic [ref=e311]: 77883810-093e-4ad9-83ed-ab3dd0142084
+                    - generic [ref=e313]: 6a7a9c44-95c0-4dec-b786-69a12b2229a3
+                    - generic [ref=e314]: d
+                    - generic [ref=e315]: ddc90f8c-0f8f-44b7-ab2a-02c831c5c0dd
+                    - generic [ref=e316]: fcc70aa6-2d91-4747-be07-abad01c1c8e8
+                    - generic [ref=e317]: 25da82cf-8345-4bb2-bc90-4aa948584bdb
+                    - generic [ref=e318]: b90381b3-9b35-4c00-be51-a10d873d5f28
+                    - generic [ref=e320]: 99d342b6-d1ed-4331-a9b5-752304987574
+                - link "See all" [ref=e323] [cursor=pointer]:
+                  - /url: https://www.ebay.com/recs?component=recs-below-hero-carousel&placement_title=i18n.Tag_SIs&sourceModuleId=101875&item_id=365979395302&algos=HOMESPLICE.SIM.SimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco&placement_subTitle=i18n.ModuleSubTitle_Sponsored&homespliceOverrideConfig=%7Bsplice.cpc-config-dweb.cpc-expansion-slot-ids%3D%5B1%2C+3%2C+5%2C+7%2C+9%2C+11%5D%2Csplice.cpc-config-dweb.smart-price-parmas.undere-threshold%3D4%2Csplice.cpc-config-dweb.smart-price-parmas.enable-overe%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-roas-calibration-by-l2%3Dfalse%2Csplice.cpc-config-dweb.smart-price-parmas.enable-undere%3Dtrue%2Csplice.cpc-config-dweb.max-cpc-slots-num%3D6%2Csplice.cpc-config-dweb.blend-reserve-price-config.reserve-price-strategy%3D2%2Csplice.cpc-config-dweb.enable-low-roas-filter%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-cvr-calibration-by-l2%3Dtrue%2Csplice.cpc-config-dweb.blend-reserve-price-config.cpa-cpm-multiplier.-1%3D15%2Csplice.cpc-config-dweb.cpc-low-roas-dimension%3D%5BblacklistLeaf%2C+version01%5D%2Csplice.cpc-config-dweb.smart-price-parmas.overe-threshold%3D4%7D
+                  - generic [ref=e324]: See all
+              - group [ref=e326]:
+                - generic [ref=e327]:
+                  - button "Go to the previous slide, Similar Items" [disabled] [ref=e328]:
+                    - img
+                  - list [ref=e330]:
+                    - listitem [ref=e331]:
+                      - generic [ref=e333]:
+                        - generic [ref=e339]:
+                          - heading "2PCS Bathtub Drain Hair Strainer Hair Catcher Stainless Steel Floor Drain Cover" [level=3] [ref=e340]
+                          - generic [ref=e341]:
+                            - generic [ref=e343]: New
+                            - generic [ref=e344]: $6.98
+                          - generic [ref=e346]: Free delivery
+                          - generic [ref=e348]: 27 sold
+                        - link "2PCS Bathtub Drain Hair Strainer Hair Catcher Stainless Steel Floor Drain Cover" [ref=e349] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/318139857143?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEFETiUTjsYXmI0FwEG72c1k%3D%26itm%3D318139857143%26noa%3D0%26plcampt%3D0%3A161976421018%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D1%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A318139857143eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbsiub0ppUyGskNi%252FFwnZQBywAw3wInzEPQBZD0wSImMZXBwZD%252BJrYx08RpTi8JLaFGYrKXTyEQ2mBIsg3fKFdt%252FdPhfMtGjiGgrurZcp54Ax83010l%252FsfopxYwRSLcxcaAmYYLY0idUiOn2PGnjiirfHCmuLzBwKu%252BRUVfXnWbX2lQsvdnzG3dk68UZq8fuXjUQ1PzdzP1G6%252FvvOWAX9YW1zJUjbfXfo4PMOvtCyfOW5PXYfVpAxJr15Hkio8NFPwfcJeIcCqy9YsmmGUMuO0We%252BCfsUB0u7IHPfWQHKKYaA%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18MQMB1RBAN2FXWK1285
+                        - button "Add 2PCS Bathtub Drain Hair Strainer Hair Catcher Stainless Steel Floor Drain Cover to your watch list" [ref=e352] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e353]:
+                      - generic [ref=e355]:
+                        - generic [ref=e361]:
+                          - heading "Universal Bathroom Sink Stopper Pop Up Drain Strainer Hair Catcher Filter Basket" [level=3] [ref=e362]
+                          - generic [ref=e363]:
+                            - generic [ref=e365]: New
+                            - generic [ref=e366]: $9.99
+                          - generic [ref=e368]: Free delivery
+                          - generic [ref=e370]: 44 sold
+                        - link "Universal Bathroom Sink Stopper Pop Up Drain Strainer Hair Catcher Filter Basket" [ref=e371] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/358267835115?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEDqyXT1Cu4bvkLBo6lFEB3U%3D%26itm%3D358267835115%26noa%3D0%26plcampt%3D0%3A14931720012%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D2%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A358267835115eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbNzKCKSRshDUKQ9gnlaNA5yv0wylzLfmXOmj7sIz8iObxWrkzlPA%252BzIYbdLQGqpLlbwipVP749S3%252BrJAxmZCMJABqPMkMutl2%252BTHlZUa%252FYcJurrdP%252FroWRBTnURmznCLQi5NaslJIQXwzWPYWB78%252BztpaHEJqULDFG1RFiaWnRoi4uyutc5chanSFYI9St1LdbAgOC7frd9Lc1kHSrIZkhcgVnGELaN9uO%252FxxCslBbtP6t2IF%252Bu22ipzD8tZkz7f5XeKNga0Gugfr4WMKY4yci7yxif%252BUISes8eZGmCq6qXk%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18N2CSRFQKGXJHB2JEE9
+                        - button "Add Universal Bathroom Sink Stopper Pop Up Drain Strainer Hair Catcher Filter Basket to your watch list" [ref=e374] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e375]:
+                      - generic [ref=e377]:
+                        - generic [ref=e383]:
+                          - heading "ShowerShroom® (Gray) 2\" Revolutionary Hair Catcher for Shower Drain by TubShroom" [level=3] [ref=e384]
+                          - generic [ref=e385]:
+                            - generic [ref=e387]: New
+                            - generic [ref=e388]: $10.99
+                          - generic [ref=e390]: Free delivery
+                          - generic [ref=e391]:
+                            - generic [ref=e392]:
+                              - img
+                            - generic [ref=e393]: Top Rated Plus
+                          - generic [ref=e396]: 1236 sold
+                        - link "ShowerShroom® (Gray) 2\" Revolutionary Hair Catcher for Shower Drain by TubShroom" [ref=e397] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/324502697354?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697354%26noa%3D1%26plcampt%3D0%3A11570952016%2C5%3AAG5006300686%26algo%3DHOMESPLICE.SIM%26brand%3DTubshroom%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D3%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A324502697354eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABENcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbJo9C1K8EbxHEtQZ%252BSGqge7vOav%252Fw6fzcZxQITBVbjJb0bPbzaSdv9zYXXW910m2eqrJni3DQZ8Dn0G9GEQefQ0bmQDJByo64dK834pyCpmzKsMY6qfoCAmNnyEflIKua5z58B4D%252BwF2XvAvmnJvuAxKNEZEYFWz3DgP29h3TBucderK%252BY%252FS0JbAsJe%252BZDDiEbiGjq0440U2s5Kzc2sOVe7%252Bg86BN5SRtBBW5btjeuMmr2jRhjxlEezjaABWr7esL%7Campid%3APLP_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18N53DB94BN3C1574K30
+                        - button "Add ShowerShroom® (Gray) 2\" Revolutionary Hair Catcher for Shower Drain by TubShroom to your watch list" [ref=e400] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e401]:
+                      - generic [ref=e403]:
+                        - generic [ref=e409]:
+                          - heading [level=3] [ref=e410]: Universal Bathroom Sink Stopper Pop Up Drain Strainer Hair Catcher Filter Basket
+                          - generic [ref=e411]:
+                            - generic [ref=e413]: New
+                            - generic [ref=e414]: $9.99
+                          - generic [ref=e416]: Free delivery
+                          - generic [ref=e418]: 25 sold
+                        - link [ref=e419] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/358367663443?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEDqyXT1Cu4bvkLBo6lFEB3U%3D%26itm%3D358367663443%26noa%3D0%26plcampt%3D0%3A14931720012%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D4%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A358367663443eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbGYvs7yIMLAnxV7ioJ8i16zP3UTbI63jfoJu4wdNBStSOTyi%252FMOA3tupvDesg5wGorsd1bolYoaCbk5E%252Bur828WCLlW2acq5YDNiWayp0S7b5wnCxZTrBeTaeJZz92CCnFsjq4o95sjOgVLf6uoEBKGsLKyPd7W4AEtZiHiJ6xsrc86%252FHLRSoNpBcnpVW%252FAivG8ggn7tKo7Rfs7hcKPb8CXmQf5DsIbdiwZCmnTPAs6v9lPUYovsHKq60NmBedjFQjImg3pOwBA3jyn5m4g%252BWaJ2BHqINZF4Nrqbg%252FM%252F6ZCw%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18N9N6682G73B59G1J2B
+                    - listitem [ref=e420]:
+                      - generic [ref=e422]:
+                        - generic [ref=e428]:
+                          - generic [ref=e429]: ALMOST GONE
+                          - heading [level=3] [ref=e430]: 2-Pack Sink Stopper Hair Catcher Bathroom Pop Up Sink Drain Strainer Filter Plug
+                          - generic [ref=e431]:
+                            - generic [ref=e433]: New
+                            - generic [ref=e434]: $5.88
+                          - generic [ref=e436]:
+                            - generic [ref=e437]: previous price
+                            - text: $7.35 20% off
+                          - generic [ref=e439]: Free delivery
+                          - generic [ref=e441]: 41 sold
+                        - link [ref=e442] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/336546046497?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEC8z8LJxxE6DVLgFAOfwN%2BA%3D%26itm%3D336546046497%26noa%3D0%26plcampt%3D0%3A14315477016%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D5%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A336546046497eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbZXSTRsHRaKAQb04wzz%252BiWhx7MPbxcEiE8w%252BlKFfODyYmFyzM97yd6y0%252BWCQydwDzvEPm5uoXoHfVyWhbvjbhMR8ukT3%252BGxpRZEDxGQvFTMKLslkabgr29EcBKMpEozM3kD2vfjTkjWg6ltWQUC9qjvroMKP6DYwHDwrXjjvvv5PYJ%252FgkG5va8l8INPDzSYSbcwQwakyH81XbHiGB71A2UhXZkfywwe0WYC2nkqLPgkcRe95lFIu0%252B6NdyKup5%252FbUuGgIHJT5Mxe1wMYTu8ZsNl60k8oLTzqNRC4iS4BOcUQ%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18NC2G7MF16SDXQNJTQ7
+                    - listitem [ref=e443]:
+                      - generic [ref=e445]:
+                        - generic [ref=e451]:
+                          - heading [level=3] [ref=e452]: Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket
+                          - generic [ref=e453]:
+                            - generic [ref=e455]: New
+                            - generic [ref=e456]: $4.89
+                          - generic [ref=e458]: Free delivery
+                        - link [ref=e459] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/406823548872?var=677048372995&_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEDHBN0q1tadZZZ9b%2Fkew3Wk%3D%26itm%3D406823548872%26noa%3D0%26plcampt%3D0%3A156578297010%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D6%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A406823548872eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mb30i7RTnYQ1NdruIZbTFGnRvtK0IRsiELk2xNcyU4l4T2ZAylLd0vGRug8nuWb638j3nfsOfqFG5YEGkiO4%252F4Io5%252FlXXYcN5EqgHnshGIzYPnuxNJUc0k9Bf8QbhOgtwsz5KwOSbZqWh6THPNdWSUPLvRUEsXafjngGN01gjUWcEAMWRvyY3eKYhymLSdpVcfbx6DuzMnprw%252BeD7CKgE%252FDUppsU6fHU0c1gjLSpaIk9xFxTu5Fe3YvMTjNKtAmOIDUXsXiwCw7Z6NMhsBP%252FEtu9Z8rkIWMW7Fu2BWetO9wz0%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18NE01EW0ZQS24H9FKSD
+                        - button [ref=e462] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e463]:
+                      - generic [ref=e465]:
+                        - generic [ref=e471]:
+                          - heading [level=3] [ref=e472]: 2-Pack Sink Stopper Hair Catcher Bathroom Pop Up Sink Drain Strainer Filter Plug
+                          - generic [ref=e473]:
+                            - generic [ref=e475]: New
+                            - generic [ref=e476]: $5.55
+                          - generic [ref=e478]:
+                            - generic [ref=e479]: previous price
+                            - text: $6.94 20% off
+                          - generic [ref=e481]: Free delivery
+                        - link [ref=e482] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/318209735588?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEBlNyA%2BJSs2zHWDF6L5AfUo%3D%26itm%3D318209735588%26noa%3D0%26plcampt%3D0%3A57599978018%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D7%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A318209735588eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbmhZMNMNMvRIYAl190esKs75feSiEzimLPx249c5Qx7yMWNMebFqpikuY%252FNVpm4ffciowwLfWDgbJCwQyNNXhrZgYzDNbZOOsi%252B52K7ZiW3SZE96MNnMlXTjDpGumVex%252Bm86pfIaiYOHSIk5HYrsfRa7gKN3W%252FkEfBG%252FKlq9uwUYG9dXDIIsNVQm%252FuSi%252BX3kBX0gg65algJ31ztXckUjslX0DALg42cQqplMZJNMzBIo%252BPzszFJVj3Sn2cpEwIApMBcNHxLpH3RGBXJlr0qE9PTyqV5oT7ZRZ8T4z13nzik8%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18NHW6PAKD282JDPDPXF
+                    - listitem [ref=e483]:
+                      - generic [ref=e485]:
+                        - generic [ref=e491]:
+                          - heading [level=3] [ref=e492]: 50 Pack Disposable Shower Drain Hair Catcher Mesh Sticker Strainers for Shower
+                          - generic [ref=e493]:
+                            - generic [ref=e495]: New
+                            - generic [ref=e496]: $13.97
+                          - generic [ref=e498]: Free delivery
+                          - generic [ref=e499]:
+                            - generic [ref=e500]:
+                              - img
+                            - generic [ref=e501]: Top Rated Plus
+                          - generic [ref=e504]: 413 sold
+                        - link [ref=e505] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/394496625759?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEMaU2InTonV%2FB4M1vuEJNoc%3D%26itm%3D394496625759%26noa%3D0%26plcampt%3D0%3A11306828011%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D9%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A394496625759eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbg7qoPbHInm9Qp0iIO1G3dXztlUUkQQa8nTPodIArwONZnwMVod4DdeuRTlLWrYPrgsGK4xkSCPq3IROBDTQhzJ4%252BzhriGg5HVj5IcjGKg%252B1%252BqF6oB5UasIZkYAXwKU53pzMGobWeQpj20SsPBDNpTHknJ19gOMYOSuJfQrDu0uK2fWjvgKvWxJXddQ39zNN2ItF07Bm%252BNa6mN%252BxWjCpPADw4s4JNNL5iNjjhb86BSI3glsNtojgAbA9%252Fvk2uSAupFdEra9FY7XzPbxWrPVSDszuOMx%252FR2CRzhSgmC4D5S0w%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18NKVKTPRRYEEWNW487V
+                        - button [ref=e508] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e509]:
+                      - generic [ref=e511]:
+                        - generic [ref=e517]:
+                          - generic [ref=e518]: ALMOST GONE
+                          - heading [level=3] [ref=e519]: Drain Stopper for Bathroom Hair Catcher Tub Shower Sink Drain Strainer Filter
+                          - generic [ref=e520]:
+                            - generic [ref=e522]: New
+                            - generic [ref=e523]: $5.55
+                          - generic [ref=e525]: Free delivery
+                          - generic [ref=e527]: 98 sold
+                        - link [ref=e528] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/365848248514?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEIf8xQBG1FdqQjVK8p6NMzo%3D%26itm%3D365848248514%26noa%3D0%26plcampt%3D0%3A161007381013%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D10%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A365848248514eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbHhxF67PlQ9ujERmJTRLpgv7pW3jHXMfDP4bUENCHAToPn0ERm%252BAXXKCKLDCAIWqOfyAQvBVfun5AyvcJ3e3GyApLkNu6UploDyRir8L0EhLlZk1IFG%252BPORfMlMoQ3xTvc1nPmYd3bd%252FhMCwUKUQtDXNtI0sYDz3fHUDCSIFMWU8FXJqGUmogNGtOMhUJsWvZsd7lk8d7rBGMFO2VX5VO18ZfnQJOf1%252FY%252FFOE66w4tSeY2T6c3oXtheOC29hONbhDTAwz2CJACB5%252BfLqpb3R9ZYhUAux1bTBKGBFcUccte08%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18NPCC0XAQGJGCYJTMF1
+                    - listitem [ref=e529]:
+                      - generic [ref=e531]:
+                        - generic [ref=e537]:
+                          - heading [level=3] [ref=e538]: 2PCS Floor Drain Filter Hair Catcher Shower Sink Mesh Basket Strainer Draining
+                          - generic [ref=e539]:
+                            - generic [ref=e541]: New
+                            - generic [ref=e542]: $11.79
+                          - generic [ref=e544]: Free delivery
+                          - generic [ref=e546]: 63 sold
+                        - link [ref=e547] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/356445994102?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAELCV8icQaMQAnKaYrRsaJdY%3D%26itm%3D356445994102%26noa%3D0%26plcampt%3D0%3A14636720018%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D11%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A356445994102eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbDIIOdda%252B8%252FDPNpK%252Fys0A%252BjjLnS8kPQArlhVXXZm0t82AVltN5bOtL3dFDeR8%252BshBgAOVLzNeAik0ODPEWqXCEOijYrDCUqHxGHX6qlhnoJVYCE1INlc1nrqkzqvPF%252BevARD%252Bdty3eO9PJNjAnkCWdPlxnZNm1GATdXeclWnW3B5OuoAuw5G9BeYCbnW%252FNmhMSjuTDVHTzCXp97rbY1GEJrWy9A%252B%252FNwbh6h67QW71cLHUa7dDS6%252F7Neyc7oaRAN7FiP95eX6g5OQ9%252FKpofVzV6qL8djE1B6yxznX5SBoyyLc%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18NS5DYJE4G42PBBD8YP
+                        - button [ref=e550] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e551]:
+                      - generic [ref=e553]:
+                        - generic [ref=e559]:
+                          - heading [level=3] [ref=e560]: 4 PACK Bathroom Sink Stopper Hair Catcher Pop Up Sink Drain Strainer 304 Filter
+                          - generic [ref=e561]:
+                            - generic [ref=e563]: New
+                            - generic [ref=e564]: $13.26
+                          - generic [ref=e566]:
+                            - generic [ref=e567]: previous price
+                            - text: $13.96 5% off
+                          - generic [ref=e569]: Free delivery
+                          - generic [ref=e570]:
+                            - generic [ref=e571]:
+                              - img
+                            - generic [ref=e572]: Top Rated Plus
+                          - generic [ref=e575]: 94 sold
+                        - link [ref=e576] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/317716992805?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEFPzrkbclbyYD%2FTUIScFBC4%3D%26itm%3D317716992805%26noa%3D0%26plcampt%3D0%3A150062341019%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D12%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A317716992805eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbD3Ds7bAe%252FJRrS3ratg7Yy2zoZwZAJWcFcZGJAJlh88Fi2lw14W4cCO5inkTHx%252BPdtj8c7CPH3FduRNvcGfUxsTXyv2USHGLny4A8FR4i%252FHKvbVW%252FFQbGenJsMmmTDTv5xunw7GthkWrS8LlEKHRams76JhMRO4s%252FJOGgRMH7p30HBssfi%252FivJQfzv%252FoYbbLjV3hbaSpBrHChvy0P9AobG5lfigtWoywuxbW6MrUB%252FtUv6%252BJuPLxRJNPGhrlarLlMnQi9aoniplrVC5axRC0fzDwzG6lc--yg2oiQQR%252BGo7o%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18NVYSBHCSXPFW5VX9EW
+                        - button [ref=e579] [cursor=pointer]:
+                          - img
+                    - listitem [ref=e580]:
+                      - generic [ref=e582]:
+                        - generic [ref=e588]:
+                          - heading [level=3] [ref=e589]: 4 Pcs Bathroom Sink Stopper Hair Catcher Bathroom Pop Up Sink Drain Filter US
+                          - generic [ref=e590]:
+                            - generic [ref=e592]: New
+                            - generic [ref=e593]: $13.29
+                          - generic [ref=e595]: Free delivery
+                          - generic [ref=e596]:
+                            - generic [ref=e597]:
+                              - img
+                            - generic [ref=e598]: Top Rated Plus
+                          - generic [ref=e601]: 150 sold
+                        - link [ref=e602] [cursor=pointer]:
+                          - /url: https://www.ebay.com/itm/317508923531?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D365979395302%26sid%3DAQALAAAAEO1vDAJODQ3%2F%2BWorDkXEgGw%3D%26itm%3D317508923531%26noa%3D0%26plcampt%3D0%3A150062325019%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D13%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Deeb11801e2e5424083f0f0a43160f177%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A317508923531eeb11801e2e5424083f0f0a43160f177%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbeM8QfzGfYgDKZntHAqfaGGnZJOcmBV26eEonWFOk3wICcYw1g3idsl9M%252FYHHSDpOlY42HXUV%252FHqQvb0IPb9sbBcZzmNuDzQI%252F3jpvGWRRyL%252Fx%252B%252BoAsTYovjMg6gh4pVb2YBCdFQIA%252B5U%252FLHutRUkmDCbAzk97EJosCDAPa61IqXfrqhPYFHbHZUEmg7dYfmJT5fStg34NqrqHQfq8iu3pUpy15m%252BCq8fBUodd44k3w04rYld9SB1dRWC3K4WIMuUjUz1kqW9bTZlCMqvnZUQXK9xHouZiVCW5jY8sSjAMRM%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Z18NZRQYXZNYZ8W8E32GQ
+                        - button [ref=e605] [cursor=pointer]:
+                          - img
+                  - button "Go to the next slide, Similar Items" [ref=e606]:
+                    - img
+          - generic [ref=e609]:
+            - heading "2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65\"-3.0\"" [level=1] [ref=e611]
+            - generic [ref=e613] [cursor=pointer]:
+              - generic [ref=e615]:
+                - link [ref=e617]:
+                  - /url: https://www.ebay.com/str/usaonemart?_trksid=p4429486.m3561.l161210
+                  - img [ref=e619]
+                - generic [ref=e620]:
+                  - generic [ref=e621]:
+                    - link "USA One Mart" [ref=e622]:
+                      - /url: https://www.ebay.com/str/usaonemart?_trksid=p4429486.m3561.l161211
+                    - generic [ref=e624]: (22922)
+                  - generic [ref=e625]:
+                    - button "99.4% positive" [ref=e627]
+                    - link "Seller's other items" [ref=e629]:
+                      - /url: https://www.ebay.com/str/usaonemart?_trksid=p4429486.m3561.l170197
+                      - generic [ref=e630]: Seller's other items
+                      - generic [ref=e631]: Seller's other items
+                    - button "Message seller" [ref=e633]:
+                      - generic [ref=e634]: Message seller
+                      - generic [ref=e635]: Message seller
+              - button "See more about this seller" [ref=e637]:
+                - img
+            - generic [ref=e641]:
+              - text: US $7.49/ea
+              - generic [ref=e642]: or Best Offer
+            - generic [ref=e643]:
+              - generic [ref=e644]: "Condition:"
+              - generic [ref=e646]:
+                - generic [ref=e647]:
+                  - generic [ref=e648]: New
+                  - generic [ref=e649]: New
+                - button "More information - About this item condition" [ref=e650] [cursor=pointer]:
+                  - generic [ref=e651]:
+                    - img "More information - About this item condition"
+            - generic [ref=e652]:
+              - generic [ref=e654]:
+                - generic [ref=e655]: "Quantity:"
+                - button [disabled] [ref=e656]:
+                  - img
+                - spinbutton "Quantity:" [ref=e657]: "1"
+                - button [ref=e658]:
+                  - img
+              - status [ref=e659]: 115 sold
+            - generic [ref=e660]:
+              - generic [ref=e661]: "Bulk savings:"
+              - generic [ref=e662]:
+                - button "Buy 1 for $7.49, selected" [ref=e663] [cursor=pointer]:
+                  - generic [ref=e664]: Buy 1
+                  - generic [ref=e665]: $7.49/ea
+                  - generic [ref=e666]: Buy 1 for $7.49
+                - button "Buy 2 for $7.19 each one" [ref=e667] [cursor=pointer]:
+                  - generic [ref=e668]: Buy 2
+                  - generic [ref=e669]: $7.19/ea
+                  - generic [ref=e670]: Buy 2 for $7.19 each one
+                - button "Buy 3 for $6.82 each one" [ref=e671] [cursor=pointer]:
+                  - generic [ref=e672]: Buy 3
+                  - generic [ref=e673]: $6.82/ea
+                  - generic [ref=e674]: Buy 3 for $6.82 each one
+                - generic [ref=e675]:
+                  - generic [ref=e676]: 4 or more for $6.44/ea
+                  - generic [ref=e677]: Buy 4 or more for 6.44 each one
+            - list [ref=e679]:
+              - listitem [ref=e680]:
+                - button "Buy It Now" [ref=e682] [cursor=pointer]:
+                  - generic [ref=e683]: Buy It Now
+              - listitem [ref=e684]:
+                - button "Add to cart" [ref=e686] [cursor=pointer]:
+                  - generic [ref=e687]: Add to cart
+              - listitem [ref=e688]:
+                - link "Make offer" [ref=e690] [cursor=pointer]:
+                  - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F365979395302%3Fboolp%3D1
+                  - generic [ref=e691]: Make offer
+              - listitem [ref=e692]:
+                - generic [ref=e694]:
+                  - status [ref=e695]: Add to Watchlist
+                  - link "Add to Watchlist" [ref=e700] [cursor=pointer]:
+                    - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F365979395302
+                    - generic [ref=e701]:
+                      - img
+                      - text: Add to Watchlist
+            - generic [ref=e704]:
+              - generic [ref=e705]:
+                - generic [ref=e706]:
+                  - img
+                - generic [ref=e708]: This one's trending. 115 have already sold.
+              - generic [ref=e709]:
+                - generic [ref=e710]:
+                  - img
+                - generic [ref=e712]: Breathe easy. Free shipping and returns.
+            - generic [ref=e715]:
+              - heading "Shipping, returns, and payments" [level=2] [ref=e718]:
+                - generic [ref=e719]: Shipping, returns, and payments
+              - generic [ref=e721]:
+                - generic [ref=e724]:
+                  - generic [ref=e727]: "Shipping:"
+                  - generic [ref=e729]:
+                    - generic [ref=e730]:
+                      - text: Free Economy Shipping.
+                      - button "See details for shipping" [ref=e731] [cursor=pointer]:
+                        - generic [ref=e732]:
+                          - text: See details
+                          - generic [ref=e733]: for shipping
+                    - generic [ref=e734]: "Located in: Itasca, Illinois, United States"
+                - generic [ref=e738]:
+                  - generic [ref=e741]: "Delivery:"
+                  - generic [ref=e744]:
+                    - text: Estimated between Wed, May 13 and Wed, May 20 to 30339
+                    - button "Information - Estimated delivery date - opens a layer" [ref=e750]:
+                      - img
+            - generic [ref=e757]:
+              - generic [ref=e760]: "Returns:"
+              - generic [ref=e763]:
+                - text: 30 days returns. Seller pays for return shipping.
+                - button "See details - for more information about returns" [ref=e764] [cursor=pointer]:
+                  - generic [ref=e765]:
+                    - text: See details
+                    - generic [ref=e766]: "- for more information about returns"
+            - generic [ref=e769]:
+              - generic [ref=e773]:
+                - generic [ref=e776]: "Payments:"
+                - generic [ref=e779]:
+                  - img "PayPal" [ref=e780]
+                  - img "Venmo" [ref=e782]
+                  - img "Google Pay" [ref=e784]
+                  - img "Visa" [ref=e786]
+                  - img "Master Card" [ref=e788]
+                  - img "Discover" [ref=e790]
+                  - img "Diners Club" [ref=e793]
+              - generic [ref=e801]:
+                - img "Paypal Credit" [ref=e803]
+                - generic [ref=e804]:
+                  - text: Special financing available.
+                  - link "Learn more - for PayPal Credit, opens in a new window or tab" [ref=e805] [cursor=pointer]:
+                    - /url: https://www.billmelater.com/cm/paypal/landers/15ebayPPCNB.html
+                    - generic [ref=e806]:
+                      - text: Learn more
+                      - generic [ref=e807]: "- for PayPal Credit, opens in a new window or tab"
+            - generic [ref=e810]:
+              - heading "Shop with confidence" [level=2] [ref=e813]
+              - generic [ref=e814]:
+                - generic [ref=e816]:
+                  - img
+                - generic [ref=e817]:
+                  - generic [ref=e818]: eBay Money Back Guarantee
+                  - generic [ref=e819]:
+                    - text: Get the item you ordered or your money back.
+                    - link "Learn more eBay Money Back Guarantee - opens new window or tab" [ref=e820] [cursor=pointer]:
+                      - /url: https://www.ebay.com/ebay-money-back-guarantee/
+                      - generic [ref=e821]:
+                        - text: Learn more
+                        - generic [ref=e822]: eBay Money Back Guarantee - opens new window or tab
+        - generic [ref=e823]:
+          - generic [ref=e828]:
+            - tablist [ref=e829]:
+              - tab "About this item" [selected] [ref=e830] [cursor=pointer]:
+                - generic [ref=e831]: About this item
+            - tabpanel "About this item" [ref=e833]:
+              - generic [ref=e836]:
+                - generic [ref=e839]:
+                  - generic [ref=e843]: Seller assumes all responsibility for this listing.
+                  - generic [ref=e847]: eBay item number:365979395302
+                  - generic [ref=e851]:
+                    - text: Last updated on May 06, 2026 01:06:04 PDT
+                    - link "View all revisions View all revisions" [ref=e852] [cursor=pointer]:
+                      - /url: https://www.ebay.com/rvh/365979395302?rt=nc&_trksid=p4429486.m148105.l48144
+                      - generic [ref=e853]:
+                        - text: View all revisions
+                        - generic [ref=e854]: View all revisions
+                - generic [ref=e857]:
+                  - heading "Item specifics" [level=2] [ref=e860]:
+                    - generic [ref=e861]: Item specifics
+                  - generic [ref=e863]:
+                    - generic [ref=e864]:
+                      - generic [ref=e866]:
+                        - term [ref=e867]:
+                          - generic [ref=e869]: Condition
+                        - definition [ref=e870]:
+                          - generic [ref=e873]:
+                            - generic [ref=e874]: "New: A brand-new, unused, unopened, undamaged item in its original packaging (where packaging is ..."
+                            - button "Read more about the condition" [ref=e876]:
+                              - generic [ref=e877]:
+                                - text: Read more
+                                - generic [ref=e878]: about the condition
+                      - generic [ref=e880]:
+                        - term [ref=e881]:
+                          - generic [ref=e883]: Number of Items in Set
+                        - definition [ref=e884]:
+                          - generic [ref=e886]: "2"
+                    - generic [ref=e887]:
+                      - generic [ref=e889]:
+                        - term [ref=e890]:
+                          - generic [ref=e892]: Shape
+                        - definition [ref=e893]:
+                          - generic [ref=e895]: Round
+                      - generic [ref=e897]:
+                        - term [ref=e898]:
+                          - generic [ref=e900]: Color
+                        - definition [ref=e901]:
+                          - generic [ref=e903]: Silver
+                    - generic [ref=e904]:
+                      - generic [ref=e906]:
+                        - term [ref=e907]:
+                          - generic [ref=e909]: Material
+                        - definition [ref=e910]:
+                          - generic [ref=e912]: Stainless Steel
+                      - generic [ref=e914]:
+                        - term [ref=e915]:
+                          - generic [ref=e917]: Set Includes
+                        - definition [ref=e918]:
+                          - generic [ref=e920]: Sink Strainer
+                    - generic [ref=e921]:
+                      - generic [ref=e923]:
+                        - term [ref=e924]:
+                          - generic [ref=e926]: MPN
+                        - definition [ref=e927]:
+                          - generic [ref=e929]: Hair Catcher
+                      - generic [ref=e931]:
+                        - term [ref=e932]:
+                          - generic [ref=e934]: Suitable For
+                        - definition [ref=e935]:
+                          - generic [ref=e937]: Bathtub, Sink, Shower
+                    - generic [ref=e938]:
+                      - generic [ref=e940]:
+                        - term [ref=e941]:
+                          - generic [ref=e943]: Brand
+                        - definition [ref=e944]:
+                          - generic [ref=e946]: Unbranded
+                      - generic [ref=e948]:
+                        - term [ref=e949]:
+                          - generic [ref=e951]: Type
+                        - definition [ref=e952]:
+                          - generic [ref=e954]: Drain Strainer
+                    - generic [ref=e955]:
+                      - generic [ref=e957]:
+                        - term [ref=e958]:
+                          - generic [ref=e960]: Model
+                        - definition [ref=e961]:
+                          - generic [ref=e963]: Drain Strainer
+                      - generic [ref=e965]:
+                        - term [ref=e966]:
+                          - generic [ref=e968]: Room
+                        - definition [ref=e969]:
+                          - generic [ref=e971]: Bathroom, Kitchen
+                    - generic [ref=e972]:
+                      - generic [ref=e974]:
+                        - term [ref=e975]:
+                          - generic [ref=e977]: Item Weight
+                        - definition [ref=e978]:
+                          - generic [ref=e980]: Light Weight
+                      - generic [ref=e982]:
+                        - term [ref=e983]:
+                          - generic [ref=e985]: UPC
+                        - definition [ref=e986]:
+                          - generic [ref=e988]: Does Not Apply
+                - generic [ref=e989]:
+                  - generic [ref=e990]: Category
+                  - navigation "breadcrumb" [ref=e993]:
+                    - heading "breadcrumb" [level=2] [ref=e994]
+                    - list [ref=e995]:
+                      - listitem [ref=e996]:
+                        - link "Home & Garden" [ref=e997] [cursor=pointer]:
+                          - /url: https://www.ebay.com/b/Home-Garden/11700/bn_1853126
+                        - img
+                      - listitem [ref=e998]:
+                        - link "Bath" [ref=e999] [cursor=pointer]:
+                          - /url: https://www.ebay.com/b/Bathroom-Fixtures-Accessories-Supplies/26677/bn_824323
+                        - img
+                      - listitem [ref=e1000]:
+                        - link "Bathroom Accessories" [ref=e1001] [cursor=pointer]:
+                          - /url: https://www.ebay.com/b/Bathroom-Supplies-Accessories/260590/bn_7117222162
+                        - img
+                      - listitem [ref=e1002]:
+                        - link "Drain Stoppers & Strainers" [ref=e1003] [cursor=pointer]:
+                          - /url: https://www.ebay.com/b/Bathroom-Drain-Stoppers-Strainers/260554/bn_7117214243
+                - generic [ref=e1004]:
+                  - heading "Item description from the seller" [level=2] [ref=e1007]
+                  - iframe [ref=e1008]:
+                    - generic [ref=f362e2]:
+                      - heading "2Pc Bathtub Drain Strainer Hair Catcher – Stainless Steel Filter Basket 1.65\"-3.0\" Sink Stopper Cover" [level=3] [ref=f362e3]:
+                        - strong [ref=f362e4]: 2Pc Bathtub Drain Strainer Hair Catcher – Stainless Steel Filter Basket 1.65"-3.0" Sink Stopper Cover
+                      - paragraph [ref=f362e5]:
+                        - text: Keep your drains clog-free and your bathroom spotless with this
+                        - strong [ref=f362e6]: 2-Pack Stainless Steel Bathtub Drain Strainer Hair Catcher Set
+                        - text: . Designed to fit most standard sinks, showers, and bathtubs, these high-quality filter baskets effectively trap hair, food particles, and debris while allowing water to flow freely. Durable, rust-resistant, and easy to clean — a perfect solution for preventing plumbing blockages in your home.
+                      - heading "Features:" [level=3] [ref=f362e7]:
+                        - strong [ref=f362e8]: "Features:"
+                      - list [ref=f362e9]:
+                        - listitem [ref=f362e10]:
+                          - paragraph [ref=f362e11]:
+                            - text: 🛁
+                            - strong [ref=f362e12]: "Effective Hair & Debris Catcher:"
+                            - text: Fine mesh design efficiently captures hair, food residue, and small debris to prevent drain clogging.
+                        - listitem [ref=f362e13]:
+                          - paragraph [ref=f362e14]:
+                            - text: 🧲
+                            - strong [ref=f362e15]: "High-Quality Stainless Steel:"
+                            - text: Made of premium rust-resistant stainless steel for durability and long-lasting use.
+                        - listitem [ref=f362e16]:
+                          - paragraph [ref=f362e17]:
+                            - text: 💧
+                            - strong [ref=f362e18]: "Universal Fit Design:"
+                            - text: Fits most drains with diameters from
+                            - strong [ref=f362e19]: 1.65" to 3.0"
+                            - text: ", suitable for sinks, bathtubs, and showers."
+                        - listitem [ref=f362e20]:
+                          - paragraph [ref=f362e21]:
+                            - text: 🧼
+                            - strong [ref=f362e22]: "Easy to Clean & Reuse:"
+                            - text: Simply lift out, empty, and rinse with water — quick and hygienic maintenance.
+                        - listitem [ref=f362e23]:
+                          - paragraph [ref=f362e24]:
+                            - text: 🧩
+                            - strong [ref=f362e25]: "Smooth Edges & Stable Fit:"
+                            - text: Rounded edges prevent scratching your sink or tub; stays securely in place.
+                        - listitem [ref=f362e26]:
+                          - paragraph [ref=f362e27]:
+                            - text: 🌿
+                            - strong [ref=f362e28]: "Eco-Friendly & Reusable:"
+                            - text: A sustainable alternative to disposable drain filters, reducing plastic waste.
+                      - heading "Specifications:" [level=3] [ref=f362e29]:
+                        - strong [ref=f362e30]: "Specifications:"
+                      - list [ref=f362e31]:
+                        - listitem [ref=f362e32]:
+                          - paragraph [ref=f362e33]:
+                            - strong [ref=f362e34]: "Quantity:"
+                            - text: 2 Pieces
+                        - listitem [ref=f362e35]:
+                          - paragraph [ref=f362e36]:
+                            - strong [ref=f362e37]: "Material:"
+                            - text: Stainless Steel
+                        - listitem [ref=f362e38]:
+                          - paragraph [ref=f362e39]:
+                            - strong [ref=f362e40]: "Color:"
+                            - text: Silver
+                        - listitem [ref=f362e41]:
+                          - paragraph [ref=f362e42]:
+                            - strong [ref=f362e43]: "Size Range:"
+                            - text: Fits Drains from 1.65" to 3.0" (4.2 cm – 7.6 cm)
+                        - listitem [ref=f362e44]:
+                          - paragraph [ref=f362e45]:
+                            - strong [ref=f362e46]: "Type:"
+                            - text: Drain Strainer / Hair Catcher / Filter Basket
+                        - listitem [ref=f362e47]:
+                          - paragraph [ref=f362e48]:
+                            - strong [ref=f362e49]: "Application:"
+                            - text: Bathroom, bathtub, kitchen sink, shower drain
+                        - listitem [ref=f362e50]:
+                          - paragraph [ref=f362e51]:
+                            - strong [ref=f362e52]: "Cleaning:"
+                            - text: Rinse or wipe clean after use
+                      - heading "Why You’ll Love It" [level=3] [ref=f362e53]:
+                        - strong [ref=f362e54]: Why You’ll Love It
+                      - paragraph [ref=f362e55]:
+                        - text: Say goodbye to clogged drains and messy cleanups! This
+                        - strong [ref=f362e56]: 2Pc Stainless Steel Drain Strainer Set
+                        - text: provides a simple, reusable, and effective way to keep your plumbing clear and running smoothly — perfect for every modern household.
+          - generic [ref=e1011]:
+            - generic [ref=e1012]:
+              - generic [ref=e1013]:
+                - heading "About this seller" [level=2] [ref=e1014]:
+                  - generic [ref=e1016]: About this seller
+                - generic [ref=e1017]:
+                  - link [ref=e1019] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/usaonemart?_trksid=p4429486.m145687.l149266
+                    - img [ref=e1021]
+                  - generic [ref=e1022]:
+                    - heading "USA One Mart" [level=3] [ref=e1023]:
+                      - link "USA One Mart" [ref=e1024] [cursor=pointer]:
+                        - /url: https://www.ebay.com/str/usaonemart?_trksid=p4429486.m145687.l149267
+                    - paragraph [ref=e1025]: 99.4% positive feedback•41K items sold
+                - generic [ref=e1028]:
+                  - generic [ref=e1030]:
+                    - generic [ref=e1031]:
+                      - img
+                    - generic [ref=e1032]: Joined Mar 2024
+                  - generic [ref=e1034]:
+                    - generic [ref=e1035]:
+                      - img
+                    - generic [ref=e1036]: Usually responds within 24 hours
+                - generic [ref=e1037]:
+                  - link "Visit store" [ref=e1038] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/usaonemart?_trksid=p4429486.m145687.l149086
+                    - generic [ref=e1039]: Visit store
+                  - button "Message seller - opens in a new dialog" [ref=e1040] [cursor=pointer]:
+                    - generic [ref=e1041]:
+                      - text: Message seller
+                      - generic [ref=e1042]: "- opens in a new dialog"
+                  - button "Save seller - Save this seller md.asifpa-0" [ref=e1044] [cursor=pointer]:
+                    - generic [ref=e1045]:
+                      - img
+                    - generic [ref=e1046]: Save seller
+              - generic [ref=e1048]:
+                - heading "Detailed seller ratings" [level=3] [ref=e1049]
+                - generic [ref=e1050]:
+                  - generic [ref=e1051]: Average for the last 12 months
+                  - generic [ref=e1052]:
+                    - generic [ref=e1053]:
+                      - generic [ref=e1054]: Accurate description
+                      - progressbar [ref=e1055]
+                      - generic [ref=e1056]: "4.9"
+                    - generic [ref=e1057]:
+                      - generic [ref=e1058]: Reasonable shipping cost
+                      - progressbar [ref=e1059]
+                      - generic [ref=e1060]: "5.0"
+                    - generic [ref=e1061]:
+                      - generic [ref=e1062]: Shipping speed
+                      - progressbar [ref=e1063]
+                      - generic [ref=e1064]: "5.0"
+                    - generic [ref=e1065]:
+                      - generic [ref=e1066]: Communication
+                      - progressbar [ref=e1067]
+                      - generic [ref=e1068]: "4.9"
+              - generic [ref=e1069]:
+                - generic [ref=e1070]:
+                  - heading "Popular categories from this store" [level=3] [ref=e1071]
+                  - link "See all categories" [ref=e1073] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=md.asifpa-0&store_name=usaonemart&_oac=1
+                    - generic [ref=e1074]:
+                      - text: See all
+                      - generic [ref=e1075]: categories
+                - generic [ref=e1076]:
+                  - link "Travel" [ref=e1078] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/usaonemart/Travel/_i.html?_sacat=3252
+                  - link "Toys & Hobbies" [ref=e1080] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/usaonemart/Toys-Hobbies/_i.html?_sacat=220
+                  - link "Video Games & Consoles" [ref=e1082] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/usaonemart/Video-Games-Consoles/_i.html?_sacat=1249
+                  - link "Consumer Electronics" [ref=e1084] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/usaonemart/Consumer-Electronics/_i.html?_sacat=293
+                  - link "Musical Instruments & Gear" [ref=e1086] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/usaonemart/Musical-Instruments-Gear/_i.html?_sacat=619
+                  - link "Cameras & Photo" [ref=e1088] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/usaonemart/Cameras-Photo/_i.html?_sacat=625
+                  - link "Sports Mem, Cards & Fan Shop" [ref=e1090] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/usaonemart/Sports-Mem-Cards-Fan-Shop/_i.html?_sacat=64482
+            - generic [ref=e1093]:
+              - heading "Seller feedback (24,829)" [level=2] [ref=e1094]
+              - generic [ref=e1095]:
+                - tablist [ref=e1096]:
+                  - tab "This item (96)" [selected] [ref=e1097]:
+                    - generic [ref=e1098]: This item (96)
+                  - tab "All items (24,829)" [ref=e1099]:
+                    - generic [ref=e1100]: All items (24,829)
+                - tabpanel "This item (96)" [ref=e1102]:
+                  - generic [ref=e1104]:
+                    - generic [ref=e1105]:
+                      - 'button "Filter: All ratings" [ref=e1108] [cursor=pointer]':
+                        - generic [ref=e1109]:
+                          - generic [ref=e1110]: "Filter:"
+                          - generic [ref=e1111]: All ratings
+                          - img
+                      - list [ref=e1112]:
+                        - listitem [ref=e1113]:
+                          - link "Satisfaction" [ref=e1114] [cursor=pointer]:
+                            - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=365979395302&username=md.asifpa-0&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aproduct-satisfaction&q=365979395302&sort=RELEVANCEV2
+                            - generic:
+                              - generic: Satisfaction
+                        - listitem [ref=e1115]:
+                          - link "Fit" [ref=e1116] [cursor=pointer]:
+                            - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=365979395302&username=md.asifpa-0&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Afit&q=365979395302&sort=RELEVANCEV2
+                            - generic:
+                              - generic: Fit
+                        - listitem [ref=e1117]:
+                          - link "Value" [ref=e1118] [cursor=pointer]:
+                            - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=365979395302&username=md.asifpa-0&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aprice&q=365979395302&sort=RELEVANCEV2
+                            - generic:
+                              - generic: Value
+                        - listitem [ref=e1119]:
+                          - link "Usage" [ref=e1120] [cursor=pointer]:
+                            - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=365979395302&username=md.asifpa-0&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Ausage&q=365979395302&sort=RELEVANCEV2
+                            - generic:
+                              - generic: Usage
+                        - listitem [ref=e1121]:
+                          - link "Quality" [ref=e1122] [cursor=pointer]:
+                            - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=365979395302&username=md.asifpa-0&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aquality&q=365979395302&sort=RELEVANCEV2
+                            - generic:
+                              - generic: Quality
+                        - listitem [ref=e1123]:
+                          - link "Condition" [ref=e1124] [cursor=pointer]:
+                            - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=365979395302&username=md.asifpa-0&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Acondition&q=365979395302&sort=RELEVANCEV2
+                            - generic:
+                              - generic: Condition
+                        - listitem [ref=e1125]:
+                          - link "Appearance" [ref=e1126] [cursor=pointer]:
+                            - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=365979395302&username=md.asifpa-0&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aappearance&q=365979395302&sort=RELEVANCEV2
+                            - generic:
+                              - generic: Appearance
+                        - listitem [ref=e1127]:
+                          - link "Dimensions" [ref=e1128] [cursor=pointer]:
+                            - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=365979395302&username=md.asifpa-0&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Adimensions&q=365979395302&sort=RELEVANCEV2
+                            - generic:
+                              - generic: Dimensions
+                    - list [ref=e1129]:
+                      - listitem [ref=e1130]:
+                        - generic [ref=e1131]:
+                          - generic [ref=e1133]:
+                            - generic [ref=e1134]:
+                              - img "Positive feedback rating"
+                            - generic [ref=e1135]:
+                              - text: k***k (552)
+                              - generic [ref=e1136]: "- Feedback left by buyer."
+                            - generic [ref=e1139]: Past 6 months
+                            - generic [ref=e1140]: Verified purchase
+                          - generic [ref=e1142]: this 2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65"-3.0" fits perfect on my Tub and it is a great deal and the shipping was fast, thanks!
+                      - listitem [ref=e1143]:
+                        - generic [ref=e1144]:
+                          - generic [ref=e1146]:
+                            - generic [ref=e1147]:
+                              - img "Positive feedback rating"
+                            - generic [ref=e1148]:
+                              - text: 0***1 (18)
+                              - generic [ref=e1149]: "- Feedback left by buyer."
+                            - generic [ref=e1152]: Past 6 months
+                            - generic [ref=e1153]: Verified purchase
+                          - generic [ref=e1155]: Great product and great seller! These stainless steel bathtub drain strainers fit perfectly and do an excellent job catching hair while allowing water to drain freely. They’re sturdy, easy to install, and simple to clean. Shipping was fast and the seller was very responsive. Highly recommend both the product and the seller!
+                      - listitem [ref=e1156]:
+                        - generic [ref=e1157]:
+                          - generic [ref=e1159]:
+                            - generic [ref=e1160]:
+                              - img "Positive feedback rating"
+                            - generic [ref=e1161]:
+                              - text: 5***w (689)
+                              - generic [ref=e1162]: "- Feedback left by buyer."
+                            - generic [ref=e1165]: Past month
+                            - generic [ref=e1166]: Verified purchase
+                          - generic [ref=e1168]:
+                            - text: As pictured as described, brand new. Good price for two, seems to be good quality stainless steel. Nice shiny new, and it fits the drain.
+                            - generic [ref=e1169]:
+                              - generic [ref=e1170]:
+                                - text: "Reply from: md.asifpa-0"
+                                - generic [ref=e1171]: "- Feedback replied by seller md.asifpa-0."
+                                - generic [ref=e1172]: "- Feedback replied by seller md.asifpa-0."
+                              - generic [ref=e1173]: Thank you for your feedback! We truly appreciate your support and look forward to your next visit. Be sure to explore our latest items; there’re plenty of new and exciting products waiting for you.
+                      - listitem [ref=e1174]:
+                        - generic [ref=e1175]:
+                          - generic [ref=e1177]:
+                            - generic [ref=e1178]:
+                              - img "Positive feedback rating"
+                            - generic [ref=e1179]:
+                              - text: x***t (545)
+                              - generic [ref=e1180]: "- Feedback left by buyer."
+                            - generic [ref=e1183]: Past 6 months
+                            - generic [ref=e1184]: Verified purchase
+                          - generic [ref=e1186]: A perfect fit for my tub that i can pop in and out to clean with a much finer strainer to keep any excess of going down and no stupid screw to remove either. VERY slow to ship, purchased 02/22 and received 03/14 so be aware but still a very useful thing to have and use.
+                      - listitem [ref=e1187]:
+                        - generic [ref=e1188]:
+                          - generic [ref=e1190]:
+                            - generic [ref=e1191]:
+                              - img "Positive feedback rating"
+                            - generic [ref=e1192]:
+                              - text: a***j (2192)
+                              - generic [ref=e1193]: "- Feedback left by buyer."
+                            - generic [ref=e1196]: Past 6 months
+                            - generic [ref=e1197]: Verified purchase
+                          - generic [ref=e1199]: The order was promptly shipped and arrived in excellent condition. It was as described and very affordably priced. The bathtub strainer look and fit well. Just what I needed. Thank you!
+                      - listitem [ref=e1200]:
+                        - generic [ref=e1201]:
+                          - generic [ref=e1203]:
+                            - generic [ref=e1204]:
+                              - img "Positive feedback rating"
+                            - generic [ref=e1205]:
+                              - text: e***e (123)
+                              - generic [ref=e1206]: "- Feedback left by buyer."
+                            - generic [ref=e1209]: Past 6 months
+                            - generic [ref=e1210]: Verified purchase
+                          - generic [ref=e1212]: fits good just wish the holes were bigger so it would drain faster
+                      - listitem [ref=e1213]:
+                        - generic [ref=e1214]:
+                          - generic [ref=e1216]:
+                            - generic [ref=e1217]:
+                              - img "Positive feedback rating"
+                            - generic [ref=e1218]:
+                              - text: b***b (210)
+                              - generic [ref=e1219]: "- Feedback left by buyer."
+                            - generic [ref=e1222]: Past 6 months
+                            - generic [ref=e1223]: Verified purchase
+                          - generic [ref=e1225]: Great product, great seller, great experience, good deal, looks great, fast shipping. I wouldn't think twice before buying from them again.
+                      - listitem [ref=e1226]:
+                        - generic [ref=e1227]:
+                          - generic [ref=e1229]:
+                            - generic [ref=e1230]:
+                              - img "Positive feedback rating"
+                            - generic [ref=e1231]:
+                              - text: r***o (959)
+                              - generic [ref=e1232]: "- Feedback left by buyer."
+                            - generic [ref=e1235]: Past month
+                            - generic [ref=e1236]: Verified purchase
+                          - generic [ref=e1238]:
+                            - text: good price good condition
+                            - generic [ref=e1239]:
+                              - generic [ref=e1240]:
+                                - text: "Reply from: md.asifpa-0"
+                                - generic [ref=e1241]: "- Feedback replied by seller md.asifpa-0."
+                                - generic [ref=e1242]: "- Feedback replied by seller md.asifpa-0."
+                              - generic [ref=e1243]: Thank you for your feedback! We truly appreciate your support and look forward to your next visit. Be sure to explore our latest items; there’re plenty of new and exciting products waiting for you.
+                    - link "See all feedback. Opens in a new tab" [ref=e1244] [cursor=pointer]:
+                      - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=365979395302&username=md.asifpa-0&filter=feedback_page%3ARECEIVED_AS_SELLER&q=365979395302&sort=RELEVANCEV2
+                      - text: See all feedback
+          - generic [ref=e1246]:
+            - navigation "Quick Links" [ref=e1247]:
+              - link "Back to home page" [ref=e1248] [cursor=pointer]:
+                - /url: https://www.ebay.com
+              - button "Return to top" [ref=e1249] [cursor=pointer]
+            - generic [ref=e1251]:
+              - heading "More to explore :" [level=2] [ref=e1254]
+              - list [ref=e1256]:
+                - listitem [ref=e1257]:
+                  - link "Stainless Steel Bathtubs," [ref=e1258] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Stainless-Steel-Bathtubs/42025/bn_7828144
+                - listitem [ref=e1259]:
+                  - link "Stainless Steel Colanders, Strainers & Sifters," [ref=e1260] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Stainless-Steel-Colanders-Strainers-Sifters/20636/bn_7117365386
+                - listitem [ref=e1261]:
+                  - link "Stainless Steel Freestanding Bathtubs," [ref=e1262] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Stainless-Steel-Freestanding-Bathtubs/42025/bn_17404343
+                - listitem [ref=e1263]:
+                  - link "Stainless Steel Bathtub Bathtub Caddies/Trays," [ref=e1264] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Stainless-Steel-Bathtub-Bathtub-Caddies-Trays/54075/bn_3272820
+                - listitem [ref=e1265]:
+                  - link "Stainless Steel Walk - In Bathtubs," [ref=e1266] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Stainless-Steel-Walk-In-Bathtubs/42025/bn_73509246
+                - listitem [ref=e1267]:
+                  - link "Stainless Steel Bathtub Caddies & Trays," [ref=e1268] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Stainless-Steel-Bathtub-Caddies-Trays/54075/bn_3272785
+                - listitem [ref=e1269]:
+                  - link "Stainless Steel Tea Strainer Tea Infusers," [ref=e1270] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Stainless-Steel-Tea-Strainer-Tea-Infusers/177754/bn_7116065027
+                - listitem [ref=e1271]:
+                  - link "Bathroom Drain Stoppers & Strainers," [ref=e1272] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Bathroom-Drain-Stoppers-Strainers/260554/bn_7117214243
+                - listitem [ref=e1273]:
+                  - link "Stainless Steel Hanging Bathtub Shower Shelves," [ref=e1274] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Stainless-Steel-Hanging-Bathtub-Shower-Shelves/54075/bn_93473809
+                - listitem [ref=e1275]:
+                  - link "Stainless Steel Kitchen Sink Baskets" [ref=e1276] [cursor=pointer]:
+                    - /url: https://www.ebay.com/b/Stainless-Steel-Kitchen-Sink-Baskets/46283/bn_7115701159
+            - generic [ref=e1278]:
+              - heading "Shop Top Sellers and Highly Rated Products in Drain Stoppers & Strainers" [level=2] [ref=e1279]
+              - generic [ref=e1280]:
+                - generic [ref=e1281]:
+                  - heading "Best Sellers" [level=3] [ref=e1282]
+                  - list [ref=e1283]:
+                    - listitem [ref=e1284]:
+                      - link "Tubshroom SHGRA727 Drain Strainer - Gray" [ref=e1285] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/888036621
+                        - generic [ref=e1286]: Tubshroom SHGRA727 Drain Strainer - Gray
+                    - listitem [ref=e1287]:
+                      - link "Watco 38516-CP Push Pull Replacement Stopper with 5/16 & 3/8 Pins Chrome Plated" [ref=e1288] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/4018773367
+                        - generic [ref=e1289]: Watco 38516-CP Push Pull Replacement Stopper with 5/16 & 3/8 Pins Chrome Plated
+                    - listitem [ref=e1290]:
+                      - link "TubShroom TSULT455 Ultra Revolutionary Bath Tub Drain Protector Hair Catcher" [ref=e1291] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/18032263330
+                        - generic [ref=e1292]: TubShroom TSULT455 Ultra Revolutionary Bath Tub Drain Protector Hair Catcher
+                    - listitem [ref=e1293]:
+                      - link "TubShroom Ultra Platinum Bundle Bathtub Strainer / Hair Catcher / Stopper" [ref=e1294] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/21090446998
+                        - generic [ref=e1295]: TubShroom Ultra Platinum Bundle Bathtub Strainer / Hair Catcher / Stopper
+                    - listitem [ref=e1296]:
+                      - link "Kohler 2 In. H Pop-up Bathtub Drain Stopper and Lift Toggle in Polished Chrome" [ref=e1297] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/25008536773
+                        - generic [ref=e1298]: Kohler 2 In. H Pop-up Bathtub Drain Stopper and Lift Toggle in Polished Chrome
+                - generic [ref=e1299]:
+                  - heading "Top Rated" [level=3] [ref=e1300]
+                  - list [ref=e1301]:
+                    - listitem [ref=e1302]:
+                      - link "TubShroom TSULT455 Ultra Revolutionary Bath Tub Drain Protector Hair Catcher" [ref=e1303] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/18032263330
+                        - generic [ref=e1304]: TubShroom TSULT455 Ultra Revolutionary Bath Tub Drain Protector Hair Catcher
+                    - listitem [ref=e1305]:
+                      - link "Danco 5 In. Flat Suction Sink Stopper 89042" [ref=e1306] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/1800897572
+                        - generic [ref=e1307]: Danco 5 In. Flat Suction Sink Stopper 89042
+                    - listitem [ref=e1308]:
+                      - link "NDS 241 2' Channel Grate for Spee-d Drain Gray" [ref=e1309] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/2116676658
+                        - generic [ref=e1310]: NDS 241 2' Channel Grate for Spee-d Drain Gray
+                    - listitem [ref=e1311]:
+                      - link "2pack Tub Stopper 6in Silicone Flat Suction Cover Bathtub Stoper Drain Universal" [ref=e1312] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/22025111758
+                        - generic [ref=e1313]: 2pack Tub Stopper 6in Silicone Flat Suction Cover Bathtub Stoper Drain Universal
+                    - listitem [ref=e1314]:
+                      - link "Kohler Cartridges 1068204 Cartridge Assembly" [ref=e1315] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/7012056871
+                        - generic [ref=e1316]: Kohler Cartridges 1068204 Cartridge Assembly
+            - generic [ref=e1318]:
+              - heading "Related searches" [level=2] [ref=e1319]
+              - list [ref=e1320]:
+                - listitem [ref=e1321]:
+                  - link "Bathtub Drain Hair Catcher" [ref=e1322] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/bathtub-drain-hair-catcher?_nkw=bathtub+drain+hair+catcher
+                    - generic [ref=e1323]: Bathtub Drain Hair Catcher
+                - listitem [ref=e1324]:
+                  - link "Shower Drain Hair Catcher" [ref=e1325] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/shower-drain-hair-catcher?_nkw=shower+drain+hair+catcher
+                    - generic [ref=e1326]: Shower Drain Hair Catcher
+                - listitem [ref=e1327]:
+                  - link "Bathtub Drain Hair Strainer" [ref=e1328] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/bathtub-drain-hair-strainer?_nkw=bathtub+drain+hair+strainer
+                    - generic [ref=e1329]: Bathtub Drain Hair Strainer
+                - listitem [ref=e1330]:
+                  - link "Sink Hair Catcher" [ref=e1331] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/sink-hair-catcher?_nkw=sink+hair+catcher
+                    - generic [ref=e1332]: Sink Hair Catcher
+                - listitem [ref=e1333]:
+                  - link "Bathtub Strainer Basket" [ref=e1334] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/bathtub-strainer-basket?_nkw=bathtub+strainer+basket
+                    - generic [ref=e1335]: Bathtub Strainer Basket
+                - listitem [ref=e1336]:
+                  - link "Drain Cover Hair Catcher" [ref=e1337] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/drain-cover-hair-catcher?_nkw=drain+cover+hair+catcher
+                    - generic [ref=e1338]: Drain Cover Hair Catcher
+                - listitem [ref=e1339]:
+                  - link "Bathroom Hair Catcher" [ref=e1340] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/bathroom-hair-catcher?_nkw=bathroom+hair+catcher
+                    - generic [ref=e1341]: Bathroom Hair Catcher
+                - listitem [ref=e1342]:
+                  - link "Shower Drain Strainer" [ref=e1343] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/shower-drain-strainer?_nkw=shower+drain+strainer
+                    - generic [ref=e1344]: Shower Drain Strainer
+                - listitem [ref=e1345]:
+                  - link "Bathtub Hair Catcher" [ref=e1346] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/bathtub-hair-catcher?_nkw=bathtub+hair+catcher
+                    - generic [ref=e1347]: Bathtub Hair Catcher
+                - listitem [ref=e1348]:
+                  - link "Tub Hair Catcher" [ref=e1349] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/tub-hair-catcher?_nkw=tub+hair+catcher
+                    - generic [ref=e1350]: Tub Hair Catcher
+                - listitem [ref=e1351]:
+                  - link "Sink Drain Catcher" [ref=e1352] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/sink-drain-catcher?_nkw=sink+drain+catcher
+                    - generic [ref=e1353]: Sink Drain Catcher
+                - listitem [ref=e1354]:
+                  - link "Shower Hair Catcher" [ref=e1355] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/shower-hair-catcher?_nkw=shower+hair+catcher
+                    - generic [ref=e1356]: Shower Hair Catcher
+                - listitem [ref=e1357]:
+                  - link "Sink Drain Basket" [ref=e1358] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/sink-drain-basket?_nkw=sink+drain+basket
+                    - generic [ref=e1359]: Sink Drain Basket
+                - listitem [ref=e1360]:
+                  - link "Sink Strainer Basket" [ref=e1361] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/sink-strainer-basket?_nkw=sink+strainer+basket
+                    - generic [ref=e1362]: Sink Strainer Basket
+                - listitem [ref=e1363]:
+                  - link "Shower Drain Hair Catcher Mesh Stickers" [ref=e1364] [cursor=pointer]:
+                    - /url: https://www.ebay.com/shop/shower-drain-hair-catcher-mesh-stickers?_nkw=shower+drain+hair+catcher+mesh+stickers
+                    - generic [ref=e1365]: Shower Drain Hair Catcher Mesh Stickers
+  - contentinfo [ref=e1374]:
+    - list [ref=e1375]:
+      - listitem [ref=e1376]:
+        - link "About eBay" [ref=e1377] [cursor=pointer]:
+          - /url: https://www.ebayinc.com
+      - listitem [ref=e1378]:
+        - link "Announcements" [ref=e1379] [cursor=pointer]:
+          - /url: https://community.ebay.com/t5/Announcements/bg-p/Announcements
+      - listitem [ref=e1380]:
+        - link "Community" [ref=e1381] [cursor=pointer]:
+          - /url: https://community.ebay.com
+      - listitem [ref=e1382]:
+        - link "Security Center" [ref=e1383] [cursor=pointer]:
+          - /url: https://pages.ebay.com/securitycenter/index.html
+      - listitem [ref=e1384]:
+        - link "Seller Center" [ref=e1385] [cursor=pointer]:
+          - /url: https://www.ebay.com/sellercenter
+      - listitem [ref=e1386]:
+        - link "Policies" [ref=e1387] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/policies/default/ebays-rules-policies?id=4205
+      - listitem [ref=e1388]:
+        - link "Affiliates" [ref=e1389] [cursor=pointer]:
+          - /url: https://partnernetwork.ebay.com/
+      - listitem [ref=e1390]:
+        - link "Product Safety Tips" [ref=e1391] [cursor=pointer]:
+          - /url: https://pages.ebay.com/safetytips
+      - listitem [ref=e1392]:
+        - link "Help & Contact" [ref=e1393] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/home
+      - listitem [ref=e1394]:
+        - link "Site Map" [ref=e1395] [cursor=pointer]:
+          - /url: https://pages.ebay.com/sitemap.html
+    - generic [ref=e1396]:
+      - text: Copyright © 1995-2026 eBay Inc. All Rights Reserved.
+      - link "Accessibility" [ref=e1397] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/accessibility/
+      - text: ","
+      - link "User Agreement" [ref=e1398] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259
+      - text: ","
+      - link "Privacy" [ref=e1399] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260
+      - text: ","
+      - link "Consumer Health Data" [ref=e1400] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/consumer-health-data-privacy-policy/
+      - text: ","
+      - link "Payments Terms of Use" [ref=e1401] [cursor=pointer]:
+        - /url: https://pages.ebay.com/payment/2.0/terms.html
+      - text: ","
+      - link "Cookies" [ref=e1402] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/ebay-cookie-notice?id=4267
+      - text: ","
+      - link "CA Privacy Notice" [ref=e1403] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/state-privacy-disclosures/#california
+      - text: ","
+      - link "Your Privacy Choices" [ref=e1404] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice/ccpa
+      - text: and
+      - link "AdChoice" [ref=e1405] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice
+        - text: AdChoice
+        - img
+  - img
+  - img [ref=e1407]

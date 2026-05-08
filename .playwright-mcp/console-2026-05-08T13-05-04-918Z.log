@@ -1,0 +1,4 @@
+[     169ms] [ERROR] [NoriLogger] [WARN] DSPClientStrategy No events to send to endpoint @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:10
+[    1141ms] [ERROR] Failed to load resource: net::ERR_TRUST_TOKEN_OPERATION_FAILED @ https://www.amazon.com/tt/i:0
+[    1389ms] [LOG] [NoriLogger] Initialized successfully @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:26
+[    1421ms] [ERROR] [NoriLogger] [WARN] DSPClientStrategy NoriLogger: Timer for asinImageRender already exists. @ https://m.media-amazon.com/images/I/B1r9sfGYJvL.js:10

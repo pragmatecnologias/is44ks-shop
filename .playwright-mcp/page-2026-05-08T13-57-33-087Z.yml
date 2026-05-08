@@ -1,0 +1,1235 @@
+- generic [active] [ref=e1]:
+  - img
+  - img
+  - img
+  - img
+  - img
+  - generic [ref=e3]:
+    - banner [ref=e7]:
+      - link "Skip to main content" [ref=e9] [cursor=pointer]:
+        - /url: "#mainContent"
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e13]:
+            - text: Hi!
+            - link "Sign in" [ref=e14] [cursor=pointer]:
+              - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&sgfl=gh&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F256997153775
+            - generic [ref=e15]:
+              - text: or
+              - link "register" [ref=e16] [cursor=pointer]:
+                - /url: https://signup.ebay.com/pa/crte?ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F256997153775
+          - link "Deals" [ref=e18] [cursor=pointer]:
+            - /url: https://www.ebay.com/deals
+          - link "Brand Outlet" [ref=e20] [cursor=pointer]:
+            - /url: https://www.ebay.com/b/Brand-Outlet/bn_7115532402
+          - link "Gift Cards" [ref=e22] [cursor=pointer]:
+            - /url: https://www.ebay.com/giftcards
+          - link "Help & Contact" [ref=e24] [cursor=pointer]:
+            - /url: https://www.ebay.com/help/home
+        - generic [ref=e25]:
+          - link "Sell" [ref=e28] [cursor=pointer]:
+            - /url: https://www.ebay.com/sl/sell
+          - generic [ref=e29]:
+            - link "Watchlist" [ref=e30] [cursor=pointer]:
+              - /url: https://www.ebay.com/mye/myebay/watchlist
+              - generic [ref=e31]: Watchlist
+              - img
+            - button "Expand Watch List" [ref=e32]
+          - generic [ref=e33]:
+            - link "My eBay" [ref=e34] [cursor=pointer]:
+              - /url: https://www.ebay.com/mys/home?source=GBH
+              - generic [ref=e35]: My eBay
+              - img
+            - button "Expand My eBay" [ref=e36]
+          - button "Notifications" [ref=e39] [cursor=pointer]:
+            - img
+            - generic [ref=e40]: Notifications
+          - generic [ref=e42]:
+            - link "Your shopping cart contains 0 items" [ref=e43] [cursor=pointer]:
+              - /url: https://cart.ebay.com
+              - generic "Your shopping cart contains 0 items" [ref=e44]:
+                - img
+            - button "Expand Cart" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - link "eBay Home" [ref=e48] [cursor=pointer]:
+            - /url: https://www.ebay.com
+            - img "eBay Home" [ref=e49]
+          - button "Shop by category" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: Shop by category
+            - img
+        - generic [ref=e59]:
+          - status [ref=e60]
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - combobox "Search for anything" [ref=e64]
+              - img
+            - combobox "Select a category for search" [ref=e65]:
+              - option "All Categories" [selected]
+              - option "Antiques"
+              - option "Art"
+              - option "Baby"
+              - option "Books"
+              - option "Business & Industrial"
+              - option "Cameras & Photo"
+              - option "Cell Phones & Accessories"
+              - option "Clothing, Shoes & Accessories"
+              - option "Coins & Paper Money"
+              - option "Collectibles"
+              - option "Computers/Tablets & Networking"
+              - option "Consumer Electronics"
+              - option "Crafts"
+              - option "Dolls & Bears"
+              - option "Movies & TV"
+              - option "eBay Motors"
+              - option "Entertainment Memorabilia"
+              - option "Gift Cards & Coupons"
+              - option "Health & Beauty"
+              - option "Home & Garden"
+              - option "Jewelry & Watches"
+              - option "Music"
+              - option "Musical Instruments & Gear"
+              - option "Pet Supplies"
+              - option "Pottery & Glass"
+              - option "Real Estate"
+              - option "Specialty Services"
+              - option "Sporting Goods"
+              - option "Sports Mem, Cards & Fan Shop"
+              - option "Stamps"
+              - option "Tickets & Experiences"
+              - option "Toys & Hobbies"
+              - option "Travel"
+              - option "Video Games & Consoles"
+              - option "Everything Else"
+          - generic [ref=e66]:
+            - button "Search" [ref=e67] [cursor=pointer]:
+              - generic [ref=e68]: Search
+            - link "Advanced" [ref=e69] [cursor=pointer]:
+              - /url: https://www.ebay.com/sch/ebayadvsearch
+    - main [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - generic [ref=e75]:
+            - link "LIVE Shop live events Discover exclusive drops and deals See what’s live" [ref=e82] [cursor=pointer]:
+              - /url: https://www.ebay.com/ebaylive
+              - generic [ref=e83]:
+                - generic [ref=e84]:
+                  - img
+                - generic [ref=e85]: LIVE
+              - generic [ref=e86]: Shop live events
+              - generic [ref=e87]: Discover exclusive drops and deals
+              - button "See what’s live" [ref=e88]
+            - generic [ref=e97]:
+              - heading "People who viewed this item also viewed" [level=2] [ref=e104]
+              - group [ref=e106]:
+                - list [ref=e109]:
+                  - listitem [ref=e110]:
+                    - generic [ref=e112]:
+                      - generic [ref=e118]:
+                        - heading "Garbage Disposal Air Switch Kit, Dual Outlet Sink Top Switch Button for All Foo" [level=3] [ref=e119]
+                        - generic [ref=e121]: $99.54
+                        - generic [ref=e123]: Free delivery
+                        - generic [ref=e125]: Sponsored
+                      - link "Garbage Disposal Air Switch Kit, Dual Outlet Sink Top Switch Button for All Foo" [ref=e126] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/358509745815?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEAQinwVAY0Fl62fEJdXNAf0%3D%26itm%3D358509745815%26noa%3D0%26plcampt%3D0%3A162546948017%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D13%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D6100ba8ae3394d04a7141bcb8c8f629e%26pg%3D2332490&_trksid=p2332490.c101224.m-1&itmprp=cksum%3A3585097458156100ba8ae3394d04a7141bcb8c8f629e%7Cenc%3AAQALAAAA4HU%252FGPBKMoWrH2cpzpvK9FDC5c4FxwFIV%252Bq0okjrJ6w9cB%252BqWqTCByXEsJeNzj%252BLPZ6Y%252Bcb%252BSNENjzLG3DpJu0lgaV7vfabp44rveKdl3BEwM95i3Wd4EcubIlqEv0zljxY10qwuyXcMEhMn0FRZAYkanxTpCkj9GLAknCG%252FahCL%252B2HBz2s33fb8kquB3qnZ2pkBU7Gf%252Be4AtH7K%252FnvP1At5%252BV4BfvjbC8ey7r8ezNOFgJwKYfMXnfBgZrgGHRTkQBsqYljCb6pIn6nKREJ8xVNcLlF4Fzvvw4MHK0fOniWZ%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y23XVX198B3QPVAJXPB14
+                  - listitem [ref=e127]:
+                    - generic [ref=e129]:
+                      - generic [ref=e135]:
+                        - heading "2026 Upgraded Push Button Air Switch for Garbage Disposal - Waterproof & Durable" [level=3] [ref=e136]
+                        - generic [ref=e138]: $16.49
+                        - generic [ref=e140]:
+                          - generic [ref=e141]: previous price
+                          - text: $21.99
+                        - generic [ref=e143]: Free delivery
+                      - link "2026 Upgraded Push Button Air Switch for Garbage Disposal - Waterproof & Durable" [ref=e144] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/177895223436?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEGBMuRNqE2CRUF%2FvHASBDQE%3D%26itm%3D177895223436%26noa%3D1%26plcampt%3D0%3A158935711018%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D20200818143230%26ao%3D1%26rk%3D2%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D6100ba8ae3394d04a7141bcb8c8f629e%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                  - listitem [ref=e145]:
+                    - generic [ref=e147]:
+                      - generic [ref=e153]:
+                        - heading "UL Listed Air Switch Kit for Garbage Disposal 3.58” Extra Long Air Button USA" [level=3] [ref=e154]
+                        - generic [ref=e156]: $22.49
+                        - generic [ref=e158]: Free delivery
+                      - link "UL Listed Air Switch Kit for Garbage Disposal 3.58” Extra Long Air Button USA" [ref=e159] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/127717601611?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEDMrsyWaoVf30qKFnf9ui%2Bs%3D%26itm%3D127717601611%26noa%3D1%26plcampt%3D0%3A11374895017%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D20200818143230%26ao%3D1%26rk%3D1%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D6100ba8ae3394d04a7141bcb8c8f629e%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                  - listitem [ref=e160]:
+                    - generic [ref=e162]:
+                      - generic [ref=e168]:
+                        - heading "Uimoso Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal" [level=3] [ref=e169]
+                        - generic [ref=e171]: $18.99
+                        - generic [ref=e173]: Free delivery
+                      - link "Uimoso Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal" [ref=e174] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/127207364761?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26algo%3DHOMESPLICE.SIM%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D0%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEKi7HsCzOX0gmQkgtmb7rxY%3D%26itm%3D127207364761%26noa%3D1%26ao%3D1%26rk%3D3%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D6100ba8ae3394d04a7141bcb8c8f629e%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - generic [ref=e180]:
+                - generic [ref=e182]:
+                  - generic [ref=e183]:
+                    - button "Previous image - Item images thumbnails" [disabled] [ref=e184] [cursor=pointer]:
+                      - img
+                    - generic [ref=e185]:
+                      - button "Picture 1 of 12" [ref=e186] [cursor=pointer]:
+                        - img "Picture 1 of 12" [ref=e187]
+                      - button "Picture 2 of 12" [ref=e188] [cursor=pointer]:
+                        - img "Picture 2 of 12" [ref=e189]
+                      - button "Picture 3 of 12" [ref=e190] [cursor=pointer]:
+                        - img "Picture 3 of 12" [ref=e191]
+                      - button "Picture 4 of 12" [ref=e192] [cursor=pointer]:
+                        - img "Picture 4 of 12" [ref=e193]
+                      - button "Picture 5 of 12" [ref=e194] [cursor=pointer]:
+                        - img "Picture 5 of 12" [ref=e195]
+                      - button "Picture 6 of 12" [ref=e196] [cursor=pointer]:
+                        - img "Picture 6 of 12" [ref=e197]
+                      - button "Picture 7 of 12" [ref=e198] [cursor=pointer]
+                      - button "Picture 8 of 12" [ref=e199] [cursor=pointer]
+                      - button "Picture 9 of 12" [ref=e200] [cursor=pointer]
+                      - button "Picture 10 of 12" [ref=e201] [cursor=pointer]
+                      - button "Picture 11 of 12" [ref=e202] [cursor=pointer]
+                      - button "Picture 12 of 12" [ref=e203] [cursor=pointer]
+                    - button "Next image - Item images thumbnails" [ref=e204] [cursor=pointer]:
+                      - img
+                  - generic [ref=e205]:
+                    - heading "Picture 1 of 12" [level=2] [ref=e206]
+                    - generic [ref=e210]: In 2 carts
+                    - button "Previous image - Item images thumbnails" [ref=e212] [cursor=pointer]:
+                      - img
+                    - region "Opens image gallery dialog VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 1 of 12" [ref=e213]:
+                      - group "1 of 12" [ref=e214]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 1 of 12" [ref=e215]
+                      - group "2 of 12" [ref=e216]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 2 of 12" [ref=e217]
+                      - group "3 of 12" [ref=e218]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 3 of 12" [ref=e219]
+                      - group "4 of 12" [ref=e220]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 4 of 12" [ref=e221]
+                      - group "5 of 12" [ref=e222]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 5 of 12" [ref=e223]
+                      - group "6 of 12" [ref=e224]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 6 of 12" [ref=e225]
+                      - group "7 of 12" [ref=e226]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 7 of 12" [ref=e227]
+                      - group "8 of 12" [ref=e228]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 8 of 12" [ref=e229]
+                      - group "9 of 12" [ref=e230]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 9 of 12" [ref=e231]
+                      - group "10 of 12" [ref=e232]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 10 of 12" [ref=e233]
+                      - group "11 of 12" [ref=e234]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 11 of 12" [ref=e235]
+                      - group "12 of 12" [ref=e236]:
+                        - img "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal - Picture 12 of 12" [ref=e237]
+                    - generic [ref=e238]:
+                      - button "Opens image gallery" [ref=e239] [cursor=pointer]:
+                        - img
+                      - button "Add to watchlist - 8 watchers" [ref=e241] [cursor=pointer]:
+                        - generic [ref=e242]: "8"
+                        - img
+                    - button "Next image - Item images thumbnails" [ref=e244] [cursor=pointer]:
+                      - img
+                - generic [ref=e249]:
+                  - generic [ref=e250]: Have one to sell?
+                  - link "Sell one like this" [ref=e252] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sl/list?mode=SellLikeItem&itemId=256997153775&rt=nc&_trksid=p4429486.m117039.l2567
+                    - generic [ref=e253]: Sell one like this
+                  - link "Sell something else" [ref=e255] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sl/prelist/suggest
+                    - generic [ref=e256]: Sell something else
+                - button "Share" [ref=e262] [cursor=pointer]:
+                  - img
+                  - generic [ref=e263]: Share
+              - generic [ref=e274]:
+                - generic [ref=e277]:
+                  - generic [ref=e279]:
+                    - heading "Similar Items" [level=2] [ref=e281]
+                    - generic [ref=e284]:
+                      - generic [ref=e285]: 8d4c2d95-2a90-4806-9a95-48fda1d81572
+                      - generic [ref=e286]: fdfdb211-050f-4a8d-9ba3-7a46e2569353
+                      - generic [ref=e288]: 595c8122-c06c-40a9-8232-ce53d980e44a
+                      - generic [ref=e289]: S
+                      - generic [ref=e290]: d5198c77-bd7e-4d69-91f9-7d9eae55cf85
+                      - generic [ref=e291]: p
+                      - generic [ref=e292]: 1caa5ef6-023e-4ea1-8506-c7c12077e257
+                      - generic [ref=e293]: 4f976a73-0291-4e87-92bb-4ac085c9eab4
+                      - generic [ref=e294]: 4046316b-4450-4594-8094-074e814ad3ba
+                      - generic [ref=e296]: 080c4a2c-eb98-4102-adc6-c82b81f01672
+                      - generic [ref=e297]: o
+                      - generic [ref=e298]: be66c21d-095a-472e-a4f1-70f05dcebfac
+                      - generic [ref=e299]: 11474816-1a7b-4f79-bb86-8a8ab931316a
+                      - generic [ref=e300]: "n"
+                      - generic [ref=e301]: 68c53bf5-7a06-49c1-a31b-ddae28489bf6
+                      - generic [ref=e302]: s
+                      - generic [ref=e303]: 1f9fdc66-7738-4538-9319-ec8204b5f76b
+                      - generic [ref=e304]: o
+                      - generic [ref=e305]: 014c8f95-d04f-4d8b-9691-b5f7639fd1ec
+                      - generic [ref=e306]: 5639e9fb-ef1a-4a0a-aadc-87392011a7a0
+                      - generic [ref=e307]: r
+                      - generic [ref=e308]: 6d163e9c-914d-4320-b984-9d38177e57af
+                      - generic [ref=e310]: db2aa09f-6529-4e25-89b0-c05af4cb2d5b
+                      - generic [ref=e311]: 052cf955-1389-4e75-bf28-1b6a13257cb0
+                      - generic [ref=e312]: e
+                      - generic [ref=e313]: b5db69ca-ae32-4e92-b3a7-9d237a589c6d
+                      - generic [ref=e314]: 29c66e52-eadb-4611-80d0-9a8123aeca1d
+                      - generic [ref=e315]: d
+                      - generic [ref=e316]: df3db827-5ca0-47f2-949e-19d4da413065
+                      - generic [ref=e318]: 9e1f5d15-79fb-48ae-a868-b2aef3851c06
+                      - generic [ref=e319]: acdf2c91-0550-4d22-8499-8b11df703a2a
+                      - generic [ref=e320]: fe1893a9-2a56-40d3-836c-bc6af4610701
+                      - generic [ref=e321]: f3f424d7-fcf7-417e-a901-f25a41fa656e
+                      - generic [ref=e322]: 9811993e-dc7a-4b6d-9168-a6516b190b3c
+                      - generic [ref=e323]: f05fb2c2-2999-4087-97c2-31f598e82b56
+                      - generic [ref=e325]: 090c5b6e-efd5-4ae8-b9a5-3ac204f1db57
+                      - generic [ref=e326]: 1a6b5139-6fc6-496b-8128-0f54139b0681
+                  - link "See all" [ref=e329] [cursor=pointer]:
+                    - /url: https://www.ebay.com/recs?component=recs-below-hero-carousel&placement_title=i18n.Tag_SIs&sourceModuleId=101875&item_id=256997153775&algos=HOMESPLICE.SIM.SimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco&placement_subTitle=i18n.ModuleSubTitle_Sponsored&homespliceOverrideConfig=%7Bsplice.cpc-config-dweb.cpc-expansion-slot-ids%3D%5B1%2C+3%2C+5%2C+7%2C+9%2C+11%5D%2Csplice.cpc-config-dweb.smart-price-parmas.undere-threshold%3D4%2Csplice.cpc-config-dweb.smart-price-parmas.enable-overe%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-roas-calibration-by-l2%3Dfalse%2Csplice.cpc-config-dweb.smart-price-parmas.enable-undere%3Dtrue%2Csplice.cpc-config-dweb.max-cpc-slots-num%3D6%2Csplice.cpc-config-dweb.blend-reserve-price-config.reserve-price-strategy%3D2%2Csplice.cpc-config-dweb.enable-low-roas-filter%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-cvr-calibration-by-l2%3Dtrue%2Csplice.cpc-config-dweb.blend-reserve-price-config.cpa-cpm-multiplier.-1%3D15%2Csplice.cpc-config-dweb.cpc-low-roas-dimension%3D%5BblacklistLeaf%2C+version01%5D%2Csplice.cpc-config-dweb.smart-price-parmas.overe-threshold%3D4%7D
+                    - generic [ref=e330]: See all
+                - group [ref=e332]:
+                  - generic [ref=e333]:
+                    - button "Go to the previous slide, Similar Items" [disabled] [ref=e334]:
+                      - img
+                    - list [ref=e336]:
+                      - listitem [ref=e337]:
+                        - generic [ref=e339]:
+                          - generic [ref=e345]:
+                            - heading "UL Listed Air Switch Kit for US Garbage Disposal 3.58” Extra Long Air Button" [level=3] [ref=e346]
+                            - generic [ref=e347]:
+                              - generic [ref=e349]: New
+                              - generic [ref=e350]: $24.99
+                            - generic [ref=e352]: Free delivery
+                            - generic [ref=e354]: 54 sold
+                          - link "UL Listed Air Switch Kit for US Garbage Disposal 3.58” Extra Long Air Button" [ref=e355] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/306565065575?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEJkoy%2BOtv1WrbMHF28Am2xU%3D%26itm%3D306565065575%26noa%3D0%26plcampt%3D0%3A11945608018%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D1%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3065650655759004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbFtq3ucjRP4hwV2pyHp89TFwSeBcyX4suhA4KFjHaEsbScIgx%252Flje1XyVQC8hDE92Efe%252F1pqID2lFYKQKC9pxFwHcKSmdT4NNN72%252B4AorAKagX1AaHG64cuffSGPI4rKFOp1gS9n7EFgVNZLrIMuvmtFFyefW%252BP8rRWPAwR9r6Mp%252FxC2HzIhPu81mBtszM7rR%252FU4EJnUAAjxd2pM5HfaDMTZ7JFSplCoSS5HhjKmMeqrXE6Pq26Sbscux7CcxKr5%252B100VaVBWW5Pizas8aIA7WR7vYxze8q25NJIX%252FxjeqFc%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y23XVSZ4QXW8Z6XDGPTRF
+                      - listitem [ref=e356]:
+                        - generic [ref=e358]:
+                          - generic [ref=e364]:
+                            - heading "Garbage Disposal Air Switch Kit with Power Cord Kit Stainless Steel 2.5\" Button" [level=3] [ref=e365]
+                            - generic [ref=e366]:
+                              - generic [ref=e368]: New
+                              - generic [ref=e369]: $24.98
+                            - generic [ref=e371]: Free delivery
+                            - generic [ref=e373]: 33 sold
+                          - link "Garbage Disposal Air Switch Kit with Power Cord Kit Stainless Steel 2.5\" Button" [ref=e374] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/306558276208?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEJkoy%2BOtv1WrbMHF28Am2xU%3D%26itm%3D306558276208%26noa%3D0%26plcampt%3D0%3A150226931018%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D3%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3065582762089004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbDDPJUliGv5%252BvXMAF4yLi7j8zn24EJ%252FxwH7vBilWarOPyrsl8xLvZQF0OaRVO3sG%252BW%252F5q4riY3k%252FcWl%252B0xZBAx71naJOKJ4GBcjrMxZzsKzTxrnQfi59lBttfQLbmCyQ1Bzx3LU8br6cC8Puq3XIPrSzjzPCEQGLYQ%252BcgFrqIjXEBrlkRj22Z6QjXhtKBlyIvkUm%252BCnzN5kz0icFnFcALvqzOQsk6wMhVusN0XRr9RuuNMMoJqSdD0rKYNieyHbRnbFdEn6xTrUm7WNcq2fYXB0nz%252FUpZoP0kfd4VvWaO9sU%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y23XYMWF5VR7EGB4KK7S7
+                          - button "Add Garbage Disposal Air Switch Kit with Power Cord Kit Stainless Steel 2.5\" Button to your watch list" [ref=e377] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e378]:
+                        - generic [ref=e380]:
+                          - generic [ref=e386]:
+                            - heading "Elegant Garbage Disposal Air Switch Kit - Brass Push Button, Easy Installation" [level=3] [ref=e387]
+                            - generic [ref=e388]:
+                              - generic [ref=e390]: New
+                              - generic [ref=e391]: $114.35
+                            - generic [ref=e393]: Free delivery
+                            - generic [ref=e395]: Seller 99.6% positive
+                          - link "Elegant Garbage Disposal Air Switch Kit - Brass Push Button, Easy Installation" [ref=e396] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/205862770338?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEDeq5Tm3V4vK5X8emdD%2BTkU%3D%26itm%3D205862770338%26noa%3D0%26plcampt%3D0%3A154153532018%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D4%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2058627703389004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbHzsIOOysEJarn0CmtUlCJjh4u%252FghH4K%252BgEgyW355OkBmy3oUC%252FwgIaZB23eQbMVx%252BXOAIGOBrPgyx%252F24GqZ7ug3CVVyStVmRV6YqGzP5%252B3FmpUxvRRlkURwc26T2E67XTfOlfNqHXVR9mwPY2%252F4WwPj8%252F0PYcy06yFfx%252FGp0DhvcHSKgVjgwJ0Km90TKmajXvWCMDcU2OhjXHkV35JMr8iPHrw6bTGKq2etps%252FXWFNiYB4KQbKAjE2RHXg8Pd1F3mQ9Rh73VS6o86hNEfDkp7tLol35shg2Efhs%252FeTFkDdk%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y23Z4JNPTD8D480FS7QRJ
+                          - button "Add Elegant Garbage Disposal Air Switch Kit - Brass Push Button, Easy Installation to your watch list" [ref=e399] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e400]:
+                        - generic [ref=e402]:
+                          - generic [ref=e408]:
+                            - heading [level=3] [ref=e409]: Elegant Garbage Disposal Air Switch Kit - Brass Push Button, Easy Installation
+                            - generic [ref=e410]:
+                              - generic [ref=e412]: New
+                              - generic [ref=e413]: $99.95
+                            - generic [ref=e415]: Free delivery
+                          - link [ref=e416] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/206255603048?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEJ2m7Ji0s%2Bo%2FiTjcQDrVFLA%3D%26itm%3D206255603048%26noa%3D0%26plcampt%3D0%3A151045015017%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D5%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2062556030489004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbge9LMRS6X8zA0yMPzespp8XsnPnlXaBXH7QvPm4kcyuhXaUD7LA8yAPAoLCVUE2GG6mQucPV0Qsq7l4BDrlLkr2%252FD50hlqn%252BTfvN1vfyKBU%252BiP%252B%252F1nDiWvtX0E6W2LktgjXgRO%252Fucm1vundZZYEX%252B53AGU6qf75lLqbReGn44k9C17%252B0rVrhY1hE59wwLNqtm9ZbuSFME2xRTZJeTU2mE8GHGJx4EAGlELrsZJuGZhU%252BrRY8w8rGJ1BfX%252BdUdUJzM%252Fp8HSpQ%252FG5w2SOR0HcxduHYALQmoHq6FFuAdAdaiqE%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y23Z9NA55X8AS8SY5BGMZ
+                          - button [ref=e419] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e420]:
+                        - generic [ref=e422]:
+                          - generic [ref=e428]:
+                            - generic [ref=e429]: LAST ONE
+                            - heading [level=3] [ref=e430]: Garbage Disposal Air Switch Kit, Dual Outlet Sink Top Switch Button for All Foo
+                            - generic [ref=e431]:
+                              - generic [ref=e433]: New
+                              - generic [ref=e434]: $99.54
+                            - generic [ref=e436]: Free delivery
+                            - generic [ref=e438]: Seller 99.1% positive
+                          - link [ref=e439] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/358509745815?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEAQinwVAY0Fl62fEJdXNAf0%3D%26itm%3D358509745815%26noa%3D0%26plcampt%3D0%3A162546948017%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D6%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3585097458159004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mb6x0H47oKm469DYWpprQWPBj6yNmllqqG7jNKFHqeaTsnvYF1BVp0jhuf1Al2hOyG3VikbPKOCJlZDvmE0UEOBHPW0FSYIlOKrNt5BhWsmczD%252FTixy0gDecSeVBzNRLpHu0b6mxWWGnaKcqk6DDmSjNMGdmb7yj%252FZwmZFjb2kMQ5SMnPncOaUV6xV4mD6M2ExZ0A%252B%252FO%252FS%252B%252BxcWBeJ6nA5zFvYZRJmC1h2cp0y2JQXbNIe1gjQYT%252BdCPk7SlsnMwK8X2pkIx6hfOCDZFW8MVeLIWdQXTrDx%252BRp%252FMfEqqUB43M%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y23ZDXJN4KMS4VDP2WDH4
+                          - button [ref=e442] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e443]:
+                        - generic [ref=e445]:
+                          - generic [ref=e451]:
+                            - heading [level=3] [ref=e452]: Cordless Air Switch Kit for Garbage Disposal - Matte Black Brass Push Button
+                            - generic [ref=e453]:
+                              - generic [ref=e455]: New
+                              - generic [ref=e456]: $108.99
+                            - generic [ref=e458]: Free 4 day delivery
+                            - generic [ref=e460]: Seller 99.8% positive
+                          - link [ref=e461] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/147261189754?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEGa217oMNB7%2BV4WdOyaBmkU%3D%26itm%3D147261189754%26noa%3D0%26plcampt%3D0%3A147731603014%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D7%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A1472611897549004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mb3%252BhgEtTsWC7%252BNrc80Jz9%252B2Mnt6hkn%252BP8i48mT4BHFVh0cs%252FMHVP%252FuIOEmx1ovV5mTedbpSaJpmqt%252BEiLU46kqIRy68g%252FhB4YP%252Bn3v0b%252FxUuezLAEUC3gWf0Qe18Anbxxxc6oBCAmfNrdXUpasRluz9iAsYsTPF0wUF49iXLKS58Z7RUDOEsKvW63AeISLTdNULkgzQOMGjZiQJqxl6cvgIujK16L54ti8UBU2T70arhvfe897o7Z0hRoyr5VhUikKvjLM2sDo%252BrTfTDGmXiC45bXri%252Fcsa9p5j0feCRmNFg%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y23ZHWBAGF0X1F2061QX4
+                          - button [ref=e464] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e465]:
+                        - generic [ref=e467]:
+                          - generic [ref=e473]:
+                            - heading [level=3] [ref=e474]: Garbage Disposal Air Switch Kit Dual Outlet Sink Top Waste Disposal Switch
+                            - generic [ref=e475]:
+                              - generic [ref=e477]: New
+                              - generic [ref=e478]: $49.83
+                            - generic [ref=e480]: Free delivery
+                            - generic [ref=e482]: Seller 99.7% positive
+                          - link [ref=e483] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/236184315239?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEFRInysS1JHyk%2F6Pv9pKTCg%3D%26itm%3D236184315239%26noa%3D0%26plcampt%3D0%3A163286792016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D8%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2361843152399004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbvaryKMf9pQ64Z9aiUyQvAI9%252Bkm9bqEvGf1ANIv2cQo37bSxfliLMwQGhG7yHdeDX0hUy2CfuSa7OauZqbWhIwlctwpB%252BbPsDL%252FyXorR%252BGmd6NkdffUmuPZDxp%252F8MXxMh2LjbUzVaErDZ0cbc4xxvfrvf5kgAr1B4aDfSb%252FS4gEMjq6ZiAe0eBiENUHkboQWUaSYHYWmBjCSOWeVZWgEHSFhiogBag9X1u9DxMrcWJRYHTAxI6quVHRdrygkEIATUR%252FxLqtQW0hhJYYnRyQLvF%252Fi5HGzFPOaCColTlRmieiM%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y23ZNZSX095JS42AZGRMF
+                          - button [ref=e486] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e487]:
+                        - generic [ref=e489]:
+                          - generic [ref=e495]:
+                            - generic [ref=e496]: LAST ONE
+                            - heading [level=3] [ref=e497]: ANWOLL Garbage Disposal Air Switch Sink Top Push Button, 5FT Champagne Bronze
+                            - generic [ref=e498]:
+                              - generic [ref=e500]: New
+                              - generic [ref=e501]: $24.51
+                            - generic [ref=e503]: Free 2-4 day delivery
+                          - link [ref=e504] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/127648752464?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEMChLSVXi27EZT62FehZcQI%3D%26itm%3D127648752464%26noa%3D0%26plcampt%3D0%3A160870934016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D9%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A1276487524649004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mb1dgfmsRTG6E%252BILjNyu4PbvEe1km4OVb2io4afQZIEdAG5PYNzjHzyqW5oOweorDoV0JyNJY4abguFwdn6wv%252Btn4Qo5EdD5ky0uxQRhMAzEQA7gUIU4AEkjwzunPc8q1U0F0I9s3zUld%252B2sQjgwSg744AlnNMfQXPYsWClAVcOCus3atUuODNvUswYSRoiyf%252FFWRAGAVfBXMOxiJGDPV9tBmneq70Vbofd4%252BuFnM%252FPY%252BenRUI7KTl%252FgubQhPApCzcP%252BrMwlJJunK0ab3uCIPh1Zc8AJdw1Jh5xnW3VLplXH0%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y23ZSW3DTTMHT8Q7YH48A
+                          - button [ref=e507] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e508]:
+                        - generic [ref=e510]:
+                          - generic [ref=e516]:
+                            - generic [ref=e517]: LAST ONE
+                            - heading [level=3] [ref=e518]: SinkTop Air Switch Kit (Long Full Brass Button) for Garbage Disposal, Cordles...
+                            - generic [ref=e519]:
+                              - generic [ref=e521]: New
+                              - generic [ref=e522]: $86.70
+                            - generic [ref=e524]: Free delivery
+                            - generic [ref=e526]: Seller 99.5% positive
+                          - link [ref=e527] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/389469581930?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAENy7scZ44Lg6kakJ0%2FS%2BtWI%3D%26itm%3D389469581930%26noa%3D0%26plcampt%3D0%3A13960374010%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D10%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3894695819309004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbFc7uW1ZTwEEewSwfYG3NND5P24fl03r%252Borbfcq0hlM5ZybXfQwXmNHRzXBi0rDeYgPpgoS2E6BK%252BRvFSnKqF0korGxdr8XkwpY59LHlP9nXepFEhFALyE5MN1paeFRJceTmG%252FBx1x62KtqBGWCYfhfikEtllcKam0zLdrOHX%252FAeu1rR0UwZa2X1Vf0ywMpDkO4jHfGKWBDZNQvnp0LgdLYWu%252FSaRZPrnMjF9WDb0Ud4%252F5V2Lu%252F4KY04XI9izAYmrB5puCG0NrCCjfoD9F5zFqdPGJbla8gTbMMlxzlfpIs0%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y23ZX0FAPYTS6VV1F68C3
+                          - button [ref=e530] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e531]:
+                        - generic [ref=e533]:
+                          - generic [ref=e539]:
+                            - heading [level=3] [ref=e540]: UL Listed Air Switch Kit for Garbage Disposal 3.58” Extra Long Air Button USA
+                            - generic [ref=e541]:
+                              - generic [ref=e543]: New
+                              - generic [ref=e544]: $22.49
+                            - generic [ref=e546]: Free delivery
+                            - generic [ref=e548]: Seller 99.1% positive
+                          - link [ref=e549] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/127717601611?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEDMrsyWaoVf30qKFnf9ui%2Bs%3D%26itm%3D127717601611%26noa%3D0%26plcampt%3D0%3A11374895017%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D11%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A1277176016119004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbKomsm7wg2NxkmqblyBSw985HB9Wn1CdQfc%252F7UmgK%252Fxsp6WHWN2JSD56umEU9%252BxxLIGR9eHGpw1PqxpkNZxwOwL3otPEUKsQHUifWvYtcSFp4f1T4%252B9ADcvq2xd7J5L2LNRU3Ok7f9usRKm%252BDbtlPLr0dkvv5vz45u8Mkob5pEKDo7DiMgzaCM6qTzqeZTOHJWQnCuy4%252FfHfkH5335%252BG2Xwp3%252BbhjwYYHnI%252BHWBBgBw2fBEmz2RC5RE4MwSUUAaemc%252F%252B1R9%252FouXY0yVwJkoI%252FTwF0XNu0xU0zl0AFe7euarc%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2401VY3ZEEZGX0H7AZAX
+                          - button [ref=e552] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e553]:
+                        - generic [ref=e555]:
+                          - generic [ref=e561]:
+                            - heading [level=3] [ref=e562]: VEVOR Garbage Disposal Air Switch Kit 2.5" Sink Top Air Switch Waste Disposal
+                            - generic [ref=e563]:
+                              - generic [ref=e565]: New
+                              - generic [ref=e566]: $19.90
+                            - generic [ref=e568]: Free delivery
+                            - generic [ref=e569]:
+                              - generic [ref=e570]:
+                                - img
+                              - generic [ref=e571]: Top Rated Plus
+                            - generic [ref=e574]: Seller 99.6% positive
+                          - link [ref=e575] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/256997153762?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEHghYlRViieAKSPf%2BszdmOo%3D%26itm%3D256997153762%26noa%3D0%26plcampt%3D0%3A152388426011%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D12%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2569971537629004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbIcrhLWDdO5W7Fb4isUyWFXHNKDyCExTjbSrVFbgGDwOy4eODIh0w%252FWZZr1WVGq%252BBwe9dI%252Frfi850vR8RY7Rno6Xp0I7urJNlvKykovpx5l%252F3ELjuOv9FFLNxCVVKZPWq0OuZ2c2HgXGnJhOoW0eJ1c6CCeLp5dlrlIDFyJUBghuRwDofRkzyYVzWcScRUuhHNIZciPdRgMIx08K0W03A%252B3ljIP7giNNCOIWBzxTwVuRrYbjC7pSKIXmmJvaRdrkauCekU3YrEGgzwK1NVP%252Bd%252FUNSPK4SmGw1gxNOQ1J%252FWTg%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y240507PXC842V28DA9NN
+                          - button [ref=e578] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e579]:
+                        - generic [ref=e581]:
+                          - generic [ref=e587]:
+                            - heading [level=3] [ref=e588]: Garbage Disposal Air Switch Kit, 3.5" Long Sink Top Air Switch for Food Waste...
+                            - generic [ref=e589]:
+                              - generic [ref=e591]: New
+                              - generic [ref=e592]: $40.13
+                            - generic [ref=e594]: Free delivery
+                            - generic [ref=e596]: Seller 99.7% positive
+                          - link [ref=e597] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/236429725395?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D256997153775%26sid%3DAQALAAAAEFRInysS1JHyk%2F6Pv9pKTCg%3D%26itm%3D236429725395%26noa%3D0%26plcampt%3D0%3A163286792016%26algo%3DHOMESPLICE.SIM%26brand%3DPentair%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D13%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D9004e6ca1b194b39adea7d96627442e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2364297253959004e6ca1b194b39adea7d96627442e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbKcRi2JuWsn1N8jrLK%252B%252BVeBkhXnaGPnHUDsKBHNlFcIqPhqVIBErMWyEH6pFUJaeWb1ikV5UYEbWJ7S%252FCpvQqQ2rBTgWLPHpGcHFY7S%252Ff5Ysdm70XF0UwexzUKoFYd%252BwNpHP%252Bmf3%252Bhm3fTgAk5zNLfPN9kWUIa6cFj29n%252B%252ByICdRMco%252BxJBIZQlyZlmPMOUyVW8SzjM2LVG4FsEKwalRnQpzEPY077ToN2PC%252Bv21PYg1rnlVjdGWWoGdQrDq8vGFYKpR2BTSrtGI4A0OntnTqb%252BLU%252FT4PNhRM4QXB%252FzVHBK4%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2409KV6HHW9R5P7BTH07
+                          - button [ref=e600] [cursor=pointer]:
+                            - img
+                    - button "Go to the next slide, Similar Items" [ref=e601]:
+                      - img
+            - generic [ref=e604]:
+              - heading "VEVOR Garbage Disposal Air Switch Kit 2.5\" Air Button for Food Waste Disposal" [level=1] [ref=e606]
+              - generic [ref=e608] [cursor=pointer]:
+                - generic [ref=e610]:
+                  - link [ref=e612]:
+                    - /url: https://www.ebay.com/str/equipmentwholesaler1?_trksid=p4429486.m3561.l161210
+                    - img [ref=e614]
+                  - generic [ref=e615]:
+                    - generic [ref=e616]:
+                      - link "VEVOR Distribution Store" [ref=e617]:
+                        - /url: https://www.ebay.com/str/equipmentwholesaler1?_trksid=p4429486.m3561.l161211
+                      - generic [ref=e619]: (125812)
+                    - generic [ref=e620]:
+                      - button "99.6% positive" [ref=e622]
+                      - link "Seller's other items" [ref=e624]:
+                        - /url: https://www.ebay.com/str/equipmentwholesaler1?_trksid=p4429486.m3561.l170197
+                        - generic [ref=e625]: Seller's other items
+                        - generic [ref=e626]: Seller's other items
+                      - button "Message seller" [ref=e628]:
+                        - generic [ref=e629]: Message seller
+                        - generic [ref=e630]: Message seller
+                - button "See more about this seller" [ref=e632]:
+                  - img
+              - generic [ref=e636]: US $17.90/ea
+              - generic [ref=e637]:
+                - generic [ref=e638]: "Condition:"
+                - generic [ref=e640]:
+                  - generic [ref=e641]:
+                    - generic [ref=e642]: New
+                    - generic [ref=e643]: New
+                  - button "More information - About this item condition" [ref=e644] [cursor=pointer]:
+                    - generic [ref=e645]:
+                      - img "More information - About this item condition"
+              - generic [ref=e646]:
+                - generic [ref=e648]:
+                  - generic [ref=e649]: "Quantity:"
+                  - button [disabled] [ref=e650]:
+                    - img
+                  - spinbutton "Quantity:" [ref=e651]: "1"
+                  - button [ref=e652]:
+                    - img
+                - status [ref=e653]: 52 sold
+              - generic [ref=e654]:
+                - generic [ref=e655]: "Bulk savings:"
+                - generic [ref=e656]:
+                  - button "Buy 1 for $17.90, selected" [ref=e657] [cursor=pointer]:
+                    - generic [ref=e658]: Buy 1
+                    - generic [ref=e659]: $17.90/ea
+                    - generic [ref=e660]: Buy 1 for $17.90
+                  - button "Buy 2 for $17.54 each one" [ref=e661] [cursor=pointer]:
+                    - generic [ref=e662]: Buy 2
+                    - generic [ref=e663]: $17.54/ea
+                    - generic [ref=e664]: Buy 2 for $17.54 each one
+                  - button "Buy 3 for $17.36 each one" [ref=e665] [cursor=pointer]:
+                    - generic [ref=e666]: Buy 3
+                    - generic [ref=e667]: $17.36/ea
+                    - generic [ref=e668]: Buy 3 for $17.36 each one
+                  - generic [ref=e669]:
+                    - generic [ref=e670]: 4 or more for $17.18/ea
+                    - generic [ref=e671]: Buy 4 or more for 17.18 each one
+              - list [ref=e673]:
+                - listitem [ref=e674]:
+                  - button "Buy It Now" [ref=e676] [cursor=pointer]:
+                    - generic [ref=e677]: Buy It Now
+                - listitem [ref=e678]:
+                  - button "Add to cart" [ref=e680] [cursor=pointer]:
+                    - generic [ref=e681]: Add to cart
+                - listitem [ref=e682]:
+                  - generic [ref=e684]:
+                    - status [ref=e685]: Add to Watchlist
+                    - link "Add to Watchlist" [ref=e690] [cursor=pointer]:
+                      - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F256997153775
+                      - generic [ref=e691]:
+                        - img
+                        - text: Add to Watchlist
+              - generic [ref=e694]:
+                - generic [ref=e695]:
+                  - generic [ref=e696]:
+                    - img
+                  - generic [ref=e698]: This one's trending. 52 have already sold.
+                - generic [ref=e699]:
+                  - generic [ref=e700]:
+                    - img
+                  - generic [ref=e702]: Breathe easy. Free shipping and returns.
+              - generic [ref=e705]:
+                - heading "Shipping, returns, and payments" [level=2] [ref=e708]:
+                  - generic [ref=e709]: Shipping, returns, and payments
+                - generic [ref=e711]:
+                  - generic [ref=e714]:
+                    - generic [ref=e717]: "Shipping:"
+                    - generic [ref=e719]:
+                      - generic [ref=e720]:
+                        - text: Free Standard Shipping.
+                        - button "See details for shipping" [ref=e721] [cursor=pointer]:
+                          - generic [ref=e722]:
+                            - text: See details
+                            - generic [ref=e723]: for shipping
+                      - generic [ref=e724]: "Located in: Perth Amboy, New Jersey, United States"
+                  - generic [ref=e728]:
+                    - generic [ref=e731]: "Delivery:"
+                    - generic [ref=e734]:
+                      - text: Estimated between Mon, May 11 and Thu, May 14 to 30339
+                      - button "Information - Estimated delivery date - opens a layer" [ref=e740]:
+                        - img
+              - generic [ref=e747]:
+                - generic [ref=e750]: "Returns:"
+                - generic [ref=e753]:
+                  - text: 30 days returns. Seller pays for return shipping.
+                  - button "See details - for more information about returns" [ref=e754] [cursor=pointer]:
+                    - generic [ref=e755]:
+                      - text: See details
+                      - generic [ref=e756]: "- for more information about returns"
+              - generic [ref=e759]:
+                - generic [ref=e763]:
+                  - generic [ref=e766]: "Payments:"
+                  - generic [ref=e769]:
+                    - img "PayPal" [ref=e770]
+                    - img "Venmo" [ref=e772]
+                    - img "Google Pay" [ref=e774]
+                    - img "Visa" [ref=e776]
+                    - img "Master Card" [ref=e778]
+                    - img "Discover" [ref=e780]
+                    - img "Diners Club" [ref=e783]
+                - generic [ref=e791]:
+                  - img "Paypal Credit" [ref=e793]
+                  - generic [ref=e794]:
+                    - text: Special financing available.
+                    - link "Learn more - for PayPal Credit, opens in a new window or tab" [ref=e795] [cursor=pointer]:
+                      - /url: https://www.billmelater.com/cm/paypal/landers/15ebayPPCNB.html
+                      - generic [ref=e796]:
+                        - text: Learn more
+                        - generic [ref=e797]: "- for PayPal Credit, opens in a new window or tab"
+              - generic [ref=e800]:
+                - heading "Shop with confidence" [level=2] [ref=e803]
+                - generic [ref=e804]:
+                  - generic [ref=e806]:
+                    - img
+                  - generic [ref=e807]:
+                    - generic [ref=e808]: Top Rated Plus
+                    - generic [ref=e809]:
+                      - text: Top rated seller, fast shipping, and free returns.
+                      - link "Learn more - Top Rated Plus - opens in a new window or tab" [ref=e810] [cursor=pointer]:
+                        - /url: https://www.ebay.com/help/buying/resolving-issues-sellers/seller-ratings?id=4023#TopRatedPlus
+                        - generic [ref=e811]:
+                          - text: Learn more
+                          - generic [ref=e812]: "- Top Rated Plus - opens in a new window or tab"
+                - generic [ref=e813]:
+                  - generic [ref=e815]:
+                    - img
+                  - generic [ref=e816]:
+                    - generic [ref=e817]: eBay Money Back Guarantee
+                    - generic [ref=e818]:
+                      - text: Get the item you ordered or your money back.
+                      - link "Learn more eBay Money Back Guarantee - opens new window or tab" [ref=e819] [cursor=pointer]:
+                        - /url: https://www.ebay.com/ebay-money-back-guarantee/
+                        - generic [ref=e820]:
+                          - text: Learn more
+                          - generic [ref=e821]: eBay Money Back Guarantee - opens new window or tab
+          - generic [ref=e822]:
+            - generic [ref=e827]:
+              - tablist [ref=e828]:
+                - tab "About this item" [selected] [ref=e829] [cursor=pointer]:
+                  - generic [ref=e830]: About this item
+              - tabpanel "About this item" [ref=e832]:
+                - generic [ref=e835]:
+                  - generic [ref=e838]:
+                    - generic [ref=e842]: Seller assumes all responsibility for this listing.
+                    - generic [ref=e846]: eBay item number:256997153775
+                    - generic [ref=e850]:
+                      - text: Last updated on May 07, 2026 15:13:22 PDT
+                      - link "View all revisions View all revisions" [ref=e851] [cursor=pointer]:
+                        - /url: https://www.ebay.com/rvh/256997153775?rt=nc&_trksid=p4429486.m148105.l48144
+                        - generic [ref=e852]:
+                          - text: View all revisions
+                          - generic [ref=e853]: View all revisions
+                  - generic [ref=e856]:
+                    - heading "Item specifics" [level=2] [ref=e859]:
+                      - generic [ref=e860]: Item specifics
+                    - generic [ref=e862]:
+                      - generic [ref=e863]:
+                        - generic [ref=e865]:
+                          - term [ref=e866]:
+                            - generic [ref=e868]: Condition
+                          - definition [ref=e869]:
+                            - generic [ref=e872]:
+                              - generic [ref=e873]: "New: A brand-new, unused, unopened, undamaged item in its original packaging (where packaging is ..."
+                              - button "Read more about the condition" [ref=e875]:
+                                - generic [ref=e876]:
+                                  - text: Read more
+                                  - generic [ref=e877]: about the condition
+                        - generic [ref=e879]:
+                          - term [ref=e880]:
+                            - generic [ref=e882]: Brand
+                          - definition [ref=e883]:
+                            - generic [ref=e885]: VEVOR
+                      - generic [ref=e886]:
+                        - generic [ref=e888]:
+                          - term [ref=e889]:
+                            - generic [ref=e891]: Type
+                          - definition [ref=e892]:
+                            - generic [ref=e894]: Air Switch
+                        - generic [ref=e896]:
+                          - term [ref=e897]:
+                            - generic [ref=e899]: MPN
+                          - definition [ref=e900]:
+                            - generic [ref=e902]: LJCLQKQKGTJ2N0WBB001
+                      - generic [ref=e903]:
+                        - generic [ref=e905]:
+                          - term [ref=e906]:
+                            - generic [ref=e908]: Compatible Garbage Disposal
+                          - definition [ref=e909]:
+                            - generic [ref=e911]: ≤ 2HP
+                        - generic [ref=e913]:
+                          - term [ref=e914]:
+                            - generic [ref=e916]: Length
+                          - definition [ref=e917]:
+                            - generic [ref=e919]: 2.5 inch / 63.5 mm
+                      - generic [ref=e920]:
+                        - generic [ref=e922]:
+                          - term [ref=e923]:
+                            - generic [ref=e925]: Suitable Hole Diameter
+                          - definition [ref=e926]:
+                            - generic [ref=e928]: 1.25 - 1.38 inch / 31.75 - 35.1 mm
+                        - generic [ref=e930]:
+                          - term [ref=e931]:
+                            - generic [ref=e933]: Item Model Number
+                          - definition [ref=e934]:
+                            - generic [ref=e936]: LF40C00079
+                      - generic [ref=e937]:
+                        - generic [ref=e939]:
+                          - term [ref=e940]:
+                            - generic [ref=e942]: Surface Finish
+                          - definition [ref=e943]:
+                            - generic [ref=e945]: Brushed Silver
+                        - generic [ref=e947]:
+                          - term [ref=e948]:
+                            - generic [ref=e950]: Net Weight
+                          - definition [ref=e951]:
+                            - generic [ref=e953]: 0.44 lbs / 0.2 kg
+                      - generic [ref=e954]:
+                        - generic [ref=e956]:
+                          - term [ref=e957]:
+                            - generic [ref=e959]: Power Module Outlet
+                          - definition [ref=e960]:
+                            - generic [ref=e962]: Single Outlet
+                        - generic [ref=e964]:
+                          - term [ref=e965]:
+                            - generic [ref=e967]: UPC
+                          - definition [ref=e968]:
+                            - generic [ref=e970]: "197988527220"
+                  - generic [ref=e971]:
+                    - generic [ref=e972]: Category
+                    - navigation "breadcrumb" [ref=e975]:
+                      - heading "breadcrumb" [level=2] [ref=e976]
+                      - list [ref=e977]:
+                        - listitem [ref=e978]:
+                          - link "Home & Garden" [ref=e979] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Home-Garden/11700/bn_1853126
+                          - img
+                        - listitem [ref=e980]:
+                          - button "breadcrumb menu" [ref=e982]:
+                            - generic [ref=e983]:
+                              - img
+                          - img
+                        - listitem [ref=e984]:
+                          - link "Plumbing & Fixtures" [ref=e985] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Home-Plumbing-Fixtures/20601/bn_2309995
+                          - img
+                        - listitem [ref=e986]:
+                          - link "Garbage Disposals" [ref=e987] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Garbage-Disposals/259867/bn_7115677660
+                          - img
+                        - listitem [ref=e988]:
+                          - link "Garbage Disposal Parts" [ref=e989] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Garbage-Disposal-Parts/259837/bn_7115814261
+                  - generic [ref=e990]:
+                    - heading "Item description from the seller" [level=2] [ref=e993]
+                    - iframe [ref=e994]:
+                      - generic [ref=f798e4]:
+                        - generic [ref=f798e5]:
+                          - generic [ref=f798e6]:
+                            - generic [ref=f798e8]: Clean Up Kitchen Sink Waste with One Button
+                            - img [ref=f798e10]
+                            - generic [ref=f798e12]: The VEVOR garbage disposal air switch kit fits standard sink hole diameters of 1.25–1.38 inches and is compatible with most garbage disposals (≤2HP). The 2.5-inch air switch button is suitable for stainless steel countertops, helping you maintain a cleaner, more organized sink.
+                          - generic [ref=f798e13]:
+                            - list [ref=f798e15]:
+                              - listitem [ref=f798e16]:
+                                - img [ref=f798e17]
+                            - generic [ref=f798e19]: Effectively reduce kitchen waste cleanup steps, prevent pipe clogs, and keep the sink clean and odor-free. With simple one-press operation, easily turn on and off, making your kitchen cleaner and more efficient.
+                          - generic [ref=f798e20]:
+                            - list [ref=f798e22]:
+                              - listitem [ref=f798e23]:
+                                - img [ref=f798e24]
+                            - generic [ref=f798e26]: 1. Mount the push button through a standard sink hole (1.25–1.38 inch diameter). 2. Attach air tubing between push button and power module tightly. 3. Plug the power module into a dedicated grounded 110-130V outlet that is continuously energized. 4. Connect the power module and disposer.
+                          - generic [ref=f798e27]:
+                            - list [ref=f798e29]:
+                              - listitem [ref=f798e30]:
+                                - img [ref=f798e31]
+                            - generic [ref=f798e33]: The 2.5-inch (63.5mm) air switch button for kitchen garbage disposal is suitable for stainless steel sink countertops and easy to install. It’s compatible with most garbage disposal brands (≤2HP), offering powerful support for a cleaner kitchen.
+                          - generic [ref=f798e34]:
+                            - list [ref=f798e36]:
+                              - listitem [ref=f798e37]:
+                                - img [ref=f798e38]
+                            - generic [ref=f798e40]: We offer a range of stylish button options, including Brushed Nickel, Brushed Gold, Chrome-Plated, and Brushed Silver, to suit different kitchen styles. Before ordering, please confirm your countertop’s thickness to choose the right switch for a proper fit.
+                          - img [ref=f798e42]
+                          - generic [ref=f798e43]:
+                            - paragraph [ref=f798e44]:
+                              - strong [ref=f798e45]: Features & Details
+                            - list [ref=f798e46]:
+                              - listitem [ref=f798e47]: "Wide Compatibility: This VEVOR garbage disposal air switch kit fits standard sink hole diameters of 1.25–1.38 inch / 31.75–35.1 mm. The air switch button is 2.5 inch / 63.5 mm long, suitable for stainless steel sink countertops and compatible with most garbage disposal brands (≤2HP)"
+                            - list [ref=f798e48]:
+                              - listitem [ref=f798e49]: "Durable & Safe: The cover of the garbage disposal air switch button is made of waterproof stainless steel with a brushed silver finish, resistant to rust and wear. It’s responsive to press - gently press to turn on the garbage disposal, and press again to turn it off"
+                            - list [ref=f798e50]:
+                              - listitem [ref=f798e51]: "More Enhanced Designs: Our air switch kit for waste disposer features a screw thread design—strong and not easy to fall off; thick internal silicone ensures a more flexible press, and the coil spring provides enhanced elasticity. Comes with an extended 4.92 ft / 1.5 m air tube for easy installation"
+                            - list [ref=f798e52]:
+                              - listitem [ref=f798e53]: "Easy Installation: 1. Mount the push button through a standard sink hole (1.25–1.38 inch diameter). 2. Attach air tubing between push button and power module tightly. 3. Plug the power module into a dedicated grounded 110-130V outlet that is continuously energized. 4. Connect power module and disposer"
+                            - list [ref=f798e54]:
+                              - listitem [ref=f798e55]: "Friendly Reminder: Before ordering, please confirm your countertop’s thickness to choose the right switch for a proper fit. In most cases, SHORT 2.5-INCH is for stainless steel sink tops and LONG 3.5-INCH is for thick countertop like granite, marble, quartz"
+                        - generic [ref=f798e56]:
+                          - radio [checked] [ref=f798e58] [cursor=pointer]
+                          - generic [ref=f798e59] [cursor=pointer]: SHIPPING
+                          - radio [ref=f798e60] [cursor=pointer]
+                          - generic [ref=f798e61] [cursor=pointer]: ABOUT US
+                          - radio [ref=f798e62] [cursor=pointer]
+                          - generic [ref=f798e63] [cursor=pointer]: PAYMENT
+                          - radio [ref=f798e64] [cursor=pointer]
+                          - generic [ref=f798e65] [cursor=pointer]: RETURNS
+                          - radio [ref=f798e66] [cursor=pointer]
+                          - generic [ref=f798e67] [cursor=pointer]: CONTACT
+                          - radio [ref=f798e68] [cursor=pointer]
+                          - generic [ref=f798e69] [cursor=pointer]: WARRANTY
+                          - generic [ref=f798e71]:
+                            - paragraph [ref=f798e72]:
+                              - text: Please be aware that
+                              - strong [ref=f798e73]: PO Box
+                              - generic [ref=f798e74]: cannot receive items,please DO NOT fill in the PO Box address.
+                            - list [ref=f798e75]:
+                              - listitem [ref=f798e76]:
+                                - strong [ref=f798e77]: "DELIVERY DAYS: 3-7 BUSINESS DAYS"
+                              - listitem [ref=f798e78]:
+                                - strong [ref=f798e79]:
+                                  - generic [ref=f798e80]:
+                                    - text: "3"
+                                    - strong [ref=f798e81]: BUSINESS DAYS
+                                    - text: SHIPPING OUT
+                              - listitem [ref=f798e82]:
+                                - strong [ref=f798e83]: SHIP FROM CA & TX & NJ & GA & NC &OR WAREHOUSE
+                            - paragraph
+                            - paragraph [ref=f798e84]:
+                              - generic [ref=f798e85]: "California Warehouse: City of Industry, CA"
+                            - paragraph [ref=f798e86]: "Texas Warehouse: Houston, TX"
+                            - paragraph [ref=f798e87]: "New Jersey Warehouse: Perth Amboy, NJ"
+                            - paragraph [ref=f798e88]: "New York State Warehouse: Perth Amboy, NJ"
+                            - paragraph [ref=f798e89]: "Georgia Warehouse: Austell,GA"
+                            - paragraph [ref=f798e90]: "North Carolina Warehouse: Grove NC"
+                            - paragraph [ref=f798e91]:
+                              - generic [ref=f798e92]: "Oregon Warehouse: AIRPORT WAY Portland,OR"
+            - generic [ref=e997]:
+              - generic [ref=e998]:
+                - generic [ref=e999]:
+                  - heading "About this seller" [level=2] [ref=e1000]:
+                    - generic [ref=e1002]: About this seller
+                  - generic [ref=e1003]:
+                    - link [ref=e1005] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1?_trksid=p4429486.m145687.l149266
+                      - img [ref=e1007]
+                    - generic [ref=e1008]:
+                      - heading "VEVOR Distribution Store" [level=3] [ref=e1009]:
+                        - link "VEVOR Distribution Store" [ref=e1010] [cursor=pointer]:
+                          - /url: https://www.ebay.com/str/equipmentwholesaler1?_trksid=p4429486.m145687.l149267
+                      - paragraph [ref=e1011]: 99.6% positive feedback•551K items sold
+                  - generic [ref=e1014]:
+                    - generic [ref=e1016]:
+                      - generic [ref=e1017]:
+                        - img
+                      - generic [ref=e1018]: Joined Apr 2011
+                    - generic [ref=e1020]:
+                      - generic [ref=e1021]:
+                        - img
+                      - generic [ref=e1022]: Usually responds within 24 hours
+                  - generic [ref=e1024]:
+                    - generic [ref=e1025]: VEVOR is a home improvement brand that empowers Home Creators to upgrade spaces with pro-level products at exceptional value. From backyard makeovers to apartmentinnovations, we deliver superior ...
+                    - group [ref=e1027]:
+                      - generic "See more" [ref=e1028]:
+                        - generic [ref=e1029]: See more
+                        - generic [ref=e1030]:
+                          - img
+                  - generic [ref=e1031]:
+                    - link "Visit store" [ref=e1032] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1?_trksid=p4429486.m145687.l149086
+                      - generic [ref=e1033]: Visit store
+                    - button "Message seller - opens in a new dialog" [ref=e1034] [cursor=pointer]:
+                      - generic [ref=e1035]:
+                        - text: Message seller
+                        - generic [ref=e1036]: "- opens in a new dialog"
+                    - button "Save seller - Save this seller myequipmentwholesaler" [ref=e1038] [cursor=pointer]:
+                      - generic [ref=e1039]:
+                        - img
+                      - generic [ref=e1040]: Save seller
+                - generic [ref=e1042]:
+                  - heading "Detailed seller ratings" [level=3] [ref=e1043]
+                  - generic [ref=e1044]:
+                    - generic [ref=e1045]: Average for the last 12 months
+                    - generic [ref=e1046]:
+                      - generic [ref=e1047]:
+                        - generic [ref=e1048]: Accurate description
+                        - progressbar [ref=e1049]
+                        - generic [ref=e1050]: "4.9"
+                      - generic [ref=e1051]:
+                        - generic [ref=e1052]: Reasonable shipping cost
+                        - progressbar [ref=e1053]
+                        - generic [ref=e1054]: "5.0"
+                      - generic [ref=e1055]:
+                        - generic [ref=e1056]: Shipping speed
+                        - progressbar [ref=e1057]
+                        - generic [ref=e1058]: "5.0"
+                      - generic [ref=e1059]:
+                        - generic [ref=e1060]: Communication
+                        - progressbar [ref=e1061]
+                        - generic [ref=e1062]: "5.0"
+                - generic [ref=e1063]:
+                  - generic [ref=e1064]:
+                    - heading "Popular categories from this store" [level=3] [ref=e1065]
+                    - link "See all categories" [ref=e1067] [cursor=pointer]:
+                      - /url: https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=myequipmentwholesaler&store_cat=0&store_name=equipmentwholesaler1&_oac=1
+                      - generic [ref=e1068]:
+                        - text: See all
+                        - generic [ref=e1069]: categories
+                  - generic [ref=e1070]:
+                    - link "🎁 20%+Off ✅Boat Steering kit✅" [ref=e1072] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1/20-Off-Boat-Steering-kit/_i.html?store_cat=42942844011
+                    - link "Air/Hydraulic/Bottle/ Car Jack" [ref=e1074] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1/Air-Hydraulic-Bottle-Car-Jack/_i.html?store_cat=42942853011
+                    - link "🚘Auto Repair Tools💰BestPrice" [ref=e1076] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1/Auto-Repair-Tools-BestPrice/_i.html?store_cat=42915744011
+                    - link "⭕Tire Bead Breaker🔨Durable" [ref=e1078] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1/Tire-Bead-Breaker-Durable/_i.html?store_cat=42915745011
+                    - link "⭐20%+OFF⭐Rolling Shop Stool⭐" [ref=e1080] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1/20-OFF-Rolling-Shop-Stool/_i.html?store_cat=42942865011
+                    - link "Portable Fuel Tank" [ref=e1082] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1/Portable-Fuel-Tank/_i.html?store_cat=42915749011
+                    - link "Air Vacuum Pump" [ref=e1084] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1/Air-Vacuum-Pump/_i.html?store_cat=42915752011
+                    - link "Boat Anchor" [ref=e1086] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1/Boat-Anchor/_i.html?store_cat=42915751011
+                    - link "Oil Drain Pan" [ref=e1088] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/equipmentwholesaler1/Oil-Drain-Pan/_i.html?store_cat=42915753011
+              - generic [ref=e1091]:
+                - heading "Seller feedback (136,904)" [level=2] [ref=e1092]
+                - generic [ref=e1093]:
+                  - tablist [ref=e1094]:
+                    - tab "This item (30)" [selected] [ref=e1095]:
+                      - generic [ref=e1096]: This item (30)
+                    - tab "All items (136,904)" [ref=e1097]:
+                      - generic [ref=e1098]: All items (136,904)
+                  - tabpanel "This item (30)" [ref=e1100]:
+                    - generic [ref=e1102]:
+                      - generic [ref=e1103]:
+                        - 'button "Filter: All ratings" [ref=e1106] [cursor=pointer]':
+                          - generic [ref=e1107]:
+                            - generic [ref=e1108]: "Filter:"
+                            - generic [ref=e1109]: All ratings
+                            - img
+                        - list [ref=e1110]:
+                          - listitem [ref=e1111]:
+                            - link "Value" [ref=e1112] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=256997153775&username=myequipmentwholesaler&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aprice&q=256997153775&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Value
+                          - listitem [ref=e1113]:
+                            - link "Appearance" [ref=e1114] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=256997153775&username=myequipmentwholesaler&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aappearance&q=256997153775&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Appearance
+                          - listitem [ref=e1115]:
+                            - link "Quality" [ref=e1116] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=256997153775&username=myequipmentwholesaler&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aquality&q=256997153775&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Quality
+                      - list [ref=e1117]:
+                        - listitem [ref=e1118]:
+                          - generic [ref=e1119]:
+                            - generic [ref=e1121]:
+                              - generic [ref=e1122]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1123]:
+                                - text: 1***y (456)
+                                - generic [ref=e1124]: "- Feedback left by buyer."
+                              - generic [ref=e1127]: Past 6 months
+                              - generic [ref=e1128]: Verified purchase
+                            - generic [ref=e1130]: good quality and condition , A very good unit for value and appearance
+                        - listitem [ref=e1131]:
+                          - generic [ref=e1132]:
+                            - generic [ref=e1134]:
+                              - generic [ref=e1135]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1136]:
+                                - text: 2***a (86)
+                                - generic [ref=e1137]: "- Feedback left by buyer."
+                              - generic [ref=e1140]: Past 6 months
+                              - generic [ref=e1141]: Verified purchase
+                            - generic [ref=e1143]: Shipped super fast, Installed it , works perfect. Very pleased
+                        - listitem [ref=e1144]:
+                          - generic [ref=e1145]:
+                            - generic [ref=e1147]:
+                              - generic [ref=e1148]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1149]:
+                                - text: e***k (793)
+                                - generic [ref=e1150]: "- Feedback left by buyer."
+                              - generic [ref=e1153]: Past month
+                              - generic [ref=e1154]: Verified purchase
+                            - generic [ref=e1156]: Fast shipping! Great price! Outstanding service! AAAAA+++++
+                        - listitem [ref=e1157]:
+                          - generic [ref=e1158]:
+                            - generic [ref=e1160]:
+                              - generic [ref=e1161]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1162]:
+                                - text: k***k (168)
+                                - generic [ref=e1163]: "- Feedback left by buyer."
+                              - generic [ref=e1166]: Past 6 months
+                              - generic [ref=e1167]: Verified purchase
+                            - generic [ref=e1169]: For this price item is very good
+                        - listitem [ref=e1170]:
+                          - generic [ref=e1171]:
+                            - generic [ref=e1173]:
+                              - generic [ref=e1174]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1175]:
+                                - text: j***l (64)
+                                - generic [ref=e1176]: "- Feedback left by buyer."
+                              - generic [ref=e1179]: Past 6 months
+                              - generic [ref=e1180]: Verified purchase
+                            - generic [ref=e1182]: Item as described fasy shipping good ebayer would use this vendor again!
+                        - listitem [ref=e1183]:
+                          - generic [ref=e1184]:
+                            - generic [ref=e1186]:
+                              - generic [ref=e1187]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1188]:
+                                - text: e***i (153)
+                                - generic [ref=e1189]: "- Feedback left by buyer."
+                              - generic [ref=e1192]: Past month
+                              - generic [ref=e1193]: Verified purchase
+                            - generic [ref=e1195]: Professional packaging and fast delivery.
+                        - listitem [ref=e1196]:
+                          - generic [ref=e1197]:
+                            - generic [ref=e1199]:
+                              - generic [ref=e1200]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1201]:
+                                - text: h***0 (1724)
+                                - generic [ref=e1202]: "- Feedback left by buyer."
+                              - generic [ref=e1205]: Past month
+                              - generic [ref=e1206]: Verified purchase
+                            - generic [ref=e1208]: Quick shipping recommend seller
+                        - listitem [ref=e1209]:
+                          - generic [ref=e1210]:
+                            - generic [ref=e1212]:
+                              - generic [ref=e1213]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1214]:
+                                - text: 6***c (340)
+                                - generic [ref=e1215]: "- Feedback left by buyer."
+                              - generic [ref=e1218]: Past 6 months
+                              - generic [ref=e1219]: Verified purchase
+                            - generic [ref=e1221]: As Described. Fast Shipping. AAA+
+                      - link "See all feedback. Opens in a new tab" [ref=e1222] [cursor=pointer]:
+                        - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=256997153775&username=myequipmentwholesaler&filter=feedback_page%3ARECEIVED_AS_SELLER&q=256997153775&sort=RELEVANCEV2
+                        - text: See all feedback
+            - generic [ref=e1224]:
+              - navigation "Quick Links" [ref=e1225]:
+                - link "Back to home page" [ref=e1226] [cursor=pointer]:
+                  - /url: https://www.ebay.com
+                - button "Return to top" [ref=e1227] [cursor=pointer]
+              - generic [ref=e1229]:
+                - heading "More to explore :" [level=2] [ref=e1232]
+                - list [ref=e1234]:
+                  - listitem [ref=e1235]:
+                    - link "Waste King Garbage Disposals," [ref=e1236] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Waste-King-Garbage-Disposals/259867/bn_7115681179
+                  - listitem [ref=e1237]:
+                    - link "Waste King Garbage Disposal Systems," [ref=e1238] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Waste-King-Garbage-Disposal-Systems/259836/bn_7848330
+                  - listitem [ref=e1239]:
+                    - link "Air Switch Garbage Disposal Parts," [ref=e1240] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Air-Switch-Garbage-Disposal-Parts/259837/bn_7115808239
+                  - listitem [ref=e1241]:
+                    - link "Waste King Garbage Disposal Parts," [ref=e1242] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Waste-King-Garbage-Disposal-Parts/259837/bn_7116034429
+                  - listitem [ref=e1243]:
+                    - link "InSinkErator Air Switch Garbage Disposal Parts," [ref=e1244] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/InSinkErator-Air-Switch-Garbage-Disposal-Parts/259837/bn_7116045369
+                  - listitem [ref=e1245]:
+                    - link "Unbranded Air Switch Garbage Disposal Parts," [ref=e1246] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Unbranded-Air-Switch-Garbage-Disposal-Parts/259837/bn_7117011768
+                  - listitem [ref=e1247]:
+                    - link "Westbrass Air Switch Garbage Disposal Parts," [ref=e1248] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Westbrass-Air-Switch-Garbage-Disposal-Parts/259837/bn_7117023468
+                  - listitem [ref=e1249]:
+                    - link "Garbage Disposals," [ref=e1250] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Garbage-Disposals/259867/bn_7115677660
+                  - listitem [ref=e1251]:
+                    - link "Waste King Continuous Feed Garbage Disposal Systems," [ref=e1252] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Waste-King-Continuous-Feed-Garbage-Disposal-Systems/259836/bn_7115837873
+                  - listitem [ref=e1253]:
+                    - link "Garbage Disposal Systems" [ref=e1254] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Garbage-Disposal-Systems/259836/bn_7848332
+              - generic [ref=e1256]:
+                - heading "Shop Top Sellers and Highly Rated Products in Garbage Disposal Parts" [level=2] [ref=e1257]
+                - generic [ref=e1258]:
+                  - generic [ref=e1259]:
+                    - heading "Best Sellers" [level=3] [ref=e1260]
+                    - list [ref=e1261]:
+                      - listitem [ref=e1262]:
+                        - link "ROHL AS426 Air Activated Switch Control Box" [ref=e1263] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/1300497471
+                          - generic [ref=e1264]: ROHL AS426 Air Activated Switch Control Box
+                      - listitem [ref=e1265]:
+                        - link "InSinkErator FLG-MTBLK Matte Black Garbage Disposal Sink Flange Emerson D4" [ref=e1266] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/1653389259
+                          - generic [ref=e1267]: InSinkErator FLG-MTBLK Matte Black Garbage Disposal Sink Flange Emerson D4
+                      - listitem [ref=e1268]:
+                        - link "KOHLER 4.44-in Vibrant Brush Moderne Brass Garbage Disposal Stopper R11352-C-2MB" [ref=e1269] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/8073101511
+                          - generic [ref=e1270]: KOHLER 4.44-in Vibrant Brush Moderne Brass Garbage Disposal Stopper R11352-C-2MB
+                      - listitem [ref=e1271]:
+                        - link "BLANCO 203443 Disposal Flange 3.5 Soft White" [ref=e1272] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/27073769298
+                          - generic [ref=e1273]: BLANCO 203443 Disposal Flange 3.5 Soft White
+                      - listitem [ref=e1274]:
+                        - link "HK Garbage Disposal Air Switch Kit with Power Cord Kit Sink Top Waste Disposer" [ref=e1275] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/9032302614
+                          - generic [ref=e1276]: HK Garbage Disposal Air Switch Kit with Power Cord Kit Sink Top Waste Disposer
+                  - generic [ref=e1277]:
+                    - heading "Top Rated" [level=3] [ref=e1278]
+                    - list [ref=e1279]:
+                      - listitem [ref=e1280]:
+                        - link "Delta Kitchen Faucet Cartridge Assembly (RP25513)" [ref=e1281] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/624328958
+                          - generic [ref=e1282]: Delta Kitchen Faucet Cartridge Assembly (RP25513)
+                      - listitem [ref=e1283]:
+                        - link "InSinkErator STS00 Garbage Disposal Dual Outlet Sink-Top Air Switch Kit" [ref=e1284] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/2254480803
+                          - generic [ref=e1285]: InSinkErator STS00 Garbage Disposal Dual Outlet Sink-Top Air Switch Kit
+                      - listitem [ref=e1286]:
+                        - link "InSinkErator Dishwasher Connector Kit (DWC00)" [ref=e1287] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/8018000695
+                          - generic [ref=e1288]: InSinkErator Dishwasher Connector Kit (DWC00)
+                      - listitem [ref=e1289]:
+                        - link "InSinkErator STS-SO Single Outlet Sink Top Switch with Chrome, Satin Nickel and White Buttons" [ref=e1290] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/710160555
+                          - generic [ref=e1291]: InSinkErator STS-SO Single Outlet Sink Top Switch with Chrome, Satin Nickel and White Buttons
+                      - listitem [ref=e1292]:
+                        - link "InSinkErator Qlm-00 Quick Lock Mount for Garbage Disposers" [ref=e1293] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/1000031449
+                          - generic [ref=e1294]: InSinkErator Qlm-00 Quick Lock Mount for Garbage Disposers
+              - generic [ref=e1296]:
+                - heading "Related searches" [level=2] [ref=e1297]
+                - list [ref=e1298]:
+                  - listitem [ref=e1299]:
+                    - link "Garbage Disposal Air Switch Kit" [ref=e1300] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-disposal-air-switch-kit?_nkw=garbage+disposal+air+switch+kit
+                      - generic [ref=e1301]: Garbage Disposal Air Switch Kit
+                  - listitem [ref=e1302]:
+                    - link "Air Switch for Garbage Disposal" [ref=e1303] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/air-switch-for-garbage-disposal?_nkw=air+switch+for+garbage+disposal
+                      - generic [ref=e1304]: Air Switch for Garbage Disposal
+                  - listitem [ref=e1305]:
+                    - link "Insinkerator Garbage Disposal Air Switch" [ref=e1306] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/insinkerator-garbage-disposal-air-switch?_nkw=insinkerator+garbage+disposal+air+switch
+                      - generic [ref=e1307]: Insinkerator Garbage Disposal Air Switch
+                  - listitem [ref=e1308]:
+                    - link "Kitchen Waste Disposer" [ref=e1309] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/kitchen-waste-disposer?_nkw=kitchen+waste+disposer
+                      - generic [ref=e1310]: Kitchen Waste Disposer
+                  - listitem [ref=e1311]:
+                    - link "Food Waste Disposer" [ref=e1312] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/food-waste-disposer?_nkw=food+waste+disposer
+                      - generic [ref=e1313]: Food Waste Disposer
+                  - listitem [ref=e1314]:
+                    - link "Garbage Disposer Parts" [ref=e1315] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-disposer-parts?_nkw=garbage+disposer+parts
+                      - generic [ref=e1316]: Garbage Disposer Parts
+                  - listitem [ref=e1317]:
+                    - link "Garbage Disposal 220 V" [ref=e1318] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-disposal-220v?_nkw=garbage+disposal+220v
+                      - generic [ref=e1319]: Garbage Disposal 220 V
+                  - listitem [ref=e1320]:
+                    - link "220 V Garbage Disposal" [ref=e1321] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/220v-garbage-disposal?_nkw=220v+garbage+disposal
+                      - generic [ref=e1322]: 220 V Garbage Disposal
+                  - listitem [ref=e1323]:
+                    - link "Air Switch Button" [ref=e1324] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/air-switch-button?_nkw=air+switch+button
+                      - generic [ref=e1325]: Air Switch Button
+                  - listitem [ref=e1326]:
+                    - link "Ge Garbage Disposal Parts" [ref=e1327] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/ge-garbage-disposal-parts?_nkw=ge+garbage+disposal+parts
+                      - generic [ref=e1328]: Ge Garbage Disposal Parts
+                  - listitem [ref=e1329]:
+                    - link "Garbage Disposer Cleaner" [ref=e1330] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-disposer-cleaner?_nkw=garbage+disposer+cleaner
+                      - generic [ref=e1331]: Garbage Disposer Cleaner
+                  - listitem [ref=e1332]:
+                    - link "Garbage Disposal Units" [ref=e1333] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-disposal-units?_nkw=garbage+disposal+units
+                      - generic [ref=e1334]: Garbage Disposal Units
+                  - listitem [ref=e1335]:
+                    - link "Air Compressor Cut Off Switch" [ref=e1336] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/air-compressor-cut-off-switch?_nkw=air+compressor+cut+off+switch
+                      - generic [ref=e1337]: Air Compressor Cut Off Switch
+                  - listitem [ref=e1338]:
+                    - link "Garbage Disposal Cleaner" [ref=e1339] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-disposal-cleaner?_nkw=garbage+disposal+cleaner
+                      - generic [ref=e1340]: Garbage Disposal Cleaner
+                  - listitem [ref=e1341]:
+                    - link "Garbage Disposal Baffle" [ref=e1342] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-disposal-baffle?_nkw=garbage+disposal+baffle
+                      - generic [ref=e1343]: Garbage Disposal Baffle
+        - img [ref=e1347]
+  - contentinfo [ref=e1353]:
+    - list [ref=e1354]:
+      - listitem [ref=e1355]:
+        - link "About eBay" [ref=e1356] [cursor=pointer]:
+          - /url: https://www.ebayinc.com
+      - listitem [ref=e1357]:
+        - link "Announcements" [ref=e1358] [cursor=pointer]:
+          - /url: https://community.ebay.com/t5/Announcements/bg-p/Announcements
+      - listitem [ref=e1359]:
+        - link "Community" [ref=e1360] [cursor=pointer]:
+          - /url: https://community.ebay.com
+      - listitem [ref=e1361]:
+        - link "Security Center" [ref=e1362] [cursor=pointer]:
+          - /url: https://pages.ebay.com/securitycenter/index.html
+      - listitem [ref=e1363]:
+        - link "Seller Center" [ref=e1364] [cursor=pointer]:
+          - /url: https://www.ebay.com/sellercenter
+      - listitem [ref=e1365]:
+        - link "Policies" [ref=e1366] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/policies/default/ebays-rules-policies?id=4205
+      - listitem [ref=e1367]:
+        - link "Affiliates" [ref=e1368] [cursor=pointer]:
+          - /url: https://partnernetwork.ebay.com/
+      - listitem [ref=e1369]:
+        - link "Product Safety Tips" [ref=e1370] [cursor=pointer]:
+          - /url: https://pages.ebay.com/safetytips
+      - listitem [ref=e1371]:
+        - link "Help & Contact" [ref=e1372] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/home
+      - listitem [ref=e1373]:
+        - link "Site Map" [ref=e1374] [cursor=pointer]:
+          - /url: https://pages.ebay.com/sitemap.html
+    - generic [ref=e1375]:
+      - text: Copyright © 1995-2026 eBay Inc. All Rights Reserved.
+      - link "Accessibility" [ref=e1376] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/accessibility/
+      - text: ","
+      - link "User Agreement" [ref=e1377] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259
+      - text: ","
+      - link "Privacy" [ref=e1378] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260
+      - text: ","
+      - link "Consumer Health Data" [ref=e1379] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/consumer-health-data-privacy-policy/
+      - text: ","
+      - link "Payments Terms of Use" [ref=e1380] [cursor=pointer]:
+        - /url: https://pages.ebay.com/payment/2.0/terms.html
+      - text: ","
+      - link "Cookies" [ref=e1381] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/ebay-cookie-notice?id=4267
+      - text: ","
+      - link "CA Privacy Notice" [ref=e1382] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/state-privacy-disclosures/#california
+      - text: ","
+      - link "Your Privacy Choices" [ref=e1383] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice/ccpa
+      - text: and
+      - link "AdChoice" [ref=e1384] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice
+        - text: AdChoice
+        - img
+  - img
+  - img [ref=e1386]

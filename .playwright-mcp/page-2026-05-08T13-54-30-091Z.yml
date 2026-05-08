@@ -1,0 +1,1100 @@
+- generic [active] [ref=e1]:
+  - img
+  - img
+  - img
+  - img
+  - img
+  - generic [ref=e3]:
+    - banner [ref=e7]:
+      - link "Skip to main content" [ref=e9] [cursor=pointer]:
+        - /url: "#mainContent"
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e13]:
+            - text: Hi!
+            - link "Sign in" [ref=e14] [cursor=pointer]:
+              - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&sgfl=gh&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F195636090824
+            - generic [ref=e15]:
+              - text: or
+              - link "register" [ref=e16] [cursor=pointer]:
+                - /url: https://signup.ebay.com/pa/crte?ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F195636090824
+          - link "Deals" [ref=e18] [cursor=pointer]:
+            - /url: https://www.ebay.com/deals
+          - link "Brand Outlet" [ref=e20] [cursor=pointer]:
+            - /url: https://www.ebay.com/b/Brand-Outlet/bn_7115532402
+          - link "Gift Cards" [ref=e22] [cursor=pointer]:
+            - /url: https://www.ebay.com/giftcards
+          - link "Help & Contact" [ref=e24] [cursor=pointer]:
+            - /url: https://www.ebay.com/help/home
+        - generic [ref=e25]:
+          - link "Sell" [ref=e28] [cursor=pointer]:
+            - /url: https://www.ebay.com/sl/sell
+          - generic [ref=e29]:
+            - link "Watchlist" [ref=e30] [cursor=pointer]:
+              - /url: https://www.ebay.com/mye/myebay/watchlist
+              - generic [ref=e31]: Watchlist
+              - img
+            - button "Expand Watch List" [ref=e32]
+          - generic [ref=e33]:
+            - link "My eBay" [ref=e34] [cursor=pointer]:
+              - /url: https://www.ebay.com/mys/home?source=GBH
+              - generic [ref=e35]: My eBay
+              - img
+            - button "Expand My eBay" [ref=e36]
+          - button "Notifications" [ref=e39] [cursor=pointer]:
+            - img
+            - generic [ref=e40]: Notifications
+          - generic [ref=e42]:
+            - link "Your shopping cart contains 0 items" [ref=e43] [cursor=pointer]:
+              - /url: https://cart.ebay.com
+              - generic "Your shopping cart contains 0 items" [ref=e44]:
+                - img
+            - button "Expand Cart" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - link "eBay Home" [ref=e48] [cursor=pointer]:
+            - /url: https://www.ebay.com
+            - img "eBay Home" [ref=e49]
+          - button "Shop by category" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: Shop by category
+            - img
+        - generic [ref=e59]:
+          - status [ref=e60]
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - combobox "Search for anything" [ref=e64]
+              - img
+            - combobox "Select a category for search" [ref=e65]:
+              - option "All Categories" [selected]
+              - option "Antiques"
+              - option "Art"
+              - option "Baby"
+              - option "Books"
+              - option "Business & Industrial"
+              - option "Cameras & Photo"
+              - option "Cell Phones & Accessories"
+              - option "Clothing, Shoes & Accessories"
+              - option "Coins & Paper Money"
+              - option "Collectibles"
+              - option "Computers/Tablets & Networking"
+              - option "Consumer Electronics"
+              - option "Crafts"
+              - option "Dolls & Bears"
+              - option "Movies & TV"
+              - option "eBay Motors"
+              - option "Entertainment Memorabilia"
+              - option "Gift Cards & Coupons"
+              - option "Health & Beauty"
+              - option "Home & Garden"
+              - option "Jewelry & Watches"
+              - option "Music"
+              - option "Musical Instruments & Gear"
+              - option "Pet Supplies"
+              - option "Pottery & Glass"
+              - option "Real Estate"
+              - option "Specialty Services"
+              - option "Sporting Goods"
+              - option "Sports Mem, Cards & Fan Shop"
+              - option "Stamps"
+              - option "Tickets & Experiences"
+              - option "Toys & Hobbies"
+              - option "Travel"
+              - option "Video Games & Consoles"
+              - option "Everything Else"
+          - generic [ref=e66]:
+            - button "Search" [ref=e67] [cursor=pointer]:
+              - generic [ref=e68]: Search
+            - link "Advanced" [ref=e69] [cursor=pointer]:
+              - /url: https://www.ebay.com/sch/ebayadvsearch
+    - main [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - generic [ref=e75]:
+            - link "LIVE Shop live events Discover exclusive drops and deals See what’s live" [ref=e82] [cursor=pointer]:
+              - /url: https://www.ebay.com/ebaylive
+              - generic [ref=e83]:
+                - generic [ref=e84]:
+                  - img
+                - generic [ref=e85]: LIVE
+              - generic [ref=e86]: Shop live events
+              - generic [ref=e87]: Discover exclusive drops and deals
+              - button "See what’s live" [ref=e88]
+            - generic [ref=e97]:
+              - heading "People who viewed this item also viewed" [level=2] [ref=e104]
+              - group [ref=e106]:
+                - list [ref=e109]:
+                  - listitem [ref=e110]:
+                    - generic [ref=e112]:
+                      - generic [ref=e118]:
+                        - heading "NEW! 3.5\" Drain Assembly with Strainer Basket for Kitchen Sink - 5 Color Options" [level=3] [ref=e119]
+                        - generic [ref=e121]: $49.99
+                        - generic [ref=e123]: Free delivery
+                        - generic [ref=e125]: Sponsored
+                      - link "NEW! 3.5\" Drain Assembly with Strainer Basket for Kitchen Sink - 5 Color Options" [ref=e126] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/195560597374?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEFaga7D8606FsfL2woAx9uE%3D%26itm%3D195560597374%26noa%3D0%26plcampt%3D0%3A12721586019%2C5%3AAG5158269919%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D12%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D0d9a0591aca143be950cda5efbbbc40a%26pg%3D2332490&_trksid=p2332490.c101224.m-1&itmprp=cksum%3A1955605973740d9a0591aca143be950cda5efbbbc40a%7Cenc%3AAQALAAAA4HU%252FGPBKMoWrH2cpzpvK9FDC5c4FxwFIV%252Bq0okjrJ6w9cB%252BqWqTCByXEsJeNzj%252BLPZ6Y%252Bcb%252BSNENjzLG3DpJu0n7xoYoM%252BUaMylVRU%252FNlWDaEV7%252FdpFsPoSSbPFKYhnh%252F6Mcwe8m4%252FxLT5zOlL3Gx8Y5rE9HEUu7KAe9E7IVAX5R7JRHvijqxmEgSeYrBwtnbW4wOpQsSwpMB5gJwWMEBwkuCYGYpsDkdqgalgIvMLgaklD6QJFIshYtmP2KuHqOULUBFY3QGkn1su9zi%252BXQWRF%252F0KlQJcN%252BNDpBnUDdWAlb%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ3EWPD8T4MWK519MSGN
+                  - listitem [ref=e127]:
+                    - generic [ref=e129]:
+                      - generic [ref=e135]:
+                        - heading "Mr. Scrappy Kitchen Garbage Disposal Multi-Purpose Tool - Stopper, Scraper" [level=3] [ref=e136]
+                        - generic [ref=e138]: $10.99
+                        - generic [ref=e140]: Free delivery
+                      - link "Mr. Scrappy Kitchen Garbage Disposal Multi-Purpose Tool - Stopper, Scraper" [ref=e141] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/194906092732?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEFaga7D8606FsfL2woAx9uE%3D%26itm%3D194906092732%26noa%3D1%26plcampt%3D0%3A12721586019%2C5%3AAG5003770919%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D1%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D0d9a0591aca143be950cda5efbbbc40a%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                  - listitem [ref=e142]:
+                    - generic [ref=e144]:
+                      - generic [ref=e150]:
+                        - heading "Mr. Scrappy Rubber Mounting Cushion Ring Replacement for 3-Bolt Garbage Disposal" [level=3] [ref=e151]
+                        - generic [ref=e153]: $8.99
+                        - generic [ref=e155]: Free delivery
+                      - link "Mr. Scrappy Rubber Mounting Cushion Ring Replacement for 3-Bolt Garbage Disposal" [ref=e156] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/195438151029?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEFaga7D8606FsfL2woAx9uE%3D%26itm%3D195438151029%26noa%3D1%26plcampt%3D0%3A12721586019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D2%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D0d9a0591aca143be950cda5efbbbc40a%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                  - listitem [ref=e157]:
+                    - generic [ref=e159]:
+                      - generic [ref=e165]:
+                        - heading "Mr. Scrappy Garbage Disposal Power Cord Kit - 3 Ft Cord, Clamp, 2 Wire Nuts" [level=3] [ref=e166]
+                        - generic [ref=e168]: $9.99
+                        - generic [ref=e170]: Free delivery
+                      - link "Mr. Scrappy Garbage Disposal Power Cord Kit - 3 Ft Cord, Clamp, 2 Wire Nuts" [ref=e171] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/195438249200?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEFaga7D8606FsfL2woAx9uE%3D%26itm%3D195438249200%26noa%3D1%26plcampt%3D0%3A12721586019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D3%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D0d9a0591aca143be950cda5efbbbc40a%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+          - generic [ref=e174]:
+            - generic [ref=e175]:
+              - generic [ref=e177]:
+                - generic [ref=e179]:
+                  - generic [ref=e181]:
+                    - button "Picture 1 of 4" [ref=e182] [cursor=pointer]:
+                      - img "Picture 1 of 4" [ref=e183]
+                    - button "Picture 2 of 4" [ref=e184] [cursor=pointer]:
+                      - img "Picture 2 of 4" [ref=e185]
+                    - button "Picture 3 of 4" [ref=e186] [cursor=pointer]:
+                      - img "Picture 3 of 4" [ref=e187]
+                    - button "Picture 4 of 4" [ref=e188] [cursor=pointer]:
+                      - img "Picture 4 of 4" [ref=e189]
+                  - generic [ref=e190]:
+                    - heading "Picture 1 of 4" [level=2] [ref=e191]
+                    - button "Previous image - Item images thumbnails" [ref=e193] [cursor=pointer]:
+                      - img
+                    - region "Opens image gallery dialog Mr. Scrappy Kitchen Garbage Disposal Cleaning Brush, Sturdy Grip Handle, 11 inch - Picture 1 of 4" [ref=e194]:
+                      - group "1 of 4" [ref=e195]:
+                        - img "Mr. Scrappy Kitchen Garbage Disposal Cleaning Brush, Sturdy Grip Handle, 11 inch - Picture 1 of 4" [ref=e196]
+                      - group "2 of 4" [ref=e197]:
+                        - img "Mr. Scrappy Kitchen Garbage Disposal Cleaning Brush, Sturdy Grip Handle, 11 inch - Picture 2 of 4" [ref=e198]
+                      - group "3 of 4" [ref=e199]:
+                        - img "Mr. Scrappy Kitchen Garbage Disposal Cleaning Brush, Sturdy Grip Handle, 11 inch - Picture 3 of 4" [ref=e200]
+                      - group "4 of 4" [ref=e201]:
+                        - img "Mr. Scrappy Kitchen Garbage Disposal Cleaning Brush, Sturdy Grip Handle, 11 inch - Picture 4 of 4" [ref=e202]
+                    - generic [ref=e203]:
+                      - button "Opens image gallery" [ref=e204] [cursor=pointer]:
+                        - img
+                      - button "Add to watchlist - 7 watchers" [ref=e206] [cursor=pointer]:
+                        - generic [ref=e207]: "7"
+                        - img
+                    - button "Next image - Item images thumbnails" [ref=e209] [cursor=pointer]:
+                      - img
+                - generic [ref=e214]:
+                  - generic [ref=e215]: Have one to sell?
+                  - link "Sell one like this" [ref=e217] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sl/list?mode=SellLikeItem&itemId=195636090824&rt=nc&_trksid=p4429486.m117039.l2567
+                    - generic [ref=e218]: Sell one like this
+                  - link "Sell something else" [ref=e220] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sl/prelist/suggest
+                    - generic [ref=e221]: Sell something else
+                - button "Share" [ref=e227] [cursor=pointer]:
+                  - img
+                  - generic [ref=e228]: Share
+              - generic [ref=e239]:
+                - generic [ref=e242]:
+                  - generic [ref=e244]:
+                    - heading "Similar Items" [level=2] [ref=e246]
+                    - generic [ref=e249]:
+                      - generic [ref=e250]: a7f343b7-7d3f-405c-911a-3b3896215148
+                      - generic [ref=e251]: 1243f398-dd6d-4369-bcc6-81745ab075ad
+                      - generic [ref=e252]: S
+                      - generic [ref=e253]: 75c3c9d7-1580-4d08-b5da-8df846a0c31b
+                      - generic [ref=e254]: p
+                      - generic [ref=e255]: e3680915-e482-4d51-b436-0b4e639be122
+                      - generic [ref=e256]: o
+                      - generic [ref=e257]: b9115559-e3e7-4172-8561-3d9d7ae6ce6c
+                      - generic [ref=e258]: "n"
+                      - generic [ref=e259]: 7a083e4f-0d60-4230-b52d-e13ee551e93b
+                      - generic [ref=e261]: 4f1262c9-98a0-4c76-ae0f-4ab9e85db9f5
+                      - generic [ref=e262]: 5e276bf2-3563-4adb-b51e-72b3ddb8d7c2
+                      - generic [ref=e263]: 9367a855-6294-407a-91fd-6594a74bbf83
+                      - generic [ref=e265]: eb91032d-22a9-44b9-8179-64c35904d5e4
+                      - generic [ref=e266]: s
+                      - generic [ref=e267]: 3bbc6ec9-a508-462b-9484-b5d633b14fd6
+                      - generic [ref=e268]: 510aca2d-738a-4c13-8ab7-a1be616507a8
+                      - generic [ref=e269]: 8f0b8c29-7247-4ca7-a107-80ff708a25c3
+                      - generic [ref=e271]: f894d529-8aef-43d2-8c82-86b9e0322a3d
+                      - generic [ref=e272]: o
+                      - generic [ref=e273]: 56e842a0-79d2-4e73-b1a1-5b66ca669486
+                      - generic [ref=e274]: e27cdf4e-6234-4e3b-b632-000e5ac00454
+                      - generic [ref=e275]: r
+                      - generic [ref=e276]: fbca16ca-0ec2-46b2-b48e-62bfba998d9c
+                      - generic [ref=e277]: e
+                      - generic [ref=e278]: e1f30059-d537-415b-8848-61dc630175e6
+                      - generic [ref=e279]: ba9c1730-7eaf-459c-b049-3dbe8541290c
+                      - generic [ref=e280]: d
+                      - generic [ref=e281]: 672bd6ad-4a0c-4225-8fd3-b1b198e4ee82
+                      - generic [ref=e282]: 19958d6b-03e3-436f-afd3-fdae4111753a
+                      - generic [ref=e284]: b123a16a-8a20-4f78-ad48-526f0b13b275
+                      - generic [ref=e285]: acc4cf47-3bc1-4558-9554-18930e17cfb1
+                      - generic [ref=e286]: e31a0782-cffe-49fd-b075-9eeb4e520251
+                      - generic [ref=e287]: abd7c37e-8829-4506-92a9-abcdaaed7e85
+                      - generic [ref=e288]: a9fb8045-d50d-45b0-9ae5-9c5a668c86f2
+                      - generic [ref=e289]: 4373a3ba-fa6d-4749-b9a1-f9f8b94379cc
+                      - generic [ref=e291]: a9ba6eab-79c8-4e94-85e9-f56b2766cb15
+                  - link "See all" [ref=e294] [cursor=pointer]:
+                    - /url: https://www.ebay.com/recs?component=recs-below-hero-carousel&placement_title=i18n.Tag_SIs&sourceModuleId=101875&item_id=195636090824&algos=HOMESPLICE.SIM.SimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco&placement_subTitle=i18n.ModuleSubTitle_Sponsored&homespliceOverrideConfig=%7Bsplice.cpc-config-dweb.cpc-expansion-slot-ids%3D%5B1%2C+3%2C+5%2C+7%2C+9%2C+11%5D%2Csplice.cpc-config-dweb.smart-price-parmas.undere-threshold%3D4%2Csplice.cpc-config-dweb.smart-price-parmas.enable-overe%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-roas-calibration-by-l2%3Dfalse%2Csplice.cpc-config-dweb.smart-price-parmas.enable-undere%3Dtrue%2Csplice.cpc-config-dweb.max-cpc-slots-num%3D6%2Csplice.cpc-config-dweb.blend-reserve-price-config.reserve-price-strategy%3D2%2Csplice.cpc-config-dweb.enable-low-roas-filter%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-cvr-calibration-by-l2%3Dtrue%2Csplice.cpc-config-dweb.blend-reserve-price-config.cpa-cpm-multiplier.-1%3D15%2Csplice.cpc-config-dweb.cpc-low-roas-dimension%3D%5BblacklistLeaf%2C+version01%5D%2Csplice.cpc-config-dweb.smart-price-parmas.overe-threshold%3D4%7D
+                    - generic [ref=e295]: See all
+                - group [ref=e297]:
+                  - generic [ref=e298]:
+                    - button "Go to the previous slide, Similar Items" [disabled] [ref=e299]:
+                      - img
+                    - list [ref=e301]:
+                      - listitem [ref=e302]:
+                        - generic [ref=e304]:
+                          - generic [ref=e310]:
+                            - heading "Mr. Scrappy Kitchen Garbage Disposal Multi-Purpose Tool - Stopper, Scraper" [level=3] [ref=e311]
+                            - generic [ref=e312]:
+                              - generic [ref=e314]: New
+                              - generic [ref=e315]: $10.99
+                            - generic [ref=e317]: Free delivery
+                            - generic [ref=e319]: 27 sold
+                          - link "Mr. Scrappy Kitchen Garbage Disposal Multi-Purpose Tool - Stopper, Scraper" [ref=e320] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/194906092732?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEFaga7D8606FsfL2woAx9uE%3D%26itm%3D194906092732%26noa%3D0%26plcampt%3D0%3A12721586019%2C5%3AAG5003770919%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D1%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A194906092732cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbvLMQRuPrBsbQVrZrMcdopHLiC7DAfXtV1f6gPSmF%252BJYtz2A%252FHopC%252BbMfXzUzXNyyaNiMDYJEmC1sRJkAZ1enDepKGIiGdZZUShLs5WFvQnaWFI8QKMtCnbPBFIctKI%252B5j1BW1FuoGfPoxZlbG%252FzI3qBgf2%252FFcA0UjxgJQ5dLrhy5rlwnlLSCRf884bpjbUEd8sjoAhTPAMXdo97rChb%252B4bhqZXi15CjTPMmd0OMKzPAkBnALA5bZjZdv5tjMLoLlRFgm4u2tsJ1Cw5m75MxCHEklqcqcwHQ0u0oBPNAulbY%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ3ECRB120V8Q918B44D
+                          - button "Add Mr. Scrappy Kitchen Garbage Disposal Multi-Purpose Tool - Stopper, Scraper to your watch list" [ref=e323] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e324]:
+                        - generic [ref=e326]:
+                          - generic [ref=e332]:
+                            - heading "Universal Garbage Disposal Brush, Sturdy Grip Handle, 11-Inches,Yellow" [level=3] [ref=e333]
+                            - generic [ref=e334]:
+                              - generic [ref=e336]: New
+                              - generic [ref=e337]: $20.26
+                            - generic [ref=e339]: Free delivery
+                            - generic [ref=e341]: Seller 99.9% positive
+                          - link "Universal Garbage Disposal Brush, Sturdy Grip Handle, 11-Inches,Yellow" [ref=e342] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/177836860150?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEA87Th%2F%2FzplhlhsfHDcfiSg%3D%26itm%3D177836860150%26noa%3D0%26plcampt%3D0%3A21592238011%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D2%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A177836860150cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbI0HRlYENq9TLIz0m5UgY7nlq0z131oqYqighWqZoMx6eOsmQyvgew31lOJoujWuQNMrM50tkP3gFSyO5kOgnQPbyymhN1h97GiBYfN0JjUGMRsG%252Fqea7dkWPSwjDm15AouA3QEeArdSibE9AdIovw%252BgMkgrmKsFw%252F%252Buf7p3guNv59d60aJOM8cZve6kEXnl6tftB2ksEW%252BnGzk9Dt2PDgHXqmeatywQC3jVL%252BwOkmrOGaAPJtXXCMc%252Fwhsr1GVyDkd4z64f5Ga9Gl%252BoFQiH%252B9bBd%252B29X6d52mJHpcNTThFw%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ52P4GPX8NWXXBV0HKX
+                          - button "Add Universal Garbage Disposal Brush, Sturdy Grip Handle, 11-Inches,Yellow to your watch list" [ref=e345] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e346]:
+                        - generic [ref=e348]:
+                          - generic [ref=e354]:
+                            - heading "Universal Garbage Disposal Brush, Sturdy Grip Handle, 11-Inches,Yellow" [level=3] [ref=e355]
+                            - generic [ref=e356]:
+                              - generic [ref=e358]: New
+                              - generic [ref=e359]: $19.14
+                            - generic [ref=e361]: Free delivery
+                            - generic [ref=e363]: Seller 99.2% positive
+                          - link "Universal Garbage Disposal Brush, Sturdy Grip Handle, 11-Inches,Yellow" [ref=e364] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/358164007781?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEAQinwVAY0Fl62fEJdXNAf0%3D%26itm%3D358164007781%26noa%3D0%26plcampt%3D0%3A162546948017%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D3%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A358164007781cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbcNldBpN86IG9vnSFmDaptQgeWvH5nRDQW0H0C%252B3YPVt%252Bdqs%252Fyz518GOCAz4f7G4YNCY92gFZJtoWz06WkWIDmhrlGfYEjIo4YbYxK1rkmtj6S7QoWngtmQzjvlAU7xS9HWcDUM5Z%252FofOP%252B75ypuWHrZKooAjoGBO7BDlxWLVWvejq0NozrTDMIqAzAeT0BUWmdJY8u%252F8HRTCf5OagdermhB7qQFOyxtDhyCSYdmzHnmTRdsJ%252FflDJT9ztastBAYjFASbyQYC5EzFJjy3fcBunTzpb2jyd3MafIL7PGuXkFE%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ56CWXQ501VD8XSSKB8
+                          - button "Add Universal Garbage Disposal Brush, Sturdy Grip Handle, 11-Inches,Yellow to your watch list" [ref=e367] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e368]:
+                        - generic [ref=e370]:
+                          - generic [ref=e376]:
+                            - heading [level=3] [ref=e377]: "Effortless Kitchen Cleaning: 11” Garbage Disposal Brush with Strong Bristles"
+                            - generic [ref=e378]:
+                              - generic [ref=e380]: New
+                              - generic [ref=e381]: $22.99
+                            - generic [ref=e383]: Free 2-4 day delivery
+                            - generic [ref=e385]: Seller 99.8% positive
+                          - link [ref=e386] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/318230583612?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEDK7v%2F9DOTNMPS7rcUauhCQ%3D%26itm%3D318230583612%26noa%3D0%26plcampt%3D0%3A163179091014%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D4%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A318230583612cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbuw%252BnERhQPsio3Cjb8f6F4Y%252FWo6%252FcvCVAMKLf9Ql63InJw8a1nSZMwewnZkeS%252B0FdvtgIN%252FkSf4MQ8IiciNHf%252BjNn5SSUONdetLnbeTbq7XfJOKC4HRhBPH2qunYmS8uHMBEnowr1ORzDNyyoAl2zWjqQKq%252FOks9Xv5Kd3Qyo7uXZ8S3am4tcSYnu7StTjLoqch0dG5IKYCelzYy6e9FJcJZh0HPSyhdQXyy0EEVVmqzPOuVihFFCRXLMQqLvXqL5N1H1XwADgw4MZfQv97hbQDjX7%252FvIkPbom1hTg990CZU%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ5BXNZ2Q5QY51MCZYGT
+                          - button [ref=e389] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e390]:
+                        - generic [ref=e392]:
+                          - generic [ref=e398]:
+                            - heading [level=3] [ref=e399]: 11-Inch Universal Garbage Disposal Cleaning Brush with Sturdy Grip Handle
+                            - generic [ref=e400]:
+                              - generic [ref=e402]: New
+                              - generic [ref=e403]: $24.99
+                            - generic [ref=e405]: Free delivery
+                          - link [ref=e406] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/406780176234?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEC7kNge7u0f4%2FmFJAHjzvBc%3D%26itm%3D406780176234%26noa%3D0%26plcampt%3D0%3A162225220016%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D5%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A406780176234cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbTyTF2ltfSZeVC%252FoOdXP86gug8%252Fw%252F2g6s6IP0JBZ4B5cCgJOpnchrU%252BrNNzFFl8w0iChoI9e65LP%252FDhMa63sCKdl%252F9KI6MBmPS9pulS%252FVpcSb2fpUSrOMh2ewCvdqW5NGa3xGiceBU1w5zoIvRHx9t4ozOqsvJl%252Fz8o%252B0YPx5xzaGDRHT19lOxzCeySAQAlEqXqXAyJnOL05JjTnZAHKyxniS5%252BYZhzRqDl33EwfSYQYyv2EgFIT92lHVHdCAPkfzdTFTBeqQDfI5xeRorgg%252B1jI8K3SU6Bns5ahkGFgxYbU%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ5FGB08T56BTT4BWN30
+                          - button [ref=e409] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e410]:
+                        - generic [ref=e412]:
+                          - generic [ref=e418]:
+                            - heading [level=3] [ref=e419]: Mr. Scrappy Silver Guard Magnet for Garbage Disposals, Catches Metal Objects
+                            - generic [ref=e420]:
+                              - generic [ref=e422]: New
+                              - generic [ref=e423]: $10.99
+                            - generic [ref=e425]: Free delivery
+                            - generic [ref=e427]: 50 sold
+                          - link [ref=e428] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/195633189793?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEFaga7D8606FsfL2woAx9uE%3D%26itm%3D195633189793%26noa%3D0%26plcampt%3D0%3A12721586019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D6%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A195633189793cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbNCReZVnE7vq1vehO8rtNCNKE7BkiIgtagoFt4bGybODstxNoiaosENoHkTF6mwOvYlXC%252B%252BQQfhDe0XpmyePTdQIwWOeD5B6F2oX6VqE%252FvbegkdUwNJ29hmpCD%252BYfBCGq92fmIsbgQps8XzVBZSEnmp0cBt%252BypCrLfWdrx%252BcOH8yC67Du8E8z5JhS7gXRi3OMwrBW6jUQvXUl21%252Bug92TFnHV%252B1qSkOLkY%252FInBwNuXcBff9xLtu6FrD8YGxY6Dzh01SQeAuYrvpqHdF3fkJzieK3NGCwWzbTLk3E1rjSbutA%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ5JDN4EJQJ9T2Z8WHFE
+                          - button [ref=e431] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e432]:
+                        - generic [ref=e434]:
+                          - generic [ref=e440]:
+                            - heading [level=3] [ref=e441]: Efficient Kitchen Garbage Disposal Brush with Ergonomic Grip and 11-Inch Length
+                            - generic [ref=e442]:
+                              - generic [ref=e444]: New
+                              - generic [ref=e445]: $18.91
+                            - generic [ref=e447]:
+                              - generic [ref=e448]: previous price
+                              - text: $19.91 5% off
+                            - generic [ref=e450]: Free 2-4 day delivery
+                            - generic [ref=e452]: Seller 99.6% positive
+                          - link [ref=e453] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/318009764395?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEHTxo9KLZ1iKKyKyRlg2mL8%3D%26itm%3D318009764395%26noa%3D0%26plcampt%3D0%3A161304574014%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D7%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A318009764395cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbBcQPMdR7G3oiZMrRhmyIPFqf%252FHHlnpkmlHILs%252F2C2pwrj8oR6RNIZpBO8aRooLsU7hUDYkLKiwXUxkSmkqD5fqD1A4XF1sNS5L1zXwziDBL0GMoZ1b6XVTv5XWX1172fuQj7HAsGes76%252BWOAhDL%252BK2oEh4tvzB8bAhkMvhACSOYQZ%252FYMijjmi%252FRw8T5vaCPjh7FdrNSqN7IElewx4aZqvr84bPOnvhRJRCCFRqLbPVC1Yuo2hYzDyu113URYKYa%252FJW9IhD8YD9yjVRD2aqS4L3cyTgTPWHVHgyZAzMxmAro%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ5P5FE5ZWXGX0WBJM96
+                          - button [ref=e456] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e457]:
+                        - generic [ref=e459]:
+                          - generic [ref=e465]:
+                            - heading [level=3] [ref=e466]: Mr. Scrappy Rubber Mounting Cushion Ring Replacement for 3-Bolt Garbage Disposal
+                            - generic [ref=e467]:
+                              - generic [ref=e469]: New
+                              - generic [ref=e470]: $8.99
+                            - generic [ref=e472]: Free delivery
+                            - generic [ref=e474]: 96 sold
+                          - link [ref=e475] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/195438151029?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEFaga7D8606FsfL2woAx9uE%3D%26itm%3D195438151029%26noa%3D0%26plcampt%3D0%3A12721586019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D8%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A195438151029cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbe9HNyprUYydwn%252FsOPY0QpRWAch1VTHInr4KHygx0QfvjGKr1sJ7y6UN4QDIP7FPpGZM7j9nWZdBF7vmprki4zcQFOBSEXHeUatPoEIFPuUKbrVO3P4K95BIPU%252F3kuhdnV8tdwPgvQmMwv4o1J98smkBNGF3TFdq4eCMsol0eEg4ocexvLhaWyMit5yzi2kzFFYhyjJgK%252FGELAihi3ryfox83oBTnMOH%252BWVJom%252BNKjNnnDxXV16L9MpWd%252FpndFLrFlWAVvjCT1zBKFS6nmDuSPvh4BEeOf33aqynn%252FbYzOdM%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ5T6NQHWFFCNVDB4DPD
+                          - button [ref=e478] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e479]:
+                        - generic [ref=e481]:
+                          - generic [ref=e487]:
+                            - heading [level=3] [ref=e488]: Mr. Scrappy Garbage Disposal Power Cord Kit - 3 Ft Cord, Clamp, 2 Wire Nuts
+                            - generic [ref=e489]:
+                              - generic [ref=e491]: New
+                              - generic [ref=e492]: $9.99
+                            - generic [ref=e494]: Free delivery
+                            - generic [ref=e496]: 20 sold
+                          - link [ref=e497] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/195438249200?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEFaga7D8606FsfL2woAx9uE%3D%26itm%3D195438249200%26noa%3D0%26plcampt%3D0%3A12721586019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D9%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A195438249200cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABINcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbr10%252B%252Bxtkfjc%252BaCxc7KibcKc3McOUG0c5TlhVwm1LKaltv31m1078ZPyfy%252FL25nHKy1ti5Rt8G9TkDAMqJpDf6Ry1orMycqXqoa6ZinsfJYHogbyfO6ZxcFbAr3bsoMdqMyePUMjIltJg9GEiWeHzcmI138TMleKtfjzB7qGmctw5RVka9e45G%252BIgf%252BvfbY0wI2gATt%252Br55SkyfXehCRCrzCdxv7B24lxutTG4%252BpoIgiatLADBl%252BMBzqRJvUe1NNGgcNmKOADe%252FLKO%252F9GoHt0OA%253D%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ5X5SRC61GQH7JP2671
+                          - button [ref=e500] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e501]:
+                        - generic [ref=e503]:
+                          - generic [ref=e509]:
+                            - heading [level=3] [ref=e510]: Removable Splash Guard for Garbage Disposals, Fast Draining, Noise Reducing
+                            - generic [ref=e511]:
+                              - generic [ref=e513]: New
+                              - generic [ref=e514]: $9.99
+                            - generic [ref=e516]: Free delivery
+                            - generic [ref=e518]: 80 sold
+                          - link [ref=e519] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/196216471936?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEFaga7D8606FsfL2woAx9uE%3D%26itm%3D196216471936%26noa%3D0%26plcampt%3D0%3A12721586019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D10%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A196216471936cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbqkl%252BAFNuoFydsboZ%252FnQzTrULczv1y9vh7VbVmlHRCYm%252FCpHk8mj7sR04IKxagRJW4oxQztlBoiiD2HW%252FGVopsJENAl%252BgvkCvZDTAsb3TMZVREyY7JhcTSak4JMZSnhiRqQRrL0q%252BecRdHmNU4fiyy1ByrrzG1pVFokfWCDbyzNHHfonqChmPxYVgdWuYtDWiSYSPIbGm0aRC22Y8QyCQHznf5kVybPJRNOqDljYgNLbLD5pgZT9%252BTG73pFlYmRLN9khzFHs8knqynfCTk6nATYwX3R3z%252F0IOuMiCy7ZrCzY%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ6090E6VS9ZQ1RGESNC
+                          - button [ref=e522] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e523]:
+                        - generic [ref=e525]:
+                          - generic [ref=e531]:
+                            - heading [level=3] [ref=e532]: Universal Garbage Disposal Brush, Sturdy Grip Handle, 11-Inches,Yellow
+                            - generic [ref=e533]:
+                              - generic [ref=e535]: New
+                              - generic [ref=e536]: $16.98
+                            - generic [ref=e538]: Free delivery
+                            - generic [ref=e540]: Seller 99.5% positive
+                          - link [ref=e541] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/366200368662?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEBEdTW9vc3UqnFZC2%2FfiJd0%3D%26itm%3D366200368662%26noa%3D0%26plcampt%3D0%3A160227564010%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D11%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A366200368662cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbd60HVqIkI93tOn0BdOHR%252Fw6AU58UXywqNC9epWErbKfwfqypNKfvRqNtAQqxJiR%252BGdPQyV3OIeXTDCKw9C%252BOPhFDHwzPcy%252BhEOjHLJWiYPhk4Rqt5IercUeBsJS49zY41ZyYbImMNXGVx7H%252BdAzPgYC0MyG97eXmDXKYOSafWPcklXQMnObUZoIVffV2217GN4bP0Q4h4vw53hi4DpCoGiddHDGbr%252BOKj%252FgBk6azmrraMpfv%252Fvfd3zfC8kDYX%252FnQh2VA03XpwAAJ3GvUbBUzjE6b9nmjAhxlgZkWaE5jFXY%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ65QS11M2GFC0RPJQCP
+                          - button [ref=e544] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e545]:
+                        - generic [ref=e547]:
+                          - generic [ref=e553]:
+                            - heading [level=3] [ref=e554]: Mr. Scrappy Garbage Disposal Single Outlet Air Switch Kit with Button - 6 Colors
+                            - generic [ref=e555]:
+                              - generic [ref=e557]: New
+                              - generic [ref=e558]: $49.99
+                            - generic [ref=e560]: Free delivery
+                            - generic [ref=e562]: Seller 99.3% positive
+                          - link [ref=e563] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/195487477954?var=495353218420&_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D195636090824%26sid%3DAQALAAAAEFaga7D8606FsfL2woAx9uE%3D%26itm%3D195487477954%26noa%3D0%26plcampt%3D0%3A12721586019%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D12%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Dcc25255f43cf494b99ff850c0e65c8e1%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A195487477954cc25255f43cf494b99ff850c0e65c8e1%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbye73TgrTPWWv6KoGougdqiTmt4ibmJTslHI7qif8w7xwVu%252FgNb0KP5jnsoTKLecKMut9iAEumtDgA0K9YruWZXk3hwEir0eeu%252FUD3CqSCTXc36sKa5jzdqw%252F27LIfsptCDJ%252F7mLKeZb0bkdwDwZr2WNp8kpGE4pWR6Ynz8kNRfnuHm9dcVt%252BkTbdGuiwqcWr6Qj0cbE54f37M03vjbGJh0P00cgBHXYlSEPASUf1f8eBS4uuu3tzcJnHSR2JqPNEwIC5Oiw0RS9ckyAVjhXG4wohi7shPGG4Y1vTE0%252F6RRw%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3XWJ692Y46DSSX8G96AHW2
+                          - button [ref=e566] [cursor=pointer]:
+                            - img
+                    - button "Go to the next slide, Similar Items" [ref=e567]:
+                      - img
+            - generic [ref=e570]:
+              - heading "Mr. Scrappy Kitchen Garbage Disposal Cleaning Brush, Sturdy Grip Handle, 11 inch" [level=1] [ref=e572]
+              - generic [ref=e574] [cursor=pointer]:
+                - generic [ref=e576]:
+                  - link [ref=e578]:
+                    - /url: https://www.ebay.com/str/kitchenstoreinc?_trksid=p4429486.m3561.l161210
+                    - img [ref=e580]
+                  - generic [ref=e581]:
+                    - generic [ref=e582]:
+                      - link "Kitchen Store Inc" [ref=e583]:
+                        - /url: https://www.ebay.com/str/kitchenstoreinc?_trksid=p4429486.m3561.l161211
+                      - generic [ref=e585]: (1069)
+                    - generic [ref=e586]:
+                      - button "99.3% positive" [ref=e588]
+                      - link "Seller's other items" [ref=e590]:
+                        - /url: https://www.ebay.com/str/kitchenstoreinc?_trksid=p4429486.m3561.l170197
+                        - generic [ref=e591]: Seller's other items
+                        - generic [ref=e592]: Seller's other items
+                      - button "Message seller" [ref=e594]:
+                        - generic [ref=e595]: Message seller
+                        - generic [ref=e596]: Message seller
+                - button "See more about this seller" [ref=e598]:
+                  - img
+              - generic [ref=e602]: US $10.99
+              - generic [ref=e603]:
+                - generic [ref=e604]: "Condition:"
+                - generic [ref=e606]:
+                  - generic [ref=e607]:
+                    - generic [ref=e608]: New
+                    - generic [ref=e609]: New
+                  - button "More information - About this item condition" [ref=e610] [cursor=pointer]:
+                    - generic [ref=e611]:
+                      - img "More information - About this item condition"
+              - generic [ref=e612]:
+                - generic [ref=e614]:
+                  - generic [ref=e615]: "Quantity:"
+                  - button [disabled] [ref=e616]:
+                    - img
+                  - spinbutton "Quantity:" [ref=e617]: "1"
+                  - button [ref=e618]:
+                    - img
+                - status [ref=e619]: 44 sold
+              - list [ref=e621]:
+                - listitem [ref=e622]:
+                  - button "Buy It Now" [ref=e624] [cursor=pointer]:
+                    - generic [ref=e625]: Buy It Now
+                - listitem [ref=e626]:
+                  - button "Add to cart" [ref=e628] [cursor=pointer]:
+                    - generic [ref=e629]: Add to cart
+                - listitem [ref=e630]:
+                  - generic [ref=e632]:
+                    - status [ref=e633]: Add to Watchlist
+                    - link "Add to Watchlist" [ref=e638] [cursor=pointer]:
+                      - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F195636090824
+                      - generic [ref=e639]:
+                        - img
+                        - text: Add to Watchlist
+              - generic [ref=e642]:
+                - generic [ref=e643]:
+                  - generic [ref=e644]:
+                    - img
+                  - generic [ref=e646]: This one's trending. 44 have already sold.
+                - generic [ref=e647]:
+                  - generic [ref=e648]:
+                    - img
+                  - generic [ref=e650]: Breathe easy. Free shipping and returns.
+              - generic [ref=e653]:
+                - heading "Shipping, returns, and payments" [level=2] [ref=e656]:
+                  - generic [ref=e657]: Shipping, returns, and payments
+                - generic [ref=e659]:
+                  - generic [ref=e662]:
+                    - generic [ref=e665]: "Shipping:"
+                    - generic [ref=e667]:
+                      - generic [ref=e668]:
+                        - text: Free Standard Shipping.
+                        - button "See details for shipping" [ref=e669] [cursor=pointer]:
+                          - generic [ref=e670]:
+                            - text: See details
+                            - generic [ref=e671]: for shipping
+                      - generic [ref=e672]: "Located in: Anaheim, California, United States"
+                  - generic [ref=e676]:
+                    - generic [ref=e679]: "Delivery:"
+                    - generic [ref=e682]:
+                      - text: Estimated between Mon, May 11 and Thu, May 14 to 30339
+                      - button "Information - Estimated delivery date - opens a layer" [ref=e688]:
+                        - img
+              - generic [ref=e695]:
+                - generic [ref=e698]: "Returns:"
+                - generic [ref=e701]:
+                  - text: 60 days returns. Seller pays for return shipping.
+                  - button "See details - for more information about returns" [ref=e702] [cursor=pointer]:
+                    - generic [ref=e703]:
+                      - text: See details
+                      - generic [ref=e704]: "- for more information about returns"
+              - generic [ref=e707]:
+                - generic [ref=e711]:
+                  - generic [ref=e714]: "Payments:"
+                  - generic [ref=e717]:
+                    - img "PayPal" [ref=e718]
+                    - img "Venmo" [ref=e720]
+                    - img "Google Pay" [ref=e722]
+                    - img "Visa" [ref=e724]
+                    - img "Master Card" [ref=e726]
+                    - img "Discover" [ref=e728]
+                    - img "Diners Club" [ref=e731]
+                - generic [ref=e739]:
+                  - img "Paypal Credit" [ref=e741]
+                  - generic [ref=e742]:
+                    - text: Special financing available.
+                    - link "Learn more - for PayPal Credit, opens in a new window or tab" [ref=e743] [cursor=pointer]:
+                      - /url: https://www.billmelater.com/cm/paypal/landers/15ebayPPCNB.html
+                      - generic [ref=e744]:
+                        - text: Learn more
+                        - generic [ref=e745]: "- for PayPal Credit, opens in a new window or tab"
+              - generic [ref=e748]:
+                - heading "Shop with confidence" [level=2] [ref=e751]
+                - generic [ref=e752]:
+                  - generic [ref=e754]:
+                    - img
+                  - generic [ref=e755]:
+                    - generic [ref=e756]: eBay Money Back Guarantee
+                    - generic [ref=e757]:
+                      - text: Get the item you ordered or your money back.
+                      - link "Learn more eBay Money Back Guarantee - opens new window or tab" [ref=e758] [cursor=pointer]:
+                        - /url: https://www.ebay.com/ebay-money-back-guarantee/
+                        - generic [ref=e759]:
+                          - text: Learn more
+                          - generic [ref=e760]: eBay Money Back Guarantee - opens new window or tab
+          - generic [ref=e761]:
+            - generic [ref=e766]:
+              - tablist [ref=e767]:
+                - tab "About this item" [selected] [ref=e768] [cursor=pointer]:
+                  - generic [ref=e769]: About this item
+              - tabpanel "About this item" [ref=e771]:
+                - generic [ref=e774]:
+                  - generic [ref=e777]:
+                    - generic [ref=e781]: Seller assumes all responsibility for this listing.
+                    - generic [ref=e785]: eBay item number:195636090824
+                    - generic [ref=e789]:
+                      - text: Last updated on May 07, 2026 17:47:38 PDT
+                      - link "View all revisions View all revisions" [ref=e790] [cursor=pointer]:
+                        - /url: https://www.ebay.com/rvh/195636090824?rt=nc&_trksid=p4429486.m148105.l48144
+                        - generic [ref=e791]:
+                          - text: View all revisions
+                          - generic [ref=e792]: View all revisions
+                  - generic [ref=e795]:
+                    - heading "Item specifics" [level=2] [ref=e798]:
+                      - generic [ref=e799]: Item specifics
+                    - generic [ref=e801]:
+                      - generic [ref=e802]:
+                        - generic [ref=e804]:
+                          - term [ref=e805]:
+                            - generic [ref=e807]: Condition
+                          - definition [ref=e808]:
+                            - generic [ref=e811]:
+                              - generic [ref=e812]: "New: A brand-new, unused, unopened, undamaged item in its original packaging (where packaging is ..."
+                              - button "Read more about the condition" [ref=e814]:
+                                - generic [ref=e815]:
+                                  - text: Read more
+                                  - generic [ref=e816]: about the condition
+                        - generic [ref=e818]:
+                          - term [ref=e819]:
+                            - generic [ref=e821]: MPN
+                          - definition [ref=e822]:
+                            - generic [ref=e824]: 20-MSB-20
+                      - generic [ref=e825]:
+                        - generic [ref=e827]:
+                          - term [ref=e828]:
+                            - generic [ref=e830]: Item Length
+                          - definition [ref=e831]:
+                            - generic [ref=e833]: 11 in
+                        - generic [ref=e835]:
+                          - term [ref=e836]:
+                            - generic [ref=e838]: Number of Items in Set
+                          - definition [ref=e839]:
+                            - generic [ref=e841]: "1"
+                      - generic [ref=e842]:
+                        - generic [ref=e844]:
+                          - term [ref=e845]:
+                            - generic [ref=e847]: Model
+                          - definition [ref=e848]:
+                            - generic [ref=e850]: 20-MSB-20
+                        - generic [ref=e852]:
+                          - term [ref=e853]:
+                            - generic [ref=e855]: Manufacturer
+                          - definition [ref=e856]:
+                            - generic [ref=e858]: Mr. Scrappy
+                      - generic [ref=e859]:
+                        - generic [ref=e861]:
+                          - term [ref=e862]:
+                            - generic [ref=e864]: Brand
+                          - definition [ref=e865]:
+                            - generic [ref=e867]: Mr. Scrappy
+                        - generic [ref=e869]:
+                          - term [ref=e870]:
+                            - generic [ref=e872]: Set Includes
+                          - definition [ref=e873]:
+                            - generic [ref=e875]: Cleaning brush
+                      - generic [ref=e876]:
+                        - generic [ref=e878]:
+                          - term [ref=e879]:
+                            - generic [ref=e881]: Room
+                          - definition [ref=e882]:
+                            - generic [ref=e884]: Kitchen
+                        - generic [ref=e886]:
+                          - term [ref=e887]:
+                            - generic [ref=e889]: Type
+                          - definition [ref=e890]:
+                            - generic [ref=e892]: Modern
+                      - generic [ref=e893]:
+                        - generic [ref=e895]:
+                          - term [ref=e896]:
+                            - generic [ref=e898]: UPC
+                          - definition [ref=e899]:
+                            - generic [ref=e901]: "707534012010"
+                        - generic [ref=e903]:
+                          - term [ref=e904]:
+                            - generic [ref=e906]: Country of Origin
+                          - definition [ref=e907]:
+                            - generic [ref=e909]: China
+                  - generic [ref=e910]:
+                    - generic [ref=e911]: Category
+                    - navigation "breadcrumb" [ref=e914]:
+                      - heading "breadcrumb" [level=2] [ref=e915]
+                      - list [ref=e916]:
+                        - listitem [ref=e917]:
+                          - link "Home & Garden" [ref=e918] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Home-Garden/11700/bn_1853126
+                          - img
+                        - listitem [ref=e919]:
+                          - button "breadcrumb menu" [ref=e921]:
+                            - generic [ref=e922]:
+                              - img
+                          - img
+                        - listitem [ref=e923]:
+                          - link "Plumbing & Fixtures" [ref=e924] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Home-Plumbing-Fixtures/20601/bn_2309995
+                          - img
+                        - listitem [ref=e925]:
+                          - link "Garbage Disposals" [ref=e926] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Garbage-Disposals/259867/bn_7115677660
+                          - img
+                        - listitem [ref=e927]:
+                          - link "Garbage Disposal Parts" [ref=e928] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Garbage-Disposal-Parts/259837/bn_7115814261
+                  - generic [ref=e929]:
+                    - heading "Item description from the seller" [level=2] [ref=e932]
+                    - iframe [ref=e933]:
+                      - generic [ref=f305e5]:
+                        - generic [ref=f305e7]:
+                          - heading "Mr. Scrappy Kitchen Garbage Disposal Cleaning Brush, Sturdy Grip Handle, 11 inch" [level=1] [ref=f305e8]
+                          - generic [ref=f305e9]:
+                            - img "main image" [ref=f305e13]
+                            - heading [level=5] [ref=f305e15]
+                        - generic [ref=f305e29]:
+                          - heading "PRODUCT DESCRIPTION" [level=2] [ref=f305e30]
+                          - generic [ref=f305e31]:
+                            - generic [ref=f305e33]: The easy to use Mr. Scrappy Universal Garbage Disposal Brush helps keep your disposer clean. Featuring powerful, stiff cleaning bristles, the unique shape of this cleaning brush makes it safe and convenient to clean hard to reach areas of your disposal that your hand or cleaning rags cannot. A sturdy grip handle lets you get maximum traction when twisting the 11-inch brush around the disposal unit, helping break up nasty gunk and caked on junk that are the most common causes of garbage disposal odor. After using, simply rinse clean under the faucet or place in a dishwasher for a more thorough cleaning.
+                            - paragraph [ref=f305e34]
+            - generic [ref=e936]:
+              - generic [ref=e937]:
+                - generic [ref=e938]:
+                  - heading "About this seller" [level=2] [ref=e939]:
+                    - generic [ref=e941]: About this seller
+                  - generic [ref=e942]:
+                    - link [ref=e944] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/kitchenstoreinc?_trksid=p4429486.m145687.l149266
+                      - img [ref=e946]
+                    - generic [ref=e947]:
+                      - heading "Kitchen Store Inc" [level=3] [ref=e948]:
+                        - link "Kitchen Store Inc" [ref=e949] [cursor=pointer]:
+                          - /url: https://www.ebay.com/str/kitchenstoreinc?_trksid=p4429486.m145687.l149267
+                      - paragraph [ref=e950]: 99.3% positive feedback•3.8K items sold
+                  - generic [ref=e955]:
+                    - generic [ref=e956]:
+                      - img
+                    - generic [ref=e957]: Joined Jul 2016
+                  - generic [ref=e959]:
+                    - generic [ref=e960]: Kitchen Store Inc offers an exclusive variety of quality disposers, hot water dispensers, and other disposer/home products at a reasonable price. With 8 brands and over 80 products to choose from, you ...
+                    - group [ref=e962]:
+                      - generic "See more" [ref=e963]:
+                        - generic [ref=e964]: See more
+                        - generic [ref=e965]:
+                          - img
+                  - generic [ref=e966]:
+                    - link "Visit store" [ref=e967] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/kitchenstoreinc?_trksid=p4429486.m145687.l149086
+                      - generic [ref=e968]: Visit store
+                    - button "Message seller - opens in a new dialog" [ref=e969] [cursor=pointer]:
+                      - generic [ref=e970]:
+                        - text: Message seller
+                        - generic [ref=e971]: "- opens in a new dialog"
+                    - button "Save seller - Save this seller desechar" [ref=e973] [cursor=pointer]:
+                      - generic [ref=e974]:
+                        - img
+                      - generic [ref=e975]: Save seller
+                - generic [ref=e977]:
+                  - heading "Detailed seller ratings" [level=3] [ref=e978]
+                  - generic [ref=e979]:
+                    - generic [ref=e980]: Average for the last 12 months
+                    - generic [ref=e981]:
+                      - generic [ref=e982]:
+                        - generic [ref=e983]: Accurate description
+                        - progressbar [ref=e984]
+                        - generic [ref=e985]: "4.8"
+                      - generic [ref=e986]:
+                        - generic [ref=e987]: Reasonable shipping cost
+                        - progressbar [ref=e988]
+                        - generic [ref=e989]: "5.0"
+                      - generic [ref=e990]:
+                        - generic [ref=e991]: Shipping speed
+                        - progressbar [ref=e992]
+                        - generic [ref=e993]: "5.0"
+                      - generic [ref=e994]:
+                        - generic [ref=e995]: Communication
+                        - progressbar [ref=e996]
+                        - generic [ref=e997]: "5.0"
+                - generic [ref=e998]:
+                  - generic [ref=e999]:
+                    - heading "Popular categories from this store" [level=3] [ref=e1000]
+                    - link "See all categories" [ref=e1002] [cursor=pointer]:
+                      - /url: https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=desechar&store_cat=0&store_name=kitchenstoreinc&_oac=1
+                      - generic [ref=e1003]:
+                        - text: See all
+                        - generic [ref=e1004]: categories
+                  - generic [ref=e1005]:
+                    - link "Garbage Disposers" [ref=e1007] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/kitchenstoreinc/Garbage-Disposers/_i.html?store_cat=3753487419
+                    - link "Hot Water Dispensers" [ref=e1009] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/kitchenstoreinc/Hot-Water-Dispensers/_i.html?store_cat=3753487519
+                    - link "BioShield Air Sanitizer System" [ref=e1011] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/kitchenstoreinc/BioShield-Air-Sanitizer-System/_i.html?store_cat=3753487619
+                    - link "Garbage Disposer Accessories" [ref=e1013] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/kitchenstoreinc/Garbage-Disposer-Accessories/_i.html?store_cat=3753487719
+                    - link "Faucets" [ref=e1015] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/kitchenstoreinc/Faucets/_i.html?store_cat=3753487819
+                    - link "Other" [ref=e1017] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/kitchenstoreinc/Other/_i.html?store_cat=1
+              - generic [ref=e1020]:
+                - heading "Seller feedback (1,100)" [level=2] [ref=e1021]
+                - generic [ref=e1022]:
+                  - tablist [ref=e1023]:
+                    - tab "This item (24)" [selected] [ref=e1024]:
+                      - generic [ref=e1025]: This item (24)
+                    - tab "All items (1,100)" [ref=e1026]:
+                      - generic [ref=e1027]: All items (1,100)
+                  - tabpanel "This item (24)" [ref=e1029]:
+                    - generic [ref=e1031]:
+                      - generic [ref=e1032]:
+                        - 'button "Filter: All ratings" [ref=e1035] [cursor=pointer]':
+                          - generic [ref=e1036]:
+                            - generic [ref=e1037]: "Filter:"
+                            - generic [ref=e1038]: All ratings
+                            - img
+                        - list [ref=e1039]:
+                          - listitem [ref=e1040]:
+                            - link "Usage" [ref=e1041] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=195636090824&username=desechar&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Ausage&q=195636090824&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Usage
+                          - listitem [ref=e1042]:
+                            - link "Satisfaction" [ref=e1043] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=195636090824&username=desechar&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aproduct-satisfaction&q=195636090824&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Satisfaction
+                          - listitem [ref=e1044]:
+                            - link "Value" [ref=e1045] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=195636090824&username=desechar&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aprice&q=195636090824&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Value
+                          - listitem [ref=e1046]:
+                            - link "Quality" [ref=e1047] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=195636090824&username=desechar&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aquality&q=195636090824&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Quality
+                          - listitem [ref=e1048]:
+                            - link "Condition" [ref=e1049] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=195636090824&username=desechar&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Acondition&q=195636090824&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Condition
+                      - list [ref=e1050]:
+                        - listitem [ref=e1051]:
+                          - generic [ref=e1052]:
+                            - generic [ref=e1054]:
+                              - generic [ref=e1055]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1056]:
+                                - text: 1***1 (166)
+                                - generic [ref=e1057]: "- Feedback left by buyer."
+                              - generic [ref=e1060]: Past 6 months
+                              - generic [ref=e1061]: Verified purchase
+                            - generic [ref=e1063]: Brush works great Quick service 100% happy
+                        - listitem [ref=e1064]:
+                          - generic [ref=e1065]:
+                            - generic [ref=e1067]:
+                              - generic [ref=e1068]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1069]:
+                                - text: 3***8 (320)
+                                - generic [ref=e1070]: "- Feedback left by buyer."
+                              - generic [ref=e1073]: Past year
+                              - generic [ref=e1074]: Verified purchase
+                            - generic [ref=e1076]: It works good. Finally found something suited to this messy job.
+                        - listitem [ref=e1077]:
+                          - generic [ref=e1078]:
+                            - generic [ref=e1080]:
+                              - generic [ref=e1081]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1082]:
+                                - text: t***0 (381)
+                                - generic [ref=e1083]: "- Feedback left by buyer."
+                              - generic [ref=e1086]: Past month
+                              - generic [ref=e1087]: Verified purchase
+                            - generic [ref=e1089]: Excellent ebayer. Fast transaction.
+                        - listitem [ref=e1090]:
+                          - generic [ref=e1091]:
+                            - generic [ref=e1093]:
+                              - generic [ref=e1094]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1095]:
+                                - text: s***o (653)
+                                - generic [ref=e1096]: "- Feedback left by buyer."
+                              - generic [ref=e1099]: Past year
+                              - generic [ref=e1100]: Verified purchase
+                            - generic [ref=e1102]: I am very pleased with my purchase. It was as described, shipping and price were excellent. I would not hesitate to recommend this seller again. Thank you.*****
+                        - listitem [ref=e1103]:
+                          - generic [ref=e1104]:
+                            - generic [ref=e1106]:
+                              - generic [ref=e1107]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1108]:
+                                - text: 1***t (328)
+                                - generic [ref=e1109]: "- Feedback left by buyer."
+                              - generic [ref=e1112]: Past year
+                              - generic [ref=e1113]: Verified purchase
+                            - generic [ref=e1115]: Brand new! Just as presented z,
+                        - listitem [ref=e1116]:
+                          - generic [ref=e1117]:
+                            - generic [ref=e1119]:
+                              - generic [ref=e1120]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1121]:
+                                - text: 6***w (49)
+                                - generic [ref=e1122]: "- Feedback left by buyer."
+                              - generic [ref=e1125]: More than a year ago
+                              - generic [ref=e1126]: Verified purchase
+                            - generic [ref=e1128]: Just what I was looking for! Cleans hard to reach areas of disposal.
+                        - listitem [ref=e1129]:
+                          - generic [ref=e1130]:
+                            - generic [ref=e1132]:
+                              - generic [ref=e1133]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1134]:
+                                - text: 2***2 (212)
+                                - generic [ref=e1135]: "- Feedback left by buyer."
+                              - generic [ref=e1138]: Past year
+                              - generic [ref=e1139]: Verified purchase
+                            - generic [ref=e1141]: I haven't used it yet but it appears to be just what I wanted
+                        - listitem [ref=e1142]:
+                          - generic [ref=e1143]:
+                            - generic [ref=e1145]:
+                              - generic [ref=e1146]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1147]:
+                                - text: y***e (824)
+                                - generic [ref=e1148]: "- Feedback left by buyer."
+                              - generic [ref=e1151]: Past year
+                              - generic [ref=e1152]: Verified purchase
+                            - generic [ref=e1154]: Easy transaction. Everything as described. Recommend this seller.
+                      - link "See all feedback. Opens in a new tab" [ref=e1155] [cursor=pointer]:
+                        - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=195636090824&username=desechar&filter=feedback_page%3ARECEIVED_AS_SELLER&q=195636090824&sort=RELEVANCEV2
+                        - text: See all feedback
+            - generic [ref=e1157]:
+              - navigation "Quick Links" [ref=e1158]:
+                - link "Back to home page" [ref=e1159] [cursor=pointer]:
+                  - /url: https://www.ebay.com
+                - button "Return to top" [ref=e1160] [cursor=pointer]
+              - generic [ref=e1162]:
+                - heading "More to explore :" [level=2] [ref=e1165]
+                - list [ref=e1167]:
+                  - listitem [ref=e1168]:
+                    - link "Garbage Disposals," [ref=e1169] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Garbage-Disposals/259867/bn_7115677660
+                  - listitem [ref=e1170]:
+                    - link "Garbage Disposal Systems," [ref=e1171] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Garbage-Disposal-Systems/259836/bn_7848332
+                  - listitem [ref=e1172]:
+                    - link "GE Garbage Disposals," [ref=e1173] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/GE-Garbage-Disposals/259867/bn_7115683307
+                  - listitem [ref=e1174]:
+                    - link "InSinkErator Garbage Disposals," [ref=e1175] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/InSinkErator-Garbage-Disposals/259867/bn_7115674064
+                  - listitem [ref=e1176]:
+                    - link "Garbage Disposal Parts," [ref=e1177] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Garbage-Disposal-Parts/259837/bn_7115814261
+                  - listitem [ref=e1178]:
+                    - link "Kenmore Garbage Disposal Systems," [ref=e1179] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Kenmore-Garbage-Disposal-Systems/259836/bn_7848336
+                  - listitem [ref=e1180]:
+                    - link "InSinkErator Garbage Disposal Systems," [ref=e1181] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/InSinkErator-Garbage-Disposal-Systems/259836/bn_7848335
+                  - listitem [ref=e1182]:
+                    - link "Badger Garbage Disposal Systems," [ref=e1183] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Badger-Garbage-Disposal-Systems/259836/bn_7848334
+                  - listitem [ref=e1184]:
+                    - link "Waste King Garbage Disposal Systems," [ref=e1185] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Waste-King-Garbage-Disposal-Systems/259836/bn_7848330
+                  - listitem [ref=e1186]:
+                    - link "Waste King Garbage Disposal Parts" [ref=e1187] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Waste-King-Garbage-Disposal-Parts/259837/bn_7116034429
+              - generic [ref=e1189]:
+                - heading "Shop Top Sellers and Highly Rated Products in Garbage Disposal Parts" [level=2] [ref=e1190]
+                - generic [ref=e1191]:
+                  - generic [ref=e1192]:
+                    - heading "Best Sellers" [level=3] [ref=e1193]
+                    - list [ref=e1194]:
+                      - listitem [ref=e1195]:
+                        - link "ROHL AS426 Air Activated Switch Control Box" [ref=e1196] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/1300497471
+                          - generic [ref=e1197]: ROHL AS426 Air Activated Switch Control Box
+                      - listitem [ref=e1198]:
+                        - link "InSinkErator FLG-MTBLK Matte Black Garbage Disposal Sink Flange Emerson D4" [ref=e1199] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/1653389259
+                          - generic [ref=e1200]: InSinkErator FLG-MTBLK Matte Black Garbage Disposal Sink Flange Emerson D4
+                      - listitem [ref=e1201]:
+                        - link "KOHLER 4.44-in Vibrant Brush Moderne Brass Garbage Disposal Stopper R11352-C-2MB" [ref=e1202] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/8073101511
+                          - generic [ref=e1203]: KOHLER 4.44-in Vibrant Brush Moderne Brass Garbage Disposal Stopper R11352-C-2MB
+                      - listitem [ref=e1204]:
+                        - link "BLANCO 203443 Disposal Flange 3.5 Soft White" [ref=e1205] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/27073769298
+                          - generic [ref=e1206]: BLANCO 203443 Disposal Flange 3.5 Soft White
+                      - listitem [ref=e1207]:
+                        - link "HK Garbage Disposal Air Switch Kit with Power Cord Kit Sink Top Waste Disposer" [ref=e1208] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/9032302614
+                          - generic [ref=e1209]: HK Garbage Disposal Air Switch Kit with Power Cord Kit Sink Top Waste Disposer
+                  - generic [ref=e1210]:
+                    - heading "Top Rated" [level=3] [ref=e1211]
+                    - list [ref=e1212]:
+                      - listitem [ref=e1213]:
+                        - link "Delta Kitchen Faucet Cartridge Assembly (RP25513)" [ref=e1214] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/624328958
+                          - generic [ref=e1215]: Delta Kitchen Faucet Cartridge Assembly (RP25513)
+                      - listitem [ref=e1216]:
+                        - link "InSinkErator STS00 Garbage Disposal Dual Outlet Sink-Top Air Switch Kit" [ref=e1217] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/2254480803
+                          - generic [ref=e1218]: InSinkErator STS00 Garbage Disposal Dual Outlet Sink-Top Air Switch Kit
+                      - listitem [ref=e1219]:
+                        - link "InSinkErator Dishwasher Connector Kit (DWC00)" [ref=e1220] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/8018000695
+                          - generic [ref=e1221]: InSinkErator Dishwasher Connector Kit (DWC00)
+                      - listitem [ref=e1222]:
+                        - link "InSinkErator STS-SO Single Outlet Sink Top Switch with Chrome, Satin Nickel and White Buttons" [ref=e1223] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/710160555
+                          - generic [ref=e1224]: InSinkErator STS-SO Single Outlet Sink Top Switch with Chrome, Satin Nickel and White Buttons
+                      - listitem [ref=e1225]:
+                        - link "InSinkErator Qlm-00 Quick Lock Mount for Garbage Disposers" [ref=e1226] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/1000031449
+                          - generic [ref=e1227]: InSinkErator Qlm-00 Quick Lock Mount for Garbage Disposers
+              - generic [ref=e1229]:
+                - heading "Related searches" [level=2] [ref=e1230]
+                - list [ref=e1231]:
+                  - listitem [ref=e1232]:
+                    - link "Garbage Disposal Brush" [ref=e1233] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-disposal-brush?_nkw=garbage+disposal+brush
+                      - generic [ref=e1234]: Garbage Disposal Brush
+                  - listitem [ref=e1235]:
+                    - link "Kitchen Cleaning Brush" [ref=e1236] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/kitchen-cleaning-brush?_nkw=kitchen+cleaning+brush
+                      - generic [ref=e1237]: Kitchen Cleaning Brush
+                  - listitem [ref=e1238]:
+                    - link "Disposable Toilet Brush" [ref=e1239] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/disposable-toilet-brush?_nkw=disposable+toilet+brush
+                      - generic [ref=e1240]: Disposable Toilet Brush
+                  - listitem [ref=e1241]:
+                    - link "Disposable Brush" [ref=e1242] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/disposable-brush?_nkw=disposable+brush
+                      - generic [ref=e1243]: Disposable Brush
+                  - listitem [ref=e1244]:
+                    - link "Kitchen Garbage Can" [ref=e1245] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/kitchen-garbage-can?_nkw=kitchen+garbage+can
+                      - generic [ref=e1246]: Kitchen Garbage Can
+                  - listitem [ref=e1247]:
+                    - link "Garbage Gripper" [ref=e1248] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-gripper?_nkw=garbage+gripper
+                      - generic [ref=e1249]: Garbage Gripper
+                  - listitem [ref=e1250]:
+                    - link "Kitchen Garbage Can Stainless" [ref=e1251] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/kitchen-garbage-can-stainless?_nkw=kitchen+garbage+can+stainless
+                      - generic [ref=e1252]: Kitchen Garbage Can Stainless
+                  - listitem [ref=e1253]:
+                    - link "Cleaning Brush with Handle" [ref=e1254] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/cleaning-brush-with-handle?_nkw=cleaning+brush+with+handle
+                      - generic [ref=e1255]: Cleaning Brush with Handle
+                  - listitem [ref=e1256]:
+                    - link "Garbage Can Kitchen" [ref=e1257] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-can-kitchen?_nkw=garbage+can+kitchen
+                      - generic [ref=e1258]: Garbage Can Kitchen
+                  - listitem [ref=e1259]:
+                    - link "Mr Clean Broom" [ref=e1260] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/mr-clean-broom?_nkw=mr+clean+broom
+                      - generic [ref=e1261]: Mr Clean Broom
+                  - listitem [ref=e1262]:
+                    - link "Heavy Duty Trash Grabber" [ref=e1263] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/heavy-duty-trash-grabber?_nkw=heavy+duty+trash+grabber
+                      - generic [ref=e1264]: Heavy Duty Trash Grabber
+                  - listitem [ref=e1265]:
+                    - link "Trash Grabber" [ref=e1266] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/trash-grabber?_nkw=trash+grabber
+                      - generic [ref=e1267]: Trash Grabber
+                  - listitem [ref=e1268]:
+                    - link "Garbage Bags Kitchen" [ref=e1269] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-bags-kitchen?_nkw=garbage+bags+kitchen
+                      - generic [ref=e1270]: Garbage Bags Kitchen
+                  - listitem [ref=e1271]:
+                    - link "Kitchen Trash Cabinet" [ref=e1272] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/kitchen-trash-cabinet?_nkw=kitchen+trash+cabinet
+                      - generic [ref=e1273]: Kitchen Trash Cabinet
+                  - listitem [ref=e1274]:
+                    - link "Garbage Disposal Cleaner" [ref=e1275] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/garbage-disposal-cleaner?_nkw=garbage+disposal+cleaner
+                      - generic [ref=e1276]: Garbage Disposal Cleaner
+        - img [ref=e1280]
+  - contentinfo [ref=e1286]:
+    - list [ref=e1287]:
+      - listitem [ref=e1288]:
+        - link "About eBay" [ref=e1289] [cursor=pointer]:
+          - /url: https://www.ebayinc.com
+      - listitem [ref=e1290]:
+        - link "Announcements" [ref=e1291] [cursor=pointer]:
+          - /url: https://community.ebay.com/t5/Announcements/bg-p/Announcements
+      - listitem [ref=e1292]:
+        - link "Community" [ref=e1293] [cursor=pointer]:
+          - /url: https://community.ebay.com
+      - listitem [ref=e1294]:
+        - link "Security Center" [ref=e1295] [cursor=pointer]:
+          - /url: https://pages.ebay.com/securitycenter/index.html
+      - listitem [ref=e1296]:
+        - link "Seller Center" [ref=e1297] [cursor=pointer]:
+          - /url: https://www.ebay.com/sellercenter
+      - listitem [ref=e1298]:
+        - link "Policies" [ref=e1299] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/policies/default/ebays-rules-policies?id=4205
+      - listitem [ref=e1300]:
+        - link "Affiliates" [ref=e1301] [cursor=pointer]:
+          - /url: https://partnernetwork.ebay.com/
+      - listitem [ref=e1302]:
+        - link "Product Safety Tips" [ref=e1303] [cursor=pointer]:
+          - /url: https://pages.ebay.com/safetytips
+      - listitem [ref=e1304]:
+        - link "Help & Contact" [ref=e1305] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/home
+      - listitem [ref=e1306]:
+        - link "Site Map" [ref=e1307] [cursor=pointer]:
+          - /url: https://pages.ebay.com/sitemap.html
+    - generic [ref=e1308]:
+      - text: Copyright © 1995-2026 eBay Inc. All Rights Reserved.
+      - link "Accessibility" [ref=e1309] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/accessibility/
+      - text: ","
+      - link "User Agreement" [ref=e1310] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259
+      - text: ","
+      - link "Privacy" [ref=e1311] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260
+      - text: ","
+      - link "Consumer Health Data" [ref=e1312] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/consumer-health-data-privacy-policy/
+      - text: ","
+      - link "Payments Terms of Use" [ref=e1313] [cursor=pointer]:
+        - /url: https://pages.ebay.com/payment/2.0/terms.html
+      - text: ","
+      - link "Cookies" [ref=e1314] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/ebay-cookie-notice?id=4267
+      - text: ","
+      - link "CA Privacy Notice" [ref=e1315] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/state-privacy-disclosures/#california
+      - text: ","
+      - link "Your Privacy Choices" [ref=e1316] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice/ccpa
+      - text: and
+      - link "AdChoice" [ref=e1317] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice
+        - text: AdChoice
+        - img
+  - img
+  - img [ref=e1319]

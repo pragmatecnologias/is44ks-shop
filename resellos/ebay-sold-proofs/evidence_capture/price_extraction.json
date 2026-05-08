@@ -1,0 +1,49 @@
+[
+  {
+    "type": "active",
+    "url": "https://www.ebay.com/itm/266892301404",
+    "name": "Universal Toilet Tank Flush Handle",
+    "title": "GOMMA ESTIVO SUPERIA ECOBLUE UHP XL 195 45 R 16 84 V | eBay",
+    "prices": [
+      "$106.98",
+      "$234.52",
+      "$84.51",
+      "$82.28",
+      "$82.93",
+      "$317.99",
+      "$423.75",
+      "$142.93",
+      "$190.75",
+      "$127.64"
+    ],
+    "screenshot": "/Users/admin/CascadeProjects/is44ks-shop/resellos/ebay-sold-proofs/evidence_capture/active_ebay_02.png",
+    "status": "captured"
+  },
+  {
+    "type": "competitor",
+    "url": "https://www.ebay.com/itm/374726059776",
+    "name": "Korky 4002BP competitor",
+    "title": "NISSAN Note DAA-SNE12 Rear Left Shock Absorber E62105WS0A [Used] [PA65827203] | eBay",
+    "prices": [
+      "$191.13",
+      "$200.61",
+      "$210.10",
+      "$187.06",
+      "$67.71",
+      "$58.08",
+      "$159.16",
+      "$22.76",
+      "$33.82",
+      "$69.55"
+    ],
+    "status": "captured"
+  },
+  {
+    "type": "competitor",
+    "url": "https://www.ebay.com/itm/325693924660",
+    "name": "Danco competitor",
+    "title": "Error Page | eBay",
+    "prices": [],
+    "status": "captured"
+  }
+]

@@ -1,0 +1,8 @@
+[     754ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ about:blank:0
+[    1735ms] [LOG] {h: 5815, w: 1556} @ https://ir.ebaystatic.com/rs/c/r1vinode/item_evo-Mk5DlASR.js:7
+[    1897ms] [LOG] done @ https://www.ebay.com/itm/266084662385:4
+[    2181ms] [WARNING] [GPT] PubAdsService.collapseEmptyDivs is deprecated, use googletag.setConfig({collapseDiv: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202604300101/pubads_impl.js?cb=31098253:18
+[    2183ms] [WARNING] [GPT] Slot.setTargeting is deprecated, use Slot.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#171 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202604300101/pubads_impl.js?cb=31098253:18
+[    4720ms] [WARNING] The resource https://ir.ebaystatic.com/cr/v/c1/market-sans/v1.0/MarketSans-Regular-WebS.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://itm.ebaydesc.com/itmdesc/266084662385?t=1777567878000&category=257844&seller=imvip365&excSoj=1&ver=1&excTrk=1&lsite=0&ittenable=true&domain=ebay.com&descgauge=1&cspheader=1&oneClk=2&secureDesc=1&variationId=565936853540:0

@@ -1,0 +1,3 @@
+[     633ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.ebay.com/itm/405443980973:0
+[     717ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ about:blank:0
+[    1591ms] [LOG] done @ https://www.ebay.com/itm/405443980973:4

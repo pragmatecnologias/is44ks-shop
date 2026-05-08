@@ -23,6 +23,7 @@ from app.routes import (
     inventory_router,
     sales_router,
     research_search_router,
+    production_router,
 )
 
 app = FastAPI(title="ResellOS API", version="0.1.0")
@@ -54,6 +55,7 @@ app.include_router(listings_router)
 app.include_router(inventory_router)
 app.include_router(sales_router)
 app.include_router(research_search_router)
+app.include_router(production_router)
 
 
 @app.get("/")

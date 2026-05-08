@@ -51,6 +51,17 @@ import type {
   ShopPortfolioReport,
   PortfolioContext,
   ValidationChecklistResponse,
+  ProductionCampaign,
+  ProductionCampaignDetail,
+  ProductionCampaignInput,
+  ProductionCapability,
+  MachineCandidate,
+  MachineCandidateInput,
+  MachineCockpit,
+  MachineEvidence,
+  MachineProductFamily,
+  ProductionCostScenario,
+  MachineDecision,
 } from './types';
 
 export const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
@@ -1172,4 +1183,163 @@ export async function rejectResearchSearchResult(
     method: 'PATCH',
     body: JSON.stringify({ reject_reason: rejectReason }),
   });
+}
+
+// ---------------------------------------------------------------------------
+// Production Capability Discovery
+// ---------------------------------------------------------------------------
+
+export async function listProductionCampaigns(): Promise<ProductionCampaign[]> {
+  return getMaybe('/api/production/campaigns', []);
+}
+
+export async function createProductionCampaign(data: ProductionCampaignInput): Promise<ProductionCampaign> {
+  return requestJson('/api/production/campaigns', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function getProductionCampaign(id: string): Promise<ProductionCampaignDetail> {
+  return getMaybe(`/api/production/campaigns/${id}`, null as unknown as ProductionCampaignDetail);
+}
+
+export async function updateProductionCampaign(id: string, data: Partial<ProductionCampaignInput>): Promise<ProductionCampaign> {
+  return requestJson(`/api/production/campaigns/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function createMachineCandidate(data: MachineCandidateInput): Promise<MachineCandidate> {
+  return requestJson('/api/production/machines', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function listMachineCandidates(campaignId?: string): Promise<MachineCandidate[]> {
+  const query = campaignId ? `?campaign_id=${campaignId}` : '';
+  return getMaybe(`/api/production/machines${query}`, []);
+}
+
+export async function getMachineCockpit(id: string): Promise<MachineCockpit | null> {
+  return getMaybe(`/api/production/machines/${id}`, null as unknown as MachineCockpit);
+}
+
+export async function updateMachineCandidate(id: string, data: Partial<MachineCandidateInput>): Promise<MachineCandidate> {
+  return requestJson(`/api/production/machines/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function createMachineEvidence(
+  machineId: string,
+  data: {
+    evidence_type: string;
+    title?: string;
+    url?: string;
+    price?: number;
+    source?: string;
+    seller?: string;
+    condition?: string;
+    specs_json?: Record<string, unknown>;
+    pros?: string;
+    cons?: string;
+    confidence?: string;
+    raw_text?: string;
+    notes?: string;
+  },
+): Promise<MachineEvidence> {
+  return requestJson(`/api/production/machines/${machineId}/evidence`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function verifyMachineEvidence(machineId: string, evidenceId: string, status: string): Promise<MachineEvidence> {
+  return requestJson(`/api/production/machines/${machineId}/evidence/${evidenceId}/verify`, {
+    method: 'PATCH',
+    body: JSON.stringify({ status }),
+  });
+}
+
+export async function rejectMachineEvidence(machineId: string, evidenceId: string): Promise<MachineEvidence> {
+  return requestJson(`/api/production/machines/${machineId}/evidence/${evidenceId}/reject`, {
+    method: 'POST',
+  });
+}
+
+export async function createMachineProductFamily(
+  machineId: string,
+  data: {
+    name: string;
+    description?: string;
+    material_cost_per_unit?: number;
+    estimated_sale_price?: number;
+    estimated_demand?: string;
+    market_evidence_summary?: string;
+    notes?: string;
+  },
+): Promise<MachineProductFamily> {
+  return requestJson(`/api/production/machines/${machineId}/product-families`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function updateMachineProductFamily(
+  machineId: string,
+  familyId: string,
+  data: Partial<MachineProductFamily>,
+): Promise<MachineProductFamily> {
+  return requestJson(`/api/production/machines/${machineId}/product-families/${familyId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function promoteMachineProductFamily(
+  machineId: string,
+  familyId: string,
+): Promise<{ idea_id: string; product_id: string | null }> {
+  return requestJson(`/api/production/machines/${machineId}/product-families/${familyId}/promote-to-product`, {
+    method: 'POST',
+  });
+}
+
+export async function createCostScenario(
+  familyId: string,
+  data: Partial<ProductionCostScenario> & { scenario_name: string },
+): Promise<ProductionCostScenario> {
+  return requestJson(`/api/production/product-families/${familyId}/cost-scenarios`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function listCostScenarios(familyId: string): Promise<ProductionCostScenario[]> {
+  return getMaybe(`/api/production/product-families/${familyId}/cost-scenarios`, []);
+}
+
+export async function runMachineDecision(machineId: string): Promise<MachineDecision> {
+  return requestJson(`/api/production/machines/${machineId}/decision`, {
+    method: 'POST',
+  });
+}
+
+export async function getMachineNextAction(machineId: string): Promise<{ action: string; priority: string; reason: string }> {
+  return getMaybe(`/api/production/machines/${machineId}/next-action`, null as unknown as { action: string; priority: string; reason: string });
+}
+
+export async function createProductionCapability(campaignId: string, data: { name: string; category?: string; description?: string; materials?: string[]; typical_products?: string[]; skill_level?: string; workspace_footprint?: string }): Promise<ProductionCapability> {
+  return requestJson(`/api/production/capabilities`, {
+    method: 'POST',
+    body: JSON.stringify({ campaign_id: campaignId, ...data }),
+  });
+}
+
+export async function listProductionCapabilities(campaignId: string): Promise<ProductionCapability[]> {
+  return getMaybe(`/api/production/capabilities?campaign_id=${campaignId}`, [] as ProductionCapability[]);
 }

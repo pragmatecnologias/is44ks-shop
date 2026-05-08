@@ -1211,3 +1211,256 @@ export interface CreateProductInput {
   description?: string;
   supplier_url?: string;
 }
+
+// ---------------------------------------------------------------------------
+// Production Capability Discovery
+// ---------------------------------------------------------------------------
+
+export type MachineCandidateStatus =
+  | 'SUGGESTED' | 'SHORTLISTED' | 'RESEARCHING' | 'NEEDS_MORE_RESEARCH'
+  | 'READY_FOR_DECISION' | 'DECIDED' | 'REJECTED' | 'ARCHIVED';
+
+export type MachineFamilyStatus =
+  | 'SUGGESTED' | 'SHORTLISTED' | 'RESEARCHING' | 'VALIDATED'
+  | 'PROMOTED_TO_PRODUCT' | 'REJECTED' | 'ARCHIVED';
+
+export type MachineDecisionRecommendation =
+  | 'BUY_MACHINE' | 'WAIT_FOR_USED_DEAL' | 'OUTSOURCE_FIRST'
+  | 'NEEDS_MORE_RESEARCH' | 'REJECT';
+
+export type MachineEvidenceType =
+  | 'NEW_MACHINE_LISTING' | 'USED_MACHINE_LISTING' | 'VENDOR_SPEC'
+  | 'REVIEW' | 'FORUM_DISCUSSION' | 'YOUTUBE_REVIEW' | 'SAFETY_REPORT' | 'MANUAL';
+
+export const MACHINE_STATUS_LABELS: Record<string, string> = {
+  SUGGESTED: 'Suggested',
+  SHORTLISTED: 'Shortlisted',
+  RESEARCHING: 'Researching',
+  NEEDS_MORE_RESEARCH: 'Needs Research',
+  READY_FOR_DECISION: 'Ready for Decision',
+  DECIDED: 'Decided',
+  REJECTED: 'Rejected',
+  ARCHIVED: 'Archived',
+};
+
+export const MACHINE_STATUS_COLORS: Record<string, string> = {
+  SUGGESTED: 'bg-zinc-500/20 text-zinc-400 border-zinc-500/30',
+  SHORTLISTED: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+  RESEARCHING: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
+  NEEDS_MORE_RESEARCH: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
+  READY_FOR_DECISION: 'bg-indigo-500/20 text-indigo-400 border-indigo-500/30',
+  DECIDED: 'bg-green-500/20 text-green-400 border-green-500/30',
+  REJECTED: 'bg-red-500/20 text-red-400 border-red-500/30',
+  ARCHIVED: 'bg-zinc-600/20 text-zinc-500 border-zinc-600/30',
+};
+
+export const MACHINE_DECISION_LABELS: Record<string, string> = {
+  BUY_MACHINE: 'Buy Machine',
+  WAIT_FOR_USED_DEAL: 'Wait for Used Deal',
+  OUTSOURCE_FIRST: 'Outsource First',
+  NEEDS_MORE_RESEARCH: 'Needs More Research',
+  REJECT: 'Reject',
+};
+
+export const MACHINE_DECISION_COLORS: Record<string, string> = {
+  BUY_MACHINE: 'bg-green-500/20 text-green-400 border-green-500/30',
+  WAIT_FOR_USED_DEAL: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
+  OUTSOURCE_FIRST: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+  NEEDS_MORE_RESEARCH: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
+  REJECT: 'bg-red-500/20 text-red-400 border-red-500/30',
+};
+
+export interface ProductionCampaign {
+  id: string;
+  name: string;
+  shop_concept_id?: string | null;
+  mode: string;
+  goal?: string | null;
+  workspace_type?: string | null;
+  workspace_dimensions_json?: Record<string, unknown> | null;
+  power_constraints_json?: Record<string, unknown> | null;
+  safety_requirements_json?: Record<string, unknown> | null;
+  budget_limit_usd?: number | null;
+  status: string;
+  created_by?: string | null;
+  machine_count: number;
+  shortlisted_count: number;
+  decided_count: number;
+  report_generated_at?: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProductionCapability {
+  id: string;
+  campaign_id: string;
+  name: string;
+  category?: string | null;
+  description?: string | null;
+  materials?: string[] | null;
+  typical_products?: string[] | null;
+  entry_cost_range_json?: Record<string, unknown> | null;
+  skill_level?: string | null;
+  workspace_footprint?: string | null;
+  machine_count: number;
+  created_at: string;
+}
+
+export interface MachineCandidate {
+  id: string;
+  campaign_id: string;
+  name: string;
+  brand?: string | null;
+  model?: string | null;
+  category?: string | null;
+  description?: string | null;
+  url?: string | null;
+  price_new?: number | null;
+  price_used_range_json?: Record<string, unknown> | null;
+  condition?: string | null;
+  power_requirements?: string | null;
+  workspace_needed?: string | null;
+  safety_notes?: string | null;
+  status: string;
+  decision_recommendation?: string | null;
+  decision_reason?: string | null;
+  decided_at?: string | null;
+  notes?: string | null;
+  evidence_count: number;
+  product_family_count: number;
+  cost_scenario_count: number;
+  has_decision: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface MachineEvidence {
+  id: string;
+  machine_id: string;
+  evidence_type: string;
+  title?: string | null;
+  url?: string | null;
+  price?: number | null;
+  source?: string | null;
+  seller?: string | null;
+  condition?: string | null;
+  specs_json?: Record<string, unknown> | null;
+  pros?: string | null;
+  cons?: string | null;
+  verification_status: string;
+  confidence: string;
+  raw_text?: string | null;
+  screenshot_url?: string | null;
+  notes?: string | null;
+  created_at: string;
+}
+
+export interface MachineProductFamily {
+  id: string;
+  machine_id: string;
+  name: string;
+  description?: string | null;
+  material_cost_per_unit?: number | null;
+  estimated_sale_price?: number | null;
+  estimated_demand?: string | null;
+  market_evidence_summary?: string | null;
+  market_evidence_count: number;
+  has_market_evidence: boolean;
+  status: string;
+  promoted_product_id?: string | null;
+  promoted_idea_id?: string | null;
+  notes?: string | null;
+  cost_scenario_count: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProductionCostScenario {
+  id: string;
+  machine_id: string;
+  product_family_id?: string | null;
+  scenario_name: string;
+  material_cost?: number | null;
+  labor_cost?: number | null;
+  machine_time_cost?: number | null;
+  consumables_cost?: number | null;
+  marketplace_fee?: number | null;
+  shipping_cost?: number | null;
+  packaging_cost?: number | null;
+  other_costs?: number | null;
+  total_cost_per_unit?: number | null;
+  sale_price?: number | null;
+  net_profit_per_unit?: number | null;
+  margin_percent?: number | null;
+  machine_purchase_price?: number | null;
+  units_per_month?: number | null;
+  monthly_profit?: number | null;
+  payback_months?: number | null;
+  notes?: string | null;
+  created_at: string;
+}
+
+export interface MachineDecision {
+  id: string;
+  machine_id: string;
+  recommendation: string;
+  reason?: string | null;
+  confidence: string;
+  evidence_count: number;
+  product_family_count: number;
+  families_with_market_evidence: number;
+  has_cost_scenario: boolean;
+  payback_calculated: boolean;
+  workspace_fit?: string | null;
+  safety_fit?: string | null;
+  budget_fit?: string | null;
+  hard_blockers: string[];
+  warnings: string[];
+  created_at: string;
+}
+
+export interface MachineCockpit {
+  machine: MachineCandidate;
+  capabilities: ProductionCapability[];
+  evidence: MachineEvidence[];
+  product_families: MachineProductFamily[];
+  cost_scenarios: ProductionCostScenario[];
+  decision: MachineDecision | null;
+  next_action: { action: string; priority: string; reason: string } | null;
+}
+
+export interface ProductionCampaignDetail {
+  campaign: ProductionCampaign;
+  capabilities: ProductionCapability[];
+  machines: MachineCandidate[];
+}
+
+export interface ProductionCampaignInput {
+  name: string;
+  shop_concept_id?: string;
+  goal?: string;
+  workspace_type?: string;
+  workspace_dimensions_json?: Record<string, unknown>;
+  power_constraints_json?: Record<string, unknown>;
+  safety_requirements_json?: Record<string, unknown>;
+  budget_limit_usd?: number;
+  status?: string;
+  created_by?: string;
+}
+
+export interface MachineCandidateInput {
+  campaign_id: string;
+  name: string;
+  brand?: string;
+  model?: string;
+  category?: string;
+  description?: string;
+  url?: string;
+  price_new?: number;
+  price_used_range_json?: Record<string, unknown>;
+  condition?: string;
+  power_requirements?: string;
+  workspace_needed?: string;
+  safety_notes?: string;
+  capability_ids?: string[];
+}

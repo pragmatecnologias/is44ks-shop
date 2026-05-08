@@ -1,0 +1,1786 @@
+- generic [active] [ref=e1]:
+  - img
+  - img
+  - img
+  - img
+  - img
+  - generic [ref=e3]:
+    - banner [ref=e7]:
+      - link "Skip to main content" [ref=e9] [cursor=pointer]:
+        - /url: "#mainContent"
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e13]:
+            - text: Hi!
+            - link "Sign in" [ref=e14] [cursor=pointer]:
+              - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&sgfl=gh&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F324502697337
+            - generic [ref=e15]:
+              - text: or
+              - link "register" [ref=e16] [cursor=pointer]:
+                - /url: https://signup.ebay.com/pa/crte?ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F324502697337
+          - link "Deals" [ref=e18] [cursor=pointer]:
+            - /url: https://www.ebay.com/deals
+          - link "Brand Outlet" [ref=e20] [cursor=pointer]:
+            - /url: https://www.ebay.com/b/Brand-Outlet/bn_7115532402
+          - link "Gift Cards" [ref=e22] [cursor=pointer]:
+            - /url: https://www.ebay.com/giftcards
+          - link "Help & Contact" [ref=e24] [cursor=pointer]:
+            - /url: https://www.ebay.com/help/home
+        - generic [ref=e25]:
+          - link "Sell" [ref=e28] [cursor=pointer]:
+            - /url: https://www.ebay.com/sl/sell
+          - generic [ref=e29]:
+            - link "Watchlist" [ref=e30] [cursor=pointer]:
+              - /url: https://www.ebay.com/mye/myebay/watchlist
+              - generic [ref=e31]: Watchlist
+              - img
+            - button "Expand Watch List" [ref=e32]
+          - generic [ref=e33]:
+            - link "My eBay" [ref=e34] [cursor=pointer]:
+              - /url: https://www.ebay.com/mys/home?source=GBH
+              - generic [ref=e35]: My eBay
+              - img
+            - button "Expand My eBay" [ref=e36]
+          - button "Notifications" [ref=e39] [cursor=pointer]:
+            - img
+            - generic [ref=e40]: Notifications
+          - generic [ref=e42]:
+            - link "Your shopping cart contains 0 items" [ref=e43] [cursor=pointer]:
+              - /url: https://cart.ebay.com
+              - generic "Your shopping cart contains 0 items" [ref=e44]:
+                - img
+            - button "Expand Cart" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - link "eBay Home" [ref=e48] [cursor=pointer]:
+            - /url: https://www.ebay.com
+            - img "eBay Home" [ref=e49]
+          - button "Shop by category" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: Shop by category
+            - img
+        - generic [ref=e59]:
+          - status [ref=e60]
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - combobox "Search for anything" [ref=e64]
+              - img
+            - combobox "Select a category for search" [ref=e65]:
+              - option "All Categories" [selected]
+              - option "Antiques"
+              - option "Art"
+              - option "Baby"
+              - option "Books"
+              - option "Business & Industrial"
+              - option "Cameras & Photo"
+              - option "Cell Phones & Accessories"
+              - option "Clothing, Shoes & Accessories"
+              - option "Coins & Paper Money"
+              - option "Collectibles"
+              - option "Computers/Tablets & Networking"
+              - option "Consumer Electronics"
+              - option "Crafts"
+              - option "Dolls & Bears"
+              - option "Movies & TV"
+              - option "eBay Motors"
+              - option "Entertainment Memorabilia"
+              - option "Gift Cards & Coupons"
+              - option "Health & Beauty"
+              - option "Home & Garden"
+              - option "Jewelry & Watches"
+              - option "Music"
+              - option "Musical Instruments & Gear"
+              - option "Pet Supplies"
+              - option "Pottery & Glass"
+              - option "Real Estate"
+              - option "Specialty Services"
+              - option "Sporting Goods"
+              - option "Sports Mem, Cards & Fan Shop"
+              - option "Stamps"
+              - option "Tickets & Experiences"
+              - option "Toys & Hobbies"
+              - option "Travel"
+              - option "Video Games & Consoles"
+              - option "Everything Else"
+          - generic [ref=e66]:
+            - button "Search" [ref=e67] [cursor=pointer]:
+              - generic [ref=e68]: Search
+            - link "Advanced" [ref=e69] [cursor=pointer]:
+              - /url: https://www.ebay.com/sch/ebayadvsearch
+    - main [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - generic [ref=e75]:
+            - link "LIVE Shop live events Discover exclusive drops and deals See what’s live" [ref=e82] [cursor=pointer]:
+              - /url: https://www.ebay.com/ebaylive
+              - generic [ref=e83]:
+                - generic [ref=e84]:
+                  - img
+                - generic [ref=e85]: LIVE
+              - generic [ref=e86]: Shop live events
+              - generic [ref=e87]: Discover exclusive drops and deals
+              - button "See what’s live" [ref=e88]
+            - generic [ref=e97]:
+              - heading "People who viewed this item also viewed" [level=2] [ref=e104]
+              - group [ref=e106]:
+                - list [ref=e109]:
+                  - listitem [ref=e110]:
+                    - generic [ref=e112]:
+                      - generic [ref=e118]:
+                        - heading "ShowerShroom® (Gray) 2\" Revolutionary Hair Catcher for Shower Drain by TubShroom" [level=3] [ref=e119]
+                        - generic [ref=e121]: $10.99
+                        - generic [ref=e123]: Free delivery
+                        - generic [ref=e125]: Sponsored
+                      - link "ShowerShroom® (Gray) 2\" Revolutionary Hair Catcher for Shower Drain by TubShroom" [ref=e126] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/324502697354?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697354%26noa%3D0%26plcampt%3D0%3A11570952016%2C5%3AAG5006300686%26algo%3DHOMESPLICE.SIM%26brand%3DTubshroom%26asc%3D20200818143230%26ao%3D1%26rk%3D5%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Ddca4a06e438e4047b74a39e28e90d35c%26pg%3D2332490&_trksid=p2332490.c101224.m-1&itmprp=cksum%3A324502697354dca4a06e438e4047b74a39e28e90d35c%7Cenc%3AAQALAAAA4HU%252FGPBKMoWrH2cpzpvK9FDC5c4FxwFIV%252Bq0okjrJ6w9cB%252BqWqTCByXEsJeNzj%252BLPZ6Y%252Bcb%252BSNENjzLG3DpJu0kFOyw34O5xknnQNIiB9HVGNe2FohMi7No88IfhjJ519pROKgnQdjQKQrNaBxxQKWudyMLjgMHhZQuI2Jlusq%252FDRmguLV79Ymg2622%252Fvx4FjscSgEn5YUh37mPMatp8HWI3VGNv68HV5pqEdUiTou7p7XJzDLV1aZ1qCz7kvRbTr1TFOeL4nftTCDW6ToQoAp1rtjtM0gBFO5ThtgW4hP4z%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEATKB1F0RD42GM1M714H
+                  - listitem [ref=e127]:
+                    - generic [ref=e129]:
+                      - generic [ref=e135]:
+                        - heading "TubShroom 10 Pack Disposable Drain Cover - Hair Catcher Mesh Sticker Strainer" [level=3] [ref=e136]
+                        - generic [ref=e138]: $8.99
+                        - generic [ref=e140]: Free delivery
+                      - link "TubShroom 10 Pack Disposable Drain Cover - Hair Catcher Mesh Sticker Strainer" [ref=e141] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/327106484989?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26algo%3DHOMESPLICE.SIM%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D0%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D327106484989%26noa%3D1%26ao%3D1%26rk%3D1%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Ddca4a06e438e4047b74a39e28e90d35c%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                  - listitem [ref=e142]:
+                    - generic [ref=e144]:
+                      - generic [ref=e150]:
+                        - heading "Bathtub Drain Hair Catcher, Premium Silicone Shower Catcher, Built to Protect Tu" [level=3] [ref=e151]
+                        - generic [ref=e153]: $9.53
+                        - generic [ref=e155]: Free delivery
+                      - link "Bathtub Drain Hair Catcher, Premium Silicone Shower Catcher, Built to Protect Tu" [ref=e156] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/376665646910?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26algo%3DHOMESPLICE.SIM%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D0%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEO%2B1pZMc05ruHBv3fFPiCLU%3D%26itm%3D376665646910%26noa%3D1%26ao%3D1%26rk%3D2%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Ddca4a06e438e4047b74a39e28e90d35c%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                  - listitem [ref=e157]:
+                    - generic [ref=e159]:
+                      - generic [ref=e165]:
+                        - heading "2-Pack Hair Catcher Drain Protector 5\" for Tub & Shower — Prevents Clogs" [level=3] [ref=e166]
+                        - generic [ref=e168]: $9.99
+                        - generic [ref=e170]: Free delivery
+                      - link "2-Pack Hair Catcher Drain Protector 5\" for Tub & Shower — Prevents Clogs" [ref=e171] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/335788190807?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEOnMSEeA13cE7m5G73M7V7Q%3D%26itm%3D335788190807%26noa%3D1%26plcampt%3D0%3A165007223016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D3%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3Ddca4a06e438e4047b74a39e28e90d35c%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+          - generic [ref=e174]:
+            - generic [ref=e175]:
+              - generic [ref=e177]:
+                - generic [ref=e179]:
+                  - generic [ref=e180]:
+                    - button "Previous image - Item images thumbnails" [disabled] [ref=e181] [cursor=pointer]:
+                      - img
+                    - generic [ref=e182]:
+                      - button "Picture 1 of 7" [ref=e183] [cursor=pointer]:
+                        - img "Picture 1 of 7" [ref=e184]
+                      - button "Picture 2 of 7" [ref=e185] [cursor=pointer]:
+                        - img "Picture 2 of 7" [ref=e186]
+                      - button "Picture 3 of 7" [ref=e187] [cursor=pointer]:
+                        - img "Picture 3 of 7" [ref=e188]
+                      - button "Picture 4 of 7" [ref=e189] [cursor=pointer]:
+                        - img "Picture 4 of 7" [ref=e190]
+                      - button "Picture 5 of 7" [ref=e191] [cursor=pointer]:
+                        - img "Picture 5 of 7" [ref=e192]
+                      - button "Picture 6 of 7" [ref=e193] [cursor=pointer]:
+                        - img "Picture 6 of 7" [ref=e194]
+                      - button "Picture 7 of 7" [ref=e195] [cursor=pointer]
+                    - button "Next image - Item images thumbnails" [ref=e196] [cursor=pointer]:
+                      - img
+                  - generic [ref=e197]:
+                    - heading "Picture 1 of 7" [level=2] [ref=e198]
+                    - generic [ref=e202]: In 10 carts
+                    - button "Previous image - Item images thumbnails" [ref=e204] [cursor=pointer]:
+                      - img
+                    - region "Opens image gallery dialog TubShroom® (Blue) Revolutionary Hair Catcher That Prevents Clogged Tub Drains - Picture 1 of 7" [ref=e205]:
+                      - group "1 of 7" [ref=e206]:
+                        - img "TubShroom® (Blue) Revolutionary Hair Catcher That Prevents Clogged Tub Drains - Picture 1 of 7" [ref=e207]
+                      - group "2 of 7" [ref=e208]:
+                        - img "TubShroom® (Blue) Revolutionary Hair Catcher That Prevents Clogged Tub Drains - Picture 2 of 7" [ref=e209]
+                      - group "3 of 7" [ref=e210]:
+                        - img "TubShroom® (Blue) Revolutionary Hair Catcher That Prevents Clogged Tub Drains - Picture 3 of 7" [ref=e211]
+                      - group "4 of 7" [ref=e212]:
+                        - img "TubShroom® (Blue) Revolutionary Hair Catcher That Prevents Clogged Tub Drains - Picture 4 of 7" [ref=e213]
+                      - group "5 of 7" [ref=e214]:
+                        - img "TubShroom® (Blue) Revolutionary Hair Catcher That Prevents Clogged Tub Drains - Picture 5 of 7" [ref=e215]
+                      - group "6 of 7" [ref=e216]:
+                        - img "TubShroom® (Blue) Revolutionary Hair Catcher That Prevents Clogged Tub Drains - Picture 6 of 7" [ref=e217]
+                      - group "7 of 7" [ref=e218]:
+                        - img "TubShroom® (Blue) Revolutionary Hair Catcher That Prevents Clogged Tub Drains - Picture 7 of 7" [ref=e219]
+                    - generic [ref=e220]:
+                      - button "Opens image gallery" [ref=e221] [cursor=pointer]:
+                        - img
+                      - button "Add to watchlist - 91 watchers" [ref=e223] [cursor=pointer]:
+                        - generic [ref=e224]: "91"
+                        - img
+                    - button "Next image - Item images thumbnails" [ref=e226] [cursor=pointer]:
+                      - img
+                - generic [ref=e231]:
+                  - generic [ref=e232]: Have one to sell?
+                  - link "Sell one like this" [ref=e234] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sl/list?mode=SellLikeItem&itemId=324502697337&rt=nc&_trksid=p4429486.m117039.l2567
+                    - generic [ref=e235]: Sell one like this
+                  - link "Sell something else" [ref=e237] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sl/prelist/suggest
+                    - generic [ref=e238]: Sell something else
+                - button "Share" [ref=e244] [cursor=pointer]:
+                  - img
+                  - generic [ref=e245]: Share
+              - generic [ref=e256]:
+                - generic [ref=e259]:
+                  - generic [ref=e261]:
+                    - heading "Similar Items" [level=2] [ref=e263]
+                    - generic [ref=e266]:
+                      - generic [ref=e267]: S
+                      - generic [ref=e268]: 7c6c3e3b-de4f-445d-8d0a-4d6bff11d37d
+                      - generic [ref=e269]: 82dcdacb-a72b-44ea-90ed-9dc12b824712
+                      - generic [ref=e270]: p
+                      - generic [ref=e271]: f88ce9ab-988c-4713-8a18-26309b609adc
+                      - generic [ref=e272]: o
+                      - generic [ref=e273]: 39e2254c-3532-4115-a274-171248355cb1
+                      - generic [ref=e274]: "n"
+                      - generic [ref=e275]: 81fe9a89-b44e-4c56-8baa-3f8fb99b7b3e
+                      - generic [ref=e276]: s
+                      - generic [ref=e277]: 3827cfea-2a92-44ac-a74a-9276e8b5773c
+                      - generic [ref=e278]: 95c53773-cb4d-4542-ae20-be563f0eed3b
+                      - generic [ref=e280]: 02d82f64-e1fd-4920-910d-59f2d97fea46
+                      - generic [ref=e281]: 31bc9fbe-5312-4327-81d9-44951b2e04bf
+                      - generic [ref=e282]: o
+                      - generic [ref=e283]: c8622fb8-ee37-4b77-8838-cd1d710bc2ce
+                      - generic [ref=e284]: r
+                      - generic [ref=e285]: 48c93805-934b-4111-899a-87e9305078dc
+                      - generic [ref=e286]: e
+                      - generic [ref=e287]: 98271ef3-2851-49ba-9a86-6136afd3f4c6
+                      - generic [ref=e288]: 9106bb47-8f87-403f-b565-c36246d07a59
+                      - generic [ref=e289]: d
+                      - generic [ref=e290]: 97089b42-ddb6-4fc9-9cb6-811c1df46a28
+                      - generic [ref=e291]: 525acb65-0865-46ea-a01f-3c6a72c7ea73
+                      - generic [ref=e293]: abcbeed0-2037-4e1a-baab-7d2a779ad6e1
+                      - generic [ref=e294]: 95e020bb-b3be-466a-a341-e2ebcab4d614
+                      - generic [ref=e295]: 6591595d-6f3a-425f-a9cd-3c5b26485c66
+                      - generic [ref=e296]: dd18174b-40e1-4e6f-ba70-394e96ee6d31
+                      - generic [ref=e297]: 59f5da04-42f5-4b55-9dc9-e88d7d688d89
+                      - generic [ref=e298]: 77d923dd-6da7-474d-aa36-0b87b7e4615a
+                      - generic [ref=e299]: e311e10f-8f40-4501-a41e-5725d706b3aa
+                      - generic [ref=e300]: 52889ef6-08d7-44de-84ba-37e1a24f0068
+                      - generic [ref=e302]: 50002faf-893a-4027-80ef-58a567806471
+                      - generic [ref=e303]: ed27a94c-05d6-45ca-aefd-08621e3a303a
+                      - generic [ref=e304]: f8ccde00-83be-43ff-b891-2f5f590780fc
+                      - generic [ref=e305]: 74f88c91-b881-410b-b398-5a168174b56f
+                      - generic [ref=e306]: be0dfec7-0516-4e3d-a427-65a0d0662def
+                  - link "See all" [ref=e309] [cursor=pointer]:
+                    - /url: https://www.ebay.com/recs?component=recs-below-hero-carousel&placement_title=i18n.Tag_SIs&sourceModuleId=101875&item_id=324502697337&algos=HOMESPLICE.SIM.SimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco&placement_subTitle=i18n.ModuleSubTitle_Sponsored&homespliceOverrideConfig=%7Bsplice.cpc-config-dweb.cpc-expansion-slot-ids%3D%5B1%2C+3%2C+5%2C+7%2C+9%2C+11%5D%2Csplice.cpc-config-dweb.smart-price-parmas.undere-threshold%3D4%2Csplice.cpc-config-dweb.smart-price-parmas.enable-overe%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-roas-calibration-by-l2%3Dfalse%2Csplice.cpc-config-dweb.smart-price-parmas.enable-undere%3Dtrue%2Csplice.cpc-config-dweb.max-cpc-slots-num%3D6%2Csplice.cpc-config-dweb.blend-reserve-price-config.reserve-price-strategy%3D2%2Csplice.cpc-config-dweb.enable-low-roas-filter%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-cvr-calibration-by-l2%3Dtrue%2Csplice.cpc-config-dweb.blend-reserve-price-config.cpa-cpm-multiplier.-1%3D15%2Csplice.cpc-config-dweb.cpc-low-roas-dimension%3D%5BblacklistLeaf%2C+version01%5D%2Csplice.cpc-config-dweb.smart-price-parmas.overe-threshold%3D4%7D
+                    - generic [ref=e310]: See all
+                - group [ref=e312]:
+                  - generic [ref=e313]:
+                    - button "Go to the previous slide, Similar Items" [disabled] [ref=e314]:
+                      - img
+                    - list [ref=e316]:
+                      - listitem [ref=e317]:
+                        - generic [ref=e319]:
+                          - generic [ref=e325]:
+                            - heading "ShowerShroom® (Gray) 2\" Revolutionary Hair Catcher for Shower Drain by TubShroom" [level=3] [ref=e326]
+                            - generic [ref=e327]:
+                              - generic [ref=e329]: New
+                              - generic [ref=e330]: $10.99
+                            - generic [ref=e332]: Free delivery
+                            - generic [ref=e333]:
+                              - generic [ref=e334]:
+                                - img
+                              - generic [ref=e335]: Top Rated Plus
+                            - generic [ref=e338]: 1236 sold
+                          - link "ShowerShroom® (Gray) 2\" Revolutionary Hair Catcher for Shower Drain by TubShroom" [ref=e339] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/324502697354?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697354%26noa%3D1%26plcampt%3D0%3A11570952016%2C5%3AAG5006300686%26algo%3DHOMESPLICE.SIM%26brand%3DTubshroom%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D1%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3245026973543aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABENcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbJo9C1K8EbxHEtQZ%252BSGqge9v2btsHXNy7WjCNh1PwwRmSnPEKSSdXgKv9YARfzfKeZ6oodv%252F9SmVIl8FaREV%252Fy0GpvcA5LcDnIlaejpl9z%252B5CVaoUmXgZWNlUi%252BIOwmgYZdv7nyG6q27G%252FXwF%252B0j8LwOKLmHwfegA5q4k%252FATvcrkfOs7UUoqY7bLTTlzka7uKjLV0H%252FvTyqmA%252FKe9BzfK1blld57zICKNxtNL%252BqxgJYQaIeXN2vG%252FAY4YBPa2IMy%252F%7Campid%3APLP_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEATKVGNV3A28XPH3X34T
+                          - button "Add ShowerShroom® (Gray) 2\" Revolutionary Hair Catcher for Shower Drain by TubShroom to your watch list" [ref=e342] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e343]:
+                        - generic [ref=e345]:
+                          - generic [ref=e351]:
+                            - heading "TubShroom® Chrome Revolutionary Tub Drain Protector Hair Catcher Strainer Snare" [level=3] [ref=e352]
+                            - generic [ref=e353]:
+                              - generic [ref=e355]: New
+                              - generic [ref=e356]: $12.99
+                            - generic [ref=e358]: Free delivery
+                            - generic [ref=e359]:
+                              - generic [ref=e360]:
+                                - img
+                              - generic [ref=e361]: Top Rated Plus
+                            - generic [ref=e364]: 1876 sold
+                          - link "TubShroom® Chrome Revolutionary Tub Drain Protector Hair Catcher Strainer Snare" [ref=e365] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/324502697335?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697335%26noa%3D0%26plcampt%3D0%3A10654831016%2C5%3AAG5006300686%7CAG5006767886%26algo%3DHOMESPLICE.SIM%26brand%3DTubshroom%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D2%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3245026973353aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbECYhSj5bkyzRrlogdqL6OZCYE9Lry5GKPw2RiBy7rso2uaSNA2GajIENlhZFC%252B7pZmlQDBbeF%252FDvEtjD5Z0I2a67VIQOkaatrsWHvH5TQnoCKJjkBjKX5qd6iys9nly97Y79tTBAek4nM98wjdSnzlvR8%252F6YEGfhbmHXCeVUdhMfmZ%252FvB8DYQBbfBYtZ4Rb5WEBKgC8Dx8gHm3S4E6jn%252F9eu8irqBYRPFSkmmtuih0QjWGBnppyptUV15m8vXn5DMMpU4P7r74rgxwRWaAJvM%252F4gcmeuqejlHurAUPU4mbA%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAV1BE3P40MX7ZK249DK
+                          - button "Add TubShroom® Chrome Revolutionary Tub Drain Protector Hair Catcher Strainer Snare to your watch list" [ref=e368] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e369]:
+                        - generic [ref=e371]:
+                          - generic [ref=e377]:
+                            - heading "ShowerShroom® White 2\" Hair Catcher Drain Protector For No Clogged Shower Drains" [level=3] [ref=e378]
+                            - generic [ref=e379]:
+                              - generic [ref=e381]: New
+                              - generic [ref=e382]: $10.99
+                            - generic [ref=e384]: Free delivery
+                            - generic [ref=e385]:
+                              - generic [ref=e386]:
+                                - img
+                              - generic [ref=e387]: Top Rated Plus
+                            - generic [ref=e390]: 258 sold
+                          - link "ShowerShroom® White 2\" Hair Catcher Drain Protector For No Clogged Shower Drains" [ref=e391] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/324502697325?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697325%26noa%3D1%26plcampt%3D0%3A11570952016%2C5%3AAG5006300686%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D3%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3245026973253aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABENcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbQTxEGJhibO7LclVuGAzCB2z2NOwjUbeeXUdCF7l0LfB8KdEnOoBq%252BB%252BmR3kTCLNHYUC7brmrMxq3FBifBuCiNwss%252Bs4ehav1AYObAR2sGeFiwBGL31V%252B5E%252BfkLwsYWT4bbjUJpcfL6O0uOcBsYJc2wEMsX6t%252B1RI1JsxZ%252B47oUZujkq39g%252FoCCaBKA1%252B3upVRGYdFdMHmPE6R2fSRYQc%252BL8siBJ2FRHipqBwfS736dP6Wwmwfr0p8Y0XOTxLLS%252BB%7Campid%3APLP_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAV50QM4FJQ3K3XG7VW2
+                          - button "Add ShowerShroom® White 2\" Hair Catcher Drain Protector For No Clogged Shower Drains to your watch list" [ref=e394] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e395]:
+                        - generic [ref=e397]:
+                          - generic [ref=e403]:
+                            - heading [level=3] [ref=e404]: SinkShroom® Chrome Award-Winning Drain Hair Catcher Strainer Snare by TubShroom
+                            - generic [ref=e405]:
+                              - generic [ref=e407]: New
+                              - generic [ref=e408]: $10.99
+                            - generic [ref=e410]: Free delivery
+                            - generic [ref=e411]:
+                              - generic [ref=e412]:
+                                - img
+                              - generic [ref=e413]: Top Rated Plus
+                            - generic [ref=e416]: 359 sold
+                          - link [ref=e417] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/324502697314?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697314%26noa%3D0%26plcampt%3D0%3A11570952016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D4%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3245026973143aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbN%252BkGDgzjbvzZZjYobEhRPCflBN3uC9LvZ6Z0WP%252F7Sk9VstTWthidGyA03XY357DEjRtnFEBcLwjlK%252FuWuCAsh%252FQqUX8epFYvXXCC8BvFXqqkpHB9f1MJeU56mIeimufpYuo0XDaRSBztylKAL2NhVT2hX19ZdZ1670eH1vOypjRGYqd3nIrChCLIzoZrTE6MBEwJRjPGpVJSthEQZgQnMEe43NHd4QYTI%252FYAWSXWRehuOVJ7AUxdIFUfVrAv0XVnugPyI0pJMyYbBcBzbJ4iuRMfx62xsFFdh9bh6gqF5Zc%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAV89WC6HGGSS15JN1F5
+                          - button [ref=e420] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e421]:
+                        - generic [ref=e423]:
+                          - generic [ref=e429]:
+                            - heading [level=3] [ref=e430]: TubShroom® Ultra (Stainless) Strainer Plus StopShroom® Plug Combo for Tub Drains
+                            - generic [ref=e431]:
+                              - generic [ref=e433]: New
+                              - generic [ref=e434]: $15.99
+                            - generic [ref=e436]: Free delivery
+                            - generic [ref=e437]:
+                              - generic [ref=e438]:
+                                - img
+                              - generic [ref=e439]: Top Rated Plus
+                            - generic [ref=e442]: 387 sold
+                          - link [ref=e443] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/324502697342?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697342%26noa%3D1%26plcampt%3D5%3AAG5006767986%26algo%3DHOMESPLICE.SIM%26brand%3DTubshroom%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D5%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3245026973423aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABENcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mb6gSf8iYtbEYqZ%252Fh%252BEstzmpqoyRFD%252BwcbsOgAFurdT6Xg9FegKbwWyQGqswjFr7IpiB7F%252BY6bCIUUaIfzYzRlgN07T6w5v6sLIIHMte8HPfgyUs%252FzYRNWrt4%252B57GuqJBhu1AAtRvF1t3SnFQBqU0KW2HjHVg1hH9T6n2u9fRUfdl3uZ0N9LD%252FD1s%252Fyg4b2ZWSm%252Fd3o2WJwtT2FPGnBCTqun48V%252FnNyIPKttNV4Bm3rzM3t4Xki4HaYVLA9JcY0bYa%7Campid%3APLP_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAVCSNY1SQ2GR2G7S9W2
+                          - button [ref=e446] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e447]:
+                        - generic [ref=e449]:
+                          - generic [ref=e455]:
+                            - heading [level=3] [ref=e456]: SinkShroom Gray Revolutionary Hair Catcher Drain Protector Strainer by TubShroom
+                            - generic [ref=e457]:
+                              - generic [ref=e459]: New
+                              - generic [ref=e460]: $9.99
+                            - generic [ref=e462]: Free delivery
+                            - generic [ref=e463]:
+                              - generic [ref=e464]:
+                                - img
+                              - generic [ref=e465]: Top Rated Plus
+                            - generic [ref=e468]: 1472 sold
+                          - link [ref=e469] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/324502697316?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697316%26noa%3D0%26plcampt%3D0%3A11570952016%2C5%3AAG5006300686%26algo%3DHOMESPLICE.SIM%26brand%3DSinkShroom%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D6%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3245026973163aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbExY1FatGGgz1BgkyNeISfW0lb0%252BLaDu4%252BuLOdbPuJkdpIzrpVSCkOj%252BZgXJvLtokY2ZR7KrI5W%252F37Y3NW7Ck07BLhitKowmmTY6%252FKakiioBq4gHY6ZKr7vEQ1%252FrSJJZli3UIwxacnYQxoiTFg2WcbTe7xlVPvYaFFUhkKhm6j7OhaYDRkgo3MFs8Rgqz95GRpsyk5ezRX9x%252F3aZp4luK%252Fnerflp5U4buvUgDzYHcyWIENs2M%252FaGsd6QM17kBoq%252FCV%252FnYcPzkuO7ShvQMysRIeRSGoBPz7jXAydQTas4GCeI%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAVF4MX7AQX61K96JZHN
+                          - button [ref=e472] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e473]:
+                        - generic [ref=e475]:
+                          - generic [ref=e481]:
+                            - heading [level=3] [ref=e482]: TubShroom® (Gray) Award-Winning Hair Catcher Drain Protector Strainer, No Clogs!
+                            - generic [ref=e483]:
+                              - generic [ref=e485]: New
+                              - generic [ref=e486]: $12.99
+                            - generic [ref=e488]: Free delivery
+                            - generic [ref=e489]:
+                              - generic [ref=e490]:
+                                - img
+                              - generic [ref=e491]: Top Rated Plus
+                            - generic [ref=e494]: 212 sold
+                          - link [ref=e495] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/324502697351?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697351%26noa%3D0%26plcampt%3D0%3A11570952016%2C5%3AAG5006767886%26algo%3DHOMESPLICE.SIM%26brand%3DTubshroom%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D7%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3245026973513aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbuBTHphrqQh7HM1kNuR%252B7LnhrA5nkIVCJklf%252FW0d71eAEgsKTLsvT292tHf4E%252BRrVjkFe0Ibk%252Fn3GsKSJKdFnyuES9AELJgnE67j2gQFfjygEA8yEdqryHgWdlGnX8zIOXv7iWEuLL5ILCUrbVt9Eq2X6233dVaeTY3ndlFAx2YnMp4F257KJ%252FE23BVVlkzYbFZ9jDPxr4gDuSzuQNR23sfid2fH1yPrzQwSZ6tA0f0wAXC8O9LLGzLfP4fgWE9%252BPAQWM8SGX5LAkrsnwMo7H05EWJ3eJl9%252FfGphTO8EPHQw%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAVJ87J4KP69VSDB44NA
+                          - button [ref=e498] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e499]:
+                        - generic [ref=e501]:
+                          - generic [ref=e507]:
+                            - heading [level=3] [ref=e508]: 50 Pack Disposable Shower Drain Hair Catcher Mesh Sticker Strainers for Shower
+                            - generic [ref=e509]:
+                              - generic [ref=e511]: New
+                              - generic [ref=e512]: $13.97
+                            - generic [ref=e514]: Free delivery
+                            - generic [ref=e515]:
+                              - generic [ref=e516]:
+                                - img
+                              - generic [ref=e517]: Top Rated Plus
+                            - generic [ref=e520]: 413 sold
+                          - link [ref=e521] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/394496625759?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEMaU2InTonV%2FB4M1vuEJNoc%3D%26itm%3D394496625759%26noa%3D0%26plcampt%3D0%3A11306828011%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D8%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3944966257593aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbg7qoPbHInm9Qp0iIO1G3dXztlUUkQQa8nTPodIArwONZnwMVod4DdeuRTlLWrYPrgsGK4xkSCPq3IROBDTQhzJ4%252BzhriGg5HVj5IcjGKg%252B1%252BqF6oB5UasIZkYAXwKU53OPoXRkm3uHz5ahE7Bh2s38VfI7rqolgl8xdaRpzJV1g5wx81zmmOFBNADKo8uYLtyc%252FM2QCkJHy%252F9JIxY6luKGVl8D4OGMhzJziv9jcXvv1KENe0tc9DkOd3aJqn9rTJsQlB0zxQ9xOcXoD2iZg9qZIS0dC97bkgJ1QWkguu8gA%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAVME2VHDGVGR1C8AZTV
+                          - button [ref=e524] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e525]:
+                        - generic [ref=e527]:
+                          - generic [ref=e533]:
+                            - heading [level=3] [ref=e534]: SinkShroom® (White) Hair Strainer Catcher Prevents Clogged Drains by TubShroom
+                            - generic [ref=e535]:
+                              - generic [ref=e537]: New
+                              - generic [ref=e538]: $9.99
+                            - generic [ref=e540]: Free delivery
+                            - generic [ref=e541]:
+                              - generic [ref=e542]:
+                                - img
+                              - generic [ref=e543]: Top Rated Plus
+                            - generic [ref=e546]: 134 sold
+                          - link [ref=e547] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/324502697352?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697352%26noa%3D0%26plcampt%3D0%3A11570952016%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D9%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3245026973523aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbq58%252F6Out6pZBVjVPs1lT1BxB9smveZnToEUwoFTnMTRklCJQAw71z1kAxdHceEEZYHflOrtEqSETuBVbaMS2oLJ8xPOU%252FHjPm6QQiqVhT2222QUZrEPigdVGRAFV5yfKvmKIugoaQ25XiQ7Mf5duLumPDLxk5rxSCDYScn9AtrmGH0WzTqjLsaPTwwX4Wj2KWzmiXSUPVy6jAobzwid2Sv8IUKQDvcJkGpi4EKjYKh42CKrxOUEe2SmGzZL%252F6P%252Bq8qV26%252F%252BLphiDpghB7vh%252BZgci4Gmzk%252BpZgilibqKdQVA%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAVQSDD2B47XB7JC514J
+                          - button [ref=e550] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e551]:
+                        - generic [ref=e553]:
+                          - generic [ref=e559]:
+                            - heading [level=3] [ref=e560]: TubShroom® White Revolutionary Hair Catcher Drain Protector Snare, No More Clogs
+                            - generic [ref=e561]:
+                              - generic [ref=e563]: New
+                              - generic [ref=e564]: $12.99
+                            - generic [ref=e566]: Free delivery
+                            - generic [ref=e567]:
+                              - generic [ref=e568]:
+                                - img
+                              - generic [ref=e569]: Top Rated Plus
+                            - generic [ref=e572]: 97 sold
+                          - link [ref=e573] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/324502697350?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEG%2FvTFEJX0GZ4LMetPKJ6yM%3D%26itm%3D324502697350%26noa%3D0%26plcampt%3D0%3A11570952016%2C5%3AAG5006300686%7CAG5006767886%26algo%3DHOMESPLICE.SIM%26brand%3DTubshroom%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D10%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3245026973503aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mb4cKKW8teEf49gPh2Y3r6bM7%252BCsgMdZA2o211smU8K8lzmD4xsnvaX0JEDIlGo1FXGfkpH9zdZKTAxSE4BWjbYa4INMFwvMzuYZ1tIvnATn9ZKDZucsaAlkFmOUqERvu95VIgYA4qicfhu0Hgj1rsZ6R%252F1Blu6jPmNdhGlt5eFFnanjpCiYOnAVh5LrMw2aEZVADL7pgSVQgbkeeLf%252BMwClvO65HzD%252FpSrX5k%252BEVqwGSA4FirLNKMF0sask4CBE1fbo6z%252BDULkFNw1DoAI5FOJSYLFJfZ2y2NYdtq%252BgnVtlk%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAVTE0S8DJJ23S0NWJX8
+                          - button [ref=e576] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e577]:
+                        - generic [ref=e579]:
+                          - generic [ref=e585]:
+                            - heading [level=3] [ref=e586]: TubShroom Ultra Drain Protector Hair Catcher Strainer Stainless Steel NEW Part
+                            - generic [ref=e587]:
+                              - generic [ref=e589]: New
+                              - generic [ref=e590]: $13.89
+                            - generic [ref=e592]: Free delivery
+                            - generic [ref=e594]: Seller 99.3% positive
+                          - link [ref=e595] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/298221223200?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAELvLECOuacOoKJSBhPv51JQ%3D%26itm%3D298221223200%26noa%3D0%26plcampt%3D0%3A150493831011%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D11%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A2982212232003aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbH2B2JVCcIwGOM2pqKeh9Ll1mU7rcUxM7IabTwJ3grU86n%252BXtpgvsFvHJaKPf4U3EYaUSQSilBFqBUjTXESCWDebH1R28BtSEaqab8NnQGBSz4Xy3LVvue5TZTE4%252BFdah0bXxT7SPGd64rhjWcpXwBV1KC798AZeVSLqHeb1qKwAD3H%252FwhgYsiw1jMhmDA1eySWV6f7w3vJE76dZJG0Sb3GwoAm6mtUkqXn%252BoC5TeSvskYsX5t09gvVxpI4KUrGNkeG9N94Nje%252BGj7q3E8VDYheY1c0g6CBRVZeAfTvS0z9Q%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAVWYC35RT556SEGQNQF
+                          - button [ref=e598] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e599]:
+                        - generic [ref=e601]:
+                          - generic [ref=e607]:
+                            - generic [ref=e608]: ALMOST GONE
+                            - heading [level=3] [ref=e609]: 2Pc Bathtub Drain Strainer Hair Catcher Stainless Steel Filter Basket 1.65"-3.0"
+                            - generic [ref=e610]:
+                              - generic [ref=e612]: New
+                              - generic [ref=e613]: $7.49
+                            - generic [ref=e615]: Free delivery
+                            - generic [ref=e617]: 115 sold
+                          - link [ref=e618] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/365979395302?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D324502697337%26sid%3DAQALAAAAEIf8xQBG1FdqQjVK8p6NMzo%3D%26itm%3D365979395302%26noa%3D0%26plcampt%3D0%3A160069423013%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D12%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D3aad25f5dfa442a581321692bf61452f%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A3659793953023aad25f5dfa442a581321692bf61452f%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbEIlVABz2xBPfLA7gmAukmS4my6XIE70Qq%252ByuLd9CDoEh2eLaK9jNPoenO2cVGw1kOqDgDwg8eKkaWLiSsfvogKkdHFbErDvgDx1TaDtFzQZ%252FPFgi3IKg9B6TVko%252FBuLOhe%252BfH8KKmm2pwsYLtQdk9eQzEPqkFu2ZDK5LKc3BF03oX6ekgHY2htm7wrsFu8KMiq7QPCFtc6rA3pyYYk1tY5J12Da%252F6WcYwFFNHOreigTkUdDWq3hLfbT32DYfKsDH8BB%252BqKF%252BMO%252F65EixtQ6tGkzcAK7W8Z01JIG5Rx47hAk%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3ZEAVZ9ZGBFM9EKYFW7HQ0
+                          - button [ref=e621] [cursor=pointer]:
+                            - img
+                    - button "Go to the next slide, Similar Items" [ref=e622]:
+                      - img
+            - generic [ref=e625]:
+              - heading "TubShroom® (Blue) Revolutionary Hair Catcher That Prevents Clogged Tub Drains" [level=1] [ref=e627]
+              - generic [ref=e629] [cursor=pointer]:
+                - generic [ref=e631]:
+                  - link [ref=e633]:
+                    - /url: https://www.ebay.com/str/jukainnovations?_trksid=p4429486.m3561.l161210
+                    - img [ref=e635]
+                  - generic [ref=e636]:
+                    - generic [ref=e637]:
+                      - link "Juka Innovations" [ref=e638]:
+                        - /url: https://www.ebay.com/str/jukainnovations?_trksid=p4429486.m3561.l161211
+                      - generic [ref=e640]: (18705)
+                    - generic [ref=e641]:
+                      - button "99.8% positive" [ref=e643]
+                      - link "Seller's other items" [ref=e645]:
+                        - /url: https://www.ebay.com/str/jukainnovations?_trksid=p4429486.m3561.l170197
+                        - generic [ref=e646]: Seller's other items
+                        - generic [ref=e647]: Seller's other items
+                      - button "Message seller" [ref=e649]:
+                        - generic [ref=e650]: Message seller
+                        - generic [ref=e651]: Message seller
+                - button "See more about this seller" [ref=e653]:
+                  - img
+              - generic [ref=e657]: US $12.99
+              - generic [ref=e658]:
+                - generic [ref=e659]: "Condition:"
+                - generic [ref=e661]:
+                  - generic [ref=e662]:
+                    - generic [ref=e663]: New
+                    - generic [ref=e664]: New
+                  - button "More information - About this item condition" [ref=e665] [cursor=pointer]:
+                    - generic [ref=e666]:
+                      - img "More information - About this item condition"
+              - generic [ref=e667]:
+                - generic [ref=e669]:
+                  - generic [ref=e670]: "Quantity:"
+                  - button [disabled] [ref=e671]:
+                    - img
+                  - spinbutton "Quantity:" [ref=e672]: "1"
+                  - button [ref=e673]:
+                    - img
+                - status [ref=e674]: 506 sold
+              - list [ref=e676]:
+                - listitem [ref=e677]:
+                  - button "Buy It Now" [ref=e679] [cursor=pointer]:
+                    - generic [ref=e680]: Buy It Now
+                - listitem [ref=e681]:
+                  - button "Add to cart" [ref=e683] [cursor=pointer]:
+                    - generic [ref=e684]: Add to cart
+                - listitem [ref=e685]:
+                  - generic [ref=e687]:
+                    - status [ref=e688]: Add to Watchlist
+                    - link "Add to Watchlist" [ref=e693] [cursor=pointer]:
+                      - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F324502697337
+                      - generic [ref=e694]:
+                        - img
+                        - text: Add to Watchlist
+              - generic [ref=e697]:
+                - generic [ref=e698]:
+                  - generic [ref=e699]:
+                    - img
+                  - generic [ref=e701]: This one's trending. 506 have already sold.
+                - generic [ref=e702]:
+                  - generic [ref=e703]:
+                    - img
+                  - generic [ref=e705]: Breathe easy. Free shipping and returns.
+              - generic [ref=e708]:
+                - heading "Shipping, returns, and payments" [level=2] [ref=e711]:
+                  - generic [ref=e712]: Shipping, returns, and payments
+                - generic [ref=e714]:
+                  - generic [ref=e717]:
+                    - generic [ref=e720]: "Shipping:"
+                    - generic [ref=e722]:
+                      - generic [ref=e723]:
+                        - text: Free USPS First Class®.
+                        - button "See details for shipping" [ref=e724] [cursor=pointer]:
+                          - generic [ref=e725]:
+                            - text: See details
+                            - generic [ref=e726]: for shipping
+                      - generic [ref=e727]: "Located in: Farmingdale, New York, United States"
+                  - generic [ref=e731]:
+                    - generic [ref=e734]: "Delivery:"
+                    - generic [ref=e737]:
+                      - text: Estimated between Mon, May 11 and Thu, May 14 to 30339
+                      - button "Information - Estimated delivery date - opens a layer" [ref=e743]:
+                        - img
+              - generic [ref=e750]:
+                - generic [ref=e753]: "Returns:"
+                - generic [ref=e756]:
+                  - text: 30 days returns. Seller pays for return shipping.
+                  - button "See details - for more information about returns" [ref=e757] [cursor=pointer]:
+                    - generic [ref=e758]:
+                      - text: See details
+                      - generic [ref=e759]: "- for more information about returns"
+              - generic [ref=e762]:
+                - generic [ref=e766]:
+                  - generic [ref=e769]: "Payments:"
+                  - generic [ref=e772]:
+                    - img "PayPal" [ref=e773]
+                    - img "Venmo" [ref=e775]
+                    - img "Google Pay" [ref=e777]
+                    - img "Visa" [ref=e779]
+                    - img "Master Card" [ref=e781]
+                    - img "Discover" [ref=e783]
+                    - img "Diners Club" [ref=e786]
+                - generic [ref=e794]:
+                  - img "Paypal Credit" [ref=e796]
+                  - generic [ref=e797]:
+                    - text: Special financing available.
+                    - link "Learn more - for PayPal Credit, opens in a new window or tab" [ref=e798] [cursor=pointer]:
+                      - /url: https://www.billmelater.com/cm/paypal/landers/15ebayPPCNB.html
+                      - generic [ref=e799]:
+                        - text: Learn more
+                        - generic [ref=e800]: "- for PayPal Credit, opens in a new window or tab"
+              - generic [ref=e803]:
+                - heading "Shop with confidence" [level=2] [ref=e806]
+                - generic [ref=e807]:
+                  - generic [ref=e809]:
+                    - img
+                  - generic [ref=e810]:
+                    - generic [ref=e811]: Top Rated Plus
+                    - generic [ref=e812]:
+                      - text: Top rated seller, fast shipping, and free returns.
+                      - link "Learn more - Top Rated Plus - opens in a new window or tab" [ref=e813] [cursor=pointer]:
+                        - /url: https://www.ebay.com/help/buying/resolving-issues-sellers/seller-ratings?id=4023#TopRatedPlus
+                        - generic [ref=e814]:
+                          - text: Learn more
+                          - generic [ref=e815]: "- Top Rated Plus - opens in a new window or tab"
+                - generic [ref=e816]:
+                  - generic [ref=e818]:
+                    - img
+                  - generic [ref=e819]:
+                    - generic [ref=e820]: eBay Money Back Guarantee
+                    - generic [ref=e821]:
+                      - text: Get the item you ordered or your money back.
+                      - link "Learn more eBay Money Back Guarantee - opens new window or tab" [ref=e822] [cursor=pointer]:
+                        - /url: https://www.ebay.com/ebay-money-back-guarantee/
+                        - generic [ref=e823]:
+                          - text: Learn more
+                          - generic [ref=e824]: eBay Money Back Guarantee - opens new window or tab
+          - generic [ref=e825]:
+            - generic [ref=e830]:
+              - tablist [ref=e831]:
+                - tab "About this item" [selected] [ref=e832] [cursor=pointer]:
+                  - generic [ref=e833]: About this item
+              - tabpanel "About this item" [ref=e835]:
+                - generic [ref=e838]:
+                  - generic [ref=e841]:
+                    - generic [ref=e845]: Seller assumes all responsibility for this listing.
+                    - generic [ref=e849]: eBay item number:324502697337
+                    - generic [ref=e853]:
+                      - text: Last updated on Jan 26, 2026 09:19:56 PST
+                      - link "View all revisions View all revisions" [ref=e854] [cursor=pointer]:
+                        - /url: https://www.ebay.com/rvh/324502697337?rt=nc&_trksid=p4429486.m148105.l48144
+                        - generic [ref=e855]:
+                          - text: View all revisions
+                          - generic [ref=e856]: View all revisions
+                  - generic [ref=e859]:
+                    - heading "Item specifics" [level=2] [ref=e862]:
+                      - generic [ref=e863]: Item specifics
+                    - generic [ref=e865]:
+                      - generic [ref=e866]:
+                        - generic [ref=e868]:
+                          - term [ref=e869]:
+                            - generic [ref=e871]: Condition
+                          - definition [ref=e872]:
+                            - generic [ref=e875]:
+                              - generic [ref=e876]: "New: A brand-new, unused, unopened, undamaged item in its original packaging (where packaging is ..."
+                              - button "Read more about the condition" [ref=e878]:
+                                - generic [ref=e879]:
+                                  - text: Read more
+                                  - generic [ref=e880]: about the condition
+                        - generic [ref=e882]:
+                          - term [ref=e883]:
+                            - generic [ref=e885]: Country of Origin
+                          - definition [ref=e886]:
+                            - generic [ref=e888]: China
+                      - generic [ref=e889]:
+                        - generic [ref=e891]:
+                          - term [ref=e892]:
+                            - generic [ref=e894]: UPC
+                          - definition [ref=e895]:
+                            - generic [ref=e897]: "819358009012"
+                        - generic [ref=e899]:
+                          - term [ref=e900]:
+                            - generic [ref=e902]: Brand
+                          - definition [ref=e903]:
+                            - generic [ref=e905]: TubShroom
+                      - generic [ref=e906]:
+                        - generic [ref=e908]:
+                          - term [ref=e909]:
+                            - generic [ref=e911]: Type
+                          - definition [ref=e912]:
+                            - generic [ref=e914]: Tub Drain Protector
+                        - generic [ref=e916]:
+                          - term [ref=e917]:
+                            - generic [ref=e919]: Color
+                          - definition [ref=e920]:
+                            - generic [ref=e922]: Blue
+                      - generic [ref=e923]:
+                        - generic [ref=e925]:
+                          - term [ref=e926]:
+                            - generic [ref=e928]: Model
+                          - definition [ref=e929]:
+                            - generic [ref=e931]: TSBLU454
+                        - generic [ref=e933]:
+                          - term [ref=e934]:
+                            - generic [ref=e936]: MPN
+                          - definition [ref=e937]:
+                            - generic [ref=e939]: TSBLU454
+                      - generic [ref=e940]:
+                        - generic [ref=e942]:
+                          - term [ref=e943]:
+                            - generic [ref=e945]: Material
+                          - definition [ref=e946]:
+                            - generic [ref=e948]: Not Specified
+                        - generic [ref=e950]:
+                          - term [ref=e951]:
+                            - generic [ref=e953]: Room
+                          - definition [ref=e954]:
+                            - generic [ref=e956]: Bathroom
+                  - generic [ref=e957]:
+                    - generic [ref=e958]: Category
+                    - navigation "breadcrumb" [ref=e961]:
+                      - heading "breadcrumb" [level=2] [ref=e962]
+                      - list [ref=e963]:
+                        - listitem [ref=e964]:
+                          - link "Home & Garden" [ref=e965] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Home-Garden/11700/bn_1853126
+                          - img
+                        - listitem [ref=e966]:
+                          - button "breadcrumb menu" [ref=e968]:
+                            - generic [ref=e969]:
+                              - img
+                          - img
+                        - listitem [ref=e970]:
+                          - link "Bathroom Accessories" [ref=e971] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Bathroom-Supplies-Accessories/260590/bn_7117222162
+                          - img
+                        - listitem [ref=e972]:
+                          - link "Drain Stoppers & Strainers" [ref=e973] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Bathroom-Drain-Stoppers-Strainers/260554/bn_7117214243
+                          - img
+                        - listitem [ref=e974]:
+                          - link "See more TubShroom The Revolutionary Tub Drain Hair Cat..." [ref=e975] [cursor=pointer]:
+                            - /url: https://www.ebay.com/p/20031753311
+                  - generic [ref=e978]:
+                    - heading "About this product" [level=2] [ref=e981]:
+                      - generic [ref=e982]: About this product
+                    - generic [ref=e983]:
+                      - heading "Product Identifiers" [level=2] [ref=e986]:
+                        - generic [ref=e987]: Product Identifiers
+                      - generic [ref=e988]:
+                        - generic [ref=e989]:
+                          - generic [ref=e991]:
+                            - generic [ref=e994]: Brand
+                            - generic [ref=e997]: TubShroom
+                          - generic [ref=e999]:
+                            - generic [ref=e1002]: MPN
+                            - generic [ref=e1005]: TSBLU454
+                        - generic [ref=e1006]:
+                          - generic [ref=e1008]:
+                            - generic [ref=e1011]: Ean
+                            - generic [ref=e1014]: "0084436803039"
+                          - generic [ref=e1016]:
+                            - generic [ref=e1019]: UPC
+                            - generic [ref=e1022]: "0084436803039"
+                        - generic [ref=e1023]:
+                          - generic [ref=e1025]:
+                            - generic [ref=e1028]: Model
+                            - generic [ref=e1031]: TSBLU454
+                          - generic [ref=e1033]:
+                            - generic [ref=e1036]: eBay Product ID (ePID)
+                            - generic [ref=e1039]: "20031753311"
+                    - generic [ref=e1040]:
+                      - heading "Product Key Features" [level=2] [ref=e1043]:
+                        - generic [ref=e1044]: Product Key Features
+                      - generic [ref=e1045]:
+                        - generic [ref=e1046]:
+                          - generic [ref=e1048]:
+                            - generic [ref=e1051]: Color
+                            - generic [ref=e1054]: Blue
+                          - generic [ref=e1056]:
+                            - generic [ref=e1059]: Room
+                            - generic [ref=e1062]: Bathroom
+                        - generic [ref=e1063]:
+                          - generic [ref=e1065]:
+                            - generic [ref=e1068]: Material
+                            - generic [ref=e1071]: Not Specified
+                          - generic [ref=e1073]:
+                            - generic [ref=e1076]: Type
+                            - generic [ref=e1079]: Tub Drain Protector
+                    - generic [ref=e1080]:
+                      - heading "Dimensions" [level=2] [ref=e1083]:
+                        - generic [ref=e1084]: Dimensions
+                      - generic [ref=e1085]:
+                        - generic [ref=e1086]:
+                          - generic [ref=e1088]:
+                            - generic [ref=e1091]: Weight
+                            - generic [ref=e1094]: 0.48 Ounces
+                          - generic [ref=e1096]:
+                            - generic [ref=e1099]: Height
+                            - generic [ref=e1102]: 2 inches
+                        - generic [ref=e1103]:
+                          - generic [ref=e1105]:
+                            - generic [ref=e1108]: Width
+                            - generic [ref=e1111]: 2.2 inches
+                          - generic [ref=e1113]:
+                            - generic [ref=e1116]: Length
+                            - generic [ref=e1119]: 2.2 inches
+                    - generic [ref=e1120]:
+                      - heading "Additional Product Features" [level=2] [ref=e1123]:
+                        - generic [ref=e1124]: Additional Product Features
+                      - generic [ref=e1128]:
+                        - generic [ref=e1131]: Dimensions
+                        - generic [ref=e1134]: 2.25 x 2 x 2.25 inches
+                  - generic [ref=e1136]:
+                    - heading "Item description from the seller" [level=2] [ref=e1139]
+                    - iframe [ref=e1140]:
+                      - generic [ref=f569e3]:
+                        - generic [ref=f569e7]:
+                          - generic [ref=f569e9]:
+                            - img [ref=f569e17]
+                            - img [ref=f569e22]
+                            - img [ref=f569e28]
+                            - generic [ref=f569e32]: No More Clogs.
+                            - generic [ref=f569e34]: 100% Brand New
+                            - generic [ref=f569e36]: Fast & Free Shipping
+                            - generic [ref=f569e38]: Trusted Seller
+                          - generic [ref=f569e39]:
+                            - img [ref=f569e44]
+                            - generic [ref=f569e50]: TubShroom® (Blue) Revolutionary Hair Catcher That Prevents Clogged Tub Drains
+                          - generic [ref=f569e51]:
+                            - img [ref=f569e54]
+                            - generic [ref=f569e89]:
+                              - strong [ref=f569e91]: TubShroom - A Revolution in Drain Protection
+                              - generic [ref=f569e95]:
+                                - paragraph [ref=f569e96]: We face a myriad of challenges each and every day. Cleaning clogged drains, thankfully, no longer has to be one of them--thanks to the TubShroom. TubShroom is a bathtub hair stopper that fits snug inside your shower tub drain, effortlessly gathering each and every hair that tries to make its way down your vulnerable drain. You can rest easy knowing that TubShroom works great for all kinds of hair-- human and pet alike.
+                                - list [ref=f569e97]:
+                                  - listitem [ref=f569e98]: Unlike regular plugs that go over the drain, TubShroom fits inside, neatly collecting hair around it.
+                                  - listitem [ref=f569e99]: When it's time to cleanup, simply wipe TubShroom off and GO! No harsh chemicals, no more tangled messes.
+                                  - listitem [ref=f569e100]: Our bathtub drain strainer fits any standard tub drain and is to catch every hair, every time.
+                                  - listitem [ref=f569e101]: A single plumber visit can cost hundreds. Drain snakes and liquid drain cleaners are a hassle to use and aren’t always effective
+                                  - listitem [ref=f569e102]: TubShroom has been honored as a 2018 KBB Product Innovator Award Winner in the home and bath category.
+                                  - listitem [ref=f569e103]: Over five million drains are now protected by the Shroom patented design.
+                                  - listitem [ref=f569e104]: Fits any standard 1.5 to 1.75 inch wide shower tub drain.
+                          - generic [ref=f569e105]:
+                            - link [ref=f569e107] [cursor=pointer]:
+                              - /url: https://www.youtube.com/watch?v=_zvofrrw_s8
+                              - generic [ref=f569e109]:
+                                - img [ref=f569e110]
+                                - img [ref=f569e111]
+                            - img [ref=f569e113]
+                            - generic [ref=f569e115]:
+                              - paragraph [ref=f569e116]:
+                                - strong [ref=f569e118]: Smarter Drain Protection
+                              - paragraph [ref=f569e119]:
+                                - generic [ref=f569e120]: TubShroom fits any standard shower bathtub drain with a snug fit. The unique mushroom-like shape allows for maximum water flow so you can keep on showering. Hair collects neatly inside the drain around the bottom lip--completely out of sight--until you're ready to clean it off. A drain that has TubShroom in place can go weeks without having to be cleaned.
+                              - paragraph [ref=f569e121]
+                              - paragraph [ref=f569e122]:
+                                - strong [ref=f569e123]:
+                                  - generic [ref=f569e124]: The Last Hair Catcher You'll Ever Need
+                              - paragraph [ref=f569e125]:
+                                - generic [ref=f569e126]: Your TubShroom was built with long-lasting, industrial-strength silicone so it doesn't need to be replaced for at least 10 years. Say good-bye to harmful cleaners, pricey plumbers, and clogged drains forever. Get back to enjoying your showers in peace.
+                              - paragraph [ref=f569e127]
+                              - paragraph [ref=f569e128]:
+                                - strong [ref=f569e129]:
+                                  - generic [ref=f569e130]: Simple Installation
+                              - paragraph [ref=f569e131]:
+                                - generic [ref=f569e132]: TubShroom is so easy to use that all you really need to do is place it inside your shower tub drain. If your drain has a cover, it can usually be removed with a screwdriver in seconds. You can check the unit every other week to see how much hair has gathered.
+                              - paragraph [ref=f569e133]
+                              - paragraph [ref=f569e134]:
+                                - strong [ref=f569e135]:
+                                  - generic [ref=f569e136]: Easy to Clean
+                              - paragraph [ref=f569e137]:
+                                - generic [ref=f569e138]: When it's time to clean your TubShroom, simply lift it out of the drain with one hand and clean off the gathered hair with a paper towel. You'll notice the hair comes off in one swipe, neatly and cleanly. Hair has never been so cooperative
+                              - paragraph [ref=f569e139]
+                              - paragraph [ref=f569e140]:
+                                - strong [ref=f569e141]:
+                                  - generic [ref=f569e142]: A Better Hair Trap
+                              - paragraph [ref=f569e143]:
+                                - generic [ref=f569e144]: For such a small product, the benefits are numerous. If you've tried other drain protectors or hair strainers already, you know how much room there is for improvement in this space. TubShroom gets it right every time. See for yourself.
+                              - paragraph [ref=f569e145]
+                          - generic [ref=f569e146]:
+                            - img [ref=f569e148]
+                            - img [ref=f569e152]
+                            - img [ref=f569e154]
+                            - img [ref=f569e156]
+                            - generic [ref=f569e158]: Join the Award-Winning TubShroom® Family
+                            - generic [ref=f569e160]: BUY NOW!
+                          - generic [ref=f569e161]:
+                            - generic [ref=f569e165]:
+                              - generic [ref=f569e167]:
+                                - generic [ref=f569e168] [cursor=pointer]: Payment
+                                - generic [ref=f569e169] [cursor=pointer]: Shipping
+                                - generic [ref=f569e170] [cursor=pointer]: Returns
+                              - generic [ref=f569e172]:
+                                - generic [ref=f569e173] [cursor=pointer]: Payment
+                                - generic [ref=f569e175] [cursor=pointer]: Shipping
+                                - generic [ref=f569e176] [cursor=pointer]: Returns
+                              - generic [ref=f569e177]:
+                                - generic [ref=f569e180]:
+                                  - paragraph [ref=f569e181]
+                                  - paragraph [ref=f569e182]:
+                                    - generic [ref=f569e184]: "We accept payment by any of the following methods:"
+                                  - paragraph [ref=f569e185]
+                                  - paragraph [ref=f569e186]:
+                                    - emphasis [ref=f569e190]: PayPal
+                                  - paragraph [ref=f569e191]
+                                  - paragraph [ref=f569e192]:
+                                    - generic [ref=f569e194]: Please pay as soon as possible after winning an auction, as that will allow us to post your item to you sooner!
+                                - generic [ref=f569e197]:
+                                  - paragraph [ref=f569e198]
+                                  - paragraph [ref=f569e199]:
+                                    - generic [ref=f569e201]:
+                                      - text: We offer
+                                      - emphasis [ref=f569e203]: FREE shipping
+                                      - text: on all orders!
+                                  - paragraph [ref=f569e204]:
+                                    - generic [ref=f569e206]: Your order will be dispatched within 1 working day of receiving payment (Monday-Friday) and you should expect to receive it one or two days after dispatch (for orders sent RM 1st Class).
+                                  - paragraph [ref=f569e207]:
+                                    - generic [ref=f569e209]: In the very unlikely event that your item is lost or damaged during post, then WE are responsible and will issue either a full refund or replacement.
+                                - generic [ref=f569e212]:
+                                  - paragraph [ref=f569e213]
+                                  - paragraph [ref=f569e214]:
+                                    - generic [ref=f569e216]: If you are not 100% satisfied with your purchase, you can return the product and get a full refund or exchange the product for another one, be it similar or not.
+                                  - paragraph [ref=f569e217]:
+                                    - generic [ref=f569e219]: You can return a product for up to 14 days from the date you purchased it.
+                                  - paragraph [ref=f569e220]:
+                                    - generic [ref=f569e222]: Any product you return must be in the same condition you received it and in the original packaging. Please keep the receipt.
+                            - img [ref=f569e229]
+                            - img [ref=f569e234]
+                            - img [ref=f569e239]
+                            - generic [ref=f569e244]: 100% Brand New
+                            - generic [ref=f569e246]: Fast & Free Shipping
+                            - generic [ref=f569e248]: Trusted Seller
+                          - generic [ref=f569e251]: Watch "Life is a Hairy Tale" as narrated by Rapunzel
+                          - generic [ref=f569e252]:
+                            - link [ref=f569e254] [cursor=pointer]:
+                              - /url: https://www.youtube.com/watch?v=jXy1NTvXcPU
+                              - generic [ref=f569e256]:
+                                - img [ref=f569e257]
+                                - img [ref=f569e258]
+                            - generic [ref=f569e261]:
+                              - paragraph [ref=f569e262]: See our other items
+                              - generic [ref=f569e265]:
+                                - link:
+                                  - /url: https://www.ebay.com/itm/TubShroom-Chrome-Revolutionary-Tub-Drain-Protector-Hair-Catcher-Strainer-Snare-/323542078531
+                                - link:
+                                  - /url: https://www.ebay.com/itm/SinkShroom-Gray-Revolutionary-Hair-Catcher-Drain-Protector-Strainer-TubShroom-/324027491349
+                                - link:
+                                  - /url: https://www.ebay.com/itm/DrainShroom-Revolutionary-Drain-Snake-Auger-Clog-Remover-Cleaner-TubShroom-/323944186246
+                                - link:
+                                  - /url: https://www.ebay.com/itm/RevoClean-Ultimate-4-Piece-Scrub-Drill-Brush-Multi-Purpose-Deep-Cleaning-Kit-/323756573769
+                                - link:
+                                  - /url: https://www.ebay.com/itm/TubShroom-Ultra-Drain-Protector-Hair-Catcher-Strainer-Stainless-Steel-New-/323741528221
+                                - link:
+                                  - /url: https://www.ebay.com/itm/StopShroom-Universal-Stopper-Plug-2pk-Bathtub-Bathroom-Drains-TubShroom-/323670484663
+                                - link:
+                                  - /url: https://www.ebay.com/itm/ShowerShroom-Gray-2-Revolutionary-Hair-Catcher-Shower-Drain-TubShroom-/324027491353
+                                - link:
+                                  - /url: https://www.ebay.com/itm/StopShroom-Universal-Stopper-Cover-Bathtub-and-Bathroom-Drains-TubShroom-/323250618518
+                                - link:
+                                  - /url: https://www.ebay.com/itm/TubShroom-Blue-Revolutionary-Hair-Catcher-Prevents-Clogged-Tub-Drains-/324027491338
+                                - link:
+                                  - /url: https://www.ebay.com/itm/SinkShroom-Nickel-Award-Winning-Drain-Protector-Hair-Catcher-Snare-TubShroom-/324027491326
+                                - link:
+                                  - /url: https://www.ebay.com/itm/SinkShroom-Chrome-Award-Winning-Drain-Hair-Catcher-Strainer-Snare-TubShroom-/324027491324
+                                - link:
+                                  - /url: https://www.ebay.com/itm/SinkShroom-Blue-Hair-Catcher-Prevents-Clogged-Sink-Drains-TubShroom-/324027491333
+                                - link:
+                                  - /url: https://www.ebay.com/itm/Kitchen-SinkShroom-Revolutionary-Strainer-w-Anti-Clog-Technology-TubShroom-/324027491343
+                                - link:
+                                  - /url: https://www.ebay.com/itm/TubShroom-SinkShroom-Gray-Combo-Pack-Hair-Catchers-Strainers-Drain-Protectors-/324027491346
+                                - link:
+                                  - /url: https://www.ebay.com/itm/StopShroom-Universal-Stopper-Cover-Bathtub-Bathroom-Drains-TubShroom-/323250613043
+                                - link:
+                                  - /url: https://www.ebay.com/itm/DoorShroom-Over-Door-Clothing-Hanger-Dual-Row-20-Hook-Modular-Rack-Chrome-/323951999134
+                                - link:
+                                  - /url: https://www.ebay.com/itm/TubShroom-Ultra-Stainless-Strainer-Plus-StopShroom-Plug-Combo-Tub-Drains-/324027491354
+                                - link:
+                                  - /url: https://www.ebay.com/itm/SinkShroom-Ultra-Stainless-Steel-Hair-Catcher-Drain-Protector-TubShroom-/323898338993
+                                - link:
+                                  - /url: https://www.ebay.com/itm/SinkShroom-Green-Drain-Protector-Hair-Catcher-No-More-Clogs-TubShroom-/324027491347
+                                - link:
+                                  - /url: https://www.ebay.com/itm/TubShroom-SinkShroom-Chrome-Combo-Pack-Hair-Catchers-Strainers-Drain-Protector-/324027490054
+                                - link:
+                                  - /url: https://www.ebay.com/itm/Perfect-Sleeve-Ironing-Assistant-Wrinkle-Free-Shirt-Sleeves-Includes-Magnet-/323741701532
+                                - link:
+                                  - /url: https://www.ebay.com/itm/BathShroom-Overflow-Drain-Cover-Fuller-and-Warmer-Baths-TubShroom-White-/323944193037
+                                - link:
+                                  - /url: https://www.ebay.com/itm/SinkShroom-Clear-Hair-Catcher-Strainer-Snare-Trap-No-More-Clogs-TubShroom-/324027491340
+                                - link:
+                                  - /url: https://www.ebay.com/itm/SinkShroom-Black-Ultimate-Hair-Catcher-Snare-Strainer-Sink-TubShroom-/324027491329
+                                - link:
+                                  - /url: https://www.ebay.com/itm/SinkShroom-White-Hair-Strainer-Catcher-Prevents-Clogged-Drains-TubShroom-/324027491355
+                                - img [ref=f569e288] [cursor=pointer]
+                                - img [ref=f569e291] [cursor=pointer]
+                              - link:
+                                - /url: https://www.ebay.com/itm/TubShroom-Chrome-Revolutionary-Tub-Drain-Protector-Hair-Catcher-Strainer-Snare-/323542078531
+                                - generic [ref=f569e293] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/SinkShroom-Gray-Revolutionary-Hair-Catcher-Drain-Protector-Strainer-TubShroom-/324027491349
+                                - generic [ref=f569e294] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/DrainShroom-Revolutionary-Drain-Snake-Auger-Clog-Remover-Cleaner-TubShroom-/323944186246
+                                - generic [ref=f569e295] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/RevoClean-Ultimate-4-Piece-Scrub-Drill-Brush-Multi-Purpose-Deep-Cleaning-Kit-/323756573769
+                                - generic [ref=f569e296] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/TubShroom-Ultra-Drain-Protector-Hair-Catcher-Strainer-Stainless-Steel-New-/323741528221
+                                - generic [ref=f569e297] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/StopShroom-Universal-Stopper-Plug-2pk-Bathtub-Bathroom-Drains-TubShroom-/323670484663
+                                - generic [ref=f569e298] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/ShowerShroom-Gray-2-Revolutionary-Hair-Catcher-Shower-Drain-TubShroom-/324027491353
+                                - generic [ref=f569e299] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/StopShroom-Universal-Stopper-Cover-Bathtub-and-Bathroom-Drains-TubShroom-/323250618518
+                                - generic [ref=f569e300] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/TubShroom-Blue-Revolutionary-Hair-Catcher-Prevents-Clogged-Tub-Drains-/324027491338
+                                - generic [ref=f569e301] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/SinkShroom-Nickel-Award-Winning-Drain-Protector-Hair-Catcher-Snare-TubShroom-/324027491326
+                                - generic [ref=f569e302] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/SinkShroom-Chrome-Award-Winning-Drain-Hair-Catcher-Strainer-Snare-TubShroom-/324027491324
+                                - generic [ref=f569e303] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/SinkShroom-Blue-Hair-Catcher-Prevents-Clogged-Sink-Drains-TubShroom-/324027491333
+                                - generic [ref=f569e304] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/Kitchen-SinkShroom-Revolutionary-Strainer-w-Anti-Clog-Technology-TubShroom-/324027491343
+                                - generic [ref=f569e305] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/TubShroom-SinkShroom-Gray-Combo-Pack-Hair-Catchers-Strainers-Drain-Protectors-/324027491346
+                                - generic [ref=f569e306] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/StopShroom-Universal-Stopper-Cover-Bathtub-Bathroom-Drains-TubShroom-/323250613043
+                                - generic [ref=f569e307] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/DoorShroom-Over-Door-Clothing-Hanger-Dual-Row-20-Hook-Modular-Rack-Chrome-/323951999134
+                                - generic [ref=f569e308] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/TubShroom-Ultra-Stainless-Strainer-Plus-StopShroom-Plug-Combo-Tub-Drains-/324027491354
+                                - generic [ref=f569e309] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/SinkShroom-Ultra-Stainless-Steel-Hair-Catcher-Drain-Protector-TubShroom-/323898338993
+                                - generic [ref=f569e310] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/SinkShroom-Green-Drain-Protector-Hair-Catcher-No-More-Clogs-TubShroom-/324027491347
+                                - generic [ref=f569e311] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/TubShroom-SinkShroom-Chrome-Combo-Pack-Hair-Catchers-Strainers-Drain-Protector-/324027490054
+                                - generic [ref=f569e312] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/Perfect-Sleeve-Ironing-Assistant-Wrinkle-Free-Shirt-Sleeves-Includes-Magnet-/323741701532
+                                - generic [ref=f569e313] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/BathShroom-Overflow-Drain-Cover-Fuller-and-Warmer-Baths-TubShroom-White-/323944193037
+                                - generic [ref=f569e314] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/SinkShroom-Clear-Hair-Catcher-Strainer-Snare-Trap-No-More-Clogs-TubShroom-/324027491340
+                                - generic [ref=f569e315] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/SinkShroom-Black-Ultimate-Hair-Catcher-Snare-Strainer-Sink-TubShroom-/324027491329
+                                - generic [ref=f569e316] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - link:
+                                - /url: https://www.ebay.com/itm/SinkShroom-White-Hair-Strainer-Catcher-Prevents-Clogged-Drains-TubShroom-/324027491355
+                                - generic [ref=f569e317] [cursor=pointer]:
+                                  - paragraph
+                                  - paragraph
+                                  - paragraph
+                              - generic [ref=f569e318]:
+                                - paragraph [ref=f569e319]: Price
+                                - paragraph [ref=f569e320]: Name
+                                - paragraph [ref=f569e321]: Ends in
+                            - generic [ref=f569e323]:
+                              - generic:
+                                - strong
+                              - paragraph [ref=f569e324]:
+                                - strong [ref=f569e325]: About the TubShroom Company
+                              - paragraph [ref=f569e326]:
+                                - text: Juka Innovations Corporation aka The TubShroom Company has been providing the world with award-winning drain protection products for virtually every drain in the home since 2015. It all started with the revolutionary patented
+                                - link "TubShroom" [ref=f569e328] [cursor=pointer]:
+                                  - /url: http://www.ebay.com/itm/323542078531
+                                - text: drain protector strainer hair-catcher for bathtub drains. Then came the
+                                - link "SinkShroom" [ref=f569e330] [cursor=pointer]:
+                                  - /url: http://www.ebay.com/itm/323898338993
+                                - text: hair catcher snare for bathroom sinks. The
+                                - link "ShowerShroom" [ref=f569e332] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/324027491325
+                                - text: drain strainer was the next release for stand-up shower stall drains. Over the years, we have also developed the
+                                - link "Kitchen SinkShroom" [ref=f569e334] [cursor=pointer]:
+                                  - /url: http://www.ebay.com/itm/324027491343
+                                - text: anti-clog strainer for kitchen drains, the
+                                - link "ToiletShroom" [ref=f569e336] [cursor=pointer]:
+                                  - /url: http://www.ebay.com/itm/323629099561
+                                - text: mushroom-shaped toilet plunger dredger, the
+                                - link "StopShroom" [ref=f569e338] [cursor=pointer]:
+                                  - /url: http://www.ebay.com/itm/323670484663
+                                - text: drain stopper plug, the
+                                - link "BathShroom" [ref=f569e340] [cursor=pointer]:
+                                  - /url: http://www.ebay.com/itm/323944193037
+                                - text: overflow drain cover for deeper and warmer baths, and the
+                                - link "DrainShroom" [ref=f569e342] [cursor=pointer]:
+                                  - /url: http://www.ebay.com/itm/323944186246
+                                - text: universal drain snake for a quick and easy way to clear clogged drains. The revolution in drain protection is here. Say goodbye to clogged drains forever.
+                        - text: Price Name Ends in
+            - generic [ref=e1143]:
+              - generic [ref=e1144]:
+                - generic [ref=e1145]:
+                  - heading "About this seller" [level=2] [ref=e1146]:
+                    - generic [ref=e1148]: About this seller
+                  - generic [ref=e1149]:
+                    - link [ref=e1151] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations?_trksid=p4429486.m145687.l149266
+                      - img [ref=e1153]
+                    - generic [ref=e1154]:
+                      - heading "Juka Innovations" [level=3] [ref=e1155]:
+                        - link "Juka Innovations" [ref=e1156] [cursor=pointer]:
+                          - /url: https://www.ebay.com/str/jukainnovations?_trksid=p4429486.m145687.l149267
+                      - paragraph [ref=e1157]: 99.8% positive feedback•66K items sold
+                  - generic [ref=e1162]:
+                    - generic [ref=e1163]:
+                      - img
+                    - generic [ref=e1164]: Joined Jun 2016
+                  - generic [ref=e1166]:
+                    - generic [ref=e1167]: Juka Innovations Corporation aka The TubShroom Company has been providing the world with award-winning drain protection products for virtually every drain in the home since 2015. It all started with ...
+                    - group [ref=e1169]:
+                      - generic "See more" [ref=e1170]:
+                        - generic [ref=e1171]: See more
+                        - generic [ref=e1172]:
+                          - img
+                  - generic [ref=e1173]:
+                    - link "Visit store" [ref=e1174] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations?_trksid=p4429486.m145687.l149086
+                      - generic [ref=e1175]: Visit store
+                    - button "Message seller - opens in a new dialog" [ref=e1176] [cursor=pointer]:
+                      - generic [ref=e1177]:
+                        - text: Message seller
+                        - generic [ref=e1178]: "- opens in a new dialog"
+                    - button "Save seller - Save this seller juka_innovations" [ref=e1180] [cursor=pointer]:
+                      - generic [ref=e1181]:
+                        - img
+                      - generic [ref=e1182]: Save seller
+                - generic [ref=e1184]:
+                  - heading "Detailed seller ratings" [level=3] [ref=e1185]
+                  - generic [ref=e1186]:
+                    - generic [ref=e1187]: Average for the last 12 months
+                    - generic [ref=e1188]:
+                      - generic [ref=e1189]:
+                        - generic [ref=e1190]: Accurate description
+                        - progressbar [ref=e1191]
+                        - generic [ref=e1192]: "5.0"
+                      - generic [ref=e1193]:
+                        - generic [ref=e1194]: Reasonable shipping cost
+                        - progressbar [ref=e1195]
+                        - generic [ref=e1196]: "5.0"
+                      - generic [ref=e1197]:
+                        - generic [ref=e1198]: Shipping speed
+                        - progressbar [ref=e1199]
+                        - generic [ref=e1200]: "5.0"
+                      - generic [ref=e1201]:
+                        - generic [ref=e1202]: Communication
+                        - progressbar [ref=e1203]
+                        - generic [ref=e1204]: "5.0"
+                - generic [ref=e1205]:
+                  - generic [ref=e1206]:
+                    - heading "Popular categories from this store" [level=3] [ref=e1207]
+                    - link "See all categories" [ref=e1209] [cursor=pointer]:
+                      - /url: https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=juka_innovations&store_cat=0&store_name=jukainnovations&_oac=1
+                      - generic [ref=e1210]:
+                        - text: See all
+                        - generic [ref=e1211]: categories
+                  - generic [ref=e1212]:
+                    - link "Bath Tub Drain Protectors" [ref=e1214] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations/Bath-Tub-Drain-Protectors/_i.html?store_cat=34430869016
+                    - link "Bathroom Sink Drain Protectors" [ref=e1216] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations/Bathroom-Sink-Drain-Protectors/_i.html?store_cat=34430870016
+                    - link "Shower Stall Drain Protectors" [ref=e1218] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations/Shower-Stall-Drain-Protectors/_i.html?store_cat=34430871016
+                    - link "Kitchen Sink Drain Protectors" [ref=e1220] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations/Kitchen-Sink-Drain-Protectors/_i.html?store_cat=34430872016
+                    - link "Universal Drain Stopper Plugs" [ref=e1222] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations/Universal-Drain-Stopper-Plugs/_i.html?store_cat=34430873016
+                    - link "Universal Drain Snakes" [ref=e1224] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations/Universal-Drain-Snakes/_i.html?store_cat=34430874016
+                    - link "Home Cleaning & Organization" [ref=e1226] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations/Home-Cleaning-Organization/_i.html?store_cat=34430875016
+                    - link "Toilet Plungers" [ref=e1228] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations/Toilet-Plungers/_i.html?store_cat=34430905016
+                    - link "Other" [ref=e1230] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/jukainnovations/Other/_i.html?store_cat=1
+              - generic [ref=e1233]:
+                - heading "Seller feedback (19,846)" [level=2] [ref=e1234]
+                - generic [ref=e1235]:
+                  - tablist [ref=e1236]:
+                    - tab "This item (135)" [selected] [ref=e1237]:
+                      - generic [ref=e1238]: This item (135)
+                    - tab "All items (19,846)" [ref=e1239]:
+                      - generic [ref=e1240]: All items (19,846)
+                  - tabpanel "This item (135)" [ref=e1242]:
+                    - generic [ref=e1244]:
+                      - generic [ref=e1245]:
+                        - 'button "Filter: All ratings" [ref=e1248] [cursor=pointer]':
+                          - generic [ref=e1249]:
+                            - generic [ref=e1250]: "Filter:"
+                            - generic [ref=e1251]: All ratings
+                            - img
+                        - list [ref=e1252]:
+                          - listitem [ref=e1253]:
+                            - link "Satisfaction" [ref=e1254] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=324502697337&username=juka_innovations&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aproduct-satisfaction&q=324502697337&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Satisfaction
+                          - listitem [ref=e1255]:
+                            - link "Usage" [ref=e1256] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=324502697337&username=juka_innovations&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Ausage&q=324502697337&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Usage
+                          - listitem [ref=e1257]:
+                            - link "Quality" [ref=e1258] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=324502697337&username=juka_innovations&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aquality&q=324502697337&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Quality
+                          - listitem [ref=e1259]:
+                            - link "Condition" [ref=e1260] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=324502697337&username=juka_innovations&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Acondition&q=324502697337&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Condition
+                          - listitem [ref=e1261]:
+                            - link "Value" [ref=e1262] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=324502697337&username=juka_innovations&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aprice&q=324502697337&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Value
+                          - listitem [ref=e1263]:
+                            - link "Appearance" [ref=e1264] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=324502697337&username=juka_innovations&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aappearance&q=324502697337&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Appearance
+                          - listitem [ref=e1265]:
+                            - link "Fit" [ref=e1266] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=324502697337&username=juka_innovations&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Afit&q=324502697337&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Fit
+                      - list [ref=e1267]:
+                        - listitem [ref=e1268]:
+                          - generic [ref=e1269]:
+                            - generic [ref=e1271]:
+                              - generic [ref=e1272]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1273]:
+                                - text: "*****"
+                                - generic [ref=e1274]: "- Feedback left by buyer."
+                              - generic [ref=e1277]: Past 6 months
+                              - generic [ref=e1278]: Verified purchase
+                            - generic [ref=e1280]: Great quality, condition, value and appearance.
+                        - listitem [ref=e1281]:
+                          - generic [ref=e1282]:
+                            - generic [ref=e1284]:
+                              - generic [ref=e1285]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1286]:
+                                - text: "*****"
+                                - generic [ref=e1287]: "- Feedback left by buyer."
+                              - generic [ref=e1290]: Past 6 months
+                              - generic [ref=e1291]: Verified purchase
+                            - generic [ref=e1293]: Great item. Well packed, arrived quickly. Very happy with this dealer. Product keeps hair and rubbish out of my tub drain.
+                        - listitem [ref=e1294]:
+                          - generic [ref=e1295]:
+                            - generic [ref=e1297]:
+                              - generic [ref=e1298]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1299]:
+                                - text: "*****"
+                                - generic [ref=e1300]: "- Feedback left by buyer."
+                              - generic [ref=e1303]: Past month
+                              - generic [ref=e1304]: Verified purchase
+                            - generic [ref=e1306]: Great seller, fast shipping
+                        - listitem [ref=e1307]:
+                          - generic [ref=e1308]:
+                            - generic [ref=e1310]:
+                              - generic [ref=e1311]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1312]:
+                                - text: "*****"
+                                - generic [ref=e1313]: "- Feedback left by buyer."
+                              - generic [ref=e1316]: Past year
+                              - generic [ref=e1317]: Verified purchase
+                            - generic [ref=e1319]: Item as pictured as described, fits and works perfectly in the bathroom bathtub, well package, and fast shipping.
+                        - listitem [ref=e1320]:
+                          - generic [ref=e1321]:
+                            - generic [ref=e1323]:
+                              - generic [ref=e1324]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1325]:
+                                - text: "*****"
+                                - generic [ref=e1326]: "- Feedback left by buyer."
+                              - generic [ref=e1329]: Past 6 months
+                              - generic [ref=e1330]: Verified purchase
+                            - generic [ref=e1332]: Great seller, item came as described. A+++ experience.
+                        - listitem [ref=e1333]:
+                          - generic [ref=e1334]:
+                            - generic [ref=e1336]:
+                              - generic [ref=e1337]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1338]:
+                                - text: "*****"
+                                - generic [ref=e1339]: "- Feedback left by buyer."
+                              - generic [ref=e1342]: Past year
+                              - generic [ref=e1343]: Verified purchase
+                            - generic [ref=e1344]:
+                              - generic [ref=e1345]: Works great
+                              - button "Item photo(s) from verified buyer" [ref=e1346] [cursor=pointer]:
+                                - img "Item photo(s) from verified buyer" [ref=e1347]
+                        - listitem [ref=e1348]:
+                          - generic [ref=e1349]:
+                            - generic [ref=e1351]:
+                              - generic [ref=e1352]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1353]:
+                                - text: "*****"
+                                - generic [ref=e1354]: "- Feedback left by buyer."
+                              - generic [ref=e1357]: Past 6 months
+                              - generic [ref=e1358]: Verified purchase
+                            - generic [ref=e1360]: Fast Ship!! Great Seller!!
+                        - listitem [ref=e1361]:
+                          - generic [ref=e1362]:
+                            - generic [ref=e1364]:
+                              - generic [ref=e1365]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1366]:
+                                - text: "*****"
+                                - generic [ref=e1367]: "- Feedback left by buyer."
+                              - generic [ref=e1370]: Past year
+                              - generic [ref=e1371]: Verified purchase
+                            - generic [ref=e1373]: Item was brand new and works
+                      - link "See all feedback. Opens in a new tab" [ref=e1374] [cursor=pointer]:
+                        - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=324502697337&username=juka_innovations&filter=feedback_page%3ARECEIVED_AS_SELLER&q=324502697337&sort=RELEVANCEV2
+                        - text: See all feedback
+            - generic [ref=e1376]:
+              - generic [ref=e1377]:
+                - generic [ref=e1379]:
+                  - heading "Product ratings and reviews" [level=2] [ref=e1382]
+                  - link "Learn more" [ref=e1384] [cursor=pointer]:
+                    - /url: https://www.ebay.com/help/selling/listings/product-reviews?id=5186
+                - generic [ref=e1385]:
+                  - generic [ref=e1386]:
+                    - generic [ref=e1387]: "4.7"
+                    - img "4.7 out of 5 stars based on 217 product ratings" [ref=e1390]:
+                      - img
+                      - img
+                      - img
+                      - img
+                      - img
+                    - generic [ref=e1391]: 217 product ratings
+                  - list [ref=e1393]:
+                    - listitem [ref=e1394]:
+                      - generic [ref=e1395]:
+                        - generic [ref=e1396]:
+                          - img
+                          - paragraph [ref=e1397]: "5"
+                        - generic [ref=e1401]: 183 users rated this 5 out of 5 stars
+                        - generic [ref=e1402]: "183"
+                    - listitem [ref=e1403]:
+                      - generic [ref=e1404]:
+                        - generic [ref=e1405]:
+                          - img
+                          - paragraph [ref=e1406]: "4"
+                        - generic [ref=e1410]: 21 users rated this 4 out of 5 stars
+                        - generic [ref=e1411]: "21"
+                    - listitem [ref=e1412]:
+                      - generic [ref=e1413]:
+                        - generic [ref=e1414]:
+                          - img
+                          - paragraph [ref=e1415]: "3"
+                        - generic [ref=e1419]: 7 users rated this 3 out of 5 stars
+                        - generic [ref=e1420]: "7"
+                    - listitem [ref=e1421]:
+                      - generic [ref=e1422]:
+                        - generic [ref=e1423]:
+                          - img
+                          - paragraph [ref=e1424]: "2"
+                        - generic [ref=e1427]: 0 users rated this 2 out of 5 stars
+                        - generic [ref=e1428]: "0"
+                    - listitem [ref=e1429]:
+                      - generic [ref=e1430]:
+                        - generic [ref=e1431]:
+                          - img
+                          - paragraph [ref=e1432]: "1"
+                        - generic [ref=e1436]: 6 users rated this 1 out of 5 stars
+                        - generic [ref=e1437]: "6"
+                  - generic [ref=e1438]:
+                    - img "95 percents of reviewers think of this product as Would recommend" [ref=e1439]:
+                      - generic [ref=e1440]: 95%
+                      - paragraph [ref=e1445]: Would recommend
+                    - img "90 percents of reviewers think of this product as Good value" [ref=e1446]:
+                      - generic [ref=e1447]: 90%
+                      - paragraph [ref=e1452]: Good value
+                    - img "95 percents of reviewers think of this product as Good quality" [ref=e1453]:
+                      - generic [ref=e1454]: 95%
+                      - paragraph [ref=e1459]: Good quality
+                - generic [ref=e1460]:
+                  - generic [ref=e1461]:
+                    - heading "Most relevant reviews" [level=3] [ref=e1462]
+                    - link "See all 149 reviews" [ref=e1464] [cursor=pointer]:
+                      - /url: https://www.ebay.com/urw/TubShroom+The+Revolutionary+Tub+Drain+Hair+Catcher%2FStrainer+-+Blue/product-reviews/20031753311?_itm=324502697337
+                  - list [ref=e1465]:
+                    - listitem [ref=e1466]:
+                      - generic [ref=e1467]:
+                        - img "percents of reviewers think of this product as" [ref=e1470]:
+                          - img
+                          - img
+                          - img
+                          - img
+                          - img
+                        - generic [ref=e1471]:
+                          - text: by
+                          - link "sol537" [ref=e1472] [cursor=pointer]:
+                            - /url: https://www.ebay.com/usr/sol537
+                            - generic [ref=e1473]: sol537
+                        - generic [ref=e1474]: Nov 25, 2018
+                        - generic [ref=e1475]: Top favorable review
+                      - generic [ref=e1476]:
+                        - heading "Great job demonstrating how much I'm shedding" [level=4] [ref=e1477]
+                        - generic [ref=e1479]:
+                          - generic [ref=e1480]: Good lord I am a shedder. This product does a great job of catching my hair. Removing hair from it and putting it in the trash can is easy but not pleasant. Little gross. There are things in a marriage which could be classified as “should dos” and “must dos” if you agree upon them before hand. I love cats. It my husband doesn’t but he agreed we could have 3 cats if I cleaned the litter every day. I agreed to empty tub shroom of hair at least weekly. These are “must dos” since I agreed to them. There are other things that are should dos but you just don’t feel like it. Then, if your husband starts doing those things him self the tub shroom develops a problem. If more than a week goes by of me doing neither the must or the should dos then the tub shroom becomes an impermeable cylinder of ...
+                          - button "Read more" [ref=e1482] [cursor=pointer]
+                        - generic [ref=e1483]:
+                          - link "Review image 1 of 2-0" [ref=e1484] [cursor=pointer]:
+                            - /url: https://i.ebayimg.com/00/s/MTUxNVgxNjAw/z/VDUAAOSwv0db-5hT/$_32.JPG?set_id=880000500F
+                            - img "Review image 1 of 2-0" [ref=e1485]
+                          - link "Review image 2 of 2-1" [ref=e1486] [cursor=pointer]:
+                            - /url: https://i.ebayimg.com/00/s/NTQwWDgzMw==/z/DMUAAOSwBqZb-5hO/$_32.JPG?set_id=880000500F
+                            - img "Review image 2 of 2-1" [ref=e1487]
+                        - paragraph [ref=e1488]:
+                          - generic [ref=e1489]: "Verified purchase: Yes"
+                          - generic [ref=e1490]: "Condition: New"
+                          - generic [ref=e1491]: "Sold by: juka_innovations"
+                    - listitem [ref=e1492]:
+                      - generic [ref=e1493]:
+                        - img "percents of reviewers think of this product as" [ref=e1496]:
+                          - img
+                          - img
+                          - img
+                          - img
+                          - img
+                        - generic [ref=e1497]:
+                          - text: by
+                          - link "esharevg1" [ref=e1498] [cursor=pointer]:
+                            - /url: https://www.ebay.com/usr/esharevg1
+                            - generic [ref=e1499]: esharevg1
+                        - generic [ref=e1500]: Mar 25, 2017
+                      - generic [ref=e1501]:
+                        - heading "Good but still.." [level=4] [ref=e1502]
+                        - generic [ref=e1505]: I really liked the product. But the advertisement shown on the site seems so flawless. Well, I never had a near flawless scenario. Mine blocked all the way to the top (not because of the overgrowth on my body) but the soap lather that was used the previous day. The lather that stuck was hard and dry. So when I use the shower the next day, it gets clogged until the lather softens to make way for the water with next coat of lather adding on to it. But apart form this, I have used the other products that had the cover for the hair. But non as effective as this one. Good product.. Keep it up. Btw, I use a dove soap for men with the head and shoulders shampoo combo.
+                        - paragraph [ref=e1506]:
+                          - generic [ref=e1507]: "Verified purchase: Yes"
+                          - generic [ref=e1508]: "Condition: New"
+                          - generic [ref=e1509]: "Sold by: juka_innovations"
+                    - listitem [ref=e1510]:
+                      - generic [ref=e1511]:
+                        - img "percents of reviewers think of this product as" [ref=e1514]:
+                          - img
+                          - img
+                          - img
+                          - img
+                          - img
+                        - generic [ref=e1515]:
+                          - text: by
+                          - link "neif_us2014" [ref=e1516] [cursor=pointer]:
+                            - /url: https://www.ebay.com/usr/neif_us2014
+                            - generic [ref=e1517]: neif_us2014
+                        - generic [ref=e1518]: Feb 14, 2017
+                      - generic [ref=e1519]:
+                        - heading "Buy this" [level=4] [ref=e1520]
+                        - generic [ref=e1523]: This thing works great we've had a regular little drain strainer we bought from lowes and it would constantly clog, you could never get all the hair off it. It would take forever for the tub to drain if at all. It's like the difference between night and day using this compared to the old fashion drain strainer thing.
+                        - paragraph [ref=e1524]:
+                          - generic [ref=e1525]: "Verified purchase: Yes"
+                          - generic [ref=e1526]: "Condition: New"
+                          - generic [ref=e1527]: "Sold by: juka_innovations"
+                    - listitem [ref=e1528]:
+                      - generic [ref=e1529]:
+                        - img "percents of reviewers think of this product as" [ref=e1532]:
+                          - img
+                          - img
+                          - img
+                          - img
+                          - img
+                        - generic [ref=e1533]:
+                          - text: by
+                          - link "beyondmeasure2011" [ref=e1534] [cursor=pointer]:
+                            - /url: https://www.ebay.com/usr/beyondmeasure2011
+                            - generic [ref=e1535]: beyondmeasure2011
+                        - generic [ref=e1536]: Feb 04, 2017
+                      - generic [ref=e1537]:
+                        - heading "Awesome!" [level=4] [ref=e1538]
+                        - generic [ref=e1541]: Worth every penny! Measured my drain before the purchase and it works better than any hair catcher I've ever used! I bought the gray one knowing it wouldn't seem to look as tacky as the other colors...not that I don't like the other colors though!
+                        - paragraph [ref=e1542]:
+                          - generic [ref=e1543]: "Verified purchase: Yes"
+                          - generic [ref=e1544]: "Condition: New"
+                          - generic [ref=e1545]: "Sold by: juka_innovations"
+                    - listitem [ref=e1546]:
+                      - generic [ref=e1547]:
+                        - img "percents of reviewers think of this product as" [ref=e1550]:
+                          - img
+                          - img
+                          - img
+                          - img
+                          - img
+                        - generic [ref=e1551]:
+                          - text: by
+                          - link "3c7zgOprRmK@Deleted" [ref=e1552] [cursor=pointer]:
+                            - /url: https://www.ebay.com/usr/3c7zgOprRmK@Deleted
+                            - generic [ref=e1553]: 3c7zgOprRmK@Deleted
+                        - generic [ref=e1554]: Jun 09, 2017
+                      - generic [ref=e1555]:
+                        - heading "Saved my drain!" [level=4] [ref=e1556]
+                        - generic [ref=e1559]: I love this product so much. Ive looked everywhere for something that kept my bathtub drain from clogging effectively. This is it! I have very long, thick hair, plus pets and this works great and is easy to clean. LOVE!
+                        - paragraph [ref=e1560]:
+                          - generic [ref=e1561]: "Verified purchase: Yes"
+                          - generic [ref=e1562]: "Condition: New"
+                          - generic [ref=e1563]: "Sold by: juka_innovations"
+              - generic [ref=e1570]: This is a private listing and your identity will not be disclosed to anyone except the seller.
+              - navigation "Quick Links" [ref=e1571]:
+                - link "Back to previous page" [ref=e1572] [cursor=pointer]:
+                  - /url: https://www.ebay.com/splashui/challenge?ap=1&appName=orch&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F266892301404&iid=15da6dd4-509c-4178-afe1-431c9dce97c1&iim=HOTcuMjH&iia=rnI3LjE1HZ&iiz=vOqNC4xMw**dJL
+                - text: "|See More Details about"
+                - link "\"TubShroom The Revolutionary Tub Drain Hair Catcher/Str...\"" [ref=e1573] [cursor=pointer]:
+                  - /url: https://www.ebay.com/p/20031753311
+                - button "Return to top" [ref=e1574] [cursor=pointer]
+              - generic [ref=e1576]:
+                - heading "More to explore :" [level=2] [ref=e1579]
+                - list [ref=e1581]:
+                  - listitem [ref=e1582]:
+                    - link "Blue Plant Tubs," [ref=e1583] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Blue-Plant-Tubs/20518/bn_99098801
+                  - listitem [ref=e1584]:
+                    - link "Blue Spas & Hot Tubs," [ref=e1585] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Blue-Spas-Hot-Tubs/84211/bn_7115949798
+                  - listitem [ref=e1586]:
+                    - link "Blue Outdoor Sun Catchers," [ref=e1587] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Blue-Outdoor-Sun-Catchers/29511/bn_112810702
+                  - listitem [ref=e1588]:
+                    - link "Hot Tub Inflatable Spas & Hot Tubs," [ref=e1589] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Hot-Tub-Inflatable-Spas-Hot-Tubs/84211/bn_7828224
+                  - listitem [ref=e1590]:
+                    - link "Blue Gardening Garden Clogs," [ref=e1591] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Blue-Gardening-Garden-Clogs/139861/bn_109335228
+                  - listitem [ref=e1592]:
+                    - link "Wood Tubs," [ref=e1593] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Wood-Tubs/84211/bn_7828235
+                  - listitem [ref=e1594]:
+                    - link "Spas & Hot Tubs," [ref=e1595] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Spas-Hot-Tubs/84211/bn_7828249
+                  - listitem [ref=e1596]:
+                    - link "Inflatable Hot Tub Jacuzzi Spas & Hot Tubs," [ref=e1597] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Inflatable-Hot-Tub-Jacuzzi-Spas-Hot-Tubs/84211/bn_7828228
+                  - listitem [ref=e1598]:
+                    - link "Round Hot Tub Inflatable Spas & Hot Tubs," [ref=e1599] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Round-Hot-Tub-Inflatable-Spas-Hot-Tubs/84211/bn_7828210
+                  - listitem [ref=e1600]:
+                    - link "Softub Spas & Hot Tubs" [ref=e1601] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Softub-Spas-Hot-Tubs/84211/bn_7828218
+              - generic [ref=e1603]:
+                - heading "Shop Top Sellers and Highly Rated Products in Drain Stoppers & Strainers" [level=2] [ref=e1604]
+                - generic [ref=e1605]:
+                  - generic [ref=e1606]:
+                    - heading "Best Sellers" [level=3] [ref=e1607]
+                    - list [ref=e1608]:
+                      - listitem [ref=e1609]:
+                        - link "Tubshroom SHGRA727 Drain Strainer - Gray" [ref=e1610] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/888036621
+                          - generic [ref=e1611]: Tubshroom SHGRA727 Drain Strainer - Gray
+                      - listitem [ref=e1612]:
+                        - link "Watco 38516-CP Push Pull Replacement Stopper with 5/16 & 3/8 Pins Chrome Plated" [ref=e1613] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/4018773367
+                          - generic [ref=e1614]: Watco 38516-CP Push Pull Replacement Stopper with 5/16 & 3/8 Pins Chrome Plated
+                      - listitem [ref=e1615]:
+                        - link "TubShroom TSULT455 Ultra Revolutionary Bath Tub Drain Protector Hair Catcher" [ref=e1616] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/18032263330
+                          - generic [ref=e1617]: TubShroom TSULT455 Ultra Revolutionary Bath Tub Drain Protector Hair Catcher
+                      - listitem [ref=e1618]:
+                        - link "TubShroom Ultra Platinum Bundle Bathtub Strainer / Hair Catcher / Stopper" [ref=e1619] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/21090446998
+                          - generic [ref=e1620]: TubShroom Ultra Platinum Bundle Bathtub Strainer / Hair Catcher / Stopper
+                      - listitem [ref=e1621]:
+                        - link "Kohler 2 In. H Pop-up Bathtub Drain Stopper and Lift Toggle in Polished Chrome" [ref=e1622] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/25008536773
+                          - generic [ref=e1623]: Kohler 2 In. H Pop-up Bathtub Drain Stopper and Lift Toggle in Polished Chrome
+                  - generic [ref=e1624]:
+                    - heading "Top Rated" [level=3] [ref=e1625]
+                    - list [ref=e1626]:
+                      - listitem [ref=e1627]:
+                        - link "TubShroom TSULT455 Ultra Revolutionary Bath Tub Drain Protector Hair Catcher" [ref=e1628] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/18032263330
+                          - generic [ref=e1629]: TubShroom TSULT455 Ultra Revolutionary Bath Tub Drain Protector Hair Catcher
+                      - listitem [ref=e1630]:
+                        - link "Danco 5 In. Flat Suction Sink Stopper 89042" [ref=e1631] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/1800897572
+                          - generic [ref=e1632]: Danco 5 In. Flat Suction Sink Stopper 89042
+                      - listitem [ref=e1633]:
+                        - link "NDS 241 2' Channel Grate for Spee-d Drain Gray" [ref=e1634] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/2116676658
+                          - generic [ref=e1635]: NDS 241 2' Channel Grate for Spee-d Drain Gray
+                      - listitem [ref=e1636]:
+                        - link "2pack Tub Stopper 6in Silicone Flat Suction Cover Bathtub Stoper Drain Universal" [ref=e1637] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/22025111758
+                          - generic [ref=e1638]: 2pack Tub Stopper 6in Silicone Flat Suction Cover Bathtub Stoper Drain Universal
+                      - listitem [ref=e1639]:
+                        - link "Kohler Cartridges 1068204 Cartridge Assembly" [ref=e1640] [cursor=pointer]:
+                          - /url: https://www.ebay.com/p/7012056871
+                          - generic [ref=e1641]: Kohler Cartridges 1068204 Cartridge Assembly
+              - generic [ref=e1643]:
+                - heading "Related searches" [level=2] [ref=e1644]
+                - list [ref=e1645]:
+                  - listitem [ref=e1646]:
+                    - link "Tubshroom Hair Catcher" [ref=e1647] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/tubshroom-hair-catcher?_nkw=tubshroom+hair+catcher
+                      - generic [ref=e1648]: Tubshroom Hair Catcher
+                  - listitem [ref=e1649]:
+                    - link "Bathtub Drain Hair Catcher" [ref=e1650] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/bathtub-drain-hair-catcher?_nkw=bathtub+drain+hair+catcher
+                      - generic [ref=e1651]: Bathtub Drain Hair Catcher
+                  - listitem [ref=e1652]:
+                    - link "Tub Hair Catcher" [ref=e1653] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/tub-hair-catcher?_nkw=tub+hair+catcher
+                      - generic [ref=e1654]: Tub Hair Catcher
+                  - listitem [ref=e1655]:
+                    - link "Bathtub Hair Catcher" [ref=e1656] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/bathtub-hair-catcher?_nkw=bathtub+hair+catcher
+                      - generic [ref=e1657]: Bathtub Hair Catcher
+                  - listitem [ref=e1658]:
+                    - link "Shower Drain Hair Catcher" [ref=e1659] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/shower-drain-hair-catcher?_nkw=shower+drain+hair+catcher
+                      - generic [ref=e1660]: Shower Drain Hair Catcher
+                  - listitem [ref=e1661]:
+                    - link "Bathtub Drain Hair Strainer" [ref=e1662] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/bathtub-drain-hair-strainer?_nkw=bathtub+drain+hair+strainer
+                      - generic [ref=e1663]: Bathtub Drain Hair Strainer
+                  - listitem [ref=e1664]:
+                    - link "Bathtub Drain Stopper" [ref=e1665] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/bathtub-drain-stopper?_nkw=bathtub+drain+stopper
+                      - generic [ref=e1666]: Bathtub Drain Stopper
+                  - listitem [ref=e1667]:
+                    - link "Tub Shroom" [ref=e1668] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/tub-shroom?_nkw=tub+shroom
+                      - generic [ref=e1669]: Tub Shroom
+                  - listitem [ref=e1670]:
+                    - link "Tub Ring Hair Catcher" [ref=e1671] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/tub-ring-hair-catcher?_nkw=tub+ring+hair+catcher
+                      - generic [ref=e1672]: Tub Ring Hair Catcher
+                  - listitem [ref=e1673]:
+                    - link "Drain Cover Hair Catcher" [ref=e1674] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/drain-cover-hair-catcher?_nkw=drain+cover+hair+catcher
+                      - generic [ref=e1675]: Drain Cover Hair Catcher
+                  - listitem [ref=e1676]:
+                    - link "Tub Shroom Ultra" [ref=e1677] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/tub-shroom-ultra?_nkw=tub+shroom+ultra
+                      - generic [ref=e1678]: Tub Shroom Ultra
+                  - listitem [ref=e1679]:
+                    - link "Bathroom Hair Catcher" [ref=e1680] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/bathroom-hair-catcher?_nkw=bathroom+hair+catcher
+                      - generic [ref=e1681]: Bathroom Hair Catcher
+                  - listitem [ref=e1682]:
+                    - link "Shower Drain Stopper" [ref=e1683] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/shower-drain-stopper?_nkw=shower+drain+stopper
+                      - generic [ref=e1684]: Shower Drain Stopper
+                  - listitem [ref=e1685]:
+                    - link "Shower Shroom" [ref=e1686] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/shower-shroom?_nkw=shower+shroom
+                      - generic [ref=e1687]: Shower Shroom
+                  - listitem [ref=e1688]:
+                    - link "Tubshroom" [ref=e1689] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/tubshroom?_nkw=tubshroom
+                      - generic [ref=e1690]: Tubshroom
+        - img [ref=e1694]
+  - contentinfo [ref=e1700]:
+    - list [ref=e1701]:
+      - listitem [ref=e1702]:
+        - link "About eBay" [ref=e1703] [cursor=pointer]:
+          - /url: https://www.ebayinc.com
+      - listitem [ref=e1704]:
+        - link "Announcements" [ref=e1705] [cursor=pointer]:
+          - /url: https://community.ebay.com/t5/Announcements/bg-p/Announcements
+      - listitem [ref=e1706]:
+        - link "Community" [ref=e1707] [cursor=pointer]:
+          - /url: https://community.ebay.com
+      - listitem [ref=e1708]:
+        - link "Security Center" [ref=e1709] [cursor=pointer]:
+          - /url: https://pages.ebay.com/securitycenter/index.html
+      - listitem [ref=e1710]:
+        - link "Seller Center" [ref=e1711] [cursor=pointer]:
+          - /url: https://www.ebay.com/sellercenter
+      - listitem [ref=e1712]:
+        - link "Policies" [ref=e1713] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/policies/default/ebays-rules-policies?id=4205
+      - listitem [ref=e1714]:
+        - link "Affiliates" [ref=e1715] [cursor=pointer]:
+          - /url: https://partnernetwork.ebay.com/
+      - listitem [ref=e1716]:
+        - link "Product Safety Tips" [ref=e1717] [cursor=pointer]:
+          - /url: https://pages.ebay.com/safetytips
+      - listitem [ref=e1718]:
+        - link "Help & Contact" [ref=e1719] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/home
+      - listitem [ref=e1720]:
+        - link "Site Map" [ref=e1721] [cursor=pointer]:
+          - /url: https://pages.ebay.com/sitemap.html
+    - generic [ref=e1722]:
+      - text: Copyright © 1995-2026 eBay Inc. All Rights Reserved.
+      - link "Accessibility" [ref=e1723] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/accessibility/
+      - text: ","
+      - link "User Agreement" [ref=e1724] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259
+      - text: ","
+      - link "Privacy" [ref=e1725] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260
+      - text: ","
+      - link "Consumer Health Data" [ref=e1726] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/consumer-health-data-privacy-policy/
+      - text: ","
+      - link "Payments Terms of Use" [ref=e1727] [cursor=pointer]:
+        - /url: https://pages.ebay.com/payment/2.0/terms.html
+      - text: ","
+      - link "Cookies" [ref=e1728] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/ebay-cookie-notice?id=4267
+      - text: ","
+      - link "CA Privacy Notice" [ref=e1729] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/state-privacy-disclosures/#california
+      - text: ","
+      - link "Your Privacy Choices" [ref=e1730] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice/ccpa
+      - text: and
+      - link "AdChoice" [ref=e1731] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice
+        - text: AdChoice
+        - img
+  - img
+  - img [ref=e1733]

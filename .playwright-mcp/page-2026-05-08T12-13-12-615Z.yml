@@ -1,0 +1,1753 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - banner [ref=e5]:
+        - link "Skip to Main Content" [ref=e6] [cursor=pointer]:
+          - /url: "#maincontent"
+        - text:  
+        - link "Walmart Homepage" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Walmart" [ref=e8]
+        - generic [ref=e11]:
+          - generic [ref=e12]:
+            - generic "Pickup or delivery? Norcross, 30093 • Norcross Supercenter Now available!" [ref=e13]:
+              - button "Pickup or delivery? Norcross, 30093 • Norcross Supercenter" [ref=e15] [cursor=pointer]:
+                - generic [ref=e16]:
+                  - generic [ref=e17]:
+                    - generic [ref=e19]: Pickup or delivery?
+                    - generic [ref=e20]:
+                      - generic [ref=e24]: Norcross, 30093
+                      - generic [ref=e27]:
+                        - generic [ref=e28]: •
+                        - generic [ref=e29]: Norcross Supercenter
+                  - generic [ref=e31]: 
+            - generic [ref=e34]:
+              - generic [ref=e35]:
+                - img [ref=e36]
+                - generic [ref=e37]:
+                  - text: Now available!
+                  - button "Ship to another country" [ref=e38] [cursor=pointer]
+              - button "Close" [ref=e40]:
+                - generic [ref=e41]: 
+          - generic:
+            - generic:    
+          - generic [ref=e43]:
+            - generic [ref=e45]: Norcross, 30093
+            - generic [ref=e47]: •
+        - search "Walmart Site-Wide" [ref=e48]:
+          - generic [ref=e49]:
+            - searchbox "Search" [ref=e50]: toilet tank flush lever replacement
+            - button [ref=e51] [cursor=pointer]:
+              - generic [ref=e52]: 
+            - button "Search" [ref=e53] [cursor=pointer]:
+              - generic [ref=e54]: 
+        - navigation "Account and Cart" [ref=e55]:
+          - list [ref=e56]:
+            - listitem [ref=e57]:
+              - button "Reorder My Items" [ref=e58] [cursor=pointer]:
+                - generic [ref=e59]: 
+                - generic [ref=e60]:
+                  - generic [ref=e61]: Reorder
+                  - generic [ref=e62]: My Items
+              - text:   
+            - listitem [ref=e63]:
+              - generic [ref=e65]:
+                - button "Sign In Account" [ref=e66] [cursor=pointer]:
+                  - generic [ref=e67]: 
+                  - generic [ref=e68]:
+                    - generic [ref=e69]: Sign In
+                    - generic [ref=e70]: Account
+                - text:   
+            - listitem [ref=e71]:
+              - button "Cart contains 0 items Total Amount $0.00" [ref=e74]:
+                - generic [ref=e75]: 
+                - generic [ref=e76]: "0"
+                - generic [ref=e77]: $0.00
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - navigation "Primary" [ref=e80]:
+            - list [ref=e81]:
+              - listitem [ref=e82]:
+                - button "Departments " [ref=e86]:
+                  - text: Departments
+                  - generic [ref=e87]: 
+              - listitem [ref=e88]:
+                - button "Services " [ref=e92]:
+                  - text: Services
+                  - generic [ref=e93]: 
+          - navigation "Secondary" [ref=e95]:
+            - list [ref=e96]:
+              - listitem [ref=e97]:
+                - link "Rollbacks & More" [ref=e99] [cursor=pointer]:
+                  - /url: https://www.walmart.com/shop/savings
+              - listitem [ref=e100]:
+                - link "Mother's Day" [ref=e102] [cursor=pointer]:
+                  - /url: https://www.walmart.com/shop/gifts
+              - listitem [ref=e103]:
+                - link "Get it Fast" [ref=e105] [cursor=pointer]:
+                  - /url: https://www.walmart.com/cp/get-it-fast/6545138
+              - listitem [ref=e106]:
+                - link "Pharmacy" [ref=e108] [cursor=pointer]:
+                  - /url: https://www.walmart.com/cp/pharmacy/5431
+              - listitem [ref=e109]:
+                - link "New Arrivals" [ref=e111] [cursor=pointer]:
+                  - /url: https://www.walmart.com/cp/new-arrivals/2593086
+              - listitem [ref=e112]:
+                - link "Walmart Business" [ref=e114] [cursor=pointer]:
+                  - /url: https://business.walmart.com/cp/about-walmart-business/6136230?povid=B2B_SubNav_AboutWalmartBusiness
+              - listitem [ref=e115]:
+                - link "Walmart+" [ref=e117] [cursor=pointer]:
+                  - /url: https://www.walmart.com/plus
+        - button "More " [ref=e120] [cursor=pointer]:
+          - generic [ref=e122]: More
+          - generic [ref=e123]: 
+    - generic [ref=e124]:
+      - main [ref=e127]:
+        - generic [ref=e128]:
+          - generic [ref=e131]:
+            - region "Sort and Filter section" [ref=e137]:
+              - switch "Filter by In-store" [ref=e140]:
+                - generic [ref=e142]: 
+                - generic [ref=e143]: In-store
+              - switch "Filter by Get it fast" [ref=e146]:
+                - generic [ref=e148]: 
+                - generic [ref=e149]: Get it fast
+              - switch "Filter by All deals" [ref=e152]:
+                - generic [ref=e154]: 
+                - generic [ref=e155]: All deals
+              - button "Filter by Price not applied, activate to change" [ref=e158]:
+                - generic [ref=e160]: 
+                - generic [ref=e161]: Price
+                - generic [ref=e162]: 
+              - button "Filter by Brand not applied, activate to change" [ref=e165]:
+                - generic [ref=e166]: Brand
+                - generic [ref=e167]: 
+              - generic [ref=e168]:
+                - generic [ref=e169]: Sort by
+                - text: "|"
+                - button "Sort by Best Match" [ref=e171]:
+                  - text: Best Match
+                  - generic [ref=e172]: 
+            - separator [ref=e173]
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - button "Price" [ref=e184]:
+                    - generic [ref=e185]: Price
+                    - img [ref=e186]: 
+                  - separator [ref=e187]
+                - generic [ref=e188]:
+                  - button "Brand" [ref=e191]:
+                    - generic [ref=e192]: Brand
+                    - img [ref=e193]: 
+                  - separator [ref=e194]
+                - generic [ref=e195]:
+                  - button "Item Conditions" [ref=e198]:
+                    - generic [ref=e199]: Item Conditions
+                    - img [ref=e200]: 
+                  - separator [ref=e201]
+                - generic [ref=e202]:
+                  - button "Flush Type" [ref=e205]:
+                    - generic [ref=e206]: Flush Type
+                    - img [ref=e207]: 
+                  - separator [ref=e208]
+                - generic [ref=e209]:
+                  - button "Finish" [ref=e212]:
+                    - generic [ref=e213]: Finish
+                    - img [ref=e214]: 
+                  - separator [ref=e215]
+                - generic [ref=e216]:
+                  - button "Features" [ref=e219]:
+                    - generic [ref=e220]: Features
+                    - img [ref=e221]: 
+                  - separator [ref=e222]
+                - generic [ref=e223]:
+                  - button "Material" [ref=e226]:
+                    - generic [ref=e227]: Material
+                    - img [ref=e228]: 
+                  - separator [ref=e229]
+                - generic [ref=e230]:
+                  - button "Availability" [ref=e233]:
+                    - generic [ref=e234]: Availability
+                    - img [ref=e235]: 
+                  - separator [ref=e236]
+                - generic [ref=e237]:
+                  - button "Departments" [ref=e240]:
+                    - generic [ref=e241]: Departments
+                    - img [ref=e242]: 
+                  - separator [ref=e243]
+                - generic [ref=e244]:
+                  - button "Deals" [ref=e247]:
+                    - generic [ref=e248]: Deals
+                    - img [ref=e249]: 
+                  - separator [ref=e250]
+                - generic [ref=e251]:
+                  - button "Customer Rating" [ref=e254]:
+                    - generic [ref=e255]: Customer Rating
+                    - img [ref=e256]: 
+                  - separator [ref=e257]
+                - generic [ref=e258]:
+                  - button "Retailer" [ref=e261]:
+                    - generic [ref=e262]: Retailer
+                    - img [ref=e263]: 
+                  - separator [ref=e264]
+                - generic [ref=e265]:
+                  - button "Gifting" [ref=e268]:
+                    - generic [ref=e269]: Gifting
+                    - img [ref=e270]: 
+                  - separator [ref=e271]
+              - generic [ref=e273]:
+                - generic [ref=e274]:
+                  - heading "Results for \"toilet tank flush lever replacement\" (426)" [level=2] [ref=e282]: Results for "toilet tank flush lever replacement"(426)
+                  - generic [ref=e284]:
+                    - generic [ref=e285]: Uses item details. Price when purchased online
+                    - button "legal information" [ref=e286] [cursor=pointer]:
+                      - generic [ref=e287]: 
+                  - generic [ref=e288]:
+                    - group [ref=e291]:
+                      - link "Best seller Korky Toilet Handle, Chrome Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6055 $10.97 Was $12.99" [ref=e292] [cursor=pointer]:
+                        - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=1&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FKorky-Toilet-Handle-Chrome-Metal-Handle-Tank-Lever-Replacement-Universal-to-Fit-Front-Angled-and-Side-Left-Mount-Toilets-6055%2F472541054%3FclassType%3DVARIANT%26athbdg%3DL1600%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=lKW_Lu3w4OAx-U8zXzKY1fKljiAjVebo1I4E9O-Ds3NCiLpDrT7grSbMBBZ8CAr5O8W7czyJsieOIFtxXdlmqgslG831UnDIvaHT2bMQDx5_DfJPLfpm0GE22Lc1YrQ1gE2O-fBzNm4WrNf1aGiJZEHdi10NZW60qbyDHzuy1sZgeCkrCytYf9PCXYsa-e4gwknUP7AKhLmdjwgAwWyKWNIxELogLtx1UECz8U3fw8EXeTB1ahjasyA2TyGmtTda&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=VARIANT&athbdg=L1600
+                        - heading "Best seller Korky Toilet Handle, Chrome Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6055 $10.97 Was $12.99" [level=3] [ref=e294]
+                      - generic [ref=e295]:
+                        - generic [ref=e296]:
+                          - group [ref=e299]:
+                            - generic [ref=e300]: Best seller
+                          - generic [ref=e301]:
+                            - button "Sign in to add to Favorites list, Korky Toilet Handle, Chrome Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6055" [ref=e302]:
+                              - generic [ref=e303]: 
+                            - img "Korky Toilet Handle, Chrome Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6055" [ref=e304]
+                        - link "Options - Korky Toilet Handle, Chrome Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6055" [ref=e308] [cursor=pointer]:
+                          - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=1&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FKorky-Toilet-Handle-Chrome-Metal-Handle-Tank-Lever-Replacement-Universal-to-Fit-Front-Angled-and-Side-Left-Mount-Toilets-6055%2F472541054%3FclassType%3DVARIANT%26athbdg%3DL1600%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=lKW_Lu3w4OAx-U8zXzKY1fKljiAjVebo1I4E9O-Ds3NCiLpDrT7grSbMBBZ8CAr5O8W7czyJsieOIFtxXdlmqgslG831UnDIvaHT2bMQDx5_DfJPLfpm0GE22Lc1YrQ1gE2O-fBzNm4WrNf1aGiJZEHdi10NZW60qbyDHzuy1sZgeCkrCytYf9PCXYsa-e4gwknUP7AKhLmdjwgAwWyKWNIxELogLtx1UECz8U3fw8EXeTB1ahjasyA2TyGmtTda&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=VARIANT&athbdg=L1600
+                          - generic [ref=e309]: Options
+                        - generic [ref=e310]:
+                          - generic [ref=e313]:
+                            - generic [ref=e314]: Sponsored
+                            - button "Ad disclaimer and feedback" [ref=e316] [cursor=pointer]:
+                              - generic [ref=e317]: 
+                          - generic [ref=e319]:
+                            - generic [ref=e320]: Now$1097
+                            - generic [ref=e321]: current price Now $10.97, Was $12.99
+                            - generic [ref=e322]: $12.99
+                            - generic [ref=e323]: Options from $10.36
+                          - heading "Korky Toilet Handle, Chrome Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6055" [level=3] [ref=e325]
+                          - generic [ref=e326]:
+                            - generic [ref=e327]:
+                              - img [ref=e328]
+                              - img [ref=e330]
+                              - img [ref=e332]
+                              - img [ref=e334]
+                              - img [ref=e336]
+                            - generic [ref=e339]: "666"
+                            - generic [ref=e340]: 4.6 out of 5 Stars. 666 reviews
+                          - generic [ref=e342]:
+                            - generic [ref=e343]:
+                              - generic [ref=e344]: Save with
+                              - img "Walmart Plus" [ref=e345]
+                            - generic [ref=e346]:
+                              - generic [ref=e348]: Delivery as soon as 1 hour
+                              - generic [ref=e350]: Shipping arrives today
+                              - generic [ref=e352]: Pickup as soon as 11am
+                    - group [ref=e356]:
+                      - link "Danco Toilet Tank Lever Replacement Handle in Brushed Nickel, 0.17 lbs (12046) $10.64" [ref=e357] [cursor=pointer]:
+                        - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=2&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FDanco-Toilet-Tank-Lever-Replacement-Handle-in-Brushed-Nickel-0-17-lbs-12046%2F1287788270%3FclassType%3DVARIANT%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=r0cb9zw0doyN6gegyHDYR8ejfqm0b9mq2oSYqBgCzRJMxh4jpGvbyEQ3veUrauwaeiyr84gsPDkmeDQXnsLmRK8c4PKTZEjKI4uNXmE-zhM1zVqbKA2AIL_v02KzKBYuH93_P8GiZ11dI_m9jzcQP4oHO-TAJN0XXKieSAJljzl-h4xE4-WYM41lIt8YQcGapgJGQr5lSRKrpv8pqGcrDJwH3xifdXs9dFPgvooyjw_NNQEIEfUTMOs_wAHhMARn&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=VARIANT
+                        - heading "Danco Toilet Tank Lever Replacement Handle in Brushed Nickel, 0.17 lbs (12046) $10.64" [level=3] [ref=e359]
+                      - generic [ref=e360]:
+                        - generic [ref=e363]:
+                          - button "Sign in to add to Favorites list, Danco Toilet Tank Lever Replacement Handle in Brushed Nickel, 0.17 lbs (12046)" [ref=e364]:
+                            - generic [ref=e365]: 
+                          - img "Danco Toilet Tank Lever Replacement Handle in Brushed Nickel, 0.17 lbs (12046)" [ref=e366]
+                        - link "Options - Danco Toilet Tank Lever Replacement Handle in Brushed Nickel, 0.17 lbs (12046)" [ref=e370] [cursor=pointer]:
+                          - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=2&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FDanco-Toilet-Tank-Lever-Replacement-Handle-in-Brushed-Nickel-0-17-lbs-12046%2F1287788270%3FclassType%3DVARIANT%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=r0cb9zw0doyN6gegyHDYR8ejfqm0b9mq2oSYqBgCzRJMxh4jpGvbyEQ3veUrauwaeiyr84gsPDkmeDQXnsLmRK8c4PKTZEjKI4uNXmE-zhM1zVqbKA2AIL_v02KzKBYuH93_P8GiZ11dI_m9jzcQP4oHO-TAJN0XXKieSAJljzl-h4xE4-WYM41lIt8YQcGapgJGQr5lSRKrpv8pqGcrDJwH3xifdXs9dFPgvooyjw_NNQEIEfUTMOs_wAHhMARn&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=VARIANT
+                          - generic [ref=e371]: Options
+                        - generic [ref=e372]:
+                          - generic [ref=e375]:
+                            - generic [ref=e376]: Sponsored
+                            - button "Ad disclaimer and feedback" [ref=e378] [cursor=pointer]:
+                              - generic [ref=e379]: 
+                          - generic [ref=e381]:
+                            - generic [ref=e382]: $1064
+                            - generic [ref=e383]: current price $10.64
+                            - generic [ref=e384]: Options from $10.64 – $12.97
+                          - heading "Danco Toilet Tank Lever Replacement Handle in Brushed Nickel, 0.17 lbs (12046)" [level=3] [ref=e386]
+                          - generic [ref=e387]:
+                            - generic [ref=e388]:
+                              - img [ref=e389]
+                              - img [ref=e391]
+                              - img [ref=e393]
+                              - img [ref=e395]
+                              - img [ref=e397]
+                            - generic [ref=e400]: "283"
+                            - generic [ref=e401]: 4.4 out of 5 Stars. 283 reviews
+                          - generic [ref=e403]:
+                            - generic [ref=e404]:
+                              - generic [ref=e405]: Save with
+                              - img "Walmart Plus" [ref=e406]
+                            - generic [ref=e409]: Shipping arrives tomorrow
+                    - group [ref=e413]:
+                      - link "Delta 79760 Cassidy Tank Lever - Black $60.76" [ref=e414] [cursor=pointer]:
+                        - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=3&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FDelta-79760-Cassidy-Tank-Lever-Black%2F1535287957%3FclassType%3DVARIANT%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=IkiA8hzzAMvV8LKGHkG2jHcysrB9F36ldvIk5k6Feq7TXHxbT0shUFD1gKWgjK88CKSgbbbdvl597hPsySH6V5phT1EP196l_IuiC_CSDdk1zVqbKA2AIL_v02KzKBYufd8OQ6W1jRmLImRd9Tzs3rlAk8DsF564_n45Xr0YSlqyu-tWpt-FEFQATNW9XRrVTtvxlEVV7POk9WJGPdFUCoTRb8D-bRq56QBPG5ZN6c40hWL3zkyQ8WHGKbnOde92&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=VARIANT
+                        - heading "Delta 79760 Cassidy Tank Lever - Black $60.76" [level=3] [ref=e416]
+                      - generic [ref=e417]:
+                        - generic [ref=e420]:
+                          - button "Sign in to add to Favorites list, Delta 79760 Cassidy Tank Lever - Black" [ref=e421]:
+                            - generic [ref=e422]: 
+                          - img "Delta 79760 Cassidy Tank Lever - Black" [ref=e423]
+                        - link "Options - Delta 79760 Cassidy Tank Lever - Black" [ref=e427] [cursor=pointer]:
+                          - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=3&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FDelta-79760-Cassidy-Tank-Lever-Black%2F1535287957%3FclassType%3DVARIANT%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=IkiA8hzzAMvV8LKGHkG2jHcysrB9F36ldvIk5k6Feq7TXHxbT0shUFD1gKWgjK88CKSgbbbdvl597hPsySH6V5phT1EP196l_IuiC_CSDdk1zVqbKA2AIL_v02KzKBYufd8OQ6W1jRmLImRd9Tzs3rlAk8DsF564_n45Xr0YSlqyu-tWpt-FEFQATNW9XRrVTtvxlEVV7POk9WJGPdFUCoTRb8D-bRq56QBPG5ZN6c40hWL3zkyQ8WHGKbnOde92&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=VARIANT
+                          - generic [ref=e428]: Options
+                        - generic [ref=e429]:
+                          - generic [ref=e432]:
+                            - generic [ref=e433]: Sponsored
+                            - button "Ad disclaimer and feedback" [ref=e435] [cursor=pointer]:
+                              - generic [ref=e436]: 
+                          - generic [ref=e438]:
+                            - generic [ref=e439]: $6076
+                            - generic [ref=e440]: current price $60.76
+                            - generic [ref=e441]: Options from $21.99
+                          - heading "Delta 79760 Cassidy Tank Lever - Black" [level=3] [ref=e443]
+                          - generic [ref=e444]:
+                            - generic [ref=e445]:
+                              - img [ref=e446]
+                              - img [ref=e448]
+                              - img [ref=e450]
+                              - img [ref=e452]
+                              - img [ref=e455]
+                            - generic [ref=e457]: "15"
+                            - generic [ref=e458]: 3.5 out of 5 Stars. 15 reviews
+                          - generic [ref=e463]: Free shipping, arrives Mon, May 11
+                    - group [ref=e467]:
+                      - link "Best seller Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065 $10.36 Was $12.99" [ref=e468] [cursor=pointer]:
+                        - /url: /ip/Korky-White-Toilet-Flush-Handle-0-35-lb-6065/951388755?classType=VARIANT&athbdg=L1600&from=/search
+                        - heading "Best seller Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065 $10.36 Was $12.99" [level=3] [ref=e470]
+                      - generic [ref=e471]:
+                        - generic [ref=e472]:
+                          - group [ref=e475]:
+                            - generic [ref=e476]: Best seller
+                          - generic [ref=e477]:
+                            - button "Sign in to add to Favorites list, Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e478]:
+                              - generic [ref=e479]: 
+                            - img "Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e480]
+                          - generic [ref=e482]:
+                            - link "Chrome, variant on Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e484] [cursor=pointer]:
+                              - /url: /ip/Korky-trongarm-Toilet-Handle-for-Universal-Chrome/472541054?classType=undefined&variantFieldId=actual_color
+                              - img "Chrome, variant on Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e485]
+                            - link "White, variant on Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e487] [cursor=pointer]:
+                              - /url: /ip/Korky-White-Toilet-Flush-Handle-0-35-lb-6065/951388755?classType=undefined&variantFieldId=actual_color
+                              - img "White, variant on Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e488]
+                        - link "Options - Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e492] [cursor=pointer]:
+                          - /url: /ip/Korky-White-Toilet-Flush-Handle-0-35-lb-6065/951388755?classType=VARIANT&athbdg=L1600
+                          - generic [ref=e493]: Options
+                        - generic [ref=e494]:
+                          - generic [ref=e496]:
+                            - generic [ref=e497]: Now$1036
+                            - generic [ref=e498]: current price Now $10.36, Was $12.99
+                            - generic [ref=e499]: $12.99
+                            - generic [ref=e500]: Options from $10.36 – $10.97
+                          - heading "Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [level=3] [ref=e502]
+                          - generic [ref=e503]:
+                            - generic [ref=e504]:
+                              - img [ref=e505]
+                              - img [ref=e507]
+                              - img [ref=e509]
+                              - img [ref=e511]
+                              - img [ref=e513]
+                            - generic [ref=e516]: "666"
+                            - generic [ref=e517]: 4.6 out of 5 Stars. 666 reviews
+                          - generic [ref=e519]:
+                            - generic [ref=e520]:
+                              - generic [ref=e521]: Save with
+                              - img "Walmart Plus" [ref=e522]
+                            - generic [ref=e523]:
+                              - generic [ref=e525]: Delivery as soon as 1 hour
+                              - generic [ref=e527]: Shipping arrives today
+                              - generic [ref=e529]: Pickup as soon as 11am
+                    - group [ref=e533]:
+                      - link "100+ bought since yesterday Plumb Craft Replacement Toilet Flush Lever Handle in Chrome $4.88" [ref=e534] [cursor=pointer]:
+                        - /url: /ip/Plumb-Craft-Chrome-Toilet-Flush-Lever/675178386?classType=REGULAR&athbdg=L1102&from=/search
+                        - heading "100+ bought since yesterday Plumb Craft Replacement Toilet Flush Lever Handle in Chrome $4.88" [level=3] [ref=e536]
+                      - generic [ref=e537]:
+                        - generic [ref=e538]:
+                          - group [ref=e541]:
+                            - generic [ref=e542]: 100+ bought since yesterday
+                          - generic [ref=e543]:
+                            - button "Sign in to add to Favorites list, Plumb Craft Replacement Toilet Flush Lever Handle in Chrome" [ref=e544]:
+                              - generic [ref=e545]: 
+                            - img "Plumb Craft Replacement Toilet Flush Lever Handle in Chrome" [ref=e546]
+                        - button "Add to cart - Plumb Craft Replacement Toilet Flush Lever Handle in Chrome" [ref=e550] [cursor=pointer]:
+                          - generic "add to cart" [ref=e551]: 
+                          - generic [ref=e552]: Add
+                        - generic [ref=e553]:
+                          - generic [ref=e555]:
+                            - generic [ref=e556]: $488
+                            - generic [ref=e557]: current price $4.88
+                          - heading "Plumb Craft Replacement Toilet Flush Lever Handle in Chrome" [level=3] [ref=e559]
+                          - generic [ref=e560]:
+                            - generic [ref=e561]:
+                              - img [ref=e562]
+                              - img [ref=e564]
+                              - img [ref=e566]
+                              - img [ref=e568]
+                              - img [ref=e570]
+                            - generic [ref=e573]: "261"
+                            - generic [ref=e574]: 4.6 out of 5 Stars. 261 reviews
+                          - generic [ref=e576]:
+                            - generic [ref=e577]:
+                              - generic [ref=e578]: Save with
+                              - img "Walmart Plus" [ref=e579]
+                            - generic [ref=e580]:
+                              - generic [ref=e582]: Delivery as soon as 1 hour
+                              - generic [ref=e584]: Pickup as soon as 11am
+                    - group [ref=e588]:
+                      - link "Best seller Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035 $11.88" [ref=e589] [cursor=pointer]:
+                        - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=6&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FKorky-Matte-Black-Metal-Toilet-Handle-and-Lever-Universal-to-Fit-Front-Angled-and-Left-Side-Mount-Toilets-6035%2F14676301925%3FclassType%3DREGULAR%26athbdg%3DL1600%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=oNqMVGu1SR7IWAYGGFMl4b90bXKPz5DgnTa3C2QXAPUKQIkIJzegmNcdhAuV4xnnP3uiK4EasmXutHf2fJguZvqpQZRg4b8YrAMH4kHq_T8-urbSpS6SlJkVslW5i5zJR6EGPFKoYJtKZok-usAehpIViCvE5AUJKAoScGwbTkWeA8GsLMiuobg8k71v-DhuQEwHLr-a0RAcBsW5qDD1NevIPKznhQcsltOMxFdAULvnhQS3cihoQMn_ZY_QJdKnlU9k8uTobp7ugtICFmhImQ&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=REGULAR&athbdg=L1600
+                        - heading "Best seller Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035 $11.88" [level=3] [ref=e591]
+                      - generic [ref=e592]:
+                        - generic [ref=e593]:
+                          - group [ref=e596]:
+                            - generic [ref=e597]: Best seller
+                          - generic [ref=e598]:
+                            - button "Sign in to add to Favorites list, Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [ref=e599]:
+                              - generic [ref=e600]: 
+                            - img "Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [ref=e601]
+                        - button "Add to cart - Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [ref=e605] [cursor=pointer]:
+                          - generic "add to cart" [ref=e606]: 
+                          - generic [ref=e607]: Add
+                        - generic [ref=e608]:
+                          - generic [ref=e611]:
+                            - generic [ref=e612]: Sponsored
+                            - button "Ad disclaimer and feedback" [ref=e614] [cursor=pointer]:
+                              - generic [ref=e615]: 
+                          - generic [ref=e617]:
+                            - generic [ref=e618]: $1188
+                            - generic [ref=e619]: current price $11.88
+                          - heading "Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [level=3] [ref=e621]
+                          - generic [ref=e622]:
+                            - generic [ref=e623]:
+                              - img [ref=e624]
+                              - img [ref=e626]
+                              - img [ref=e628]
+                              - img [ref=e630]
+                              - img [ref=e632]
+                            - generic [ref=e634]: "38"
+                            - generic [ref=e635]: 4.8 out of 5 Stars. 38 reviews
+                          - generic [ref=e637]:
+                            - generic [ref=e638]:
+                              - generic [ref=e639]: Save with
+                              - img "Walmart Plus" [ref=e640]
+                            - generic [ref=e641]:
+                              - generic [ref=e643]: Delivery as soon as 1 hour
+                              - generic [ref=e645]: Shipping arrives today
+                              - generic [ref=e647]: Pickup as soon as 11am
+                    - group [ref=e651]:
+                      - link "Proflo Pf5112ntl Left Toilet Tank Flush Lever - Chrome $39.18" [ref=e652] [cursor=pointer]:
+                        - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=7&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FProflo-Pf5112ntl-Left-Toilet-Tank-Flush-Lever-Chrome%2F105078707%3FclassType%3DVARIANT%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=lsBcoEvU37CZ19xOHoKcpXl7hrdpINBeGBnUJPhLF86XncFwMjVN81iAQImLbNi1u296vsyFr-mftvqfN-Jo3Pa7mZ0FnRSKZQd7VgxQgbx_DfJPLfpm0GE22Lc1YrQ1GWyXfmQL0mCXJfS2QQ0GHe5oipZJhaKaXHok2qsTPyFshzTQAv3wuQ7WSfn0adSjzQoW_bDGC4zXlVOo_stK39IxELogLtx1UECz8U3fw8EXeTB1ahjasyA2TyGmtTda&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=VARIANT
+                        - heading "Proflo Pf5112ntl Left Toilet Tank Flush Lever - Chrome $39.18" [level=3] [ref=e654]
+                      - generic [ref=e655]:
+                        - generic [ref=e658]:
+                          - button "Sign in to add to Favorites list, Proflo Pf5112ntl Left Toilet Tank Flush Lever - Chrome" [ref=e659]:
+                            - generic [ref=e660]: 
+                          - img "Proflo Pf5112ntl Left Toilet Tank Flush Lever - Chrome" [ref=e661]
+                        - link "Options - Proflo Pf5112ntl Left Toilet Tank Flush Lever - Chrome" [ref=e665] [cursor=pointer]:
+                          - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=7&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FProflo-Pf5112ntl-Left-Toilet-Tank-Flush-Lever-Chrome%2F105078707%3FclassType%3DVARIANT%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=lsBcoEvU37CZ19xOHoKcpXl7hrdpINBeGBnUJPhLF86XncFwMjVN81iAQImLbNi1u296vsyFr-mftvqfN-Jo3Pa7mZ0FnRSKZQd7VgxQgbx_DfJPLfpm0GE22Lc1YrQ1GWyXfmQL0mCXJfS2QQ0GHe5oipZJhaKaXHok2qsTPyFshzTQAv3wuQ7WSfn0adSjzQoW_bDGC4zXlVOo_stK39IxELogLtx1UECz8U3fw8EXeTB1ahjasyA2TyGmtTda&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=VARIANT
+                          - generic [ref=e666]: Options
+                        - generic [ref=e667]:
+                          - generic [ref=e670]:
+                            - generic [ref=e671]: Sponsored
+                            - button "Ad disclaimer and feedback" [ref=e673] [cursor=pointer]:
+                              - generic [ref=e674]: 
+                          - generic [ref=e676]:
+                            - generic [ref=e677]: $3918
+                            - generic [ref=e678]: current price $39.18
+                          - heading "Proflo Pf5112ntl Left Toilet Tank Flush Lever - Chrome" [level=3] [ref=e680]
+                          - generic [ref=e681]:
+                            - generic [ref=e682]:
+                              - img [ref=e683]
+                              - img [ref=e685]
+                              - img [ref=e687]
+                              - img [ref=e689]
+                              - img [ref=e691]
+                            - generic [ref=e693]: "1"
+                            - generic [ref=e694]: 2 out of 5 Stars. 1 reviews
+                          - generic [ref=e699]: Free shipping, arrives Mon, May 11
+                    - group [ref=e703]:
+                      - link "Moen Yb5101 Voss Toilet Tank Lever - Gold $52.79" [ref=e704] [cursor=pointer]:
+                        - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=8&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FMoen-Yb5101-Voss-Toilet-Tank-Lever-Gold%2F703156927%3FclassType%3DVARIANT%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=XVYMXlXbVTqpPZExmRrvknl7hrdpINBeGBnUJPhLF86XncFwMjVN81iAQImLbNi1O8W7czyJsieOIFtxXdlmqva7mZ0FnRSKZQd7VgxQgbx_DfJPLfpm0GE22Lc1YrQ1hCVzMI9hedG9hFcgj6_Ykkl3a9izXO-0cbJnOhmVLmV58wGhR3kvuQYHVgSjTrQinlzdgnmjyW8nQgswxVJqXoTRb8D-bRq56QBPG5ZN6c7yCIAKaGezw-Te9fbtRDhN&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=VARIANT
+                        - heading "Moen Yb5101 Voss Toilet Tank Lever - Gold $52.79" [level=3] [ref=e706]
+                      - generic [ref=e707]:
+                        - generic [ref=e710]:
+                          - button "Sign in to add to Favorites list, Moen Yb5101 Voss Toilet Tank Lever - Gold" [ref=e711]:
+                            - generic [ref=e712]: 
+                          - img "Moen Yb5101 Voss Toilet Tank Lever - Gold" [ref=e713]
+                        - link "Options - Moen Yb5101 Voss Toilet Tank Lever - Gold" [ref=e717] [cursor=pointer]:
+                          - /url: https://www.walmart.com/sp/track?bt=1&eventST=click&plmt=sp-search-middle~desktop~primary-exact&pos=8&tax=1072864_1045879&rdf=1&rd=https%3A%2F%2Fwww.walmart.com%2Fip%2FMoen-Yb5101-Voss-Toilet-Tank-Lever-Gold%2F703156927%3FclassType%3DVARIANT%26adsRedirect%3Dtrue&adUid=052ef829-59f1-49da-a3fd-8139ac8384f3-0-0&mloc=sp-search-middle&pltfm=desktop&pgId=toilet%20tank%20flush%20lever%20replacement&pt=search&spQs=XVYMXlXbVTqpPZExmRrvknl7hrdpINBeGBnUJPhLF86XncFwMjVN81iAQImLbNi1O8W7czyJsieOIFtxXdlmqva7mZ0FnRSKZQd7VgxQgbx_DfJPLfpm0GE22Lc1YrQ1hCVzMI9hedG9hFcgj6_Ykkl3a9izXO-0cbJnOhmVLmV58wGhR3kvuQYHVgSjTrQinlzdgnmjyW8nQgswxVJqXoTRb8D-bRq56QBPG5ZN6c7yCIAKaGezw-Te9fbtRDhN&storeId=3067&specificity=broad&specificityScore=0.9333667&couponState=na&bkt=ace1_default%7Cace2_default%7Cace3_default%7Cbb_2_14066%7Ccoldstart_off%7Csearch_default&classType=VARIANT
+                          - generic [ref=e718]: Options
+                        - generic [ref=e719]:
+                          - generic [ref=e722]:
+                            - generic [ref=e723]: Sponsored
+                            - button "Ad disclaimer and feedback" [ref=e725] [cursor=pointer]:
+                              - generic [ref=e726]: 
+                          - generic [ref=e728]:
+                            - generic [ref=e729]: $5279
+                            - generic [ref=e730]: current price $52.79
+                            - generic [ref=e731]: Options from $43.20
+                          - heading "Moen Yb5101 Voss Toilet Tank Lever - Gold" [level=3] [ref=e733]
+                          - generic [ref=e734]:
+                            - generic [ref=e735]:
+                              - img [ref=e736]
+                              - img [ref=e738]
+                              - img [ref=e740]
+                              - img [ref=e742]
+                              - img [ref=e744]
+                            - generic [ref=e747]: "7"
+                            - generic [ref=e748]: 4.6 out of 5 Stars. 7 reviews
+                          - generic [ref=e753]: Free shipping, arrives Mon, May 11
+                    - group [ref=e757]:
+                      - link "Best seller Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035 $11.88" [ref=e758] [cursor=pointer]:
+                        - /url: /ip/Korky-Matte-Black-Metal-Toilet-Handle-and-Lever-Universal-to-Fit-Front-Angled-and-Left-Side-Mount-Toilets-6035/14676301925?classType=REGULAR&athbdg=L1600&from=/search
+                        - heading "Best seller Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035 $11.88" [level=3] [ref=e760]
+                      - generic [ref=e761]:
+                        - generic [ref=e762]:
+                          - group [ref=e765]:
+                            - generic [ref=e766]: Best seller
+                          - generic [ref=e767]:
+                            - button "Sign in to add to Favorites list, Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [ref=e768]:
+                              - generic [ref=e769]: 
+                            - img "Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [ref=e770]
+                        - button "Add to cart - Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [ref=e774] [cursor=pointer]:
+                          - generic "add to cart" [ref=e775]: 
+                          - generic [ref=e776]: Add
+                        - generic [ref=e777]:
+                          - generic [ref=e779]:
+                            - generic [ref=e780]: $1188
+                            - generic [ref=e781]: current price $11.88
+                          - heading "Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [level=3] [ref=e783]
+                          - generic [ref=e784]:
+                            - generic [ref=e785]:
+                              - img [ref=e786]
+                              - img [ref=e788]
+                              - img [ref=e790]
+                              - img [ref=e792]
+                              - img [ref=e794]
+                            - generic [ref=e796]: "38"
+                            - generic [ref=e797]: 4.8 out of 5 Stars. 38 reviews
+                          - generic [ref=e799]:
+                            - generic [ref=e800]:
+                              - generic [ref=e801]: Save with
+                              - img "Walmart Plus" [ref=e802]
+                            - generic [ref=e803]:
+                              - generic [ref=e805]: Delivery as soon as 1 hour
+                              - generic [ref=e807]: Shipping arrives today
+                              - generic [ref=e809]: Pickup as soon as 11am
+                    - group [ref=e813]:
+                      - link "50+ bought since yesterday Plumb Craft White Toilet Flush Lever Handle Replacement Part in White $4.88" [ref=e814] [cursor=pointer]:
+                        - /url: /ip/Plumb-Craft-White-Toilet-Flush-Lever/565125800?classType=REGULAR&athbdg=L1102&from=/search
+                        - heading "50+ bought since yesterday Plumb Craft White Toilet Flush Lever Handle Replacement Part in White $4.88" [level=3] [ref=e816]
+                      - generic [ref=e817]:
+                        - generic [ref=e818]:
+                          - group [ref=e821]:
+                            - generic [ref=e822]: 50+ bought since yesterday
+                          - generic [ref=e823]:
+                            - button "Sign in to add to Favorites list, Plumb Craft White Toilet Flush Lever Handle Replacement Part in White" [ref=e824]:
+                              - generic [ref=e825]: 
+                            - img "Plumb Craft White Toilet Flush Lever Handle Replacement Part in White" [ref=e826]
+                        - button "Add to cart - Plumb Craft White Toilet Flush Lever Handle Replacement Part in White" [ref=e830] [cursor=pointer]:
+                          - generic "add to cart" [ref=e831]: 
+                          - generic [ref=e832]: Add
+                        - generic [ref=e833]:
+                          - generic [ref=e835]:
+                            - generic [ref=e836]: $488
+                            - generic [ref=e837]: current price $4.88
+                          - heading "Plumb Craft White Toilet Flush Lever Handle Replacement Part in White" [level=3] [ref=e839]
+                          - generic [ref=e840]:
+                            - generic [ref=e841]:
+                              - img [ref=e842]
+                              - img [ref=e844]
+                              - img [ref=e846]
+                              - img [ref=e848]
+                              - img [ref=e850]
+                            - generic [ref=e853]: "186"
+                            - generic [ref=e854]: 4.5 out of 5 Stars. 186 reviews
+                          - generic [ref=e856]:
+                            - generic [ref=e857]:
+                              - generic [ref=e858]: Save with
+                              - img "Walmart Plus" [ref=e859]
+                            - generic [ref=e860]:
+                              - generic [ref=e862]: Delivery as soon as 1 hour
+                              - generic [ref=e864]: Shipping arrives today
+                              - generic [ref=e866]: Pickup as soon as 11am
+                    - group [ref=e870]:
+                      - link "Best seller Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044) $12.97" [ref=e871] [cursor=pointer]:
+                        - /url: /ip/Danco-Toilet-Tank-Replacement-Handle-in-Chrome-0-17-lbs-12044/1042741185?classType=VARIANT&athbdg=L1600&from=/search
+                        - heading "Best seller Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044) $12.97" [level=3] [ref=e873]
+                      - generic [ref=e874]:
+                        - generic [ref=e875]:
+                          - group [ref=e878]:
+                            - generic [ref=e879]: Best seller
+                          - generic [ref=e880]:
+                            - button "Sign in to add to Favorites list, Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044)" [ref=e881]:
+                              - generic [ref=e882]: 
+                            - img "Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044)" [ref=e883]
+                          - generic [ref=e885]:
+                            - generic [ref=e886]:
+                              - generic [ref=e887]: 
+                              - text: 2 options
+                            - generic [ref=e888]: Available in additional 2 options
+                        - link "Options - Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044)" [ref=e892] [cursor=pointer]:
+                          - /url: /ip/Danco-Toilet-Tank-Replacement-Handle-in-Chrome-0-17-lbs-12044/1042741185?classType=VARIANT&athbdg=L1600
+                          - generic [ref=e893]: Options
+                        - generic [ref=e894]:
+                          - generic [ref=e896]:
+                            - generic [ref=e897]: $1297
+                            - generic [ref=e898]: current price $12.97
+                            - generic [ref=e899]: Options from $10.64
+                          - heading "Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044)" [level=3] [ref=e901]
+                          - generic [ref=e902]:
+                            - generic [ref=e903]:
+                              - img [ref=e904]
+                              - img [ref=e906]
+                              - img [ref=e908]
+                              - img [ref=e910]
+                              - img [ref=e912]
+                            - generic [ref=e915]: "283"
+                            - generic [ref=e916]: 4.4 out of 5 Stars. 283 reviews
+                          - generic [ref=e918]:
+                            - generic [ref=e919]:
+                              - generic [ref=e920]: Save with
+                              - img "Walmart Plus" [ref=e921]
+                            - generic [ref=e922]:
+                              - generic [ref=e924]: Delivery as soon as 1 hour
+                              - generic [ref=e926]: Shipping arrives today
+                              - generic [ref=e928]: Pickup as soon as 11am
+                    - group [ref=e932]:
+                      - link "Suodoka Universal Toilet Tank Handle Replacement Kit, Electroplating Process Zinc Alloy and Plastic Toilet Flush Lever for Bathroom Repair, Chrome Finish, 10.4 inches / 26.5 cm $12.45" [ref=e933] [cursor=pointer]:
+                        - /url: /ip/Suodoka-Universal-Toilet-Tank-Handle-Replacement-Kit-Electroplating-Process-Zinc-Alloy-Plastic-Toilet-Flush-Lever-Bathroom-Repair-Chrome-Finish-10-4/20178005695?classType=REGULAR&from=/search
+                        - heading "Suodoka Universal Toilet Tank Handle Replacement Kit, Electroplating Process Zinc Alloy and Plastic Toilet Flush Lever for Bathroom Repair, Chrome Finish, 10.4 inches / 26.5 cm $12.45" [level=3] [ref=e935]
+                      - generic [ref=e936]:
+                        - generic [ref=e939]:
+                          - button "Sign in to add to Favorites list, Suodoka Universal Toilet Tank Handle Replacement Kit, Electroplating Process Zinc Alloy and Plastic Toilet Flush Lever for Bathroom Repair, Chrome Finish, 10.4 inches / 26.5 cm" [ref=e940]:
+                            - generic [ref=e941]: 
+                          - img "Suodoka Universal Toilet Tank Handle Replacement Kit, Electroplating Process Zinc Alloy and Plastic Toilet Flush Lever for Bathroom Repair, Chrome Finish, 10.4 inches / 26.5 cm" [ref=e942]
+                        - button "Add to cart - Suodoka Universal Toilet Tank Handle Replacement Kit, Electroplating Process Zinc Alloy and Plastic Toilet Flush Lever for Bathroom Repair, Chrome Finish, 10.4 inches / 26.5 cm" [ref=e946] [cursor=pointer]:
+                          - generic "add to cart" [ref=e947]: 
+                          - generic [ref=e948]: Add
+                        - generic [ref=e949]:
+                          - generic [ref=e951]:
+                            - generic [ref=e952]: $1245
+                            - generic [ref=e953]: current price $12.45
+                          - heading "Suodoka Universal Toilet Tank Handle Replacement Kit, Electroplating Process Zinc Alloy and Plastic Toilet Flush Lever for Bathroom Repair, Chrome Finish, 10.4 inches / 26.5 cm" [level=3] [ref=e955]
+                          - generic [ref=e960]: Free shipping, arrives in 3+ days
+                    - group [ref=e964]:
+                      - link "ACDANC Toilet Handle 2pcs Side Mount Toilet Tank Lever Handles Flush Replacement,8.66\"X3.74\"X1.18\" $8.61" [ref=e965] [cursor=pointer]:
+                        - /url: /ip/ACDANC-Toilet-Handle-2pcs-Side-Mount-Toilet-Tank-Lever-Handles-Flush-Replacement-8-66-X3-74-X1-18/18454859979?classType=REGULAR&from=/search
+                        - heading "ACDANC Toilet Handle 2pcs Side Mount Toilet Tank Lever Handles Flush Replacement,8.66\"X3.74\"X1.18\" $8.61" [level=3] [ref=e967]
+                      - generic [ref=e968]:
+                        - generic [ref=e971]:
+                          - button "Sign in to add to Favorites list, ACDANC Toilet Handle 2pcs Side Mount Toilet Tank Lever Handles Flush Replacement,8.66\"X3.74\"X1.18\"" [ref=e972]:
+                            - generic [ref=e973]: 
+                          - img "ACDANC Toilet Handle 2pcs Side Mount Toilet Tank Lever Handles Flush Replacement,8.66\"X3.74\"X1.18\"" [ref=e974]
+                        - button "Add to cart - ACDANC Toilet Handle 2pcs Side Mount Toilet Tank Lever Handles Flush Replacement,8.66\"X3.74\"X1.18\"" [ref=e978] [cursor=pointer]:
+                          - generic "add to cart" [ref=e979]: 
+                          - generic [ref=e980]: Add
+                        - generic [ref=e981]:
+                          - generic [ref=e983]:
+                            - generic [ref=e984]: $861
+                            - generic [ref=e985]: current price $8.61
+                          - heading "ACDANC Toilet Handle 2pcs Side Mount Toilet Tank Lever Handles Flush Replacement,8.66\"X3.74\"X1.18\"" [level=3] [ref=e987]
+                          - generic [ref=e992]: Free shipping, arrives in 3+ days
+                    - group [ref=e996]:
+                      - link "Highcraft Replacement Universal Toilet Tank Flush Lever Handle, Chrome $7.58 Was $11.99" [ref=e997] [cursor=pointer]:
+                        - /url: /ip/Highcraft-Replacement-Universal-Toilet-Tank-Flush-Lever-Handle-Chrome/335891704?classType=REGULAR&from=/search
+                        - heading "Highcraft Replacement Universal Toilet Tank Flush Lever Handle, Chrome $7.58 Was $11.99" [level=3] [ref=e999]
+                      - generic [ref=e1000]:
+                        - generic [ref=e1003]:
+                          - button "Sign in to add to Favorites list, Highcraft Replacement Universal Toilet Tank Flush Lever Handle, Chrome" [ref=e1004]:
+                            - generic [ref=e1005]: 
+                          - img "Highcraft Replacement Universal Toilet Tank Flush Lever Handle, Chrome" [ref=e1006]
+                        - button "Add to cart - Highcraft Replacement Universal Toilet Tank Flush Lever Handle, Chrome" [ref=e1010] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1011]: 
+                          - generic [ref=e1012]: Add
+                        - generic [ref=e1013]:
+                          - generic [ref=e1015]:
+                            - generic [ref=e1016]: Now$758
+                            - generic [ref=e1017]: current price Now $7.58, Was $11.99
+                            - generic [ref=e1018]: $11.99
+                          - heading "Highcraft Replacement Universal Toilet Tank Flush Lever Handle, Chrome" [level=3] [ref=e1020]
+                          - generic [ref=e1021]:
+                            - generic [ref=e1022]:
+                              - img [ref=e1023]
+                              - img [ref=e1025]
+                              - img [ref=e1027]
+                              - img [ref=e1029]
+                              - img [ref=e1031]
+                            - generic [ref=e1033]: "52"
+                            - generic [ref=e1034]: 3.9 out of 5 Stars. 52 reviews
+                          - generic [ref=e1036]:
+                            - generic [ref=e1037]:
+                              - generic [ref=e1038]: Save with
+                              - img "Walmart Plus" [ref=e1039]
+                            - generic [ref=e1042]: Shipping arrives in 3+ days
+                    - group [ref=e1046]:
+                      - link "Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever(Front Mount) $9.99" [ref=e1047] [cursor=pointer]:
+                        - /url: /ip/Toilet-Tank-Flush-Lever-Handle-with-Nut-Lock-Universal-Toilet-Handle-Replacement-for-Most-Toilets-Metal-Handle-and-Premium-Arm-Lever-Front-Mount/1739268354?classType=VARIANT&from=/search
+                        - heading "Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever(Front Mount) $9.99" [level=3] [ref=e1049]
+                      - generic [ref=e1050]:
+                        - generic [ref=e1051]:
+                          - generic [ref=e1053]:
+                            - button "Sign in to add to Favorites list, Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever(Front Mount)" [ref=e1054]:
+                              - generic [ref=e1055]: 
+                            - img "Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever(Front Mount)" [ref=e1056]
+                          - generic [ref=e1058]:
+                            - link "Silver, variant on Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever(Front Mount)" [ref=e1060] [cursor=pointer]:
+                              - /url: /ip/Toilet-Tank-Flush-Lever-Handle-with-Nut-Lock-Universal-Toilet-Handle-Replacement-for-Most-Toilets-Metal-Handle-and-Premium-Arm-Lever-Front-Mount/1739268354?classType=undefined&variantFieldId=actual_color
+                              - img "Silver, variant on Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever(Front Mount)" [ref=e1061]
+                            - link "White, variant on Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever(Front Mount)" [ref=e1063] [cursor=pointer]:
+                              - /url: /ip/Toilet-Flush-Lever-Handle-Universal-Toilet-Handle-Replacement-for-Most-Toilets-Frontal-Tank-Lever-Parts-Straight-Arm-White-Plastic-Front-Mount/1434864404?classType=undefined&variantFieldId=actual_color
+                              - img "White, variant on Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever(Front Mount)" [ref=e1064]
+                        - link "Options - Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever(Front Mount)" [ref=e1068] [cursor=pointer]:
+                          - /url: /ip/Toilet-Tank-Flush-Lever-Handle-with-Nut-Lock-Universal-Toilet-Handle-Replacement-for-Most-Toilets-Metal-Handle-and-Premium-Arm-Lever-Front-Mount/1739268354?classType=VARIANT
+                          - generic [ref=e1069]: Options
+                        - generic [ref=e1070]:
+                          - generic [ref=e1072]:
+                            - generic [ref=e1073]: $999
+                            - generic [ref=e1074]: current price $9.99
+                          - heading "Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever(Front Mount)" [level=3] [ref=e1076]
+                          - generic [ref=e1077]:
+                            - generic [ref=e1078]:
+                              - img [ref=e1079]
+                              - img [ref=e1081]
+                              - img [ref=e1083]
+                              - img [ref=e1085]
+                              - img [ref=e1087]
+                            - generic [ref=e1089]: "21"
+                            - generic [ref=e1090]: 4 out of 5 Stars. 21 reviews
+                          - generic [ref=e1095]: Free shipping, arrives in 3+ days
+                    - group [ref=e1099]:
+                      - link "HIBIBUD 2 Pack Toilet Tank Flush Lever Handle, Universal Side Mount Toilet Handle Replacement Trip Levers, Chrome Finish Toilet Handle Fits Most Toilets $15.19" [ref=e1100] [cursor=pointer]:
+                        - /url: /ip/HIBIBUD-2-Pack-Toilet-Tank-Flush-Lever-Handle-Universal-Side-Mount-Toilet-Handle-Replacement-Trip-Levers-Chrome-Finish-Toilet-Handle-Fits-Toilets/20037224135?classType=REGULAR&from=/search
+                        - heading "HIBIBUD 2 Pack Toilet Tank Flush Lever Handle, Universal Side Mount Toilet Handle Replacement Trip Levers, Chrome Finish Toilet Handle Fits Most Toilets $15.19" [level=3] [ref=e1102]
+                      - generic [ref=e1103]:
+                        - generic [ref=e1106]:
+                          - button "Sign in to add to Favorites list, HIBIBUD 2 Pack Toilet Tank Flush Lever Handle, Universal Side Mount Toilet Handle Replacement Trip Levers, Chrome Finish Toilet Handle Fits Most Toilets" [ref=e1107]:
+                            - generic [ref=e1108]: 
+                          - img "HIBIBUD 2 Pack Toilet Tank Flush Lever Handle, Universal Side Mount Toilet Handle Replacement Trip Levers, Chrome Finish Toilet Handle Fits Most Toilets" [ref=e1109]
+                        - button "Add to cart - HIBIBUD 2 Pack Toilet Tank Flush Lever Handle, Universal Side Mount Toilet Handle Replacement Trip Levers, Chrome Finish Toilet Handle Fits Most Toilets" [ref=e1113] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1114]: 
+                          - generic [ref=e1115]: Add
+                        - generic [ref=e1116]:
+                          - generic [ref=e1118]:
+                            - generic [ref=e1119]: $1519
+                            - generic [ref=e1120]: current price $15.19
+                          - heading "HIBIBUD 2 Pack Toilet Tank Flush Lever Handle, Universal Side Mount Toilet Handle Replacement Trip Levers, Chrome Finish Toilet Handle Fits Most Toilets" [level=3] [ref=e1122]
+                          - generic [ref=e1127]: Free shipping, arrives in 3+ days
+                    - group [ref=e1131]:
+                      - link "Mansfield Flush Tank Lever with Plastic ABS Arm 41CH-P $11.87 Was $15.99" [ref=e1132] [cursor=pointer]:
+                        - /url: /ip/Mansfield-Flush-Tank-Lever-with-Plastic-ABS-Arm-41CH-P/253787279?classType=REGULAR&from=/search
+                        - heading "Mansfield Flush Tank Lever with Plastic ABS Arm 41CH-P $11.87 Was $15.99" [level=3] [ref=e1134]
+                      - generic [ref=e1135]:
+                        - generic [ref=e1138]:
+                          - button "Sign in to add to Favorites list, Mansfield Flush Tank Lever with Plastic ABS Arm 41CH-P" [ref=e1139]:
+                            - generic [ref=e1140]: 
+                          - img "Mansfield Flush Tank Lever with Plastic ABS Arm 41CH-P"
+                        - button "Add to cart - Mansfield Flush Tank Lever with Plastic ABS Arm 41CH-P" [ref=e1144] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1145]: 
+                          - generic [ref=e1146]: Add
+                        - generic [ref=e1147]:
+                          - generic [ref=e1149]:
+                            - generic [ref=e1150]: Now$1187
+                            - generic [ref=e1151]: current price Now $11.87, Was $15.99
+                            - generic [ref=e1152]: $15.99
+                          - heading "Mansfield Flush Tank Lever with Plastic ABS Arm 41CH-P" [level=3] [ref=e1154]
+                          - generic [ref=e1159]: Free shipping, arrives in 3+ days
+                    - group [ref=e1163]:
+                      - link "Ikeay Replacement Toilet Flush Lever Handle Durable Brass.Stainless Steel,Wrench,Electrical Tools,Clearance Sale $7.72" [ref=e1164] [cursor=pointer]:
+                        - /url: /ip/Ikeay-Replacement-Toilet-Flush-Lever-Handle-Durable-Brass-Stainless-Steel-Wrench-Electrical-Tools-Clearance-Sale/5916442137?classType=VARIANT&from=/search
+                        - heading "Ikeay Replacement Toilet Flush Lever Handle Durable Brass.Stainless Steel,Wrench,Electrical Tools,Clearance Sale $7.72" [level=3] [ref=e1166]
+                      - generic [ref=e1167]:
+                        - generic [ref=e1170]:
+                          - button "Sign in to add to Favorites list, Ikeay Replacement Toilet Flush Lever Handle Durable Brass.Stainless Steel,Wrench,Electrical Tools,Clearance Sale" [ref=e1171]:
+                            - generic [ref=e1172]: 
+                          - img "Ikeay Replacement Toilet Flush Lever Handle Durable Brass.Stainless Steel,Wrench,Electrical Tools,Clearance Sale"
+                        - button "Add to cart - Ikeay Replacement Toilet Flush Lever Handle Durable Brass.Stainless Steel,Wrench,Electrical Tools,Clearance Sale" [ref=e1176] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1177]: 
+                          - generic [ref=e1178]: Add
+                        - generic [ref=e1179]:
+                          - generic [ref=e1181]:
+                            - generic [ref=e1182]: $772
+                            - generic [ref=e1183]: current price $7.72
+                          - heading "Ikeay Replacement Toilet Flush Lever Handle Durable Brass.Stainless Steel,Wrench,Electrical Tools,Clearance Sale" [level=3] [ref=e1185]
+                          - generic [ref=e1190]: Free shipping, arrives in 3+ days
+                    - group [ref=e1194]:
+                      - link "LASCO 04-1819 22 Degree Angle 6-Inch White Handle Plastic Arm American Standard Replacement Toilet Flush Lever $9.79" [ref=e1195] [cursor=pointer]:
+                        - /url: /ip/LASCO-04-1819-22-Degree-Angle-6-Inch-White-Handle-Plastic-Arm-American-Standard-Replacement-Toilet-Flush-Lever/5485885465?classType=REGULAR&from=/search
+                        - heading "LASCO 04-1819 22 Degree Angle 6-Inch White Handle Plastic Arm American Standard Replacement Toilet Flush Lever $9.79" [level=3] [ref=e1197]
+                      - generic [ref=e1198]:
+                        - generic [ref=e1201]:
+                          - button "Sign in to add to Favorites list, LASCO 04-1819 22 Degree Angle 6-Inch White Handle Plastic Arm American Standard Replacement Toilet Flush Lever" [ref=e1202]:
+                            - generic [ref=e1203]: 
+                          - img "LASCO 04-1819 22 Degree Angle 6-Inch White Handle Plastic Arm American Standard Replacement Toilet Flush Lever"
+                        - button "Add to cart - LASCO 04-1819 22 Degree Angle 6-Inch White Handle Plastic Arm American Standard Replacement Toilet Flush Lever" [ref=e1207] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1208]: 
+                          - generic [ref=e1209]: Add
+                        - generic [ref=e1210]:
+                          - generic [ref=e1212]:
+                            - generic [ref=e1213]: $979
+                            - generic [ref=e1214]: current price $9.79
+                          - heading "LASCO 04-1819 22 Degree Angle 6-Inch White Handle Plastic Arm American Standard Replacement Toilet Flush Lever" [level=3] [ref=e1216]
+                          - generic [ref=e1221]: Free shipping, arrives in 3+ days
+                    - group [ref=e1225]:
+                      - link "Korky StrongARM Universal White Tank Lever with Wave Style Handle 6062BP $16.61" [ref=e1226] [cursor=pointer]:
+                        - /url: /ip/Korky-6060BP-Plastic-All-Tank-Lever/106750501?classType=REGULAR&from=/search
+                        - heading "Korky StrongARM Universal White Tank Lever with Wave Style Handle 6062BP $16.61" [level=3] [ref=e1228]
+                      - generic [ref=e1229]:
+                        - generic [ref=e1232]:
+                          - button "Sign in to add to Favorites list, Korky StrongARM Universal White Tank Lever with Wave Style Handle 6062BP" [ref=e1233]:
+                            - generic [ref=e1234]: 
+                          - img "Korky StrongARM Universal White Tank Lever with Wave Style Handle 6062BP"
+                        - button "Add to cart - Korky StrongARM Universal White Tank Lever with Wave Style Handle 6062BP" [ref=e1238] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1239]: 
+                          - generic [ref=e1240]: Add
+                        - generic [ref=e1241]:
+                          - generic [ref=e1243]:
+                            - generic [ref=e1244]: $1661
+                            - generic [ref=e1245]: current price $16.61
+                          - heading "Korky StrongARM Universal White Tank Lever with Wave Style Handle 6062BP" [level=3] [ref=e1247]
+                          - generic [ref=e1248]:
+                            - generic [ref=e1249]:
+                              - img [ref=e1250]
+                              - img [ref=e1252]
+                              - img [ref=e1254]
+                              - img [ref=e1256]
+                              - img [ref=e1258]
+                            - generic [ref=e1260]: "1"
+                            - generic [ref=e1261]: 5 out of 5 Stars. 1 reviews
+                          - generic [ref=e1266]: Free shipping, arrives Mon, May 11
+                    - group [ref=e1270]:
+                      - link "Danco 12059 Decorative Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome $11.97 Was $17.97" [ref=e1271] [cursor=pointer]:
+                        - /url: /ip/Danco-12059-Decorative-Replacement-Handle-with-Front-Angle-Side-Vertical-Mount-in-Toilet-Tank-Lever-Chrome/2545256389?classType=VARIANT&from=/search
+                        - heading "Danco 12059 Decorative Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome $11.97 Was $17.97" [level=3] [ref=e1273]
+                      - generic [ref=e1274]:
+                        - generic [ref=e1275]:
+                          - generic [ref=e1277]:
+                            - button "Sign in to add to Favorites list, Danco 12059 Decorative Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome" [ref=e1278]:
+                              - generic [ref=e1279]: 
+                            - img "Danco 12059 Decorative Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome"
+                          - generic [ref=e1281]:
+                            - generic [ref=e1282]:
+                              - generic [ref=e1283]: 
+                              - text: 4 options
+                            - generic [ref=e1284]: Available in additional 4 options
+                        - link "Options - Danco 12059 Decorative Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome" [ref=e1288] [cursor=pointer]:
+                          - /url: /ip/Danco-12059-Decorative-Replacement-Handle-with-Front-Angle-Side-Vertical-Mount-in-Toilet-Tank-Lever-Chrome/2545256389?classType=VARIANT
+                          - generic [ref=e1289]: Options
+                        - generic [ref=e1290]:
+                          - generic [ref=e1292]:
+                            - generic [ref=e1293]: Now$1197
+                            - generic [ref=e1294]: current price Now $11.97, Was $17.97
+                            - generic [ref=e1295]: $17.97
+                            - generic [ref=e1296]: Options from $11.97 – $19.97
+                          - heading "Danco 12059 Decorative Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome" [level=3] [ref=e1298]
+                          - generic [ref=e1299]:
+                            - generic [ref=e1300]:
+                              - img [ref=e1301]
+                              - img [ref=e1303]
+                              - img [ref=e1305]
+                              - img [ref=e1307]
+                              - img [ref=e1309]
+                            - generic [ref=e1312]: "20"
+                            - generic [ref=e1313]: 4.6 out of 5 Stars. 20 reviews
+                          - generic [ref=e1315]:
+                            - generic [ref=e1316]:
+                              - generic [ref=e1317]: Save with
+                              - img "Walmart Plus" [ref=e1318]
+                            - generic [ref=e1321]: Shipping arrives Sun, May 10
+                    - group [ref=e1325]:
+                      - link "Fluidmaster 691 Push Button Toilet Tank Lever Replacement $17.84" [ref=e1326] [cursor=pointer]:
+                        - /url: /ip/Fluidmaster-691-Push-Button-Toilet-Tank-Lever-Replacement/15730725?classType=VARIANT&from=/search
+                        - heading "Fluidmaster 691 Push Button Toilet Tank Lever Replacement $17.84" [level=3] [ref=e1328]
+                      - generic [ref=e1329]:
+                        - generic [ref=e1332]:
+                          - button "Sign in to add to Favorites list, Fluidmaster 691 Push Button Toilet Tank Lever Replacement" [ref=e1333]:
+                            - generic [ref=e1334]: 
+                          - img "Fluidmaster 691 Push Button Toilet Tank Lever Replacement"
+                        - button "Add to cart - Fluidmaster 691 Push Button Toilet Tank Lever Replacement" [ref=e1338] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1339]: 
+                          - generic [ref=e1340]: Add
+                        - generic [ref=e1341]:
+                          - generic [ref=e1343]:
+                            - generic [ref=e1344]: $1784
+                            - generic [ref=e1345]: current price $17.84
+                          - heading "Fluidmaster 691 Push Button Toilet Tank Lever Replacement" [level=3] [ref=e1347]
+                          - generic [ref=e1348]:
+                            - generic [ref=e1349]:
+                              - img [ref=e1350]
+                              - img [ref=e1352]
+                              - img [ref=e1354]
+                              - img [ref=e1356]
+                              - img [ref=e1358]
+                            - generic [ref=e1360]: "2"
+                            - generic [ref=e1361]: 4 out of 5 Stars. 2 reviews
+                          - generic [ref=e1366]: Free shipping, arrives in 3+ days
+                    - group [ref=e1370]:
+                      - link "Danco Universal Blade Tank Lever Replacement Handle with Front/Side/Angle/Side/Vertical Mount in Matte Black (12052) $15.94" [ref=e1371] [cursor=pointer]:
+                        - /url: /ip/Danco-Universal-Blade-Tank-Lever-Replacement-Handle-with-Front-Side-Angle-Side-Vertical-Mount-in-Matte-Black-12052/5212307020?classType=REGULAR&from=/search
+                        - heading "Danco Universal Blade Tank Lever Replacement Handle with Front/Side/Angle/Side/Vertical Mount in Matte Black (12052) $15.94" [level=3] [ref=e1373]
+                      - generic [ref=e1374]:
+                        - generic [ref=e1377]:
+                          - button "Sign in to add to Favorites list, Danco Universal Blade Tank Lever Replacement Handle with Front/Side/Angle/Side/Vertical Mount in Matte Black (12052)" [ref=e1378]:
+                            - generic [ref=e1379]: 
+                          - img "Danco Universal Blade Tank Lever Replacement Handle with Front/Side/Angle/Side/Vertical Mount in Matte Black (12052)"
+                        - button "Add to cart - Danco Universal Blade Tank Lever Replacement Handle with Front/Side/Angle/Side/Vertical Mount in Matte Black (12052)" [ref=e1383] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1384]: 
+                          - generic [ref=e1385]: Add
+                        - generic [ref=e1386]:
+                          - generic [ref=e1388]:
+                            - generic [ref=e1389]: $1594
+                            - generic [ref=e1390]: current price $15.94
+                          - heading "Danco Universal Blade Tank Lever Replacement Handle with Front/Side/Angle/Side/Vertical Mount in Matte Black (12052)" [level=3] [ref=e1392]
+                          - generic [ref=e1393]:
+                            - generic [ref=e1394]:
+                              - img [ref=e1395]
+                              - img [ref=e1397]
+                              - img [ref=e1399]
+                              - img [ref=e1401]
+                              - img [ref=e1403]
+                            - generic [ref=e1405]: "12"
+                            - generic [ref=e1406]: 4.8 out of 5 Stars. 12 reviews
+                          - generic [ref=e1408]:
+                            - generic [ref=e1409]:
+                              - generic [ref=e1410]: Save with
+                              - img "Walmart Plus" [ref=e1411]
+                            - generic [ref=e1414]: Shipping arrives Sun, May 10
+                    - group [ref=e1418]:
+                      - link "Fluidmaster 683 Universal Toilet Tank Lever in White $8.91 Was $37.02" [ref=e1419] [cursor=pointer]:
+                        - /url: /ip/Fluidmaster-683-Universal-Toilet-Tank-Lever-in-White/15840604?classType=VARIANT&from=/search
+                        - heading "Fluidmaster 683 Universal Toilet Tank Lever in White $8.91 Was $37.02" [level=3] [ref=e1421]
+                      - generic [ref=e1422]:
+                        - generic [ref=e1425]:
+                          - button "Sign in to add to Favorites list, Fluidmaster 683 Universal Toilet Tank Lever in White" [ref=e1426]:
+                            - generic [ref=e1427]: 
+                          - img "Fluidmaster 683 Universal Toilet Tank Lever in White"
+                        - button "Add to cart - Fluidmaster 683 Universal Toilet Tank Lever in White" [ref=e1431] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1432]: 
+                          - generic [ref=e1433]: Add
+                        - generic [ref=e1434]:
+                          - generic [ref=e1436]:
+                            - generic [ref=e1437]: Now$891
+                            - generic [ref=e1438]: current price Now $8.91, Was $37.02
+                            - generic [ref=e1439]: $37.02
+                          - heading "Fluidmaster 683 Universal Toilet Tank Lever in White" [level=3] [ref=e1441]
+                          - generic [ref=e1442]:
+                            - generic [ref=e1443]:
+                              - img [ref=e1444]
+                              - img [ref=e1446]
+                              - img [ref=e1448]
+                              - img [ref=e1450]
+                              - img [ref=e1452]
+                            - generic [ref=e1455]: "37"
+                            - generic [ref=e1456]: 4.4 out of 5 Stars. 37 reviews
+                          - generic [ref=e1458]:
+                            - generic [ref=e1459]:
+                              - generic [ref=e1460]: Save with
+                              - img "Walmart Plus" [ref=e1461]
+                            - generic [ref=e1464]: Shipping arrives tomorrow
+                    - group [ref=e1468]:
+                      - link "Clearance Toilet Tank Accessories - Side - Mounted Flush Handle Replacement for Old Split Toilets $5.98 Was $7.59" [ref=e1469] [cursor=pointer]:
+                        - /url: /ip/Toilet-Tank-Accessories-Side-Mounted-Flush-Handle-Replacement-for-Old-Split-Toilets/15299955652?classType=VARIANT&athbdg=L1400&from=/search
+                        - heading "Clearance Toilet Tank Accessories - Side - Mounted Flush Handle Replacement for Old Split Toilets $5.98 Was $7.59" [level=3] [ref=e1471]
+                      - generic [ref=e1472]:
+                        - generic [ref=e1473]:
+                          - group [ref=e1476]:
+                            - generic [ref=e1477]: Clearance
+                          - generic [ref=e1478]:
+                            - button "Sign in to add to Favorites list, Toilet Tank Accessories - Side - Mounted Flush Handle Replacement for Old Split Toilets" [ref=e1479]:
+                              - generic [ref=e1480]: 
+                            - img "Toilet Tank Accessories - Side - Mounted Flush Handle Replacement for Old Split Toilets"
+                        - button "Add to cart - Toilet Tank Accessories - Side - Mounted Flush Handle Replacement for Old Split Toilets" [ref=e1484] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1485]: 
+                          - generic [ref=e1486]: Add
+                        - generic [ref=e1487]:
+                          - generic [ref=e1489]:
+                            - generic [ref=e1490]: Now$598
+                            - generic [ref=e1491]: current price Now $5.98, Was $7.59
+                            - generic [ref=e1492]: $7.59
+                            - generic [ref=e1493]: +$4.99 shipping
+                          - heading "Toilet Tank Accessories - Side - Mounted Flush Handle Replacement for Old Split Toilets" [level=3] [ref=e1495]
+                          - generic [ref=e1496]:
+                            - generic [ref=e1497]:
+                              - img [ref=e1498]
+                              - img [ref=e1500]
+                              - img [ref=e1502]
+                              - img [ref=e1504]
+                              - img [ref=e1507]
+                            - generic [ref=e1509]: "3"
+                            - generic [ref=e1510]: 3.7 out of 5 Stars. 3 reviews
+                          - generic [ref=e1515]: Shipping arrives in 3+ days
+                    - group [ref=e1519]:
+                      - link "1 Pcs Toilet Handle Replacement, Toilet Handle Replacement Kit Front Mount, Zinc Alloy Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard $4.19" [ref=e1520] [cursor=pointer]:
+                        - /url: /ip/1-Pcs-Toilet-Handle-Replacement-Toilet-Handle-Replacement-Kit-Front-Mount-Zinc-Alloy-Toilet-Lever-Flush-Handle-Sliver-Universal-Bowl-Lever-Replacemen/19426159869?classType=VARIANT&from=/search
+                        - heading "1 Pcs Toilet Handle Replacement, Toilet Handle Replacement Kit Front Mount, Zinc Alloy Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard $4.19" [level=3] [ref=e1522]
+                      - generic [ref=e1523]:
+                        - generic [ref=e1524]:
+                          - generic [ref=e1526]:
+                            - button "Sign in to add to Favorites list, 1 Pcs Toilet Handle Replacement, Toilet Handle Replacement Kit Front Mount, Zinc Alloy Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard" [ref=e1527]:
+                              - generic [ref=e1528]: 
+                            - img "1 Pcs Toilet Handle Replacement, Toilet Handle Replacement Kit Front Mount, Zinc Alloy Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard"
+                          - generic [ref=e1530]:
+                            - link "Clear, variant on 1 Pcs Toilet Handle Replacement, Toilet Handle Replacement Kit Front Mount, Zinc Alloy Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard" [ref=e1532] [cursor=pointer]:
+                              - /url: /ip/1-Pcs-Toilet-Handle-Replacement-Replacement-Kit-Front-Mount-Zinc-Alloy-Lever-Flush-Handle-Sliver-Universal-Bowl-Most-Standard/19426159869?classType=undefined&variantFieldId=actual_color
+                              - img "Clear, variant on 1 Pcs Toilet Handle Replacement, Toilet Handle Replacement Kit Front Mount, Zinc Alloy Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard" [ref=e1533]
+                            - link "White*Two, variant on 1 Pcs Toilet Handle Replacement, Toilet Handle Replacement Kit Front Mount, Zinc Alloy Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard" [ref=e1535] [cursor=pointer]:
+                              - /url: /ip/2-Pcs-Toilet-Handle-Replacement-Replacement-Kit-Front-Mount-Zinc-Alloy-Lever-Flush-Handle-Sliver-Universal-Bowl-Most-Standard/19916473241?classType=undefined&variantFieldId=actual_color
+                              - img "White*Two, variant on 1 Pcs Toilet Handle Replacement, Toilet Handle Replacement Kit Front Mount, Zinc Alloy Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard" [ref=e1536]
+                        - link "Options - 1 Pcs Toilet Handle Replacement, Toilet Handle Replacement Kit Front Mount, Zinc Alloy Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard" [ref=e1540] [cursor=pointer]:
+                          - /url: /ip/1-Pcs-Toilet-Handle-Replacement-Toilet-Handle-Replacement-Kit-Front-Mount-Zinc-Alloy-Toilet-Lever-Flush-Handle-Sliver-Universal-Bowl-Lever-Replacemen/19426159869?classType=VARIANT
+                          - generic [ref=e1541]: Options
+                        - generic [ref=e1542]:
+                          - generic [ref=e1544]:
+                            - generic [ref=e1545]: $419
+                            - generic [ref=e1546]: current price $4.19
+                            - generic [ref=e1547]: Options from $4.19 – $7.39
+                          - heading "1 Pcs Toilet Handle Replacement, Toilet Handle Replacement Kit Front Mount, Zinc Alloy Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard" [level=3] [ref=e1549]
+                          - generic [ref=e1554]: Free shipping, arrives in 3+ days
+                    - group [ref=e1558]:
+                      - link "Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel $19.20" [ref=e1559] [cursor=pointer]:
+                        - /url: /ip/Westbrass-D4142-07-Front-Mount-Economy-Tank-Lever-Satin-Nickel/23097903?classType=VARIANT&from=/search
+                        - heading "Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel $19.20" [level=3] [ref=e1561]
+                      - generic [ref=e1562]:
+                        - generic [ref=e1563]:
+                          - generic [ref=e1565]:
+                            - button "Sign in to add to Favorites list, Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [ref=e1566]:
+                              - generic [ref=e1567]: 
+                            - img "Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel"
+                          - generic [ref=e1569]:
+                            - link "Matte Black, variant on Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [ref=e1571] [cursor=pointer]:
+                              - /url: /ip/Westbrass-D4142-62-Front-Mount-Toilet-Tank-Lever-Handle-with-Adjustable-Bendable-Perfect-Fit-Arm-Matte-Black/3711883926?classType=undefined&variantFieldId=actual_color
+                              - img "Matte Black, variant on Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [ref=e1572]
+                            - link "Oil Rubbed Bronze, variant on Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [ref=e1574] [cursor=pointer]:
+                              - /url: /ip/Westbrass-D4142-12-Front-Mount-Economy-Tank-Lever-Oil-Rubbed-Bronze/23097930?classType=undefined&variantFieldId=actual_color
+                              - img "Oil Rubbed Bronze, variant on Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [ref=e1575]
+                            - link "Polished Brass, variant on Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [ref=e1577] [cursor=pointer]:
+                              - /url: /ip/WestBrass-D4142-PVD-Polished-Brass-Economy-Front-Mount-Zinc-Tank-Lever-with-Brass-Arm/23097900?classType=undefined&variantFieldId=actual_color
+                              - img "Polished Brass, variant on Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [ref=e1578]
+                            - link "Polished Chrome, variant on Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [ref=e1580] [cursor=pointer]:
+                              - /url: /ip/Westbrass-D4142-26-Front-Mount-Economy-Tank-Lever-Polished-Chrome/47711460?classType=undefined&variantFieldId=actual_color
+                              - img "Polished Chrome, variant on Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [ref=e1581]
+                            - button "show more color options" [ref=e1583] [cursor=pointer]:
+                              - generic [ref=e1584]: 
+                        - link "Options - Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [ref=e1588] [cursor=pointer]:
+                          - /url: /ip/Westbrass-D4142-07-Front-Mount-Economy-Tank-Lever-Satin-Nickel/23097903?classType=VARIANT
+                          - generic [ref=e1589]: Options
+                        - generic [ref=e1590]:
+                          - generic [ref=e1592]:
+                            - generic [ref=e1593]: $1920
+                            - generic [ref=e1594]: current price $19.20
+                            - generic [ref=e1595]: Options from $18.89
+                          - heading "Front Mount Toilet Tank Lever Handle with Adjustable Bendable Arm, Satin Nickel" [level=3] [ref=e1597]
+                          - generic [ref=e1602]: Free shipping, arrives in 3+ days
+                    - group [ref=e1606]:
+                      - link "1 Set Side Mount Toilet Flush Lever Replacement with Stainless Steel Flapper Chain Compatible with Most Toilet Tanks $9.79" [ref=e1607] [cursor=pointer]:
+                        - /url: /ip/1-Set-Side-Mount-Toilet-Flush-Lever-Replacement-with-Stainless-Steel-Flapper-Chain-Compatible-with-Most-Toilet-Tanks/15297363920?classType=REGULAR&from=/search
+                        - heading "1 Set Side Mount Toilet Flush Lever Replacement with Stainless Steel Flapper Chain Compatible with Most Toilet Tanks $9.79" [level=3] [ref=e1609]
+                      - generic [ref=e1610]:
+                        - generic [ref=e1613]:
+                          - button "Sign in to add to Favorites list, 1 Set Side Mount Toilet Flush Lever Replacement with Stainless Steel Flapper Chain Compatible with Most Toilet Tanks" [ref=e1614]:
+                            - generic [ref=e1615]: 
+                          - img "1 Set Side Mount Toilet Flush Lever Replacement with Stainless Steel Flapper Chain Compatible with Most Toilet Tanks"
+                        - button "Add to cart - 1 Set Side Mount Toilet Flush Lever Replacement with Stainless Steel Flapper Chain Compatible with Most Toilet Tanks" [ref=e1619] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1620]: 
+                          - generic [ref=e1621]: Add
+                        - generic [ref=e1622]:
+                          - generic [ref=e1624]:
+                            - generic [ref=e1625]: $979
+                            - generic [ref=e1626]: current price $9.79
+                          - heading "1 Set Side Mount Toilet Flush Lever Replacement with Stainless Steel Flapper Chain Compatible with Most Toilet Tanks" [level=3] [ref=e1628]
+                          - generic [ref=e1629]:
+                            - generic [ref=e1630]:
+                              - img [ref=e1631]
+                              - img [ref=e1633]
+                              - img [ref=e1635]
+                              - img [ref=e1637]
+                              - img [ref=e1639]
+                            - generic [ref=e1641]: "1"
+                            - generic [ref=e1642]: 5 out of 5 Stars. 1 reviews
+                          - generic [ref=e1647]: Free shipping, arrives in 3+ days
+                    - group [ref=e1651]:
+                      - link "Toilet Tank Flush Lever Handle Universal Side Mount Replacement Trip Fits Most Straight $14.59" [ref=e1652] [cursor=pointer]:
+                        - /url: /ip/Toilet-Tank-Flush-Lever-Handle-Universal-Side-Mount-Replacement-Trip-Fits-Most-Straight/5265048752?classType=REGULAR&from=/search
+                        - heading "Toilet Tank Flush Lever Handle Universal Side Mount Replacement Trip Fits Most Straight $14.59" [level=3] [ref=e1654]
+                      - generic [ref=e1655]:
+                        - generic [ref=e1658]:
+                          - button "Sign in to add to Favorites list, Toilet Tank Flush Lever Handle Universal Side Mount Replacement Trip Fits Most Straight" [ref=e1659]:
+                            - generic [ref=e1660]: 
+                          - img "Toilet Tank Flush Lever Handle Universal Side Mount Replacement Trip Fits Most Straight"
+                        - button "Add to cart - Toilet Tank Flush Lever Handle Universal Side Mount Replacement Trip Fits Most Straight" [ref=e1664] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1665]: 
+                          - generic [ref=e1666]: Add
+                        - generic [ref=e1667]:
+                          - generic [ref=e1669]:
+                            - generic [ref=e1670]: $1459
+                            - generic [ref=e1671]: current price $14.59
+                          - heading "Toilet Tank Flush Lever Handle Universal Side Mount Replacement Trip Fits Most Straight" [level=3] [ref=e1673]
+                          - generic [ref=e1674]:
+                            - generic [ref=e1675]:
+                              - img [ref=e1676]
+                              - img [ref=e1678]
+                              - img [ref=e1680]
+                              - img [ref=e1682]
+                              - img [ref=e1684]
+                            - generic [ref=e1686]: "1"
+                            - generic [ref=e1687]: 5 out of 5 Stars. 1 reviews
+                          - generic [ref=e1692]: Free shipping, arrives in 3+ days
+                    - group [ref=e1696]:
+                      - link "Fluidmaster 640 Perfect Fit Universal Toilet Tank Lever, White $13.41 Was $30.23" [ref=e1697] [cursor=pointer]:
+                        - /url: /ip/Fluidmaster-640-Perfect-Fit-Universal-Toilet-Tank-Lever-White/934470369?classType=VARIANT&from=/search
+                        - heading "Fluidmaster 640 Perfect Fit Universal Toilet Tank Lever, White $13.41 Was $30.23" [level=3] [ref=e1699]
+                      - generic [ref=e1700]:
+                        - generic [ref=e1703]:
+                          - button "Sign in to add to Favorites list, Fluidmaster 640 Perfect Fit Universal Toilet Tank Lever, White" [ref=e1704]:
+                            - generic [ref=e1705]: 
+                          - img "Fluidmaster 640 Perfect Fit Universal Toilet Tank Lever, White"
+                        - button "Add to cart - Fluidmaster 640 Perfect Fit Universal Toilet Tank Lever, White" [ref=e1709] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1710]: 
+                          - generic [ref=e1711]: Add
+                        - generic [ref=e1712]:
+                          - generic [ref=e1714]:
+                            - generic [ref=e1715]: Now$1341
+                            - generic [ref=e1716]: current price Now $13.41, Was $30.23
+                            - generic [ref=e1717]: $30.23
+                          - heading "Fluidmaster 640 Perfect Fit Universal Toilet Tank Lever, White" [level=3] [ref=e1719]
+                          - generic [ref=e1720]:
+                            - generic [ref=e1721]:
+                              - img [ref=e1722]
+                              - img [ref=e1724]
+                              - img [ref=e1726]
+                              - img [ref=e1728]
+                              - img [ref=e1731]
+                            - generic [ref=e1733]: "14"
+                            - generic [ref=e1734]: 3.5 out of 5 Stars. 14 reviews
+                          - generic [ref=e1739]: Free shipping, arrives Mon, May 11
+                    - group [ref=e1743]:
+                      - link "Toilet Handle Replacement Kit, Universal Front Mount Toilet Tank Flush Lever, Easy to Install, White Plastic $17.22" [ref=e1744] [cursor=pointer]:
+                        - /url: /ip/Toilet-Handle-Replacement-Kit-Universal-Front-Mount-Toilet-Tank-Flush-Lever-Easy-to-Install-White-Plastic/19708317477?classType=REGULAR&from=/search
+                        - heading "Toilet Handle Replacement Kit, Universal Front Mount Toilet Tank Flush Lever, Easy to Install, White Plastic $17.22" [level=3] [ref=e1746]
+                      - generic [ref=e1747]:
+                        - generic [ref=e1750]:
+                          - button "Sign in to add to Favorites list, Toilet Handle Replacement Kit, Universal Front Mount Toilet Tank Flush Lever, Easy to Install, White Plastic" [ref=e1751]:
+                            - generic [ref=e1752]: 
+                          - img "Toilet Handle Replacement Kit, Universal Front Mount Toilet Tank Flush Lever, Easy to Install, White Plastic"
+                        - button "Add to cart - Toilet Handle Replacement Kit, Universal Front Mount Toilet Tank Flush Lever, Easy to Install, White Plastic" [ref=e1756] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1757]: 
+                          - generic [ref=e1758]: Add
+                        - generic [ref=e1759]:
+                          - generic [ref=e1761]:
+                            - generic [ref=e1762]: $1722
+                            - generic [ref=e1763]: current price $17.22
+                          - heading "Toilet Handle Replacement Kit, Universal Front Mount Toilet Tank Flush Lever, Easy to Install, White Plastic" [level=3] [ref=e1765]
+                          - generic [ref=e1770]: Free shipping, arrives in 3+ days
+                    - group [ref=e1774]:
+                      - link "Toilet Handle Replacement Flush Lever - by LDR Global, Repair Replace Tank Flush Handles with Matching Bath Decor Parts, Universal Mount Fits Front Side and Angle Mounts $29.99" [ref=e1775] [cursor=pointer]:
+                        - /url: /ip/Toilet-Handle-Replacement-Flush-Lever-LDR-Global-Repair-Replace-Tank-Flush-Handles-Matching-Bath-Decor-Parts-Universal-Mount-Fits-Front-Side-Angle-Mo/20090603896?classType=REGULAR&from=/search
+                        - heading "Toilet Handle Replacement Flush Lever - by LDR Global, Repair Replace Tank Flush Handles with Matching Bath Decor Parts, Universal Mount Fits Front Side and Angle Mounts $29.99" [level=3] [ref=e1777]
+                      - generic [ref=e1778]:
+                        - generic [ref=e1781]:
+                          - button "Sign in to add to Favorites list, Toilet Handle Replacement Flush Lever - by LDR Global, Repair Replace Tank Flush Handles with Matching Bath Decor Parts, Universal Mount Fits Front Side and Angle Mounts" [ref=e1782]:
+                            - generic [ref=e1783]: 
+                          - img "Toilet Handle Replacement Flush Lever - by LDR Global, Repair Replace Tank Flush Handles with Matching Bath Decor Parts, Universal Mount Fits Front Side and Angle Mounts"
+                        - button "Add to cart - Toilet Handle Replacement Flush Lever - by LDR Global, Repair Replace Tank Flush Handles with Matching Bath Decor Parts, Universal Mount Fits Front Side and Angle Mounts" [ref=e1787] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1788]: 
+                          - generic [ref=e1789]: Add
+                        - generic [ref=e1790]:
+                          - generic [ref=e1792]:
+                            - generic [ref=e1793]: $2999
+                            - generic [ref=e1794]: current price $29.99
+                          - heading "Toilet Handle Replacement Flush Lever - by LDR Global, Repair Replace Tank Flush Handles with Matching Bath Decor Parts, Universal Mount Fits Front Side and Angle Mounts" [level=3] [ref=e1796]
+                          - generic [ref=e1801]: Free shipping, arrives in 3+ days
+                    - group [ref=e1805]:
+                      - link "Toilet Handle Replacement Kit Front Mount, Stainless Steel Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard, 1 Pcs, 7.87 Inches $4.89 Was $5.49" [ref=e1806] [cursor=pointer]:
+                        - /url: /ip/Toilet-Handle-Replacement-Kit-Universal-Toilet-Flush-Handle-Zinc-Alloy-Toilet-Tank-Trip-Lever-H2-Brass-Arm-Compatible-American-Standard-Mansfield-Toi/16987366212?classType=VARIANT&from=/search
+                        - heading "Toilet Handle Replacement Kit Front Mount, Stainless Steel Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard, 1 Pcs, 7.87 Inches $4.89 Was $5.49" [level=3] [ref=e1808]
+                      - generic [ref=e1809]:
+                        - generic [ref=e1812]:
+                          - button "Sign in to add to Favorites list, Toilet Handle Replacement Kit Front Mount, Stainless Steel Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard, 1 Pcs, 7.87 Inches" [ref=e1813]:
+                            - generic [ref=e1814]: 
+                          - img "Toilet Handle Replacement Kit Front Mount, Stainless Steel Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard, 1 Pcs, 7.87 Inches"
+                        - button "Add to cart - Toilet Handle Replacement Kit Front Mount, Stainless Steel Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard, 1 Pcs, 7.87 Inches" [ref=e1818] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1819]: 
+                          - generic [ref=e1820]: Add
+                        - generic [ref=e1821]:
+                          - generic [ref=e1823]:
+                            - generic [ref=e1824]: Now$489
+                            - generic [ref=e1825]: current price Now $4.89, Was $5.49
+                            - generic [ref=e1826]: $5.49
+                          - heading "Toilet Handle Replacement Kit Front Mount, Stainless Steel Toilet Lever Flush Handle, Sliver Universal Bowl Lever Replacement Kit for Most Standard, 1 Pcs, 7.87 Inches" [level=3] [ref=e1828]
+                          - generic [ref=e1833]: Free shipping, arrives in 3+ days
+                    - group [ref=e1837]:
+                      - link "BESTYASH Toilet Flush Handle Replacement Side Mount Iron 1Pcs $7.39" [ref=e1838] [cursor=pointer]:
+                        - /url: /ip/BESTYASH-Toilet-Flush-Handle-Replacement-Side-Mount-Iron-Square-1Pcs/18168207548?classType=REGULAR&from=/search
+                        - heading "BESTYASH Toilet Flush Handle Replacement Side Mount Iron 1Pcs $7.39" [level=3] [ref=e1840]
+                      - generic [ref=e1841]:
+                        - generic [ref=e1844]:
+                          - button "Sign in to add to Favorites list, BESTYASH Toilet Flush Handle Replacement Side Mount Iron 1Pcs" [ref=e1845]:
+                            - generic [ref=e1846]: 
+                          - img "BESTYASH Toilet Flush Handle Replacement Side Mount Iron 1Pcs"
+                        - button "Add to cart - BESTYASH Toilet Flush Handle Replacement Side Mount Iron 1Pcs" [ref=e1850] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1851]: 
+                          - generic [ref=e1852]: Add
+                        - generic [ref=e1853]:
+                          - generic [ref=e1855]:
+                            - generic [ref=e1856]: $739
+                            - generic [ref=e1857]: current price $7.39
+                          - heading "BESTYASH Toilet Flush Handle Replacement Side Mount Iron 1Pcs" [level=3] [ref=e1859]
+                          - generic [ref=e1864]: Free shipping, arrives in 3+ days
+                    - group [ref=e1868]:
+                      - link "Toilet Tank Handle Flush Lever Replacement Universal for Most Front Mount Toilet $32.48" [ref=e1869] [cursor=pointer]:
+                        - /url: /ip/Toilet-Tank-Handle-Flush-Lever-Replacement-Universal-for-Most-Front-Mount-Toilet/19707753492?classType=REGULAR&from=/search
+                        - heading "Toilet Tank Handle Flush Lever Replacement Universal for Most Front Mount Toilet $32.48" [level=3] [ref=e1871]
+                      - generic [ref=e1872]:
+                        - generic [ref=e1875]:
+                          - button "Sign in to add to Favorites list, Toilet Tank Handle Flush Lever Replacement Universal for Most Front Mount Toilet" [ref=e1876]:
+                            - generic [ref=e1877]: 
+                          - img "Toilet Tank Handle Flush Lever Replacement Universal for Most Front Mount Toilet"
+                        - button "Add to cart - Toilet Tank Handle Flush Lever Replacement Universal for Most Front Mount Toilet" [ref=e1881] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1882]: 
+                          - generic [ref=e1883]: Add
+                        - generic [ref=e1884]:
+                          - generic [ref=e1886]:
+                            - generic [ref=e1887]: $3248
+                            - generic [ref=e1888]: current price $32.48
+                          - heading "Toilet Tank Handle Flush Lever Replacement Universal for Most Front Mount Toilet" [level=3] [ref=e1890]
+                          - generic [ref=e1895]: Free shipping, arrives in 3+ days
+                    - group [ref=e1899]:
+                      - link "Korky StrongARM Series 6054BP Tank Flush Lever, Angled, Front, Left, Right, Side Mounting, Metal, Chrome $24.72" [ref=e1900] [cursor=pointer]:
+                        - /url: /ip/Korky-4001231-Strongram-Flush-Lever-Chrome-Metal-for-Universal/255565663?classType=REGULAR&from=/search
+                        - heading "Korky StrongARM Series 6054BP Tank Flush Lever, Angled, Front, Left, Right, Side Mounting, Metal, Chrome $24.72" [level=3] [ref=e1902]
+                      - generic [ref=e1903]:
+                        - generic [ref=e1906]:
+                          - button "Sign in to add to Favorites list, Korky StrongARM Series 6054BP Tank Flush Lever, Angled, Front, Left, Right, Side Mounting, Metal, Chrome" [ref=e1907]:
+                            - generic [ref=e1908]: 
+                          - img "Korky StrongARM Series 6054BP Tank Flush Lever, Angled, Front, Left, Right, Side Mounting, Metal, Chrome"
+                        - button "Add to cart - Korky StrongARM Series 6054BP Tank Flush Lever, Angled, Front, Left, Right, Side Mounting, Metal, Chrome" [ref=e1912] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1913]: 
+                          - generic [ref=e1914]: Add
+                        - generic [ref=e1915]:
+                          - generic [ref=e1917]:
+                            - generic [ref=e1918]: $2472
+                            - generic [ref=e1919]: current price $24.72
+                          - heading "Korky StrongARM Series 6054BP Tank Flush Lever, Angled, Front, Left, Right, Side Mounting, Metal, Chrome" [level=3] [ref=e1921]
+                          - generic [ref=e1926]: Free shipping, arrives in 3+ days
+                    - group [ref=e1930]:
+                      - link "Scheam 1 Pcs Universal Toilet Tank Flusher Lever,Metal Toilet Flush Handle Kit,Front Mount Bowl Flusher Replacement with Chain,for Home Toilets $9.99 Was $11.99" [ref=e1931] [cursor=pointer]:
+                        - /url: /ip/Scheam-1-Pcs-Universal-Toilet-Tank-Flusher-Lever-Metal-Toilet-Flush-Handle-Kit-Front-Mount-Bowl-Flusher-Replacement-with-Chain-for-Home-Toilets/17622706222?classType=REGULAR&from=/search
+                        - heading "Scheam 1 Pcs Universal Toilet Tank Flusher Lever,Metal Toilet Flush Handle Kit,Front Mount Bowl Flusher Replacement with Chain,for Home Toilets $9.99 Was $11.99" [level=3] [ref=e1933]
+                      - generic [ref=e1934]:
+                        - generic [ref=e1937]:
+                          - button "Sign in to add to Favorites list, Scheam 1 Pcs Universal Toilet Tank Flusher Lever,Metal Toilet Flush Handle Kit,Front Mount Bowl Flusher Replacement with Chain,for Home Toilets" [ref=e1938]:
+                            - generic [ref=e1939]: 
+                          - img "Scheam 1 Pcs Universal Toilet Tank Flusher Lever,Metal Toilet Flush Handle Kit,Front Mount Bowl Flusher Replacement with Chain,for Home Toilets"
+                        - button "Add to cart - Scheam 1 Pcs Universal Toilet Tank Flusher Lever,Metal Toilet Flush Handle Kit,Front Mount Bowl Flusher Replacement with Chain,for Home Toilets" [ref=e1943] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1944]: 
+                          - generic [ref=e1945]: Add
+                        - generic [ref=e1946]:
+                          - generic [ref=e1948]:
+                            - generic [ref=e1949]: Now$999
+                            - generic [ref=e1950]: current price Now $9.99, Was $11.99
+                            - generic [ref=e1951]: $11.99
+                          - heading "Scheam 1 Pcs Universal Toilet Tank Flusher Lever,Metal Toilet Flush Handle Kit,Front Mount Bowl Flusher Replacement with Chain,for Home Toilets" [level=3] [ref=e1953]
+                          - generic [ref=e1954]:
+                            - generic [ref=e1955]:
+                              - img [ref=e1956]
+                              - img [ref=e1958]
+                              - img [ref=e1960]
+                              - img [ref=e1962]
+                              - img [ref=e1964]
+                            - generic [ref=e1966]: "1"
+                            - generic [ref=e1967]: 5 out of 5 Stars. 1 reviews
+                          - generic [ref=e1969]:
+                            - generic [ref=e1970]:
+                              - generic [ref=e1971]: Save with
+                              - img "Walmart Plus" [ref=e1972]
+                            - generic [ref=e1975]: Shipping arrives Sun, May 10
+                    - group [ref=e1979]:
+                      - link "HIBIBUD Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever (Front Mount) $7.24" [ref=e1980] [cursor=pointer]:
+                        - /url: /ip/HIBIBUD-Toilet-Tank-Flush-Lever-Handle-Nut-Lock-Universal-Toilet-Handle-Replacement-Toilets-Metal-Handle-Premium-Arm-Lever-Front-Mount/18537210281?classType=REGULAR&from=/search
+                        - heading "HIBIBUD Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever (Front Mount) $7.24" [level=3] [ref=e1982]
+                      - generic [ref=e1983]:
+                        - generic [ref=e1986]:
+                          - button "Sign in to add to Favorites list, HIBIBUD Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever (Front Mount)" [ref=e1987]:
+                            - generic [ref=e1988]: 
+                          - img "HIBIBUD Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever (Front Mount)"
+                        - button "Add to cart - HIBIBUD Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever (Front Mount)" [ref=e1992] [cursor=pointer]:
+                          - generic "add to cart" [ref=e1993]: 
+                          - generic [ref=e1994]: Add
+                        - generic [ref=e1995]:
+                          - generic [ref=e1997]:
+                            - generic [ref=e1998]: $724
+                            - generic [ref=e1999]: current price $7.24
+                          - heading "HIBIBUD Toilet Tank Flush Lever Handle with Nut Lock,Universal Toilet Handle Replacement for Most Toilets,Metal Handle and Premium Arm Lever (Front Mount)" [level=3] [ref=e2001]
+                          - generic [ref=e2006]: Free shipping, arrives in 3+ days
+                    - group [ref=e2010]:
+                      - link "Danco 12063 Curved Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome $9.99" [ref=e2011] [cursor=pointer]:
+                        - /url: /ip/Danco-12063-Curved-Replacement-Handle-with-Front-Angle-Side-Vertical-Mount-in-Toilet-Tank-Lever-Chrome/5195751806?classType=VARIANT&from=/search
+                        - heading "Danco 12063 Curved Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome $9.99" [level=3] [ref=e2013]
+                      - generic [ref=e2014]:
+                        - generic [ref=e2015]:
+                          - generic [ref=e2017]:
+                            - button "Sign in to add to Favorites list, Danco 12063 Curved Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome" [ref=e2018]:
+                              - generic [ref=e2019]: 
+                            - img "Danco 12063 Curved Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome"
+                          - generic [ref=e2021]:
+                            - generic [ref=e2022]:
+                              - generic [ref=e2023]: 
+                              - text: 2 options
+                            - generic [ref=e2024]: Available in additional 2 options
+                        - link "Options - Danco 12063 Curved Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome" [ref=e2028] [cursor=pointer]:
+                          - /url: /ip/Danco-12063-Curved-Replacement-Handle-with-Front-Angle-Side-Vertical-Mount-in-Toilet-Tank-Lever-Chrome/5195751806?classType=VARIANT
+                          - generic [ref=e2029]: Options
+                        - generic [ref=e2030]:
+                          - generic [ref=e2032]:
+                            - generic [ref=e2033]: $999
+                            - generic [ref=e2034]: current price $9.99
+                            - generic [ref=e2035]: Options from $9.99 – $10.67
+                          - heading "Danco 12063 Curved Replacement Handle with Front Angle/Side/Vertical Mount in Toilet Tank Lever, Chrome" [level=3] [ref=e2037]
+                          - generic [ref=e2038]:
+                            - generic [ref=e2039]:
+                              - img [ref=e2040]
+                              - img [ref=e2042]
+                              - img [ref=e2044]
+                              - img [ref=e2046]
+                              - img [ref=e2048]
+                            - generic [ref=e2050]: "12"
+                            - generic [ref=e2051]: 4.8 out of 5 Stars. 12 reviews
+                          - generic [ref=e2053]:
+                            - generic [ref=e2054]:
+                              - generic [ref=e2055]: Save with
+                              - img "Walmart Plus" [ref=e2056]
+                            - generic [ref=e2059]: Shipping arrives Sun, May 10
+                    - group [ref=e2063]:
+                      - link "Keeney 836-71VBL Universal Decorative Toilet Tank Lever, Oil Rubbed Bronze $29.44" [ref=e2064] [cursor=pointer]:
+                        - /url: /ip/Keeney-836-71VBL-Universal-Decorative-Toilet-Tank-Lever-Oil-Rubbed-Bronze/21780645?classType=REGULAR&from=/search
+                        - heading "Keeney 836-71VBL Universal Decorative Toilet Tank Lever, Oil Rubbed Bronze $29.44" [level=3] [ref=e2066]
+                      - generic [ref=e2067]:
+                        - generic [ref=e2070]:
+                          - button "Sign in to add to Favorites list, Keeney 836-71VBL Universal Decorative Toilet Tank Lever, Oil Rubbed Bronze" [ref=e2071]:
+                            - generic [ref=e2072]: 
+                          - img "Keeney 836-71VBL Universal Decorative Toilet Tank Lever, Oil Rubbed Bronze"
+                        - button "Add to cart - Keeney 836-71VBL Universal Decorative Toilet Tank Lever, Oil Rubbed Bronze" [ref=e2076] [cursor=pointer]:
+                          - generic "add to cart" [ref=e2077]: 
+                          - generic [ref=e2078]: Add
+                        - generic [ref=e2079]:
+                          - generic [ref=e2081]:
+                            - generic [ref=e2082]: $2944
+                            - generic [ref=e2083]: current price $29.44
+                          - heading "Keeney 836-71VBL Universal Decorative Toilet Tank Lever, Oil Rubbed Bronze" [level=3] [ref=e2085]
+                          - generic [ref=e2090]: Free shipping, arrives Mon, May 11
+                    - group [ref=e2094]:
+                      - link "Delta Cassidy Traditional Tank Lever Chrome $21.99 Was $45.85" [ref=e2095] [cursor=pointer]:
+                        - /url: /ip/Delta-Cassidy-Traditional-Tank-Lever-Chrome/26167327?classType=VARIANT&from=/search
+                        - heading "Delta Cassidy Traditional Tank Lever Chrome $21.99 Was $45.85" [level=3] [ref=e2097]
+                      - generic [ref=e2098]:
+                        - generic [ref=e2101]:
+                          - button "Sign in to add to Favorites list, Delta Cassidy Traditional Tank Lever Chrome" [ref=e2102]:
+                            - generic [ref=e2103]: 
+                          - img "Delta Cassidy Traditional Tank Lever Chrome"
+                        - link "Options - Delta Cassidy Traditional Tank Lever Chrome" [ref=e2107] [cursor=pointer]:
+                          - /url: /ip/Delta-Cassidy-Traditional-Tank-Lever-Chrome/26167327?classType=VARIANT
+                          - generic [ref=e2108]: Options
+                        - generic [ref=e2109]:
+                          - generic [ref=e2111]:
+                            - generic [ref=e2112]: Now$2199
+                            - generic [ref=e2113]: current price Now $21.99, Was $45.85
+                            - generic [ref=e2114]: $45.85
+                            - generic [ref=e2115]: Options from $21.99 – $65.91
+                          - heading "Delta Cassidy Traditional Tank Lever Chrome" [level=3] [ref=e2117]
+                          - generic [ref=e2118]:
+                            - generic [ref=e2119]:
+                              - img [ref=e2120]
+                              - img [ref=e2122]
+                              - img [ref=e2124]
+                              - img [ref=e2126]
+                              - img [ref=e2129]
+                            - generic [ref=e2131]: "15"
+                            - generic [ref=e2132]: 3.5 out of 5 Stars. 15 reviews
+                          - generic [ref=e2134]:
+                            - generic [ref=e2135]:
+                              - generic [ref=e2136]: Save with
+                              - img "Walmart Plus" [ref=e2137]
+                            - generic [ref=e2140]: Shipping arrives Sun, May 10
+                    - group [ref=e2144]:
+                      - link "CHENGSI for Chrome Toilet Tank Flush Lever Side Mount Handle Replacement for General Fit Carbon Steel Decorative Bathroom Fixture Assembly Tool Silver & Golden $10.44" [ref=e2145] [cursor=pointer]:
+                        - /url: /ip/CHENGSI-Chrome-Toilet-Tank-Flush-Lever-Side-Mount-Handle-Replacement-General-Fit-Carbon-Steel-Decorative-Bathroom-Fixture-Assembly-Tool-Silver-Golden/16151904588?classType=REGULAR&from=/search
+                        - heading "CHENGSI for Chrome Toilet Tank Flush Lever Side Mount Handle Replacement for General Fit Carbon Steel Decorative Bathroom Fixture Assembly Tool Silver & Golden $10.44" [level=3] [ref=e2147]
+                      - generic [ref=e2148]:
+                        - generic [ref=e2151]:
+                          - button "Sign in to add to Favorites list, CHENGSI for Chrome Toilet Tank Flush Lever Side Mount Handle Replacement for General Fit Carbon Steel Decorative Bathroom Fixture Assembly Tool Silver & Golden" [ref=e2152]:
+                            - generic [ref=e2153]: 
+                          - img "CHENGSI for Chrome Toilet Tank Flush Lever Side Mount Handle Replacement for General Fit Carbon Steel Decorative Bathroom Fixture Assembly Tool Silver & Golden"
+                        - button "Add to cart - CHENGSI for Chrome Toilet Tank Flush Lever Side Mount Handle Replacement for General Fit Carbon Steel Decorative Bathroom Fixture Assembly Tool Silver & Golden" [ref=e2157] [cursor=pointer]:
+                          - generic "add to cart" [ref=e2158]: 
+                          - generic [ref=e2159]: Add
+                        - generic [ref=e2160]:
+                          - generic [ref=e2162]:
+                            - generic [ref=e2163]: $1044
+                            - generic [ref=e2164]: current price $10.44
+                          - heading "CHENGSI for Chrome Toilet Tank Flush Lever Side Mount Handle Replacement for General Fit Carbon Steel Decorative Bathroom Fixture Assembly Tool Silver & Golden" [level=3] [ref=e2166]
+                          - generic [ref=e2171]: Free shipping, arrives in 3+ days
+                    - group [ref=e2175]:
+                      - link "2 Pack Universal Metal Toilet Handle Replacement Kit, Front Mount Toilet Tank Flush Lever Handle with Stainless Steel Chain, Solid Brass Toilet Trip Lever Fits Most Toilets, Easy Install, Chrome $22.49" [ref=e2176] [cursor=pointer]:
+                        - /url: /ip/2-Pack-Universal-Metal-Toilet-Handle-Replacement-Kit-Front-Mount-Toilet-Tank-Flush-Lever-Handle-Stainless-Steel-Chain-Solid-Brass-Toilet-Trip-Lever-F/20098807644?classType=REGULAR&from=/search
+                        - heading "2 Pack Universal Metal Toilet Handle Replacement Kit, Front Mount Toilet Tank Flush Lever Handle with Stainless Steel Chain, Solid Brass Toilet Trip Lever Fits Most Toilets, Easy Install, Chrome $22.49" [level=3] [ref=e2178]
+                      - generic [ref=e2179]:
+                        - generic [ref=e2182]:
+                          - button "Sign in to add to Favorites list, 2 Pack Universal Metal Toilet Handle Replacement Kit, Front Mount Toilet Tank Flush Lever Handle with Stainless Steel Chain, Solid Brass Toilet Trip Lever Fits Most Toilets, Easy Install, Chrome" [ref=e2183]:
+                            - generic [ref=e2184]: 
+                          - img "2 Pack Universal Metal Toilet Handle Replacement Kit, Front Mount Toilet Tank Flush Lever Handle with Stainless Steel Chain, Solid Brass Toilet Trip Lever Fits Most Toilets, Easy Install, Chrome"
+                        - button "Add to cart - 2 Pack Universal Metal Toilet Handle Replacement Kit, Front Mount Toilet Tank Flush Lever Handle with Stainless Steel Chain, Solid Brass Toilet Trip Lever Fits Most Toilets, Easy Install, Chrome" [ref=e2188] [cursor=pointer]:
+                          - generic "add to cart" [ref=e2189]: 
+                          - generic [ref=e2190]: Add
+                        - generic [ref=e2191]:
+                          - generic [ref=e2193]:
+                            - generic [ref=e2194]: $2249
+                            - generic [ref=e2195]: current price $22.49
+                          - heading "2 Pack Universal Metal Toilet Handle Replacement Kit, Front Mount Toilet Tank Flush Lever Handle with Stainless Steel Chain, Solid Brass Toilet Trip Lever Fits Most Toilets, Easy Install, Chrome" [level=3] [ref=e2197]
+                          - generic [ref=e2202]: Free shipping, arrives in 3+ days
+                    - group [ref=e2206]:
+                      - link "Qilidiba Toilet Tank Flush Lever Handle Universal Side Mount Toilet Handle Replacement Trip Lever Fits Most Toilet Straight $15.94" [ref=e2207] [cursor=pointer]:
+                        - /url: /ip/Qilidiba-Toilet-Tank-Flush-Lever-Handle-Universal-Side-Mount-Toilet-Handle-Replacement-Trip-Lever-Fits-Most-Toilet-Straight/19740956023?classType=REGULAR&from=/search
+                        - heading "Qilidiba Toilet Tank Flush Lever Handle Universal Side Mount Toilet Handle Replacement Trip Lever Fits Most Toilet Straight $15.94" [level=3] [ref=e2209]
+                      - generic [ref=e2210]:
+                        - generic [ref=e2213]:
+                          - button "Sign in to add to Favorites list, Qilidiba Toilet Tank Flush Lever Handle Universal Side Mount Toilet Handle Replacement Trip Lever Fits Most Toilet Straight" [ref=e2214]:
+                            - generic [ref=e2215]: 
+                          - img "Qilidiba Toilet Tank Flush Lever Handle Universal Side Mount Toilet Handle Replacement Trip Lever Fits Most Toilet Straight"
+                        - button "Add to cart - Qilidiba Toilet Tank Flush Lever Handle Universal Side Mount Toilet Handle Replacement Trip Lever Fits Most Toilet Straight" [ref=e2219] [cursor=pointer]:
+                          - generic "add to cart" [ref=e2220]: 
+                          - generic [ref=e2221]: Add
+                        - generic [ref=e2222]:
+                          - generic [ref=e2224]:
+                            - generic [ref=e2225]: $1594
+                            - generic [ref=e2226]: current price $15.94
+                          - heading "Qilidiba Toilet Tank Flush Lever Handle Universal Side Mount Toilet Handle Replacement Trip Lever Fits Most Toilet Straight" [level=3] [ref=e2228]
+                          - generic [ref=e2233]: Free shipping, arrives in 3+ days
+                    - group [ref=e2237]:
+                      - link "LITINKIMI Toilet Flush Lever Handle Universal Toilet Handle Replacement for Toilet Tank (Side Mount)9.8in $8.69" [ref=e2238] [cursor=pointer]:
+                        - /url: /ip/LITINKIMI-Toilet-Flush-Lever-Handle-Universal-Toilet-Handle-Replacement-for-Toilet-Tank-Side-Mount-9-8in/19064404557?classType=VARIANT&from=/search
+                        - heading "LITINKIMI Toilet Flush Lever Handle Universal Toilet Handle Replacement for Toilet Tank (Side Mount)9.8in $8.69" [level=3] [ref=e2240]
+                      - generic [ref=e2241]:
+                        - generic [ref=e2244]:
+                          - button "Sign in to add to Favorites list, LITINKIMI Toilet Flush Lever Handle Universal Toilet Handle Replacement for Toilet Tank (Side Mount)9.8in" [ref=e2245]:
+                            - generic [ref=e2246]: 
+                          - img "LITINKIMI Toilet Flush Lever Handle Universal Toilet Handle Replacement for Toilet Tank (Side Mount)9.8in"
+                        - button "Add to cart - LITINKIMI Toilet Flush Lever Handle Universal Toilet Handle Replacement for Toilet Tank (Side Mount)9.8in" [ref=e2250] [cursor=pointer]:
+                          - generic "add to cart" [ref=e2251]: 
+                          - generic [ref=e2252]: Add
+                        - generic [ref=e2253]:
+                          - generic [ref=e2255]:
+                            - generic [ref=e2256]: $869
+                            - generic [ref=e2257]: current price $8.69
+                          - heading "LITINKIMI Toilet Flush Lever Handle Universal Toilet Handle Replacement for Toilet Tank (Side Mount)9.8in" [level=3] [ref=e2259]
+                          - generic [ref=e2260]:
+                            - generic [ref=e2261]:
+                              - img [ref=e2262]
+                              - img [ref=e2264]
+                              - img [ref=e2266]
+                              - img [ref=e2268]
+                              - img [ref=e2270]
+                            - generic [ref=e2272]: "3"
+                            - generic [ref=e2273]: 5 out of 5 Stars. 3 reviews
+                          - generic [ref=e2278]: Free shipping, arrives in 3+ days
+                    - group [ref=e2282]:
+                      - link "Toilet Handle Tank Flush Lever,Push Button Toilet Tank Handle Replacement for Universal Side Mount Toilet Trip Lever Tank Flush Lever $20.99" [ref=e2283] [cursor=pointer]:
+                        - /url: /ip/Toilet-Handle-Tank-Flush-Lever-Push-Button-Toilet-Tank-Handle-Replacement-for-Universal-Side-Mount-Toilet-Trip-Lever-Tank-Flush-Lever/20115810398?classType=REGULAR&from=/search
+                        - heading "Toilet Handle Tank Flush Lever,Push Button Toilet Tank Handle Replacement for Universal Side Mount Toilet Trip Lever Tank Flush Lever $20.99" [level=3] [ref=e2285]
+                      - generic [ref=e2286]:
+                        - generic [ref=e2289]:
+                          - button "Sign in to add to Favorites list, Toilet Handle Tank Flush Lever,Push Button Toilet Tank Handle Replacement for Universal Side Mount Toilet Trip Lever Tank Flush Lever" [ref=e2290]:
+                            - generic [ref=e2291]: 
+                          - img "Toilet Handle Tank Flush Lever,Push Button Toilet Tank Handle Replacement for Universal Side Mount Toilet Trip Lever Tank Flush Lever"
+                        - button "Add to cart - Toilet Handle Tank Flush Lever,Push Button Toilet Tank Handle Replacement for Universal Side Mount Toilet Trip Lever Tank Flush Lever" [ref=e2295] [cursor=pointer]:
+                          - generic "add to cart" [ref=e2296]: 
+                          - generic [ref=e2297]: Add
+                        - generic [ref=e2298]:
+                          - generic [ref=e2300]:
+                            - generic [ref=e2301]: $2099
+                            - generic [ref=e2302]: current price $20.99
+                          - heading "Toilet Handle Tank Flush Lever,Push Button Toilet Tank Handle Replacement for Universal Side Mount Toilet Trip Lever Tank Flush Lever" [level=3] [ref=e2304]
+                          - generic [ref=e2309]: Free shipping, arrives in 3+ days
+                - generic [ref=e2312]:
+                  - generic [ref=e2315]:
+                    - heading "Highly rated by customers (6)" [level=2] [ref=e2322]: Highly rated by customers(6)
+                    - generic [ref=e2323]:
+                      - text: 
+                      - list [ref=e2324]:
+                        - listitem [ref=e2325]:
+                          - group [ref=e2326]:
+                            - link "Best seller Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065 $10.36 Was $12.99" [ref=e2327] [cursor=pointer]:
+                              - /url: /ip/Korky-White-Toilet-Flush-Handle-0-35-lb-6065/951388755?classType=VARIANT&athbdg=L1600
+                              - heading "Best seller Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065 $10.36 Was $12.99" [level=3] [ref=e2329]
+                            - generic [ref=e2330]:
+                              - generic [ref=e2331]:
+                                - group [ref=e2334]:
+                                  - generic [ref=e2335]: Best seller
+                                - generic [ref=e2336]:
+                                  - button "Sign in to add to Favorites list, Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e2337]:
+                                    - generic [ref=e2338]: 
+                                  - img "Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e2339]
+                                - generic [ref=e2341]:
+                                  - link "Chrome, variant on Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e2343] [cursor=pointer]:
+                                    - /url: /ip/Korky-trongarm-Toilet-Handle-for-Universal-Chrome/472541054?classType=undefined&variantFieldId=actual_color
+                                    - img "Chrome, variant on Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e2344]
+                                  - link "White, variant on Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e2346] [cursor=pointer]:
+                                    - /url: /ip/Korky-White-Toilet-Flush-Handle-0-35-lb-6065/951388755?classType=undefined&variantFieldId=actual_color
+                                    - img "White, variant on Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e2347]
+                              - link "Options - Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065" [ref=e2351] [cursor=pointer]:
+                                - /url: /ip/Korky-White-Toilet-Flush-Handle-0-35-lb-6065/951388755?classType=VARIANT&athbdg=L1600
+                                - generic [ref=e2352]: Options
+                              - generic [ref=e2353]:
+                                - generic [ref=e2355]:
+                                  - generic [ref=e2356]: Now$1036
+                                  - generic [ref=e2357]: current price Now $10.36, Was $12.99
+                                  - generic [ref=e2358]: $12.99
+                                  - generic [ref=e2359]: Options from $10.36 – $10.97
+                                - generic [ref=e2361]: Korky Toilet Handle, White Metal Handle - Tank Lever Replacement - Universal to Fit Front, Angled, and Side Left Mount Toilets - 6065
+                                - generic [ref=e2362]:
+                                  - generic [ref=e2363]:
+                                    - img [ref=e2364]
+                                    - img [ref=e2366]
+                                    - img [ref=e2368]
+                                    - img [ref=e2370]
+                                    - img [ref=e2372]
+                                  - generic [ref=e2375]: "666"
+                                  - generic [ref=e2376]: 4.6 out of 5 Stars. 666 reviews
+                                - generic [ref=e2378]:
+                                  - generic [ref=e2379]:
+                                    - generic [ref=e2380]: Save with
+                                    - img "Walmart Plus" [ref=e2381]
+                                  - generic [ref=e2382]:
+                                    - generic [ref=e2384]: Delivery as soon as 1 hour
+                                    - generic [ref=e2386]: Shipping arrives today
+                                    - generic [ref=e2388]: Pickup as soon as 11am
+                        - listitem [ref=e2389]:
+                          - group [ref=e2390]:
+                            - link "Best seller Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044) $12.97" [ref=e2391] [cursor=pointer]:
+                              - /url: /ip/Danco-Toilet-Tank-Replacement-Handle-in-Chrome-0-17-lbs-12044/1042741185?classType=VARIANT&athbdg=L1600
+                              - heading "Best seller Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044) $12.97" [level=3] [ref=e2393]
+                            - generic [ref=e2394]:
+                              - generic [ref=e2395]:
+                                - group [ref=e2398]:
+                                  - generic [ref=e2399]: Best seller
+                                - generic [ref=e2400]:
+                                  - button "Sign in to add to Favorites list, Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044)" [ref=e2401]:
+                                    - generic [ref=e2402]: 
+                                  - img "Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044)" [ref=e2403]
+                                - generic [ref=e2405]:
+                                  - generic [ref=e2406]:
+                                    - generic [ref=e2407]: 
+                                    - text: 2 options
+                                  - generic [ref=e2408]: Available in additional 2 options
+                              - link "Options - Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044)" [ref=e2412] [cursor=pointer]:
+                                - /url: /ip/Danco-Toilet-Tank-Replacement-Handle-in-Chrome-0-17-lbs-12044/1042741185?classType=VARIANT&athbdg=L1600
+                                - generic [ref=e2413]: Options
+                              - generic [ref=e2414]:
+                                - generic [ref=e2416]:
+                                  - generic [ref=e2417]: $1297
+                                  - generic [ref=e2418]: current price $12.97
+                                  - generic [ref=e2419]: Options from $10.64
+                                - generic [ref=e2421]: Danco Toilet Tank Replacement Handle in Chrome, 0.17 lbs (12044)
+                                - generic [ref=e2422]:
+                                  - generic [ref=e2423]:
+                                    - img [ref=e2424]
+                                    - img [ref=e2426]
+                                    - img [ref=e2428]
+                                    - img [ref=e2430]
+                                    - img [ref=e2432]
+                                  - generic [ref=e2435]: "283"
+                                  - generic [ref=e2436]: 4.4 out of 5 Stars. 283 reviews
+                                - generic [ref=e2438]:
+                                  - generic [ref=e2439]:
+                                    - generic [ref=e2440]: Save with
+                                    - img "Walmart Plus" [ref=e2441]
+                                  - generic [ref=e2442]:
+                                    - generic [ref=e2444]: Delivery as soon as 1 hour
+                                    - generic [ref=e2446]: Shipping arrives today
+                                    - generic [ref=e2448]: Pickup as soon as 11am
+                        - listitem [ref=e2449]:
+                          - group [ref=e2450]:
+                            - link "100+ bought since yesterday Plumb Craft Replacement Toilet Flush Lever Handle in Chrome $4.88" [ref=e2451] [cursor=pointer]:
+                              - /url: /ip/Plumb-Craft-Chrome-Toilet-Flush-Lever/675178386?classType=REGULAR&athbdg=L1102
+                              - heading "100+ bought since yesterday Plumb Craft Replacement Toilet Flush Lever Handle in Chrome $4.88" [level=3] [ref=e2453]
+                            - generic [ref=e2454]:
+                              - generic [ref=e2455]:
+                                - group [ref=e2458]:
+                                  - generic [ref=e2459]: 100+ bought since yesterday
+                                - generic [ref=e2460]:
+                                  - button "Sign in to add to Favorites list, Plumb Craft Replacement Toilet Flush Lever Handle in Chrome" [ref=e2461]:
+                                    - generic [ref=e2462]: 
+                                  - img "Plumb Craft Replacement Toilet Flush Lever Handle in Chrome" [ref=e2463]
+                              - button "Add to cart - Plumb Craft Replacement Toilet Flush Lever Handle in Chrome" [ref=e2467] [cursor=pointer]:
+                                - generic "add to cart" [ref=e2468]: 
+                                - generic [ref=e2469]: Add
+                              - generic [ref=e2470]:
+                                - generic [ref=e2472]:
+                                  - generic [ref=e2473]: $488
+                                  - generic [ref=e2474]: current price $4.88
+                                - generic [ref=e2476]: Plumb Craft Replacement Toilet Flush Lever Handle in Chrome
+                                - generic [ref=e2477]:
+                                  - generic [ref=e2478]:
+                                    - img [ref=e2479]
+                                    - img [ref=e2481]
+                                    - img [ref=e2483]
+                                    - img [ref=e2485]
+                                    - img [ref=e2487]
+                                  - generic [ref=e2490]: "261"
+                                  - generic [ref=e2491]: 4.6 out of 5 Stars. 261 reviews
+                                - generic [ref=e2493]:
+                                  - generic [ref=e2494]:
+                                    - generic [ref=e2495]: Save with
+                                    - img "Walmart Plus" [ref=e2496]
+                                  - generic [ref=e2497]:
+                                    - generic [ref=e2499]: Delivery as soon as 1 hour
+                                    - generic [ref=e2501]: Pickup as soon as 11am
+                        - listitem [ref=e2502]:
+                          - group [ref=e2503]:
+                            - link "Fluidmaster 683 Universal Toilet Tank Lever in White $8.91 Was $37.02" [ref=e2504] [cursor=pointer]:
+                              - /url: /ip/Fluidmaster-683-Universal-Toilet-Tank-Lever-in-White/15840604?classType=VARIANT
+                              - heading "Fluidmaster 683 Universal Toilet Tank Lever in White $8.91 Was $37.02" [level=3] [ref=e2506]
+                            - generic [ref=e2507]:
+                              - generic [ref=e2510]:
+                                - button "Sign in to add to Favorites list, Fluidmaster 683 Universal Toilet Tank Lever in White" [ref=e2511]:
+                                  - generic [ref=e2512]: 
+                                - img "Fluidmaster 683 Universal Toilet Tank Lever in White"
+                              - button "Add to cart - Fluidmaster 683 Universal Toilet Tank Lever in White" [ref=e2516] [cursor=pointer]:
+                                - generic "add to cart" [ref=e2517]: 
+                                - generic [ref=e2518]: Add
+                              - generic [ref=e2519]:
+                                - generic [ref=e2521]:
+                                  - generic [ref=e2522]: Now$891
+                                  - generic [ref=e2523]: current price Now $8.91, Was $37.02
+                                  - generic [ref=e2524]: $37.02
+                                - generic [ref=e2526]: Fluidmaster 683 Universal Toilet Tank Lever in White
+                                - generic [ref=e2527]:
+                                  - generic [ref=e2528]:
+                                    - img [ref=e2529]
+                                    - img [ref=e2531]
+                                    - img [ref=e2533]
+                                    - img [ref=e2535]
+                                    - img [ref=e2537]
+                                  - generic [ref=e2540]: "37"
+                                  - generic [ref=e2541]: 4.4 out of 5 Stars. 37 reviews
+                                - generic [ref=e2543]:
+                                  - generic [ref=e2544]:
+                                    - generic [ref=e2545]: Save with
+                                    - img "Walmart Plus" [ref=e2546]
+                                  - generic [ref=e2549]: Shipping arrives tomorrow
+                        - listitem [ref=e2550]:
+                          - group [ref=e2551]:
+                            - link "Best seller Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035 $11.88" [ref=e2552] [cursor=pointer]:
+                              - /url: /ip/Korky-Matte-Black-Metal-Toilet-Handle-and-Lever-Universal-to-Fit-Front-Angled-and-Left-Side-Mount-Toilets-6035/14676301925?classType=REGULAR&athbdg=L1600
+                              - heading "Best seller Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035 $11.88" [level=3] [ref=e2554]
+                            - generic [ref=e2555]:
+                              - generic [ref=e2556]:
+                                - group [ref=e2559]:
+                                  - generic [ref=e2560]: Best seller
+                                - generic [ref=e2561]:
+                                  - button "Sign in to add to Favorites list, Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [ref=e2562]:
+                                    - generic [ref=e2563]: 
+                                  - img "Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [ref=e2564]
+                              - button "Add to cart - Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035" [ref=e2568] [cursor=pointer]:
+                                - generic "add to cart" [ref=e2569]: 
+                                - generic [ref=e2570]: Add
+                              - generic [ref=e2571]:
+                                - generic [ref=e2573]:
+                                  - generic [ref=e2574]: $1188
+                                  - generic [ref=e2575]: current price $11.88
+                                - generic [ref=e2577]: Korky Matte Black Metal Toilet Handle and Lever - Universal to Fit Front, Angled, and Left Side Mount Toilets - 6035
+                                - generic [ref=e2578]:
+                                  - generic [ref=e2579]:
+                                    - img [ref=e2580]
+                                    - img [ref=e2582]
+                                    - img [ref=e2584]
+                                    - img [ref=e2586]
+                                    - img [ref=e2588]
+                                  - generic [ref=e2590]: "38"
+                                  - generic [ref=e2591]: 4.8 out of 5 Stars. 38 reviews
+                                - generic [ref=e2593]:
+                                  - generic [ref=e2594]:
+                                    - generic [ref=e2595]: Save with
+                                    - img "Walmart Plus" [ref=e2596]
+                                  - generic [ref=e2597]:
+                                    - generic [ref=e2599]: Delivery as soon as 1 hour
+                                    - generic [ref=e2601]: Shipping arrives today
+                                    - generic [ref=e2603]: Pickup as soon as 11am
+                        - listitem [ref=e2604]:
+                          - group [ref=e2605]:
+                            - link "Universal Toilet Handle, 8-in Front Mount Replacement Kit, Zinc Finish, Includes Plastic Locknut, Fits Most Front Mount Toilet Tanks by Madol $9.50" [ref=e2606] [cursor=pointer]:
+                              - /url: /ip/Toilet-Tank-Flush-Lever-Front-Mount-Toilet-Handle-Replacement-kit-Chrome-Finish-by-Madol/1478230489?classType=REGULAR&selectedSellerId=101181198
+                              - heading "Universal Toilet Handle, 8-in Front Mount Replacement Kit, Zinc Finish, Includes Plastic Locknut, Fits Most Front Mount Toilet Tanks by Madol $9.50" [level=3] [ref=e2608]
+                            - generic [ref=e2609]:
+                              - generic [ref=e2612]:
+                                - button "Sign in to add to Favorites list, Universal Toilet Handle, 8-in Front Mount Replacement Kit, Zinc Finish, Includes Plastic Locknut, Fits Most Front Mount Toilet Tanks by Madol" [ref=e2613]:
+                                  - generic [ref=e2614]: 
+                                - img "Universal Toilet Handle, 8-in Front Mount Replacement Kit, Zinc Finish, Includes Plastic Locknut, Fits Most Front Mount Toilet Tanks by Madol"
+                              - button "Add to cart - Universal Toilet Handle, 8-in Front Mount Replacement Kit, Zinc Finish, Includes Plastic Locknut, Fits Most Front Mount Toilet Tanks by Madol" [ref=e2618] [cursor=pointer]:
+                                - generic "add to cart" [ref=e2619]: 
+                                - generic [ref=e2620]: Add
+                              - generic [ref=e2621]:
+                                - generic [ref=e2623]:
+                                  - generic [ref=e2624]: $950
+                                  - generic [ref=e2625]: current price $9.50
+                                - generic [ref=e2627]: Universal Toilet Handle, 8-in Front Mount Replacement Kit, Zinc Finish, Includes Plastic Locknut, Fits Most Front Mount Toilet Tanks by Madol
+                                - generic [ref=e2628]:
+                                  - generic [ref=e2629]:
+                                    - img [ref=e2630]
+                                    - img [ref=e2632]
+                                    - img [ref=e2634]
+                                    - img [ref=e2636]
+                                    - img [ref=e2638]
+                                  - generic [ref=e2641]: "30"
+                                  - generic [ref=e2642]: 4.4 out of 5 Stars. 30 reviews
+                                - generic [ref=e2644]:
+                                  - generic [ref=e2645]:
+                                    - generic [ref=e2646]: Save with
+                                    - img "Walmart Plus" [ref=e2647]
+                                  - generic [ref=e2650]: Shipping arrives Mon, May 11
+                      - button "Next slide for Highly rated by customers list" [ref=e2651]:
+                        - generic [ref=e2652]: 
+                  - separator [ref=e2653]
+            - navigation "pagination" [ref=e2655]:
+              - list [ref=e2656]:
+                - listitem [ref=e2657]
+                - listitem [ref=e2659]:
+                  - button "1" [ref=e2660] [cursor=pointer]
+                - listitem [ref=e2661]:
+                  - button "Go to Page 2" [ref=e2662] [cursor=pointer]: "2"
+                - listitem [ref=e2663]:
+                  - button "Go to Page 3" [ref=e2664] [cursor=pointer]: "3"
+                - listitem [ref=e2665]:
+                  - generic [ref=e2666]: ...
+                - listitem [ref=e2667]:
+                  - generic [ref=e2668]: "11"
+                - listitem [ref=e2669]:
+                  - button "Next Page" [ref=e2670] [cursor=pointer]:
+                    - generic [ref=e2671]: 
+            - region "Advertisement" [ref=e2674]:
+              - generic [ref=e2675]:
+                - iframe [ref=e2676]:
+                  - generic [ref=f13e2]:
+                    - link "Mainstays Kids logo. Room to dream big. New mix-&-match kids styles. Shop now. Sponsored" [ref=f13e3] [cursor=pointer]:
+                      - /url: https://www.walmart.com/dad/trk/v1/ck?encrypted=eyJraWQiOiJyc2FfdjEiLCJlbmMiOiJBMTI4R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.VwUU949PaI9kyyDkTsDJrQ-8KltwWKEd76wz6K-GxSkI1GtztV_6lzWVrZqqKWYc0Up2GHT9FgfKc5iG9HfA2fQ6MUgrXikWUmxaY4Ymho0L0QU_8Afen5dv3zOi11BoLhBkWKqVFMFZkkTIUhCkZ-caOi6DquNNjldEgVnTgAn7e4BdSPvJjueY0lNY_kyqgiptF7fC1iwdboAN-BT1z2fn1BCxVDrtRG2q4PJ4JVdxZ4bipM75m4FytD4kAA9gBTvPTntlurabWwWWSH7NP1DYSTvJTeZ6FY2Dk11sEPhHxS9IRk5iPUIwE7vpDrDd-OLCppW4-yziF3DhlYETmg.BvWyZ2IJAgboqfys.O1bbuHVnZoVlLw9Zb-PUvDmRADSGgxsk981hU8Z9CmlKpYHOdR084_jzYc9T2n9lzZIQPwnM_Lkfov9cFetVFpKO6j5o8iOlgVy_UpzlSEcHdnyx60M5MZ8JDDDRK0Cf0wOGWqa6RKWeXvs2I3KTKe6eov-Y_wxCQPe6-B2j7YtcZdWL7upNLgWu0Qi_yd8Z5BITCQwpYeCnaAEOQ67fmxclIOac58zBH3tgJkjHT9uTi0Ql2Gpyuw7K_F8_9w-BDqrXRqxrkarJ6DlSo5YK-rzPNoB-4uztzkPQwTngEMqidlbZMid-eX6ak1dIAzUfQixHlLKtc3QTKN2dlaczovuu1y9AvWMf0ADr0CK240v-g6kCpsZ0JNT4ywCklpt58QRZcWTdDYz9F74lI_63UAVgoNr-jUzx8wx6bl7sm3sZpNj3BdhAth_okSHhXsXHV65_ktak-PJlypebdEoF6q2naomLrPj4iiLdtpdOx569E67TnAzLo5VfsZ0npl2HOHRV1e1oCh_Ql2VZKKh4t-O1OwjTEIWmS_oC-DzDHS9tU_rimSsx68_yPhvOuxWgit6q95TagNpkk4pUIGJK.6lurkYdxWMDFUTomvTK0vw
+                      - generic [ref=f13e5]:
+                        - img [ref=f13e6]
+                        - generic [ref=f13e8]:
+                          - img [ref=f13e9]
+                          - generic [ref=f13e11]:
+                            - generic [ref=f13e12]: Room to dream big
+                            - generic [ref=f13e13]: New mix-&-match kids styles.
+                            - generic [ref=f13e14]: Shop now
+                    - img
+                - generic [ref=e2679]:
+                  - generic [ref=e2680]: Sponsored
+                  - button "Ad disclaimer and feedback" [ref=e2682] [cursor=pointer]:
+                    - generic [ref=e2683]: 
+      - contentinfo [ref=e2686]
+  - alert [ref=e2691]

@@ -1,0 +1,1440 @@
+- generic [active] [ref=e1]:
+  - img
+  - img
+  - img
+  - img
+  - generic [ref=e3]:
+    - banner [ref=e7]:
+      - link "Skip to main content" [ref=e9] [cursor=pointer]:
+        - /url: "#mainContent"
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e13]:
+            - text: Hi!
+            - link "Sign in" [ref=e14] [cursor=pointer]:
+              - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&sgfl=gh&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F266084662385
+            - generic [ref=e15]:
+              - text: or
+              - link "register" [ref=e16] [cursor=pointer]:
+                - /url: https://signup.ebay.com/pa/crte?ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F266084662385
+          - link "Deals" [ref=e18] [cursor=pointer]:
+            - /url: https://www.ebay.com/deals
+          - link "Brand Outlet" [ref=e20] [cursor=pointer]:
+            - /url: https://www.ebay.com/b/Brand-Outlet/bn_7115532402
+          - link "Gift Cards" [ref=e22] [cursor=pointer]:
+            - /url: https://www.ebay.com/giftcards
+          - link "Help & Contact" [ref=e24] [cursor=pointer]:
+            - /url: https://www.ebay.com/help/home
+        - generic [ref=e25]:
+          - link "Sell" [ref=e28] [cursor=pointer]:
+            - /url: https://www.ebay.com/sl/sell
+          - generic [ref=e29]:
+            - link "Watchlist" [ref=e30] [cursor=pointer]:
+              - /url: https://www.ebay.com/mye/myebay/watchlist
+              - generic [ref=e31]: Watchlist
+              - img
+            - button "Expand Watch List" [ref=e32]
+          - generic [ref=e33]:
+            - link "My eBay" [ref=e34] [cursor=pointer]:
+              - /url: https://www.ebay.com/mys/home?source=GBH
+              - generic [ref=e35]: My eBay
+              - img
+            - button "Expand My eBay" [ref=e36]
+          - button "Notifications" [ref=e39] [cursor=pointer]:
+            - img
+            - generic [ref=e40]: Notifications
+          - generic [ref=e42]:
+            - link "Your shopping cart contains 0 items" [ref=e43] [cursor=pointer]:
+              - /url: https://cart.ebay.com
+              - generic "Your shopping cart contains 0 items" [ref=e44]:
+                - img
+            - button "Expand Cart" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - link "eBay Home" [ref=e48] [cursor=pointer]:
+            - /url: https://www.ebay.com
+            - img "eBay Home" [ref=e49]
+          - button "Shop by category" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: Shop by category
+            - img
+        - generic [ref=e59]:
+          - status [ref=e60]
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - combobox "Search for anything" [ref=e64]
+              - img
+            - combobox "Select a category for search" [ref=e65]:
+              - option "All Categories" [selected]
+              - option "Antiques"
+              - option "Art"
+              - option "Baby"
+              - option "Books"
+              - option "Business & Industrial"
+              - option "Cameras & Photo"
+              - option "Cell Phones & Accessories"
+              - option "Clothing, Shoes & Accessories"
+              - option "Coins & Paper Money"
+              - option "Collectibles"
+              - option "Computers/Tablets & Networking"
+              - option "Consumer Electronics"
+              - option "Crafts"
+              - option "Dolls & Bears"
+              - option "Movies & TV"
+              - option "eBay Motors"
+              - option "Entertainment Memorabilia"
+              - option "Gift Cards & Coupons"
+              - option "Health & Beauty"
+              - option "Home & Garden"
+              - option "Jewelry & Watches"
+              - option "Music"
+              - option "Musical Instruments & Gear"
+              - option "Pet Supplies"
+              - option "Pottery & Glass"
+              - option "Real Estate"
+              - option "Specialty Services"
+              - option "Sporting Goods"
+              - option "Sports Mem, Cards & Fan Shop"
+              - option "Stamps"
+              - option "Tickets & Experiences"
+              - option "Toys & Hobbies"
+              - option "Travel"
+              - option "Video Games & Consoles"
+              - option "Everything Else"
+          - generic [ref=e66]:
+            - button "Search" [ref=e67] [cursor=pointer]:
+              - generic [ref=e68]: Search
+            - link "Advanced" [ref=e69] [cursor=pointer]:
+              - /url: https://www.ebay.com/sch/ebayadvsearch
+    - main [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - generic [ref=e75]:
+            - generic [ref=e81]:
+              - link [ref=e82] [cursor=pointer]:
+                - /url: https://www.ebay.com/str/mvpdentalsupply?_sacat=257844&promoted_items=232719603086%2C235098578107%2C236087349566%2C236641240396%2C235992759318&itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQfvS%2BIzCQ2HCZU7%2FXTe5qFb1DMQ80tYqTmSx0X%2FARGa7ERfT3M4vQzvqdJ8Swa9dKa9AOlaVZmAb3BLD7Inm%2FjGuFfVm%2B75YvZfAXONfp%2BR4P4nVf9fzq4zvOKzMAePYatodoBNldUADF52G%2BXnZv3R&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+              - generic [ref=e83]:
+                - link "Find similar items from" [ref=e86] [cursor=pointer]:
+                  - /url: https://www.ebay.com/str/mvpdentalsupply?_sacat=257844&promoted_items=232719603086%2C235098578107%2C236087349566%2C236641240396%2C235992759318&itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQfvS%2BIzCQ2HCZU7%2FXTe5qFb1DMQ80tYqTmSx0X%2FARGa7ERfT3M4vQzvqdJ8Swa9dKa9AOlaVZmAb3BLD7Inm%2FjGuFfVm%2B75YvZfAXONfp%2BR4P4nVf9fzq4zvOKzMAePYatodoBNldUADF52G%2BXnZv3R&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+                - generic [ref=e87]:
+                  - link "mvpdentalsupply" [ref=e90] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/mvpdentalsupply?_sacat=257844&promoted_items=232719603086%2C235098578107%2C236087349566%2C236641240396%2C235992759318&itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQfvS%2BIzCQ2HCZU7%2FXTe5qFb1DMQ80tYqTmSx0X%2FARGa7ERfT3M4vQzvqdJ8Swa9dKa9AOlaVZmAb3BLD7Inm%2FjGuFfVm%2B75YvZfAXONfp%2BR4P4nVf9fzq4zvOKzMAePYatodoBNldUADF52G%2BXnZv3R&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+                    - img "mvpdentalsupply" [ref=e91]
+                  - link "mvpdentalsupply" [ref=e94] [cursor=pointer]:
+                    - /url: https://www.ebay.com/str/mvpdentalsupply?_sacat=257844&promoted_items=232719603086%2C235098578107%2C236087349566%2C236641240396%2C235992759318&itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQfvS%2BIzCQ2HCZU7%2FXTe5qFb1DMQ80tYqTmSx0X%2FARGa7ERfT3M4vQzvqdJ8Swa9dKa9AOlaVZmAb3BLD7Inm%2FjGuFfVm%2B75YvZfAXONfp%2BR4P4nVf9fzq4zvOKzMAePYatodoBNldUADF52G%2BXnZv3R&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+                    - generic [ref=e95]: mvpdentalsupply
+                  - generic [ref=e96]:
+                    - text: (
+                    - link "661K items sold" [ref=e98] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/mvpdentalsupply?_sacat=257844&promoted_items=232719603086%2C235098578107%2C236087349566%2C236641240396%2C235992759318&itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQfvS%2BIzCQ2HCZU7%2FXTe5qFb1DMQ80tYqTmSx0X%2FARGa7ERfT3M4vQzvqdJ8Swa9dKa9AOlaVZmAb3BLD7Inm%2FjGuFfVm%2B75YvZfAXONfp%2BR4P4nVf9fzq4zvOKzMAePYatodoBNldUADF52G%2BXnZv3R&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+                      - generic [ref=e100]: 661K items sold
+                    - text: )
+                - link "Microbrush MRP400 Tube Series Bendable Micro Applicators Regular Purple 400/Pk" [ref=e103] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/232719603086?itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQev0xscFR6ngVN9SPRTfu0O7iJpN8fdquwJCttrpZS%2F1orVj68YG7jNY8kNO6flcQtH%2BDwxNFgf7wXPSNBvEK3L5c7spcLfpUpiSxfnzbcH7DAByTJHxNaPX0II77BB92jVD9xCL6TUZ6%2Bw%2Fw6AAa9p&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+                  - img "Microbrush MRP400 Tube Series Bendable Micro Applicators Regular Purple 400/Pk" [ref=e104]
+                - link "House Brand Dentistry 101318 Micro-Brush Applicators Fine Yellow & Pink 4 x 100P" [ref=e107] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/235098578107?itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQev0xscFR6ngVN9SPRTfu0O7iJpN8fdquwJCttrpZS%2F1orVj68YG7jNY8kNO6flcQtH%2BDwxNFgf7wXPSNBvEK3L5c7spcLfpUpiSxfnzbcH7DAByTJHxNaPX0II77BB92jVD9xCL6TUZ6%2Bw%2Fw6AAa9p&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+                  - img "House Brand Dentistry 101318 Micro-Brush Applicators Fine Yellow & Pink 4 x 100P" [ref=e108]
+                - link "Microbrush PR400 Plus Dispenser Series Mico Applicators Regular Assorted 400/Pk" [ref=e111] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/236087349566?itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQev0xscFR6ngVN9SPRTfu0O7iJpN8fdquwJCttrpZS%2F1orVj68YG7jNY8kNO6flcQtH%2BDwxNFgf7wXPSNBvEK3L5c7spcLfpUpiSxfnzbcH7DAByTJHxNaPX0II77BB92jVD9xCL6TUZ6%2Bw%2Fw6AAa9p&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+                  - img "Microbrush PR400 Plus Dispenser Series Mico Applicators Regular Assorted 400/Pk" [ref=e112]
+                - link "Centrix 380020 Benda Microtwin Micro Applicators Double End Kit Pink 200/Pk" [ref=e115] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/236641240396?itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQev0xscFR6ngVN9SPRTfu0O7iJpN8fdquwJCttrpZS%2F1orVj68YG7jNY8kNO6flcQtH%2BDwxNFgf7wXPSNBvEK3L5c7spcLfpUpiSxfnzbcH7DAByTJHxNaPX0II77BB92jVD9xCL6TUZ6%2Bw%2Fw6AAa9p&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+                  - img "Centrix 380020 Benda Microtwin Micro Applicators Double End Kit Pink 200/Pk" [ref=e116]
+                - link "SDI S8100116 Points Disposable Brush Applicators Fine Dark Green 400/Pk" [ref=e119] [cursor=pointer]:
+                  - /url: https://www.ebay.com/itm/235992759318?itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQev0xscFR6ngVN9SPRTfu0O7iJpN8fdquwJCttrpZS%2F1orVj68YG7jNY8kNO6flcQtH%2BDwxNFgf7wXPSNBvEK3L5c7spcLfpUpiSxfnzbcH7DAByTJHxNaPX0II77BB92jVD9xCL6TUZ6%2Bw%2Fw6AAa9p&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+                  - img "SDI S8100116 Points Disposable Brush Applicators Fine Dark Green 400/Pk" [ref=e120]
+                - link "Shop store" [ref=e122] [cursor=pointer]:
+                  - /url: https://www.ebay.com/str/mvpdentalsupply?_sacat=257844&promoted_items=232719603086%2C235098578107%2C236087349566%2C236641240396%2C235992759318&itmprp=encpd%3AAQALAAACMJzT%2BVB8lhQdmq2KkB6U%2FtG3T74iWtXyHyNT5e3D9x%2B90OfGylGwfMsLMAELim2zqWBYCfY7XsVInKgMwE3cfMc3B5IVOSo4lZTjZ6uoQgYsE6VhQsROJsbsGXA1xmwItFmeeStvqF6iZkRtUJbxr3cu%2FnYLLA0Y6SJugM5NEZ%2FtG8Rbtok0jTvT7IUkuZKQ7j9GBqrPaILJ6z2Hb9Lt06SA5hyS6Df2%2BHGndquKUwz3BsirSdH8GfxeckaLLzKEEPu4d6Iccd37TeXU4p4Na8S7TUdXVSyINBTvw%2FaWVEPMvPIeqpVrS06Sa8EQbZleZd1Dd%2FI6hZZJKkTiReQBSNmwaDk1juQ2qHTbc%2Fld86GnupMR4zkbr2KdFrqEnF%2BTfHjI%2FBCw%2Fdy9d9ytrrkQtoSWbsuxjIYL8mCZDioDhuLUCgBw6IXsCRevvjzXKMgx56BzdQRNhdUq95wbkp18R8jfogJxynCpmx19ioxN0lo6oIDjaA9dHlkrBBvSo1zbWTaDqs1hI4dqdqkuGd7HG96hpb4rk%2BpR7FFRvdFrG4blAFrgU2BjPVapH2KQgp39gp%2B%2BQHh8RR%2BNVf1jeZW7XQfvS%2BIzCQ2HCZU7%2FXTe5qFb1DMQ80tYqTmSx0X%2FARGa7ERfT3M4vQzvqdJ8Swa9dKa9AOlaVZmAb3BLD7Inm%2FjGuFfVm%2B75YvZfAXONfp%2BR4P4nVf9fzq4zvOKzMAePYatodoBNldUADF52G%2BXnZv3R&itmmeta=wwHmKhYwY%2Fjx0DQwMUtSM1kyVDQzTURGTVk2OUs0NUdXMlJNOTQwMUtSM1kyU1ZIRFhGNDlXUTQ5U1I1M0ZFSL6%2BDA%3D%3D
+              - generic [ref=e132]: Sponsored
+            - generic [ref=e141]:
+              - heading "People who viewed this item also viewed" [level=2] [ref=e148]
+              - group [ref=e150]:
+                - list [ref=e153]:
+                  - listitem [ref=e154]:
+                    - generic [ref=e156]:
+                      - generic [ref=e162]:
+                        - heading "100×Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning" [level=3] [ref=e163]
+                        - generic [ref=e165]: $3.99
+                        - generic [ref=e167]:
+                          - generic [ref=e168]: previous price
+                          - text: $7.98
+                        - generic [ref=e170]: Free delivery
+                      - link "100×Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning" [ref=e171] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/136497803444?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26asc%3D20200818143230%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEJF6eZIC6vaOKTRunCmtbnM%3D%26itm%3D136497803444%26noa%3D1%26plcampt%3D0%3A156628448015%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D1%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D21d2f4aa98e34b4ea42b459f9ab90c73%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                  - listitem [ref=e172]:
+                    - generic [ref=e174]:
+                      - generic [ref=e180]:
+                        - heading "100 Microbrush Micro Brush Applicator Tips (Regular, Fine, Super Fine) Dental" [level=3] [ref=e181]
+                        - generic [ref=e183]: $3.99
+                        - generic [ref=e185]:
+                          - generic [ref=e186]: previous price
+                          - text: $7.98
+                        - generic [ref=e188]: Free delivery
+                        - generic [ref=e190]: Sponsored
+                      - link "100 Microbrush Micro Brush Applicator Tips (Regular, Fine, Super Fine) Dental" [ref=e191] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/184425414995?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEEoKaH%2B4qJYpxo0ZBvcGgx4%3D%26itm%3D184425414995%26noa%3D0%26plcampt%3D0%3A151762816010%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D20200818143230%26ao%3D1%26rk%3D9%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D21d2f4aa98e34b4ea42b459f9ab90c73%26pg%3D2332490&_trksid=p2332490.c101224.m-1&itmprp=cksum%3A18442541499521d2f4aa98e34b4ea42b459f9ab90c73%7Cenc%3AAQALAAAA4HU%252FGPBKMoWrH2cpzpvK9FDC5c4FxwFIV%252Bq0okjrJ6w9cB%252BqWqTCByXEsJeNzj%252BLPZ6Y%252Bcb%252BSNENjzLG3DpJu0mF%252BjDumqaVsdkRw2ewnj%252FgPhWnWSxuk7OUhqMQGyotjjD62plAHaL4qGiK0p2VZisU8es3zgNepLfrSX5%252FaHxV085D4TaOi7Ga1moXrNCgsQneIOrdLFJ0xg3nSLbQCBibL%252FhE%252B0GW9dAWG8mdg1vuIj7AR7lCqQ4NxsHi9sgXwcezXDqIRjAHeOV%252BwJFrym9BAzkachtzyS1YKBHwEORt%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TD5BHXDPTYDF923F6XP
+                  - listitem [ref=e192]:
+                    - generic [ref=e194]:
+                      - generic [ref=e200]:
+                        - heading "100x Dental Disposable Materials Micro Brush Tooth Applicators 1.2/1.5/2.0/2.0mm" [level=3] [ref=e201]
+                        - generic [ref=e203]: $2.70
+                        - generic [ref=e205]: Free delivery
+                      - link "100x Dental Disposable Materials Micro Brush Tooth Applicators 1.2/1.5/2.0/2.0mm" [ref=e206] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/223553545038?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26algo%3DHOMESPLICE.SIM%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D0%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEN3Oa1OxyyCLkhICeBBlTMk%3D%26itm%3D223553545038%26noa%3D1%26brand%3DUnbranded%26asc%3D20200818143230%26ao%3D1%26rk%3D2%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D3%26meid%3D21d2f4aa98e34b4ea42b459f9ab90c73%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+                  - listitem [ref=e207]:
+                    - generic [ref=e209]:
+                      - generic [ref=e215]:
+                        - heading "100×Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning" [level=3] [ref=e216]
+                        - generic [ref=e218]: $0.99
+                        - generic [ref=e220]: + $4.35 delivery
+                      - link "100×Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning" [ref=e221] [cursor=pointer]:
+                        - /url: https://www.ebay.com/itm/356012160236?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D5%26algo%3DHOMESPLICE.SIM%26mech%3D1%26algv%3DDefaultOrganicWebV9BertRefreshRankerWithCassiniEmbRecall%26pmt%3D0%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEKnigpy3W0%2B6QkhUZ5SZ2kM%3D%26itm%3D356012160236%26noa%3D1%26brand%3DUnbranded%26asc%3D20200818143230%26ao%3D1%26rk%3D6%26pid%3D101224%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D21d2f4aa98e34b4ea42b459f9ab90c73%26pg%3D2332490&_trksid=p2332490.c101224.m-1
+          - generic [ref=e224]:
+            - generic [ref=e225]:
+              - generic [ref=e227]:
+                - generic [ref=e229]:
+                  - generic [ref=e230]:
+                    - button "Previous image - Item images thumbnails" [disabled] [ref=e231] [cursor=pointer]:
+                      - img
+                    - generic [ref=e232]:
+                      - button "Picture 1 of 19" [ref=e233] [cursor=pointer]:
+                        - img "Picture 1 of 19" [ref=e234]
+                      - button "Picture 2 of 19" [ref=e235] [cursor=pointer]:
+                        - img "Picture 2 of 19" [ref=e236]
+                      - button "Picture 3 of 19" [ref=e237] [cursor=pointer]:
+                        - img "Picture 3 of 19" [ref=e238]
+                      - button "Picture 4 of 19" [ref=e239] [cursor=pointer]:
+                        - img "Picture 4 of 19" [ref=e240]
+                      - button "Picture 5 of 19" [ref=e241] [cursor=pointer]:
+                        - img "Picture 5 of 19" [ref=e242]
+                      - button "Picture 6 of 19" [ref=e243] [cursor=pointer]:
+                        - img "Picture 6 of 19" [ref=e244]
+                      - button "Picture 7 of 19" [ref=e245] [cursor=pointer]
+                      - button "Picture 8 of 19" [ref=e246] [cursor=pointer]
+                      - button "Picture 9 of 19" [ref=e247] [cursor=pointer]
+                      - button "Picture 10 of 19" [ref=e248] [cursor=pointer]
+                      - button "Picture 11 of 19" [ref=e249] [cursor=pointer]
+                      - button "Picture 12 of 19" [ref=e250] [cursor=pointer]
+                      - button "Picture 13 of 19" [ref=e251] [cursor=pointer]
+                      - button "Picture 14 of 19" [ref=e252] [cursor=pointer]
+                      - button "Picture 15 of 19" [ref=e253] [cursor=pointer]
+                      - button "Picture 16 of 19" [ref=e254] [cursor=pointer]
+                      - button "Picture 17 of 19" [ref=e255] [cursor=pointer]
+                      - button "Picture 18 of 19" [ref=e256] [cursor=pointer]
+                      - button "Picture 19 of 19" [ref=e257] [cursor=pointer]
+                    - button "Next image - Item images thumbnails" [ref=e258] [cursor=pointer]:
+                      - img
+                  - generic [ref=e259]:
+                    - heading "Picture 1 of 19" [level=2] [ref=e260]
+                    - generic [ref=e264]: In 40 carts
+                    - button "Previous image - Item images thumbnails" [ref=e266] [cursor=pointer]:
+                      - img
+                    - region "Opens image gallery dialog 100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 1 of 19" [ref=e267]:
+                      - group "1 of 19" [ref=e268]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 1 of 19" [ref=e269]
+                      - group "2 of 19" [ref=e270]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 2 of 19" [ref=e271]
+                      - group "3 of 19" [ref=e272]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 3 of 19" [ref=e273]
+                      - group "4 of 19" [ref=e274]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 4 of 19" [ref=e275]
+                      - group "5 of 19" [ref=e276]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 5 of 19" [ref=e277]
+                      - group "6 of 19" [ref=e278]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 6 of 19" [ref=e279]
+                      - group "7 of 19" [ref=e280]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 7 of 19" [ref=e281]
+                      - group "8 of 19" [ref=e282]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 8 of 19" [ref=e283]
+                      - group "9 of 19" [ref=e284]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 9 of 19" [ref=e285]
+                      - group "10 of 19" [ref=e286]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 10 of 19" [ref=e287]
+                      - group "11 of 19" [ref=e288]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 11 of 19" [ref=e289]
+                      - group "12 of 19" [ref=e290]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 12 of 19" [ref=e291]
+                      - group "13 of 19" [ref=e292]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 13 of 19" [ref=e293]
+                      - group "14 of 19" [ref=e294]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 14 of 19" [ref=e295]
+                      - group "15 of 19" [ref=e296]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 15 of 19" [ref=e297]
+                      - group "16 of 19" [ref=e298]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 16 of 19" [ref=e299]
+                      - group "17 of 19" [ref=e300]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 17 of 19" [ref=e301]
+                      - group "18 of 19" [ref=e302]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 18 of 19" [ref=e303]
+                      - group "19 of 19" [ref=e304]:
+                        - img "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning - Picture 19 of 19" [ref=e305]
+                    - generic [ref=e306]:
+                      - button "Opens image gallery" [ref=e307] [cursor=pointer]:
+                        - img
+                      - button "Add to watchlist - 47 watchers" [ref=e309] [cursor=pointer]:
+                        - generic [ref=e310]: "47"
+                        - img
+                    - button "Next image - Item images thumbnails" [ref=e312] [cursor=pointer]:
+                      - img
+                - generic [ref=e317]:
+                  - generic [ref=e318]: Have one to sell?
+                  - link "Sell one like this" [ref=e320] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sl/list?mode=SellLikeItem&itemId=266084662385&rt=nc&_trksid=p4429486.m117039.l2567
+                    - generic [ref=e321]: Sell one like this
+                  - link "Sell something else" [ref=e323] [cursor=pointer]:
+                    - /url: https://www.ebay.com/sl/prelist/suggest
+                    - generic [ref=e324]: Sell something else
+                - button "Share" [ref=e330] [cursor=pointer]:
+                  - img
+                  - generic [ref=e331]: Share
+              - generic [ref=e342]:
+                - generic [ref=e345]:
+                  - generic [ref=e347]:
+                    - heading "Similar Items" [level=2] [ref=e349]
+                    - generic [ref=e352]:
+                      - generic [ref=e353]: S
+                      - generic [ref=e354]: e5b3be77-2831-484c-8c74-4a31a0956daa
+                      - generic [ref=e355]: 1a713b04-a14e-47c5-a332-2527eebbd648
+                      - generic [ref=e356]: 67053bab-343d-49bb-b84a-191de37d24ff
+                      - generic [ref=e357]: p
+                      - generic [ref=e358]: 3a13fc69-647c-4556-899f-430a7d93d22c
+                      - generic [ref=e360]: 1bb260d6-9815-4365-9cb2-f5fd0a111bf7
+                      - generic [ref=e361]: ae227d0d-96d8-4523-842b-b57f6864f09b
+                      - generic [ref=e362]: o
+                      - generic [ref=e363]: e75e8eb8-0bb3-461a-8042-fb22b66514fb
+                      - generic [ref=e364]: 302dade5-bfea-4f99-ad5e-e664ea954ea3
+                      - generic [ref=e365]: "n"
+                      - generic [ref=e366]: ea2aefbf-5a9e-49a8-8f0f-a7e1a237f457
+                      - generic [ref=e367]: s
+                      - generic [ref=e368]: 2ed099dc-8d44-4231-8c98-a08c8d194c49
+                      - generic [ref=e370]: 1b1a7878-ce42-414d-81d7-c2d61aa48847
+                      - generic [ref=e371]: deeff647-f372-436f-8ea8-55c52474d4f9
+                      - generic [ref=e372]: o
+                      - generic [ref=e373]: f5c4cc50-1264-4840-841f-86643c3a89d5
+                      - generic [ref=e374]: d4b8b5af-6587-443d-aaea-470d86233d88
+                      - generic [ref=e375]: r
+                      - generic [ref=e376]: bf4d7cdf-e898-4197-8643-eb01bf74f550
+                      - generic [ref=e377]: e
+                      - generic [ref=e378]: 47e0dc3a-45da-4b27-bcd0-ea6269c52b1b
+                      - generic [ref=e380]: bfd18c2a-d9b2-4286-b17d-7e9fc51a1d09
+                      - generic [ref=e381]: d
+                      - generic [ref=e382]: cbcbc074-a0ac-4cee-a099-8b116bfe258a
+                      - generic [ref=e383]: 1ec7933e-14d2-4540-8a81-c3627f1cacce
+                      - generic [ref=e384]: ea56cf54-d3b5-441e-ba80-6a5911c29035
+                      - generic [ref=e385]: 8a63ebca-2c66-4556-b6d9-012131bf7312
+                      - generic [ref=e386]: 70ab4a93-24ca-486b-a769-2919fb7e2309
+                      - generic [ref=e387]: a26ec262-d996-48fd-911b-b4aa23a3828c
+                      - generic [ref=e389]: 98cee763-c3e3-485b-ab76-f422101f75fd
+                      - generic [ref=e390]: 539a1dbb-993d-497b-a4e7-0a249ba4d7ea
+                      - generic [ref=e391]: 80db1af9-1fba-4588-8414-7932eac7b20f
+                      - generic [ref=e392]: 623e992f-95a1-4769-b783-1f0273df592b
+                      - generic [ref=e393]: dfef9ff3-fbf5-48f2-98b3-ed8fe92ebc5a
+                  - link "See all" [ref=e396] [cursor=pointer]:
+                    - /url: https://www.ebay.com/recs?component=recs-below-hero-carousel&placement_title=i18n.Tag_SIs&sourceModuleId=101875&item_id=266084662385&algos=HOMESPLICE.SIM.SimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco&placement_subTitle=i18n.ModuleSubTitle_Sponsored&homespliceOverrideConfig=%7Bsplice.cpc-config-dweb.cpc-expansion-slot-ids%3D%5B1%2C+3%2C+5%2C+7%2C+9%2C+11%5D%2Csplice.cpc-config-dweb.smart-price-parmas.undere-threshold%3D4%2Csplice.cpc-config-dweb.smart-price-parmas.enable-overe%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-roas-calibration-by-l2%3Dfalse%2Csplice.cpc-config-dweb.smart-price-parmas.enable-undere%3Dtrue%2Csplice.cpc-config-dweb.max-cpc-slots-num%3D6%2Csplice.cpc-config-dweb.blend-reserve-price-config.reserve-price-strategy%3D2%2Csplice.cpc-config-dweb.enable-low-roas-filter%3Dtrue%2Csplice.cpc-config-dweb.smart-price-parmas.enable-cvr-calibration-by-l2%3Dtrue%2Csplice.cpc-config-dweb.blend-reserve-price-config.cpa-cpm-multiplier.-1%3D15%2Csplice.cpc-config-dweb.cpc-low-roas-dimension%3D%5BblacklistLeaf%2C+version01%5D%2Csplice.cpc-config-dweb.smart-price-parmas.overe-threshold%3D4%7D
+                    - generic [ref=e397]: See all
+                - group [ref=e399]:
+                  - generic [ref=e400]:
+                    - button "Go to the previous slide, Similar Items" [disabled] [ref=e401]:
+                      - img
+                    - list [ref=e403]:
+                      - listitem [ref=e404]:
+                        - generic [ref=e406]:
+                          - generic [ref=e412]:
+                            - heading "100Pcs Dental Microbrush Disposable Applicators Tips Micro Brush Cleaning 4Size" [level=3] [ref=e413]
+                            - generic [ref=e414]:
+                              - generic [ref=e416]: New
+                              - generic [ref=e417]: $3.99
+                            - generic [ref=e419]:
+                              - generic [ref=e420]: previous price
+                              - text: $4.99 20% off
+                            - generic [ref=e422]: Free delivery
+                            - generic [ref=e424]: 593 sold
+                          - link "100Pcs Dental Microbrush Disposable Applicators Tips Micro Brush Cleaning 4Size" [ref=e425] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/304140461223?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEFO0TGvcv5ixCGApY3LfpHE%3D%26itm%3D304140461223%26noa%3D0%26plcampt%3D0%3A159434847019%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D1%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A304140461223846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbj7IRtXfa1LDa6SahwQbjONjFahmyBvKxiqq%252B4Amk7ho730l3731ory3AfHLGqJOW7tL3aMWZAsgmntgy2oqJ68sFUWebg9shFfC%252FG%252Bchr%252BwDVrLA0dnerfGOQMzb8Be51QkcPfNEAaMyT9h0Ya%252BVQtONxRy6p4v54NawLsnz2FjIWK3DjORCaeHQtDDca6wRLsmmrlvYOFaAaXhmjt6wtWg499wSNtDWLWwK5J6HitsR7qZnBDGPnYqiqWYjtv1zaQBsE6%252FcHv5hUfJcFhvv0o4For8N9w8JKca9PYdVGeU%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TD323NQ2789EA43F52D
+                      - listitem [ref=e426]:
+                        - generic [ref=e428]:
+                          - generic [ref=e434]:
+                            - heading "100×Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning" [level=3] [ref=e435]
+                            - generic [ref=e436]:
+                              - generic [ref=e438]: New
+                              - generic [ref=e439]: $3.99
+                            - generic [ref=e441]:
+                              - generic [ref=e442]: previous price
+                              - text: $7.98 50% off
+                            - generic [ref=e444]: Free delivery
+                            - generic [ref=e446]: Seller with 100% positive feedback
+                          - link "100×Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning" [ref=e447] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/136497803444?var=435252947922&_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEJF6eZIC6vaOKTRunCmtbnM%3D%26itm%3D136497803444%26noa%3D0%26plcampt%3D0%3A156628448015%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D2%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A136497803444846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbB0fAwQH9aH%252FlrWMk2CgHJtSUSWBgLmB22LonXP5VJqaQvrnpw5VsVFSoDdABzMxIR2W9iIbuQxSxXqvjfnccv1oX%252BdfQBKpYOtwzPozwGTMAdPiU0vFtyEBA90e%252F7nsZyCyxG2YB5hIgcsdrzvryEG3t39B6GPIUBRT6m3mjcXC6QLzXq%252BsnK7ClEwbJk4COgm96BoXxtiOcJFK%252Bp%252BNv3WWi4DxVXIYtr6NQ53R2Uc9KXGccFI%252BGbjZUFsRlEQUIKn%252BMdwsjKhS%252BE4CuDM8kfJYkqvYWXI4lM3SoS1MwAcU%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TD9M98VVGT2G6RED91R
+                          - button "Add 100×Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning to your watch list" [ref=e450] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e451]:
+                        - generic [ref=e453]:
+                          - generic [ref=e459]:
+                            - heading "400 Microbrush Micro Brush Applicator Tips Regular, Fine, Super Fine Dental" [level=3] [ref=e460]
+                            - generic [ref=e461]:
+                              - generic [ref=e463]: New
+                              - generic [ref=e464]: $12.95
+                            - generic [ref=e466]: Free delivery
+                            - generic [ref=e467]:
+                              - generic [ref=e468]:
+                                - img
+                              - generic [ref=e469]: Top Rated Plus
+                            - generic [ref=e472]: 11880 sold
+                          - link "400 Microbrush Micro Brush Applicator Tips Regular, Fine, Super Fine Dental" [ref=e473] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/164081015289?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEKJZ8Aloecntj65fpMmockA%3D%26itm%3D164081015289%26noa%3D0%26plcampt%3D0%3A13702643013%2C5%3AAG5033281353%7CAG5063745553%7CAG5157352453%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D4%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A164081015289846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbCKFRfSqWCG1dBwAp1gKhpf6fKDfj2ENLwLobJb191wTUe2s%252BxLUWOZoGu8qQS8VD3xVKDP5H%252B0qUUHuxBKjxMTnAsRybf6FgVqM1OKhp7VCChx%252BrM5zcT1n%252Fo8lxBhKOjs2ZD%252FreXS8OHATJp7EUg9QsvC6INtgbmGVzVp8QUhMqYF%252FVud17bqblsYIZxwEc5vyigDnLj2%252BUUDolOKF632%252FrTeV95F0LIEHjkKHcBQZykftTyh326J4DBRZ8MNjUBX%252BQEBI%252F68SllkksD10ILlzFPNa1ohl7qz6BaduH250%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TEHR59MP067Y6BK7TPW
+                      - listitem [ref=e474]:
+                        - generic [ref=e476]:
+                          - generic [ref=e482]:
+                            - heading [level=3] [ref=e483]: 100Pcs Dental Microbrush Disposable Applicators Tips Micro Brush Cleaning
+                            - generic [ref=e484]:
+                              - generic [ref=e486]: New
+                              - generic [ref=e487]: $7.81
+                            - generic [ref=e489]:
+                              - generic [ref=e490]: previous price
+                              - text: $8.49 8% off
+                            - generic [ref=e492]: + $5.00 delivery
+                            - generic [ref=e493]:
+                              - generic [ref=e494]:
+                                - img
+                              - generic [ref=e495]: Top Rated Plus
+                            - generic [ref=e498]: Seller with 100% positive feedback
+                          - link [ref=e499] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/297670660237?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEGlAonhoGDzf%2F8R%2FnarOQTM%3D%26itm%3D297670660237%26noa%3D0%26plcampt%3D0%3A85627406014%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D5%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A297670660237846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbuve3wPZjEw1UspCaFBWDYHmaH8XsW6BoPQunfthX898uV6wWOxA0iC%252BRWGye7ysJyLONU0SgrvCagu5A70WqWMdlc1wvURDlOOJ1vLX%252BYtS792dxZXfZrb6NBQQB0pP0HPowZFy0V4kRkJyEElgBywleALWhz7g%252B85MP14E6oRcPFy%252FvoCBVZrPl0QAJH56wTP%252BDqG7AZhAXHGdAoDx3xY9VVaNSPWnzVXzbu1XbEl%252FrjJDq8vt%252BOBAJQDCdQnfqVMz60IGLtUStmgiNiNdGfaqzi3hxZFMTdFsa8%252FoVeNs%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TEQPWJ91F0ZC6E6X91P
+                      - listitem [ref=e500]:
+                        - generic [ref=e502]:
+                          - generic [ref=e508]:
+                            - heading [level=3] [ref=e509]: 100Pcs Dental Microbrush Disposable Applicators Tips Micro Brush Cleaning 4Sizes
+                            - generic [ref=e510]:
+                              - generic [ref=e512]: New
+                              - generic [ref=e513]: $6.38
+                            - generic [ref=e515]:
+                              - generic [ref=e516]: previous price
+                              - text: $12.76 50% off
+                            - generic [ref=e518]: Free delivery
+                            - generic [ref=e520]: Seller 99.8% positive
+                          - link [ref=e521] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/297818795406?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEKscxJCtivw7mcJdhSOM77M%3D%26itm%3D297818795406%26noa%3D0%26plcampt%3D0%3A161839158014%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D6%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A297818795406846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbZJxilmIdAzwDTLq0nEZnMaEHeX3FRDefiGGT1CAU444Kv0YHVwwVFp87Khzx6ZIOv9McSEg3fx2CKdwcXyWmIctS68RlLAdYQvQTxSZRrsvbQNvfSHgiSF%252B7Vf%252FRYS8t1RL6xf5qWL7yJkYK23po9RLaGTloVczjK8WMlY499KgVIsTXH3WOGCxcDMddqbykgr%252BgTixjSyfWMGsjLcW0QSSZq7OIvYb5mW4OB9tIRBaVZggkzNhQzA%252BhlfHYuUnQNOcgr4fNNDvs1WxaiPmU4s%252Fxs7ba2b0aMnKPy2BHKVM%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TEWNVYQ3WM30NNHYN3G
+                      - listitem [ref=e522]:
+                        - generic [ref=e524]:
+                          - generic [ref=e530]:
+                            - heading [level=3] [ref=e531]: 100×Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning
+                            - generic [ref=e532]:
+                              - generic [ref=e534]: New
+                              - generic [ref=e535]: $4.55
+                            - generic [ref=e537]: Free delivery
+                            - generic [ref=e539]: Seller 99.9% positive
+                          - link [ref=e540] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/298154691708?var=595213695620&_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEKscxJCtivw7mcJdhSOM77M%3D%26itm%3D298154691708%26noa%3D0%26plcampt%3D0%3A161839158014%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D7%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A298154691708846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbpqPEcKYpyMW2GK4%252FKgtn7V828mEkIKUXA7w3uxdJvRwAcHpw2ovq3xMoUnYfDqbQilVwI5I8bzk5R5maPx1BCOpgKh1vcV62omKqItjTXZVM8y%252B3uRMDFjflBRmm57m0ov7rtHULBO9pR078pA9w0qoDr64pfMFUbp7oxlmzl26PzWDF4mXjZAmx6955sTeDuHcylAI2ZeSFKP3TZR%252FGKfsnx6mvtvI%252FAcYM9V36be%252FK1aQ73%252BT6IVIf%252BCHxcgsVZckADqxt3HD4STnnleMZxelfoP9Rqp2%252FegE3RtdlDzw%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TF05MH5Y8M8GQSG7AZK
+                          - button [ref=e543] [cursor=pointer]:
+                            - img
+                      - listitem [ref=e544]:
+                        - generic [ref=e546]:
+                          - generic [ref=e552]:
+                            - heading [level=3] [ref=e553]: 400 Dental Micro Applicators Brushes Disposable Bendable Fine Regular Superfine
+                            - generic [ref=e554]:
+                              - generic [ref=e556]: New
+                              - generic [ref=e557]: $10.99
+                            - generic [ref=e559]: Free delivery
+                            - generic [ref=e560]:
+                              - generic [ref=e561]:
+                                - img
+                              - generic [ref=e562]: Top Rated Plus
+                            - generic [ref=e565]: 73 sold
+                          - link [ref=e566] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/168245041501?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26asc%3D305797,306630,303807,306635%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEKJZ8Aloecntj65fpMmockA%3D%26itm%3D168245041501%26noa%3D0%26plcampt%3D0%3A13702643013%2C5%3AAG6457355253%7CAG5157352453%26algo%3DHOMESPLICE.SIM%26ao%3D1%26rk%3D8%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A168245041501846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbEuae8VOg1rJ0B6mcElwj02t4SmrNl6huB8k2h%252Frsnafbf3oE5P%252FSjSyQ6e%252F533AnOV%252Bm1Qt%252B7%252BABcAMK1DYxYWcUnncjfy2jd44oQEjG8rmmi5vApIWjYwp9lFK%252FfgvlrVkeVslLTKmwr%252FQ63Rxh7iRCu8v9lNINduuwyYHWmp6PiXr%252BX9LGpMYV9KTMUsBKXD92m4K8v5hkt3Et0HPr1EnBTbZt1JMDwvToXwzGvqzRh3AqyTIIHApx2uuSRcpAotUYx0afPeD96IJn%252FyUBFWVi9zG2gpBBc7nS0SuYYls%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TF5CSKG37WNNRK0PH4B
+                      - listitem [ref=e567]:
+                        - generic [ref=e569]:
+                          - generic [ref=e575]:
+                            - heading [level=3] [ref=e576]: 500Pcs Dental Microbrush Disposable Applicators Tips Micro Brush Cleaning
+                            - generic [ref=e577]:
+                              - generic [ref=e579]: New
+                              - generic [ref=e580]: $14.10
+                            - generic [ref=e582]:
+                              - generic [ref=e583]: previous price
+                              - text: $15.33 8% off
+                            - generic [ref=e585]: Free delivery
+                            - generic [ref=e587]: Seller with 100% positive feedback
+                          - link [ref=e588] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/166881946166?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEBjorqc%2B1qL22%2Bu6gJ2OHTc%3D%26itm%3D166881946166%26noa%3D0%26plcampt%3D0%3A58009899018%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D12%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A166881946166846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mb%252F9mju9dvCw7hiF0CMiIQVIptbqBx9mo0E7XIK%252BJcnIiNCUd7yTsHnaQxPILXAJ%252Fr0M3Y1D2nNoh0bOfkeO28ehv%252F0maqOTEXwVbSKaCU6aVctSs2Chjths5ZkChGsueErkR6KS5eFD51EHJCPjrBv2%252BkkN6cMx538dEKbKxxKuWT0rHc3taH3Q6VE7fQGhV%252FzJ4KmpmaV3YYAptyCwqqW0fab2fKXGiebf6des2qaseJhAoqirhDCisPtajfNcPqsw8C8XurEJ%252Bf5bWtdZZ6T4d1UbbKDWuJ2TUEN9gE8tU%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TF9525TPMKWGPPEAZ63
+                      - listitem [ref=e589]:
+                        - generic [ref=e591]:
+                          - generic [ref=e597]:
+                            - heading [level=3] [ref=e598]: 100×Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning
+                            - generic [ref=e599]:
+                              - generic [ref=e601]: New
+                              - generic [ref=e602]: $4.94
+                            - generic [ref=e604]: Free delivery
+                          - link [ref=e605] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/167650152642?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAECekMxufIAlOQcHU52dJZ7s%3D%26itm%3D167650152642%26noa%3D0%26plcampt%3D0%3A149606944010%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D13%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A167650152642846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbuFDtgnA0aShvLZf2IoPD9YoAPQNKDNH2jWnFtN1EHtIpoPZ%252Fw%252FV8deWylUUDw40GCIZnd5Fo9LlEctqNwJBDXArguFyqqDP1f%252BRXLzLbQt98UuCO3mkYmUPyauMyl1J5MWPOHmYHTDI5yvgDsqKhjz84sdqlFbSBAob7U7s3HaSBxsMQ2oyvb1j3FVDYZ%252FwpmIINBmOcdLieDuaQuMgs7KHmwgMGTpQAKqzFNTy1Mu5v49Gk%252BPXe7rLXxiOLClBV5o3YxyOBQ8FDeVRJc--wIjcxbRgq5nqqLqZIUQLQ5uA%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TFD1FJ21VA4VKXF6BAM
+                      - listitem [ref=e606]:
+                        - generic [ref=e608]:
+                          - generic [ref=e614]:
+                            - heading [level=3] [ref=e615]: Micro Brushes Applicators Microbrush Dental (Regular, Fine, Super Fine) USA
+                            - generic [ref=e616]:
+                              - generic [ref=e618]: New
+                              - generic [ref=e619]: $7.98
+                            - generic [ref=e621]:
+                              - generic [ref=e622]: previous price
+                              - text: $15.96 50% off
+                            - generic [ref=e624]: Free delivery
+                            - generic [ref=e626]: 325 sold
+                          - link [ref=e627] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/126864083050?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEFfTGVSxwmhXflES4Gobn1s%3D%26itm%3D126864083050%26noa%3D0%26plcampt%3D0%3A162904060012%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D14%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A126864083050846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbrLdaST1fN%252FFEloA2io%252FLxND9rtgtqljWk14yJUerDtP74L%252BBKJazLsz1Nr39Y83Yu5JRBRd6bs%252Fi%252Fdoj66H%252B0g5UKdhZb3%252FbEigA8evJRSdsvyUj%252FqdmDTDnQ%252Bjb8SRjpjyGVNnQDAsu1ILo0PDZPtLICnlVEMdI0UxEfjC2puQKtRP%252BEEV1LeRajXMBRIhPNXUAlQdXmZVK7NBcLSKZkOoUNn7%252FFX49IUHxbVt1RcNDIU7OygwGcyYBRdd7BlfQ1XINMZFM5IHj1CIhK5gki32xNXybjOL11E0MzzS0WM0%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TFH9WX2TWX05XB8GJR0
+                      - listitem [ref=e628]:
+                        - generic [ref=e630]:
+                          - generic [ref=e636]:
+                            - heading [level=3] [ref=e637]: NEW Dental Microbrush Disposable Applicators Tips Micro Brush Cleaning 4Sizes
+                            - generic [ref=e638]:
+                              - generic [ref=e640]: New
+                              - generic [ref=e641]: $5.19
+                            - generic [ref=e643]:
+                              - generic [ref=e644]: previous price
+                              - text: $10.38 50% off
+                            - generic [ref=e646]: Free delivery
+                            - generic [ref=e648]: Seller 99.9% positive
+                          - link [ref=e649] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/126251644342?_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEFfTGVSxwmhXflES4Gobn1s%3D%26itm%3D126251644342%26noa%3D0%26plcampt%3D0%3A162904060012%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D15%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A126251644342846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0MbC%252FT2LsoFcV1MdVsyzblOJDwGaZBoTsfh0eXcEadPm9VxDjMbUgMC%252FKIu9O%252BrnuCrxWzuxvrbBa6AD8OG8NN9P0B%252FDqtXW96%252FQIcnfwQ9kPGvPU5EGQmzpGfOHRjx%252BlSQnx5qO1mYKNWQN7ESdM40vJCijaUDUyVNtkARwrTrGAouDvEiso5ZAu1comAE9m86PKmG3MwqyTTKGZbFVtofWkcrEHs0y26MFjwIZWGV63YAHDPhd1qa1TOrtTJ%252FUtUmtoZFmxuUmyvHY8PpFRVpxQ7MgSouwToa9CwCYOSfqJ0%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TFNGG7SBHRTQ62PVB9F
+                      - listitem [ref=e650]:
+                        - generic [ref=e652]:
+                          - generic [ref=e658]:
+                            - heading [level=3] [ref=e659]: 400×Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning
+                            - generic [ref=e660]:
+                              - generic [ref=e662]: New
+                              - generic [ref=e663]: $13.59
+                            - generic [ref=e665]:
+                              - generic [ref=e666]: previous price
+                              - text: $14.77 8% off
+                            - generic [ref=e668]: + $5.00 delivery
+                            - generic [ref=e670]: Seller with 100% positive feedback
+                          - link [ref=e671] [cursor=pointer]:
+                            - /url: https://www.ebay.com/itm/187031226320?var=695055004929&_trkparms=itmf%3D1%26aid%3D1110006%26rkt%3D12%26mech%3D1%26algv%3DSimVIDwebV4WithCtxRankerV1UnifiedFeaturesWithAuctionUnificationKatReco%26pmt%3D1%26amclksrc%3DITM%26sd%3D266084662385%26sid%3DAQALAAAAEJYH09Be3YQOhb3D9iWs2mk%3D%26itm%3D187031226320%26noa%3D0%26plcampt%3D0%3A12724545010%26algo%3DHOMESPLICE.SIM%26brand%3DUnbranded%26asc%3D305797,306630,303807,306635%26ao%3D1%26rk%3D17%26pid%3D101875%26b%3D1%26mehot%3Dnone%26lsid%3D0%26meid%3D846aadfc38284807a4655cd3a73d16c7%26pg%3D2332490&_trksid=p2332490.c101875.m1851&itmprp=cksum%3A187031226320846aadfc38284807a4655cd3a73d16c7%7Cenc%3AAQALAAABMNcuE5wSiaWXUpZtpAuJty4GYCq%252BLEH%252FN8HXnEhWX0xwkDW1uDN51f72s7GsFOUQ9WFGrCI8AiSbyE6tacE%252FxpPzcbI6%252Bfuy9WmqzFcws0Mbexx%252BMoVcBloCTuV2YoNtwelFKzB1m%252BoujXQk%252BGcNzczusWvhNcDSV9HpM5zj6EGrkTp3wx0G6j2tMYBl8G6w9dRo6GHg5M50ur0ikk5%252BAqFf3wn6DrJYm4YANeYZW6aRtEmHpzX8yVA%252FLk%252BZMndSpQuTqzZ9hWv5RT9YOuGbVlZ7NkTIRQK8V8%252Bl5dawd2uSExQDRFMkwa%252FQdQN7ebWP0uxLCOUF0aBQjq%252BqpWznKJFxgSO%252BYjHKkGPGqyydBSJJThmYodKNrzziX5XCB9r%252Bwk%252FWI0naGImEV6OcdCO6gm0%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01KR3Y2TFRGNQNR4NZ8A58TYER
+                          - button [ref=e674] [cursor=pointer]:
+                            - img
+                    - button "Go to the next slide, Similar Items" [ref=e675]:
+                      - img
+            - generic [ref=e678]:
+              - heading "100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning" [level=1] [ref=e680]
+              - generic [ref=e682] [cursor=pointer]:
+                - generic [ref=e684]:
+                  - link [ref=e686]:
+                    - /url: https://www.ebay.com/str/imvip365?_trksid=p4429486.m3561.l161210
+                    - img [ref=e688]
+                  - generic [ref=e689]:
+                    - generic [ref=e690]:
+                      - link "imvip365" [ref=e691]:
+                        - /url: https://www.ebay.com/str/imvip365?_trksid=p4429486.m3561.l161211
+                      - generic [ref=e693]: (3547)
+                    - generic [ref=e694]:
+                      - button "99.7% positive" [ref=e696]
+                      - link "Seller's other items" [ref=e698]:
+                        - /url: https://www.ebay.com/str/imvip365?_trksid=p4429486.m3561.l170197
+                        - generic [ref=e699]: Seller's other items
+                        - generic [ref=e700]: Seller's other items
+                      - button "Message seller" [ref=e702]:
+                        - generic [ref=e703]: Message seller
+                        - generic [ref=e704]: Message seller
+                - button "See more about this seller" [ref=e706]:
+                  - img
+              - generic [ref=e710]: US $2.29/ea
+              - generic [ref=e711]:
+                - generic [ref=e712]: "Condition:"
+                - generic [ref=e714]:
+                  - generic [ref=e715]:
+                    - generic [ref=e716]: New
+                    - generic [ref=e717]: New
+                  - button "More information - About this item condition" [ref=e718] [cursor=pointer]:
+                    - generic [ref=e719]:
+                      - img "More information - About this item condition"
+              - 'button "Model: Select" [ref=e723] [cursor=pointer]':
+                - generic [ref=e724]:
+                  - generic [ref=e725]: "Model:"
+                  - generic [ref=e726]: Select
+                  - img
+              - generic [ref=e727]:
+                - generic [ref=e729]:
+                  - generic [ref=e730]: "Quantity:"
+                  - button [disabled] [ref=e731]:
+                    - img
+                  - spinbutton "Quantity:" [disabled] [ref=e732]: "1"
+                  - button [disabled] [ref=e733]:
+                    - img
+                - status [ref=e734]: 4,496 sold
+              - generic [ref=e735]:
+                - generic [ref=e736]: "Bulk savings:"
+                - generic [ref=e737]:
+                  - button "Buy 1 for $2.29, selected" [ref=e738] [cursor=pointer]:
+                    - generic [ref=e739]: Buy 1
+                    - generic [ref=e740]: $2.29/ea
+                    - generic [ref=e741]: Buy 1 for $2.29
+                  - button "Buy 2 for $2.27 each one" [ref=e742] [cursor=pointer]:
+                    - generic [ref=e743]: Buy 2
+                    - generic [ref=e744]: $2.27/ea
+                    - generic [ref=e745]: Buy 2 for $2.27 each one
+                  - button "Buy 3 for $2.24 each one" [ref=e746] [cursor=pointer]:
+                    - generic [ref=e747]: Buy 3
+                    - generic [ref=e748]: $2.24/ea
+                    - generic [ref=e749]: Buy 3 for $2.24 each one
+                  - generic [ref=e750]:
+                    - generic [ref=e751]: 4 or more for $2.22/ea
+                    - generic [ref=e752]: Buy 4 or more for 2.22 each one
+              - list [ref=e754]:
+                - listitem [ref=e755]:
+                  - button "Buy It Now" [ref=e757] [cursor=pointer]:
+                    - generic [ref=e758]: Buy It Now
+                - listitem [ref=e759]:
+                  - button "Add to cart" [ref=e761] [cursor=pointer]:
+                    - generic [ref=e762]: Add to cart
+                - listitem [ref=e763]:
+                  - generic [ref=e765]:
+                    - status [ref=e766]: Add to Watchlist
+                    - link "Add to Watchlist" [ref=e771] [cursor=pointer]:
+                      - /url: https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&ru=https%3A%2F%2Fwww.ebay.com%2Fitm%2F266084662385
+                      - generic [ref=e772]:
+                        - img
+                        - text: Add to Watchlist
+              - generic [ref=e775]:
+                - generic [ref=e776]:
+                  - generic [ref=e777]:
+                    - img
+                  - generic [ref=e779]: This one's trending. 4496 have already sold.
+                - generic [ref=e780]:
+                  - generic [ref=e781]:
+                    - img
+                  - generic [ref=e783]: Breathe easy. Free returns.
+              - generic [ref=e786]:
+                - heading "Shipping, returns, and payments" [level=2] [ref=e789]:
+                  - generic [ref=e790]: Shipping, returns, and payments
+                - generic [ref=e792]:
+                  - generic [ref=e795]:
+                    - generic [ref=e798]: "Shipping:"
+                    - generic [ref=e800]:
+                      - generic [ref=e801]:
+                        - text: US $2.99 Economy Shipping from outside US.
+                        - button "See details for shipping" [ref=e802] [cursor=pointer]:
+                          - generic [ref=e803]:
+                            - text: See details
+                            - generic [ref=e804]: for shipping
+                      - generic [ref=e805]: "Located in: beijing, China"
+                  - region [ref=e809]:
+                    - generic [ref=e810]:
+                      - img
+                    - generic [ref=e811]: This item includes applicable import fees—you won’t pay anything extra after checkout.
+                  - generic [ref=e813]:
+                    - generic [ref=e816]: "Import fees:"
+                    - generic [ref=e819]:
+                      - text: Includes import fees.
+                      - button "More information":
+                        - generic:
+                          - img "More information"
+                  - generic [ref=e823]:
+                    - generic [ref=e826]: "Delivery:"
+                    - generic [ref=e829]:
+                      - text: Estimated between Tue, Jun 2 and Mon, Jul 13 to 30339
+                      - button "Information - Estimated delivery date - opens a layer" [ref=e835]:
+                        - img
+              - generic [ref=e842]:
+                - generic [ref=e845]: "Returns:"
+                - generic [ref=e848]:
+                  - text: 30 days returns. Seller pays for return shipping.
+                  - button "See details - for more information about returns" [ref=e849] [cursor=pointer]:
+                    - generic [ref=e850]:
+                      - text: See details
+                      - generic [ref=e851]: "- for more information about returns"
+              - generic [ref=e854]:
+                - generic [ref=e858]:
+                  - generic [ref=e861]: "Payments:"
+                  - generic [ref=e864]:
+                    - img "PayPal" [ref=e865]
+                    - img "Venmo" [ref=e867]
+                    - img "Google Pay" [ref=e869]
+                    - img "Visa" [ref=e871]
+                    - img "Master Card" [ref=e873]
+                    - img "Discover" [ref=e875]
+                    - img "Diners Club" [ref=e878]
+                - generic [ref=e886]:
+                  - img "Paypal Credit" [ref=e888]
+                  - generic [ref=e889]:
+                    - text: Special financing available.
+                    - link "Learn more - for PayPal Credit, opens in a new window or tab" [ref=e890] [cursor=pointer]:
+                      - /url: https://www.billmelater.com/cm/paypal/landers/15ebayPPCNB.html
+                      - generic [ref=e891]:
+                        - text: Learn more
+                        - generic [ref=e892]: "- for PayPal Credit, opens in a new window or tab"
+              - generic [ref=e895]:
+                - heading "Shop with confidence" [level=2] [ref=e898]
+                - generic [ref=e899]:
+                  - generic [ref=e901]:
+                    - img
+                  - generic [ref=e902]:
+                    - generic [ref=e903]: eBay Money Back Guarantee
+                    - generic [ref=e904]:
+                      - text: Get the item you ordered or your money back.
+                      - link "Learn more eBay Money Back Guarantee - opens new window or tab" [ref=e905] [cursor=pointer]:
+                        - /url: https://www.ebay.com/ebay-money-back-guarantee/
+                        - generic [ref=e906]:
+                          - text: Learn more
+                          - generic [ref=e907]: eBay Money Back Guarantee - opens new window or tab
+          - generic [ref=e908]:
+            - generic [ref=e913]:
+              - tablist [ref=e914]:
+                - tab "About this item" [selected] [ref=e915] [cursor=pointer]:
+                  - generic [ref=e916]: About this item
+              - tabpanel "About this item" [ref=e918]:
+                - generic [ref=e921]:
+                  - generic [ref=e924]:
+                    - generic [ref=e928]: Seller assumes all responsibility for this listing.
+                    - generic [ref=e932]: eBay item number:266084662385
+                    - generic [ref=e936]:
+                      - text: Last updated on Apr 30, 2026 09:51:20 PDT
+                      - link "View all revisions View all revisions" [ref=e937] [cursor=pointer]:
+                        - /url: https://www.ebay.com/rvh/266084662385?rt=nc&_trksid=p4429486.m148105.l48144
+                        - generic [ref=e938]:
+                          - text: View all revisions
+                          - generic [ref=e939]: View all revisions
+                  - generic [ref=e942]:
+                    - heading "Item specifics" [level=2] [ref=e945]:
+                      - generic [ref=e946]: Item specifics
+                    - generic [ref=e948]:
+                      - generic [ref=e949]:
+                        - generic [ref=e951]:
+                          - term [ref=e952]:
+                            - generic [ref=e954]: Condition
+                          - definition [ref=e955]:
+                            - generic [ref=e958]:
+                              - generic [ref=e959]: "New: A brand-new, unused, unopened, undamaged item in its original packaging (where packaging is ..."
+                              - button "Read more about the condition" [ref=e961]:
+                                - generic [ref=e962]:
+                                  - text: Read more
+                                  - generic [ref=e963]: about the condition
+                        - generic [ref=e965]:
+                          - term [ref=e966]:
+                            - generic [ref=e968]: MPN
+                          - definition [ref=e969]:
+                            - generic [ref=e971]: A5-14345
+                      - generic [ref=e972]:
+                        - generic [ref=e974]:
+                          - term [ref=e975]:
+                            - generic [ref=e977]: Brand
+                          - definition [ref=e978]:
+                            - generic [ref=e980]: Unbranded
+                        - generic [ref=e982]:
+                          - term [ref=e983]:
+                            - generic [ref=e985]: Country of Origin
+                          - definition [ref=e986]:
+                            - generic [ref=e988]: China
+                  - generic [ref=e989]:
+                    - generic [ref=e990]: Category
+                    - navigation "breadcrumb" [ref=e993]:
+                      - heading "breadcrumb" [level=2] [ref=e994]
+                      - list [ref=e995]:
+                        - listitem [ref=e996]:
+                          - link "Business & Industrial" [ref=e997] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Business-Industrial/12576/bn_1853744
+                          - img
+                        - listitem [ref=e998]:
+                          - link "Healthcare, Lab & Dental" [ref=e999] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Healthcare-Lab-Dental/11815/bn_1851782
+                          - img
+                        - listitem [ref=e1000]:
+                          - link "Medical, Lab & Dental Supplies" [ref=e1001] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Medical-Lab-Dental-Supplies/185284/bn_115022270
+                          - img
+                        - listitem [ref=e1002]:
+                          - link "Micro Applicators" [ref=e1003] [cursor=pointer]:
+                            - /url: https://www.ebay.com/b/Micro-Applicators/257844/bn_115384794
+                  - generic [ref=e1004]:
+                    - heading "Item description from the seller" [level=2] [ref=e1007]
+                    - iframe [ref=e1008]:
+                      - generic [active]:
+                        - generic:
+                          - generic [ref=f868e1]:
+                            - generic [ref=f868e3]: YOU MAY ALSO LIKE
+                            - list [ref=f868e4]:
+                              - listitem [ref=f868e5]:
+                                - link "MacDent Dental Endodontic Gutta Percha / Absorbent Paper Points Taper .02/04/06 4.50 USD Buy it now" [ref=f868e6] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/266355359786
+                                  - generic [ref=f868e8]: MacDent Dental Endodontic Gutta Percha / Absorbent Paper Points Taper .02/04/06
+                                  - generic [ref=f868e9]: 4.50 USD
+                                  - generic [ref=f868e10]: Buy it now
+                              - listitem [ref=f868e12]:
+                                - link "Dental Wireless Endo Heated Pen /Gutta Percha Cutter w/4 tips / Root Canal Point 3.99 USD Buy it now" [ref=f868e13] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/264438805812
+                                  - generic [ref=f868e15]: Dental Wireless Endo Heated Pen /Gutta Percha Cutter w/4 tips / Root Canal Point
+                                  - generic [ref=f868e16]: 3.99 USD
+                                  - generic [ref=f868e17]: Buy it now
+                              - listitem [ref=f868e19]:
+                                - link "100pcs Gutta Percha Bar tips for Dental Obturation Endodontic Gun Filling System 22.99 USD Buy it now" [ref=f868e20] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/263838135024
+                                  - generic [ref=f868e22]: 100pcs Gutta Percha Bar tips for Dental Obturation Endodontic Gun Filling System
+                                  - generic [ref=f868e23]: 22.99 USD
+                                  - generic [ref=f868e24]: Buy it now
+                              - listitem [ref=f868e26]:
+                                - link "MacDent Dental Obturation Endodontic Gutta Percha Paper Points For WAVE ONE GOLD 12.99 USD Buy it now" [ref=f868e27] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/256541160211
+                                  - generic [ref=f868e29]: MacDent Dental Obturation Endodontic Gutta Percha Paper Points For WAVE ONE GOLD
+                                  - generic [ref=f868e30]: 12.99 USD
+                                  - generic [ref=f868e31]: Buy it now
+                              - listitem [ref=f868e33]:
+                                - link "Dental Endo Gutta Percha Points Messurement Ruler Root Files Gauge Cutter 134°C 6.99 USD Buy it now" [ref=f868e34] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/255487593910
+                                  - generic [ref=f868e36]: Dental Endo Gutta Percha Points Messurement Ruler Root Files Gauge Cutter 134°C
+                                  - generic [ref=f868e37]: 6.99 USD
+                                  - generic [ref=f868e38]: Buy it now
+                              - listitem [ref=f868e40]:
+                                - link "Dental Obturation System Gutta-percha Gun Tips 23GA 25GA Fit For Woodpecker Fi-G 37.99 USD Buy it now" [ref=f868e41] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/267384612113
+                                  - generic [ref=f868e43]: Dental Obturation System Gutta-percha Gun Tips 23GA 25GA Fit For Woodpecker Fi-G
+                                  - generic [ref=f868e44]: 37.99 USD
+                                  - generic [ref=f868e45]: Buy it now
+                              - listitem [ref=f868e47]:
+                                - link "10/Pack Sybron Endo SybronEndo, Elements, Gutta Percha Cartridge 25 Gauge, Light 69.59 USD Buy it now" [ref=f868e48] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/257158958086
+                                  - generic [ref=f868e50]: 10/Pack Sybron Endo SybronEndo, Elements, Gutta Percha Cartridge 25 Gauge, Light
+                                  - generic [ref=f868e51]: 69.59 USD
+                                  - generic [ref=f868e52]: Buy it now
+                              - listitem [ref=f868e54]:
+                                - link "Endo Gutta Percha Point Absorbent Paper Points Dental Root Canal.02/.04/.06Taper 4.50 USD Buy it now" [ref=f868e55] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/267513429067
+                                  - generic [ref=f868e57]: Endo Gutta Percha Point Absorbent Paper Points Dental Root Canal.02/.04/.06Taper
+                                  - generic [ref=f868e58]: 4.50 USD
+                                  - generic [ref=f868e59]: Buy it now
+                              - listitem [ref=f868e61]:
+                                - link "DMXDENT Dental Absorbent Paper Gutta Percha Points .06 Taper F1 F2 F3 Universal 5.50 USD Buy it now" [ref=f868e62] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/257317971179
+                                  - generic [ref=f868e64]: DMXDENT Dental Absorbent Paper Gutta Percha Points .06 Taper F1 F2 F3 Universal
+                                  - generic [ref=f868e65]: 5.50 USD
+                                  - generic [ref=f868e66]: Buy it now
+                              - listitem [ref=f868e68]:
+                                - link "Dental Endo Obturating Gutta Percha or Absorbent Paper Point For Wave ONE Gold A 12.99 USD Buy it now" [ref=f868e69] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/257099859878
+                                  - generic [ref=f868e71]: Dental Endo Obturating Gutta Percha or Absorbent Paper Point For Wave ONE Gold A
+                                  - generic [ref=f868e72]: 12.99 USD
+                                  - generic [ref=f868e73]: Buy it now
+                              - listitem [ref=f868e75]:
+                                - link "MacDent Dental Endodontic Gutta Percha / Absorbent Paper Points Tips Obturating 7.99 USD Buy it now" [ref=f868e76] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/267515525306
+                                  - generic [ref=f868e78]: MacDent Dental Endodontic Gutta Percha / Absorbent Paper Points Tips Obturating
+                                  - generic [ref=f868e79]: 7.99 USD
+                                  - generic [ref=f868e80]: Buy it now
+                              - text: Dental Endo Obturation Heated Pen System/Gutta Percha Cutter/Hand Plugger/Tips 5.50 USD Buy it now
+                              - listitem [ref=f868e82]:
+                                - link "Dental Endo Gutta Percha /Obturation Units Heated Pen /Tooth Gum Cutter / Points 3.99 USD Buy it now" [ref=f868e83] [cursor=pointer]:
+                                  - /url: https://www.ebay.com/itm/267634482025
+                                  - generic [ref=f868e85]: Dental Endo Gutta Percha /Obturation Units Heated Pen /Tooth Gum Cutter / Points
+                                  - generic [ref=f868e86]: 3.99 USD
+                                  - generic [ref=f868e87]: Buy it now
+                              - text: Dental Obturation Pen ENDO Heated System/Gutta Percha Points /Tooth Gum Gutter 3.99 USD Buy it now Dental Tips For Woodpecker Percha Gutta Gun Obturation Endo System 23GA 25GA 37.99 USD Buy it now Dental Sybron Endo Gutta Percha Gauge 23 medium body for Elements Obturation VIP 73.25 USD Buy it now Dental Gutta Percha Pen Heated Tips Needles For Obturation Endo System Fi-P Fi-G 19.99 USD Buy it now Dental MacDent Obturation Taper Next Gutta Percha Points Endo Root Canal X1-X3 13.50 USD Buy it now Woodpecker Dental Gutta Percha Pen Heated Tips for Endo Obturation System Fi-P 30.52 USD Buy it now Free shipping 100 Pcs DENTAL Gutta Percha Bar (Pellet) For Obturation Endodontic GUN 1 bottle 22.99 USD Buy it now COXO Dental Endodontic Gutta Percha Cutter C Blade 110V 220V + 4 Tips VIP 3.99 USD Buy it now Sybron Endo Gutta Percha Gauge Cartridge Elements Obturation 10/pk (YOUR CHOICE) 69.58 USD Buy it now Dental Endo Gutta Percha Points Tooth Gum Cutter/Obturation Heated Pen Tips 18.50 USD Buy it now Dental Obturation System /Endo Heated Pen/Gutta Percha Cutter/Niti Rotary K-File 5.50 USD Buy it now Dental Gutta Percha Pen Heated Tips Needles For Obturation Endo System Fi-P Fi-G 22.21 USD Buy it now MacDent Dental Universal Obturtaion Gutta Percha or Absorbent Paper Points F1-F3 7.99 USD Buy it now Denjoy Freefill Dental ENDO Gutta Percha Endodontic Obturation System Heated Pen 226.99 USD Buy it now MacDent Dental Obturtaion Gutta Percha Points Absorbent Paper Points Tips ALL 7.99 USD Buy it now Dental Gutta percha point Disinfection Box Autoclavable PA Medical Grade Tools 6.99 USD Buy it now MacDent Dental Gutta Percha Bar for Obturation Endo System Endodontic Gun 100Pcs 22.99 USD Buy it now
+                          - generic [ref=f868e89]:
+                            - table [ref=f868e90]:
+                              - rowgroup [ref=f868e91]:
+                                - row [ref=f868e92]:
+                                  - cell [ref=f868e93]:
+                                    - generic [ref=f868e94]:
+                                      - table [ref=f868e95]:
+                                        - rowgroup [ref=f868e96]:
+                                          - row [ref=f868e97]:
+                                            - cell [ref=f868e98]
+                                          - row [ref=f868e99]:
+                                            - cell [ref=f868e100]:
+                                              - generic [ref=f868e103]: 100X Dental Microbrush Disposable Bendable Applicators Tips Micro Brush Cleaning
+                                              - generic [ref=f868e105]:
+                                                - paragraph [ref=f868e106]:
+                                                  - strong [ref=f868e108]: "Description:"
+                                                - generic [ref=f868e109]:
+                                                  - generic [ref=f868e111]:
+                                                    - paragraph [ref=f868e112]
+                                                    - generic [ref=f868e113]:
+                                                      - text: "Color: white/purple/green/blue"
+                                                      - text: "Size(tip dia.): white-1.0mm"
+                                                      - text: Purple-1.5mm
+                                                      - text: Green- 2.0mm
+                                                      - text: Blue-2.5mm
+                                                    - generic [ref=f868e115]: "100 Brushes Free Fast Shipping w/ Tracking #Precision Tips: Each touch up paint applicator features a superfine tip which can be easily bent to any desired angle for those hard to reach areasNo Mess: The paint touch up brushes are designed with lint free, non-drip, non-absorbing fibers to reduce mess and wasteEasy Use and Storage: Specially designed container functions as a micro brush dispenser – a flap on the end opens and paint touch up sticks can be dispensed one at a timeVariety of Uses: Ideal for automotive paint touch up, various hobby work, and car detailing"
+                                                  - paragraph [ref=f868e116]
+                                              - generic [ref=f868e119]:
+                                                - text: FDA Statement
+                                                - text: The sale of this item may be subject to regulation by the U.S. Food and Drug Administration and state and local regulatry agencies.
+                                                - text: If so, you can bid on this item only if you are an authorized purchaser.
+                                                - text: If the item is subject to FDA regulation, I will verify your status as an authorized purchaser of this item before shipping of the item.
+                                              - strong [ref=f868e122]: Picture Display
+                                              - paragraph [ref=f868e123]
+                                              - paragraph [ref=f868e124]
+                                              - paragraph [ref=f868e125]:
+                                                - generic [ref=f868e135]:
+                                                  - text: "◆◆NOTE:"
+                                                  - text: 1. Due to the difference in lighting and screen settings, the color of the product may be slightly different from the picture.
+                                                  - text: 2. Due to manual measurement, please allow slight differences. (Thank you for your understanding)
+                                                  - text: 3. If you have any help, please contact me in time, I will try my best to give you a satisfactory answer, thank you!
+                                          - row "Return" [ref=f868e136]:
+                                            - cell "Return" [ref=f868e137]
+                                            - cell [ref=f868e138]
+                                          - row "If the item you received is damaged or defective,Please message to us immidately.We will free exchange or refund. We will pay the return shipping costs if the product is defective or the return is a result of our error. If the item is returned for any other reason you are responsible for the return shipping charges. You can return your purchase for up to 15 days from the date of delivery. No refund will be issued if the product shows signs of use. Returned package must be in the original packaging, everything must be in new condition, No missing parts. Our guarantee does not cover accidental damage or wear of product caused by customer.Thank you very much for your understanding!" [ref=f868e139]:
+                                            - cell "If the item you received is damaged or defective,Please message to us immidately.We will free exchange or refund. We will pay the return shipping costs if the product is defective or the return is a result of our error. If the item is returned for any other reason you are responsible for the return shipping charges. You can return your purchase for up to 15 days from the date of delivery. No refund will be issued if the product shows signs of use. Returned package must be in the original packaging, everything must be in new condition, No missing parts. Our guarantee does not cover accidental damage or wear of product caused by customer.Thank you very much for your understanding!" [ref=f868e140]:
+                                              - generic [ref=f868e143]:
+                                                - text: If the item you received is damaged or defective,Please message to us immidately.We will free exchange or refund.
+                                                - text: We will pay the return shipping costs if the product is defective or the return is a result of our error. If the item is returned for any other reason you are responsible for the return shipping charges.
+                                                - text: You can return your purchase for up to 15 days from the date of delivery. No refund will be issued if the product shows signs of use. Returned package must be in the original packaging, everything must be in new condition, No missing parts.
+                                                - text: Our guarantee does not cover accidental damage or wear of product caused by customer.Thank you very much for your understanding!
+                                          - row [ref=f868e144]:
+                                            - cell [ref=f868e145]
+                                          - row "Shipping" [ref=f868e146]:
+                                            - cell "Shipping" [ref=f868e147]
+                                            - cell [ref=f868e148]
+                                          - row "International Shipping to worldwide. Tracking information of your parcel is available. Import duties, taxes and charges are not included in the item price or shipping charges. These charges are the buyer's responsibility. Please check with your country's customs office to determine what these additional costs will be prior to bidding/buying. Destination Delivery Time Working Days 7-10 10-15 15-25 25-40 >50 US Item arrived 80% 10% 8% 1% Refund ASIA Item arrived 30% 40% 20% 10% Refund EU Item arrived 20% 20% 50% 10% Refund AU Item arrived 30% 30% 20% 20% Refund other countries Item arrived 5% 10% 10% 60% --" [ref=f868e149]:
+                                            - cell "International Shipping to worldwide. Tracking information of your parcel is available. Import duties, taxes and charges are not included in the item price or shipping charges. These charges are the buyer's responsibility. Please check with your country's customs office to determine what these additional costs will be prior to bidding/buying. Destination Delivery Time Working Days 7-10 10-15 15-25 25-40 >50 US Item arrived 80% 10% 8% 1% Refund ASIA Item arrived 30% 40% 20% 10% Refund EU Item arrived 20% 20% 50% 10% Refund AU Item arrived 30% 30% 20% 20% Refund other countries Item arrived 5% 10% 10% 60% --" [ref=f868e150]:
+                                              - generic [ref=f868e151]:
+                                                - generic [ref=f868e152]:
+                                                  - paragraph [ref=f868e153]: International Shipping to worldwide.
+                                                  - paragraph [ref=f868e154]: Tracking information of your parcel is available.
+                                                  - paragraph [ref=f868e155]: Import duties, taxes and charges are not included in the item price or shipping charges. These charges are the buyer's responsibility.
+                                                  - paragraph [ref=f868e156]: Please check with your country's customs office to determine what these additional costs will be prior to bidding/buying.
+                                                  - paragraph [ref=f868e157]
+                                                - table [ref=f868e159]:
+                                                  - rowgroup [ref=f868e160]:
+                                                    - row "Destination Delivery Time Working Days 7-10 10-15 15-25 25-40 >50 US Item arrived 80% 10% 8% 1% Refund ASIA Item arrived 30% 40% 20% 10% Refund EU Item arrived 20% 20% 50% 10% Refund AU Item arrived 30% 30% 20% 20% Refund other countries Item arrived 5% 10% 10% 60% --" [ref=f868e161]:
+                                                      - cell "Destination Delivery Time Working Days 7-10 10-15 15-25 25-40 >50 US Item arrived 80% 10% 8% 1% Refund ASIA Item arrived 30% 40% 20% 10% Refund EU Item arrived 20% 20% 50% 10% Refund AU Item arrived 30% 30% 20% 20% Refund other countries Item arrived 5% 10% 10% 60% --" [ref=f868e162]:
+                                                        - table [ref=f868e163]:
+                                                          - rowgroup [ref=f868e164]:
+                                                            - row "Destination Delivery Time" [ref=f868e165]:
+                                                              - cell "Destination" [ref=f868e166]:
+                                                                - strong [ref=f868e168]: Destination
+                                                              - cell "Delivery Time" [ref=f868e169]:
+                                                                - strong [ref=f868e171]: Delivery Time
+                                                            - row "Working Days 7-10 10-15 15-25 25-40 >50" [ref=f868e172]:
+                                                              - cell "Working Days" [ref=f868e173]:
+                                                                - strong [ref=f868e175]: Working Days
+                                                              - cell "7-10" [ref=f868e176]:
+                                                                - strong [ref=f868e178]: 7-10
+                                                              - cell "10-15" [ref=f868e179]:
+                                                                - strong [ref=f868e181]: 10-15
+                                                              - cell "15-25" [ref=f868e182]:
+                                                                - strong [ref=f868e184]: 15-25
+                                                              - cell "25-40" [ref=f868e185]:
+                                                                - strong [ref=f868e187]: 25-40
+                                                              - cell ">50" [ref=f868e188]:
+                                                                - strong [ref=f868e190]: ">50"
+                                                            - row "US Item arrived 80% 10% 8% 1% Refund" [ref=f868e191]:
+                                                              - cell "US" [ref=f868e192]:
+                                                                - strong [ref=f868e194]: US
+                                                              - cell "Item arrived" [ref=f868e195]
+                                                              - cell "80%" [ref=f868e196]
+                                                              - cell "10%" [ref=f868e197]
+                                                              - cell "8%" [ref=f868e198]
+                                                              - cell "1%" [ref=f868e199]
+                                                              - cell "Refund" [ref=f868e200]
+                                                            - row "ASIA Item arrived 30% 40% 20% 10% Refund" [ref=f868e201]:
+                                                              - cell "ASIA" [ref=f868e202]:
+                                                                - strong [ref=f868e204]: ASIA
+                                                              - cell "Item arrived" [ref=f868e205]
+                                                              - cell "30%" [ref=f868e206]
+                                                              - cell "40%" [ref=f868e207]
+                                                              - cell "20%" [ref=f868e208]
+                                                              - cell "10%" [ref=f868e209]
+                                                              - cell "Refund" [ref=f868e210]
+                                                            - row "EU Item arrived 20% 20% 50% 10% Refund" [ref=f868e211]:
+                                                              - cell "EU" [ref=f868e212]:
+                                                                - strong [ref=f868e214]: EU
+                                                              - cell "Item arrived" [ref=f868e215]
+                                                              - cell "20%" [ref=f868e216]
+                                                              - cell "20%" [ref=f868e217]
+                                                              - cell "50%" [ref=f868e218]
+                                                              - cell "10%" [ref=f868e219]
+                                                              - cell "Refund" [ref=f868e220]
+                                                            - row "AU Item arrived 30% 30% 20% 20% Refund" [ref=f868e221]:
+                                                              - cell "AU" [ref=f868e222]:
+                                                                - strong [ref=f868e224]: AU
+                                                              - cell "Item arrived" [ref=f868e225]
+                                                              - cell "30%" [ref=f868e226]
+                                                              - cell "30%" [ref=f868e227]
+                                                              - cell "20%" [ref=f868e228]
+                                                              - cell "20%" [ref=f868e229]
+                                                              - cell "Refund" [ref=f868e230]:
+                                                                - generic [ref=f868e231]: Refund
+                                                            - row "other countries Item arrived 5% 10% 10% 60% --" [ref=f868e232]:
+                                                              - cell "other countries" [ref=f868e233]:
+                                                                - strong [ref=f868e235]: other countries
+                                                              - cell "Item arrived" [ref=f868e236]
+                                                              - cell "5%" [ref=f868e237]
+                                                              - cell "10%" [ref=f868e238]
+                                                              - cell "10%" [ref=f868e239]
+                                                              - cell "60%" [ref=f868e240]
+                                                              - cell "--" [ref=f868e241]
+                                          - row "Feedback" [ref=f868e242]:
+                                            - cell "Feedback" [ref=f868e243]
+                                            - cell [ref=f868e244]
+                                          - row [ref=f868e245]:
+                                            - cell [ref=f868e246]
+                                          - row [ref=f868e247]:
+                                            - cell [ref=f868e248]
+                                          - row "Contact Us" [ref=f868e249]:
+                                            - cell "Contact Us" [ref=f868e250]
+                                            - cell [ref=f868e251]
+                                          - 'row "We will reply all messages within 24 business hours and we are able to give you a quick response during the duty time. If we are off duty, please kindly be patient and give us a little more time, not just leave the neutral or negative feedback without communication. Every problem will be solved ASAP if you contact us! Our working time Monday To Friday: 8:30 am --- 12:00 am 1:30 pm --- 5:30 pm (Please Refer to Beijing Time.)" [ref=f868e252]':
+                                            - 'cell "We will reply all messages within 24 business hours and we are able to give you a quick response during the duty time. If we are off duty, please kindly be patient and give us a little more time, not just leave the neutral or negative feedback without communication. Every problem will be solved ASAP if you contact us! Our working time Monday To Friday: 8:30 am --- 12:00 am 1:30 pm --- 5:30 pm (Please Refer to Beijing Time.)" [ref=f868e253]':
+                                              - paragraph [ref=f868e254]: We will reply all messages within 24 business hours and we are able to give you a quick response during the duty time. If we are off duty, please kindly be patient and give us a little more time, not just leave the neutral or negative feedback without communication. Every problem will be solved ASAP if you contact us!
+                                              - paragraph [ref=f868e255]:
+                                                - text: Our working time
+                                                - text: "Monday To Friday:"
+                                                - text: 8:30 am --- 12:00 am
+                                                - text: 1:30 pm --- 5:30 pm
+                                                - text: (Please Refer to Beijing Time.)
+                                          - row [ref=f868e256]:
+                                            - cell [ref=f868e257]
+                                      - img [ref=f868e259]
+                            - img [ref=f868e263]
+                        - generic [ref=f868e264]:
+                          - generic [ref=f868e266]: VIEW MORE MY PRODUCTS
+                          - list [ref=f868e267]:
+                            - listitem [ref=f868e268]:
+                              - link "MacDent Dental Endodontic Gutta Percha / Absorbent Paper Points Taper .02/04/06 4.50 USD Buy it now" [ref=f868e269] [cursor=pointer]:
+                                - /url: https://www.ebay.com/itm/266355359786
+                                - generic [ref=f868e271]: MacDent Dental Endodontic Gutta Percha / Absorbent Paper Points Taper .02/04/06
+                                - generic [ref=f868e272]: 4.50 USD
+                                - generic [ref=f868e273]: Buy it now
+                            - listitem [ref=f868e275]:
+                              - link "MacDent Dental Obturation Endodontic Gutta Percha Paper Points For WAVE ONE GOLD 12.99 USD Buy it now" [ref=f868e276] [cursor=pointer]:
+                                - /url: https://www.ebay.com/itm/256541160211
+                                - generic [ref=f868e278]: MacDent Dental Obturation Endodontic Gutta Percha Paper Points For WAVE ONE GOLD
+                                - generic [ref=f868e279]: 12.99 USD
+                                - generic [ref=f868e280]: Buy it now
+                            - listitem [ref=f868e282]:
+                              - link "1-100 Packs Dental Absorbent Paper Points F1 F2 F3 Root Canal Endodontic DMXDENT 5.50 USD Buy it now Free shipping" [ref=f868e283] [cursor=pointer]:
+                                - /url: https://www.ebay.com/itm/257305842927
+                                - generic [ref=f868e285]: 1-100 Packs Dental Absorbent Paper Points F1 F2 F3 Root Canal Endodontic DMXDENT
+                                - generic [ref=f868e286]: 5.50 USD
+                                - generic [ref=f868e287]: Buy it now
+                                - generic [ref=f868e288]: Free shipping
+                            - listitem [ref=f868e289]:
+                              - link "Endo Gutta Percha Point Absorbent Paper Points Dental Root Canal.02/.04/.06Taper 4.50 USD Buy it now" [ref=f868e290] [cursor=pointer]:
+                                - /url: https://www.ebay.com/itm/267513429067
+                                - generic [ref=f868e292]: Endo Gutta Percha Point Absorbent Paper Points Dental Root Canal.02/.04/.06Taper
+                                - generic [ref=f868e293]: 4.50 USD
+                                - generic [ref=f868e294]: Buy it now
+                            - listitem [ref=f868e296]:
+                              - link "DMXDENT Dental Absorbent Paper Gutta Percha Points .06 Taper F1 F2 F3 Universal 5.50 USD Buy it now" [ref=f868e297] [cursor=pointer]:
+                                - /url: https://www.ebay.com/itm/257317971179
+                                - generic [ref=f868e299]: DMXDENT Dental Absorbent Paper Gutta Percha Points .06 Taper F1 F2 F3 Universal
+                                - generic [ref=f868e300]: 5.50 USD
+                                - generic [ref=f868e301]: Buy it now
+                            - listitem [ref=f868e303]:
+                              - link "MacDent Dental Endodontic Gutta Percha / Absorbent Paper Points Tips Obturating 7.99 USD Buy it now" [ref=f868e304] [cursor=pointer]:
+                                - /url: https://www.ebay.com/itm/267515525306
+                                - generic [ref=f868e306]: MacDent Dental Endodontic Gutta Percha / Absorbent Paper Points Tips Obturating
+                                - generic [ref=f868e307]: 7.99 USD
+                                - generic [ref=f868e308]: Buy it now
+                            - listitem [ref=f868e310]:
+                              - link "MacDent Dental Endodontic Absorbent Paper Points Taper 0.04/ 0.02 /0.06 15#-40# 3.95 USD Buy it now" [ref=f868e311] [cursor=pointer]:
+                                - /url: https://www.ebay.com/itm/267638484909
+                                - generic [ref=f868e313]: MacDent Dental Endodontic Absorbent Paper Points Taper 0.04/ 0.02 /0.06 15#-40#
+                                - generic [ref=f868e314]: 3.95 USD
+                                - generic [ref=f868e315]: Buy it now
+                            - listitem [ref=f868e317]:
+                              - link "MacDent Dental Universal Obturtaion Gutta Percha or Absorbent Paper Points F1-F3 7.99 USD Buy it now" [ref=f868e318] [cursor=pointer]:
+                                - /url: https://www.ebay.com/itm/267653633051
+                                - generic [ref=f868e320]: MacDent Dental Universal Obturtaion Gutta Percha or Absorbent Paper Points F1-F3
+                                - generic [ref=f868e321]: 7.99 USD
+                                - generic [ref=f868e322]: Buy it now
+                            - listitem [ref=f868e324]:
+                              - link "MacDent Dental Endodontic Absorbent Paper Points For Wave One/ WaveOne Gold VIP 10.99 USD Buy it now" [ref=f868e325] [cursor=pointer]:
+                                - /url: https://www.ebay.com/itm/257470078963
+                                - generic [ref=f868e327]: MacDent Dental Endodontic Absorbent Paper Points For Wave One/ WaveOne Gold VIP
+                                - generic [ref=f868e328]: 10.99 USD
+                                - generic [ref=f868e329]: Buy it now
+                            - listitem [ref=f868e331]:
+                              - link "MacDent Dental Obturtaion Gutta Percha Points Absorbent Paper Points Tips ALL 7.99 USD Buy it now" [ref=f868e332] [cursor=pointer]:
+                                - /url: https://www.ebay.com/itm/257480585633
+                                - generic [ref=f868e334]: MacDent Dental Obturtaion Gutta Percha Points Absorbent Paper Points Tips ALL
+                                - generic [ref=f868e335]: 7.99 USD
+                                - generic [ref=f868e336]: Buy it now
+            - generic [ref=e1011]:
+              - generic [ref=e1012]:
+                - generic [ref=e1013]:
+                  - heading "About this seller" [level=2] [ref=e1014]:
+                    - generic [ref=e1016]: About this seller
+                  - generic [ref=e1017]:
+                    - link [ref=e1019] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365?_trksid=p4429486.m145687.l149266
+                      - img [ref=e1021]
+                    - generic [ref=e1022]:
+                      - heading "imvip365" [level=3] [ref=e1023]:
+                        - link "imvip365" [ref=e1024] [cursor=pointer]:
+                          - /url: https://www.ebay.com/str/imvip365?_trksid=p4429486.m145687.l149267
+                      - paragraph [ref=e1025]: 99.7% positive feedback•56K items sold
+                  - generic [ref=e1028]:
+                    - generic [ref=e1030]:
+                      - generic [ref=e1031]:
+                        - img
+                      - generic [ref=e1032]: Joined Feb 2014
+                    - generic [ref=e1034]:
+                      - generic [ref=e1035]:
+                        - img
+                      - generic [ref=e1036]: Usually responds within 24 hours
+                  - generic [ref=e1039]: IMVIP365, i am one of the biggest dental supplier in China, and i will try my best to help you a happy online shopping! best products best price best service i always our pursuit!
+                  - generic [ref=e1040]:
+                    - link "Visit store" [ref=e1041] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365?_trksid=p4429486.m145687.l149086
+                      - generic [ref=e1042]: Visit store
+                    - button "Message seller - opens in a new dialog" [ref=e1043] [cursor=pointer]:
+                      - generic [ref=e1044]:
+                        - text: Message seller
+                        - generic [ref=e1045]: "- opens in a new dialog"
+                    - button "Save seller - Save this seller imvip365" [ref=e1047] [cursor=pointer]:
+                      - generic [ref=e1048]:
+                        - img
+                      - generic [ref=e1049]: Save seller
+                - generic [ref=e1051]:
+                  - heading "Detailed seller ratings" [level=3] [ref=e1052]
+                  - generic [ref=e1053]:
+                    - generic [ref=e1054]: Average for the last 12 months
+                    - generic [ref=e1055]:
+                      - generic [ref=e1056]:
+                        - generic [ref=e1057]: Accurate description
+                        - progressbar [ref=e1058]
+                        - generic [ref=e1059]: "4.9"
+                      - generic [ref=e1060]:
+                        - generic [ref=e1061]: Reasonable shipping cost
+                        - progressbar [ref=e1062]
+                        - generic [ref=e1063]: "5.0"
+                      - generic [ref=e1064]:
+                        - generic [ref=e1065]: Shipping speed
+                        - progressbar [ref=e1066]
+                        - generic [ref=e1067]: "5.0"
+                      - generic [ref=e1068]:
+                        - generic [ref=e1069]: Communication
+                        - progressbar [ref=e1070]
+                        - generic [ref=e1071]: "5.0"
+                - generic [ref=e1072]:
+                  - generic [ref=e1073]:
+                    - heading "Popular categories from this store" [level=3] [ref=e1074]
+                    - link "See all categories" [ref=e1076] [cursor=pointer]:
+                      - /url: https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=imvip365&store_cat=0&store_name=imvip365&_oac=1
+                      - generic [ref=e1077]:
+                        - text: See all
+                        - generic [ref=e1078]: categories
+                  - generic [ref=e1079]:
+                    - link "USA Warehouse" [ref=e1081] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365/USA-Warehouse/_i.html?store_cat=40919277010
+                    - link "Dental Matrix" [ref=e1083] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365/Dental-Matrix/_i.html?store_cat=41799847010
+                    - link "COXO" [ref=e1085] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365/COXO/_i.html?store_cat=27010445010
+                    - link "DMXDENT" [ref=e1087] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365/DMXDENT/_i.html?store_cat=35739588010
+                    - link "Dental Handpiece" [ref=e1089] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365/Dental-Handpiece/_i.html?store_cat=40958598010
+                    - link "Carbide Burs" [ref=e1091] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365/Carbide-Burs/_i.html?store_cat=40919215010
+                    - link "Diamond Burs" [ref=e1093] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365/Diamond-Burs/_i.html?store_cat=41482687010
+                    - link "Restorative" [ref=e1095] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365/Restorative/_i.html?store_cat=32652743010
+                    - link "Orthodontics" [ref=e1097] [cursor=pointer]:
+                      - /url: https://www.ebay.com/str/imvip365/Orthodontics/_i.html?store_cat=27010447010
+              - generic [ref=e1100]:
+                - heading "Seller feedback (4,299)" [level=2] [ref=e1101]
+                - generic [ref=e1102]:
+                  - tablist [ref=e1103]:
+                    - tab "This item (121)" [selected] [ref=e1104]:
+                      - generic [ref=e1105]: This item (121)
+                    - tab "All items (4,299)" [ref=e1106]:
+                      - generic [ref=e1107]: All items (4,299)
+                  - tabpanel "This item (121)" [ref=e1109]:
+                    - generic [ref=e1111]:
+                      - generic [ref=e1112]:
+                        - 'button "Filter: All ratings" [ref=e1115] [cursor=pointer]':
+                          - generic [ref=e1116]:
+                            - generic [ref=e1117]: "Filter:"
+                            - generic [ref=e1118]: All ratings
+                            - img
+                        - list [ref=e1119]:
+                          - listitem [ref=e1120]:
+                            - link "Quality" [ref=e1121] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=266084662385&username=imvip365&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aquality&q=266084662385&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Quality
+                          - listitem [ref=e1122]:
+                            - link "Satisfaction" [ref=e1123] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=266084662385&username=imvip365&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aproduct-satisfaction&q=266084662385&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Satisfaction
+                          - listitem [ref=e1124]:
+                            - link "Usage" [ref=e1125] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=266084662385&username=imvip365&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Ausage&q=266084662385&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Usage
+                          - listitem [ref=e1126]:
+                            - link "Condition" [ref=e1127] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=266084662385&username=imvip365&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Acondition&q=266084662385&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Condition
+                          - listitem [ref=e1128]:
+                            - link "Appearance" [ref=e1129] [cursor=pointer]:
+                              - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=266084662385&username=imvip365&filter=feedback_page%3ARECEIVED_AS_SELLER%2Cfilter_topic_item%3Aappearance&q=266084662385&sort=RELEVANCEV2
+                              - generic:
+                                - generic: Appearance
+                      - list [ref=e1130]:
+                        - listitem [ref=e1131]:
+                          - generic [ref=e1132]:
+                            - generic [ref=e1134]:
+                              - generic [ref=e1135]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1136]:
+                                - text: r***r (847)
+                                - generic [ref=e1137]: "- Feedback left by buyer."
+                              - generic [ref=e1140]: Past 6 months
+                              - generic [ref=e1141]: Verified purchase
+                            - generic [ref=e1143]: Worked perfectly. Thanks for a great transaction!
+                        - listitem [ref=e1144]:
+                          - generic [ref=e1145]:
+                            - generic [ref=e1147]:
+                              - generic [ref=e1148]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1149]:
+                                - text: n***a (190)
+                                - generic [ref=e1150]: "- Feedback left by buyer."
+                              - generic [ref=e1153]: Past 6 months
+                              - generic [ref=e1154]: Verified purchase
+                            - generic [ref=e1156]: All OK, fast delivery thank you.
+                        - listitem [ref=e1157]:
+                          - generic [ref=e1158]:
+                            - generic [ref=e1160]:
+                              - generic [ref=e1161]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1162]:
+                                - text: n***a (1653)
+                                - generic [ref=e1163]: "- Feedback left by buyer."
+                              - generic [ref=e1166]: Past 6 months
+                              - generic [ref=e1167]: Verified purchase
+                            - generic [ref=e1169]: Great condition
+                        - listitem [ref=e1170]:
+                          - generic [ref=e1171]:
+                            - generic [ref=e1173]:
+                              - generic [ref=e1174]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1175]:
+                                - text: o***o (30)
+                                - generic [ref=e1176]: "- Feedback left by buyer."
+                              - generic [ref=e1179]: Past year
+                              - generic [ref=e1180]: Verified purchase
+                            - generic [ref=e1182]: Quality is good
+                        - listitem [ref=e1183]:
+                          - generic [ref=e1184]:
+                            - generic [ref=e1186]:
+                              - generic [ref=e1187]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1188]:
+                                - text: 0***5 (12)
+                                - generic [ref=e1189]: "- Feedback left by buyer."
+                              - generic [ref=e1192]: Past 6 months
+                              - generic [ref=e1193]: Verified purchase
+                            - generic [ref=e1195]: Hope to deal with you again. Thank you
+                        - listitem [ref=e1196]:
+                          - generic [ref=e1197]:
+                            - generic [ref=e1199]:
+                              - generic [ref=e1200]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1201]:
+                                - text: e***g (585)
+                                - generic [ref=e1202]: "- Feedback left by buyer."
+                              - generic [ref=e1205]: Past year
+                              - generic [ref=e1206]: Verified purchase
+                            - generic [ref=e1208]: TRANSACTION RAPIDE ET IMPECCABLE, E BAYER A RECOMMANDER+++
+                        - listitem [ref=e1209]:
+                          - generic [ref=e1210]:
+                            - generic [ref=e1212]:
+                              - generic [ref=e1213]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1214]:
+                                - text: a***a (315)
+                                - generic [ref=e1215]: "- Feedback left by buyer."
+                              - generic [ref=e1218]: More than a year ago
+                              - generic [ref=e1219]: Verified purchase
+                            - generic [ref=e1221]: Good quality fast shipment
+                        - listitem [ref=e1222]:
+                          - generic [ref=e1223]:
+                            - generic [ref=e1225]:
+                              - generic [ref=e1226]:
+                                - img "Positive feedback rating"
+                              - generic [ref=e1227]:
+                                - text: eBay automated feedback
+                                - generic [ref=e1228]: "- Feedback left by buyer."
+                              - generic [ref=e1231]: Past month
+                            - generic [ref=e1233]: Order delivered on time with no issues
+                      - link "See all feedback. Opens in a new tab" [ref=e1234] [cursor=pointer]:
+                        - /url: https://www.ebay.com/fdbk/mweb_profile?fdbkType=FeedbackReceivedAsSeller&item_id=266084662385&username=imvip365&filter=feedback_page%3ARECEIVED_AS_SELLER&q=266084662385&sort=RELEVANCEV2
+                        - text: See all feedback
+            - generic [ref=e1236]:
+              - navigation "Quick Links" [ref=e1237]:
+                - link "Back to home page" [ref=e1238] [cursor=pointer]:
+                  - /url: https://www.ebay.com
+                - button "Return to top" [ref=e1239] [cursor=pointer]
+              - generic [ref=e1241]:
+                - heading "More to explore :" [level=2] [ref=e1244]
+                - list [ref=e1246]:
+                  - listitem [ref=e1247]:
+                    - link "Disposable Dental Articulators," [ref=e1248] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Disposable-Dental-Articulators/106367/bn_118421231
+                  - listitem [ref=e1249]:
+                    - link "Micro Applicators," [ref=e1250] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Micro-Applicators/257844/bn_115384794
+                  - listitem [ref=e1251]:
+                    - link "Dental Laboratory Disposable Dental Articulators," [ref=e1252] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Dental-Laboratory-Disposable-Dental-Articulators/106367/bn_120501785
+                  - listitem [ref=e1253]:
+                    - link "Dentistry Micro Applicators," [ref=e1254] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Dentistry-Micro-Applicators/257844/bn_120645273
+                  - listitem [ref=e1255]:
+                    - link "Dental Disposable Impression Trays," [ref=e1256] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Dental-Disposable-Impression-Trays/106368/bn_114598091
+                  - listitem [ref=e1257]:
+                    - link "Dental Laboratory Disposable Gloves," [ref=e1258] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Dental-Laboratory-Disposable-Gloves/31474/bn_118161645
+                  - listitem [ref=e1259]:
+                    - link "Dental Brush Wheels," [ref=e1260] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Dental-Brush-Wheels/257809/bn_119220408
+                  - listitem [ref=e1261]:
+                    - link "Carpet Cleaning Brushes," [ref=e1262] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Carpet-Cleaning-Brushes/183969/bn_91892291
+                  - listitem [ref=e1263]:
+                    - link "Tank Cleaning Brushes," [ref=e1264] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Tank-Cleaning-Brushes/183969/bn_107715380
+                  - listitem [ref=e1265]:
+                    - link "Window Cleaning Brushes" [ref=e1266] [cursor=pointer]:
+                      - /url: https://www.ebay.com/b/Window-Cleaning-Brushes/183969/bn_107715379
+              - generic [ref=e1268]:
+                - heading "Shop Top Sellers and Highly Rated Products in Micro Applicators" [level=2] [ref=e1269]
+                - generic [ref=e1271]:
+                  - heading "Best Sellers" [level=3] [ref=e1272]
+                  - list [ref=e1273]:
+                    - listitem [ref=e1274]:
+                      - link "Plasdent 600-UF-11 MaxMicro Micro Applicators 0.5mm Ultra Fine Tip Black 100/Pk" [ref=e1275] [cursor=pointer]:
+                        - /url: https://www.ebay.com/p/21041202299
+                        - generic [ref=e1276]: Plasdent 600-UF-11 MaxMicro Micro Applicators 0.5mm Ultra Fine Tip Black 100/Pk
+              - generic [ref=e1278]:
+                - heading "Related searches" [level=2] [ref=e1279]
+                - list [ref=e1280]:
+                  - listitem [ref=e1281]:
+                    - link "Dental Micro Brush" [ref=e1282] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/dental-micro-brush?_nkw=dental+micro+brush
+                      - generic [ref=e1283]: Dental Micro Brush
+                  - listitem [ref=e1284]:
+                    - link "Microbrushes Dental" [ref=e1285] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/microbrushes-dental?_nkw=microbrushes+dental
+                      - generic [ref=e1286]: Microbrushes Dental
+                  - listitem [ref=e1287]:
+                    - link "Microbrush Dental" [ref=e1288] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/microbrush-dental?_nkw=microbrush+dental
+                      - generic [ref=e1289]: Microbrush Dental
+                  - listitem [ref=e1290]:
+                    - link "Micro Brushes" [ref=e1291] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/micro-brushes?_nkw=micro+brushes
+                      - generic [ref=e1292]: Micro Brushes
+                  - listitem [ref=e1293]:
+                    - link "Disposable Brush" [ref=e1294] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/disposable-brush?_nkw=disposable+brush
+                      - generic [ref=e1295]: Disposable Brush
+                  - listitem [ref=e1296]:
+                    - link "Micro Tips" [ref=e1297] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/micro-tips?_nkw=micro+tips
+                      - generic [ref=e1298]: Micro Tips
+                  - listitem [ref=e1299]:
+                    - link "Brushes Dental" [ref=e1300] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/brushes-dental?_nkw=brushes+dental
+                      - generic [ref=e1301]: Brushes Dental
+                  - listitem [ref=e1302]:
+                    - link "Dental Cleaning Brush" [ref=e1303] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/dental-cleaning-brush?_nkw=dental+cleaning+brush
+                      - generic [ref=e1304]: Dental Cleaning Brush
+                  - listitem [ref=e1305]:
+                    - link "Gum Micro Tip Toothbrush" [ref=e1306] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/gum-micro-tip-toothbrush?_nkw=gum+micro+tip+toothbrush
+                      - generic [ref=e1307]: Gum Micro Tip Toothbrush
+                  - listitem [ref=e1308]:
+                    - link "Denture Brushes" [ref=e1309] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/denture-brushes?_nkw=denture+brushes
+                      - generic [ref=e1310]: Denture Brushes
+                  - listitem [ref=e1311]:
+                    - link "Denture Cleaning Brush" [ref=e1312] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/denture-cleaning-brush?_nkw=denture+cleaning+brush
+                      - generic [ref=e1313]: Denture Cleaning Brush
+                  - listitem [ref=e1314]:
+                    - link "Disposable Toothbrush" [ref=e1315] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/disposable-toothbrush?_nkw=disposable+toothbrush
+                      - generic [ref=e1316]: Disposable Toothbrush
+                  - listitem [ref=e1317]:
+                    - link "Tips Dental" [ref=e1318] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/tips-dental?_nkw=tips+dental
+                      - generic [ref=e1319]: Tips Dental
+                  - listitem [ref=e1320]:
+                    - link "Dental Brush Picks" [ref=e1321] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/dental-brush-picks?_nkw=dental+brush+picks
+                      - generic [ref=e1322]: Dental Brush Picks
+                  - listitem [ref=e1323]:
+                    - link "Cepillo Dental" [ref=e1324] [cursor=pointer]:
+                      - /url: https://www.ebay.com/shop/cepillo-dental?_nkw=cepillo+dental
+                      - generic [ref=e1325]: Cepillo Dental
+        - img [ref=e1329]
+  - contentinfo [ref=e1335]:
+    - list [ref=e1336]:
+      - listitem [ref=e1337]:
+        - link "About eBay" [ref=e1338] [cursor=pointer]:
+          - /url: https://www.ebayinc.com
+      - listitem [ref=e1339]:
+        - link "Announcements" [ref=e1340] [cursor=pointer]:
+          - /url: https://community.ebay.com/t5/Announcements/bg-p/Announcements
+      - listitem [ref=e1341]:
+        - link "Community" [ref=e1342] [cursor=pointer]:
+          - /url: https://community.ebay.com
+      - listitem [ref=e1343]:
+        - link "Security Center" [ref=e1344] [cursor=pointer]:
+          - /url: https://pages.ebay.com/securitycenter/index.html
+      - listitem [ref=e1345]:
+        - link "Seller Center" [ref=e1346] [cursor=pointer]:
+          - /url: https://www.ebay.com/sellercenter
+      - listitem [ref=e1347]:
+        - link "Policies" [ref=e1348] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/policies/default/ebays-rules-policies?id=4205
+      - listitem [ref=e1349]:
+        - link "Affiliates" [ref=e1350] [cursor=pointer]:
+          - /url: https://partnernetwork.ebay.com/
+      - listitem [ref=e1351]:
+        - link "Product Safety Tips" [ref=e1352] [cursor=pointer]:
+          - /url: https://pages.ebay.com/safetytips
+      - listitem [ref=e1353]:
+        - link "Help & Contact" [ref=e1354] [cursor=pointer]:
+          - /url: https://www.ebay.com/help/home
+      - listitem [ref=e1355]:
+        - link "Site Map" [ref=e1356] [cursor=pointer]:
+          - /url: https://pages.ebay.com/sitemap.html
+    - generic [ref=e1357]:
+      - text: Copyright © 1995-2026 eBay Inc. All Rights Reserved.
+      - link "Accessibility" [ref=e1358] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/accessibility/
+      - text: ","
+      - link "User Agreement" [ref=e1359] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259
+      - text: ","
+      - link "Privacy" [ref=e1360] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260
+      - text: ","
+      - link "Consumer Health Data" [ref=e1361] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/consumer-health-data-privacy-policy/
+      - text: ","
+      - link "Payments Terms of Use" [ref=e1362] [cursor=pointer]:
+        - /url: https://pages.ebay.com/payment/2.0/terms.html
+      - text: ","
+      - link "Cookies" [ref=e1363] [cursor=pointer]:
+        - /url: https://www.ebay.com/help/policies/member-behaviour-policies/ebay-cookie-notice?id=4267
+      - text: ","
+      - link "CA Privacy Notice" [ref=e1364] [cursor=pointer]:
+        - /url: https://www.ebayinc.com/company/privacy-center/privacy-notice/state-privacy-disclosures/#california
+      - text: ","
+      - link "Your Privacy Choices" [ref=e1365] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice/ccpa
+      - text: and
+      - link "AdChoice" [ref=e1366] [cursor=pointer]:
+        - /url: https://www.ebay.com/adchoice
+        - text: AdChoice
+        - img
+  - img
+  - img [ref=e1368]

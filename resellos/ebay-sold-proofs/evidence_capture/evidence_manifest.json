@@ -1,0 +1,82 @@
+{
+  "captured_at": "2026-05-08",
+  "results": [
+    {
+      "type": "active",
+      "url": "https://www.homedepot.com/p/Fluidmaster-Perfect-Fit-Universal-Toilet-Tank-Lever-in-Chrome-641/206943002",
+      "name": "Fluidmaster Perfect Fit Universal Chrome",
+      "status": "error",
+      "error": "'Page' object has no attribute 'wait_forTimeout'"
+    },
+    {
+      "type": "active",
+      "url": "https://www.amazon.com/Qualihome-Universal-Toilet-Handle-Replacement/dp/B07MVPWSGW",
+      "name": "Qualihome Universal Chrome",
+      "status": "error",
+      "error": "'Page' object has no attribute 'wait_forTimeout'"
+    },
+    {
+      "type": "active",
+      "url": "https://www.plumbingsupply.com/case-and-briggs-toilet-tank-levers.html",
+      "name": "PlumbingSupply Tank Levers",
+      "status": "error",
+      "error": "'Page' object has no attribute 'wait_forTimeout'"
+    },
+    {
+      "type": "active",
+      "url": "https://fluidmaster.com/shop/product/premium-lever/",
+      "name": "Fluidmaster Premium Lever",
+      "status": "error",
+      "error": "'Page' object has no attribute 'wait_forTimeout'"
+    },
+    {
+      "type": "active",
+      "url": "https://fluidmaster.com/shop/product/perfect-fit-lever/",
+      "name": "Fluidmaster Perfect Fit Lever",
+      "status": "error",
+      "error": "'Page' object has no attribute 'wait_forTimeout'"
+    },
+    {
+      "type": "active",
+      "url": "https://www.moen.com/bathroom/accessories-hardware/toilet-tank-levers/",
+      "name": "Moen Tank Levers",
+      "status": "error",
+      "error": "Page.goto: Timeout 15000ms exceeded.\nCall log:\n  - navigating to \"https://www.moen.com/bathroom/accessories-hardware/toilet-tank-levers/\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "type": "competitor",
+      "url": "https://www.homedepot.com/p/Fluidmaster-Perfect-Fit-Universal-Toilet-Tank-Lever-in-Chrome-641/206943002",
+      "name": "Fluidmaster Perfect Fit Universal",
+      "status": "error",
+      "error": "Page.screenshot() got an unexpected keyword argument 'fullPage'. Did you mean 'full_page'?"
+    },
+    {
+      "type": "competitor",
+      "url": "https://www.amazon.com/Qualihome-Universal-Toilet-Handle-Replacement/dp/B07MVPWSGW",
+      "name": "Qualihome Universal",
+      "status": "error",
+      "error": "Page.screenshot() got an unexpected keyword argument 'fullPage'. Did you mean 'full_page'?"
+    },
+    {
+      "type": "competitor",
+      "url": "https://www.amazon.com/stores/Qualihome/page/C5A32804-4FE7-4ED4-BA3C-729E23536A1E",
+      "name": "Qualihome Amazon Store",
+      "status": "error",
+      "error": "Page.screenshot() got an unexpected keyword argument 'fullPage'. Did you mean 'full_page'?"
+    },
+    {
+      "type": "supplier",
+      "url": "https://www.plumbingsupply.com/case-and-briggs-toilet-tank-levers.html",
+      "name": "PlumbingSupply.com - Tank Levers",
+      "status": "error",
+      "error": "Page.screenshot() got an unexpected keyword argument 'fullPage'. Did you mean 'full_page'?"
+    },
+    {
+      "type": "supplier",
+      "url": "https://www.signaturehardware.com/toilets-and-bidets/toilet-parts",
+      "name": "Signature Hardware",
+      "status": "error",
+      "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.signaturehardware.com/toilets-and-bidets/toilet-parts\nCall log:\n  - navigating to \"https://www.signaturehardware.com/toilets-and-bidets/toilet-parts\", waiting until \"domcontentloaded\"\n"
+    }
+  ]
+}

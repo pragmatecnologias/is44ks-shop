@@ -1,0 +1,10 @@
+[     776ms] [LOG] Meter provider shut down successfully @ https://ir.ebaystatic.com/cr/ebay-rum/cdn-assets/metrics.ebb041e86c5338dbe8f6.bundle.js:0
+[     919ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ir.ebaystatic.com/f/c4uaywiq0y1mrh0jfqkgbvsdpez.png:0
+[     952ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ about:blank:0
+[    1339ms] [LOG] {h: 861, w: 1099} @ https://ir.ebaystatic.com/rs/c/r1vinode/item_evo-Mk5DlASR.js:7
+[    1642ms] [LOG] done @ https://www.ebay.com/itm/365979395302:4
+[    1778ms] [WARNING] [GPT] PubAdsService.collapseEmptyDivs is deprecated, use googletag.setConfig({collapseDiv: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605010101/pubads_impl.js?cb=31098254:18
+[    1780ms] [WARNING] [GPT] Slot.setTargeting is deprecated, use Slot.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#171 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605010101/pubads_impl.js?cb=31098254:18
+[    4340ms] [WARNING] The resource https://ir.ebaystatic.com/cr/v/c1/market-sans/v1.0/MarketSans-Regular-WebS.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://itm.ebaydesc.com/itmdesc/365979395302?t=0&category=260554&seller=md.asifpa-0&excSoj=1&ver=1&excTrk=1&lsite=0&ittenable=true&domain=ebay.com&descgauge=1&cspheader=1&oneClk=2&secureDesc=1:0

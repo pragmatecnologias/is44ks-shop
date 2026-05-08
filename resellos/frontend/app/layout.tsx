@@ -12,6 +12,7 @@ import {
   ListChecks,
   ChevronRight,
   Zap,
+  Cog,
 } from 'lucide-react';
 import OfflineBanner from '@/components/shared/OfflineBanner';
 
@@ -24,6 +25,7 @@ const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/products', label: 'Products', icon: Package },
   { href: '/discovery', label: 'Product Discovery', icon: Lightbulb },
+  { href: '/production', label: 'Production', icon: Cog },
   { href: '/ideas', label: 'Ideas', icon: ListChecks },
   { href: '/opportunities', label: 'Opportunities', icon: TrendingUp },
   { href: '/listings', label: 'Listings', icon: ListOrdered },
