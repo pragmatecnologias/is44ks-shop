@@ -226,6 +226,7 @@ class MachineProductFamilyCreate(BaseModel):
     estimated_sale_price: Optional[float] = None
     estimated_demand: Optional[str] = None
     market_evidence_summary: Optional[str] = None
+    has_market_evidence: Optional[bool] = False
     notes: Optional[str] = None
 
 

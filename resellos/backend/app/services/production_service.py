@@ -127,9 +127,12 @@ class ProductionService:
 
     def create_machine(self, data: dict[str, Any]) -> MachineCandidate:
         capability_ids = data.pop("capability_ids", None)
+        campaign_id = data["campaign_id"]
+        if isinstance(campaign_id, str):
+            campaign_id = uuid.UUID(campaign_id)
         machine = MachineCandidate(
             id=uuid.uuid4(),
-            campaign_id=data["campaign_id"],
+            campaign_id=campaign_id,
             name=data["name"],
             brand=data.get("brand"),
             model=data.get("model"),
@@ -260,6 +263,7 @@ class ProductionService:
             material_cost_per_unit=data.get("material_cost_per_unit"),
             estimated_sale_price=data.get("estimated_sale_price"),
             estimated_demand=data.get("estimated_demand"),
+            has_market_evidence=data.get("has_market_evidence", False),
             market_evidence_summary=data.get("market_evidence_summary"),
             notes=data.get("notes"),
         )
@@ -356,6 +360,55 @@ class ProductionService:
         )
         if not fam:
             raise HTTPException(status_code=404, detail="Product family not found")
+
+        # Calculate total cost per unit from components
+        cost_components = ['material_cost', 'labor_cost', 'machine_time_cost', 'consumables_cost',
+                           'marketplace_fee', 'shipping_cost', 'packaging_cost', 'other_costs']
+        total = sum(filter(None, [data.get(c) for c in cost_components]))
+        # If any component is provided, compute total
+        if total > 0:
+            computed_total = total
+        elif data.get('total_cost_per_unit'):
+            computed_total = data['total_cost_per_unit']
+        else:
+            computed_total = None
+
+        sale = data.get('sale_price')
+
+        # Net profit per unit
+        if computed_total is not None and sale is not None:
+            net_profit = sale - computed_total
+        elif data.get('net_profit_per_unit') is not None:
+            net_profit = data['net_profit_per_unit']
+        else:
+            net_profit = None
+
+        # Margin percent
+        if sale and sale > 0 and net_profit is not None:
+            margin = round((net_profit / sale) * 100, 2)
+        elif data.get('margin_percent') is not None:
+            margin = data['margin_percent']
+        else:
+            margin = None
+
+        # Monthly profit
+        units = data.get('units_per_month')
+        if units and net_profit is not None:
+            monthly = round(net_profit * units, 2)
+        elif data.get('monthly_profit') is not None:
+            monthly = data['monthly_profit']
+        else:
+            monthly = None
+
+        # Payback months
+        purchase_price = data.get('machine_purchase_price')
+        if purchase_price and monthly and monthly > 0:
+            payback = round(purchase_price / monthly, 1)
+        elif data.get('payback_months') is not None:
+            payback = data['payback_months']
+        else:
+            payback = None
+
         scenario = ProductionCostScenario(
             id=uuid.uuid4(),
             machine_id=fam.machine_id,
@@ -369,14 +422,14 @@ class ProductionService:
             shipping_cost=data.get("shipping_cost"),
             packaging_cost=data.get("packaging_cost"),
             other_costs=data.get("other_costs"),
-            total_cost_per_unit=data.get("total_cost_per_unit"),
-            sale_price=data.get("sale_price"),
-            net_profit_per_unit=data.get("net_profit_per_unit"),
-            margin_percent=data.get("margin_percent"),
-            machine_purchase_price=data.get("machine_purchase_price"),
-            units_per_month=data.get("units_per_month"),
-            monthly_profit=data.get("monthly_profit"),
-            payback_months=data.get("payback_months"),
+            total_cost_per_unit=computed_total,
+            sale_price=sale,
+            net_profit_per_unit=net_profit,
+            margin_percent=margin,
+            machine_purchase_price=purchase_price,
+            units_per_month=units,
+            monthly_profit=monthly,
+            payback_months=payback,
             notes=data.get("notes"),
         )
         self.db.add(scenario)
@@ -481,7 +534,7 @@ class ProductionService:
 
         # Check if most evidence is unverified
         if evidence_count > 0 and verified_evidence == 0:
-            warnings.append("No verified evidence — all evidence is unverified")
+            hard_blockers.append("No verified evidence — at least 1 USER_VERIFIED evidence item required")
 
         # Determine recommendation
         if hard_blockers:

@@ -17,11 +17,17 @@ depends_on = None
 
 
 def upgrade() -> None:
+    from sqlalchemy.dialects.postgresql import UUID as PGUUID
+
+    # All UUID columns use PGUUID so they match PostgreSQL's native UUID type.
+    # SQLite fallback in tests uses String(36) with manual UUID objects in Python.
+    uu = PGUUID(as_uuid=True)
+
     op.create_table(
         "production_campaigns",
-        sa.Column("id", sa.String(36), primary_key=True),
+        sa.Column("id", uu, primary_key=True),
         sa.Column("name", sa.String(300), nullable=False),
-        sa.Column("shop_concept_id", sa.String(36), nullable=True),
+        sa.Column("shop_concept_id", uu, nullable=True),
         sa.Column("mode", sa.String(30), server_default="PRODUCTION", nullable=False),
         sa.Column("goal", sa.Text, nullable=True),
         sa.Column("workspace_type", sa.String(100), nullable=True),
@@ -39,8 +45,8 @@ def upgrade() -> None:
 
     op.create_table(
         "production_capabilities",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("campaign_id", sa.String(36), sa.ForeignKey("production_campaigns.id"), nullable=False),
+        sa.Column("id", uu, primary_key=True),
+        sa.Column("campaign_id", uu, sa.ForeignKey("production_campaigns.id"), nullable=False),
         sa.Column("name", sa.String(200), nullable=False),
         sa.Column("category", sa.String(100), nullable=True),
         sa.Column("description", sa.Text, nullable=True),
@@ -54,8 +60,8 @@ def upgrade() -> None:
 
     op.create_table(
         "machine_candidates",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("campaign_id", sa.String(36), sa.ForeignKey("production_campaigns.id"), nullable=False),
+        sa.Column("id", uu, primary_key=True),
+        sa.Column("campaign_id", uu, sa.ForeignKey("production_campaigns.id"), nullable=False),
         sa.Column("name", sa.String(300), nullable=False),
         sa.Column("brand", sa.String(200), nullable=True),
         sa.Column("model", sa.String(200), nullable=True),
@@ -79,14 +85,14 @@ def upgrade() -> None:
 
     op.create_table(
         "machine_capabilities",
-        sa.Column("machine_id", sa.String(36), sa.ForeignKey("machine_candidates.id"), primary_key=True),
-        sa.Column("capability_id", sa.String(36), sa.ForeignKey("production_capabilities.id"), primary_key=True),
+        sa.Column("machine_id", uu, sa.ForeignKey("machine_candidates.id"), primary_key=True),
+        sa.Column("capability_id", uu, sa.ForeignKey("production_capabilities.id"), primary_key=True),
     )
 
     op.create_table(
         "machine_evidence",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("machine_id", sa.String(36), sa.ForeignKey("machine_candidates.id"), nullable=False),
+        sa.Column("id", uu, primary_key=True),
+        sa.Column("machine_id", uu, sa.ForeignKey("machine_candidates.id"), nullable=False),
         sa.Column("evidence_type", sa.String(50), nullable=False),
         sa.Column("title", sa.String(500), nullable=True),
         sa.Column("url", sa.Text, nullable=True),
@@ -107,8 +113,8 @@ def upgrade() -> None:
 
     op.create_table(
         "machine_product_families",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("machine_id", sa.String(36), sa.ForeignKey("machine_candidates.id"), nullable=False),
+        sa.Column("id", uu, primary_key=True),
+        sa.Column("machine_id", uu, sa.ForeignKey("machine_candidates.id"), nullable=False),
         sa.Column("name", sa.String(300), nullable=False),
         sa.Column("description", sa.Text, nullable=True),
         sa.Column("material_cost_per_unit", sa.Numeric(10, 2), nullable=True),
@@ -118,8 +124,8 @@ def upgrade() -> None:
         sa.Column("market_evidence_count", sa.Integer, server_default="0"),
         sa.Column("has_market_evidence", sa.Boolean, server_default="0"),
         sa.Column("status", sa.String(50), server_default="SUGGESTED", nullable=False),
-        sa.Column("promoted_product_id", sa.String(36), nullable=True),
-        sa.Column("promoted_idea_id", sa.String(36), nullable=True),
+        sa.Column("promoted_product_id", uu, nullable=True),
+        sa.Column("promoted_idea_id", uu, nullable=True),
         sa.Column("notes", sa.Text, nullable=True),
         sa.Column("created_at", sa.DateTime, nullable=False),
         sa.Column("updated_at", sa.DateTime, nullable=False),
@@ -127,9 +133,9 @@ def upgrade() -> None:
 
     op.create_table(
         "production_cost_scenarios",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("machine_id", sa.String(36), sa.ForeignKey("machine_candidates.id"), nullable=False),
-        sa.Column("product_family_id", sa.String(36), sa.ForeignKey("machine_product_families.id"), nullable=True),
+        sa.Column("id", uu, primary_key=True),
+        sa.Column("machine_id", uu, sa.ForeignKey("machine_candidates.id"), nullable=False),
+        sa.Column("product_family_id", uu, sa.ForeignKey("machine_product_families.id"), nullable=True),
         sa.Column("scenario_name", sa.String(200), nullable=False),
         sa.Column("material_cost", sa.Numeric(10, 2), nullable=True),
         sa.Column("labor_cost", sa.Numeric(10, 2), nullable=True),
@@ -153,8 +159,8 @@ def upgrade() -> None:
 
     op.create_table(
         "machine_decisions",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("machine_id", sa.String(36), sa.ForeignKey("machine_candidates.id"), nullable=False, unique=True),
+        sa.Column("id", uu, primary_key=True),
+        sa.Column("machine_id", uu, sa.ForeignKey("machine_candidates.id"), nullable=False, unique=True),
         sa.Column("recommendation", sa.String(50), nullable=False),
         sa.Column("reason", sa.Text, nullable=True),
         sa.Column("confidence", sa.String(20), server_default="MEDIUM"),
