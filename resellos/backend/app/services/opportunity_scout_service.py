@@ -232,7 +232,7 @@ class OpportunityScoutService:
         elif strong_cluster and (active_count >= 3 or supplier_count >= 2):
             confidence = "MEDIUM"
 
-        if competition_risk_score <= 5 or compatibility_risk_score <= 5:
+        if compatibility_risk_score <= 5:
             scout_status = "REJECT"
         elif active_market_score <= 4 or supplier_path_score <= 4:
             scout_status = "REJECT"

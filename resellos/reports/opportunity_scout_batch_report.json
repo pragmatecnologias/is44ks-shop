@@ -1,0 +1,552 @@
+{
+  "campaign": {
+    "id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+    "name": "Opportunity Scout Batch 2026-05-07",
+    "created_at": "2026-05-08T00:48:20.933688"
+  },
+  "generated_at": "2026-05-07T20:48:56.144195",
+  "local_search_only": true,
+  "count": 12,
+  "results": [
+    {
+      "idea": "Bi-Fold Closet Door Hardware Repair Kit",
+      "idea_id": "3923d5be-c77a-4c87-b094-fceef6920be4",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "NEEDS_SOLD_PROOF",
+      "scout_score": 65,
+      "scout_confidence": "MEDIUM",
+      "buyer_problem_score": 18,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 20,
+      "evidence_friction_score": 19,
+      "reason": "42 keyword signals; 30 sold search signals; 40 active signals; 40 supplier signals; 40 competitor signals; sold proof missing; risk notes: Pivot diameter and door thickness matter, Compatibility varies by door, Pivot diameter and door thickness matter",
+      "next_step": "Collect sold proof manually or use paid marketplace source.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "NEEDS_SOLD_PROOF"
+    },
+    {
+      "idea": "Shower Door Roller Replacement Kit",
+      "idea_id": "4b46f63d-a58b-4e73-92e1-fa2dbd1e2a44",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "NEEDS_SOLD_PROOF",
+      "scout_score": 65,
+      "scout_confidence": "MEDIUM",
+      "buyer_problem_score": 18,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 20,
+      "evidence_friction_score": 19,
+      "reason": "52 keyword signals; 40 sold search signals; 50 active signals; 50 supplier signals; 50 competitor signals; sold proof missing; risk notes: Diameter and screw size matter, Top/bottom fit can vary, Diameter and screw size matter",
+      "next_step": "Collect sold proof manually or use paid marketplace source.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "NEEDS_SOLD_PROOF"
+    },
+    {
+      "idea": "Toilet Tank Flush Lever Replacement Kit",
+      "idea_id": "ccefa16e-1fd9-4d66-a760-b571da4a1233",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "NEEDS_SOLD_PROOF",
+      "scout_score": 65,
+      "scout_confidence": "MEDIUM",
+      "buyer_problem_score": 18,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 20,
+      "evidence_friction_score": 19,
+      "reason": "62 keyword signals; 50 sold search signals; 60 active signals; 60 supplier signals; 60 competitor signals; sold proof missing; risk notes: Mount type matters, Adjustable arm fit matters, Mount type matters",
+      "next_step": "Collect sold proof manually or use paid marketplace source.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "NEEDS_SOLD_PROOF"
+    },
+    {
+      "idea": "Moen Shower Cartridge Puller Tool",
+      "idea_id": "ed3a3c55-6766-4873-aea2-6613cf5970d1",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "WATCH",
+      "scout_score": 62,
+      "scout_confidence": "MEDIUM",
+      "buyer_problem_score": 18,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 16,
+      "evidence_friction_score": 19,
+      "reason": "32 keyword signals; 20 sold search signals; 30 active signals; 30 supplier signals; 30 competitor signals; sold proof missing; risk notes: Shut off water before removal, Do not force the cartridge, Shut off water before removal",
+      "next_step": "Keep scouting for stronger price and fit signal.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "WATCH"
+    },
+    {
+      "idea": "Washing Machine Anti-Vibration Pads",
+      "idea_id": "9cc6cc0d-8da9-4fd8-80c2-021922d51beb",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "WATCH",
+      "scout_score": 62,
+      "scout_confidence": "MEDIUM",
+      "buyer_problem_score": 18,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 16,
+      "evidence_friction_score": 19,
+      "reason": "22 keyword signals; 10 sold search signals; 20 active signals; 20 supplier signals; 20 competitor signals; sold proof missing; risk notes: Installation and leveling matter, Does not fix broken suspension, Installation and leveling matter",
+      "next_step": "Keep scouting for stronger price and fit signal.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "WATCH"
+    },
+    {
+      "idea": "Refrigerator Door Shelf Bar End Caps",
+      "idea_id": "b2caa62e-6a5a-4b69-8290-ee7d0362f299",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "WATCH",
+      "scout_score": 59,
+      "scout_confidence": "MEDIUM",
+      "buyer_problem_score": 18,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 12,
+      "evidence_friction_score": 19,
+      "reason": "102 keyword signals; 90 sold search signals; 100 active signals; 100 supplier signals; 100 competitor signals; sold proof missing; risk notes: Brand/model fit matters, End cap shapes vary, Brand/model fit matters",
+      "next_step": "Keep scouting for stronger price and fit signal.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "WATCH"
+    },
+    {
+      "idea": "Screen Door Latch Strike Plate Repair Kit",
+      "idea_id": "74949f25-2ed4-4c5b-8e79-4cef9f2db82e",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "WATCH",
+      "scout_score": 56,
+      "scout_confidence": "MEDIUM",
+      "buyer_problem_score": 18,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 8,
+      "evidence_friction_score": 19,
+      "reason": "132 keyword signals; 120 sold search signals; 130 active signals; 130 supplier signals; 130 competitor signals; sold proof missing; risk notes: Hole spacing matters, Latch style matters, Hole spacing matters",
+      "next_step": "Keep scouting for stronger price and fit signal.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "WATCH"
+    },
+    {
+      "idea": "Sink Drain Hair Catcher Replacement Basket",
+      "idea_id": "2e39c16e-4d03-4a6c-b5a7-faddd0cf2e33",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "WATCH",
+      "scout_score": 56,
+      "scout_confidence": "MEDIUM",
+      "buyer_problem_score": 18,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 8,
+      "evidence_friction_score": 19,
+      "reason": "92 keyword signals; 80 sold search signals; 90 active signals; 90 supplier signals; 90 competitor signals; sold proof missing; risk notes: Drain size fit matters, Basket style varies, Drain size fit matters",
+      "next_step": "Keep scouting for stronger price and fit signal.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "WATCH"
+    },
+    {
+      "idea": "Window Blind Wand Tilt Mechanism Repair Kit",
+      "idea_id": "f15e526e-95ad-4e3e-b086-878c45ce60e4",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "WATCH",
+      "scout_score": 56,
+      "scout_confidence": "MEDIUM",
+      "buyer_problem_score": 18,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 8,
+      "evidence_friction_score": 19,
+      "reason": "112 keyword signals; 100 sold search signals; 110 active signals; 110 supplier signals; 110 competitor signals; sold proof missing; risk notes: Tilt rod size matters, Connector fit varies, Tilt rod size matters",
+      "next_step": "Keep scouting for stronger price and fit signal.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "WATCH"
+    },
+    {
+      "idea": "Cabinet Shelf Support Pegs with Locking Clips",
+      "idea_id": "919e34f7-eab8-4741-bdc6-1d1afa23f9b3",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "REJECT",
+      "scout_score": 49,
+      "scout_confidence": "LOW",
+      "buyer_problem_score": 8,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 8,
+      "evidence_friction_score": 19,
+      "reason": "122 keyword signals; 110 sold search signals; 120 active signals; 120 supplier signals; 120 competitor signals; sold proof missing; risk notes: Peg diameter matters, Locking clip styles vary, Peg diameter matters",
+      "next_step": "Pause this lane.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "REJECT"
+    },
+    {
+      "idea": "Dryer Vent Cleaning Brush Extension Rods",
+      "idea_id": "fb935d2c-5860-495e-9f11-009f5959c540",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "REJECT",
+      "scout_score": 49,
+      "scout_confidence": "LOW",
+      "buyer_problem_score": 8,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 8,
+      "evidence_friction_score": 19,
+      "reason": "72 keyword signals; 60 sold search signals; 70 active signals; 70 supplier signals; 70 competitor signals; sold proof missing; risk notes: Rod stiffness matters, Connection strength matters, Rod stiffness matters",
+      "next_step": "Pause this lane.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "REJECT"
+    },
+    {
+      "idea": "Garbage Disposal Wrench / Jam-Buster Tool",
+      "idea_id": "10a7d1d0-358f-4857-92e2-1e2260879698",
+      "campaign_id": "4f3f72aa-3d29-4603-8490-559af442e0dc",
+      "scout_status": "REJECT",
+      "scout_score": 44,
+      "scout_confidence": "LOW",
+      "buyer_problem_score": 8,
+      "active_market_score": 12,
+      "supplier_path_score": 12,
+      "margin_potential_score": 6,
+      "compatibility_risk_score": 0,
+      "evidence_friction_score": 19,
+      "reason": "82 keyword signals; 70 sold search signals; 80 active signals; 80 supplier signals; 80 competitor signals; sold proof missing; risk notes: Model fit matters, Do not force a seized disposal, Model fit matters",
+      "next_step": "Pause this lane.",
+      "search_counts": {
+        "KEYWORD_DEMAND": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SOLD_EVIDENCE": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "ACTIVE_LISTING": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "SUPPLIER": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        },
+        "COMPETITOR": {
+          "result_count": 10,
+          "stored_count": 10,
+          "deduped_count": 0
+        }
+      },
+      "stored_search_count": 50,
+      "idea_scout_status": "REJECT"
+    }
+  ]
+}
