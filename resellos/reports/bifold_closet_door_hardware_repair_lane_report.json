@@ -1,0 +1,1139 @@
+{
+  "idea_name": "Bi-Fold Closet Door Hardware Repair Kit",
+  "campaign_name": "Bi-Fold Closet Door Hardware Repair Discovery",
+  "category": "door hardware",
+  "created_campaign": {
+    "id": "f5bf84bd-0ab9-4e22-b712-caa9f1e28232",
+    "created": true
+  },
+  "created_idea": {
+    "id": "f2dfd6f2-d2a6-4d68-b835-4ca37f352ad3",
+    "created": true,
+    "status": "NEW_IDEA",
+    "quick_scan_verdict": null
+  },
+  "tasks_created": 7,
+  "searches": {
+    "keyword": [
+      {
+        "query": "bifold door repair kit",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Repair Kit, 2-Pack Bifold Closet ... - Amazon.com",
+            "url": "https://www.amazon.com/AWDIA-Hardware-Sliding-Include-Replacement/dp/B0C98J915J",
+            "snippet": "\u3010Wide Application\u3011This closet door hardware kit is suitable for light folding doors, closet folding doors, such as bathroom doors, closet do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold door repair kit includes replacement parts to repair one 2-panel set of hinged bi-folding doors. The plastic bases of the pivot",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Repair Kit For 7/8\" Wide Track & 3/8\"Outside Diameter ...",
+            "url": "https://primelineparts.com/bifold-door-repair-kit--for-78wide-track--38-outside-diameter-pivots-and-guidesincludes-all-parts-needed-to-repair-one-2panel-hinged-bifolding-doors-1-set/",
+            "snippet": "5-day delivery 30-day returnsINCLUDES \u2013 This bi-fold door repair kit includes top/bottom pivots, a 7/8\" plastic guide wheel, steel bottom pi",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bi-fold closet door repair kit",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 3,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Repair Kit, 2-Pack Bifold Closet ... - Amazon.com",
+            "url": "https://www.amazon.com/AWDIA-Hardware-Sliding-Include-Replacement/dp/B0C98J915J",
+            "snippet": "\u3010Wide Application\u3011This closet door hardware kit is suitable for light folding doors, closet folding doors, such as bathroom doors, closet do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold door repair kit includes replacement parts to repair one 2-panel set of hinged bi-folding doors. The plastic bases of the pivot",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "5-day delivery 30-day returnsIncludes top and bottom brackets, top and bottom pivots and guide wheel \u2013 door repair kit for 1 in. to 1-3/8 in",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door hardware repair kit",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 1,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Repair Kit, 2-Pack Bifold Closet ... - Amazon.com",
+            "url": "https://www.amazon.com/AWDIA-Hardware-Sliding-Include-Replacement/dp/B0C98J915J",
+            "snippet": "\u3010Wide Application\u3011This closet door hardware kit is suitable for light folding doors, closet folding doors, such as bathroom doors, closet do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold door repair kit includes replacement parts to repair one 2-panel set of hinged bi-folding doors. The plastic bases of the pivot",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "In stock Rating 4.6176Includes top and bottom brackets, top and bottom pivots and guide wheel \u2013 door repair kit for 1 in. to 1-3/8 in. thick",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Prime-Line N 7534",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 9,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "In stock Rating 4.6176(1 Kit). SKU: N 7534. $10.58. BI-FOLD DOOR REPAIR KIT \u2013 The Prime-Line bi-fold Closet Doorr pivot and bracket repair k",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line N 7534 Bi-Fold Door Hardware Repair Kit - Amazon.com",
+            "url": "https://www.amazon.com/Bi-Fold-Hardware-Repair-Brackets-Components/dp/B07DHB27B4",
+            "snippet": "The Prime-Line 7534 Bi-Fold Door Hardware Repair Kit includes components constructed of steel and plastic to help get bi-fold closet doors b",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Hardware Repair Kit, Includes Top and Bottom ...",
+            "url": "https://www.homedepot.com/p/Bi-Fold-Door-Hardware-Repair-Kit-Includes-Top-and-Bottom-Brackets-Top-and-Bottom-Pivots-and-Guide-Wheel-6-Components-N-7534/313608301",
+            "snippet": "The Prime-Line 7534 Bi-Fold Door Hardware Repair Kit includes components constructed of steel and plastic to help get bi-fold closet doors b",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door pivot bracket repair kit",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 4,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Repair Kit - Amazon.com",
+            "url": "https://www.amazon.com/bifold-door-repair-kit/s?k=bifold+door+repair+kit",
+            "snippet": "4.511K \u00b7 30-day returnsPrime-Line N 7534 Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets, Top and Bottom Pivots and Guid",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "In stock Rating 4.6176Includes top and bottom brackets, top and bottom pivots and guide wheel \u2013 door repair kit for 1 in. to 1-3/8 in. thick",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold closet door pivot and bracket repair kit includes components constructed of steel and plastic, and fits 7/16 diameter holes. It",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door roller guide repair kit",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 7,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Nkiy Quen 4 Pcs Bi-Fold Door Top Roller Guide Wheel and Top Pivot ...",
+            "url": "https://www.amazon.com/Nkiy-Quen-Bi-Fold-Hardware-Accordion/dp/B0F3X4LS88",
+            "snippet": "Product size:Bi-fold door guide wheel hardware kit fits doors from 1 inch to 1-3/8 inch thick.Guide wheel is 2 inches long, wheel OD 7/8 inc",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Folding Closet Door Hardware - Prime-Line Parts",
+            "url": "https://primelineparts.com/categories/repair-replacement-parts/interior-door-hardware/folding-closet-door-hardware/",
+            "snippet": "5-day delivery 30-day returns905692| Bi-Fold Closet Track Kit, 60 in. Length, Steel Track, White (1 Kit). SKU: 905692. Sale price:$11.83Orig",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "M-D Top Pivot Pin and Roller Caps Hardware Repair Kit for Bi-fold ...",
+            "url": "https://www.lowes.com/pd/M-D-Top-Pivot-Pin-and-Roller-Caps-Hardware-Repair-Kit-for-Bi-fold-Doors/5016082069",
+            "snippet": "... Door Hardware \u00b7 Bifold Closet Door Hardware Kits. M-D 45112 Top Pivot Pin and ... guide and nylon guide cap replacement set. Offers a va",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door top pivot bottom pivot repair kit",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 2,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Repair Kit - Amazon.com",
+            "url": "https://www.amazon.com/bifold-door-repair-kit/s?k=bifold+door+repair+kit",
+            "snippet": "4.511K \u00b7 30-day returnsPrime-Line N 7534 Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets, Top and Bottom Pivots and Guid",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "In stock Rating 4.6176Includes top and bottom brackets, top and bottom pivots and guide wheel \u2013 door repair kit for 1 in. to 1-3/8 in. thick",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "M-D Top Pivot Pin and Roller Caps Hardware Repair Kit for Bi-fold ...",
+            "url": "https://www.lowes.com/pd/M-D-Top-Pivot-Pin-and-Roller-Caps-Hardware-Repair-Kit-for-Bi-fold-Doors/5016082069",
+            "snippet": "... Door Hardware \u00b7 Bifold Closet Door Hardware Kits. M-D 45112 Top Pivot Pin and ... Bottom pivot pin. Product details. Trending Now. $ 8 .",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bi-fold closet door pivot roller kit",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 7,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Nkiy Quen 4 Pcs Bi-Fold Door Top Roller Guide Wheel and Top Pivot ...",
+            "url": "https://www.amazon.com/Nkiy-Quen-Bi-Fold-Hardware-Accordion/dp/B0F3X4LS88",
+            "snippet": "Product size:Bi-fold door guide wheel hardware kit fits doors from 1 inch to 1-3/8 inch thick.Guide wheel is 2 inches long, wheel OD 7/8 inc",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "M-D Top Pivot Pin and Roller Caps Hardware Repair Kit for Bi-fold ...",
+            "url": "https://www.lowes.com/pd/M-D-Top-Pivot-Pin-and-Roller-Caps-Hardware-Repair-Kit-for-Bi-fold-Doors/5016082069",
+            "snippet": "... Door Hardware \u00b7 Closet Door Hardware \u00b7 Bifold Closet Door Hardware Kits. M-D 45112 Top Pivot Pin and Roller Caps Hardware Repair Kit for",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Folding Closet Door Hardware - Prime-Line Parts",
+            "url": "https://primelineparts.com/categories/repair-replacement-parts/interior-door-hardware/folding-closet-door-hardware/",
+            "snippet": "5-day delivery 30-day returns905692| Bi-Fold Closet Track Kit, 60 in. Length, Steel Track, White (1 Kit). SKU: 905692. Sale price:$11.83Orig",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "sold": [
+      {
+        "query": "bifold door repair kit sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Repair Kit, 2-Pack Bifold Closet ... - Amazon.com",
+            "url": "https://www.amazon.com/AWDIA-Hardware-Sliding-Include-Replacement/dp/B0C98J915J",
+            "snippet": "\u3010Wide Application\u3011This closet door hardware kit is suitable for light folding doors, closet folding doors, such as bathroom doors, closet do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold closet door pivot and bracket repair kit includes components constructed of steel and plastic, and fits 7/16 diameter holes. It",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bifold Door Repair Kit - Walmart",
+            "url": "https://www.walmart.com/c/kp/bifold-door-repair-kit",
+            "snippet": "4.24K \u00b7 Free 90-day returnsBifold Door Repair Kit(124). Uses item details. Price when purchased online. KFFKFF Corner Support for Gates, Pac",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bi-fold closet door repair kit sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 2,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Repair Kit, 2-Pack Bifold Closet ... - Amazon.com",
+            "url": "https://www.amazon.com/AWDIA-Hardware-Sliding-Include-Replacement/dp/B0C98J915J",
+            "snippet": "\u3010Wide Application\u3011This closet door hardware kit is suitable for light folding doors, closet folding doors, such as bathroom doors, closet do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "Ideal for DIYers: Easy-to-install bifold door repair kit with self-adjusting pivot and guide for smooth operation. Ideal for repairing bi-fo",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bifold Door Repair Kit - Walmart",
+            "url": "https://www.walmart.com/c/kp/bifold-door-repair-kit",
+            "snippet": "4.24K \u00b7 Free 90-day returnsCloset Door Savers Bi-Fold Closet Door Pivot Pin Repair Kit - Dark Oak $24.95. Closet Door Savers Bi-Fold Closet ",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door hardware repair kit sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 2,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Repair Kit, 2-Pack Bifold Closet ... - Amazon.com",
+            "url": "https://www.amazon.com/AWDIA-Hardware-Sliding-Include-Replacement/dp/B0C98J915J",
+            "snippet": "\u3010Wide Application\u3011This closet door hardware kit is suitable for light folding doors, closet folding doors, such as bathroom doors, closet do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "Ideal for DIYers: Easy-to-install bifold door repair kit with self-adjusting pivot and guide for smooth operation. Ideal for repairing bi-fo",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bifold Door Repair Kit - Walmart",
+            "url": "https://www.walmart.com/c/kp/bifold-door-repair-kit",
+            "snippet": "4.24K \u00b7 Free 90-day returnsBifold Door Repair Kit(124) \u00b7 KFFKFF Corner Support for Gates, Pack of 2, Sag Prevention Gate Structure Kit, Gate",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Prime-Line N 7534 sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Prime-Line Bi-Fold Door Hardware Repair Kit, Includes Top and Bottom ...",
+            "url": "https://www.homedepot.com/p/Bi-Fold-Door-Hardware-Repair-Kit-Includes-Top-and-Bottom-Brackets-Top-and-Bottom-Pivots-and-Guide-Wheel-6-Components-N-7534/313608301",
+            "snippet": "Out of stock Rating 4.6(198)The Prime-Line 7534 Bi-Fold Door Hardware Repair Kit includes components constructed of steel and plastic to hel",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line N 7534 Bi-Fold Door Hardware Repair Kit - Amazon.com",
+            "url": "https://www.amazon.com/Bi-Fold-Hardware-Repair-Brackets-Components/dp/B07DHB27B4",
+            "snippet": "Prime-Line N 7534 Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets, Top and Bottom Pivots and Guide Wheel \u2013 Door Repair K",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "In stock Rating 4.6176(1 Kit). SKU: N 7534. $10.58. BI-FOLD DOOR REPAIR KIT \u2013 The Prime-Line bi-fold Closet Doorr pivot and bracket repair k",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door pivot bracket repair kit sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 7,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Repair Kit - Amazon.com",
+            "url": "https://www.amazon.com/bifold-door-repair-kit/s?k=bifold+door+repair+kit",
+            "snippet": "4.511K \u00b7 30-day returns2Pack N7192 Bi-Fold Door Repair Bracket Kit, Folding Closet Door Hardware for 1-3/8 Inch Wood Doors, Fits 7/16\" Pivot",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Hardware Repair Kit, Includes Top and Bottom ...",
+            "url": "https://www.homedepot.com/p/Bi-Fold-Door-Hardware-Repair-Kit-Includes-Top-and-Bottom-Brackets-Top-and-Bottom-Pivots-and-Guide-Wheel-6-Components-N-7534/313608301",
+            "snippet": "Out of stock Rating 4.6(198)The Prime-Line 7534 Bi-Fold Door Hardware Repair Kit includes components constructed of steel and plastic to hel",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Complete Bi-Fold Door Repair Kit - Top Brackets, Pivots, & Guide ...",
+            "url": "https://www.ebay.com/itm/356669954674",
+            "snippet": "In stock Rating 4.6176Comprehensive Kit: Includes all necessary components for complete repair: 1 jamb and floor mount pivot bracket, 1 bott",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door roller guide repair kit sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 7,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Nkiy Quen 4 Pcs Bi-Fold Door Top Roller Guide Wheel and Top Pivot ...",
+            "url": "https://www.amazon.com/Nkiy-Quen-Bi-Fold-Hardware-Accordion/dp/B0F3X4LS88",
+            "snippet": "Product size:Bi-fold door guide wheel hardware kit fits doors from 1 inch to 1-3/8 inch thick.Guide wheel is 2 inches long, wheel OD 7/8 inc",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "M-D Top Pivot Pin and Roller Caps Hardware Repair Kit for Bi-fold ...",
+            "url": "https://www.lowes.com/pd/M-D-Top-Pivot-Pin-and-Roller-Caps-Hardware-Repair-Kit-for-Bi-fold-Doors/5016082069",
+            "snippet": "... Door Hardware \u00b7 Closet Door Hardware \u00b7 Bifold Closet Door Hardware Kits. M-D 45112 Top Pivot Pin and Roller Caps Hardware Repair Kit for",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Hardware Repair Kit, Includes Top and Bottom ...",
+            "url": "https://www.homedepot.com/p/Bi-Fold-Door-Hardware-Repair-Kit-Includes-Top-and-Bottom-Brackets-Top-and-Bottom-Pivots-and-Guide-Wheel-6-Components-N-7534/313608301",
+            "snippet": "Rating 4.6(198) \u00b7 Free in-store returnsThis kit is for one side set of doors. INCLUDES - One jamb and floor mount pivot bracket, one bottom ",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door top pivot bottom pivot repair kit sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 2,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Repair Kit - Amazon.com",
+            "url": "https://www.amazon.com/bifold-door-repair-kit/s?k=bifold+door+repair+kit",
+            "snippet": "4.511K \u00b7 30-day returnsPrime-Line N 7534 Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets, Top and Bottom Pivots and Guid",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "M-D Top Pivot Pin and Roller Caps Hardware Repair Kit for Bi-fold ...",
+            "url": "https://www.lowes.com/pd/M-D-Top-Pivot-Pin-and-Roller-Caps-Hardware-Repair-Kit-for-Bi-fold-Doors/5016082069",
+            "snippet": "... Door Hardware \u00b7 Bifold Closet Door Hardware Kits. M-D 45112 Top Pivot Pin and ... Bottom pivot pin. Product details. Trending Now. $ 8 .",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "In stock Rating 4.6176Includes top and bottom brackets, top and bottom pivots and guide wheel \u2013 door repair kit for 1 in. to 1-3/8 in. thick",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bi-fold closet door pivot roller kit sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 4,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Nkiy Quen 4 Pcs Bi-Fold Door Top Roller Guide Wheel and Top Pivot ...",
+            "url": "https://www.amazon.com/Nkiy-Quen-Bi-Fold-Hardware-Accordion/dp/B0F3X4LS88",
+            "snippet": "Package includes:You will get 2 pieces of spring loaded bifold door top roller guide wheel and 2 pieces of top pivot, in quantities to meet ",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "M-D Top Pivot Pin and Roller Caps Hardware Repair Kit for Bi-fold ...",
+            "url": "https://www.lowes.com/pd/M-D-Top-Pivot-Pin-and-Roller-Caps-Hardware-Repair-Kit-for-Bi-fold-Doors/5016082069",
+            "snippet": "... Door Hardware \u00b7 Closet Door Hardware \u00b7 Bifold Closet Door Hardware Kits. M-D 45112 Top Pivot Pin and Roller Caps Hardware Repair Kit for",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Closet Door Rollers - Bi-Fold Door Hardware - The Home Depot",
+            "url": "https://www.homedepot.com/b/Hardware-Door-Hardware-Closet-Door-Hardware-Bi-Fold-Door-Hardware/Closet-Door-Rollers/N-5yc1vZc6biZ1z0xd5m",
+            "snippet": "4.64.2K \u00b7 Store nearby \u00b7 Free in-store returnsBarton KramerBi-\u200bFold Closet Door Top Pivot Bracket. Model# 384. $6.02 ... Kit with Center Swi",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "active": [
+      {
+        "query": "bi-fold closet door repair kit",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Repair Kit, 2-Pack Bifold Closet ... - Amazon.com",
+            "url": "https://www.amazon.com/AWDIA-Hardware-Sliding-Include-Replacement/dp/B0C98J915J",
+            "snippet": "\u3010Wide Application\u3011This closet door hardware kit is suitable for light folding doors, closet folding doors, such as bathroom doors, closet do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "5-day delivery 30-day returnsIncludes top and bottom brackets, top and bottom pivots and guide wheel \u2013 door repair kit for 1 in. to 1-3/8 in",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold closet door pivot and bracket repair kit includes components constructed of steel and plastic, and fits 7/16 diameter holes. It",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door pivot and bracket repair kit",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 6,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Repair Kit - Amazon.com",
+            "url": "https://www.amazon.com/bifold-door-repair-kit/s?k=bifold+door+repair+kit",
+            "snippet": "4.511K \u00b7 30-day returnsPrime-Line N 7534 Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets, Top and Bottom Pivots and Guid",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "In stock Rating 4.6176Includes top and bottom brackets, top and bottom pivots and guide wheel \u2013 door repair kit for 1 in. to 1-3/8 in. thick",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold closet door pivot and bracket repair kit includes components constructed of steel and plastic, and fits 7/16 diameter holes. It",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door hardware repair kit",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 2,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Repair Kit, 2-Pack Bifold Closet ... - Amazon.com",
+            "url": "https://www.amazon.com/AWDIA-Hardware-Sliding-Include-Replacement/dp/B0C98J915J",
+            "snippet": "\u3010Wide Application\u3011This closet door hardware kit is suitable for light folding doors, closet folding doors, such as bathroom doors, closet do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "In stock Rating 4.6176Includes top and bottom brackets, top and bottom pivots and guide wheel \u2013 door repair kit for 1 in. to 1-3/8 in. thick",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold closet door pivot and bracket repair kit includes components constructed of steel and plastic, and fits 7/16 diameter holes. It",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Prime-Line N 7534 bi-fold repair kit",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Prime-Line N 7534 Bi-Fold Door Hardware Repair Kit - Amazon.com",
+            "url": "https://www.amazon.com/Bi-Fold-Hardware-Repair-Brackets-Components/dp/B07DHB27B4",
+            "snippet": "Includes top and bottom brackets, top and bottom pivots and guide wheel. Door repair kit for 1\" to 1-3/8\" thick doors up to 50 lbs.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Hardware Repair Kit, Includes Top and Bottom ...",
+            "url": "https://www.homedepot.com/p/Bi-Fold-Door-Hardware-Repair-Kit-Includes-Top-and-Bottom-Brackets-Top-and-Bottom-Pivots-and-Guide-Wheel-6-Components-N-7534/313608301",
+            "snippet": "Out of stock Rating 4.6(198)The Prime-Line 7534 Bi-Fold Door Hardware Repair Kit includes components constructed of steel and plastic to hel",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bifold Closet Door Hardware Kit N 7534 at Lowes.com",
+            "url": "https://www.lowes.com/pd/Prime-Line-1-Piece-Bifold-Closet-Door-Hardware-Kit/1000146549",
+            "snippet": "This bi-fold closet door pivot and bracket repair kit includes components constructed of steel and plastic, and fits 3/8 diameter holes.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door top roller guide pivot kit",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 9,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Nkiy Quen 4 Pcs Bi-Fold Door Top Roller Guide Wheel and Top Pivot ...",
+            "url": "https://www.amazon.com/Nkiy-Quen-Bi-Fold-Hardware-Accordion/dp/B0F3X4LS88",
+            "snippet": "Product size:Bi-fold door guide wheel hardware kit fits doors from 1 inch to 1-3/8 inch thick.Guide wheel is 2 inches long, wheel OD 7/8 inc",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "M-D Top Pivot Pin and Roller Caps Hardware Repair Kit for Bi-fold ...",
+            "url": "https://www.lowes.com/pd/M-D-Top-Pivot-Pin-and-Roller-Caps-Hardware-Repair-Kit-for-Bi-fold-Doors/5016082069",
+            "snippet": "... Door Hardware \u00b7 Bifold Closet Door Hardware Kits. M-D 45112 Top Pivot Pin and ... guide and nylon guide cap replacement set. Offers a va",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Top Pivot and Guide Wheel (2-pack) N 7266",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Top-Pivot-and-Guide-Wheel-2-pack-N-7266/100539874",
+            "snippet": "This bi-fold door repair kit includes replacement parts to repair one 2-panel set of hinged bi-folding doors. The plastic bases of the pivot",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door bottom pivot bracket kit",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 9,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Bottom Pivot - Amazon.com",
+            "url": "https://www.amazon.com/bifold-door-bottom-pivot/s?k=bifold+door+bottom+pivot",
+            "snippet": "4.511K \u00b7 30-day returnsBifold Door Repair Kit for 1-3/8\" Wood Bifold Closet Doors, Bottom Pivot Bracket Replacement with Adjustable Bottom P",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bottom pivot bracket for bifold doors for SLID'UP 140, 150",
+            "url": "https://www.slidup.com/us/product/slidup-140-150-bottom-pivot-bracket-for-bifold-doors/",
+            "snippet": "In stock Rating 5.0(1)Bottom pivot for folding doors. Compatible with our SLID'UP 140 and SLID'UP 150 sliding hardware. To be fixed on the f",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Bottom Pivot Bracket (Single Pack) - Prime-Line Parts",
+            "url": "https://primelineparts.com/bifold-door-bottom-pivot-bracket-single-pack/",
+            "snippet": "In stock Rating 4.09This bi-fold door pivot is constructed from steel. It features an adjustable nylon bushing and a bottom mount design. Th",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "supplier": [
+      {
+        "query": "bifold closet door pivot repair kit supplier",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold closet door pivot and bracket repair kit includes components constructed of steel and plastic, and fits 7/16 diameter holes. It",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "M-D Top Pivot Pin and Roller Caps Hardware Repair Kit for Bi-fold ...",
+            "url": "https://www.lowes.com/pd/M-D-Top-Pivot-Pin-and-Roller-Caps-Hardware-Repair-Kit-for-Bi-fold-Doors/5016082069",
+            "snippet": "... Supplies. Doors & Windows. Lawn & Garden. Outdoor. Tools. Plumbing. Flooring ... Closet Door Hardware \u00b7 Bifold Closet Door Hardware Kits",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Hardware Repair Kit with Bottom Bracket, Top ...",
+            "url": "https://www.tractorsupply.com/tsc/product/prime-line-bi-fold-door-hardware-repair-kit-with-bottom-bracket-top-bottom-pivots-2-door-surface-aligners-n-7530",
+            "snippet": "Free delivery over $49This bi-fold closet door pivot and bracket repair kit includes components constructed of steel and plastic, and fits 7",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door hardware repair kit Alibaba",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Parts(999+) - Alibaba.com",
+            "url": "https://m.alibaba.com/showroom/bifold-door-hardware-parts.html",
+            "snippet": "Explore high-quality Bifold Door hardware and accessories with durable aluminum alloy, soundproof designs, and modern styles. Ideal for resi",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bifold Door Hardware Parts(999+) - Alibaba.com",
+            "url": "https://www.alibaba.com/showroom/bifold-door-hardware-parts.html",
+            "snippet": "A bifold door hardware system consists of precision-engineered components that enable smooth, secure, and reliable operation of folding door",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi Folding Door Repair Kit(8) - Alibaba.com",
+            "url": "https://www.alibaba.com/showroom/bi-folding-door-repair-kit.html",
+            "snippet": "Discover a bi folding door repair kit with stainless steel hardware and 180\u00b0 opening. Easy-install solution for folding door repair. 1-year ",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door top pivot roller guide supplier",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 9,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "11/16 in. Bi-Fold Door Top Pivot Guide Roller, for Cox Doors (2 Pack)",
+            "url": "https://primelineparts.com/1116-in-bifold-door-top-pivot-guide-roller-for-cox-doors-2-pack/",
+            "snippet": "In stock Rating 3.56This is a spring-loaded, 11/16 inch diameter nylon roller guide in a 7/16 inch plastic base. It mounts on the top edge o",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Top Roller Guide - SWISCO.com",
+            "url": "https://www.swisco.com/Top-Roller-Guide/pd/Wood-Folding-Closet-Door-Replacement-Accessories/23-125",
+            "snippet": "In stock Rating 4.9(9,793)Top mount self adjusting spring loaded bi-fold closet door guide roller with a 7/8\" diameter nylon wheel; fits 1\" ",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "2 Pack Bifold Door Hardware Bi-Fold Door Top Pivot and Guide Wheel ...",
+            "url": "https://www.amazon.com/Hardware-Bi-Fold-Replacement-Prime-Line-7266/dp/B0F1FJYBZ6",
+            "snippet": "High Quality: Bifold door roller is made of durable nylon and metal materials designed to fit standard bi-fold door systems regardless of do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door repair hardware AliExpress",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 9,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bi fold door hardware-AliExpress",
+            "url": "https://www.aliexpress.com/w/wholesale-bi-fold-door-hardware.html",
+            "snippet": "15-day returns2Pcs Bifold Door Hardware Repair Kit Include Top & Bottom Bracket Folding Door Hardware Replacement with. US $26.91. 2Pcs Bifo",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bifold door hardware-AliExpress",
+            "url": "https://www.aliexpress.com/w/wholesale-bifold-door-hardware.html",
+            "snippet": "4.33.2K \u00b7 15-day returns2Pcs Bifold Door Hardware Repair Kit Include Top & Bottom Bracket Folding Door Hardware Replacement with. US $26.89.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi folding door hardware-AliExpress",
+            "url": "https://www.aliexpress.com/w/wholesale-bi-folding-door-hardware.html",
+            "snippet": "Rating 4.4(1) \u00b7 15-day returnsThis article explores bi folding door hardware, covering essential components like hinges, kits, and weather-r",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bi-fold closet door hardware kit wholesale",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bi-fold door hardware - Slid'up USA",
+            "url": "https://www.slidup.com/us/product-category/bi-fold-door-hardware/",
+            "snippet": "4.5245 \u00b7 4\u20137 day delivery \u00b7 30-day returnsLooking for bifold door hardware? Equip your interior door with a high quality smooth and quiet sl",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Folding Door Hardware | Jhusa.net | Sliding",
+            "url": "https://www.jhusa.net/bi-folding-door-hardware",
+            "snippet": "Free delivery over $250200FD Bi-Fold Door Hardware from $107.60, Picture of 200FS Side Mounted Bi-Fold Door Hardware, 200FS Side Mounted Bi-",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bifold Door Hardware - Amazon.com",
+            "url": "https://www.amazon.com/bifold-door-hardware/s?k=bifold+door+hardware",
+            "snippet": "Browse bifold door hardware kits designed for smooth operation. Includes pivots, brackets, wheels, and detailed installation guides.Missing:",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "competitor": [
+      {
+        "query": "Prime-Line N 7534",
+        "intent": "COMPETITOR",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "In stock Rating 4.6176(1 Kit). SKU: N 7534. $10.58. BI-FOLD DOOR REPAIR KIT \u2013 The Prime-Line bi-fold Closet Doorr pivot and bracket repair k",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Hardware Repair Kit, Includes Top and Bottom ...",
+            "url": "https://www.homedepot.com/p/Bi-Fold-Door-Hardware-Repair-Kit-Includes-Top-and-Bottom-Brackets-Top-and-Bottom-Pivots-and-Guide-Wheel-6-Components-N-7534/313608301",
+            "snippet": "Out of stock Rating 4.6(198)The Prime-Line 7534 Bi-Fold Door Hardware Repair Kit includes components constructed of steel and plastic to hel",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line N 7534 Bi-Fold Door Hardware Repair Kit - Amazon.com",
+            "url": "https://www.amazon.com/Bi-Fold-Hardware-Repair-Brackets-Components/dp/B07DHB27B4",
+            "snippet": "Includes top and bottom brackets, top and bottom pivots and guide wheel. Door repair kit for 1\" to 1-3/8\" thick doors up to 50 lbs.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bifold door repair kit",
+        "intent": "COMPETITOR",
+        "result_count": 10,
+        "stored_count": 9,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Repair Kit, 2-Pack Bifold Closet ... - Amazon.com",
+            "url": "https://www.amazon.com/AWDIA-Hardware-Sliding-Include-Replacement/dp/B0C98J915J",
+            "snippet": "\u3010Wide Application\u3011This closet door hardware kit is suitable for light folding doors, closet folding doors, such as bathroom doors, closet do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Repair Kit For 7/8\" Wide Track & 3/8\"Outside Diameter ...",
+            "url": "https://primelineparts.com/bifold-door-repair-kit--for-78wide-track--38-outside-diameter-pivots-and-guidesincludes-all-parts-needed-to-repair-one-2panel-hinged-bifolding-doors-1-set/",
+            "snippet": "In stock 5-day deliveryINCLUDES \u2013 This bi-fold door repair kit includes top/bottom pivots, a 7/8\" plastic guide wheel, steel bottom pivot br",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold closet door pivot and bracket repair kit includes components constructed of steel and plastic, and fits 7/16 diameter holes. ..",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "bi-fold closet door repair kit",
+        "intent": "COMPETITOR",
+        "result_count": 10,
+        "stored_count": 2,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top_results": [
+          {
+            "title": "Bifold Door Hardware Repair Kit, 2-Pack Bifold Closet ... - Amazon.com",
+            "url": "https://www.amazon.com/AWDIA-Hardware-Sliding-Include-Replacement/dp/B0C98J915J",
+            "snippet": "\u3010Wide Application\u3011This closet door hardware kit is suitable for light folding doors, closet folding doors, such as bathroom doors, closet do",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Bi-Fold Door Hardware Repair Kit \u2013 Includes Top and Bottom Brackets ...",
+            "url": "https://primelineparts.com/bifold-door-hardware-repair-kit--includes-top-and-bottom-brackets-top-and-bottom-pivots-and-guide-wheel--door-repair-kit-for-1-in-to-138-in-thick-doors-up-to-50-lbs-1-kit/",
+            "snippet": "5-day delivery 30-day returnsIncludes top and bottom brackets, top and bottom pivots and guide wheel \u2013 door repair kit for 1 in. to 1-3/8 in",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Prime-Line Bi-Fold Door Repair Kit, For 7/8 in. Wide Track, Used with 3 ...",
+            "url": "https://www.homedepot.com/p/Prime-Line-Bi-Fold-Door-Repair-Kit-For-7-8-in-Wide-Track-Used-with-3-8-in-Outside-Diameter-Pivots-and-Guides-N-7283/100555897",
+            "snippet": "This bi-fold closet door pivot and bracket repair kit includes components constructed of steel and plastic, and fits 7/16 diameter holes. It",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ]
+  },
+  "stored_search_results": 197
+}

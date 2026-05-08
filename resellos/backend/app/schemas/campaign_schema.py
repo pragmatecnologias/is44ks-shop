@@ -121,6 +121,12 @@ class DiscoveryCampaignIdeaSummary(BaseModel):
     status: str
     quick_scan_verdict: Optional[str] = None
     buy_readiness_status: str = "NOT_READY"
+    scout_status: Optional[str] = None
+    scout_score: Optional[int] = None
+    scout_confidence: Optional[str] = None
+    scout_reason: Optional[str] = None
+    scout_next_step: Optional[str] = None
+    scout_metrics: Optional[object] = None
     opportunity_score: int = 0
     research_completeness_score: int = 0
     promoted_product_id: Optional[uuid.UUID] = None

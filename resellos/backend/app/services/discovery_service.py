@@ -10,11 +10,15 @@ from sqlalchemy.orm import Session
 
 from app.models.product import Product
 from app.models.campaign import DiscoveryCampaign
+from app.models.research_search import ResearchSearchResult
 from app.models.supplier import AgentReport, CompetitorListing, DiscoveryTask, MarketplaceEvidence, ProfitAnalysis, ProductIdea, ProductSource
 from app.agents.quick_scan_agent import QuickScanAgent
 from app.services.category_templates import CATEGORY_TEMPLATES
+from app.services.opportunity_scout_service import OpportunityScoutService
 from app.schemas.product_schema import (
     OpportunityBoardRow,
+    OpportunityScoutRequest,
+    OpportunityScoutResponse,
     ProductCreate,
     ProductIdeaCreate,
     ProductIdeaQuickScanRequest,
@@ -192,6 +196,19 @@ class DiscoveryService:
         self.db.refresh(idea)
         return idea
 
+    def opportunity_scout(
+        self,
+        idea_id: uuid.UUID,
+        request: OpportunityScoutRequest | None = None,
+    ) -> dict[str, Any] | None:
+        idea = self.get_idea(idea_id)
+        if not idea:
+            return None
+        scout_service = OpportunityScoutService(self.db)
+        result = scout_service.evaluate_idea(idea, request)
+        scout_service.persist_result(idea, result)
+        return result
+
     def quick_scan(self, data: ProductIdeaQuickScanRequest) -> dict[str, Any]:
         return self._quick_scan_new_idea(data)
 
@@ -343,6 +360,9 @@ class DiscoveryService:
                         idea.notes,
                         f"Quick scan verdict: {idea.quick_scan_verdict or 'UNKNOWN'}",
                         f"Quick scan reason: {idea.quick_scan_reason or 'No quick scan reason recorded.'}",
+                        f"Scout status: {idea.scout_status or 'None'}",
+                        f"Scout reason: {idea.scout_reason or 'No scout reason recorded.'}",
+                        f"Scout next step: {idea.scout_next_step or 'No scout next step recorded.'}",
                         f"Required evidence: {', '.join(_json_load(idea.required_next_evidence, [])) if _json_load(idea.required_next_evidence, []) else 'None'}",
                     ]
                     if part
@@ -356,6 +376,12 @@ class DiscoveryService:
             "category": idea.category,
             "quick_scan_verdict": idea.quick_scan_verdict,
             "quick_scan_reason": idea.quick_scan_reason,
+            "scout_status": idea.scout_status,
+            "scout_score": int(idea.scout_score) if idea.scout_score is not None else None,
+            "scout_confidence": idea.scout_confidence,
+            "scout_reason": idea.scout_reason,
+            "scout_next_step": idea.scout_next_step,
+            "scout_metrics": _json_load(idea.scout_metrics_json, {}),
             "research_priority": idea.research_priority,
             "research_completeness_score": self._research_completeness_for_idea(idea),
             "opportunity_score": self._research_completeness_for_idea(idea),
@@ -507,6 +533,13 @@ class DiscoveryService:
             "status": idea.status,
             "quick_scan_verdict": idea.quick_scan_verdict,
             "quick_scan_reason": idea.quick_scan_reason,
+            "scout_status": idea.scout_status,
+            "scout_score": int(idea.scout_score) if idea.scout_score is not None else None,
+            "scout_confidence": idea.scout_confidence,
+            "scout_reason": idea.scout_reason,
+            "scout_next_step": idea.scout_next_step,
+            "scout_metrics": _json_load(idea.scout_metrics_json, {}),
+            "scout_updated_at": idea.scout_updated_at,
             "research_completeness_score": min(100, discovery_completeness_score),
             "discovery_completeness_score": min(100, discovery_completeness_score),
             "opportunity_score": min(100, discovery_completeness_score),
@@ -593,6 +626,12 @@ class DiscoveryService:
                     "research_verdict": idea.quick_scan_verdict or ("PROMISING_FOR_RESEARCH" if idea.status == "PROMISING" else "NEEDS_MORE_RESEARCH"),
                     "buy_readiness_status": "NOT_READY",
                     "risk_level": "BLOCKED" if idea.status == "REJECTED" else "LOW",
+                    "scout_status": idea.scout_status,
+                    "scout_score": int(idea.scout_score) if idea.scout_score is not None else None,
+                    "scout_confidence": idea.scout_confidence,
+                    "scout_reason": idea.scout_reason,
+                    "scout_next_step": idea.scout_next_step,
+                    "scout_metrics": _json_load(idea.scout_metrics_json, {}),
                     "sold_evidence_count": 0,
                     "active_evidence_count": 0,
                     "median_sold_price": None,
@@ -601,7 +640,7 @@ class DiscoveryService:
                     "best_profit_scenario": None,
                     "competition_gap_score": None,
                     "supplier_confidence": None,
-                    "next_action": (idea.required_next_evidence and _json_load(idea.required_next_evidence, [])[:1] or ["Run quick scan"])[0],
+                    "next_action": idea.scout_next_step or (idea.required_next_evidence and _json_load(idea.required_next_evidence, [])[:1] or ["Run quick scan"])[0],
                     "source_platform": idea.source_platform,
                     "status": idea.status,
                 }

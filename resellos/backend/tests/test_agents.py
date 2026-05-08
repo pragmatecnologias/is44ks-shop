@@ -19,9 +19,11 @@ from app.agents.trend_agent import TrendAgent
 from app.db import Base
 from app.llm.base import LLMProvider, Message
 from app.models.product import Product
+from app.models.research_search import ResearchSearchResult
 from app.models.supplier import AgentReport, CompetitorListing, DiscoveryTask, MarketplaceEvidence, ProfitAnalysis, ProductIdea, ProductSource
 from app.services.agent_utils import agent_data
 from app.services.discovery_service import DiscoveryService
+from app.schemas.product_schema import OpportunityScoutRequest
 from app.services.validation_checklist_service import ValidationChecklistService
 from app.services.risk_rules import evaluate_risk_rules
 from app.schemas.product_schema import ResearchTaskUpdate
@@ -1516,6 +1518,433 @@ class AgentContractTests(unittest.TestCase):
             self.assertEqual(row["sold_price_range_total"], [5.0, 25.0])
             self.assertEqual(row["active_price_range"], [30.0])
             self.assertEqual(row["active_price_range_total"], [8.0, 30.0])
+        finally:
+            session.close()
+
+    def test_opportunity_scout_marks_needs_sold_proof_without_touching_product(self) -> None:
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(
+                sku="RS-SCOUT-001",
+                name="Moen Cartridge Puller Tool",
+                category="Plumbing repair",
+                status="RESEARCHING",
+                final_decision="WATCHLIST",
+            )
+            session.add(product)
+            session.flush()
+
+            idea = ProductIdea(
+                idea_name="Moen Shower Cartridge Puller Tool",
+                category="Plumbing repair",
+                status="QUICK_SCAN_COMPLETE",
+                why_interesting="Stuck Moen cartridge removal tool for 1200 1222 1225.",
+                notes="Avoid forcing the valve body; use a proper puller tool.",
+                promoted_product_id=product.id,
+            )
+            session.add(idea)
+            session.flush()
+
+            session.add_all(
+                [
+                    ResearchSearchResult(
+                        query="moen cartridge puller tool",
+                        normalized_query="moen cartridge puller tool",
+                        provider="SEARXNG",
+                        intent="KEYWORD_DEMAND",
+                        title="Moen cartridge puller tool",
+                        url="https://example.com/k1",
+                        idea_id=idea.id,
+                        product_id=product.id,
+                    ),
+                    ResearchSearchResult(
+                        query="moen 1222 cartridge puller",
+                        normalized_query="moen 1222 cartridge puller",
+                        provider="SEARXNG",
+                        intent="KEYWORD_DEMAND",
+                        title="Moen 1222 cartridge puller",
+                        url="https://example.com/k2",
+                        idea_id=idea.id,
+                        product_id=product.id,
+                    ),
+                    ResearchSearchResult(
+                        query="moen cartridge puller tool",
+                        normalized_query="moen cartridge puller tool",
+                        provider="SEARXNG",
+                        intent="ACTIVE_LISTING",
+                        title="Moen cartridge puller tool active listing",
+                        url="https://example.com/a1",
+                        price_text="$24.99",
+                        idea_id=idea.id,
+                        product_id=product.id,
+                    ),
+                    ResearchSearchResult(
+                        query="moen cartridge puller tool",
+                        normalized_query="moen cartridge puller tool",
+                        provider="SEARXNG",
+                        intent="SUPPLIER",
+                        title="Moen cartridge puller supplier",
+                        url="https://example.com/s1",
+                        idea_id=idea.id,
+                        product_id=product.id,
+                    ),
+                ]
+            )
+            session.add_all(
+                [
+                    MarketplaceEvidence(
+                        product_id=product.id,
+                        marketplace="eBay",
+                        evidence_type="ACTIVE_LISTING",
+                        title="Moen cartridge puller tool",
+                        price=24.99,
+                        verification_status="USER_VERIFIED",
+                        price_verified=True,
+                    )
+                    for _ in range(5)
+                ]
+            )
+            session.add(
+                ProductSource(
+                    product_id=product.id,
+                    supplier_name="Shenzhen Valve Tools",
+                    supplier_platform="Alibaba",
+                    unit_cost=3.20,
+                    estimated_landed_cost=4.80,
+                    moq=50,
+                    supplier_rating="HIGH",
+                    verification_status="USER_VERIFIED",
+                    is_primary=True,
+                    economics_verified=True,
+                    verified_by_source="MANUAL_ENTRY",
+                    proof_text="Supplier quote visible.",
+                    manual_verification_note="Captured for scout test.",
+                    confidence_level="HIGH",
+                )
+            )
+            session.add_all(
+                [
+                    CompetitorListing(product_id=product.id, marketplace="eBay", title="Moen puller competitor 1", price=22.99, verification_status="USER_VERIFIED"),
+                    CompetitorListing(product_id=product.id, marketplace="Walmart", title="Moen puller competitor 2", price=24.99, verification_status="USER_VERIFIED"),
+                    CompetitorListing(product_id=product.id, marketplace="Amazon", title="Moen puller competitor 3", price=26.99, verification_status="USER_VERIFIED"),
+                ]
+            )
+            session.commit()
+
+            request = OpportunityScoutRequest(
+                keyword_signals=[
+                    "Moen cartridge puller tool",
+                    "Moen 1222 cartridge puller",
+                    "Moen 1225 cartridge puller",
+                ],
+                active_listing_candidates=[
+                    {"title": "Moen cartridge puller active 1"},
+                    {"title": "Moen cartridge puller active 2"},
+                    {"title": "Moen cartridge puller active 3"},
+                    {"title": "Moen cartridge puller active 4"},
+                    {"title": "Moen cartridge puller active 5"},
+                ],
+                supplier_candidates=[{"title": "Moen cartridge puller supplier"}],
+                risk_notes=["Shut off water before removal", "Do not force the cartridge"],
+            )
+            result = DiscoveryService(session).opportunity_scout(idea.id, request)
+
+            self.assertIsNotNone(result)
+            self.assertEqual(result["scout_status"], "NEEDS_SOLD_PROOF")
+            self.assertGreaterEqual(result["scout_score"], 65)
+            self.assertEqual(session.get(ProductIdea, idea.id).scout_status, "NEEDS_SOLD_PROOF")
+            self.assertEqual(session.get(Product, product.id).final_decision, "WATCHLIST")
+            self.assertEqual(session.get(Product, product.id).status, "RESEARCHING")
+        finally:
+            session.close()
+
+    def test_opportunity_scout_shortlists_with_verified_sold_proof(self) -> None:
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            product = Product(
+                sku="RS-SCOUT-002",
+                name="Moen Cartridge Puller Tool Premium",
+                category="Plumbing repair",
+                status="RESEARCHING",
+                final_decision="WATCHLIST",
+            )
+            session.add(product)
+            session.flush()
+
+            idea = ProductIdea(
+                idea_name="Moen Shower Cartridge Puller Tool 1200 1222 1225",
+                category="Plumbing repair",
+                status="QUICK_SCAN_COMPLETE",
+                why_interesting="Stuck Moen cartridge removal tool for 1200 1222 1225. Save plumber cost.",
+                notes="Use with proper shutoff and fit guidance.",
+                promoted_product_id=product.id,
+            )
+            session.add(idea)
+            session.flush()
+
+            session.add_all(
+                [
+                    ResearchSearchResult(
+                        query="moen cartridge puller tool",
+                        normalized_query="moen cartridge puller tool",
+                        provider="SEARXNG",
+                        intent="KEYWORD_DEMAND",
+                        title="Moen cartridge puller tool",
+                        url="https://example.com/k1",
+                        idea_id=idea.id,
+                        product_id=product.id,
+                    ),
+                    ResearchSearchResult(
+                        query="moen 1222 cartridge puller",
+                        normalized_query="moen 1222 cartridge puller",
+                        provider="SEARXNG",
+                        intent="KEYWORD_DEMAND",
+                        title="Moen 1222 cartridge puller",
+                        url="https://example.com/k2",
+                        idea_id=idea.id,
+                        product_id=product.id,
+                    ),
+                    ResearchSearchResult(
+                        query="moen 1225 cartridge puller",
+                        normalized_query="moen 1225 cartridge puller",
+                        provider="SEARXNG",
+                        intent="KEYWORD_DEMAND",
+                        title="Moen 1225 cartridge puller",
+                        url="https://example.com/k3",
+                        idea_id=idea.id,
+                        product_id=product.id,
+                    ),
+                    ResearchSearchResult(
+                        query="moen cartridge puller tool",
+                        normalized_query="moen cartridge puller tool",
+                        provider="SEARXNG",
+                        intent="ACTIVE_LISTING",
+                        title="Moen cartridge puller active listing",
+                        url="https://example.com/a1",
+                        price_text="$24.99",
+                        idea_id=idea.id,
+                        product_id=product.id,
+                    ),
+                ]
+            )
+            session.add_all(
+                [
+                    MarketplaceEvidence(
+                        product_id=product.id,
+                        marketplace="eBay",
+                        evidence_type="ACTIVE_LISTING",
+                        title="Moen cartridge puller active 1",
+                        price=22.99,
+                        verification_status="USER_VERIFIED",
+                        price_verified=True,
+                    ),
+                    MarketplaceEvidence(
+                        product_id=product.id,
+                        marketplace="eBay",
+                        evidence_type="ACTIVE_LISTING",
+                        title="Moen cartridge puller active 2",
+                        price=23.99,
+                        verification_status="USER_VERIFIED",
+                        price_verified=True,
+                    ),
+                    MarketplaceEvidence(
+                        product_id=product.id,
+                        marketplace="eBay",
+                        evidence_type="ACTIVE_LISTING",
+                        title="Moen cartridge puller active 3",
+                        price=24.99,
+                        verification_status="USER_VERIFIED",
+                        price_verified=True,
+                    ),
+                    MarketplaceEvidence(
+                        product_id=product.id,
+                        marketplace="eBay",
+                        evidence_type="ACTIVE_LISTING",
+                        title="Moen cartridge puller active 4",
+                        price=25.99,
+                        verification_status="USER_VERIFIED",
+                        price_verified=True,
+                    ),
+                    MarketplaceEvidence(
+                        product_id=product.id,
+                        marketplace="eBay",
+                        evidence_type="ACTIVE_LISTING",
+                        title="Moen cartridge puller active 5",
+                        price=26.99,
+                        verification_status="USER_VERIFIED",
+                        price_verified=True,
+                    ),
+                    MarketplaceEvidence(
+                        product_id=product.id,
+                        marketplace="eBay",
+                        evidence_type="SOLD_LISTING",
+                        title="Moen cartridge puller sold proof",
+                        price=24.99,
+                        price_total_price=24.99,
+                        verification_status="USER_VERIFIED",
+                        price_verified=True,
+                        price_verified_by_source="MANUAL_ENTRY",
+                        price_proof_text="Completed sale price visible on sold/completed proof page.",
+                        price_manual_verification_note="Sold price visible in completed proof.",
+                    ),
+                ]
+            )
+            session.add(
+                ProductSource(
+                    product_id=product.id,
+                    supplier_name="Shenzhen Valve Tools",
+                    supplier_platform="Alibaba",
+                    unit_cost=3.20,
+                    estimated_landed_cost=4.80,
+                    moq=50,
+                    supplier_rating="HIGH",
+                    verification_status="USER_VERIFIED",
+                    is_primary=True,
+                    economics_verified=True,
+                    verified_by_source="MANUAL_ENTRY",
+                    proof_text="Supplier quote visible.",
+                    manual_verification_note="Captured for scout test.",
+                    confidence_level="HIGH",
+                )
+            )
+            session.add_all(
+                [
+                    CompetitorListing(product_id=product.id, marketplace="eBay", title="Moen puller competitor 1", price=22.99, verification_status="USER_VERIFIED"),
+                    CompetitorListing(product_id=product.id, marketplace="Walmart", title="Moen puller competitor 2", price=24.99, verification_status="USER_VERIFIED"),
+                    CompetitorListing(product_id=product.id, marketplace="Amazon", title="Moen puller competitor 3", price=26.99, verification_status="USER_VERIFIED"),
+                ]
+            )
+            session.commit()
+
+            request = OpportunityScoutRequest(
+                keyword_signals=[
+                    "Moen cartridge puller tool",
+                    "Moen 1222 cartridge puller",
+                    "Moen 1225 cartridge puller",
+                ],
+                active_listing_candidates=[
+                    {"title": "Moen cartridge puller active 1"},
+                    {"title": "Moen cartridge puller active 2"},
+                    {"title": "Moen cartridge puller active 3"},
+                    {"title": "Moen cartridge puller active 4"},
+                    {"title": "Moen cartridge puller active 5"},
+                ],
+                supplier_candidates=[{"title": "Moen cartridge puller supplier"}],
+                risk_notes=["Shut off water before removal", "Do not force the cartridge"],
+            )
+            result = DiscoveryService(session).opportunity_scout(idea.id, request)
+
+            self.assertIsNotNone(result)
+            self.assertEqual(result["scout_status"], "SHORTLIST")
+            self.assertGreaterEqual(result["scout_score"], 75)
+            self.assertIn(result["confidence"], {"MEDIUM", "HIGH"})
+            self.assertEqual(session.get(ProductIdea, idea.id).scout_status, "SHORTLIST")
+            self.assertEqual(session.get(Product, product.id).final_decision, "WATCHLIST")
+            self.assertEqual(session.get(Product, product.id).status, "RESEARCHING")
+        finally:
+            session.close()
+
+    def test_opportunity_scout_rejects_high_risk_or_no_supplier_path(self) -> None:
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        SessionLocal = sessionmaker(bind=engine)
+        session = SessionLocal()
+        try:
+            risky_idea = ProductIdea(
+                idea_name="Universal gas line repair tool",
+                category="Plumbing repair",
+                status="QUICK_SCAN_COMPLETE",
+                why_interesting="Gas line repair tool with universal fit claims.",
+                notes="Dangerous universal fit claims.",
+            )
+            session.add(risky_idea)
+            session.flush()
+
+            session.add_all(
+                [
+                    ResearchSearchResult(
+                        query="universal gas line repair tool",
+                        normalized_query="universal gas line repair tool",
+                        provider="SEARXNG",
+                        intent="KEYWORD_DEMAND",
+                        title="Universal gas line repair tool",
+                        url="https://example.com/r1",
+                        idea_id=risky_idea.id,
+                    ),
+                    ResearchSearchResult(
+                        query="universal gas line repair tool",
+                        normalized_query="universal gas line repair tool",
+                        provider="SEARXNG",
+                        intent="ACTIVE_LISTING",
+                        title="Universal gas line repair tool active",
+                        url="https://example.com/r2",
+                        price_text="$19.99",
+                        idea_id=risky_idea.id,
+                    ),
+                ]
+            )
+            session.commit()
+
+            risky_result = DiscoveryService(session).opportunity_scout(
+                risky_idea.id,
+                OpportunityScoutRequest(
+                    keyword_signals=["universal gas line repair tool"],
+                    active_listing_candidates=[
+                        {"title": "Universal gas line repair tool active 1"},
+                        {"title": "Universal gas line repair tool active 2"},
+                        {"title": "Universal gas line repair tool active 3"},
+                        {"title": "Universal gas line repair tool active 4"},
+                        {"title": "Universal gas line repair tool active 5"},
+                    ],
+                    competitor_candidates=[
+                        {"title": "Universal gas line competitor 1"},
+                        {"title": "Universal gas line competitor 2"},
+                        {"title": "Universal gas line competitor 3"},
+                    ],
+                    supplier_candidates=[
+                        {"title": "Universal gas line supplier 1"},
+                        {"title": "Universal gas line supplier 2"},
+                        {"title": "Universal gas line supplier 3"},
+                    ],
+                    risk_notes=["gas line", "universal"],
+                ),
+            )
+            self.assertEqual(risky_result["scout_status"], "REJECT")
+
+            low_market_idea = ProductIdea(
+                idea_name="Drawer clip spacer",
+                category="Home organization",
+                status="QUICK_SCAN_COMPLETE",
+                why_interesting="Tiny clip replacement.",
+            )
+            session.add(low_market_idea)
+            session.flush()
+
+            low_market_result = DiscoveryService(session).opportunity_scout(
+                low_market_idea.id,
+                OpportunityScoutRequest(
+                    keyword_signals=["drawer clip spacer"],
+                ),
+            )
+            self.assertEqual(low_market_result["scout_status"], "REJECT")
         finally:
             session.close()
 

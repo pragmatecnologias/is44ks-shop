@@ -13,6 +13,8 @@ import type {
   DiscoveryIdea,
   DiscoveryQuickScanInput,
   DiscoveryQuickScanResponse,
+  OpportunityScoutInput,
+  OpportunityScoutResponse,
   DiscoveryTaskUpdate,
   ExternalResearchJob,
   ExternalResearchJobDetailResponse,
@@ -199,6 +201,27 @@ function demoDashboard(): DashboardStats {
 
 function demoDiscovery(): DiscoveryIdea[] {
   return DEMO_DISCOVERY_IDEAS;
+}
+
+function demoOpportunityScout(ideaId: string): OpportunityScoutResponse {
+  return {
+    idea_id: ideaId,
+    campaign_id: null,
+    product_id: null,
+    scout_status: 'WATCH',
+    scout_score: 58,
+    confidence: 'MEDIUM',
+    buyer_problem_score: 12,
+    active_market_score: 12,
+    supplier_path_score: 10,
+    competition_risk_score: 8,
+    margin_potential_score: 8,
+    compatibility_risk_score: 5,
+    evidence_friction_score: 3,
+    reason: 'Demo scout result while the backend is offline.',
+    next_step: 'Collect sold proof manually or use paid marketplace source.',
+    metrics: {},
+  };
 }
 
 function demoOpportunityBoard(): OpportunityBoardRow[] {
@@ -582,6 +605,21 @@ export async function quickScanDiscoveryIdea(data: DiscoveryQuickScanInput): Pro
     method: 'POST',
     body: JSON.stringify(data),
   });
+}
+
+export async function runOpportunityScout(ideaId: string, data?: OpportunityScoutInput): Promise<OpportunityScoutResponse> {
+  const payload = data || {};
+  try {
+    const result = await requestJson<OpportunityScoutResponse>(`/api/discovery/ideas/${ideaId}/opportunity-scout`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+    _isOffline = false;
+    return result;
+  } catch {
+    _isOffline = true;
+    return demoOpportunityScout(ideaId);
+  }
 }
 
 export async function generateDiscoveryTasks(ideaId: string): Promise<Array<Record<string, unknown>>> {

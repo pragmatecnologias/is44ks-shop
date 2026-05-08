@@ -1,0 +1,1250 @@
+{
+  "idea_name": "Moen Shower Cartridge Puller Tool",
+  "campaign_name": "Moen Shower Cartridge Puller Discovery",
+  "campaign_created": true,
+  "idea_created": true,
+  "tasks_created": 7,
+  "search_groups": {
+    "keyword": [
+      {
+        "query": "Moen cartridge puller tool",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "... Cartridge Puller when pulling Moen 1225 Cartridge from the Moen L4621 ... cartridge nut can be removed with needle nose pliers or nut removal tool 14272.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen 1225 Cartridge Removal Tool - Amazon.com",
+            "url": "https://www.amazon.com/moen-1225-cartridge-removal-tool/s?k=moen+1225+cartridge+removal+tool",
+            "snippet": "104421 Solid Brass Cartridge Puller Removal Tool Compatible with Moen 1200, 1222 & 1225 Single-Handle Shower Faucet Cartridges, Valve Core Repair & Replacement\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Replace Stuck Moen 1222 Cartridge with Moen Puller - YouTube",
+            "url": "https://www.youtube.com/watch?v=S80MsFj04Io",
+            "snippet": "Mar 7, 2026 ... Replacing a Stuck Moen 1222 Cartridge with the Moen Cartridge Puller Moen Cartridge Removal Tool \u27a1\ufe0f https://amzn.to/4surJtc Old Moen shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen 1222 cartridge puller",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 6,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "$46.58 i Web price is valid for moen.com only and does not include any applicable tax or shipping charges. List Price: $62.10. Regular price Sale price\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Replace Stuck Moen 1222 Cartridge with Moen Puller - YouTube",
+            "url": "https://www.youtube.com/watch?v=S80MsFj04Io",
+            "snippet": "Mar 7, 2026 ... Replacing a Stuck Moen 1222 Cartridge with the Moen Cartridge Puller Moen Cartridge Removal Tool \u27a1\ufe0f https://amzn.to/4surJtc Old Moen shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Amazon.com",
+            "url": "https://www.amazon.com/Cartridge-Moen-Posi-Temp-Pressure-Cartridges/dp/B0C7QQC6QJ",
+            "snippet": "Core Puller for Moen. Cartridge Puller Removal Tool: Compatible with Moen tub/shower Posi-Temp pressure balanced shower cartridges from the 1200, 1222,\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen 1225 cartridge puller",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 6,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "$46.58 i Web price is valid for moen.com only and does not include any applicable tax or shipping charges. List Price: $62.10. Regular price Sale price\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Solid Brass 104421 Cartridge Puller, Moen ... - Amazon.com",
+            "url": "https://www.amazon.com/Roastove-104421-Cartridge-Removal-Replacement/dp/B09CGDS7SP",
+            "snippet": "This tool works for plastic and brass cartridges; and is compatible with Moen 1222, 1225, and 80933. Installing a new cartridge eliminates a leaky faucet.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Removal Tool for 1200 or 1225 or 1222 Cartridges",
+            "url": "https://www.homedepot.com/p/MOEN-Cartridge-Removal-Tool-for-1200-or-1225-or-1222-Cartridges-104421/202998692",
+            "snippet": "Make removing the cartridge easier with this exceptional Cartridge Removal Tool designed by MOEN. Designed for use in your bath.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen 1200 cartridge puller",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 5,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "$46.58 i Web price is valid for moen.com only and does not include any applicable tax or shipping charges. List Price: $62.10. Regular price Sale price\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Removal Tool for 1200 or 1225 or 1222 Cartridges",
+            "url": "https://www.homedepot.com/p/MOEN-Cartridge-Removal-Tool-for-1200-or-1225-or-1222-Cartridges-104421/202998692",
+            "snippet": "Make removing the cartridge easier with this exceptional Cartridge Removal Tool designed by MOEN. Designed for use in your bath.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "HOW TO REMOVE MOEN 1200 AND 1225 CARTRIDGE ... - YouTube",
+            "url": "https://www.youtube.com/watch?v=KaY7RnV83D4",
+            "snippet": "Mar 29, 2025 ... In this video I will show you step by step how to remove a moen cartridge 1200 and 1225 with a Ona puller.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "shower cartridge puller tool",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 6,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Cartridge Puller - Amazon.com",
+            "url": "https://www.amazon.com/cartridge-puller/s?k=cartridge+puller",
+            "snippet": "104421 Cartridge Puller Removal Tool, Compatible with Moen 1200, 1222, & 1225 Single Handle Cartridges, Shower Faucet Valve Core Removal Tool",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Replace Stuck Moen 1222 Cartridge with Moen Puller - YouTube",
+            "url": "https://www.youtube.com/watch?v=S80MsFj04Io",
+            "snippet": "Mar 7, 2026 ... Replacing a Stuck Moen 1222 Cartridge with the Moen Cartridge Puller Moen Cartridge Removal Tool \u27a1\ufe0f https://amzn.to/4surJtc Old Moen shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Removal Tool for 1200 or 1225 or 1222 Cartridges",
+            "url": "https://www.homedepot.com/p/MOEN-Cartridge-Removal-Tool-for-1200-or-1225-or-1222-Cartridges-104421/202998692",
+            "snippet": "What Moen cartridge removal tool part , cartridge ... Repair your leaky one-handle tub/shower faucet with the Danco cartridge replacement for Moen PosiTemp\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "stuck Moen cartridge removal tool",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Replace Stuck Moen 1222 Cartridge with Moen Puller - YouTube",
+            "url": "https://www.youtube.com/watch?v=S80MsFj04Io",
+            "snippet": "Mar 7, 2026 ... Replacing a Stuck Moen 1222 Cartridge with the Moen Cartridge Puller Moen Cartridge Removal Tool \u27a1\ufe0f https://amzn.to/4surJtc Old Moen shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Can't remove Moen shower cartridge, what am I missing? : r/Plumbing",
+            "url": "https://www.reddit.com/r/Plumbing/comments/1b50ne6/cant_remove_moen_shower_cartridge_what_am_i/",
+            "snippet": "Mar 2, 2024 ... It's worth trying the tool just to know your situation better. I have had some so stuck that even turning the water back on didn't even help.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Upgraded Cartridge Puller for 1222/1200/1225, Improved Removal ...",
+            "url": "https://www.amazon.com/Welvzen-Upgraded-Cartridge-Improved-Removal/dp/B0F6L6PYZJ",
+            "snippet": "Welvzen Upgraded Cartridge Puller for 1222/1200/1225, Improved Removal Tool for Stuck Faucets for 104421, Core Cartridge Puller for Shower Repair Kit\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen cartridge extractor tool",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 1,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "From finishes that are guaranteed to last a lifetime, to faucets that perfectly balance your water pressure, Moen sets the standard for exceptional beauty\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Cartridge Retainer Removal Tool For 1224, 1234, 1248 Two ...",
+            "url": "https://shop.moen.com/products/14272",
+            "snippet": "Moen Cartridge Retainer Removal Tool For 1224, 1234, 1248 Two-handle Cartridge. SKU: Model #14272. 3.6 out of 5 stars, average rating value. Read 19 Reviews.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Cartridge Removal Tool - Wal-Rich Corporation",
+            "url": "https://wal-rich.com/product/moen-cartridge-removal-tool/",
+            "snippet": "Weight, 0.55 lbs. Quantity Per Package. 1. Attribute 2. For Removal of Both Metal & Plastic Moen Faucet Cartridges. Attribute 3. Harbor Forge Display Carded\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen faucet cartridge puller",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 3,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "From finishes that are guaranteed to last a lifetime, to faucets that perfectly balance your water pressure, Moen sets the standard for exceptional beauty\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Cartridge Puller",
+            "url": "https://shop.moen.com/products/179120",
+            "snippet": "From finishes that are guaranteed to last a lifetime, to faucets that perfectly balance your water pressure, Moen sets the standard for exceptional beauty.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Don't Buy the WRONG Moen Puller! Shower Faucet Repair Tool ...",
+            "url": "https://www.youtube.com/watch?v=vvffgyGDs-c",
+            "snippet": "Jul 11, 2025 ... Stuck with a leaky Moen faucet? Don't sweat it! In this video, we're diving deep into the world of Moen cartridge pullers to help you find\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "sold": [
+      {
+        "query": "Moen cartridge puller tool sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "Sale Sold out. Pay over time with Affirm. See if you qualify at checkout ... The 104421 removal tool is not compatible with the 1255 cartridge; the 1255\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen 1225 Cartridge Removal Tool - Amazon.com",
+            "url": "https://www.amazon.com/moen-1225-cartridge-removal-tool/s?k=moen+1225+cartridge+removal+tool",
+            "snippet": "104421U Cartridge Removal Tool for Moen 1222 1225 1220, Shower Cartridge Puller Tool, Tub and Shower Faucet Cartridge Remover for Moen Posi-Temp Valve.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Cartridge Puller",
+            "url": "https://shop.moen.com/products/179120",
+            "snippet": "Moen Cartridge Puller ... $6.38 i Web price is valid for moen.com only and does not include any applicable tax or shipping charges. ... Pay over time with Affirm.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen 1222 cartridge puller sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 6,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle Cartridges. Moen ... Sale Sold out. Pay over time with Affirm. See if you qualify at checkout\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Removal Tool for 1200 or 1225 or 1222 Cartridges",
+            "url": "https://www.homedepot.com/p/MOEN-Cartridge-Removal-Tool-for-1200-or-1225-or-1222-Cartridges-104421/202998692",
+            "snippet": "... Moen Cartridge Puller For 1200, 1222 And 1225 Single-Handle Cartridges. We ... Do Not Sell or Share My Personal Information|; California Supply Chain\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Amazon.com",
+            "url": "https://www.amazon.com/Cartridge-Moen-Posi-Temp-Pressure-Cartridges/dp/B0C7QQC6QJ",
+            "snippet": "Cartridge Puller Removal Tool: Compatible with Moen tub/shower Posi-Temp pressure balanced shower cartridges from the 1200, 1222, and 1225 series.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen 1225 cartridge puller sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 6,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle Cartridges. Moen ... Sale Sold out. Pay over time with Affirm. See if you qualify at checkout\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen 104421 Cartridge Puller for 1200, 1222 and 1225 Single ...",
+            "url": "https://www.amazon.com/Moen-104421-Cartridge-Puller-Cartridges/dp/B00083EC6C",
+            "snippet": "Amazon.com: Moen 104421 Cartridge Puller for 1200, 1222 and 1225 Single Handle Cartridges, Plumbing Tool for replacing Sink Faucet Cartridge : Everything\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Removal Tool for 1200 or 1225 or 1222 Cartridges",
+            "url": "https://www.homedepot.com/p/MOEN-Cartridge-Removal-Tool-for-1200-or-1225-or-1222-Cartridges-104421/202998692",
+            "snippet": "... Moen Cartridge Puller For 1200, 1222 And 1225 Single-Handle Cartridges. We ... Do Not Sell or Share My Personal Information|; California Supply Chain\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen 1200 cartridge puller sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 4,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle Cartridges. Moen ... Sale Sold out. Pay over time with Affirm. See if you qualify at checkout\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Removal Tool for 1200 or 1225 or 1222 Cartridges",
+            "url": "https://www.homedepot.com/p/MOEN-Cartridge-Removal-Tool-for-1200-or-1225-or-1222-Cartridges-104421/202998692",
+            "snippet": "... Moen Cartridge Puller For 1200, 1222 And 1225 Single-Handle Cartridges. We ... Do Not Sell or Share My Personal Information|; California Supply Chain\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen 104421 Cartridge Puller for 1200, 1222 and 1225 Single ...",
+            "url": "https://www.amazon.com/Moen-104421-Cartridge-Puller-Cartridges/dp/B00083EC6C",
+            "snippet": "Amazon.com: Moen 104421 Cartridge Puller for 1200, 1222 and 1225 Single Handle Cartridges, Plumbing Tool for replacing Sink Faucet Cartridge : Everything\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "shower cartridge puller tool sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Shower Cartridge Removal Tool - Amazon.com",
+            "url": "https://www.amazon.com/shower-cartridge-removal-tool/s?k=shower+cartridge+removal+tool",
+            "snippet": "Equip your toolkit with a cartridge puller designed for Moen shower valves. Simplify DIY repairs and restore optimal performance with this reliable\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Removal Tool for 1200 or 1225 or 1222 Cartridges",
+            "url": "https://www.homedepot.com/p/MOEN-Cartridge-Removal-Tool-for-1200-or-1225-or-1222-Cartridges-104421/202998692",
+            "snippet": "Make removing the cartridge easier with this exceptional Cartridge Removal Tool designed by MOEN. Designed for use in your bath.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen 1-1/2-in Metal Cartridge Repair Kit for Faucet or Tub/Shower",
+            "url": "https://www.lowes.com/pd/Moen-Cartridge-Puller-Metal-Faucet-or-Tub-Shower-Cartridge-Repair-Kit/5004650957",
+            "snippet": "Shop Moen Cartridge Puller Metal Faucet or Tub/Shower Cartridge Repair Kit ... Why is this identical Moen puller sold at HD for less than half this price?",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen cartridge extractor sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 3,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "$46.58 i Web price is valid for moen.com only and does not include any applicable tax or shipping charges. List Price: $62.10.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Solid Brass 104421 Cartridge Puller, Moen ... - Amazon.com",
+            "url": "https://www.amazon.com/Roastove-104421-Cartridge-Removal-Replacement/dp/B09CGDS7SP",
+            "snippet": "\u3010PURPOSE\u3011For MOEN sink, MOEN bathroom, and MOEN tub faucets for cartridge repair or cartridge removal or cartridge replacement. \u00b7 \u3010COMPATIBILITY\u3011 Suitable\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Stem & Cartridge Puller by Pasco Specialty 7040",
+            "url": "https://www.noelsplumbingsupply.com/product/cartridge-puller-for-moen-faucets/",
+            "snippet": "The Pasco 7040 is a professional-grade Moen Stem and Cartridge Puller designed to extract stubborn plumbing components from faucets and shower valves.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen cartridge removal tool eBay sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Removal Tool - eBay",
+            "url": "https://www.ebay.com/shop/moen-cartridge-removal-tool?_nkw=moen+cartridge+removal+tool",
+            "snippet": "Explore a wide range of our Moen Cartridge Removal Tool selection. Find top brands, exclusive offers, and unbeatable prices on eBay.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Puller Moen - eBay",
+            "url": "https://www.ebay.com/shop/cartridge-puller-moen?_nkw=cartridge+puller+moen",
+            "snippet": "999150 Cartridge Puller Extractor Tool For Moen 1200 1222 1225 Series Posi-Temp. Brand New. $44.90. Buy It Now. Free delivery. Located in United States. 51 sold.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "999150 Shower Cartridge Extractor Cartridge Puller Tool For Moen ...",
+            "url": "https://www.ebay.com/itm/305981814847",
+            "snippet": "Please contact us via ebay using\"Contact member\". We will respond within 1 business day or less. We deeply apolgize for late respond due to time difference/\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Danco Moen cartridge puller sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 6,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Cartridge Puller for Moen - Danco",
+            "url": "https://www.danco.com/product/cartridge-puller-for-moen/",
+            "snippet": "Remove your old faucet cartridge with the Danco Cartridge Puller for Moen. This tool is compatible with Moen 1222, 1225, and 1200.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "DANCO 3.12 in Cartridge Puller for MOEN 86712 - The Home Depot",
+            "url": "https://www.homedepot.com/p/DANCO-3-12-in-Cartridge-Puller-for-MOEN-86712/100560034",
+            "snippet": "DANCO Cartridge Puller is a tool designed to help you remove frozen cartridges from your tub, shower and toilet faucet fixtures.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Danco Cartridge Puller for Moen Faucet Handle Puller 86712 at ...",
+            "url": "https://www.lowes.com/pd/Danco/5002859981",
+            "snippet": "... Danco 86712 Plumbing-Wrenches-Spec-Tools - View #4. Danco 86712 Plumbing-Wrenches-Spec-Tools - View #5. View All Images. 1k+ bought last week. Danco Cartridge\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "ONA Moen cartridge puller sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "FlowRite ONA Puller Premier Moen Cartridge Extractor Tool 1222 ...",
+            "url": "https://www.amazon.com/Puller-Premier-Cartridge-Extractor-Posi-Temp/dp/B08T1ZG6VH",
+            "snippet": "Ships from. Amazon ; Sold by. HowPlumb ; Returns. FREE 30-day refund/replacement.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen 999150-ALL Ona Puller Moen Cartridge Extractor Kit",
+            "url": "https://qualityplumbingsupply.com/moen-999150-all-ona-puller-the-premiere-moen-cartridge-extractor-kit-r50u/",
+            "snippet": "Moen 999150-ALL Ona Puller - The Premiere Moen Cartridge Extractor Kit is your go-to solution for repairing Moen faucets with ease.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "ONA Puller Tool 999070 for Extracting Broken Moen Posi-Temp ...",
+            "url": "https://www.chicagofaucetshoppe.com/ona-puller-tool-999070.htm",
+            "snippet": "ONA 999070 - Broken Cartridge Puller Tool for Moen 1200 and 1222 cartridges.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "active": [
+      {
+        "query": "Moen cartridge puller tool",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "... Cartridge Puller when pulling Moen 1225 Cartridge from the Moen L4621 ... cartridge nut can be removed with needle nose pliers or nut removal tool 14272.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen 1225 Cartridge Removal Tool - Amazon.com",
+            "url": "https://www.amazon.com/moen-1225-cartridge-removal-tool/s?k=moen+1225+cartridge+removal+tool",
+            "snippet": "104421 Solid Brass Cartridge Puller Removal Tool Compatible with Moen 1200, 1222 & 1225 Single-Handle Shower Faucet Cartridges, Valve Core Repair & Replacement\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Replace Stuck Moen 1222 Cartridge with Moen Puller - YouTube",
+            "url": "https://www.youtube.com/watch?v=S80MsFj04Io",
+            "snippet": "Mar 7, 2026 ... Replacing a Stuck Moen 1222 Cartridge with the Moen Cartridge Puller Moen Cartridge Removal Tool \u27a1\ufe0f https://amzn.to/4surJtc Old Moen shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen 1222 cartridge puller tool",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 5,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "From finishes that are guaranteed to last a lifetime, to faucets that perfectly balance your water pressure, Moen sets the standard for exceptional beauty\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Replace Stuck Moen 1222 Cartridge with Moen Puller - YouTube",
+            "url": "https://www.youtube.com/watch?v=S80MsFj04Io",
+            "snippet": "Mar 7, 2026 ... Replacing a Stuck Moen 1222 Cartridge with the Moen Cartridge Puller Moen Cartridge Removal Tool \u27a1\ufe0f https://amzn.to/4surJtc Old Moen shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Amazon.com",
+            "url": "https://www.amazon.com/Cartridge-Moen-Posi-Temp-Pressure-Cartridges/dp/B0C7QQC6QJ",
+            "snippet": "Core Puller for Moen. Cartridge Puller Removal Tool: Compatible with Moen tub/shower Posi-Temp pressure balanced shower cartridges from the 1200, 1222,\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen 1225 cartridge puller tool",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle Cartridges. Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle Cartridges. SKU: Model #\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Solid Brass 104421 Cartridge Puller, Moen ... - Amazon.com",
+            "url": "https://www.amazon.com/Roastove-104421-Cartridge-Removal-Replacement/dp/B09CGDS7SP",
+            "snippet": "Remove your old faucet cartridge with the Cartridge Puller for Moen. This tool works for plastic and brass cartridges; and is compatible with Moen 1222, 1225,\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Everbilt - Cartridge Puller for Moen 1200, 1222 and 1225 Series Tub ...",
+            "url": "https://www.homedepot.com/p/Everbilt-Cartridge-Puller-for-Moen-1200-1222-and-1225-Series-Tub-Shower-Cartridges-82876/318950202",
+            "snippet": "Cartridge Removal Tool for 1200 or 1225 or 1222 Cartridges ... From finishes that are guaranteed to last a lifetime, to faucets that perfectly balance your water\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "shower cartridge puller tool",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 6,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Cartridge Puller - Amazon.com",
+            "url": "https://www.amazon.com/cartridge-puller/s?k=cartridge+puller",
+            "snippet": "104421 Cartridge Puller Removal Tool, Compatible with Moen 1200, 1222, & 1225 Single Handle Cartridges, Shower Faucet Valve Core Removal Tool",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Replace Stuck Moen 1222 Cartridge with Moen Puller - YouTube",
+            "url": "https://www.youtube.com/watch?v=S80MsFj04Io",
+            "snippet": "Mar 7, 2026 ... Replacing a Stuck Moen 1222 Cartridge with the Moen Cartridge Puller Moen Cartridge Removal Tool \u27a1\ufe0f https://amzn.to/4surJtc Old Moen shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Removal Tool for 1200 or 1225 or 1222 Cartridges",
+            "url": "https://www.homedepot.com/p/MOEN-Cartridge-Removal-Tool-for-1200-or-1225-or-1222-Cartridges-104421/202998692",
+            "snippet": "What Moen cartridge removal tool part , cartridge ... Repair your leaky one-handle tub/shower faucet with the Danco cartridge replacement for Moen PosiTemp\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen cartridge extractor tool",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 4,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "From finishes that are guaranteed to last a lifetime, to faucets that perfectly balance your water pressure, Moen sets the standard for exceptional beauty\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Cartridge Retainer Removal Tool For 1224, 1234, 1248 Two ...",
+            "url": "https://shop.moen.com/products/14272",
+            "snippet": "Moen Cartridge Retainer Removal Tool For 1224, 1234, 1248 Two-handle Cartridge. SKU: Model #14272. 3.6 out of 5 stars, average rating value. Read 19 Reviews.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Cartridge Removal Tool - Wal-Rich Corporation",
+            "url": "https://wal-rich.com/product/moen-cartridge-removal-tool/",
+            "snippet": "Weight, 0.55 lbs. Quantity Per Package. 1. Attribute 2. For Removal of Both Metal & Plastic Moen Faucet Cartridges. Attribute 3. Harbor Forge Display Carded\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "stuck cartridge removal tool Moen",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 5,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller",
+            "url": "https://shop.moen.com/products/179120",
+            "snippet": "... cartridge stuck in the faucet body and cannot find a puller anywhere on ... The Moen 179120 Cartridge Puller and Moen 14272 Cartridge Retainer Removal Tool\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Replace Stuck Moen 1222 Cartridge with Moen Puller - YouTube",
+            "url": "https://www.youtube.com/watch?v=S80MsFj04Io",
+            "snippet": "Mar 7, 2026 ... Replacing a Stuck Moen 1222 Cartridge with the Moen Cartridge Puller Moen Cartridge Removal Tool \u27a1\ufe0f https://amzn.to/4surJtc Old Moen shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Can't remove Moen shower cartridge, what am I missing? : r/Plumbing",
+            "url": "https://www.reddit.com/r/Plumbing/comments/1b50ne6/cant_remove_moen_shower_cartridge_what_am_i/",
+            "snippet": "Mar 2, 2024 ... FlowRite ONA Puller Premier Moen Cartridge Extractor Tool Posi-Temp 1222, 1225 and 1200 ... r/Plumbing - Old Moen Cartridge Stuck. 0:33. Can\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "supplier": [
+      {
+        "query": "Moen cartridge puller tool supplier",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "$46.58 i Web price is valid for moen.com only and does not include any applicable tax or shipping charges. List Price: $62.10.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Cartridge Puller",
+            "url": "https://shop.moen.com/products/179120",
+            "snippet": "Moen Cartridge Puller ... $6.38 i Web price is valid for moen.com only and does not include any applicable tax or shipping charges. ... Pay over time with Affirm.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Stem & Cartridge Puller by Pasco Specialty 7040",
+            "url": "https://www.noelsplumbingsupply.com/product/cartridge-puller-for-moen-faucets/",
+            "snippet": "Bright metal t shaped tool with brass ring. \u00b7 Moen Stem & Cartridge Puller by Pasco Specialty 7040 - Image 2 \u00b7 Moen Stem & Cartridge Puller by Pasco Specialty\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen cartridge puller AliExpress",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Cartridge Puller Removal Tool for Repair & Replacement Moen",
+            "url": "https://www.aliexpress.com/item/1005004187975563.html",
+            "snippet": "AliExpress Shopper, , 08 Mar 2026. Ultra fast shipping and delivery. Be advised that this item is not metal. Seller's advertisement doesn't mention it. I\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Puller Removal Tool for Repair & Replacement Moen",
+            "url": "https://www.aliexpress.com/i/1005004187975563.html",
+            "snippet": "Upgrade your plumbing repairs with this Moen cartridge puller removal tool. Designed for easy cartridge replacement, it also works as an American Standard\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Best Moen Shower Cartridge Puller Tools: A Real User's Tested ...",
+            "url": "https://www.aliexpress.com/s/wiki-ssr/article/moen-shower-cartridge-puller-tools",
+            "snippet": "Real users consistently report that the M6CF Upgraded Cartridge Puller works like a charm. Over 92% of verified buyers on AliExpress gave it a 5-star rating,\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen cartridge extractor wholesale",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Retainer Removal Tool For 1224, 1234, 1248 Two ...",
+            "url": "https://shop.moen.com/products/14272",
+            "snippet": "... Cartridge is packaged for wholesale channels, and the Moen model 179120 Moen Cartridge Puller is packaged for retail sale. They are the same cartridge removal\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Residential 3 in. Removal Tool - Ferguson",
+            "url": "https://www.ferguson.com/product/moen-residential-3-in.-removal-tool-m14272/177753.html",
+            "snippet": "Moen 3 in. Removal Tool. slide 1. Moen ... wholesale channels, and the Moen model 179120 Moen Cartridge Puller is packaged for retail sale.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Extractor Tool - Amazon.com",
+            "url": "https://www.amazon.com/moen-extractor-tool/s?k=moen+extractor+tool",
+            "snippet": "104421U Cartridge Removal Tool for Moen 1222 1225 1220, Shower Cartridge Puller Tool, Tub and Shower Faucet Cartridge Remover for Moen Posi-Temp Valve.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "shower cartridge puller supplier",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Everbilt - Cartridge Puller for Moen 1200, 1222 and 1225 Series Tub ...",
+            "url": "https://www.homedepot.com/p/Everbilt-Cartridge-Puller-for-Moen-1200-1222-and-1225-Series-Tub-Shower-Cartridges-82876/318950202",
+            "snippet": "Solid metal cartridge puller will help replace most single lever cartridges made by Moen \u00b7 Removes frozen cartridges \u00b7 Fits moen 1200, 1222 series tub/shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen 1-1/2-in Metal Cartridge Repair Kit for Faucet or Tub/Shower",
+            "url": "https://www.lowes.com/pd/Moen-Cartridge-Puller-Metal-Faucet-or-Tub-Shower-Cartridge-Repair-Kit/5004650957",
+            "snippet": "Shop Moen Cartridge Puller Metal Faucet or Tub/Shower Cartridge Repair Kit ... ORIGINAL EQUIPMENT MANUFACTURER: Authentic Moen replacement part. PEACE\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Lincoln Products\u00ae T-Handle Cartridge Puller for Moen ... - Ferguson",
+            "url": "https://www.ferguson.com/product/lincoln-products-t-handle-cartridge-puller-for-moen-cartridges-lin107780/3807687.html",
+            "snippet": "Find the Lincoln Products\u00ae T-Handle Cartridge Puller for Moen Cartridges at Ferguson online for delivery or pickup at a Ferguson store near you.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "cartridge puller tool Alibaba",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Faucet Cartridge Removal Tool(999+) - Alibaba.com",
+            "url": "https://www.alibaba.com/showroom/faucet-cartridge-removal-tool.html",
+            "snippet": "Shop high-quality faucet cartridge removal tools for efficient sink and shower repairs. Durable, versatile, and compatible with various faucet models.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Wholesale Water Puller Custom Logo Available | Alibaba.com",
+            "url": "https://www.alibaba.com/showroom/water-puller.html",
+            "snippet": "Cartridge Puller Tool Faucet Cartridge Puller Shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "The Best Shower Cartridge Remover I've Ever Used Here's Exactly ...",
+            "url": "https://www.aliexpress.com/s/wiki-ssr/article/shower-cartridge-remover",
+            "snippet": "What makes this particular shower cartridge remover better than others available? Cartridge Puller Tool ... Alibaba Group. Alibaba Group Website, AliExpress\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen 1222 cartridge puller supplier",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 4,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "104421U Cartridge Removal Tool for Moen 1222 1225 1220 ...",
+            "url": "https://www.amazon.com/104421U-Cartridge-Removal-Remover-Posi-Temp/dp/B0DC6DRLDZ",
+            "snippet": "104421U Cartridge Removal Tool for Moen 1222 1225 1220, Shower Cartridge Puller Tool, Tub and Shower Faucet Cartridge Remover for Moen Posi-Temp Valve\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "$46.58 i Web price is valid for moen.com only and does not include any applicable tax or shipping charges. List Price: $62.10.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Cartridge Removal Tool for 1200 or 1225 or 1222 Cartridges",
+            "url": "https://www.homedepot.com/p/MOEN-Cartridge-Removal-Tool-for-1200-or-1225-or-1222-Cartridges-104421/202998692",
+            "snippet": "Make removing the cartridge easier with this exceptional Cartridge Removal Tool designed by MOEN. Designed for use in your bath.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "competitor": [
+      {
+        "query": "Danco cartridge puller for Moen",
+        "intent": "COMPETITOR",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Cartridge Puller for Moen - Danco",
+            "url": "https://www.danco.com/product/cartridge-puller-for-moen/",
+            "snippet": "Remove your old faucet cartridge with the Danco Cartridge Puller for Moen. This tool is compatible with Moen 1222, 1225, and 1200.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Danco Core Puller for Moen Bathtubs or Showers Tutorial to ...",
+            "url": "https://www.youtube.com/watch?v=nqpl-rakbgo",
+            "snippet": "Sep 18, 2024 ... This is a great tool! Just used it again on my shower faucet. It is indeed the rubber gaskets on either side of the cartridge in your video\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "DANCO 3.12 in Cartridge Puller for MOEN 86712 - The Home Depot",
+            "url": "https://www.homedepot.com/p/DANCO-3-12-in-Cartridge-Puller-for-MOEN-86712/100560034",
+            "snippet": "DANCO Cartridge Puller is a tool designed to help you remove frozen cartridges from your tub, shower and toilet faucet fixtures.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "ONA Puller cartridge tool",
+        "intent": "COMPETITOR",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "FlowRite ONA Puller Premier Moen Cartridge Extractor Tool 1222 ...",
+            "url": "https://www.amazon.com/Puller-Premier-Cartridge-Extractor-Posi-Temp/dp/B08T1ZG6VH",
+            "snippet": "UNSTICKS FROZEN / CORRODED CARTRIDGES \u2013 Built for tough removals when cartridges seize over time; a go-to tool when standard pullers struggle. INCLUDES THE\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen 999150-ALL Ona Puller Moen Cartridge Extractor Kit",
+            "url": "https://qualityplumbingsupply.com/moen-999150-all-ona-puller-the-premiere-moen-cartridge-extractor-kit-r50u/",
+            "snippet": "Moen 999150-ALL Ona Puller - The Premiere Moen Cartridge Extractor Kit is your go-to solution for repairing Moen faucets with ease.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "How to: Pull a 1222 Moen Cartridge using ONA Puller - YouTube",
+            "url": "https://www.youtube.com/watch?v=wJ6oedqUstQ",
+            "snippet": "Oct 20, 2025 ... How to: Pull a 1222 Moen Cartridge using ONA Puller. 1.8K views \u00b7 6 months ago ...more. Pershing Plumbing. 4.83K. Subscribe. 98. Share.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Moen cartridge removal tool",
+        "intent": "COMPETITOR",
+        "result_count": 10,
+        "stored_count": 9,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Moen Cartridge Puller For 1200, 1222 And 1225 Single-handle ...",
+            "url": "https://shop.moen.com/products/104421",
+            "snippet": "From finishes that are guaranteed to last a lifetime, to faucets that perfectly balance your water pressure, Moen sets the standard for exceptional beauty\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Moen Cartridge Retainer Removal Tool For 1224, 1234, 1248 Two ...",
+            "url": "https://shop.moen.com/products/14272",
+            "snippet": "Moen Cartridge Retainer Removal Tool For 1224, 1234, 1248 Two-handle Cartridge. SKU: Model #14272. 3.6 out of 5 stars, average rating value. Read 19 Reviews.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Replace Stuck Moen 1222 Cartridge with Moen Puller - YouTube",
+            "url": "https://www.youtube.com/watch?v=S80MsFj04Io",
+            "snippet": "Mar 7, 2026 ... Replacing a Stuck Moen 1222 Cartridge with the Moen Cartridge Puller Moen Cartridge Removal Tool \u27a1\ufe0f https://amzn.to/4surJtc Old Moen shower\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ]
+  },
+  "stored_search_results": 223,
+  "task_statuses": [
+    {
+      "id": "52042c89-70de-4188-85c7-f26406ad69a6",
+      "type": "keyword_research",
+      "title": "Keyword demand + model compatibility for Moen cartridge pullers",
+      "status": "DONE"
+    },
+    {
+      "id": "0d4c05bd-170f-49fa-86ec-901b9929ed38",
+      "type": "sold_evidence",
+      "title": "Find 5 sold/completed Moen cartridge puller listings with real sold prices",
+      "status": "TODO"
+    },
+    {
+      "id": "f17c6b84-256e-445c-bcb8-a6d4a98e73fe",
+      "type": "active_evidence",
+      "title": "Find 5 active Moen cartridge puller listings with visible prices",
+      "status": "TODO"
+    },
+    {
+      "id": "0f457601-4910-4718-9159-2ed8bb82bc43",
+      "type": "supplier_research",
+      "title": "Find 1-2 supplier sources with unit cost / MOQ / landed cost",
+      "status": "TODO"
+    },
+    {
+      "id": "02c37841-a924-4284-a64e-e306858f2201",
+      "type": "competition_research",
+      "title": "Find 3 competitor listings with prices and weaknesses",
+      "status": "TODO"
+    },
+    {
+      "id": "7d17c8db-0eb6-4cb0-b7ed-e1110b1ce2bb",
+      "type": "fit_risk",
+      "title": "Check cartridge model compatibility, material, and damage risks",
+      "status": "TODO"
+    },
+    {
+      "id": "3d84663d-1ee0-49f9-b0ba-1ecb7297a571",
+      "type": "profit_analysis",
+      "title": "Calculate sale price, landed cost, net profit, and competition gap",
+      "status": "TODO"
+    }
+  ],
+  "idea_id": "775799d9-d652-44e6-8282-71575acf2e3e",
+  "campaign_id": "dfbbbb69-8c2a-452f-b653-fee8a9fac973"
+}

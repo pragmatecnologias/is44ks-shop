@@ -8,6 +8,8 @@ from sqlalchemy.orm import Session
 from app.db import get_db
 from app.schemas.product_schema import (
     OpportunityBoardRow,
+    OpportunityScoutRequest,
+    OpportunityScoutResponse,
     ProductIdeaCreate,
     ProductIdeaResponse,
     ProductIdeaUpdate,
@@ -47,6 +49,19 @@ def quick_scan_existing(idea_id: uuid.UUID, db: Session = Depends(get_db)):
         return service.quick_scan_existing(idea_id)
     except ValueError:
         raise HTTPException(status_code=404, detail="Discovery idea not found")
+
+
+@router.post("/ideas/{idea_id}/opportunity-scout", response_model=OpportunityScoutResponse)
+def opportunity_scout(
+    idea_id: uuid.UUID,
+    request: OpportunityScoutRequest | None = None,
+    db: Session = Depends(get_db),
+):
+    service = DiscoveryService(db)
+    result = service.opportunity_scout(idea_id, request)
+    if not result:
+        raise HTTPException(status_code=404, detail="Discovery idea not found")
+    return result
 
 
 @router.get("/opportunity-board", response_model=list[OpportunityBoardRow])

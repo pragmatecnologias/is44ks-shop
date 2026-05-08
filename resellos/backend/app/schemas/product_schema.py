@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, model_validator
-from typing import Optional, List
+from typing import Optional, List, Any
 from datetime import datetime
 import uuid
 
@@ -389,6 +389,40 @@ class ProductIdeaCreate(BaseModel):
     marketplace_observation: Optional[str] = None
 
 
+class OpportunityScoutRequest(BaseModel):
+    campaign_id: Optional[uuid.UUID] = None
+    product_id: Optional[uuid.UUID] = None
+    local_search_summary: Optional[dict[str, Any]] = None
+    keyword_signals: list[str] = Field(default_factory=list)
+    active_listing_candidates: list[dict[str, Any]] = Field(default_factory=list)
+    competitor_candidates: list[dict[str, Any]] = Field(default_factory=list)
+    supplier_candidates: list[dict[str, Any]] = Field(default_factory=list)
+    risk_notes: list[str] = Field(default_factory=list)
+    force_refresh: bool = False
+
+
+class OpportunityScoutResponse(BaseModel):
+    idea_id: uuid.UUID
+    campaign_id: Optional[uuid.UUID] = None
+    product_id: Optional[uuid.UUID] = None
+    scout_status: str
+    scout_score: int = 0
+    confidence: str = "LOW"
+    buyer_problem_score: int = 0
+    active_market_score: int = 0
+    supplier_path_score: int = 0
+    competition_risk_score: int = 0
+    margin_potential_score: int = 0
+    compatibility_risk_score: int = 0
+    evidence_friction_score: int = 0
+    reason: str = ""
+    next_step: str = ""
+    metrics: dict[str, Any] = Field(default_factory=dict)
+
+    class Config:
+        from_attributes = True
+
+
 class ProductIdeaUpdate(BaseModel):
     idea_name: Optional[str] = None
     category: Optional[str] = None
@@ -460,6 +494,13 @@ class ProductIdeaResponse(BaseModel):
     status: str
     quick_scan_verdict: Optional[str] = None
     quick_scan_reason: Optional[str] = None
+    scout_status: Optional[str] = None
+    scout_score: Optional[int] = None
+    scout_confidence: Optional[str] = None
+    scout_reason: Optional[str] = None
+    scout_next_step: Optional[str] = None
+    scout_metrics: Optional[object] = None
+    scout_updated_at: Optional[datetime] = None
     research_completeness_score: int = 0
     discovery_completeness_score: int = 0
     opportunity_score: int = 0
@@ -517,6 +558,12 @@ class OpportunityBoardRow(BaseModel):
     research_verdict: Optional[str] = None
     buy_readiness_status: Optional[str] = None
     risk_level: Optional[str] = None
+    scout_status: Optional[str] = None
+    scout_score: Optional[int] = None
+    scout_confidence: Optional[str] = None
+    scout_reason: Optional[str] = None
+    scout_next_step: Optional[str] = None
+    scout_metrics: Optional[object] = None
     sold_evidence_count: int = 0
     active_evidence_count: int = 0
     sold_evidence_count_verified: int = 0

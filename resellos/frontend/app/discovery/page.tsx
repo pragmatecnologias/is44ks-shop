@@ -27,6 +27,7 @@ import {
   listEvidenceCandidates,
   listExternalResearchJobs,
   promoteDiscoveryIdea,
+  runOpportunityScout,
   pollExternalResearchJob,
   quickScanDiscoveryIdea,
   rejectEvidenceCandidate,
@@ -43,6 +44,7 @@ import type {
   OpportunityBoardRow,
   ResearchCockpit,
 } from '@/lib/types';
+import { SCOUT_STATUS_COLORS, SCOUT_STATUS_LABELS } from '@/lib/types';
 
 const emptyQuickScan: DiscoveryQuickScanInput = {
   idea_name: '',
@@ -82,6 +84,7 @@ export default function DiscoveryPage() {
   const [captureFile, setCaptureFile] = useState<File | null>(null);
   const [captureSubmitting, setCaptureSubmitting] = useState(false);
   const [candidateTaskLinks, setCandidateTaskLinks] = useState<Record<string, string>>({});
+  const [scoutingIdeaId, setScoutingIdeaId] = useState<string | null>(null);
 
   async function loadIdeas() {
     setLoading(true);
@@ -177,6 +180,19 @@ export default function DiscoveryPage() {
     }
   }
 
+  async function handleOpportunityScout(ideaId: string) {
+    setScoutingIdeaId(ideaId);
+    setError(null);
+    try {
+      await runOpportunityScout(ideaId);
+      await loadIdeas();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Opportunity scout failed');
+    } finally {
+      setScoutingIdeaId(null);
+    }
+  }
+
   async function handleRunExternalResearch() {
     if (!externalResearchIdea) return;
     setExternalSubmitting(true);
@@ -267,6 +283,9 @@ export default function DiscoveryPage() {
   const readyCount = ideas.filter((idea) => idea.quick_scan_verdict === 'PROMISING_FOR_RESEARCH').length;
   const marketCheckCount = ideas.filter((idea) => idea.quick_scan_verdict === 'NEEDS_MARKET_CHECK').length;
   const supplierCheckCount = ideas.filter((idea) => idea.quick_scan_verdict === 'NEEDS_SUPPLIER_CHECK').length;
+  const shortlistCount = ideas.filter((idea) => idea.scout_status === 'SHORTLIST').length;
+  const needsSoldProofCount = ideas.filter((idea) => idea.scout_status === 'NEEDS_SOLD_PROOF').length;
+  const watchScoutCount = ideas.filter((idea) => idea.scout_status === 'WATCH').length;
   const promotedCount = ideas.filter((idea) => idea.status === 'PROMOTED_TO_PRODUCT').length;
 
   if (loading) {
@@ -293,6 +312,9 @@ export default function DiscoveryPage() {
               <Pill label={`Promising for research: ${readyCount}`} />
               <Pill label={`Need market check: ${marketCheckCount}`} />
               <Pill label={`Need supplier check: ${supplierCheckCount}`} />
+              <Pill label={`Scout shortlist: ${shortlistCount}`} />
+              <Pill label={`Need sold proof: ${needsSoldProofCount}`} />
+              <Pill label={`Scout watch: ${watchScoutCount}`} />
               <Pill label={`Promoted: ${promotedCount}`} />
               <Pill label={`Jobs: ${externalJobs.length}`} />
               <Pill label={`Candidates: ${evidenceCandidates.length}`} />
@@ -392,10 +414,12 @@ export default function DiscoveryPage() {
                 <IdeaCard
                   key={idea.id}
                   idea={idea}
+                  isScouting={scoutingIdeaId === idea.id}
                   onPromote={() => handlePromoteIdea(idea.id)}
                   onDelete={() => handleDeleteIdea(idea.id)}
                   onGenerateTasks={() => handleGenerateTasks(idea.id)}
                   onArchive={() => handleArchiveIdea(idea.id)}
+                  onRunScout={() => handleOpportunityScout(idea.id)}
                   onRunExternalResearch={() => {
                     setExternalResearchIdea(idea);
                     setExternalQueryText(buildExternalResearchQueries(idea).join('\n'));
@@ -523,6 +547,7 @@ export default function DiscoveryPage() {
                   <th className="px-4 py-3">Market</th>
                   <th className="px-4 py-3">Best Cost</th>
                   <th className="px-4 py-3">Verdict</th>
+                  <th className="px-4 py-3">Scout</th>
                   <th className="px-4 py-3">Next Action</th>
                 </tr>
               </thead>
@@ -569,6 +594,9 @@ export default function DiscoveryPage() {
                       {money(row.best_landed_cost)}
                     </td>
                     <td className="px-4 py-3 text-zinc-300">{row.research_verdict || row.status || '—'}</td>
+                    <td className="px-4 py-3 text-zinc-300">
+                      {row.scout_status ? `${scoutLabel(row.scout_status)}${row.scout_score != null ? ` · ${row.scout_score}` : ''}` : '—'}
+                    </td>
                     <td className="px-4 py-3 text-zinc-400">{row.next_action || '—'}</td>
                   </tr>
                 ))}
@@ -699,19 +727,23 @@ export default function DiscoveryPage() {
 
 function IdeaCard({
   idea,
+  isScouting,
   onPromote,
   onDelete,
   onGenerateTasks,
   onArchive,
+  onRunScout,
   onRunExternalResearch,
   onCaptureManual,
   onUpdateTask,
 }: {
   idea: DiscoveryIdea;
+  isScouting: boolean;
   onPromote: () => void;
   onDelete: () => void;
   onGenerateTasks: () => void;
   onArchive: () => void;
+  onRunScout: () => void;
   onRunExternalResearch: () => void;
   onCaptureManual: () => void;
   onUpdateTask: (
@@ -772,6 +804,9 @@ function IdeaCard({
           <button onClick={onGenerateTasks} className="text-xs text-zinc-500 hover:text-indigo-400">
             Tasks
           </button>
+          <button onClick={onRunScout} disabled={isScouting} className="text-xs text-zinc-500 hover:text-emerald-400 disabled:opacity-60">
+            {isScouting ? 'Scouting...' : 'Scout'}
+          </button>
           <button onClick={onArchive} className="text-xs text-zinc-500 hover:text-yellow-400">
             Archive
           </button>
@@ -806,6 +841,24 @@ function IdeaCard({
         <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-950/70 p-3">
           <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Quick scan reason</div>
           <div className="mt-1 text-sm text-zinc-200">{idea.quick_scan_reason}</div>
+        </div>
+      ) : null}
+
+      {idea.scout_status ? (
+        <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-950/70 p-3">
+          <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">Scout status</div>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <span className={`rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-[0.16em] ${scoutBadgeClass(idea.scout_status)}`}>
+              {scoutLabel(idea.scout_status)}
+            </span>
+            <span className="text-xs text-zinc-400">
+              Score {idea.scout_score ?? '—'} · {idea.scout_confidence || '—'}
+            </span>
+          </div>
+          <div className="mt-2 text-sm text-zinc-200">{idea.scout_reason || 'No scout reason recorded.'}</div>
+          <div className="mt-1 text-xs text-zinc-400">
+            {idea.scout_next_step || 'Scout status is an early opportunity signal. It does not mean this product is sample-ready.'}
+          </div>
         </div>
       ) : null}
 
@@ -1346,6 +1399,18 @@ function renderKeywordGroup(
       </div>
     </div>
   );
+}
+
+function scoutLabel(status?: string | null) {
+  if (!status) return '—';
+  return SCOUT_STATUS_LABELS[status as keyof typeof SCOUT_STATUS_LABELS] || status;
+}
+
+function scoutBadgeClass(status?: string | null) {
+  if (!status) {
+    return 'bg-zinc-500/20 text-zinc-300 border-zinc-500/30';
+  }
+  return SCOUT_STATUS_COLORS[status as keyof typeof SCOUT_STATUS_COLORS] || 'bg-zinc-500/20 text-zinc-300 border-zinc-500/30';
 }
 
 function isKeywordGroupMap(

@@ -18,6 +18,7 @@ import type {
   DiscoveryCampaignTaskInput,
   DiscoveryQuickScanInput,
 } from '@/lib/types';
+import { SCOUT_STATUS_LABELS } from '@/lib/types';
 
 const DEFAULT_IDEA_FORM: DiscoveryQuickScanInput = {
   idea_name: '',
@@ -341,6 +342,7 @@ export default function DiscoveryCampaignDetailPage() {
                   <tr>
                     <th className="px-4 py-3">Idea</th>
                     <th className="px-4 py-3">Verdict</th>
+                    <th className="px-4 py-3">Scout</th>
                     <th className="px-4 py-3">Opportunity</th>
                     <th className="px-4 py-3">Next Evidence</th>
                     <th className="px-4 py-3">Promoted</th>
@@ -355,6 +357,11 @@ export default function DiscoveryCampaignDetailPage() {
                           <div className="text-xs text-zinc-500">{idea.category || 'Uncategorized'}</div>
                         </td>
                         <td className="px-4 py-3 text-zinc-300">{idea.quick_scan_verdict || idea.status}</td>
+                        <td className="px-4 py-3 text-zinc-300">
+                          {idea.scout_status
+                            ? `${SCOUT_STATUS_LABELS[idea.scout_status as keyof typeof SCOUT_STATUS_LABELS] || idea.scout_status}${idea.scout_score != null ? ` · ${idea.scout_score}` : ''}`
+                            : '—'}
+                        </td>
                         <td className="px-4 py-3 text-zinc-300">{idea.opportunity_score || 0}</td>
                         <td className="px-4 py-3 text-zinc-400">
                           {Array.isArray(idea.required_next_evidence)
@@ -370,7 +377,7 @@ export default function DiscoveryCampaignDetailPage() {
                     ))
                   ) : (
                     <tr>
-                      <td className="px-4 py-6 text-sm text-zinc-500" colSpan={5}>
+                      <td className="px-4 py-6 text-sm text-zinc-500" colSpan={6}>
                         No ideas in this campaign yet.
                       </td>
                     </tr>
@@ -511,6 +518,12 @@ export default function DiscoveryCampaignDetailPage() {
                       <div>
                         <div className="text-sm font-medium text-white">{idea.idea_name}</div>
                         <div className="text-xs text-zinc-500">{idea.category || 'Uncategorized'}</div>
+                        {idea.scout_status ? (
+                          <div className="mt-1 text-[11px] uppercase tracking-[0.14em] text-emerald-300">
+                            Scout {SCOUT_STATUS_LABELS[idea.scout_status as keyof typeof SCOUT_STATUS_LABELS] || idea.scout_status}
+                            {idea.scout_score != null ? ` · ${idea.scout_score}` : ''}
+                          </div>
+                        ) : null}
                       </div>
                       <div className="text-xs text-zinc-400">
                         Score {idea.opportunity_score} · {idea.quick_scan_verdict || idea.status}

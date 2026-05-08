@@ -101,6 +101,25 @@ export type FinalDecision =
   | 'REORDER'
   | 'SCALE';
 
+export type ScoutStatusKnown = 'SHORTLIST' | 'WATCH' | 'REJECT' | 'NEEDS_SOLD_PROOF';
+export type ScoutStatus = ScoutStatusKnown | string;
+export type ScoutConfidenceKnown = 'LOW' | 'MEDIUM' | 'HIGH';
+export type ScoutConfidence = ScoutConfidenceKnown | string;
+
+export const SCOUT_STATUS_LABELS: Record<ScoutStatusKnown, string> = {
+  SHORTLIST: 'Shortlist',
+  WATCH: 'Watch',
+  REJECT: 'Reject',
+  NEEDS_SOLD_PROOF: 'Needs Sold Proof',
+};
+
+export const SCOUT_STATUS_COLORS: Record<ScoutStatusKnown, string> = {
+  SHORTLIST: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+  WATCH: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
+  REJECT: 'bg-red-500/20 text-red-300 border-red-500/30',
+  NEEDS_SOLD_PROOF: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
+};
+
 export interface Product {
   id: string;
   sku: string;
@@ -555,6 +574,12 @@ export interface ResearchCockpit {
     category?: string;
     quick_scan_verdict?: string;
     quick_scan_reason?: string;
+    scout_status?: ScoutStatus | null;
+    scout_score?: number | null;
+    scout_confidence?: ScoutConfidence | null;
+    scout_reason?: string | null;
+    scout_next_step?: string | null;
+    scout_metrics?: Record<string, unknown> | null;
     research_priority?: string;
     research_completeness_score?: number;
     opportunity_score?: number;
@@ -663,6 +688,12 @@ export interface DiscoveryCampaignIdeaSummary {
   status: string;
   quick_scan_verdict?: string | null;
   buy_readiness_status?: string;
+  scout_status?: ScoutStatus | null;
+  scout_score?: number | null;
+  scout_confidence?: ScoutConfidence | null;
+  scout_reason?: string | null;
+  scout_next_step?: string | null;
+  scout_metrics?: Record<string, unknown> | null;
   opportunity_score?: number;
   research_completeness_score?: number;
   promoted_product_id?: string | null;
@@ -738,6 +769,13 @@ export interface ProductIdea {
   status: 'NEW_IDEA' | 'QUICK_SCAN_NEEDED' | 'QUICK_SCAN_COMPLETE' | 'REJECTED' | 'PROMISING' | 'PROMOTED_TO_PRODUCT' | 'ARCHIVED' | string;
   quick_scan_verdict?: string;
   quick_scan_reason?: string;
+  scout_status?: ScoutStatus;
+  scout_score?: number;
+  scout_confidence?: ScoutConfidence;
+  scout_reason?: string;
+  scout_next_step?: string;
+  scout_metrics?: Record<string, unknown> | null;
+  scout_updated_at?: string | null;
   research_completeness_score?: number;
   discovery_completeness_score?: number;
   opportunity_score?: number;
@@ -751,6 +789,37 @@ export interface ProductIdea {
 }
 
 export type DiscoveryIdea = ProductIdea;
+
+export interface OpportunityScoutInput {
+  campaign_id?: string | null;
+  product_id?: string | null;
+  local_search_summary?: Record<string, unknown> | null;
+  keyword_signals?: string[];
+  active_listing_candidates?: Array<Record<string, unknown>>;
+  competitor_candidates?: Array<Record<string, unknown>>;
+  supplier_candidates?: Array<Record<string, unknown>>;
+  risk_notes?: string[];
+  force_refresh?: boolean;
+}
+
+export interface OpportunityScoutResponse {
+  idea_id: string;
+  campaign_id?: string | null;
+  product_id?: string | null;
+  scout_status: ScoutStatus;
+  scout_score: number;
+  confidence: ScoutConfidence;
+  buyer_problem_score: number;
+  active_market_score: number;
+  supplier_path_score: number;
+  competition_risk_score: number;
+  margin_potential_score: number;
+  compatibility_risk_score: number;
+  evidence_friction_score: number;
+  reason: string;
+  next_step: string;
+  metrics: Record<string, unknown>;
+}
 
 export interface ProductIdeaQuickScanInput {
   idea_name: string;
@@ -1036,6 +1105,12 @@ export interface OpportunityBoardRow {
   research_verdict?: string;
   buy_readiness_status?: string;
   risk_level?: string;
+  scout_status?: ScoutStatus | null;
+  scout_score?: number | null;
+  scout_confidence?: ScoutConfidence | null;
+  scout_reason?: string | null;
+  scout_next_step?: string | null;
+  scout_metrics?: Record<string, unknown> | null;
   sold_evidence_count: number;
   active_evidence_count: number;
   sold_evidence_count_verified?: number;

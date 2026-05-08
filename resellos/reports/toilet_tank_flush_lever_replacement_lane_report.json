@@ -1,0 +1,1183 @@
+{
+  "idea_id": "654b9888-96a1-4fd0-8180-dbbea2681032",
+  "campaign_id": "e3aeac83-a1d1-4df4-99c5-2c746e73419c",
+  "campaign_created": true,
+  "idea_created": true,
+  "tasks_created": 7,
+  "task_ids": [
+    "845f57e5-94c7-418f-a27d-ac1eb3dac674",
+    "bef65008-bb5a-460e-aab4-0d8aa491b57c",
+    "83a1b85c-5ff6-4f34-a5e1-c39203e8204a",
+    "13edea9f-8785-4332-9ca8-58856ad9637a",
+    "bf02c8e9-69a8-47a5-a4e0-56a134828366",
+    "7ba4ee43-a847-412b-9dc9-7090730388df",
+    "f4313d73-89b9-4fb0-afce-6d26b2993f77"
+  ],
+  "search_groups": {
+    "keyword": [
+      {
+        "query": "toilet tank flush lever replacement",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/N-5yc1vZc69j",
+            "snippet": "4.64.2K \u00b7 Store nearbyToilet Tank Lever Replacement Handle in Matte Black. Model# 12052. $15.98 ... DeltaTrinsic Universal Toilet Handle Flush Lever in Matte Black. Model# 75960-BL.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Perfect Fit\u2122 Premium Toilet Levers - Fluidmaster",
+            "url": "https://fluidmaster.com/shop/product/premium-lever/",
+            "snippet": "Trusted by pros and designed with homeowners in mind, this toilet flush lever handle is a reliable replacement for broken or outdated trip levers. Whether\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Qualihome: Toilet Handles - Amazon.com",
+            "url": "https://www.amazon.com/stores/Qualihome/page/C5A32804-4FE7-4ED4-BA3C-729E23536A1E",
+            "snippet": "Image of Qualihome Mansfield Toilet Handle Replacement, Front Mount Toilet Tank Lever Flush Handle ( \u00b7 Image of Qualihome Universal Toilet Handle Replacement Kit\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "toilet tank handle replacement",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 5,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/N-5yc1vZc69j",
+            "snippet": "Universal Toilet Tank Lever with Plastic Handle and Arm in Chrome Plated. Model# 224382-CP \u00b7 7 \u00b7 88. (3.7 / 2052) ; Toilet Tank Lever Replacement Handle in Matte\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Perfect Fit\u2122 Premium Toilet Levers - Fluidmaster",
+            "url": "https://fluidmaster.com/shop/product/premium-lever/",
+            "snippet": "The Perfect Fit\u2122 series eliminates compatibility guesswork. With an adjustable arm and multi-angle mount, this universal toilet handle replacement is designed\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Qualihome: Toilet Handles - Amazon.com",
+            "url": "https://www.amazon.com/stores/Qualihome/page/C5A32804-4FE7-4ED4-BA3C-729E23536A1E",
+            "snippet": "Qualihome Universal Toilet Handle Replacement Kit - Nickel Toilet Tank Lever - Side Mount Flusher with Nut Lock - Fits Most Standard Toilet Tanks - Easy.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "universal toilet tank lever",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Universal - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Universal/N-5yc1vZc69jZ1z0uwl3",
+            "snippet": "4.64.2K \u00b7 Store nearbySome of the most reviewed products in Universal Toilet Handles are the Fluidmaster Perfect Fit Universal Toilet Tank Lever in Brushed Nickel with 2,729 reviews, ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Universal Toilet Tank Lever - Mountain Plumbing Products",
+            "url": "https://mountainplumbing.com/product/universal-toilet-tank-lever/",
+            "snippet": "90-day returnsDesigned to fit most toilets, this lever offers a sleek and durable upgrade to your bathroom, available in a wide range of finishes to match any decor.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Perfect Fit\u2122 Premium Toilet Levers - Fluidmaster",
+            "url": "https://fluidmaster.com/shop/product/premium-lever/",
+            "snippet": "With an adjustable arm and multi-angle mount, this universal toilet handle replacement is designed to fit most front, side, angle, or corner toilet tank ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "toilet flush handle replacement",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 1,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/N-5yc1vZc69j",
+            "snippet": "4.64.2K \u00b7 Store nearbyKorkyStrongARM Toilet Handle and Lever -\u200b Fits Front, Side, Angled, Left, and Right Mount Toilets -\u200b Brushed Gold, Simple Style. Model# 6094CM.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Qualihome: Toilet Handles - Amazon.com",
+            "url": "https://www.amazon.com/stores/Qualihome/page/C5A32804-4FE7-4ED4-BA3C-729E23536A1E",
+            "snippet": "Qualihome Universal Toilet Handle Replacement Kit - Nickel Toilet Tank Lever - Side Mount Flusher with Nut Lock - Fits Most Standard Toilet Tanks - Easy.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Easy-Install Toilet Handles for Smooth Operation - Lowe's",
+            "url": "https://www.lowes.com/pl/plumbing-parts-repair/toilet-parts-repair/toilet-handles/3104249826",
+            "snippet": "If your handle is perpendicular to the wall behind your toilet, you'll need a side-mounted toilet handle replacement. With so many types of toilets out there,\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "metal toilet tank lever",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 7,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Metal - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Metal/N-5yc1vZc69jZ1z0vb5j",
+            "snippet": "FluidmasterPerfect Fit Universal Toilet Tank Lever in Brushed Nickel ... In-Store Clearance: 1 at Council Bluffs. Not eligible for online order Pickup.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Hibbent Universal Metal Front Mount Toilet Handle Replacement Kit ...",
+            "url": "https://www.amazon.com/Universal-Replacement-Stainless-Flapper-Toilets/dp/B09VGJ5BGV",
+            "snippet": "The handle is made of zinc alloy with the high-quality and heavy metal material. This handle comes in a classic chrome finish which can resist scratching,\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Stainless steel Toilet Handles at Lowes.com",
+            "url": "https://www.lowes.com/pl/plumbing-parts-repair/toilet-parts-repair/toilet-handles/stainless-steel/3104249826-4294883139",
+            "snippet": "4.61.7K \u00b7 Store nearby \u00b7 Free delivery over $45When you push down on a toilet handle, it raises the trip lever and chain, which lifts the flush ball, ultimately letting the water from your toilet tank flow ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "side mount toilet tank lever",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 9,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Side - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Side/N-5yc1vZc69jZ1z0uwm9",
+            "snippet": "JONES STEPHENSToilet Tank Trip Lever for TOTO Side Mount with 9-\u200b1/\u200b2 in.\u200b Offset Brass Arm and Metal Handle in Brushed Nickel. Model# T018BN.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Handle Replacement Side Mount - Amazon.com",
+            "url": "https://www.amazon.com/toilet-handle-replacement-side-mount/s?k=toilet+handle+replacement+side+mount",
+            "snippet": "4.511K \u00b7 30-day returnsExplore durable side mount toilet handle replacements tested for long-lasting performance. Find options in multiple finishes to match your bathroom.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "F-90 Side-Mount Lever for left-hand tanks - ICERA",
+            "url": "https://icerabath.com/product/f-90-side-mount-lever/",
+            "snippet": "30-day returnsSolid metal toilet tank lever. Stainless steel rod to prevent rust corrosion. Compatible with most Icera Side-mount one-piece and two-piece toilets.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "front mount toilet tank lever",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Front - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Front/N-5yc1vZc69jZ1z0uwm8",
+            "snippet": "4.64.2K \u00b7 Store nearbyThe top-selling product within Front Toilet Handles is the Everbilt Front Mount Toilet Tank Lever in Chrome. What are a few brands that you carry in Front ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Front Mount Toilet Tank Lever - Magnus Home Products",
+            "url": "https://www.magnushomeproducts.com/products/front-mount-toilet-tank-lever",
+            "snippet": "In stock Free delivery over $79Featuring a metal cross handle, this decorative piece is installed in minutes and will transform the look of your bathroom. It is available in multiple ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Lever Front Mount - Amazon.com",
+            "url": "https://www.amazon.com/toilet-lever-front-mount/s?k=toilet+lever+front+mount",
+            "snippet": "4.511K \u00b7 30-day returnsExplore a wide selection of front mount toilet levers designed for easy installation. Choose from various styles and finishes to match your bathroom.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "toilet tank lever replacement eBay sold",
+        "intent": "KEYWORD_DEMAND",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handle for sale - eBay",
+            "url": "https://www.ebay.com/b/Toilet-Handle/71284/bn_7023279541",
+            "snippet": "4.62.5K \u00b7 $7.95 deliveryModern design Universal Replacement Toilet Tank Flush Lever/Wrench Handle,Chrome \u00b7 $8.99 \u00b7 Free shipping. 1,456 sold ; Universal Toilet Tank Flush Lever Chrome ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Tank Handles - eBay",
+            "url": "https://www.ebay.com/shop/toilet-tank-handles?_nkw=toilet+tank+handles",
+            "snippet": "$7.95 deliveryExplore a wide range of our Toilet Tank Handles selection. Find top brands, exclusive offers, and unbeatable prices on eBay. Shop now for fast shipping and ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Handle Replacement - eBay",
+            "url": "https://www.ebay.com/shop/toilet-handle-replacement?_nkw=toilet+handle+replacement",
+            "snippet": "Rating 4.5(40) \u00b7 $7.95 deliveryUniversal Toilet Flush Lever Handle Replacement Kit for Most Toilet Tank Durable. $9.99. happlyseller (88,505) 99.7%. 76+ sold. Save up to 8% when you buy more.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "sold": [
+      {
+        "query": "toilet tank flush lever replacement sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/N-5yc1vZc69j",
+            "snippet": "4.64.2K \u00b7 Store nearbyToilet Tank Lever Replacement Handle in Matte Black. Model# 12052. $15.98 ... DeltaTrinsic Universal Toilet Handle Flush Lever in Matte Black. Model# 75960-BL.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Easy-Install Toilet Handles for Smooth Operation - Lowe's",
+            "url": "https://www.lowes.com/pl/plumbing-parts-repair/toilet-parts-repair/toilet-handles/3104249826",
+            "snippet": "4.61.7K \u00b7 Store nearby \u00b7 Free delivery over $45Upgrade or replace toilet handles easily with durable, smooth-operating options from Lowe's. Available in various finishes.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Handle Replacement - Amazon.com",
+            "url": "https://www.amazon.com/toilet-handle-replacement/s?k=toilet+handle+replacement",
+            "snippet": "4.511K \u00b7 30-day returnsFind universal toilet handle replacements for front and side mount tanks. Browse quality options with durable materials and easy installation.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "toilet tank handle replacement sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 2,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/N-5yc1vZc69j",
+            "snippet": "4.64.2K \u00b7 Store nearbyToilet Tank Lever Replacement Handle in Matte Black. Model# 12052. $15.98 ... What's the top-selling product within Toilet Handles? The top-selling product ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Tank Flush Lever Handles - FaucetList.com",
+            "url": "https://faucetlist.com/collections/toilet-tank-flush-lever-handles",
+            "snippet": "Free delivery over $99 30-day returnsWe carry many decorative replacement toilet tank flush handles for many popular toilet brands. We carry many universal flush levers that fit most toilets.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Easy-Install Toilet Handles for Smooth Operation - Lowe's",
+            "url": "https://www.lowes.com/pl/plumbing-parts-repair/toilet-parts-repair/toilet-handles/3104249826",
+            "snippet": "4.61.7K \u00b7 Store nearby \u00b7 Free delivery over $45Upgrade or replace toilet handles easily with durable, smooth-operating options from Lowe's. Available in various finishes.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "universal toilet tank lever sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 7,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Universal - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Universal/N-5yc1vZc69jZ1z0uwl3",
+            "snippet": "4.64.2K \u00b7 Store nearbySome of the most reviewed products in Universal Toilet Handles are the Fluidmaster Perfect Fit Universal Toilet Tank Lever in Brushed Nickel with 2,729 reviews, ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Universal Toilet Tank Lever - Mountain Plumbing Products",
+            "url": "https://mountainplumbing.com/product/universal-toilet-tank-lever/",
+            "snippet": "90-day returnsDesigned to fit most toilets, this lever offers a sleek and durable upgrade to your bathroom, available in a wide range of finishes to match any decor.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Universal Toilet Tank Flush Lever, Chrome Finish Toilet Handle Fits ...",
+            "url": "https://www.amazon.com/Universal-Toilet-Chrome-Finish-Toilets/dp/B000BRM66S",
+            "snippet": "Metal flush arm with chrome finish handle; Metal lock nut; Fits most toilets; Comes in carded package. See more. Product specifications. Style ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "toilet flush handle replacement sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 2,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/N-5yc1vZc69j",
+            "snippet": "Universal Toilet Tank Lever with Plastic Handle and Arm in Chrome Plated. Model# 224382-CP \u00b7 7 \u00b7 88. (3.7 / 2052) ; Toilet Tank Lever Replacement Handle in Matte\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Easy-Install Toilet Handles for Smooth Operation - Lowe's",
+            "url": "https://www.lowes.com/pl/plumbing-parts-repair/toilet-parts-repair/toilet-handles/3104249826",
+            "snippet": "4.61.7K \u00b7 Store nearby \u00b7 Free delivery over $45Upgrade or replace toilet handles easily with durable, smooth-operating options from Lowe's. Available in various finishes.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Tank Flush Lever Handles - FaucetList.com",
+            "url": "https://faucetlist.com/collections/toilet-tank-flush-lever-handles",
+            "snippet": "Free delivery over $99 30-day returnsWe carry many decorative replacement toilet tank flush handles for many popular toilet brands. We carry many universal flush levers that fit most toilets.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "metal toilet tank lever sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Metal - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Metal/N-5yc1vZc69jZ1z0vb5j",
+            "snippet": "FluidmasterPerfect Fit Universal Toilet Tank Lever in Brushed Nickel ... In-Store Clearance: 1 at Council Bluffs. Not eligible for online order Pickup.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Hibbent Universal Metal Front Mount Toilet Handle Replacement Kit ...",
+            "url": "https://www.amazon.com/Universal-Replacement-Stainless-Flapper-Toilets/dp/B09VGJ5BGV",
+            "snippet": "... Metal Front Mount Toilet Handle Replacement Kit, Brass Toilet Flush Tank Lever with Stainless Steel Flapper Chains for Most Toilets, Chrome - Amazon.com.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Our Most Common Toilet Flush Levers - PlumbingSupply.com",
+            "url": "https://www.plumbingsupply.com/most-common-toilet-tank-levers.html",
+            "snippet": "3.6 \u00b7 Free delivery over $98.99 \u00b7 30-day returnsMetal, zinc based, handle and spud; Stylish chrome finish; Universal style fits many brands of tanks. Most Popular Toilet Trip Lever - Chrome = $9.99.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "side mount toilet tank lever sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Side - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Side/N-5yc1vZc69jZ1z0uwm9",
+            "snippet": "4.64.2K \u00b7 Store nearby$69.60. Add to Cart. French Country Side Mount Toilet Tank Lever in Polished Brass. Kingston BrassFrench Country Side Mount Toilet Tank Lever in Polished Brass.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Side Toilet Handle - Walmart",
+            "url": "https://www.walmart.com/c/kp/side-toilet-handle",
+            "snippet": "4.24K \u00b7 Store nearbyBest seller Danco Toilet Tank Lever Replacement Handle in Brushed Nickel, 0.17 lbs (12046) From $10.64 \u00b7 50+ bought since yesterday Plumb Craft White Toilet ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Handle Replacement Side Mount - Amazon.com",
+            "url": "https://www.amazon.com/toilet-handle-replacement-side-mount/s?k=toilet+handle+replacement+side+mount",
+            "snippet": "4.511K \u00b7 30-day returnsExplore durable side mount toilet handle replacements tested for long-lasting performance. Find options in multiple finishes to match your bathroom.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "front mount toilet tank lever sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 6,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Front - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Front/N-5yc1vZc69jZ1z0uwm8",
+            "snippet": "4.64.2K \u00b7 Store nearbyThe top-selling product within Front Toilet Handles is the Everbilt Front Mount Toilet Tank Lever in Chrome. What are a few brands that you carry in Front ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Front Mount Toilet Tank Lever - Magnus Home Products",
+            "url": "https://www.magnushomeproducts.com/products/front-mount-toilet-tank-lever",
+            "snippet": "In stock Free delivery over $79Featuring a metal cross handle, this decorative piece is installed in minutes and will transform the look of your bathroom. It is available in multiple ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Easy-Install Toilet Handles for Smooth Operation - Lowe's",
+            "url": "https://www.lowes.com/pl/plumbing-parts-repair/toilet-parts-repair/toilet-handles/3104249826",
+            "snippet": "4.61.7K \u00b7 Store nearby \u00b7 Free delivery over $45Korky. StrongARM Faucet Style Toilet Tank Lever and Handle 8-in Front/Side/Neo-angle Mount Oil Rubbed Bronze Universal Fit Handle with lever. Find My Store.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "toilet tank lever replacement eBay sold",
+        "intent": "SOLD_EVIDENCE",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handle for sale - eBay",
+            "url": "https://www.ebay.com/b/Toilet-Handle/71284/bn_7023279541",
+            "snippet": "4.62.5K \u00b7 $7.95 deliveryModern design Universal Replacement Toilet Tank Flush Lever/Wrench Handle,Chrome \u00b7 $8.99 \u00b7 Free shipping. 1,456 sold ; Universal Toilet Tank Flush Lever Chrome ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Handle Replacement - eBay",
+            "url": "https://www.ebay.com/shop/toilet-handle-replacement?_nkw=toilet+handle+replacement",
+            "snippet": "Rating 4.5(40) \u00b7 $7.95 deliveryUniversal Toilet Flush Lever Handle Replacement Kit for Most Toilet Tank Durable. $9.99. happlyseller (88,505) 99.7%. 76+ sold. Save up to 8% when you buy more.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Tank Handles - eBay",
+            "url": "https://www.ebay.com/shop/toilet-tank-handles?_nkw=toilet+tank+handles",
+            "snippet": "$7.95 deliveryExplore a wide range of our Toilet Tank Handles selection. Find top brands, exclusive offers, and unbeatable prices on eBay. Shop now for fast shipping and ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "active": [
+      {
+        "query": "toilet tank flush lever replacement",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/N-5yc1vZc69j",
+            "snippet": "4.64.2K \u00b7 Store nearbyToilet Tank Lever Replacement Handle in Matte Black. Model# 12052. $15.98 ... DeltaTrinsic Universal Toilet Handle Flush Lever in Matte Black. Model# 75960-BL.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Perfect Fit\u2122 Premium Toilet Levers - Fluidmaster",
+            "url": "https://fluidmaster.com/shop/product/premium-lever/",
+            "snippet": "Trusted by pros and designed with homeowners in mind, this toilet flush lever handle is a reliable replacement for broken or outdated trip levers. Whether\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Qualihome: Toilet Handles - Amazon.com",
+            "url": "https://www.amazon.com/stores/Qualihome/page/C5A32804-4FE7-4ED4-BA3C-729E23536A1E",
+            "snippet": "Image of Qualihome Mansfield Toilet Handle Replacement, Front Mount Toilet Tank Lever Flush Handle ( \u00b7 Image of Qualihome Universal Toilet Handle Replacement Kit\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "toilet tank handle replacement",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 5,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/N-5yc1vZc69j",
+            "snippet": "Universal Toilet Tank Lever with Plastic Handle and Arm in Chrome Plated. Model# 224382-CP \u00b7 7 \u00b7 88. (3.7 / 2052) ; Toilet Tank Lever Replacement Handle in Matte\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Qualihome: Toilet Handles - Amazon.com",
+            "url": "https://www.amazon.com/stores/Qualihome/page/C5A32804-4FE7-4ED4-BA3C-729E23536A1E",
+            "snippet": "Qualihome Universal Toilet Handle Replacement Kit - Nickel Toilet Tank Lever - Side Mount Flusher with Nut Lock - Fits Most Standard Toilet Tanks - Easy.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Perfect Fit\u2122 Premium Toilet Levers - Fluidmaster",
+            "url": "https://fluidmaster.com/shop/product/premium-lever/",
+            "snippet": "The Perfect Fit\u2122 series eliminates compatibility guesswork. With an adjustable arm and multi-angle mount, this universal toilet handle replacement is designed\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "universal toilet tank lever replacement",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 5,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/N-5yc1vZc69j",
+            "snippet": "4.64.2K \u00b7 Store nearbyUniversal Toilet Tank Lever with Plastic Handle and Arm in Chrome Plated. Model# 224382-CP \u00b7 7 \u00b7 88. (3.7 / 2052) ; Toilet Tank Lever Replacement Handle in Matte ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Perfect Fit\u2122 Tank Lever - Toilet Handle Replacement - Fluidmaster",
+            "url": "https://fluidmaster.com/shop/product/perfect-fit-lever/",
+            "snippet": "Perfect Fit\u2122 Toilet Lever \u00b7 Universal Fit \u2013 Installs on most front, side, angle, and corner-mount tanks \u00b7 Durable Metal Construction \u2013 Chrome or Brushed Nickel\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Universal Toilet Tank Flush Lever, Chrome Finish Toilet Handle Fits ...",
+            "url": "https://www.amazon.com/Universal-Toilet-Chrome-Finish-Toilets/dp/B000BRM66S",
+            "snippet": "Metal flush arm with chrome finish handle; Metal lock nut; Fits most toilets; Comes in carded package. See more. Product specifications. Style ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "metal toilet tank flush handle",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 7,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Hibbent Universal Metal Front Mount Toilet Handle Replacement Kit ...",
+            "url": "https://www.amazon.com/Universal-Replacement-Stainless-Flapper-Toilets/dp/B09VGJ5BGV",
+            "snippet": "Fits tank hole diameter 0.62 in to 0.67 in. Easy to Install: It's easy to install and includes chrome finish handle, brass lever, white plastic spud and nut.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Metal - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Metal/N-5yc1vZc69jZ1z0vb5j",
+            "snippet": "FluidmasterPerfect Fit Universal Toilet Tank Lever in Brushed Nickel ... In-Store Clearance: 1 at Council Bluffs. Not eligible for online order Pickup.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Stainless steel Toilet Handles at Lowes.com",
+            "url": "https://www.lowes.com/pl/plumbing-parts-repair/toilet-parts-repair/toilet-handles/stainless-steel/3104249826-4294883139",
+            "snippet": "4.61.7K \u00b7 Store nearby \u00b7 Free delivery over $45Toilet flush handles can be front-mounted or side-mounted. If your handle is perpendicular to the wall behind your toilet, you'll need a side-mounted toilet ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "side mount toilet tank lever replacement",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 8,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handle Replacement Side Mount - Amazon.com",
+            "url": "https://www.amazon.com/toilet-handle-replacement-side-mount/s?k=toilet+handle+replacement+side+mount",
+            "snippet": "4.511K \u00b7 30-day returnsExplore durable side mount toilet handle replacements tested for long-lasting performance. Find options in multiple finishes to match your bathroom.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Side - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Side/N-5yc1vZc69jZ1z0uwm9",
+            "snippet": "4.64.2K \u00b7 Store nearbyToilet Tank Trip Lever for TOTO Side Mount with 9-1/2 in. Offset Brass Arm and Metal Handle in Brushed Nickel",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Easy-Install Toilet Handles for Smooth Operation - Lowe's",
+            "url": "https://www.lowes.com/pl/plumbing-parts-repair/toilet-parts-repair/toilet-handles/3104249826",
+            "snippet": "4.61.7K \u00b7 Store nearby \u00b7 Free delivery over $45Upgrade or replace toilet handles easily with durable, smooth-operating options from Lowe's. Available in various finishes.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "front mount toilet tank lever replacement",
+        "intent": "ACTIVE_LISTING",
+        "result_count": 10,
+        "stored_count": 4,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Front - Toilet Handles - The Home Depot",
+            "url": "https://www.homedepot.com/b/Plumbing-Plumbing-Parts-Toilet-Parts-Toilet-Handles/Front/N-5yc1vZc69jZ1z0uwm8",
+            "snippet": "4.64.2K \u00b7 Free in-store returnsThe top-selling product within Front Toilet Handles is the Everbilt Front Mount Toilet Tank Lever in Chrome. What are a few brands that you carry in Front ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Lever Front Mount - Amazon.com",
+            "url": "https://www.amazon.com/toilet-lever-front-mount/s?k=toilet+lever+front+mount",
+            "snippet": "4.511K \u00b7 30-day returnsUniversal Metal Front Mount Toilet Handle Replacement Kit, Brass Toilet Flush Tank Lever with Stainless Steel Flapper Chains for Most Toilets, Chrome",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Easy-Install Toilet Handles for Smooth Operation - Lowe's",
+            "url": "https://www.lowes.com/pl/plumbing-parts-repair/toilet-parts-repair/toilet-handles/3104249826",
+            "snippet": "4.61.7K \u00b7 Free delivery over $45 \u00b7 Free 90-day returnsUpgrade or replace toilet handles easily with durable, smooth-operating options from Lowe's. Available in various finishes.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "supplier": [
+      {
+        "query": "toilet tank flush lever supplier",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Replacement Toilet Tank Flush Levers - PlumbingSupply.com",
+            "url": "https://www.plumbingsupply.com/toilettanklevers.html",
+            "snippet": "Toilet tank levers for many name brand toilets like, American Standard, Eljer, Kohler, Case, Briggs, toto and MORE!",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Tank Levers | Toilet Flush Handles - Fluidmaster",
+            "url": "https://fluidmaster.com/toilet/part-type/tank-levers/",
+            "snippet": "The variety of styles and finishes of toilet levers from Fluidmaster match all types of bathroom d\u00e9cor, making replacing or upgrading easy.Missing: supplier | Show results with:supplier",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Flush Levers and Toilet Parts - Signature Hardware",
+            "url": "https://www.signaturehardware.com/toilets-and-bidets/toilet-parts",
+            "snippet": "4.815 \u00b7 Free delivery over $99 \u00b7 90-day returnsShop replacement toilet flush levers, flush valves, water supply line kits, and more toilet parts. In Stock. Free shipping on orders $99+.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "toilet tank handle replacement wholesale",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 9,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Tank Levers - Toilet Flush Handle Repair Kits - PlumbersStock",
+            "url": "https://www.plumbersstock.com/parts/toilet/tank-levers.html",
+            "snippet": "4.32K \u00b7 Free delivery over $1,000Toilet flush handles on sale at PlumbersStock for wholesale prices. Save on replacement parts like toilet tank levers from trusted plumbing brands.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Tank Levers - Famous Supply",
+            "url": "https://www.famous-supply.com/Catalog/plumbing/toilets-urinals-and-parts/flush-and-fill-valves-and-accessories/toilet-tank-levers?page=2",
+            "snippet": "Stylish toilet tank levers for easy flushing. Compatible with various toilets for a functional upgrade.Missing: wholesale | Show results with:wholesale",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Handle Replacements - Toilet Parts and Accessories at Danco",
+            "url": "https://www.danco.com/product-category/bathroom/toilets/toilet-handles/",
+            "snippet": "We offer replacement toilet flush handles for major toilet brands such as American Standard, Mansfield, Eljer, as well as universal handles, toilet flush handle ...Missing: wholesale | Show results with:wholesale",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "toilet flush handle replacement Alibaba",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 9,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Flush Handle Replacement(167) - Alibaba.com",
+            "url": "https://m.alibaba.com/showroom/toilet-flush-handle-replacement.html",
+            "snippet": "Discover universal toilet flush handle replacements, starting at approximately $0.1 per unit. Ideal for front-mount toilets, these sturdy plastic handles ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Shop Online Flush Lever for Toilet Customized Color Options - Alibaba",
+            "url": "https://www.alibaba.com/showroom/flush-lever-for-toilet.html",
+            "snippet": "Find reliable flush lever for toilet replacements. High-quality, durable, and universal fits for most toilets. Shop trusted suppliers now for efficient ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Flush Handle Replacement(167) - Alibaba.com",
+            "url": "https://www.alibaba.com/showroom/toilet-flush-handle-replacement.html",
+            "snippet": "Discover universal toilet flush handle replacements, starting at approximately $0.1 per unit. Ideal for front-mount toilets, these sturdy plastic handles\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "metal toilet tank lever supplier",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 6,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Tank Handles - HD Supply",
+            "url": "https://hdsupplysolutions.com/c/toilet-tank-handles-00-95-70-5-65",
+            "snippet": "Free delivery over $50 90-day returnsToilet Tank Lever, Brass-Plated Arm, Chrome Handle, Plastic Nut, Package Of 2. $8.99 ($4.50 / Each). \u2212 +. Add To Cart. Add to List Add to Quote. PART 569550.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Hibbent Universal Metal Front Mount Toilet Handle Replacement Kit ...",
+            "url": "https://www.amazon.com/Universal-Replacement-Stainless-Flapper-Toilets/dp/B09VGJ5BGV",
+            "snippet": "Hibbent Universal Metal Front Mount Toilet Handle Replacement Kit, Brass Toilet Flush Tank Lever with Stainless Steel Flapper Chains for Most Toilets,\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Replacement Toilet Tank Flush Levers - PlumbingSupply.com",
+            "url": "https://www.plumbingsupply.com/toilettanklevers.html",
+            "snippet": "Toilet tank levers for many name brand toilets like, American Standard, Eljer, Kohler, Case, Briggs, toto and MORE!",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "universal toilet tank lever AliExpress",
+        "intent": "SUPPLIER",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Buy the best toilet flush handle with free shipping on AliExpress",
+            "url": "https://www.aliexpress.com/w/wholesale-toilet-flush-handle.html",
+            "snippet": "4.33.2K \u00b7 15-day returnsToilet Tank Flush Lever Replacement Universal Front Mount Handle Toilet Tank Trip Lever with Stainless Steel Flapper Chain Metal. High quality toilet flush ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "1Pc Universal Toilet Tank Flush Lever Chrome Finish ... - AliExpress",
+            "url": "https://www.aliexpress.com/item/1005006145427887.html",
+            "snippet": "Buy 1Pc Universal Toilet Tank Flush Lever Chrome Finish Toilet Lever Handle Bathroom Toilet Accessories at Aliexpress for . Find more 13, 100007087 and\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Tank Levers - AliExpress",
+            "url": "http://www.aliexpress.com/w/wholesale-toilet-tank-levers.html",
+            "snippet": "AliExpress provides a wide range of toilet tank levers, including: 1. Toilet Flush Levers: These are the main levers that operate the flushing mechanism. They ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ],
+    "competitor": [
+      {
+        "query": "Danco universal toilet tank lever",
+        "intent": "COMPETITOR",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Toilet Handle Replacements - Toilet Parts and Accessories at Danco",
+            "url": "https://www.danco.com/product-category/bathroom/toilets/toilet-handles/",
+            "snippet": "We offer replacement toilet flush handles for major toilet brands such as American Standard, Mansfield, Eljer, as well as universal handles, toilet flush handle ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Universal Decorative Toilet Handle in Matte Black - Danco",
+            "url": "https://www.danco.com/product/universal-decorative-toilet-handle-in-matte-black/",
+            "snippet": "Rating 4.4(9)This Danco toilet flush lever replacement system not only looks elegant with all types of bathroom d\u00e9cor, but it's a beautiful new accessory for updating any ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Danco 12061 Toilet Tank Lever, Oil Rubbed Bronze - Amazon.com",
+            "url": "https://www.amazon.com/Danco-12061-Decorative-Replacement-Vertical/dp/B0C7D8LRH1",
+            "snippet": "30-day returnsReplacing a toilet handle fixes: sticky handles, corroded trip levers, outdated bathroom designs \u00b7 Sleek design modernizes your bathroom and works with all types ...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Korky toilet tank lever",
+        "intent": "COMPETITOR",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "Tank Levers - Korky\u00ae Toilet Repair",
+            "url": "https://www.korky.com/parts/tank-levers",
+            "snippet": "As the name suggests, Korky StrongARM\u00ae Tank Lever and Handle Kits are stronger than traditional levers. Made from durable engineer-grade material, it performs\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "How to Install Korky StrongARM\u00ae Toilet Handles",
+            "url": "https://www.korky.com/toilet-repair-help/install-korky-strongarm-toilet-levers",
+            "snippet": "Over time, toilet handles can get loose, rust, or even break. This can happen from frequent use, mineral buildup, or normal wear. If your flush handle is\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Korky Strongarm Metal Toilet Handle and Lever - Universal to Fit Front ...",
+            "url": "https://www.amazon.com/Korky-6034bp-Strongarm-Flush-Lever/dp/B087RQCW32",
+            "snippet": "The Korky StrongARM Handle & Lever easily adjusts to fit all tank positions including front, side, angle, right, and down.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      },
+      {
+        "query": "Fluidmaster toilet handle lever",
+        "intent": "COMPETITOR",
+        "result_count": 10,
+        "stored_count": 10,
+        "provider_statuses": [
+          {
+            "provider": "SEARXNG",
+            "status": "OK",
+            "message": null,
+            "result_count": 10
+          }
+        ],
+        "top": [
+          {
+            "title": "641 - Perfect Fit\u2122 Lever - Chrome - Fluidmaster",
+            "url": "https://fluidmaster.com/products/toilet/tank-levers/641-perfect-fit-lever-chrome/",
+            "snippet": "Free delivery over $40 60-day returnsThis Chrome tank lever from Fluidmaster is a direct replacement for Mansfield, Kohler Wellworth, Eljer, and American Standard toilets.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "Toilet Tank Levers | Toilet Flush Handles - Fluidmaster",
+            "url": "https://fluidmaster.com/toilet/part-type/tank-levers/",
+            "snippet": "Tank Levers flush the toilet. Push the lever and the flapper, or some other type of seal, opens up and let's water down the flush valve into the bowl,\u00a0...",
+            "price_text": null,
+            "provider": "SEARXNG"
+          },
+          {
+            "title": "642 - Perfect Fit\u2122 Lever - Brushed Nickel - Fluidmaster",
+            "url": "https://fluidmaster.com/products/toilet/tank-levers/642-perfect-fit-lever-brushed-nickel/",
+            "snippet": "Free delivery over $40 60-day returnsThis Brushed Nickel toilet lever is a direct replacement for Mansfield, Kohler Wellworth, Eljer, and American Standard toilets.",
+            "price_text": null,
+            "provider": "SEARXNG"
+          }
+        ]
+      }
+    ]
+  },
+  "stored_search_results": 224,
+  "task_statuses": [
+    {
+      "id": "845f57e5-94c7-418f-a27d-ac1eb3dac674",
+      "type": "keyword_research",
+      "title": "Keyword demand + confusion risk for toilet tank flush lever replacement",
+      "status": "DONE"
+    },
+    {
+      "id": "bef65008-bb5a-460e-aab4-0d8aa491b57c",
+      "type": "sold_evidence",
+      "title": "Find 5 sold/completed toilet tank flush lever listings with real price proof",
+      "status": "TODO"
+    },
+    {
+      "id": "83a1b85c-5ff6-4f34-a5e1-c39203e8204a",
+      "type": "active_evidence",
+      "title": "Find 5 active toilet tank flush lever listings with visible prices",
+      "status": "TODO"
+    },
+    {
+      "id": "13edea9f-8785-4332-9ca8-58856ad9637a",
+      "type": "supplier_research",
+      "title": "Find 1-2 supplier sources with unit cost / MOQ / landed cost",
+      "status": "TODO"
+    },
+    {
+      "id": "bf02c8e9-69a8-47a5-a4e0-56a134828366",
+      "type": "competition_research",
+      "title": "Find 3 competitor listings with prices and weaknesses",
+      "status": "TODO"
+    },
+    {
+      "id": "7ba4ee43-a847-412b-9dc9-7090730388df",
+      "type": "fit_risk",
+      "title": "Check mount type, arm length, and tank compatibility risks",
+      "status": "TODO"
+    },
+    {
+      "id": "f4313d73-89b9-4fb0-afce-6d26b2993f77",
+      "type": "profit_analysis",
+      "title": "Calculate sale price, landed cost, net profit, and competition gap",
+      "status": "TODO"
+    }
+  ]
+}
