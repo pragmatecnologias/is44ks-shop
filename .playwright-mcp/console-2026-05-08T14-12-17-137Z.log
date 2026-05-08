@@ -1,3 +1,0 @@
-[    1038ms] [LOG] Meter provider shut down successfully @ https://ir.ebaystatic.com/cr/ebay-rum/cdn-assets/metrics.ebb041e86c5338dbe8f6.bundle.js:0
-[    1043ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.ebay.com/itm/403652946773:0
-[    1213ms] [WARNING] Mixed Content: The page at 'https://www.ebay.com/itm/403652946773' was loaded over HTTPS, but requested an insecure element 'http://i.ebayimg.com/00/s/MTUwMFgxMjAw/z/8ScAAOSw-ANlzRIW/$_1.PNG?set_id=2'. This request was automatically upgraded to HTTPS, For more information see https://blog.chromium.org/2019/10/no-more-mixed-messages-about-https.html @ https://www.ebay.com/itm/403652946773:75

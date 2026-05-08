@@ -8,3 +8,4 @@ resellos/backend/*.db
 resellos/backend/*.sqlite
 resellos/backend/*.sqlite3
 resellos/backend/resellos.local.db
+.playwright-mcp/

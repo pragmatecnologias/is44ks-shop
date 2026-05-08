@@ -1,8 +1,0 @@
-[     700ms] [LOG] Meter provider shut down successfully @ https://ir.ebaystatic.com/cr/ebay-rum/cdn-assets/metrics.ebb041e86c5338dbe8f6.bundle.js:0
-[     818ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ about:blank:0
-[    1658ms] [LOG] {h: 1156, w: 1099} @ https://ir.ebaystatic.com/rs/c/r1vinode/item_evo-Mk5DlASR.js:7
-[    1879ms] [LOG] done @ https://www.ebay.com/itm/226590895289:4
-[    2009ms] [WARNING] [GPT] PubAdsService.collapseEmptyDivs is deprecated, use googletag.setConfig({collapseDiv: ...}) instead.
-https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605040101/pubads_impl.js?cb=31098278:18
-[    2011ms] [WARNING] [GPT] Slot.setTargeting is deprecated, use Slot.setConfig({targeting: ...}) instead.
-https://goo.gle/gpt-message#171 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605040101/pubads_impl.js?cb=31098278:18
